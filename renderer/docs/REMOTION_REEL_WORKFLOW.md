@@ -38,6 +38,17 @@ remotion/theme.ts            → palette + pillar accents (sync with src/design/
 - `beat.purpose === "cta"` renders `EndCard` (uses `comment_prompt`).
 - 3–6s beats, 30fps, one caption per beat. Don't force every carousel slide into the video if it hurts pacing.
 
+### Caption animation modes (`video.caption_mode`)
+| Mode | Behavior |
+| --- | --- |
+| `block` (default) | full caption per scene, fades in |
+| `word` | one word at a time, karaoke style |
+| `highlight` | full line shown; the current word lit in the pillar accent |
+Implemented in `remotion/CaptionLayer.tsx`. Word timing is distributed evenly across each beat window (no audio needed); when real narration audio + word timestamps exist, pass `beat.words[]` for exact sync. Set the mode at generation time (`--captions=` / `captions=`), no code edits needed.
+
+### Per-post rendering
+`render-reel.ts` writes a temp `{post}` props file and passes `--props` to the Remotion CLI; `remotion/Root.tsx` uses `calculateMetadata` to derive duration/fps from that post. So `npm run reel -- <key>` renders **that** post (not a hardcoded default) — required for batch/`draft-week` output.
+
 ## Render
 
 ```bash

@@ -91,6 +91,14 @@ export const SourceNote = z.object({
   claim_tag: z.string().min(1),
 });
 
+// Optional per-word timings (absolute seconds). When absent, word/highlight
+// caption modes distribute words evenly across the beat window.
+export const Word = z.object({
+  text: z.string(),
+  start: z.number().nonnegative(),
+  end: z.number().positive(),
+});
+
 export const Beat = z.object({
   start: z.number().nonnegative(),
   end: z.number().positive(),
@@ -98,7 +106,14 @@ export const Beat = z.object({
   purpose: z.string(),
   motion: z.string(),
   caption: z.string(),
+  words: z.array(Word).optional(),
 });
+
+// How burned-in reel captions animate:
+//   block     — full caption per scene (default; current behavior)
+//   word      — one word at a time, karaoke style
+//   highlight — full line shown, the currently-spoken word lit in the accent
+export const CaptionMode = z.enum(["block", "word", "highlight"]);
 
 export const Narration = z.object({
   start: z.number().nonnegative(),
@@ -111,6 +126,7 @@ export const VideoSpec = z.object({
   duration_seconds: z.number().positive(),
   fps: z.number().positive(),
   export_name: z.string().min(1),
+  caption_mode: CaptionMode.default("block"),
   narration: z.array(Narration).default([]),
   beats: z.array(Beat).min(1),
   subtitle_style: z.string().optional().default(""),
@@ -209,6 +225,7 @@ export type TPostData = z.infer<typeof PostData>;
 export type TSlideData = z.infer<typeof SlideData>;
 export type TVideoSpec = z.infer<typeof VideoSpec>;
 export type TBeat = z.infer<typeof Beat>;
+export type TCaptionMode = z.infer<typeof CaptionMode>;
 
 export function validatePost(raw: unknown): TPostData {
   return PostData.parse(raw);

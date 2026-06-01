@@ -6,9 +6,11 @@ AI-in-cybersecurity UGC pipeline. **Positioning:** *real threats, real tools, no
 - **ai-cybersecurity-ugc-carousel** — writes the content (hooks, 8-slide scripts, captions, QA). Use when drafting post copy/ideas.
 - **react-remotion-instagram-renderer** — maps approved content to the renderer JSON schema and produces assets. Use when turning content into files.
 
-## The one command to make a post
-Use the `/draft-post` slash command: `/draft-post <idea> | <pillar>`
-It researches sources, writes a schema-valid `renderer/content/posts/<date>_<slug>.json`, validates, and renders carousel PNGs + a reel into `pipeline/renders/`. Headless equivalent: `cd renderer && npm run draft -- "<idea>" <pillar>`.
+## Commands to make posts
+- `/draft-post <idea> | <pillar> [| captions=word|highlight]` — one post, end to end.
+- `/draft-week idea1::pillar | idea2::pillar::captions=highlight | …` — batch up to 5 with pillar variety + a posting calendar.
+Both research sources, write schema-valid `renderer/content/posts/<date>_<slug>.json`, validate, and render carousel PNGs + a reel into `pipeline/renders/`. Headless: `cd renderer && npm run draft -- "<idea>" <pillar>` / `npm run draft-week -- "idea::pillar" …`.
+Reel **subtitle style** = `video.caption_mode` ∈ `block | word | highlight` (set via `--captions=` / `captions=`).
 
 ## Non-negotiable rules (enforced by pipeline/content/QA_CHECKLIST.md)
 - **No fabrication** — no invented CVEs, breach details, stats, quotes, or papers. Back every factual claim with a real source (WebSearch/WebFetch) or tag it `[Scenario]`.

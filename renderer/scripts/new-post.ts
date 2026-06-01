@@ -4,9 +4,15 @@ import { POSTS_DIR } from "./lib.ts";
 import { PostData } from "../src/lib/schema.ts";
 import { pillarAccent, palette, canvas, type Pillar } from "../src/design/tokens.ts";
 
-// Usage: npm run new -- <YYYY-MM-DD> <slug> <pillar>
+// Usage: npm run new -- <YYYY-MM-DD> <slug> <pillar> [--captions=block|word|highlight]
 // Generates a schema-valid BLANK post JSON you then fill in.
-const [date, slug, pillarArg] = process.argv.slice(2);
+const rawArgs = process.argv.slice(2);
+const flagArgs = rawArgs.filter((a) => a.startsWith("--"));
+const [date, slug, pillarArg] = rawArgs.filter((a) => !a.startsWith("--"));
+
+const CAPTION_MODES = ["block", "word", "highlight"] as const;
+const captionsFlag = flagArgs.find((a) => a.startsWith("--captions="))?.split("=")[1] ?? "block";
+const captionMode = (CAPTION_MODES as readonly string[]).includes(captionsFlag) ? captionsFlag : "block";
 
 const PILLARS = Object.keys(pillarAccent) as Pillar[];
 
@@ -22,6 +28,7 @@ if (!date || !slug || !pillarArg) usageAndExit("Missing argument.");
 if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) usageAndExit(`date "${date}" must be YYYY-MM-DD.`);
 if (!/^[a-z0-9-]+$/.test(slug)) usageAndExit(`slug "${slug}" must be lowercase kebab-case (a-z 0-9 -).`);
 if (!PILLARS.includes(pillarArg as Pillar)) usageAndExit(`pillar "${pillarArg}" is not valid.`);
+if (!(CAPTION_MODES as readonly string[]).includes(captionsFlag)) usageAndExit(`--captions "${captionsFlag}" must be one of: ${CAPTION_MODES.join(", ")}.`);
 
 const pillar = pillarArg as Pillar;
 const prefix = `${date}_${slug}`;
@@ -105,6 +112,7 @@ const post = {
     duration_seconds: 26,
     fps: 30,
     export_name: `${prefix}_reel.mp4`,
+    caption_mode: captionMode,
     narration: [
       { start: 0, end: 5, text: "TODO hook line." },
       { start: 5, end: 11, text: "TODO context line." },
@@ -152,7 +160,7 @@ if (existsSync(outFile)) usageAndExit(`${outFile} already exists — pick a diff
 writeFileSync(outFile, JSON.stringify(post, null, 2) + "\n", "utf8");
 
 console.log(`✓ Created ${path.relative(path.join(POSTS_DIR, "..", ".."), outFile)}`);
-console.log(`  pillar: ${pillar} (${accent.name})  ·  8 slides  ·  reel enabled\n`);
+console.log(`  pillar: ${pillar} (${accent.name})  ·  8 slides  ·  reel enabled  ·  captions: ${captionMode}\n`);
 console.log("Next:");
 console.log(`  1. Edit the file — replace every TODO (copy, caption, sources, alt text).`);
 console.log(`  2. (optional) Add a cover image to renderer/public/backgrounds/${prefix}_cover.png and set slide 1 asset_status to "existing".`);

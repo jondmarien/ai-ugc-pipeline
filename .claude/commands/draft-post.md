@@ -1,15 +1,16 @@
 ---
 description: Idea → researched, sourced, schema-valid post JSON → rendered carousel + reel
-argument-hint: <idea> | <pillar>   e.g. "AI agents leaking RAG data" | model_security
+argument-hint: <idea> | <pillar> [| captions=word|highlight|block]   e.g. AI agents leaking RAG data | model_security | captions=highlight
 allowed-tools: Skill, WebSearch, WebFetch, Read, Write, Edit, Glob, Grep, Bash
 ---
 
 You are producing one complete AI-in-cybersecurity post for this repo, end to end, using the project's two skills. Treat this as the **Assemble** stage of `pipeline/content/CONTENT_PIPELINE.md`.
 
 ## Input
-`$ARGUMENTS` is `<idea> | <pillar>`. Split on the `|`.
+`$ARGUMENTS` is `<idea> | <pillar> [| captions=<mode>]`. Split on the `|`.
 - idea = the topic/angle (free text).
 - pillar ∈ `offensive_ai | model_security | data_leakage | defensive_ai | governance | myth_busting`. If missing or invalid, pick the best-fit pillar and say which you chose.
+- captions (optional) ∈ `block | word | highlight` — the reel's subtitle animation (default `block`). Pass it to `npm run new -- … --captions=<mode>` and set `video.caption_mode`.
 
 ## Hard rules (non-negotiable — from pipeline/content/QA_CHECKLIST.md)
 - **No fabrication.** No invented CVEs, breach details, numbers, quotes, or paper titles. Every factual claim must be backed by a real source you found via WebSearch/WebFetch, or be explicitly framed as a **[Scenario]**.

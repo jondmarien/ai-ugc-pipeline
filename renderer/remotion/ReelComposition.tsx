@@ -5,7 +5,7 @@ import "@fontsource/inter/500.css";
 import "@fontsource/jetbrains-mono/500.css";
 import { palette, pillarAccent } from "./theme";
 import { Scene } from "./Scene";
-import { CaptionLayer } from "./CaptionLayer";
+import { CaptionLayer, type CaptionMode } from "./CaptionLayer";
 import { EndCard } from "./EndCard";
 
 type Beat = { start: number; end: number; slide_ref: number; purpose: string; caption: string };
@@ -15,7 +15,7 @@ type Post = {
   brand?: { handle?: string };
   comment_prompt?: string;
   slides: Slide[];
-  video: { beats: Beat[] };
+  video: { beats: Beat[]; caption_mode?: CaptionMode };
 };
 
 // 1080x1920 @ fps. Each VideoSpec beat → a timed Sequence with a Scene + caption.
@@ -25,6 +25,7 @@ export function ReelComposition({ post }: { post: Post }) {
   const accent = pillarAccent[post.pillar] ?? "#22d3ee";
   const handle = post.brand?.handle ?? "@your_handle";
   const beats = post.video.beats;
+  const captionMode: CaptionMode = post.video.caption_mode ?? "block";
 
   return (
     <AbsoluteFill style={{ backgroundColor: palette.bgDeep }}>
@@ -39,7 +40,7 @@ export function ReelComposition({ post }: { post: Post }) {
             {isCta ? (
               <EndCard question={post.comment_prompt ?? slide.on_slide_copy ?? ""} handle={handle} accent={accent} />
             ) : (
-              <CaptionLayer text={beat.caption} accent={accent} />
+              <CaptionLayer text={beat.caption} accent={accent} mode={captionMode} durationInFrames={durationInFrames} />
             )}
           </Sequence>
         );
