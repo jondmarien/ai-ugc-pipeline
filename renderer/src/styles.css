@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* Bundled fonts → deterministic offline rendering (no network during screenshot). */
+@import "@fontsource/archivo/400.css";
+@import "@fontsource/archivo/600.css";
+@import "@fontsource/archivo/700.css";
+@import "@fontsource/archivo/800.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  background: #02030a;
+}
+
+/* The export harness centers a single fixed-size slide root. */
+.export-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}

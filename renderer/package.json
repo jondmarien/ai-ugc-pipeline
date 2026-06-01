@@ -1,0 +1,39 @@
+{
+  "name": "ai-ugc-renderer",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Optional React/Playwright + Remotion rendering layer for the ai-ugc-pipeline. Turns approved post JSON into deterministic 1080x1350 carousel PNGs and 1080x1920 Reel MP4s.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4317 --strictPort",
+    "validate": "tsx scripts/validate.ts",
+    "export": "tsx scripts/export-carousel.ts",
+    "package": "tsx scripts/build-package.ts",
+    "reel": "tsx scripts/render-reel.ts",
+    "remotion:studio": "remotion studio remotion/index.ts"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "zod": "^3.25.76",
+    "@fontsource/archivo": "^5.2.5",
+    "@fontsource/inter": "^5.2.5",
+    "@fontsource/jetbrains-mono": "^5.2.5",
+    "remotion": "^4.0.400",
+    "@remotion/cli": "^4.0.400"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "tailwindcss": "^4.1.13",
+    "@tailwindcss/vite": "^4.1.13",
+    "typescript": "^5.9.2",
+    "tsx": "^4.20.6",
+    "vite": "^7.1.7",
+    "playwright": "^1.56.0"
+  }
+}

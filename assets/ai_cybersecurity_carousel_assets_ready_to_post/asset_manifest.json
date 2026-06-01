@@ -1,0 +1,19 @@
+{
+  "package": "AI Cybersecurity UGC Carousel Demo Assets",
+  "target_size_px": {
+    "width": 1080,
+    "height": 1350
+  },
+  "cover_background_count": 3,
+  "finished_slide_count": 24,
+  "carousels": {
+    "carousel_01_ai_phishing": 8,
+    "carousel_02_prompt_injection": 8,
+    "carousel_03_data_leakage": 8
+  },
+  "notes": [
+    "Cover backgrounds are text-free assets for later typography/layout work.",
+    "Finished carousel slides include AI-rendered text and should receive a final human spelling check before publishing.",
+    "All ready-to-post images were resized to 1080x1350 px."
+  ]
+}

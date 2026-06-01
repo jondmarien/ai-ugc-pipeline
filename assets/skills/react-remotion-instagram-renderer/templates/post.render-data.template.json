@@ -1,0 +1,234 @@
+{
+  "post_id": "YYYY-MM-DD-topic-slug",
+  "date": "YYYY-MM-DD",
+  "slug": "topic-slug",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft|approved|upload_ready",
+  "pillar": "offensive_ai|model_security|data_leakage|defensive_ai|governance|myth_busting",
+  "audience": "security_practitioners|builders|technical_leaders|general_tech",
+  "core_claim": "One sentence claim the carousel is making.",
+  "claim_tags": ["scenario", "practitioner_takeaway"],
+  "score": {
+    "credibility": 0,
+    "relevance": 0,
+    "novelty": 0,
+    "visual_drama": 0,
+    "defender_usefulness": 0,
+    "total": 0
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@your_handle",
+    "accent_name": "cyan",
+    "pillar_accent": "offensive_ai",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#22d3ee",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Inter, Satoshi, Space Grotesk, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/YYYY-MM-DD-topic-slug",
+    "filename_prefix": "YYYY-MM-DD-topic-slug",
+    "expected_files": [
+      "YYYY-MM-DD-topic-slug_01_cover.png",
+      "YYYY-MM-DD-topic-slug_02_context.png",
+      "YYYY-MM-DD-topic-slug_03_risk.png",
+      "YYYY-MM-DD-topic-slug_04_mechanism.png",
+      "YYYY-MM-DD-topic-slug_05_failure-point.png",
+      "YYYY-MM-DD-topic-slug_06_defense.png",
+      "YYYY-MM-DD-topic-slug_07_takeaway.png",
+      "YYYY-MM-DD-topic-slug_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI x CYBERSECURITY",
+      "on_slide_copy": "AI PHISHING MADE OLD TRAINING OBSOLETE",
+      "subline": "The risk is not magic. It is personalization at scale.",
+      "body": "",
+      "visual_direction": "Dark lower-third, realistic cyber editorial image, one cyan accent glow.",
+      "visual_prompt": "realistic editorial cybersecurity image, dark SOC environment, subtle cyan glow, strong negative space, no rendered text, no logos, no credentials",
+      "background_asset": "assets/backgrounds/YYYY-MM-DD-topic-slug/01.png",
+      "asset_status": "existing|needed|generated|stock",
+      "cta": "SWIPE →",
+      "notes": "Cover headline must remain readable at thumbnail size."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "The message now feels personal.",
+      "subline": "Old red flags are fading.",
+      "body": "Keep this high level. Do not include payloads or operational abuse steps.",
+      "visual_direction": "Abstract inbox pattern with AI personalization motif; no real brands.",
+      "visual_prompt": "abstract phishing inbox and neural network visualization, dark cinematic, no readable email text, no logos, no credentials, lower-third space",
+      "background_asset": "assets/backgrounds/YYYY-MM-DD-topic-slug/02.png",
+      "asset_status": "needed",
+      "cta": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "on_slide_copy": "The weak point is trust, not grammar.",
+      "visual_direction": "Human decision point, security alert, subtle tension.",
+      "visual_prompt": "dark cinematic cybersecurity decision moment, analyst reviewing abstract alert, no readable text, no payloads",
+      "background_asset": "assets/backgrounds/YYYY-MM-DD-topic-slug/03.png",
+      "asset_status": "needed"
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "on_slide_copy": "AI scales context faster than templates.",
+      "visual_direction": "Safe high-level mechanism visual only.",
+      "visual_prompt": "abstract AI pipeline turning generic messages into personalized variants, no exploit instructions, no real domains, no text",
+      "background_asset": "assets/backgrounds/YYYY-MM-DD-topic-slug/04.png",
+      "asset_status": "needed"
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "on_slide_copy": "Training that depends on typos is brittle.",
+      "visual_direction": "Broken checklist or stale awareness module.",
+      "visual_prompt": "outdated cyber awareness checklist metaphor, dark editorial photo, no readable training content",
+      "background_asset": "assets/backgrounds/YYYY-MM-DD-topic-slug/05.png",
+      "asset_status": "needed"
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "on_slide_copy": "Train behavior, not just pattern spotting.",
+      "visual_direction": "Defender workflow: verify channel, report, escalate.",
+      "visual_prompt": "security team workflow verification scene, dark teal/cyan accent, abstract UI, no sensitive data",
+      "background_asset": "assets/backgrounds/YYYY-MM-DD-topic-slug/06.png",
+      "asset_status": "needed"
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "on_slide_copy": "The control is process discipline.",
+      "visual_direction": "Minimal high-contrast takeaway slide.",
+      "visual_prompt": "minimal cyber editorial background, strong negative space, subtle network texture, no text",
+      "background_asset": "assets/backgrounds/YYYY-MM-DD-topic-slug/07.png",
+      "asset_status": "needed"
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "on_slide_copy": "What phishing red flag do you no longer trust?",
+      "subline": "Save this for your next awareness review.",
+      "visual_direction": "Clean end card with subtle source/credibility cue.",
+      "visual_prompt": "dark cybersecurity end card background, soft cyan glow, clean negative space, no rendered text",
+      "background_asset": "assets/backgrounds/YYYY-MM-DD-topic-slug/08.png",
+      "asset_status": "needed",
+      "cta": "COMMENT + SAVE"
+    }
+  ],
+  "caption": "Short caption goes here. Use the pipeline caption style and do not add unsupported facts.",
+  "hashtags": ["#AI", "#Cybersecurity", "#InfoSec"],
+  "comment_prompt": "What would you update in your phishing training first?",
+  "alt_text": [
+    "Slide 1: Dark cyber-themed cover with headline about AI phishing changing security awareness training.",
+    "Slide 2: Context slide explaining that AI can make phishing messages feel more personal.",
+    "Slide 3: Risk slide focused on trust and decision-making rather than obvious typos.",
+    "Slide 4: Mechanism slide showing personalization at a safe, abstract level.",
+    "Slide 5: Failure point slide warning that typo-based training is brittle.",
+    "Slide 6: Defense slide encouraging behavior-based verification and reporting.",
+    "Slide 7: Takeaway slide emphasizing process discipline.",
+    "Slide 8: CTA slide asking what phishing red flag the viewer no longer trusts."
+  ],
+  "sources": [
+    {
+      "source": "Source title",
+      "link": "https://example.com",
+      "supports": "Which on-slide claim this source supports.",
+      "confidence": "high|medium|low",
+      "claim_tag": "scenario|reported_fact|opinion|practitioner_takeaway"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "assets/backgrounds/YYYY-MM-DD-topic-slug/01.png",
+      "source": "generated|stock|owned|existing_pipeline_asset",
+      "license_or_terms": "Describe rights/terms here.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "No rendered text, no logos, no credentials."
+    }
+  ],
+  "video": {
+    "enabled": false,
+    "duration_seconds": 30,
+    "fps": 30,
+    "export_name": "YYYY-MM-DD-topic-slug_reel.mp4",
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "Narration line for the opening beat."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in with subtle HUD glow",
+        "caption": "AI phishing made old training obsolete."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": {
+      "prompt": "Instrumental only, no vocals. Create a 30-second dark cyber pulse at 92 BPM.",
+      "file": "assets/audio/YYYY-MM-DD-topic-slug/music.mp3",
+      "target_mix": "music under narration, never masking speech"
+    },
+    "sfx": [],
+    "licenses": [
+      {
+        "asset": "voice.wav|music.mp3|broll/01.mp4",
+        "source": "Describe source/tool/library.",
+        "license_or_terms": "Describe commercial-use terms.",
+        "commercial_use_allowed": true,
+        "disclosure_required": false
+      }
+    ]
+  },
+  "qa": {
+    "fact_checked": false,
+    "sources_present": false,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}

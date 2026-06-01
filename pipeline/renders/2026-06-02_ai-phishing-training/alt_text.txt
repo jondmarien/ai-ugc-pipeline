@@ -1,0 +1,8 @@
+01. Slide 1: Dark cinematic cover with bold headline 'AI phishing made old training obsolete' over a security operations scene with a cyan glow.
+02. Slide 2: Context slide stating that old phishing red flags like bad grammar and weird phrasing are fading.
+03. Slide 3: Risk slide noting the NCSC assessment that AI gives attackers an uplift in reconnaissance and social engineering.
+04. Slide 4: Mechanism slide explaining the change is cheaper personalization at scale, not magic hacking.
+05. Slide 5: Failure-point slide saying teams trained people to spot typos instead of verifying requests.
+06. Slide 6: Defense slide recommending verification by a second channel and locking down resets and payment changes.
+07. Slide 7: Takeaway slide: if your defense relies on scams looking fake, the game changed.
+08. Slide 8: Call-to-action slide asking whether your awareness training still teaches 'spot the typo', with a save and comment prompt.
