@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --port 4317 --strictPort",
+    "new": "tsx scripts/new-post.ts",
     "validate": "tsx scripts/validate.ts",
     "export": "tsx scripts/export-carousel.ts",
     "package": "tsx scripts/build-package.ts",

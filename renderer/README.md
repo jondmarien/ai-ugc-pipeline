@@ -10,12 +10,15 @@ npm install
 npx playwright install chromium     # carousel screenshots
 npx remotion browser ensure         # reel rendering (once)
 
+npm run new      -- 2026-06-13 my-topic model_security  # scaffold a new blank post JSON
 npm run validate -- 2026-06-02_ai-phishing-training   # check JSON
 npm run export   -- 2026-06-02_ai-phishing-training   # 8 carousel PNGs
 npm run package  -- 2026-06-02_ai-phishing-training   # caption/alt/sources/licenses/QA
 npm run reel     -- 2026-06-02_ai-phishing-training   # 1080×1920 MP4 (optional)
 npm run dev                                            # live preview @ :4317
 ```
+
+**New to this? Start with [docs/RUN_IT_YOURSELF.md](docs/RUN_IT_YOURSELF.md)** — the full self-serve guide to making new reels/carousels and Week-2 content.
 
 Output → `../pipeline/renders/2026-06-02_ai-phishing-training/`.
 
@@ -25,6 +28,7 @@ Week-1 Post 1 renders end-to-end: 8× **1080×1350** PNGs (cover reuses the text
 ## Docs
 | Doc | What |
 | --- | --- |
+| [docs/RUN_IT_YOURSELF.md](docs/RUN_IT_YOURSELF.md) | **self-serve terminal guide** — new reels/carousels, Week-2 content, troubleshooting |
 | [docs/RENDERER_ARCHITECTURE.md](docs/RENDERER_ARCHITECTURE.md) | structure, deps, commands, boundaries |
 | [docs/CONTENT_SCHEMA.md](docs/CONTENT_SCHEMA.md) | JSON contract + Markdown→JSON mapping + filenames |
 | [docs/CAROUSEL_COMPONENTS.md](docs/CAROUSEL_COMPONENTS.md) | role components + shared shell |
