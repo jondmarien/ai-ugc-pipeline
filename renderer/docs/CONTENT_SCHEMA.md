@@ -69,8 +69,15 @@ The JSON contract the renderer consumes, mapped from `../../pipeline/content/POS
 `{ source, link, supports, confidence: high|medium|low, claim_tag }` — all required.
 
 ### `VideoSpec` (Reels)
-`{ enabled, duration_seconds, fps, export_name, narration[], beats[], subtitle_style, music, sfx[], licenses[] }`.
-Each `beat` = `{ start, end, slide_ref, purpose, motion, caption }`. `purpose: "cta"` renders the end card.
+`{ enabled, duration_seconds, fps, export_name, caption_mode, narration[], beats[], subtitle_style, music, sfx[], licenses[] }`.
+Each `beat` = `{ start, end, slide_ref, purpose, motion, caption, words? }`. `purpose: "cta"` renders the end card.
+
+**`caption_mode`** ∈ `block | word | highlight` (default `block`) — how burned-in captions animate:
+- `block` — full caption per scene (current behavior).
+- `word` — one word at a time (karaoke).
+- `highlight` — full line shown, current word lit in the pillar accent.
+
+Set it per post via `npm run new -- … --captions=<mode>`, the `--captions=` flag on `npm run draft`, or `captions=<mode>` in `/draft-post` / `/draft-week`. Word timing is distributed evenly across each beat window; optional per-word `beat.words[]` timings are reserved for future audio-synced alignment.
 
 ## Validation rules (enforced in `schema.ts`)
 - Slide 1 role must be `cover`.

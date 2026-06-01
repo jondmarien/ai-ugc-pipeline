@@ -53,11 +53,21 @@ It researches real sources (WebSearch), writes a schema-valid `content/posts/<da
 cd renderer
 npm run draft -- "AI agents leaking RAG data" model_security
 #   add [YYYY-MM-DD] to set the date
+#   --captions=block|word|highlight   reel subtitle animation (default block)
 #   --no-render       stop after JSON + validate (review before rendering)
 #   --carousel-only   skip the reel
 #   --yolo            unattended (claude --permission-mode bypassPermissions)
 #   --dry-run         print the claude command/prompt, make no API calls
 ```
+
+**Batch a whole week (up to 5 ideas):**
+```
+# interactive:
+/draft-week voice clone fraud::offensive_ai | RAG leaks::model_security::captions=highlight | shadow AI::governance
+# headless:
+cd renderer && npm run draft-week -- "voice clone fraud::offensive_ai" "RAG leaks::model_security::captions=highlight" "shadow AI::governance"
+```
+Spreads posts across pillars, assigns sequential weekday dates, drafts + renders each into `pipeline/renders/`, and prints a week table. Per-idea options: `::pillar` and `::captions=word|highlight`. (Token-heavy — add `--no-render` to review copy first.)
 
 > The LLM does the **content + source research**; your deterministic `npm` scripts do the **rendering**. The no-fabrication rule still applies — **review the generated `sources[]` and confirm the links are real before you post.** Quote the idea so it's one argument.
 
@@ -96,7 +106,9 @@ cp content/posts/2026-06-02_ai-phishing-training.json content/posts/2026-06-13_m
 - The scaffolder pre-points the cover at `public/backgrounds/<prefix>_cover.png` with status `needed` (renders procedurally until the file exists + you flip it to `existing`).
 
 ### Reels specifically
-A reel renders from the post's `video` block. Each `beat` = `{start, end, slide_ref, purpose, motion, caption}`; the beat with `"purpose": "cta"` becomes the end card. Keep beats 3–6s, hook in the first ~2s. Full model: `REMOTION_REEL_WORKFLOW.md`. The PoC reel has **no audio** — to add narration (VoxCPM2) + music, follow that doc's "Growing the stub into a narrated cut" section and log everything in `LICENSES.md`.
+A reel renders from the post's `video` block. Each `beat` = `{start, end, slide_ref, purpose, motion, caption}`; the beat with `"purpose": "cta"` becomes the end card. Keep beats 3–6s, hook in the first ~2s. Full model: `REMOTION_REEL_WORKFLOW.md`.
+
+**Subtitle style** is `video.caption_mode`: `block` (paragraph per scene, default), `word` (one word at a time), or `highlight` (full line, active word lit). Set it with `npm run new -- … --captions=<mode>` (or `--captions=` on draft, `captions=` in the slash commands), or just edit `video.caption_mode` in the JSON and re-run `npm run reel`. The PoC reel has **no audio** — to add narration (VoxCPM2) + music, follow that doc's "Growing the stub into a narrated cut" section and log everything in `LICENSES.md`.
 
 ### Render the rest of Week 1
 Only Post 1 ships as JSON. Posts 2–5 are Markdown in `../../pipeline/content/WEEK_1_POSTS.md` — scaffold one JSON per post (`npm run new …`), paste that post's slides/caption/sources, then export.

@@ -25,10 +25,13 @@ const pos = argv.filter((a) => !a.startsWith("--"));
 const idea = pos[0];
 const pillar = pos[1];
 const date = pos[2] && /^\d{4}-\d{2}-\d{2}$/.test(pos[2]) ? pos[2] : new Date().toISOString().slice(0, 10);
+const MODES = ["block", "word", "highlight"];
+const captionsFlag = [...flags].find((f) => f.startsWith("--captions="))?.split("=")[1] ?? "block";
+const captions = MODES.includes(captionsFlag) ? captionsFlag : "block";
 
 function die(msg) {
   console.error(`\n✗ ${msg}`);
-  console.error(`\nUsage: npm run draft -- "<idea>" <pillar> [YYYY-MM-DD] [--no-render|--carousel-only|--yolo|--dry-run]`);
+  console.error(`\nUsage: npm run draft -- "<idea>" <pillar> [YYYY-MM-DD] [--captions=block|word|highlight] [--no-render|--carousel-only|--yolo|--dry-run]`);
   console.error(`  pillar ∈ ${PILLARS.join(" | ")}`);
   console.error(`  example: npm run draft -- "AI agents leaking RAG data" model_security\n`);
   process.exit(1);
@@ -61,7 +64,7 @@ const prompt = [
   `1. Design the 8-slide post (cover, context, risk, mechanism, failure_point, defense, takeaway, cta) + caption + hashtags + comment question, house voice.`,
   `2. Research sources with WebSearch/WebFetch; record {source, link, supports, confidence, claim_tag} for each factual claim.`,
   `3. Pick a short kebab-case slug from the idea.`,
-  `4. Run \`cd renderer && npm run new -- ${date} <slug> ${pillar}\` to scaffold, then EDIT renderer/content/posts/${date}_<slug>.json to replace EVERY TODO with real, sourced content. Keep schema rules (8 slides, slide1=cover, alt_text length 8, score.total = sum of axes, >=1 real source, reel beats filled).`,
+  `4. Run \`cd renderer && npm run new -- ${date} <slug> ${pillar} --captions=${captions}\` to scaffold, then EDIT renderer/content/posts/${date}_<slug>.json to replace EVERY TODO with real, sourced content. Keep schema rules (8 slides, slide1=cover, alt_text length 8, score.total = sum of axes, >=1 real source, reel beats filled, video.caption_mode="${captions}").`,
   `5. Run \`cd renderer && npm run validate -- ${date}_<slug>\` and fix until clean.`,
   `6. ${renderStep}`,
   `7. FINISH by printing, on its own final line, exactly: POST_KEY=${date}_<slug>`,

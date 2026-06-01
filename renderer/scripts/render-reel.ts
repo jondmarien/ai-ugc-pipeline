@@ -1,6 +1,7 @@
 import { spawnSync, execFileSync } from "node:child_process";
-import { mkdirSync, existsSync, statSync } from "node:fs";
+import { mkdirSync, existsSync, statSync, writeFileSync, rmSync } from "node:fs";
 import path from "node:path";
+import os from "node:os";
 import { loadPost, outputDir, ROOT } from "./lib.ts";
 
 const key = process.argv[2] ?? "2026-06-02_ai-phishing-training";
@@ -15,15 +16,21 @@ mkdirSync(outDir, { recursive: true });
 const outPath = path.join(outDir, post.video.export_name);
 const entry = path.join(ROOT, "remotion", "index.ts");
 
-console.log(`Rendering reel ${post.video.export_name} (${post.video.duration_seconds}s @ ${post.video.fps}fps)…`);
+// Pass THIS post to the composition via --props so the reel renders the selected
+// post (not Root.tsx's default). calculateMetadata derives duration/fps from it.
+const propsFile = path.join(os.tmpdir(), `ai-ugc-reel-props-${post.slug}-${post.date}.json`);
+writeFileSync(propsFile, JSON.stringify({ post }), "utf8");
+
+console.log(`Rendering reel ${post.video.export_name} (${post.video.duration_seconds}s @ ${post.video.fps}fps, captions: ${post.video.caption_mode})…`);
 
 // Remotion CLI: render <entry> <composition-id> <output>
 const npxCmd = process.platform === "win32" ? "npx.cmd" : "npx";
-const res = spawnSync(npxCmd, ["remotion", "render", entry, "reel", outPath, "--codec=h264", "--timeout=120000", "--log=error"], {
-  cwd: ROOT,
-  stdio: "inherit",
-  shell: process.platform === "win32",
-});
+const res = spawnSync(
+  npxCmd,
+  ["remotion", "render", entry, "reel", outPath, `--props=${propsFile}`, "--codec=h264", "--timeout=120000", "--log=error"],
+  { cwd: ROOT, stdio: "inherit", shell: process.platform === "win32" },
+);
+rmSync(propsFile, { force: true });
 
 if (res.status !== 0) {
   console.error(`\n✗ Remotion render failed (exit ${res.status}).`);

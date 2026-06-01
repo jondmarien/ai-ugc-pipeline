@@ -56,11 +56,13 @@ Output lands in `pipeline/renders/2026-06-02_ai-phishing-training/`. Full docs: 
 With the `claude` CLI installed, the repo's two skills (`.claude/skills/`) do the content + source research for you:
 ```
 # interactive, in Claude Code at the repo root:
-/draft-post AI agents leaking RAG data | model_security
+/draft-post AI agents leaking RAG data | model_security | captions=highlight
+/draft-week voice clone fraud::offensive_ai | RAG leaks::model_security | shadow AI::governance
 # or headless:
-cd renderer && npm run draft -- "AI agents leaking RAG data" model_security
+cd renderer && npm run draft -- "AI agents leaking RAG data" model_security --captions=highlight
+cd renderer && npm run draft-week -- "idea1::offensive_ai" "idea2::model_security::captions=word" "idea3::governance"
 ```
-This researches real sources, writes a schema-valid post JSON, validates, and renders the carousel + reel. See [`renderer/docs/RUN_IT_YOURSELF.md`](renderer/docs/RUN_IT_YOURSELF.md) §2b. (Always review the generated sources before posting — the no-fabrication rule still applies.)
+`/draft-post` makes one post; `/draft-week` batches up to 5 with pillar variety + a posting calendar. Both research real sources, write schema-valid JSON, validate, and render the carousel + reel. **Subtitle style** is selectable per post — `block` (paragraph), `word` (karaoke), or `highlight` (active word lit). See [`renderer/docs/RUN_IT_YOURSELF.md`](renderer/docs/RUN_IT_YOURSELF.md) §2b. (Always review generated sources before posting — the no-fabrication rule still applies.)
 
 ## Non-negotiables (the trust standard)
 
