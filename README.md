@@ -52,6 +52,16 @@ npm run reel    -- 2026-06-02_ai-phishing-training   # 1080×1920 @30fps MP4 (op
 
 Output lands in `pipeline/renders/2026-06-02_ai-phishing-training/`. Full docs: [`renderer/README.md`](renderer/README.md) and [`renderer/docs/`](renderer/docs/).
 
+### Or automate it with the skills (idea → rendered, no manual JSON)
+With the `claude` CLI installed, the repo's two skills (`.claude/skills/`) do the content + source research for you:
+```
+# interactive, in Claude Code at the repo root:
+/draft-post AI agents leaking RAG data | model_security
+# or headless:
+cd renderer && npm run draft -- "AI agents leaking RAG data" model_security
+```
+This researches real sources, writes a schema-valid post JSON, validates, and renders the carousel + reel. See [`renderer/docs/RUN_IT_YOURSELF.md`](renderer/docs/RUN_IT_YOURSELF.md) §2b. (Always review the generated sources before posting — the no-fabrication rule still applies.)
+
 ## Non-negotiables (the trust standard)
 
 - **No fabrication** — no invented CVEs, breach details, stats, quotes, or timelines. Claims are tagged **[Verified] / [Emerging] / [Scenario]**.

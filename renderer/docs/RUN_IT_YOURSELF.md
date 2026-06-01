@@ -38,7 +38,32 @@ npm run reel     -- 2026-06-02_ai-phishing-training
 
 ---
 
-## 3. Make a NEW reel / carousel
+## 2b. Automated drafting (uses the skills — idea → rendered, no manual JSON)
+
+If you have the `claude` CLI installed and logged in, you don't have to fill JSON by hand. The repo ships two skills in `.claude/skills/` (`ai-cybersecurity-ugc-carousel` writes the content, `react-remotion-instagram-renderer` maps it to the schema) and a command that drives them end to end.
+
+**Interactive (recommended)** — open Claude Code in the repo root and run:
+```
+/draft-post AI agents leaking RAG data | model_security
+```
+It researches real sources (WebSearch), writes a schema-valid `content/posts/<date>_<slug>.json`, validates, and renders the carousel + reel into `pipeline/renders/`. It reports which claims are sourced vs `[Scenario]` and what still needs a human eye.
+
+**Headless / one-liner / CI:**
+```bash
+cd renderer
+npm run draft -- "AI agents leaking RAG data" model_security
+#   add [YYYY-MM-DD] to set the date
+#   --no-render       stop after JSON + validate (review before rendering)
+#   --carousel-only   skip the reel
+#   --yolo            unattended (claude --permission-mode bypassPermissions)
+#   --dry-run         print the claude command/prompt, make no API calls
+```
+
+> The LLM does the **content + source research**; your deterministic `npm` scripts do the **rendering**. The no-fabrication rule still applies — **review the generated `sources[]` and confirm the links are real before you post.** Quote the idea so it's one argument.
+
+---
+
+## 3. Make a NEW reel / carousel — by hand
 
 ### Fastest: scaffold + fill
 ```bash

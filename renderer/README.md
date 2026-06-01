@@ -10,7 +10,8 @@ npm install
 npx playwright install chromium     # carousel screenshots
 npx remotion browser ensure         # reel rendering (once)
 
-npm run new      -- 2026-06-13 my-topic model_security  # scaffold a new blank post JSON
+npm run draft    -- "AI agents leaking RAG data" model_security  # idea → researched JSON → rendered (uses skills + claude CLI)
+npm run new      -- 2026-06-13 my-topic model_security  # scaffold a new blank post JSON (manual fill)
 npm run validate -- 2026-06-02_ai-phishing-training   # check JSON
 npm run export   -- 2026-06-02_ai-phishing-training   # 8 carousel PNGs
 npm run package  -- 2026-06-02_ai-phishing-training   # caption/alt/sources/licenses/QA
