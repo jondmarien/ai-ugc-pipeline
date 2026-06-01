@@ -1,0 +1,17 @@
+{
+  "comment": "Remotion compositions are bundled & type-aware via the Remotion CLI (`npm run reel`), which resolves Remotion's CJS type declarations correctly. This config exists for editor support; the app's root tsconfig excludes this folder to avoid a known mis-resolution of Remotion's ESM types under bundler `tsc`.",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true
+  },
+  "include": ["."]
+}

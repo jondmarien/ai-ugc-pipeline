@@ -1,0 +1,41 @@
+# ── Dependencies ────────────────────────────────────────────────
+node_modules/
+.pnp/
+.pnp.js
+
+# ── Build / cache output ────────────────────────────────────────
+dist/
+build/
+.vite/
+.cache/
+# Remotion
+out/
+.remotion/
+
+# ── Logs ────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Environment / secrets ───────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Claude Code local state ─────────────────────────────────────
+.claude/settings.local.json
+
+# ── OS / editor cruft ───────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.idea/
+
+# ── Temp ────────────────────────────────────────────────────────
+*.tmp
+tmp/
+
+# NOTE: pipeline/renders/ (the rendered carousel PNGs + reel MP4) IS committed
+# on purpose — it's the upload-ready demo output that proves the renderer works.

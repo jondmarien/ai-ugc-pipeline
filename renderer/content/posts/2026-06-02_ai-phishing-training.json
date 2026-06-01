@@ -1,0 +1,203 @@
+{
+  "post_id": "2026-06-02-ai-phishing-training",
+  "date": "2026-06-02",
+  "slug": "ai-phishing-training",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "approved",
+  "pillar": "offensive_ai",
+  "audience": "security_practitioners",
+  "core_claim": "AI makes phishing cheaper to personalize at scale, weakening 'spot the typo' awareness training.",
+  "claim_tags": ["reported_fact", "emerging", "practitioner_takeaway"],
+  "score": {
+    "credibility": 4,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 4,
+    "defender_usefulness": 5,
+    "total": 22
+  },
+  "canvas": { "width": 1080, "height": 1350, "safe_margin": 96 },
+  "brand": {
+    "handle": "@your_handle",
+    "accent_name": "cyan",
+    "pillar_accent": "offensive_ai",
+    "palette": { "bg": "#05070d", "fg": "#f8fafc", "muted": "#94a3b8", "accent": "#22d3ee", "danger": "#ef4444" },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-02_ai-phishing-training",
+    "filename_prefix": "2026-06-02_ai-phishing-training",
+    "expected_files": [
+      "2026-06-02_ai-phishing-training_01_cover.png",
+      "2026-06-02_ai-phishing-training_02_context.png",
+      "2026-06-02_ai-phishing-training_03_risk.png",
+      "2026-06-02_ai-phishing-training_04_mechanism.png",
+      "2026-06-02_ai-phishing-training_05_failure-point.png",
+      "2026-06-02_ai-phishing-training_06_defense.png",
+      "2026-06-02_ai-phishing-training_07_takeaway.png",
+      "2026-06-02_ai-phishing-training_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "AI PHISHING MADE OLD TRAINING OBSOLETE",
+      "subline": "The scam is more personal now.",
+      "visual_direction": "Dark SOC scene, analyst, blurred inbox, faint synthetic face reflection; cyan glow; protected dark lower-third.",
+      "visual_prompt": "realistic editorial cybersecurity cover, dark SOC environment, subtle cyan glow, strong negative space, no rendered text, no logos, no credentials",
+      "background_asset": "/backgrounds/cover_bg_01_ai_phishing.png",
+      "asset_status": "existing",
+      "cta": "SWIPE →",
+      "notes": "Reuses the text-free pipeline cover background; React renders the headline on top."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "Old red flags — bad grammar, weird phrasing — are fading.",
+      "subline": "The obvious tells were never the real defense.",
+      "visual_direction": "Abstract email previews with grammar-error marks dissolving; cyan accent; no readable text.",
+      "asset_status": "procedural"
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "NCSC: AI gives attackers uplift in recon and social engineering.",
+      "subline": "Cleaner lures, at scale.",
+      "visual_direction": "Public-profile fragments connecting toward a single inbox; cyan; no real names.",
+      "asset_status": "procedural"
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "Not magic hacking. Cheaper personalization at scale.",
+      "subline": "AI lowers the cost, not the skill ceiling.",
+      "visual_direction": "Branching personalized message bubbles from an abstract workstation; safe, abstract only.",
+      "asset_status": "procedural"
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "We trained people to spot typos, not to verify requests.",
+      "subline": "Vocabulary checks don't stop clean messages.",
+      "visual_direction": "Employee near an approve button; ignored verification checklist behind.",
+      "asset_status": "procedural"
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Verify by a second channel. Lock down resets and payment changes.",
+      "subline": "Make verification mandatory, not optional.",
+      "visual_direction": "Phone callback, ticket workflow, approval chain, identity-check icons.",
+      "asset_status": "procedural"
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "If your defense relies on scams looking fake, the game changed.",
+      "subline": "",
+      "visual_direction": "Analyst silhouette, lock icon, dark gradient; minimal copy.",
+      "asset_status": "procedural"
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Does your awareness training still teach “spot the typo”?",
+      "subline": "Save this for your next awareness review.",
+      "visual_direction": "Clean dark end card with subtle credibility cue and handle.",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE"
+    }
+  ],
+  "caption": "AI phishing made “spot the typo” training obsolete.\n\nThe old red flags — bad grammar, clumsy phrasing, obvious urgency — were never the real defense. They were just the easiest tells. The UK's NCSC assessments describe AI giving attackers an uplift in reconnaissance and social engineering, which mostly means cheaper, more personalized lures at scale — not magical hacking.\n\nFor defenders, that's a process problem, not a vocabulary problem. If your training teaches people to hunt for spelling mistakes, a clean AI-written message walks right past it.\n\nDefender move: verify sensitive requests (password resets, payment changes) over a second channel, and make that verification mandatory — not optional politeness.\n\nDoes your awareness training still lean on “spot the typo”?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": ["#Cybersecurity", "#InfoSec", "#AISecurity", "#Phishing", "#SocialEngineering", "#SecurityAwareness", "#ThreatIntel"],
+  "comment_prompt": "Does your awareness training still lean on “spot the typo”?",
+  "alt_text": [
+    "Slide 1: Dark cinematic cover with bold headline 'AI phishing made old training obsolete' over a security operations scene with a cyan glow.",
+    "Slide 2: Context slide stating that old phishing red flags like bad grammar and weird phrasing are fading.",
+    "Slide 3: Risk slide noting the NCSC assessment that AI gives attackers an uplift in reconnaissance and social engineering.",
+    "Slide 4: Mechanism slide explaining the change is cheaper personalization at scale, not magic hacking.",
+    "Slide 5: Failure-point slide saying teams trained people to spot typos instead of verifying requests.",
+    "Slide 6: Defense slide recommending verification by a second channel and locking down resets and payment changes.",
+    "Slide 7: Takeaway slide: if your defense relies on scams looking fake, the game changed.",
+    "Slide 8: Call-to-action slide asking whether your awareness training still teaches 'spot the typo', with a save and comment prompt."
+  ],
+  "sources": [
+    {
+      "source": "NCSC — The near-term impact of AI on the cyber threat (2024)",
+      "link": "https://www.ncsc.gov.uk/report/impact-of-ai-on-cyber-threat",
+      "supports": "AI provides capability uplift in reconnaissance and social engineering; fewer spelling/grammar tells in phishing.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "NCSC — The impact of AI on the cyber threat from now to 2027 (2025)",
+      "link": "https://www.ncsc.gov.uk/report/impact-ai-cyber-threat-now-2027",
+      "supports": "AI continues to make social engineering more effective and efficient through evolved TTPs.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/cover_bg_01_ai_phishing.png",
+      "source": "existing_pipeline_asset",
+      "license_or_terms": "Generated demo asset from this project's own asset pack (ai_cybersecurity_carousel_assets_ready_to_post); text-free background for typography.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "No rendered text, no logos, no credentials."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 26,
+    "fps": 30,
+    "export_name": "2026-06-02_ai-phishing-training_reel.mp4",
+    "narration": [
+      { "start": 0, "end": 5, "text": "AI phishing made old training obsolete." },
+      { "start": 5, "end": 11, "text": "The old red flags — bad grammar, weird phrasing — are fading." },
+      { "start": 11, "end": 17, "text": "Verify sensitive requests over a second channel." },
+      { "start": 17, "end": 22, "text": "If your defense relies on scams looking fake, the game changed." },
+      { "start": 22, "end": 26, "text": "Does your training still teach spot the typo?" }
+    ],
+    "beats": [
+      { "start": 0, "end": 5, "slide_ref": 1, "purpose": "hook", "motion": "slow push-in over cover", "caption": "AI phishing made old training obsolete." },
+      { "start": 5, "end": 11, "slide_ref": 2, "purpose": "context", "motion": "parallax, red flags dissolving", "caption": "Old red flags are fading." },
+      { "start": 11, "end": 17, "slide_ref": 6, "purpose": "defense", "motion": "slow push-in on workflow", "caption": "Verify by a second channel." },
+      { "start": 17, "end": 22, "slide_ref": 7, "purpose": "takeaway", "motion": "static, high contrast", "caption": "The game changed." },
+      { "start": 22, "end": 26, "slide_ref": 8, "purpose": "cta", "motion": "end card", "caption": "Comment + save." }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": true,
+    "manual_review_required": true,
+    "render_checks_required": ["exact_resolution", "no_text_overflow", "safe_margins", "mobile_readability", "filename_order", "license_metadata"]
+  }
+}
