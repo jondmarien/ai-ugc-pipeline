@@ -4,6 +4,14 @@
 
 > **Commercial rule:** only ship images from a model whose license allows commercial use. Log the model in the package `LICENSES.md`.
 
+## Put big models on another drive — use `HF_HUB_CACHE`, **not** `HF_HOME`
+FLUX is large (~24–33 GB). To send model downloads to a roomier drive, set **`HF_HUB_CACHE`** (the *model cache* only) in `renderer/.env` — Bun auto-loads it and the spawned Python inherits it:
+```ini
+# renderer/.env
+HF_HUB_CACHE=E:/ai-ugc-hf/hub
+```
+**Do NOT use `HF_HOME` for this.** `HF_HOME` relocates *both* the cache **and the auth-token lookup** (to `<HF_HOME>/token`). Your `hf login` token lives at the default `~/.cache/huggingface/token`, so setting `HF_HOME` makes `bun run art` fail with a **gated/403 error even when you're logged in** (the token isn't found at the new location). `HF_HUB_CACHE` moves only the cache and leaves auth alone. (If you prefer, hardcode `HF_TOKEN=hf_…` in `.env` — it overrides token lookup entirely.) `.env` is git-ignored.
+
 ## Model matrix (for an 8 GB GPU like the RTX 3070 Ti)
 
 | Model | License | Commercial | 8 GB fit | Quality / notes |
@@ -48,7 +56,7 @@ bun run art -- <post-key> --dry-run
 bun run art -- <post-key>
 # 6. bake the new backgrounds into the carousel
 bun run export -- <post-key>
-#    --all also (re)generates the cover; ART_MODEL swaps models; HF_HOME=D:\models moves the cache.
+#    --all also (re)generates the cover; ART_MODEL swaps models; HF_HUB_CACHE=E:/path moves the cache (see below).
 ```
 **No-login / smaller-download alternative:** use a **GGUF** build in ComfyUI — community GGUF repos (e.g. `city96/FLUX.1-schnell-gguf`, Q4/Q5, ~6–8GB) are typically **ungated**. Generate there, drop the PNGs into `public/backgrounds/<prefix>/`, set those slides to `asset_status: "existing"`, then `bun run export` (same Route B as FLUX.2 below).
 
@@ -72,7 +80,7 @@ ART_MODEL=black-forest-labs/FLUX.2-klein-4B bun run art -- <post-key>
 ### How to download FLUX.2 to your PC
 - **Hugging Face (gated):** accept the license on `https://huggingface.co/black-forest-labs/FLUX.2-klein-4B`, then `hf auth login` (or `huggingface-cli login`) once. diffusers `from_pretrained("black-forest-labs/FLUX.2-klein-4B")` then auto-downloads to your HF cache (`%USERPROFILE%\.cache\huggingface`). For ComfyUI, download the FP8 safetensors from that repo's *Files* tab (or a community FP8/GGUF repo, e.g. `unsloth/FLUX.2-klein-4B-GGUF`) into `ComfyUI/models/`.
 - **Only the 4B (Apache-2.0) variant for commercial work** — do not use klein 9B or dev.
-- Set a custom cache dir with `HF_HOME=D:\models` if your C: drive is tight.
+- Put big models on another drive with **`HF_HUB_CACHE`** (see the cache-relocation note below).
 
 ## Make prompts rich
 `bun run new` now writes a specific `visual_prompt` per slide (with a `[the topic]` placeholder to refine), and `/draft-post` / `/draft-week` instruct the model to write topic-specific prompts. So `bun run art` always has a real scene per slide rather than deriving from the on-slide copy.
