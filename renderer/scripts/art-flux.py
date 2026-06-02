@@ -126,13 +126,29 @@ def main():
                 "or (3) keep ART_MODEL=black-forest-labs/FLUX.1-schnell (verified path).\n"
                 "Use only the Apache-2.0 4B variant for commercial work — the 9B/dev models are non-commercial."
             )
-        print(f"Loading {ART_MODEL} via Flux2KleinPipeline (first run downloads weights)…")
-        pipe = Pipe.from_pretrained(ART_MODEL, torch_dtype=torch.bfloat16)
-        pipe.enable_sequential_cpu_offload()  # aggressive offload to fit 8GB
+        Pipe, offload = Pipe, "sequential"
     else:
-        print(f"Loading {ART_MODEL} via FluxPipeline (first run downloads weights)…")
-        pipe = FluxPipeline.from_pretrained(ART_MODEL, torch_dtype=torch.bfloat16)
-        pipe.enable_model_cpu_offload()  # fit in 8GB VRAM
+        Pipe, offload = FluxPipeline, "model"
+
+    print(f"Loading {ART_MODEL} (first run downloads weights)…")
+    try:
+        pipe = Pipe.from_pretrained(ART_MODEL, torch_dtype=torch.bfloat16)
+    except Exception as e:
+        msg = str(e).lower()
+        if any(t in msg for t in ("gated", "403", "restricted", "authorized", "forbidden")):
+            sys.exit(
+                f"\n'{ART_MODEL}' is a GATED Hugging Face repo — you must accept its license and log in:\n"
+                f"  1) Open https://huggingface.co/{ART_MODEL} and click 'Agree and access repository' (free, instant).\n"
+                "  2) Create a READ token: https://huggingface.co/settings/tokens\n"
+                "  3) Authenticate this venv:  .venv\\Scripts\\python -m huggingface_hub login   (or set env HF_TOKEN=hf_xxx)\n"
+                f"  4) Re-run:  bun run art -- <post-key>\n"
+                "Ungated alternative: run a GGUF build in ComfyUI (see docs/IMAGE_MODELS.md → Route B)."
+            )
+        raise
+    if not torch.cuda.is_available():
+        print("⚠ torch.cuda.is_available() is False — running on CPU (very slow). "
+              "Install the CUDA build: see docs/IMAGE_MODELS.md → 'make sure torch uses your GPU'.")
+    (pipe.enable_sequential_cpu_offload() if offload == "sequential" else pipe.enable_model_cpu_offload())
 
     for i, s in targets:
         role = ROLE_FILE.get(s["role"], s["role"])
