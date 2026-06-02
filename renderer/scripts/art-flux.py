@@ -38,6 +38,11 @@ RENDERER = os.path.dirname(HERE)
 POSTS = os.path.join(RENDERER, "content", "posts")
 ART_MODEL = os.environ.get("ART_MODEL", "black-forest-labs/FLUX.1-schnell")
 ART_STEPS = int(os.environ.get("ART_STEPS", "4"))
+# Speed knobs (env): smaller = faster. ART_QUANTIZE=4bit fits the model in 8GB VRAM
+# (bitsandbytes NF4) → little/no CPU offload → the big speedup on an 8GB card.
+ART_WIDTH = int(os.environ.get("ART_WIDTH", "832"))
+ART_HEIGHT = int(os.environ.get("ART_HEIGHT", "1216"))
+ART_QUANTIZE = os.environ.get("ART_QUANTIZE", "").lower()  # "", "4bit"/"nf4"
 
 # Accent description per pillar (mirrors src/design/tokens.ts).
 ACCENT = {
@@ -142,11 +147,27 @@ def main():
     else:
         Pipe, offload = FluxPipeline, "model"
 
-    print(f"Loading {ART_MODEL} (first run downloads weights)…")
+    quant_4bit = (not is_flux2) and ART_QUANTIZE in ("4bit", "nf4")
+    print(f"Loading {ART_MODEL}{' [4-bit NF4]' if quant_4bit else ''} (first run downloads weights)…")
     try:
-        pipe = Pipe.from_pretrained(ART_MODEL, torch_dtype=torch.bfloat16)
+        if quant_4bit:
+            # 4-bit NF4 via bitsandbytes: the 12B transformer + T5 shrink to ~8GB, so
+            # little/no CPU offload is needed → much faster on an 8GB Ampere card.
+            from diffusers import BitsAndBytesConfig as DBnb, FluxTransformer2DModel  # type: ignore
+            from transformers import BitsAndBytesConfig as TBnb, T5EncoderModel  # type: ignore
+            transformer = FluxTransformer2DModel.from_pretrained(
+                ART_MODEL, subfolder="transformer", torch_dtype=torch.bfloat16,
+                quantization_config=DBnb(load_in_4bit=True, bnb_4bit_quant_type="nf4", bnb_4bit_compute_dtype=torch.bfloat16))
+            te2 = T5EncoderModel.from_pretrained(
+                ART_MODEL, subfolder="text_encoder_2", torch_dtype=torch.bfloat16,
+                quantization_config=TBnb(load_in_4bit=True, bnb_4bit_quant_type="nf4", bnb_4bit_compute_dtype=torch.bfloat16))
+            pipe = FluxPipeline.from_pretrained(ART_MODEL, transformer=transformer, text_encoder_2=te2, torch_dtype=torch.bfloat16)
+        else:
+            pipe = Pipe.from_pretrained(ART_MODEL, torch_dtype=torch.bfloat16)
     except Exception as e:
         msg = str(e).lower()
+        if "bitsandbytes" in msg or "bnb_4bit" in msg or ("4bit" in msg and "import" in msg):
+            sys.exit("ART_QUANTIZE=4bit needs bitsandbytes:  uv pip install bitsandbytes  (or unset ART_QUANTIZE to use fp16+offload).")
         if any(t in msg for t in ("gated", "403", "restricted", "authorized", "forbidden")):
             sys.exit(
                 f"\n'{ART_MODEL}' is a GATED Hugging Face repo — you must accept its license and log in:\n"
@@ -169,7 +190,7 @@ def main():
         print(f"  → slide {i + 1} ({s['role']})…")
         if is_flux2:
             # FLUX.2 klein has its own (long-context) tokenizer; pass one prompt.
-            image = pipe(full, num_inference_steps=ART_STEPS, height=1216, width=832).images[0]
+            image = pipe(full, num_inference_steps=ART_STEPS, height=ART_HEIGHT, width=ART_WIDTH).images[0]
         else:
             # FLUX.1: CLIP (77-cap) gets the short style prompt; T5 gets the full scene
             # via prompt_2 → no truncation, accent + "no text" always honored.
@@ -178,7 +199,7 @@ def main():
                 prompt_2=full,
                 guidance_scale=0.0,
                 num_inference_steps=ART_STEPS,
-                height=1216, width=832,  # portrait, FLUX-friendly; export cover-fits to 1080x1350
+                height=ART_HEIGHT, width=ART_WIDTH,  # portrait; export cover-fits to 1080x1350
                 max_sequence_length=256,
             ).images[0]
         image.save(os.path.join(out_dir, fname))
