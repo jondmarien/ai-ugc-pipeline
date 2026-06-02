@@ -18,14 +18,31 @@
 
 **TL;DR:** start on **FLUX.1-schnell** (works out of the box), upgrade to **FLUX.2 [klein] 4B** for newer/better at the same commercial license. Avoid anything labeled *dev* or *9B* — non-commercial.
 
-## Default (FLUX.1-schnell)
+## ⚠ First: make sure torch uses your GPU (CUDA)
+A plain `uv pip install torch` on Windows installs the **CPU-only** build — image gen then runs on CPU (minutes per image, often unusable). If your VoxCPM/Whisper logs said *"cuda is not available, using cpu instead"*, you have the CPU build. Install the **CUDA** build into the venv (RTX 3070 Ti → CUDA 12.x):
 ```bash
 cd renderer
-uv pip install "diffusers>=0.31" transformers accelerate torch sentencepiece protobuf pillow
-bun run art -- <post-key>            # ART_MODEL defaults to black-forest-labs/FLUX.1-schnell
-bun run art -- <post-key> --dry-run  # preview the prompts, generate nothing
-bun run art -- <post-key> --all      # also (re)generate the cover
+uv pip install torch --index-url https://download.pytorch.org/whl/cu124
+python -c "import torch; print('CUDA:', torch.cuda.is_available(), torch.cuda.get_device_name(0) if torch.cuda.is_available() else '')"
 ```
+You want `CUDA: True NVIDIA GeForce RTX 3070 Ti`. (This also speeds up VoxCPM/Bark/Whisper.)
+
+## Default (FLUX.1-schnell) — step by step
+FLUX.1-schnell is **Apache-2.0 and ungated** — no Hugging Face login needed; diffusers auto-downloads it on first run.
+```bash
+cd renderer
+# 1. deps (CUDA torch from the step above, plus diffusers stack)
+uv pip install "diffusers>=0.31" transformers accelerate sentencepiece protobuf pillow
+# 2. preview the prompts (no download, no model)
+bun run art -- <post-key> --dry-run
+# 3. generate — first run downloads FLUX.1-schnell (~24GB fp16) to your HF cache
+#    (C:\Users\<you>\.cache\huggingface — same place VoxCPM2 went). cpu-offload fits 8GB.
+bun run art -- <post-key>
+# 4. bake the new backgrounds into the carousel
+bun run export -- <post-key>
+#    --all also (re)generates the cover; ART_MODEL swaps models; HF_HOME=D:\models moves the cache.
+```
+**Smaller download (optional):** the fp16 repo is ~24GB. For ~6–8GB instead, use a GGUF build in ComfyUI (city96/FLUX.1-schnell-GGUF, Q4/Q5) — same Route B flow as FLUX.2 below.
 
 ## Run FLUX.2 [klein] 4B (the commercial upgrade)
 

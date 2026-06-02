@@ -36,6 +36,22 @@ if (audio) {
   const hasVoice = audio.voice_mode !== "none";
   const hasMusic = audio.music_mode !== "none";
   console.log(`Audio: voice=${hasVoice ? "yes" : "—"}  music=${hasMusic ? "yes" : "—"}`);
+
+  // Warn if the narration is much shorter than the reel (dead silent tail). TTS
+  // often speaks faster than the beat estimates, leaving a silent outro.
+  if (hasVoice && audio.voice_file) {
+    const vp = path.join(ROOT, "public", audio.voice_file.replace(/^\//, ""));
+    try {
+      const dur = parseFloat(
+        execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "default=nw=1:nk=1", vp], { encoding: "utf8" }).trim(),
+      );
+      const reelDur = post.video.duration_seconds;
+      if (Number.isFinite(dur) && reelDur - dur > 2) {
+        console.warn(`⚠ narration is ~${dur.toFixed(1)}s but the reel is ${reelDur}s — the last ~${(reelDur - dur).toFixed(0)}s will be silent.`);
+        console.warn(`  Tighten it: set video.duration_seconds≈${Math.ceil(dur) + 1} (and compress beats), or add a music bed for the tail.`);
+      }
+    } catch { /* ffprobe optional */ }
+  }
 }
 
 // Pass THIS post to the composition via --props so the reel renders the selected
