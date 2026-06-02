@@ -19,30 +19,38 @@
 **TL;DR:** start on **FLUX.1-schnell** (works out of the box), upgrade to **FLUX.2 [klein] 4B** for newer/better at the same commercial license. Avoid anything labeled *dev* or *9B* — non-commercial.
 
 ## ⚠ First: make sure torch uses your GPU (CUDA)
-A plain `uv pip install torch` on Windows installs the **CPU-only** build — image gen then runs on CPU (minutes per image, often unusable). If your VoxCPM/Whisper logs said *"cuda is not available, using cpu instead"*, you have the CPU build. Install the **CUDA** build into the venv (RTX 3070 Ti → CUDA 12.x):
+A plain `uv pip install torch` on Windows installs the **CPU-only** build (`torch x.y.z+cpu`) — image gen then runs on CPU (minutes per image, often unusable). If `torch.cuda.is_available()` is `False` or logs say *"cuda is not available, using cpu instead"*, you have the CPU build.
+
+**Gotcha:** re-running `uv pip install torch --index-url …cu124` often does **nothing** — uv sees the same version already installed and skips it. You must **force-reinstall** (uninstall first). RTX 3070 Ti → CUDA 12.x build (Python 3.11–3.13 supported):
 ```bash
 cd renderer
-uv pip install torch --index-url https://download.pytorch.org/whl/cu124
-python -c "import torch; print('CUDA:', torch.cuda.is_available(), torch.cuda.get_device_name(0) if torch.cuda.is_available() else '')"
+uv pip uninstall torch torchvision torchaudio
+uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+.venv/Scripts/python -c "import torch; print('CUDA:', torch.cuda.is_available(), torch.version.cuda)"
 ```
-You want `CUDA: True NVIDIA GeForce RTX 3070 Ti`. (This also speeds up VoxCPM/Bark/Whisper.)
+You want `CUDA: True 12.4` (and `torch x.y.z+cu124`, not `+cpu`). This also makes VoxCPM/Bark/Whisper use the GPU. (Installing `torchvision` too silences the diffusers `CLIPImageProcessor requires torchvision` warning.) If no cu124 wheel exists for your Python, recreate the venv on 3.12: `uv venv --python 3.12`.
 
 ## Default (FLUX.1-schnell) — step by step
-FLUX.1-schnell is **Apache-2.0 and ungated** — no Hugging Face login needed; diffusers auto-downloads it on first run.
+FLUX.1-schnell is Apache-2.0 (commercial-OK) **but its Hugging Face repo is GATED** — you must accept the license + log in once (a 403 `GatedRepoError` means you skipped this).
 ```bash
 cd renderer
-# 1. deps (CUDA torch from the step above, plus diffusers stack)
-uv pip install "diffusers>=0.31" transformers accelerate sentencepiece protobuf pillow
-# 2. preview the prompts (no download, no model)
+# 1. deps (do the CUDA-torch step above FIRST), plus the diffusers stack
+uv pip install "diffusers>=0.31" transformers accelerate sentencepiece protobuf pillow huggingface_hub[cli]
+# 2. accept the license: open https://huggingface.co/black-forest-labs/FLUX.1-schnell
+#    and click "Agree and access repository" (free, instant). Make a READ token at
+#    https://huggingface.co/settings/tokens
+# 3. log in this venv (or set env HF_TOKEN=hf_xxx instead):
+.venv/Scripts/python -m huggingface_hub login
+# 4. preview prompts (no download)
 bun run art -- <post-key> --dry-run
-# 3. generate — first run downloads FLUX.1-schnell (~24GB fp16) to your HF cache
+# 5. generate — first run downloads FLUX.1-schnell (~24GB fp16) to your HF cache
 #    (C:\Users\<you>\.cache\huggingface — same place VoxCPM2 went). cpu-offload fits 8GB.
 bun run art -- <post-key>
-# 4. bake the new backgrounds into the carousel
+# 6. bake the new backgrounds into the carousel
 bun run export -- <post-key>
 #    --all also (re)generates the cover; ART_MODEL swaps models; HF_HOME=D:\models moves the cache.
 ```
-**Smaller download (optional):** the fp16 repo is ~24GB. For ~6–8GB instead, use a GGUF build in ComfyUI (city96/FLUX.1-schnell-GGUF, Q4/Q5) — same Route B flow as FLUX.2 below.
+**No-login / smaller-download alternative:** use a **GGUF** build in ComfyUI — community GGUF repos (e.g. `city96/FLUX.1-schnell-gguf`, Q4/Q5, ~6–8GB) are typically **ungated**. Generate there, drop the PNGs into `public/backgrounds/<prefix>/`, set those slides to `asset_status: "existing"`, then `bun run export` (same Route B as FLUX.2 below).
 
 ## Run FLUX.2 [klein] 4B (the commercial upgrade)
 
