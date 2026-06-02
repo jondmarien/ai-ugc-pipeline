@@ -49,11 +49,14 @@ ACCENT = {
     "myth_busting": "split red-and-blue",
 }
 SHARED_STYLE = (
-    "realistic editorial cybersecurity photography, dark cinematic high-contrast scene, "
-    "premium magazine feel, shallow depth of field, subtle grain. "
-    "Vertical portrait composition. Keep the lower third darker and uncluttered for overlaid text. "
-    "No text, no words, no logos, no watermark, no readable UI, no credentials."
+    "realistic editorial cybersecurity photography, dark cinematic high-contrast, "
+    "shallow depth of field, strong negative space, lower third kept darker for text. "
+    "No text, no logos, no watermark."
 )
+# Short prompt for FLUX's CLIP encoder (hard 77-token cap). The full scene goes to T5
+# via prompt_2, so nothing important gets truncated and the 77-token warning is gone.
+def clip_prompt(accent):
+    return f"dark cinematic cybersecurity editorial photo, {accent} accent glow, strong negative space, no text, no logos"
 ROLE_FILE = {"failure_point": "failure-point"}
 
 
@@ -162,15 +165,22 @@ def main():
     for i, s in targets:
         role = ROLE_FILE.get(s["role"], s["role"])
         fname = f"{str(i + 1).zfill(2)}_{role}.png"
-        prompt = build_prompt(s, accent, post.get("core_claim", ""))
+        full = build_prompt(s, accent, post.get("core_claim", ""))  # full scene → T5
         print(f"  → slide {i + 1} ({s['role']})…")
-        image = pipe(
-            prompt,
-            guidance_scale=0.0,
-            num_inference_steps=ART_STEPS,
-            height=1216, width=832,  # portrait, FLUX-friendly; export cover-fits to 1080x1350
-            max_sequence_length=256,
-        ).images[0]
+        if is_flux2:
+            # FLUX.2 klein has its own (long-context) tokenizer; pass one prompt.
+            image = pipe(full, num_inference_steps=ART_STEPS, height=1216, width=832).images[0]
+        else:
+            # FLUX.1: CLIP (77-cap) gets the short style prompt; T5 gets the full scene
+            # via prompt_2 → no truncation, accent + "no text" always honored.
+            image = pipe(
+                prompt=clip_prompt(accent),
+                prompt_2=full,
+                guidance_scale=0.0,
+                num_inference_steps=ART_STEPS,
+                height=1216, width=832,  # portrait, FLUX-friendly; export cover-fits to 1080x1350
+                max_sequence_length=256,
+            ).images[0]
         image.save(os.path.join(out_dir, fname))
         s["background_asset"] = f"/backgrounds/{prefix}/{fname}"
         s["asset_status"] = "generated"
