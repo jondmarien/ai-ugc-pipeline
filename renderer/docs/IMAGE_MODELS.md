@@ -96,11 +96,14 @@ Nodes: **Unet Loader (GGUF)** → pick the `.gguf`; **DualCLIPLoader** (type `fl
 ### D. Generate one image per inner slide
 For each slide 2–8, paste that slide’s `visual_prompt` from `content/posts/2026-06-04_prompt-injection-agents.json` (e.g. append `electric blue accent glow, no text` to keep the look). Queue → save each PNG.
 
-### E. Bring them into the pipeline
-1. Put the PNGs in `renderer/public/backgrounds/2026-06-04_prompt-injection-agents/` named by slide+role:
-   `02_context.png 03_risk.png 04_mechanism.png 05_failure-point.png 06_defense.png 07_takeaway.png 08_cta.png`
-2. In the post JSON, for those slides set `"asset_status": "existing"` and `"background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/NN_role.png"`.
-3. `cd renderer && bun run export -- 2026-06-04_prompt-injection-agents` → React composites your headline/captions over the GGUF backgrounds.
+### E. Bring them into the pipeline (one command)
+Save your 7 ComfyUI PNGs to any folder (name them with the slide number, e.g. `02.png … 08.png`, or include the role like `02_context.png`), then:
+```bash
+cd renderer
+bun run import-bg -- 2026-06-04_prompt-injection-agents "C:\path\to\comfyui\outputs"
+bun run export   -- 2026-06-04_prompt-injection-agents
+```
+`import-bg` copies them into `public/backgrounds/<prefix>/` as `NN_role.png` and flips those slides to `asset_status: "existing"` + sets `background_asset`. It matches files by slide number or role (or, if names don't match but the count does, by sorted order); skips the cover unless `--all`. Then `bun run export` composites your headline/captions over the GGUF backgrounds.
 
 This sidesteps diffusers entirely (no WinError, no offload thrash) and is the fastest local option on 8 GB.
 
