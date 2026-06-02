@@ -14,7 +14,7 @@ const CAPTION_MODES = ["block", "word", "highlight"] as const;
 const captionsFlag = flagArgs.find((a) => a.startsWith("--captions="))?.split("=")[1] ?? "block";
 const captionMode = (CAPTION_MODES as readonly string[]).includes(captionsFlag) ? captionsFlag : "block";
 
-const VOICE_MODES = ["none", "voxcpm2", "file"] as const;
+const VOICE_MODES = ["none", "voxcpm2", "http", "file"] as const;
 const MUSIC_MODES = ["none", "free", "licensed", "generated", "file"] as const;
 const voiceFlag = flagArgs.find((a) => a.startsWith("--voice="))?.split("=")[1] ?? "none";
 const musicFlag = flagArgs.find((a) => a.startsWith("--music="))?.split("=")[1] ?? "none";

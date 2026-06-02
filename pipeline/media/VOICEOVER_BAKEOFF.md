@@ -18,6 +18,16 @@ Goal: decide which voice engine graduates to Production for AI-cybersecurity nar
 
 Keep settings comparable: same script, similar speaking rate, neutral-professional tone, 48kHz/44.1kHz WAV out, no post-EQ for the raw round.
 
+### How the renderer actually generates voice (two routes)
+The renderer wires two of these in via `video.audio.voice_mode` (run `cd renderer && npm run voice -- <post-key>`):
+
+| voice_mode | What runs | Setup | Notes |
+| --- | --- | --- | --- |
+| `voxcpm2` | `scripts/voice-voxcpm.py` (local model) | `cd renderer && uv venv && uv pip install voxcpm soundfile torch` — the `npm run voice` dispatcher auto-uses `.venv` (or `uv run`). | VoxCPM2 = **2B, ~5 GB download, 48 kHz**. Smaller variants via `VOXCPM_MODEL=openbmb/VoxCPM1.5` (0.6B) or `openbmb/VoxCPM-0.5B`. |
+| `http` | `scripts/voice-http.mjs` → any **OpenAI-compatible `/v1/audio/speech`** server | run a TTS server, then `TTS_BASE_URL=… npm run voice -- <key> --http` | **Kokoro-FastAPI** (Kokoro-82M, Apache-2.0, **~80 MB**) is the easy pick: `docker run -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-gpu`. Env: `TTS_BASE_URL` (default `http://localhost:8880/v1`), `TTS_MODEL`, `TTS_VOICE`, `TTS_FORMAT`. |
+
+> **LM Studio note (researched 2026):** LM Studio's local API serves chat/completions/embeddings only — it does **not** expose `/v1/audio/speech` (open request: lmstudio-bug-tracker #1715). And Gemma is a text LLM, not a TTS model. So you can't make speech with LM Studio + Gemma. Use `voxcpm2` (local model) or `http` (point at Kokoro-FastAPI or any OpenAI-compatible TTS server). If LM Studio ever adds the endpoint, the `http` route works against it by just setting `TTS_BASE_URL=http://localhost:1234/v1`.
+
 ---
 
 ## 2. The test script (≈30 seconds, ~85 words)

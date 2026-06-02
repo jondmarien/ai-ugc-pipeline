@@ -120,7 +120,9 @@ export const CaptionMode = z.enum(["block", "word", "highlight"]);
 //   music_mode: none | free | licensed | generated | file (all resolve to "is there a music file?")
 // The mode is metadata that drives LICENSES.md guidance + where files come from;
 // the renderer plays whatever audio FILES exist (see render-reel's missing-file guard).
-export const VoiceMode = z.enum(["none", "voxcpm2", "file"]);
+// voice modes: none | voxcpm2 (local python) | http (OpenAI-compatible /v1/audio/speech
+// server, e.g. Kokoro-FastAPI) | file (you supply the WAV yourself)
+export const VoiceMode = z.enum(["none", "voxcpm2", "http", "file"]);
 export const MusicMode = z.enum(["none", "free", "licensed", "generated", "file"]);
 
 export const AudioSpec = z.object({

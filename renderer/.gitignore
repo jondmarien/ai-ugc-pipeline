@@ -5,5 +5,7 @@ dist/
 # Remotion
 out/
 .remotion/
+.venv/
+
 # Generated / licensed reel audio (voice.wav, music.mp3) — keep media licensing out of git
 public/audio/

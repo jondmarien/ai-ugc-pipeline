@@ -114,10 +114,14 @@ A reel renders from the post's `video` block. Each `beat` = `{start, end, slide_
 - `voice_mode`: `none` | `voxcpm2` (generate locally) | `file` (you supply `voice.wav`).
 - `music_mode`: `none` | `free` | `licensed` | `generated` | `file`.
 - Files live in `renderer/public/audio/<prefix>/` (`voice.wav`, `music.mp3`). Music is auto-ducked under the voice (`music_gain_db`, default −18).
+- `voice_mode` choices: `none` · **`voxcpm2`** (local model) · **`http`** (OpenAI-compatible TTS server) · `file` (your own WAV).
 - Set modes at generation: `npm run new -- … --voice=voxcpm2 --music=free` (also `--voice=`/`--music=` on `npm run draft`).
-- **Generate narration:** `npm run voice -- <key>` runs VoxCPM2 (needs a local install: `python -m pip install voxcpm soundfile`, CUDA torch recommended) → writes `voice.wav`. Apply the AI-audio disclosure VoxCPM2 requires; use a synthetic or your own authorized voice.
-- **Music:** drop a commercial-safe track at `public/audio/<prefix>/music.mp3` (Pixabay / YouTube Audio Library / Mixkit — see `../../pipeline/media/MUSIC_SFX_GUIDE.md`). Hate licensing? Leave `music_mode: none` → silent is fine.
-- **If a file is missing**, `npm run reel` warns and renders **silent** (it won't crash) — so you can ship a silent reel now and add audio later by dropping the files and re-running `npm run reel -- <key>`. Log every audio asset in the package's `LICENSES.md` (QA Gate 7). **Never use F5-TTS base weights commercially (CC-BY-NC).** The PoC reel has **no audio** — to add narration (VoxCPM2) + music, follow that doc's "Growing the stub into a narrated cut" section and log everything in `LICENSES.md`.
+- **Generate narration:** `npm run voice -- <key>` (routes by `voice_mode`; override with `--voxcpm2`/`--http`):
+  - **voxcpm2** — local model. Setup with **uv**: `cd renderer && uv venv && uv pip install voxcpm soundfile torch`. The dispatcher auto-uses `.venv`. VoxCPM2 ≈ 5 GB / 48 kHz; smaller via `VOXCPM_MODEL=openbmb/VoxCPM1.5`.
+  - **http** — no download. Run a TTS server, then `npm run voice -- <key> --http`. Easiest: **Kokoro-FastAPI** `docker run -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-gpu` (~80 MB, Apache-2.0). Configure with `TTS_BASE_URL` / `TTS_MODEL` / `TTS_VOICE` / `TTS_FORMAT`. **LM Studio (:1234) does not serve `/v1/audio/speech`, and Gemma is an LLM — use a TTS server.**
+  - Apply the AI-audio disclosure; use a synthetic or your own authorized voice.
+- **Music:** drop a commercial-safe track at `public/audio/<prefix>/music.mp3` (Pixabay / YouTube Audio Library / Mixkit — see `../../pipeline/media/MUSIC_SFX_GUIDE.md`). **Don't want music? Set `music_mode: none`** → voice-only reel; **commands don't change** (`npm run voice` then `npm run reel`).
+- **If a file is missing**, `npm run reel` warns and renders **silent/voice-only** (it won't crash) — add files later and re-run `npm run reel -- <key>`. Log every audio asset in `LICENSES.md` (QA Gate 7). **Never use F5-TTS base weights commercially (CC-BY-NC).** The PoC reel has **no audio** — to add narration (VoxCPM2) + music, follow that doc's "Growing the stub into a narrated cut" section and log everything in `LICENSES.md`.
 
 ### Render the rest of Week 1
 Only Post 1 ships as JSON. Posts 2–5 are Markdown in `../../pipeline/content/WEEK_1_POSTS.md` — scaffold one JSON per post (`npm run new …`), paste that post's slides/caption/sources, then export.

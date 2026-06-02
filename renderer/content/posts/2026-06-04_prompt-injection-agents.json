@@ -161,8 +161,7 @@
       "voice_mode": "voxcpm2",
       "voice_file": "/audio/2026-06-04_prompt-injection-agents/voice.wav",
       "voice_gain_db": 0,
-      "music_mode": "free",
-      "music_file": "/audio/2026-06-04_prompt-injection-agents/music.mp3",
+      "music_mode": "none",
       "music_gain_db": -18
     },
     "narration": [
