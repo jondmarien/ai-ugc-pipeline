@@ -9,3 +9,6 @@ out/
 
 # Generated / licensed reel audio (voice.wav, music.mp3) — keep media licensing out of git
 public/audio/
+
+# Generated per-post background art (regenerable via `bun run art`; final art is baked into pipeline/renders/)
+public/backgrounds/*/

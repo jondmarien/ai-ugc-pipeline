@@ -158,7 +158,7 @@
     "export_name": "2026-06-04_prompt-injection-agents_reel.mp4",
     "caption_mode": "highlight",
     "audio": {
-      "voice_mode": "http",
+      "voice_mode": "voxcpm2",
       "voice_file": "/audio/2026-06-04_prompt-injection-agents/voice.wav",
       "voice_gain_db": 0,
       "music_mode": "none",

@@ -28,6 +28,7 @@ Reel **audio** = `video.audio` — `voice_mode` ∈ `none|voxcpm2|http|file`, `m
 
 ## Renderer commands (run inside `renderer/`)
 `bun run new -- <date> <slug> <pillar>` · `bun run draft -- "<idea>" <pillar>` · `bun run validate|export|package|reel -- <key>` · `bun run dev`.
+Reel **narration**: `bun run voice -- <key>` (voxcpm2/bark = local, no server; http = OpenAI-compatible server). `bun run align -- <key>` = Whisper word-sync. **Slide imagery**: `bun run art -- <key>` = FLUX.1-schnell (local, Apache-2.0) backgrounds for inner slides; without it inner slides are minimalist procedural CSS. All ML steps use `renderer/.venv` (uv); none require Docker except the optional `http` voice server.
 Format defaults: carousel 1080×1350, reel 1080×1920@30fps. Filenames `YYYY-MM-DD_slug_NN_role.png`.
 
 ## Gotchas
