@@ -508,7 +508,310 @@
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
     "sfx": [],
-    "licenses": []
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 1.88,
+        "text": "The weirdest AI attack hides where your",
+        "words": [
+          {
+            "text": "The",
+            "start": 0.0,
+            "end": 0.1
+          },
+          {
+            "text": "weirdest",
+            "start": 0.1,
+            "end": 0.46
+          },
+          {
+            "text": "AI",
+            "start": 0.46,
+            "end": 0.7
+          },
+          {
+            "text": "attack",
+            "start": 0.7,
+            "end": 1.2
+          },
+          {
+            "text": "hides",
+            "start": 1.2,
+            "end": 1.52
+          },
+          {
+            "text": "where",
+            "start": 1.52,
+            "end": 1.76
+          },
+          {
+            "text": "your",
+            "start": 1.76,
+            "end": 1.88
+          }
+        ]
+      },
+      {
+        "start": 1.88,
+        "end": 4.72,
+        "text": "agent reads. Indirect prompt injection lives in",
+        "words": [
+          {
+            "text": "agent",
+            "start": 1.88,
+            "end": 2.12
+          },
+          {
+            "text": "reads.",
+            "start": 2.12,
+            "end": 2.64
+          },
+          {
+            "text": "Indirect",
+            "start": 3.2,
+            "end": 3.44
+          },
+          {
+            "text": "prompt",
+            "start": 3.44,
+            "end": 3.74
+          },
+          {
+            "text": "injection",
+            "start": 3.74,
+            "end": 4.0
+          },
+          {
+            "text": "lives",
+            "start": 4.0,
+            "end": 4.5
+          },
+          {
+            "text": "in",
+            "start": 4.5,
+            "end": 4.72
+          }
+        ]
+      },
+      {
+        "start": 4.72,
+        "end": 6.78,
+        "text": "the content, not the chat box. Isolate",
+        "words": [
+          {
+            "text": "the",
+            "start": 4.72,
+            "end": 4.78
+          },
+          {
+            "text": "content,",
+            "start": 4.78,
+            "end": 5.1
+          },
+          {
+            "text": "not",
+            "start": 5.38,
+            "end": 5.46
+          },
+          {
+            "text": "the",
+            "start": 5.46,
+            "end": 5.62
+          },
+          {
+            "text": "chat",
+            "start": 5.62,
+            "end": 5.78
+          },
+          {
+            "text": "box.",
+            "start": 5.78,
+            "end": 6.0
+          },
+          {
+            "text": "Isolate",
+            "start": 6.52,
+            "end": 6.78
+          }
+        ]
+      },
+      {
+        "start": 6.78,
+        "end": 9.54,
+        "text": "untrusted content, limit tools, and log every",
+        "words": [
+          {
+            "text": "untrusted",
+            "start": 6.78,
+            "end": 7.38
+          },
+          {
+            "text": "content,",
+            "start": 7.38,
+            "end": 7.7
+          },
+          {
+            "text": "limit",
+            "start": 8.14,
+            "end": 8.28
+          },
+          {
+            "text": "tools,",
+            "start": 8.28,
+            "end": 8.58
+          },
+          {
+            "text": "and",
+            "start": 8.98,
+            "end": 9.06
+          },
+          {
+            "text": "log",
+            "start": 9.06,
+            "end": 9.28
+          },
+          {
+            "text": "every",
+            "start": 9.28,
+            "end": 9.54
+          }
+        ]
+      },
+      {
+        "start": 9.54,
+        "end": 11.86,
+        "text": "action. Treat external content like user input",
+        "words": [
+          {
+            "text": "action.",
+            "start": 9.54,
+            "end": 9.92
+          },
+          {
+            "text": "Treat",
+            "start": 10.3,
+            "end": 10.32
+          },
+          {
+            "text": "external",
+            "start": 10.32,
+            "end": 10.54
+          },
+          {
+            "text": "content",
+            "start": 10.54,
+            "end": 11.04
+          },
+          {
+            "text": "like",
+            "start": 11.04,
+            "end": 11.34
+          },
+          {
+            "text": "user",
+            "start": 11.34,
+            "end": 11.58
+          },
+          {
+            "text": "input",
+            "start": 11.58,
+            "end": 11.86
+          }
+        ]
+      },
+      {
+        "start": 11.86,
+        "end": 12.6,
+        "text": "wearing a costume.",
+        "words": [
+          {
+            "text": "wearing",
+            "start": 11.86,
+            "end": 12.18
+          },
+          {
+            "text": "a",
+            "start": 12.18,
+            "end": 12.32
+          },
+          {
+            "text": "costume.",
+            "start": 12.32,
+            "end": 12.6
+          }
+        ]
+      },
+      {
+        "start": 13.34,
+        "end": 14.64,
+        "text": "Would your agent trust a page it",
+        "words": [
+          {
+            "text": "Would",
+            "start": 13.34,
+            "end": 13.36
+          },
+          {
+            "text": "your",
+            "start": 13.36,
+            "end": 13.48
+          },
+          {
+            "text": "agent",
+            "start": 13.48,
+            "end": 13.76
+          },
+          {
+            "text": "trust",
+            "start": 13.76,
+            "end": 14.02
+          },
+          {
+            "text": "a",
+            "start": 14.02,
+            "end": 14.18
+          },
+          {
+            "text": "page",
+            "start": 14.18,
+            "end": 14.4
+          },
+          {
+            "text": "it",
+            "start": 14.4,
+            "end": 14.64
+          }
+        ]
+      },
+      {
+        "start": 14.64,
+        "end": 15.34,
+        "text": "was told to summarize?",
+        "words": [
+          {
+            "text": "was",
+            "start": 14.64,
+            "end": 14.74
+          },
+          {
+            "text": "told",
+            "start": 14.74,
+            "end": 14.94
+          },
+          {
+            "text": "to",
+            "start": 14.94,
+            "end": 15.12
+          },
+          {
+            "text": "summarize?",
+            "start": 15.12,
+            "end": 15.34
+          }
+        ]
+      }
+    ]
   },
   "qa": {
     "fact_checked": true,

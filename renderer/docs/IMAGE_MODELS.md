@@ -89,3 +89,15 @@ bun run reel   -- 2026-06-04_prompt-injection-agents --fit-voice  # narrated ree
 bun run package -- 2026-06-04_prompt-injection-agents  # caption/alt/sources/LICENSES/QA
 ```
 Skip any step you don't need: no `art` → procedural backgrounds; no `voice` → silent reel; no `align` → captions distribute evenly. Output lands in `../../pipeline/renders/<date_slug>/`. Always review sources + media licenses before posting.
+
+## Troubleshooting: `OSError: [WinError 6714]` on `bun run art`/`voice`
+This means Python's import machinery hit a directory carrying a stale NTFS kernel-transaction (TxF) marker while listing it — usually a **corrupted/transaction-polluted Python install** (we traced it to the uv-managed CPython's `DLLs` dir). It's environmental, not the pipeline. Also note **VoxCPM2 requires Python ≥3.10 and <3.13**. Fix by recreating the venv on a clean **Python 3.12**:
+```bash
+cd renderer
+rm -rf .venv                       # (PowerShell: Remove-Item -Recurse -Force .venv)
+uv venv --python 3.12              # uv downloads 3.12 if missing
+uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+uv pip install voxcpm soundfile faster-whisper "diffusers>=0.31" transformers accelerate sentencepiece protobuf pillow
+.venv/Scripts/python -c "import torch,diffusers; print('CUDA',torch.cuda.is_available(),'| diffusers OK')"
+```
+Packages are served from uv's cache, so this is fast if you've installed them before. The HF model weights live in `~/.cache/huggingface` (not the venv), so nothing re-downloads.

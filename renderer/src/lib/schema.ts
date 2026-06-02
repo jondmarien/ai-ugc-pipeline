@@ -145,6 +145,16 @@ export const Narration = z.object({
   text: z.string(),
 });
 
+// Transcript-driven captions written by `bun run align` (Whisper). Absolute seconds.
+// When present, the reel renders these (perfectly synced to the voice) instead of the
+// planned per-beat captions. words[] enables word/highlight karaoke against real timing.
+export const CaptionLine = z.object({
+  start: z.number().nonnegative(),
+  end: z.number().positive(),
+  text: z.string(),
+  words: z.array(Word).optional(),
+});
+
 export const VideoSpec = z.object({
   enabled: z.boolean(),
   duration_seconds: z.number().positive(),
@@ -152,6 +162,7 @@ export const VideoSpec = z.object({
   export_name: z.string().min(1),
   caption_mode: CaptionMode.default("block"),
   audio: AudioSpec.default({ voice_mode: "none", music_mode: "none", voice_gain_db: 0, music_gain_db: -18 }),
+  captions: z.array(CaptionLine).optional(), // written by `bun run align`; voice-synced
   narration: z.array(Narration).default([]),
   beats: z.array(Beat).min(1),
   subtitle_style: z.string().optional().default(""),
