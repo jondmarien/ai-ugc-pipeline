@@ -1,4 +1,4 @@
-// npm run draft -- "<idea>" <pillar> [YYYY-MM-DD] [flags]
+// bun run draft -- "<idea>" <pillar> [YYYY-MM-DD] [flags]
 // Headless bridge: drives the `claude` CLI (with the repo's two skills) to turn an
 // idea into a researched, sourced, schema-valid post JSON, then renders it.
 //
@@ -28,7 +28,7 @@ const date = pos[2] && /^\d{4}-\d{2}-\d{2}$/.test(pos[2]) ? pos[2] : new Date().
 const MODES = ["block", "word", "highlight"];
 const captionsFlag = [...flags].find((f) => f.startsWith("--captions="))?.split("=")[1] ?? "block";
 const captions = MODES.includes(captionsFlag) ? captionsFlag : "block";
-const VOICE = ["none", "voxcpm2", "http", "file"];
+const VOICE = ["none", "voxcpm2", "bark", "http", "file"];
 const MUSIC = ["none", "free", "licensed", "generated", "file"];
 const voiceFlag = [...flags].find((f) => f.startsWith("--voice="))?.split("=")[1] ?? "none";
 const musicFlag = [...flags].find((f) => f.startsWith("--music="))?.split("=")[1] ?? "none";
@@ -37,9 +37,9 @@ const music = MUSIC.includes(musicFlag) ? musicFlag : "none";
 
 function die(msg) {
   console.error(`\n✗ ${msg}`);
-  console.error(`\nUsage: npm run draft -- "<idea>" <pillar> [YYYY-MM-DD] [--captions=block|word|highlight] [--voice=none|voxcpm2|file] [--music=none|free|licensed|generated|file] [--no-render|--carousel-only|--yolo|--dry-run]`);
+  console.error(`\nUsage: bun run draft -- "<idea>" <pillar> [YYYY-MM-DD] [--captions=block|word|highlight] [--voice=none|voxcpm2|file] [--music=none|free|licensed|generated|file] [--no-render|--carousel-only|--yolo|--dry-run]`);
   console.error(`  pillar ∈ ${PILLARS.join(" | ")}`);
-  console.error(`  example: npm run draft -- "AI agents leaking RAG data" model_security\n`);
+  console.error(`  example: bun run draft -- "AI agents leaking RAG data" model_security\n`);
   process.exit(1);
 }
 
@@ -53,8 +53,8 @@ if (claudeCheck.status !== 0) die("`claude` CLI not found on PATH. Install Claud
 const renderStep = flags.has("--no-render")
   ? "Do NOT render — stop after validate."
   : flags.has("--carousel-only")
-    ? `Then render: \`cd renderer && npm run export -- ${date}_<slug> && npm run package -- ${date}_<slug>\` (skip the reel).`
-    : `Then render fully: \`cd renderer && npm run export -- ${date}_<slug> && npm run package -- ${date}_<slug> && npm run reel -- ${date}_<slug>\`.`;
+    ? `Then render: \`cd renderer && bun run export -- ${date}_<slug> && bun run package -- ${date}_<slug>\` (skip the reel).`
+    : `Then render fully: \`cd renderer && bun run export -- ${date}_<slug> && bun run package -- ${date}_<slug> && bun run reel -- ${date}_<slug>\`.`;
 
 // The prompt mirrors the /draft-post command. Keeping it inline lets this run headless.
 const prompt = [
@@ -70,8 +70,8 @@ const prompt = [
   `1. Design the 8-slide post (cover, context, risk, mechanism, failure_point, defense, takeaway, cta) + caption + hashtags + comment question, house voice.`,
   `2. Research sources with WebSearch/WebFetch; record {source, link, supports, confidence, claim_tag} for each factual claim.`,
   `3. Pick a short kebab-case slug from the idea.`,
-  `4. Run \`cd renderer && npm run new -- ${date} <slug> ${pillar} --captions=${captions} --voice=${voice} --music=${music}\` to scaffold, then EDIT renderer/content/posts/${date}_<slug>.json to replace EVERY TODO with real, sourced content. Keep schema rules (8 slides, slide1=cover, alt_text length 8, score.total = sum of axes, >=1 real source, reel beats filled, video.caption_mode="${captions}", video.audio.voice_mode="${voice}", video.audio.music_mode="${music}").`,
-  `5. Run \`cd renderer && npm run validate -- ${date}_<slug>\` and fix until clean.`,
+  `4. Run \`cd renderer && bun run new -- ${date} <slug> ${pillar} --captions=${captions} --voice=${voice} --music=${music}\` to scaffold, then EDIT renderer/content/posts/${date}_<slug>.json to replace EVERY TODO with real, sourced content. Keep schema rules (8 slides, slide1=cover, alt_text length 8, score.total = sum of axes, >=1 real source, reel beats filled, video.caption_mode="${captions}", video.audio.voice_mode="${voice}", video.audio.music_mode="${music}").`,
+  `5. Run \`cd renderer && bun run validate -- ${date}_<slug>\` and fix until clean.`,
   `6. ${renderStep}`,
   `7. FINISH by printing, on its own final line, exactly: POST_KEY=${date}_<slug>`,
 ].join("\n");
@@ -104,7 +104,7 @@ if (run.status !== 0) {
 // Parse the POST_KEY the agent printed, and confirm the file exists.
 const m = out.match(/POST_KEY=([0-9]{4}-[0-9]{2}-[0-9]{2}_[a-z0-9-]+)/);
 if (!m) {
-  console.error("\n⚠ Could not find POST_KEY in output. Check renderer/content/posts/ and render manually with npm run export/package/reel.");
+  console.error("\n⚠ Could not find POST_KEY in output. Check renderer/content/posts/ and render manually with bun run export/package/reel.");
   process.exit(2);
 }
 const key = m[1];

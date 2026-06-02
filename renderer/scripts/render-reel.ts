@@ -45,10 +45,12 @@ writeFileSync(propsFile, JSON.stringify({ post }), "utf8");
 
 console.log(`Rendering reel ${post.video.export_name} (${post.video.duration_seconds}s @ ${post.video.fps}fps, captions: ${post.video.caption_mode})…`);
 
-// Remotion CLI: render <entry> <composition-id> <output>
-const npxCmd = process.platform === "win32" ? "npx.cmd" : "npx";
+// Remotion CLI via bunx. IMPORTANT: use `remotion` (NOT `remotionb`) so the render
+// runs on Node — the Bun *runtime* render path has a known Chromium "Session closed"
+// bug. bunx just resolves the CLI; the actual render is Node-backed.
+const bunxCmd = process.platform === "win32" ? "bunx.exe" : "bunx";
 const res = spawnSync(
-  npxCmd,
+  bunxCmd,
   ["remotion", "render", entry, "reel", outPath, `--props=${propsFile}`, "--codec=h264", "--timeout=120000", "--log=error"],
   { cwd: ROOT, stdio: "inherit", shell: process.platform === "win32" },
 );

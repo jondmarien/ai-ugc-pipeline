@@ -1,6 +1,15 @@
-import { mkdirSync, writeFileSync, readFileSync, existsSync } from "node:fs";
+// NOTE: this script runs on Node via tsx (see package.json "export"), NOT the Bun
+// runtime. Driving Playwright's Chromium from inside the Bun runtime hangs (same
+// Bun↔Chromium issue that affects Remotion). Everything else in this repo runs on Bun;
+// only this Playwright-in-process script is carved out to Node.
+//
+// We screenshot a STATIC `vite build` served by `vite preview` — NOT the dev server.
+// The dev server cold-bundles deps on first request and runs an HMR socket, which
+// made Playwright navigation time out unpredictably. A static build is deterministic:
+// build once, then 8 fast screenshots.
+import { mkdirSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
-import { createServer, type ViteDevServer } from "vite";
+import { build, preview, type PreviewServer } from "vite";
 import { chromium } from "playwright";
 import { loadPost, slideFilename, outputDir, ROOT } from "./lib.ts";
 
@@ -19,35 +28,37 @@ async function main() {
   mkdirSync(outDir, { recursive: true });
 
   console.log(`Rendering ${post.post_id} → ${outDir}`);
-  console.log(`Canvas ${width}×${height}, ${post.slides.length} slides\n`);
+  console.log(`Canvas ${width}×${height}, ${post.slides.length} slides`);
 
-  let server: ViteDevServer | undefined;
+  // 1) Build the preview app to static assets (deterministic; no dev server).
+  console.log("Building preview app (vite build)…");
+  await build({ root: ROOT, logLevel: "warn", build: { outDir: "dist", emptyOutDir: true } });
+
+  let server: PreviewServer | undefined;
   let browser;
   const problems: string[] = [];
   try {
-    server = await createServer({ root: ROOT, server: { port: PORT, strictPort: true }, logLevel: "warn" });
-    await server.listen();
+    // 2) Serve the static build (sirv under the hood — no transforms, no HMR).
+    server = await preview({ root: ROOT, preview: { port: PORT, strictPort: true } });
 
     browser = await chromium.launch();
     const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: 1 });
 
     for (let i = 0; i < post.slides.length; i++) {
-      const slide = post.slides[i];
       const url = `http://localhost:${PORT}/?post=${encodeURIComponent(post.upload_package.filename_prefix)}&slide=${i + 1}`;
-      await page.goto(url, { waitUntil: "networkidle" });
-      await page.waitForSelector('html[data-render-ready="1"]', { timeout: 15000 });
+      await page.goto(url, { waitUntil: "load", timeout: 30000 });
+      // The real readiness signal: set after document.fonts.ready + all images loaded.
+      await page.waitForSelector('html[data-render-ready="1"]', { timeout: 30000 });
       const el = page.locator("#slide-root");
       await el.waitFor({ state: "visible" });
 
       const fname = slideFilename(post, i);
-      const filePath = path.join(outDir, fname);
       const buf = await el.screenshot({ type: "png" });
-      writeFileSync(filePath, buf);
+      writeFileSync(path.join(outDir, fname), buf);
 
       const size = pngSize(buf);
       const ok = size.width === width && size.height === height && buf.length > 1000;
-      const status = ok ? "✓" : "✗";
-      console.log(`  ${status} ${fname}  (${size.width}×${size.height}, ${(buf.length / 1024).toFixed(0)} KB)`);
+      console.log(`  ${ok ? "✓" : "✗"} ${fname}  (${size.width}×${size.height}, ${(buf.length / 1024).toFixed(0)} KB)`);
       if (!ok) problems.push(`${fname}: got ${size.width}×${size.height}, expected ${width}×${height}`);
     }
 
@@ -55,17 +66,15 @@ async function main() {
     browser = undefined;
   } finally {
     if (browser) await browser.close();
-    if (server) await server.close();
+    if (server) await new Promise<void>((res) => server!.httpServer.close(() => res()));
   }
 
-  // Render-side QA gate: fail loud on wrong dimensions / empty output.
   if (problems.length) {
     console.error("\nRENDER QA FAILED:");
     for (const p of problems) console.error("  - " + p);
     process.exit(1);
   }
 
-  // Confirm the reused background asset actually exists in public/ (else cover is blank).
   const coverBg = post.slides[0].background_asset;
   if (coverBg && post.slides[0].asset_status === "existing") {
     const pub = path.join(ROOT, "public", coverBg.replace(/^\//, ""));
@@ -73,12 +82,10 @@ async function main() {
   }
 
   console.log(`\n✓ ${post.slides.length} slides exported to ${outDir}`);
-  // readFileSync touch to keep import used if needed later; no-op guard.
-  void readFileSync;
 }
 
 main()
-  .then(() => process.exit(0)) // Vite dev server keeps the loop alive; exit explicitly.
+  .then(() => process.exit(0)) // preview server keeps the loop alive; exit explicitly.
   .catch((err) => {
     console.error(err);
     process.exit(1);

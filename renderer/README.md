@@ -6,19 +6,19 @@
 
 ```bash
 cd renderer
-npm install
-npx playwright install chromium     # carousel screenshots
-npx remotion browser ensure         # reel rendering (once)
+bun install
+bunx playwright install chromium     # carousel screenshots
+bunx remotion browser ensure         # reel rendering (once)
 
-npm run draft      -- "AI agents leaking RAG data" model_security   # idea → researched JSON → rendered (skills + claude CLI)
-npm run draft-week -- "idea1::offensive_ai" "idea2::model_security::captions=highlight" "idea3::governance"  # batch a week
-npm run new        -- 2026-06-13 my-topic model_security --captions=highlight   # scaffold a blank post (manual fill)
-npm run validate -- 2026-06-02_ai-phishing-training   # check JSON
-npm run export   -- 2026-06-02_ai-phishing-training   # 8 carousel PNGs
-npm run package  -- 2026-06-02_ai-phishing-training   # caption/alt/sources/licenses/QA
-npm run reel     -- 2026-06-02_ai-phishing-training   # 1080×1920 MP4 (optional)
-npm run voice    -- 2026-06-02_ai-phishing-training   # generate narration via VoxCPM2 (needs local install)
-npm run dev                                            # live preview @ :4317
+bun run draft      -- "AI agents leaking RAG data" model_security   # idea → researched JSON → rendered (skills + claude CLI)
+bun run draft-week -- "idea1::offensive_ai" "idea2::model_security::captions=highlight" "idea3::governance"  # batch a week
+bun run new        -- 2026-06-13 my-topic model_security --captions=highlight   # scaffold a blank post (manual fill)
+bun run validate -- 2026-06-02_ai-phishing-training   # check JSON
+bun run export   -- 2026-06-02_ai-phishing-training   # 8 carousel PNGs
+bun run package  -- 2026-06-02_ai-phishing-training   # caption/alt/sources/licenses/QA
+bun run reel     -- 2026-06-02_ai-phishing-training   # 1080×1920 MP4 (optional)
+bun run voice    -- 2026-06-02_ai-phishing-training   # generate narration via VoxCPM2 (needs local install)
+bun run dev                                            # live preview @ :4317
 ```
 
 **New to this? Start with [docs/RUN_IT_YOURSELF.md](docs/RUN_IT_YOURSELF.md)** — the full self-serve guide to making new reels/carousels and Week-2 content.
@@ -45,6 +45,6 @@ Week-1 Post 1 renders end-to-end: 8× **1080×1350** PNGs (cover reuses the text
 No fabricated facts; no exploit/payload/evasion content; backgrounds are text-free/logo-free/credential-free; every model/asset that ships must be commercial-licensed (**VoxCPM2 ✅ Apache-2.0; F5-TTS base weights ❌ CC-BY-NC**); manual upload + human approval stay the default — no auto-publishing.
 
 ## Note on dependencies
-- `node_modules/` is not committed; run `npm install`.
+- `node_modules/` is not committed; run `bun install`.
 - Reused backgrounds live in `public/backgrounds/`. The PoC copies `cover_bg_01_ai_phishing.png` there from `../assets/...`.
 - Harmless warning: Remotion 4 prefers zod v4 while we pin zod v3 for the schema; we don't use Remotion's zod feature, so it's safe to ignore.

@@ -41,12 +41,13 @@ if (mode === "file") {
 }
 
 if (mode === "http") {
-  const res = spawnSync("node", [path.join(RENDERER, "scripts", "voice-http.mjs"), ...args], { cwd: RENDERER, stdio: "inherit" });
+  const runner = process.platform === "win32" ? "bun.exe" : "bun";
+  const res = spawnSync(runner, [path.join(RENDERER, "scripts", "voice-http.mjs"), ...args], { cwd: RENDERER, stdio: "inherit", shell: process.platform === "win32" });
   process.exit(res.status ?? 1);
 }
 
-// mode === "voxcpm2": pick the venv python (uv-created) → uv run → system python.
-const script = path.join(RENDERER, "scripts", "voice-voxcpm.py");
+// local python modes (voxcpm2 | bark): pick the venv python (uv) → uv run → system python.
+const script = path.join(RENDERER, "scripts", mode === "bark" ? "voice-bark.py" : "voice-voxcpm.py");
 const venvPy = process.platform === "win32"
   ? path.join(RENDERER, ".venv", "Scripts", "python.exe")
   : path.join(RENDERER, ".venv", "bin", "python");

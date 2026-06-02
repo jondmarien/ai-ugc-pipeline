@@ -1,4 +1,4 @@
-// npm run draft-week -- "idea one" "idea two" ... (up to 5) [flags]
+// bun run draft-week -- "idea one" "idea two" ... (up to 5) [flags]
 // Batch version of draft.mjs: drives the `claude` CLI (with the repo's skills) to
 // produce up to 5 researched, sourced, schema-valid posts with pillar variety and
 // sequential weekday dates, then renders each.
@@ -24,10 +24,10 @@ const ideas = argv.filter((a) => !a.startsWith("--")).slice(0, 5);
 
 function die(msg) {
   console.error(`\n✗ ${msg}`);
-  console.error(`\nUsage: npm run draft-week -- "idea one" "idea two" ... (up to 5) [--no-render|--carousel-only|--yolo|--dry-run]`);
+  console.error(`\nUsage: bun run draft-week -- "idea one" "idea two" ... (up to 5) [--no-render|--carousel-only|--yolo|--dry-run]`);
   console.error(`  per-idea options: "idea::pillar::captions=word"`);
   console.error(`  pillars: ${PILLARS.join(" | ")}   ·   captions: ${MODES.join(" | ")}`);
-  console.error(`  example: npm run draft-week -- "voice clone fraud::offensive_ai" "RAG leaks::model_security::captions=highlight" "shadow AI::governance"\n`);
+  console.error(`  example: bun run draft-week -- "voice clone fraud::offensive_ai" "RAG leaks::model_security::captions=highlight" "shadow AI::governance"\n`);
   process.exit(1);
 }
 
@@ -67,7 +67,7 @@ const prompt = [
   `WEEK RULES: spread across different pillars (don't repeat); assign sequential weekday dates starting from \`date +%F\` (use Bash); sharpen overlapping angles so the week doesn't repeat.`,
   `HARD RULES: no fabricated CVEs/stats/quotes — back every factual claim with a real source via WebSearch/WebFetch or tag it [Scenario]; no payloads/exploit/evasion; each post needs a defender takeaway.`,
   ``,
-  `For EACH idea: design the 8-slide post + caption + hashtags + question; research sources; pick a kebab slug; run \`cd renderer && npm run new -- <date> <slug> <pillar> --captions=<mode>\`; EDIT the JSON replacing every TODO with real sourced content (8 slides, slide1=cover, alt_text length 8, score.total = sum, >=1 source, reel beats filled, video.caption_mode set); \`npm run validate -- <date>_<slug>\` until clean. ${renderLine}`,
+  `For EACH idea: design the 8-slide post + caption + hashtags + question; research sources; pick a kebab slug; run \`cd renderer && bun run new -- <date> <slug> <pillar> --captions=<mode>\`; EDIT the JSON replacing every TODO with real sourced content (8 slides, slide1=cover, alt_text length 8, score.total = sum, >=1 source, reel beats filled, video.caption_mode set); \`bun run validate -- <date>_<slug>\` until clean. ${renderLine}`,
   ``,
   `FINISH by printing one line per post: POST_KEY=<date>_<slug>  — then a summary table (date | slug | pillar | caption_mode | fact/scenario | output folder).`,
 ].join("\n");

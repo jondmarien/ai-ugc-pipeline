@@ -9,9 +9,9 @@ AI-in-cybersecurity UGC pipeline. **Positioning:** *real threats, real tools, no
 ## Commands to make posts
 - `/draft-post <idea> | <pillar> [| captions=word|highlight]` — one post, end to end.
 - `/draft-week idea1::pillar | idea2::pillar::captions=highlight | …` — batch up to 5 with pillar variety + a posting calendar.
-Both research sources, write schema-valid `renderer/content/posts/<date>_<slug>.json`, validate, and render carousel PNGs + a reel into `pipeline/renders/`. Headless: `cd renderer && npm run draft -- "<idea>" <pillar>` / `npm run draft-week -- "idea::pillar" …`.
+Both research sources, write schema-valid `renderer/content/posts/<date>_<slug>.json`, validate, and render carousel PNGs + a reel into `pipeline/renders/`. Headless: `cd renderer && bun run draft -- "<idea>" <pillar>` / `bun run draft-week -- "idea::pillar" …`.
 Reel **subtitle style** = `video.caption_mode` ∈ `block | word | highlight` (set via `--captions=` / `captions=`).
-Reel **audio** = `video.audio` — `voice_mode` ∈ `none|voxcpm2|http|file`, `music_mode` ∈ `none|free|licensed|generated|file` (set via `--voice=`/`--music=`). Files in `renderer/public/audio/<prefix>/`; `npm run voice -- <key>` generates narration: **voxcpm2** (local model, uses `renderer/.venv` via uv) or **http** (OpenAI-compatible `/v1/audio/speech`, e.g. Kokoro-FastAPI; `TTS_BASE_URL` env). Missing file ⇒ reel renders silent/voice-only + warns. **LM Studio has no TTS endpoint and Gemma is an LLM — use voxcpm2 or an http TTS server.** Never use F5-TTS base weights commercially (CC-BY-NC).
+Reel **audio** = `video.audio` — `voice_mode` ∈ `none|voxcpm2|http|file`, `music_mode` ∈ `none|free|licensed|generated|file` (set via `--voice=`/`--music=`). Files in `renderer/public/audio/<prefix>/`; `bun run voice -- <key>` generates narration: **voxcpm2** (local model, uses `renderer/.venv` via uv) or **http** (OpenAI-compatible `/v1/audio/speech`, e.g. Kokoro-FastAPI; `TTS_BASE_URL` env). Missing file ⇒ reel renders silent/voice-only + warns. **LM Studio has no TTS endpoint and Gemma is an LLM — use voxcpm2 or an http TTS server.** Never use F5-TTS base weights commercially (CC-BY-NC).
 
 ## Non-negotiable rules (enforced by pipeline/content/QA_CHECKLIST.md)
 - **No fabrication** — no invented CVEs, breach details, stats, quotes, or papers. Back every factual claim with a real source (WebSearch/WebFetch) or tag it `[Scenario]`.
@@ -27,9 +27,9 @@ Reel **audio** = `video.audio` — `voice_mode` ∈ `none|voxcpm2|http|file`, `m
 - `pipeline/renders/` — upload-ready output packages.
 
 ## Renderer commands (run inside `renderer/`)
-`npm run new -- <date> <slug> <pillar>` · `npm run draft -- "<idea>" <pillar>` · `npm run validate|export|package|reel -- <key>` · `npm run dev`.
+`bun run new -- <date> <slug> <pillar>` · `bun run draft -- "<idea>" <pillar>` · `bun run validate|export|package|reel -- <key>` · `bun run dev`.
 Format defaults: carousel 1080×1350, reel 1080×1920@30fps. Filenames `YYYY-MM-DD_slug_NN_role.png`.
 
 ## Gotchas
 - If a render hangs at startup, a stale dev server holds port 4317 — kill it and retry.
-- Run `npx remotion browser ensure` once before the first reel. The reel's `zod version mismatch` warning is harmless.
+- Run `bunx remotion browser ensure` once before the first reel. The reel's `zod version mismatch` warning is harmless.

@@ -65,7 +65,7 @@ Adding a role = add an enum value in `schema.ts`, a `ROLE_FILENAME` entry, and a
 
 ## Preview
 ```bash
-npm run dev
+bun run dev
 # full deck (half scale):  http://localhost:4317/?post=ai-phishing-training&mode=deck
 # single exact-size slide: http://localhost:4317/?post=ai-phishing-training&slide=1
 ```
