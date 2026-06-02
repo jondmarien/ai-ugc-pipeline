@@ -63,16 +63,18 @@ bun run export -- <post-key>
 ## Make it fast on 8 GB (the offload bottleneck)
 On an 8 GB card, fp16 FLUX (~24 GB) doesn't fit, so `enable_model_cpu_offload()` swaps weights CPU↔GPU **every step** — that I/O, not the 4 steps, is why it's slow. Fixes, biggest first:
 
+Use **flags** (they work in any shell — PowerShell's `VAR=value cmd` doesn't):
+
 1. **4-bit NF4 (bitsandbytes) — the big win.** The 12B transformer + T5 shrink to ~8 GB, so they mostly stay resident and offloading nearly stops. Ampere (RTX 30xx) supported (fp8 is *not* — needs 40xx+).
    ```bash
    uv pip install bitsandbytes
-   ART_QUANTIZE=4bit bun run art -- <post-key>
+   bun run art -- <post-key> --4bit
    ```
-2. **Smaller frames** (secondary): `ART_WIDTH=768 ART_HEIGHT=1024 bun run art -- <key>` (default 832×1216; export cover-fits to 1080×1350 anyway).
-3. **Fewer steps**: schnell is already 4-step; `ART_STEPS=2` or `3` is usually fine for backgrounds.
-4. **GGUF in ComfyUI** (Route B below) is the most VRAM-optimized path of all for 8 GB and avoids diffusers entirely.
+2. **Smaller frames** (secondary): `bun run art -- <key> --width=768 --height=1024` (default 832×1216; export cover-fits to 1080×1350 anyway).
+3. **Fewer steps**: schnell is already 4-step; `--steps=2` or `--steps=3` is usually fine for backgrounds.
+4. **GGUF in ComfyUI** (next section) is the most VRAM-optimized path of all for 8 GB and avoids diffusers entirely.
 
-Combine them: `ART_QUANTIZE=4bit ART_STEPS=3 bun run art -- <key>`. (The model loads once and generates all 7 inner slides, so per-image cost is what matters.)
+Combine: `bun run art -- <key> --4bit --steps=3`. Verify the config first with `--dry-run` (prints `quantize=4bit-NF4`). (Env vars `ART_QUANTIZE/ART_STEPS/ART_WIDTH/ART_HEIGHT/ART_MODEL` also work — in PowerShell set them with `$env:ART_QUANTIZE="4bit"` on a separate line, *then* run; but the flags are easier.) The model loads once and generates all 7 inner slides, so per-image cost is what matters.
 
 ## ComfyUI + GGUF (FLUX.1-schnell — best for 8 GB, ungated)
 GGUF Q4/Q5 is the most VRAM-efficient local route and needs **no HF login**. One-time setup, then generate the 7 inner backgrounds and drop them into the pipeline.
@@ -89,6 +91,14 @@ GGUF Q4/Q5 is the most VRAM-efficient local route and needs **no HF login**. One
 | `ae.safetensors` (FLUX VAE) | `Comfy-Org/Lumina_Image_2.0_Repackaged` *(or copy from your HF cache `E:\ai-ugc-hf\hub` after the diffusers download)* | `models\vae\` |
 
 > ComfyUI-Manager’s **Model Manager** can fetch the GGUF + encoders for you (search “flux schnell gguf”, “t5xxl fp8”, “clip_l”) — easiest.
+
+**Or download via the `hf` CLI** (these repos are ungated — no login; adjust `E:\ComfyUI` to your path):
+```bash
+hf download city96/FLUX.1-schnell-gguf flux1-schnell-Q5_K_S.gguf --local-dir E:\ComfyUI\models\unet
+hf download comfyanonymous/flux_text_encoders t5xxl_fp8_e4m3fn.safetensors clip_l.safetensors --local-dir E:\ComfyUI\models\clip
+hf download Comfy-Org/Lumina_Image_2.0_Repackaged split_files/vae/ae.safetensors --local-dir E:\ComfyUI\models\vae
+```
+**Already have the VAE/encoders?** Your diffusers FLUX pull left `ae.safetensors` + the T5/CLIP encoders inside `E:\ai-ugc-hf\hub\models--black-forest-labs--FLUX.1-schnell\snapshots\<rev>\` — you can copy `ae.safetensors` from `vae/` there into `ComfyUI\models\vae\` instead of re-downloading (the GGUF transformer is the only thing you truly need fresh).
 
 ### C. Build the workflow (or load Manager’s Flux GGUF template)
 Nodes: **Unet Loader (GGUF)** → pick the `.gguf`; **DualCLIPLoader** (type `flux`) → `t5xxl_fp8…` + `clip_l`; **Load VAE** → `ae.safetensors`; **CLIP Text Encode (Prompt)**; **EmptyLatentImage** `832×1216` (or `768×1024`); **KSampler** → `steps 4`, `cfg 1.0`, `sampler euler`, `scheduler simple`, `denoise 1.0`; **VAE Decode** → **Save Image**. (Schnell uses cfg 1.0 / 4 steps — no FluxGuidance node needed.)
@@ -107,7 +117,24 @@ bun run export   -- 2026-06-04_prompt-injection-agents
 
 This sidesteps diffusers entirely (no WinError, no offload thrash) and is the fastest local option on 8 GB.
 
-## Run FLUX.2 [klein] 4B (the commercial upgrade)
+## ComfyUI + FLUX.2 [klein] 4B (newer; uses a Qwen3 text encoder)
+FLUX.2 klein is a *different* architecture from FLUX.1 — it uses a **Qwen3-4B** text encoder (not T5/CLIP) and its own VAE. ComfyUI has first-class support.
+
+1. **Update ComfyUI** to a recent build (FLUX.2 support landed Jan 2026). Keep the **ComfyUI-GGUF** node for the GGUF route.
+2. **Easiest:** ComfyUI → **Workflow → Browse Templates → Images → “Flux.2 Klein 4B & 9B”**. Open the **4B distilled** text-to-image template; ComfyUI prompts to download the models for you. (4B distilled = 4 steps, ~8 GB VRAM.)
+3. **Files** (if downloading manually):
+   | File | Put in |
+   | --- | --- |
+   | `qwen_3_4b.safetensors` (FLUX.2's text encoder) | `models\text_encoders\` |
+   | `flux-2-klein-4b-fp8.safetensors` (distilled, fp8) **or** a GGUF (`unsloth/FLUX.2-klein-4B-GGUF`, Q4/Q5) | `models\diffusion_models\` (fp8) / `models\unet\` (GGUF) |
+   | `flux2-vae.safetensors` | `models\vae\` |
+   - On **8 GB**, prefer the **GGUF Q4/Q5** (via Unet Loader (GGUF)) over fp8 for headroom. The `unsloth/FLUX.2-klein-4B-GGUF` repo is **Apache-2.0 + ungated**. Use only the **4B** (Apache-2.0) — not klein 9B / dev (non-commercial).
+4. **Workflow:** distilled = **4 steps**; for GGUF, swap “Load Diffusion Model” → **Unet Loader (GGUF)**. FLUX.2 also does image *editing* (reference images) if you want that later.
+5. Generate the 7 inner slides, then the same hand-off: `bun run import-bg -- <key> <folder>` → `bun run export -- <key>`.
+
+> Diffusers route for FLUX.2 (`ART_MODEL=black-forest-labs/FLUX.2-klein-4B bun run art …`) also exists, but the BFL repo is **gated** (accept license + `hf login`) and needs a recent diffusers with `Flux2KleinPipeline`. ComfyUI + the ungated unsloth GGUF is the lower-friction 8 GB path.
+
+## Run FLUX.2 [klein] 4B via diffusers (the commercial upgrade)
 
 It's a *different* diffusers pipeline than FLUX.1, and quantization matters on 8 GB. Two routes:
 

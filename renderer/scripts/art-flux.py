@@ -109,7 +109,10 @@ def main():
     if not targets:
         sys.exit("No slides to generate (all are 'existing'; use --all to include them).")
 
-    print(f"Model: {ART_MODEL}  ·  pillar accent: {accent}  ·  {len(targets)} slide(s)")
+    _flux2 = any(t in ART_MODEL.lower() for t in ("flux.2", "flux2", "klein"))
+    _quant = "4bit-NF4" if (not _flux2 and ART_QUANTIZE in ("4bit", "nf4")) else "off (fp16+offload)"
+    print(f"Model: {ART_MODEL}  ·  accent: {accent}  ·  {len(targets)} slide(s)")
+    print(f"Config: steps={ART_STEPS}  size={ART_WIDTH}x{ART_HEIGHT}  quantize={_quant}")
     for i, s in targets:
         print(f"  slide {i + 1} ({s['role']}): {build_prompt(s, accent, post.get("core_claim", ""))[:110]}…")
     if "--dry-run" in flags:
