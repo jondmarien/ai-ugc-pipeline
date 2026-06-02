@@ -46,15 +46,27 @@ const accent = pillarAccent[pillar];
 type Role =
   | "cover" | "context" | "risk" | "mechanism" | "failure_point" | "defense" | "takeaway" | "cta";
 
-const SLIDE_SPEC: Array<{ role: Role; kicker: string; copy: string; subline: string; cta?: string; status?: string }> = [
-  { role: "cover", kicker: "AI × CYBERSECURITY", copy: "YOUR COVER HOOK GOES HERE", subline: "One-line promise of what they'll learn.", cta: "SWIPE →", status: "needed" },
-  { role: "context", kicker: "WHAT CHANGED", copy: "What happened, or the pattern to notice.", subline: "Keep it plain-language." },
-  { role: "risk", kicker: "WHY IT MATTERS", copy: "Why this matters to defenders.", subline: "Security impact, not hype." },
-  { role: "mechanism", kicker: "HOW IT WORKS", copy: "Safe, high-level mechanism.", subline: "No payloads or exploit steps." },
-  { role: "failure_point", kicker: "WHERE TEAMS FAIL", copy: "The people / process / tooling gap.", subline: "Where this slips through today." },
-  { role: "defense", kicker: "DEFENSIVE MOVE", copy: "One concrete control or review step.", subline: "Something they can do this week." },
-  { role: "takeaway", kicker: "TAKEAWAY", copy: "One memorable, save-worthy line.", subline: "" },
-  { role: "cta", kicker: "YOUR MOVE", copy: "A specific question for the comments?", subline: "Save this for your next review.", cta: "COMMENT + SAVE" },
+// Each slide ships with a rich, art-ready `vp` (visual_prompt) so `bun run art`
+// has a specific scene per role out of the box (no deriving from copy). These are
+// topic-agnostic archetypes — refine the bracketed bits for your exact post.
+const accentName = accent.name;
+const SLIDE_SPEC: Array<{ role: Role; kicker: string; copy: string; subline: string; vp: string; cta?: string; status?: string }> = [
+  { role: "cover", kicker: "AI × CYBERSECURITY", copy: "YOUR COVER HOOK GOES HERE", subline: "One-line promise of what they'll learn.", cta: "SWIPE →", status: "needed",
+    vp: `cinematic establishing shot for an AI-cybersecurity story about [the topic]: a dramatic central subject (analyst, SOC, AI agent, or device) in a dark high-contrast scene, ${accentName} rim light, strong empty lower-third for the headline` },
+  { role: "context", kicker: "WHAT CHANGED", copy: "What happened, or the pattern to notice.", subline: "Keep it plain-language.",
+    vp: `an abstract "what changed" scene for [the topic]: a shifting before/after pattern or emerging-signal motif, dark editorial, ${accentName} accent, no readable text` },
+  { role: "risk", kicker: "WHY IT MATTERS", copy: "Why this matters to defenders.", subline: "Security impact, not hype.",
+    vp: `a tension-building impact scene for [the topic]: a single focal hazard/stakes motif (a target, a breach path, a fragile control), dark and high-contrast, ${accentName} warning glow` },
+  { role: "mechanism", kicker: "HOW IT WORKS", copy: "Safe, high-level mechanism.", subline: "No payloads or exploit steps.",
+    vp: `a clean abstract diagrammatic scene showing the HIGH-LEVEL mechanism of [the topic] — glowing nodes and connections, a flow between abstract components; absolutely no exploit detail, payloads, or readable code; ${accentName} accent` },
+  { role: "failure_point", kicker: "WHERE TEAMS FAIL", copy: "The people / process / tooling gap.", subline: "Where this slips through today.",
+    vp: `a scene depicting a process/control gap for [the topic]: an overlooked checkpoint or skipped verification step, a person near an approve button with an ignored checklist, dark, ${accentName} accent` },
+  { role: "defense", kicker: "DEFENSIVE MOVE", copy: "One concrete control or review step.", subline: "Something they can do this week.",
+    vp: `a defensive control-room workflow scene for [the topic]: verification, permission gates, audit log, approval chain and identity-check icons, calm professional ${accentName} accent` },
+  { role: "takeaway", kicker: "TAKEAWAY", copy: "One memorable, save-worthy line.", subline: "",
+    vp: `a minimal iconic high-contrast scene for [the topic]: a single strong symbol (lock, shield, or verified checkmark) in deep negative space, dark gradient, subtle ${accentName} glow` },
+  { role: "cta", kicker: "YOUR MOVE", copy: "A specific question for the comments?", subline: "Save this for your next review.", cta: "COMMENT + SAVE",
+    vp: `a clean dark end-card scene with strong empty negative space for a question and handle, subtle ${accentName} glow, premium editorial cybersecurity look` },
 ];
 
 const slides = SLIDE_SPEC.map((s, i) => ({
@@ -63,8 +75,9 @@ const slides = SLIDE_SPEC.map((s, i) => ({
   kicker: s.kicker,
   on_slide_copy: s.copy,
   subline: s.subline,
-  visual_direction: "TODO: cinematic, dark, one accent glow; text-free background.",
-  visual_prompt: "TODO: realistic editorial cybersecurity visual, no rendered text, no logos, no credentials.",
+  visual_direction: `cinematic, dark, one ${accentName} accent glow; text-free background; protected lower-third.`,
+  // Rich per-slide art prompt — used directly by `bun run art`. Replace [the topic].
+  visual_prompt: s.vp,
   background_asset: s.role === "cover" ? `/backgrounds/${prefix}_cover.png` : "",
   // cover uses 'needed' (swap to 'existing' once you add the PNG); inners are procedural CSS.
   asset_status: s.status ?? "procedural",

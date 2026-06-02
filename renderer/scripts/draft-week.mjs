@@ -67,7 +67,7 @@ const prompt = [
   `WEEK RULES: spread across different pillars (don't repeat); assign sequential weekday dates starting from \`date +%F\` (use Bash); sharpen overlapping angles so the week doesn't repeat.`,
   `HARD RULES: no fabricated CVEs/stats/quotes — back every factual claim with a real source via WebSearch/WebFetch or tag it [Scenario]; no payloads/exploit/evasion; each post needs a defender takeaway.`,
   ``,
-  `For EACH idea: design the 8-slide post + caption + hashtags + question; research sources; pick a kebab slug; run \`cd renderer && bun run new -- <date> <slug> <pillar> --captions=<mode>\`; EDIT the JSON replacing every TODO with real sourced content (8 slides, slide1=cover, alt_text length 8, score.total = sum, >=1 source, reel beats filled, video.caption_mode set); \`bun run validate -- <date>_<slug>\` until clean. ${renderLine}`,
+  `For EACH idea: design the 8-slide post + caption + hashtags + question; research sources; pick a kebab slug; run \`cd renderer && bun run new -- <date> <slug> <pillar> --captions=<mode>\`; EDIT the JSON replacing every TODO with real sourced content (8 slides, slide1=cover, alt_text length 8, score.total = sum, >=1 source, reel beats filled, video.caption_mode set, and a SPECIFIC text-free visual_prompt per slide tied to that post's topic for \`bun run art\`); \`bun run validate -- <date>_<slug>\` until clean. ${renderLine}`,
   ``,
   `FINISH by printing one line per post: POST_KEY=<date>_<slug>  — then a summary table (date | slug | pillar | caption_mode | fact/scenario | output folder).`,
 ].join("\n");

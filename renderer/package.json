@@ -22,14 +22,14 @@
     "remotion:studio": "bunx remotion studio remotion/index.ts"
   },
   "dependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "zod": "^3.25.76",
     "@fontsource/archivo": "^5.2.5",
     "@fontsource/inter": "^5.2.5",
     "@fontsource/jetbrains-mono": "^5.2.5",
+    "@remotion/cli": "^4.0.400",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "remotion": "^4.0.400",
-    "@remotion/cli": "^4.0.400"
+    "zod": "4.3.6"
   },
   "devDependencies": {
     "@types/node": "^24.5.2",

@@ -70,7 +70,7 @@ const prompt = [
   `1. Design the 8-slide post (cover, context, risk, mechanism, failure_point, defense, takeaway, cta) + caption + hashtags + comment question, house voice.`,
   `2. Research sources with WebSearch/WebFetch; record {source, link, supports, confidence, claim_tag} for each factual claim.`,
   `3. Pick a short kebab-case slug from the idea.`,
-  `4. Run \`cd renderer && bun run new -- ${date} <slug> ${pillar} --captions=${captions} --voice=${voice} --music=${music}\` to scaffold, then EDIT renderer/content/posts/${date}_<slug>.json to replace EVERY TODO with real, sourced content. Keep schema rules (8 slides, slide1=cover, alt_text length 8, score.total = sum of axes, >=1 real source, reel beats filled, video.caption_mode="${captions}", video.audio.voice_mode="${voice}", video.audio.music_mode="${music}").`,
+  `4. Run \`cd renderer && bun run new -- ${date} <slug> ${pillar} --captions=${captions} --voice=${voice} --music=${music}\` to scaffold, then EDIT renderer/content/posts/${date}_<slug>.json to replace EVERY TODO with real, sourced content. Keep schema rules (8 slides, slide1=cover, alt_text length 8, score.total = sum of axes, >=1 real source, reel beats filled, video.caption_mode="${captions}", video.audio.voice_mode="${voice}", video.audio.music_mode="${music}"). Write a SPECIFIC, text-free visual_prompt for EVERY slide, tied to this exact topic (a concrete dark cinematic cybersecurity scene per slide; no rendered text/logos/exploit detail) so \`bun run art\` produces rich, on-topic imagery.`,
   `5. Run \`cd renderer && bun run validate -- ${date}_<slug>\` and fix until clean.`,
   `6. ${renderStep}`,
   `7. FINISH by printing, on its own final line, exactly: POST_KEY=${date}_<slug>`,

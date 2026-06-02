@@ -208,7 +208,7 @@ export const PostData = z
     post.slides.forEach((s, i) => {
       if (s.slide !== i + 1) {
         ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+          code: "custom",
           message: `slide.slide should be ${i + 1} but is ${s.slide}`,
           path: ["slides", i, "slide"],
         });
@@ -217,7 +217,7 @@ export const PostData = z
     // Alt text count must match slide count (QA gate).
     if (post.alt_text.length !== post.slides.length) {
       ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: "custom",
         message: `alt_text count (${post.alt_text.length}) must match slide count (${post.slides.length})`,
         path: ["alt_text"],
       });
@@ -225,7 +225,7 @@ export const PostData = z
     // Slide 1 must be the cover.
     if (post.slides[0]?.role !== "cover") {
       ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: "custom",
         message: "slide 1 must have role 'cover'",
         path: ["slides", 0, "role"],
       });
@@ -239,7 +239,7 @@ export const PostData = z
       post.score.defender_usefulness;
     if (sum !== post.score.total) {
       ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: "custom",
         message: `score.total (${post.score.total}) must equal sum of axes (${sum})`,
         path: ["score", "total"],
       });
