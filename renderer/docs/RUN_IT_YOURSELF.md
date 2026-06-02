@@ -49,10 +49,11 @@ bun run art    -- 2026-06-04_prompt-injection-agents   # AI backgrounds on every
 bun run export -- 2026-06-04_prompt-injection-agents   # carousel PNGs with imagery baked in
 bun run voice  -- 2026-06-04_prompt-injection-agents   # narration (voxcpm2 / bark — local, no server)
 bun run align  -- 2026-06-04_prompt-injection-agents   # Whisper word-timestamps → exact caption sync
-bun run reel   -- 2026-06-04_prompt-injection-agents   # narrated reel (voice over ducked music)
+bun run reel   -- 2026-06-04_prompt-injection-agents --fit-voice  # narrated reel, trimmed to the voice
 bun run package -- 2026-06-04_prompt-injection-agents  # caption/alt/sources/LICENSES/QA
 ```
-Skip any step you don't need (no `art` → procedural backgrounds; no `voice` → silent reel; no `align` → even-distributed captions). Model choices + FLUX.2 setup: [IMAGE_MODELS.md](IMAGE_MODELS.md).
+Skip any step you don't need (no `art` → procedural backgrounds; no `voice` → silent reel; no `align` → even-distributed captions).
+**`--fit-voice`** (on `bun run reel`): TTS usually speaks faster than the planned beats, leaving a silent tail. This reads the generated `voice.wav` length and trims the reel to it, rescaling beats/narration/word-timings so captions stay aligned — no dead air. Add `--tail=N` for N seconds of outro (default 0.6). Without it, the reel uses `video.duration_seconds` and just warns if there'd be a silent tail. Model choices + FLUX.2 setup: [IMAGE_MODELS.md](IMAGE_MODELS.md).
 
 ---
 

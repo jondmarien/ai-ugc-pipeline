@@ -4,7 +4,15 @@ import path from "node:path";
 import os from "node:os";
 import { loadPost, outputDir, ROOT } from "./lib.ts";
 
-const key = process.argv[2] ?? "2026-06-02_ai-phishing-training";
+// Args: <post-key> [--fit-voice] [--tail=<seconds>]
+//   --fit-voice  trim the reel to the narration length + rescale beats/narration/word
+//                timings so captions stay aligned and there's no silent tail.
+//   --tail=N     seconds of breathing room to keep after the voice (default 0.6).
+const argv = process.argv.slice(2);
+const flags = new Set(argv.filter((a) => a.startsWith("--")));
+const tailArg = [...flags].find((f) => f.startsWith("--tail="));
+const TAIL = tailArg ? Math.max(0, parseFloat(tailArg.split("=")[1]) || 0) : 0.6;
+const key = argv.find((a) => !a.startsWith("--")) ?? "2026-06-02_ai-phishing-training";
 const post = loadPost(key);
 if (!post.video?.enabled) {
   console.log(`Post ${post.post_id} has video.enabled=false — nothing to render.`);
@@ -37,18 +45,32 @@ if (audio) {
   const hasMusic = audio.music_mode !== "none";
   console.log(`Audio: voice=${hasVoice ? "yes" : "—"}  music=${hasMusic ? "yes" : "—"}`);
 
-  // Warn if the narration is much shorter than the reel (dead silent tail). TTS
-  // often speaks faster than the beat estimates, leaving a silent outro.
+  // Narration is usually shorter than the planned reel (TTS speaks faster than the
+  // beat estimates), leaving a silent tail. With --fit-voice we trim the reel to the
+  // voice length and rescale beats/narration/words so captions stay aligned; otherwise
+  // we just warn. Non-destructive: only the in-memory props are changed, not the JSON.
   if (hasVoice && audio.voice_file) {
     const vp = path.join(ROOT, "public", audio.voice_file.replace(/^\//, ""));
     try {
-      const dur = parseFloat(
+      const voiceDur = parseFloat(
         execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "default=nw=1:nk=1", vp], { encoding: "utf8" }).trim(),
       );
       const reelDur = post.video.duration_seconds;
-      if (Number.isFinite(dur) && reelDur - dur > 2) {
-        console.warn(`⚠ narration is ~${dur.toFixed(1)}s but the reel is ${reelDur}s — the last ~${(reelDur - dur).toFixed(0)}s will be silent.`);
-        console.warn(`  Tighten it: set video.duration_seconds≈${Math.ceil(dur) + 1} (and compress beats), or add a music bed for the tail.`);
+      if (Number.isFinite(voiceDur)) {
+        if (flags.has("--fit-voice")) {
+          const target = Math.round((voiceDur + TAIL) * 10) / 10;
+          const scale = target / reelDur;
+          for (const b of post.video.beats) {
+            b.start *= scale; b.end *= scale;
+            for (const w of b.words ?? []) { w.start *= scale; w.end *= scale; }
+          }
+          for (const n of post.video.narration ?? []) { n.start *= scale; n.end *= scale; }
+          post.video.duration_seconds = target;
+          console.log(`↳ --fit-voice: voice ~${voiceDur.toFixed(1)}s → reel ${target}s (+${TAIL}s tail), beats×${scale.toFixed(2)}.`);
+        } else if (reelDur - voiceDur > 2) {
+          console.warn(`⚠ narration is ~${voiceDur.toFixed(1)}s but the reel is ${reelDur}s — the last ~${(reelDur - voiceDur).toFixed(0)}s will be silent.`);
+          console.warn(`  Fix: add --fit-voice (auto-trims + realigns), set video.duration_seconds≈${Math.ceil(voiceDur) + 1}, or add a music bed.`);
+        }
       }
     } catch { /* ffprobe optional */ }
   }
