@@ -60,6 +60,20 @@ bun run export -- <post-key>
 ```
 **No-login / smaller-download alternative:** use a **GGUF** build in ComfyUI — community GGUF repos (e.g. `city96/FLUX.1-schnell-gguf`, Q4/Q5, ~6–8GB) are typically **ungated**. Generate there, drop the PNGs into `public/backgrounds/<prefix>/`, set those slides to `asset_status: "existing"`, then `bun run export` (same Route B as FLUX.2 below).
 
+## Make it fast on 8 GB (the offload bottleneck)
+On an 8 GB card, fp16 FLUX (~24 GB) doesn't fit, so `enable_model_cpu_offload()` swaps weights CPU↔GPU **every step** — that I/O, not the 4 steps, is why it's slow. Fixes, biggest first:
+
+1. **4-bit NF4 (bitsandbytes) — the big win.** The 12B transformer + T5 shrink to ~8 GB, so they mostly stay resident and offloading nearly stops. Ampere (RTX 30xx) supported (fp8 is *not* — needs 40xx+).
+   ```bash
+   uv pip install bitsandbytes
+   ART_QUANTIZE=4bit bun run art -- <post-key>
+   ```
+2. **Smaller frames** (secondary): `ART_WIDTH=768 ART_HEIGHT=1024 bun run art -- <key>` (default 832×1216; export cover-fits to 1080×1350 anyway).
+3. **Fewer steps**: schnell is already 4-step; `ART_STEPS=2` or `3` is usually fine for backgrounds.
+4. **GGUF in ComfyUI** (Route B below) is the most VRAM-optimized path of all for 8 GB and avoids diffusers entirely.
+
+Combine them: `ART_QUANTIZE=4bit ART_STEPS=3 bun run art -- <key>`. (The model loads once and generates all 7 inner slides, so per-image cost is what matters.)
+
 ## Run FLUX.2 [klein] 4B (the commercial upgrade)
 
 It's a *different* diffusers pipeline than FLUX.1, and quantization matters on 8 GB. Two routes:
