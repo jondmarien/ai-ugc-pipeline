@@ -5,11 +5,11 @@ import "@fontsource/inter/500.css";
 import "@fontsource/jetbrains-mono/500.css";
 import { palette, pillarAccent } from "./theme";
 import { Scene } from "./Scene";
-import { CaptionLayer, type CaptionMode } from "./CaptionLayer";
+import { CaptionLayer, type CaptionMode, type WordTiming } from "./CaptionLayer";
 import { EndCard } from "./EndCard";
 import { AudioBed, type AudioConfig } from "./AudioBed";
 
-type Beat = { start: number; end: number; slide_ref: number; purpose: string; caption: string };
+type Beat = { start: number; end: number; slide_ref: number; purpose: string; caption: string; words?: WordTiming[] };
 type Slide = { role: string; background_asset?: string; asset_status?: string; on_slide_copy?: string };
 type Post = {
   pillar: string;
@@ -42,7 +42,7 @@ export function ReelComposition({ post }: { post: Post }) {
             {isCta ? (
               <EndCard question={post.comment_prompt ?? slide.on_slide_copy ?? ""} handle={handle} accent={accent} />
             ) : (
-              <CaptionLayer text={beat.caption} accent={accent} mode={captionMode} durationInFrames={durationInFrames} />
+              <CaptionLayer text={beat.caption} accent={accent} mode={captionMode} durationInFrames={durationInFrames} words={beat.words} />
             )}
           </Sequence>
         );

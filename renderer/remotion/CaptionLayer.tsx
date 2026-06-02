@@ -1,31 +1,41 @@
-import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
+import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { fonts, palette } from "./theme";
 
 export type CaptionMode = "block" | "word" | "highlight";
+export type WordTiming = { text: string; start: number; end: number }; // seconds, relative to beat
 
 // Burned-in lower-third captions with three animation modes:
 //   block     — full caption fades in (default)
 //   word      — one word at a time (karaoke), with a small pop
 //   highlight — full line shown; the current word lit in the accent
-// Word timing is distributed evenly across the beat window (durationInFrames).
-// When real audio + word timestamps exist later, pass explicit per-word timing.
+// Word timing: if `words` (from Whisper alignment, `bun run align`) is provided, the
+// active word is chosen by real timestamps; otherwise words are distributed evenly
+// across the beat window.
 export function CaptionLayer({
   text,
   accent,
   mode = "block",
   durationInFrames,
+  words: timedWords,
 }: {
   text: string;
   accent: string;
   mode?: CaptionMode;
   durationInFrames: number;
+  words?: WordTiming[];
 }) {
   const frame = useCurrentFrame();
-  const words = text.trim().split(/\s+/).filter(Boolean);
+  const { fps } = useVideoConfig();
+  const useTimed = !!(timedWords && timedWords.length);
+  const words = useTimed ? timedWords!.map((w) => w.text) : text.trim().split(/\s+/).filter(Boolean);
   const safeDur = Math.max(1, durationInFrames);
-  const activeIdx = words.length
-    ? Math.min(words.length - 1, Math.max(0, Math.floor((frame / safeDur) * words.length)))
-    : 0;
+  let activeIdx = 0;
+  if (useTimed) {
+    const t = frame / fps; // seconds into the beat
+    for (let i = 0; i < timedWords!.length; i++) if (timedWords![i].start <= t) activeIdx = i;
+  } else if (words.length) {
+    activeIdx = Math.min(words.length - 1, Math.max(0, Math.floor((frame / safeDur) * words.length)));
+  }
 
   const wrap: React.CSSProperties = {
     justifyContent: "flex-end",

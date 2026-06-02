@@ -41,13 +41,13 @@ Ideas are scored 1–5 on credibility / relevance / novelty / visual drama / def
 
 ```bash
 cd renderer
-npm install
-npx playwright install chromium      # carousel screenshots
-npx remotion browser ensure          # reel rendering (once)
+bun install
+bunx playwright install chromium      # carousel screenshots
+bunx remotion browser ensure          # reel rendering (once)
 
-npm run export  -- 2026-06-02_ai-phishing-training   # 8× 1080×1350 carousel PNGs
-npm run package -- 2026-06-02_ai-phishing-training   # caption/alt/sources/licenses/QA
-npm run reel    -- 2026-06-02_ai-phishing-training   # 1080×1920 @30fps MP4 (optional)
+bun run export  -- 2026-06-02_ai-phishing-training   # 8× 1080×1350 carousel PNGs
+bun run package -- 2026-06-02_ai-phishing-training   # caption/alt/sources/licenses/QA
+bun run reel    -- 2026-06-02_ai-phishing-training   # 1080×1920 @30fps MP4 (optional)
 ```
 
 Output lands in `pipeline/renders/2026-06-02_ai-phishing-training/`. Full docs: [`renderer/README.md`](renderer/README.md) and [`renderer/docs/`](renderer/docs/).
@@ -59,8 +59,8 @@ With the `claude` CLI installed, the repo's two skills (`.claude/skills/`) do th
 /draft-post AI agents leaking RAG data | model_security | captions=highlight
 /draft-week voice clone fraud::offensive_ai | RAG leaks::model_security | shadow AI::governance
 # or headless:
-cd renderer && npm run draft -- "AI agents leaking RAG data" model_security --captions=highlight
-cd renderer && npm run draft-week -- "idea1::offensive_ai" "idea2::model_security::captions=word" "idea3::governance"
+cd renderer && bun run draft -- "AI agents leaking RAG data" model_security --captions=highlight
+cd renderer && bun run draft-week -- "idea1::offensive_ai" "idea2::model_security::captions=word" "idea3::governance"
 ```
 `/draft-post` makes one post; `/draft-week` batches up to 5 with pillar variety + a posting calendar. Both research real sources, write schema-valid JSON, validate, and render the carousel + reel. **Subtitle style** is selectable per post — `block` (paragraph), `word` (karaoke), or `highlight` (active word lit). See [`renderer/docs/RUN_IT_YOURSELF.md`](renderer/docs/RUN_IT_YOURSELF.md) §2b. (Always review generated sources before posting — the no-fabrication rule still applies.)
 

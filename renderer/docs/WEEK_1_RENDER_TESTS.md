@@ -14,11 +14,11 @@ Render tests using the real Week-1 posts from `../../pipeline/content/WEEK_1_POS
 | 4 | Batch smoke test | Posts 1–5 | one command | ⛔ TODO |
 
 ## Test 1 — Post 1 (DONE): acceptance evidence
-- `npm run validate -- 2026-06-02_ai-phishing-training` → valid (8 slides, 22/25, 8 alt-text, 2 sources).
-- `npm run export -- …` → 8 PNGs, each parsed at exactly **1080×1350**, into `pipeline/renders/2026-06-02_ai-phishing-training/`.
+- `bun run validate -- 2026-06-02_ai-phishing-training` → valid (8 slides, 22/25, 8 alt-text, 2 sources).
+- `bun run export -- …` → 8 PNGs, each parsed at exactly **1080×1350**, into `pipeline/renders/2026-06-02_ai-phishing-training/`.
 - Cover reuses the text-free `cover_bg_01_ai_phishing.png`; React renders the headline on top. Inner slides use procedural CSS backgrounds.
-- `npm run package -- …` → `caption.txt`, `alt_text.txt`, `sources.md`, `LICENSES.md`, `render_qa_checklist.md`.
-- `npm run reel -- …` → `…_reel.mp4` (1080×1920, H.264, 30fps), hook + 4 beats + CTA end card.
+- `bun run package -- …` → `caption.txt`, `alt_text.txt`, `sources.md`, `LICENSES.md`, `render_qa_checklist.md`.
+- `bun run reel -- …` → `…_reel.mp4` (1080×1920, H.264, 30fps), hook + 4 beats + CTA end card.
 
 ## Test 2 — Post 4 or 5 (TODO): proves new-visual mode
 The first post reused an existing background. Post 4 (deepfake helpdesk) and Post 5 (shadow AI) have **no pre-made backgrounds**, so they prove the design system generalizes.
@@ -26,7 +26,7 @@ The first post reused an existing background. Post 4 (deepfake helpdesk) and Pos
 Steps:
 1. Map the Markdown post → `content/posts/<date>_<slug>.json` (no invented fields; carry NCSC/Arup/OWASP sources + claim tags exactly).
 2. Either (a) leave inner slides `asset_status: "procedural"` (works today, zero new art), or (b) generate text-free backgrounds per `../../pipeline/content/VISUAL_PROMPT_BANK.md`, drop them in `public/backgrounds/<slug>/`, and set `asset_status: "generated"` + `background_asset`.
-3. `npm run export` / `package` / `reel`.
+3. `bun run export` / `package` / `reel`.
 
 Acceptance: 8 PNGs at 1080×1350 with the correct pillar accent (Post 4 cyan/amber offensive_ai; Post 5 amber governance), QA file generated, cover legible as a thumbnail.
 

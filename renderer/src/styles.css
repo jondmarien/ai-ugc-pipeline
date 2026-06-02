@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* Slides use inline styles from src/design/tokens.ts — no Tailwind utilities. */
 
 /* Bundled fonts → deterministic offline rendering (no network during screenshot). */
 @import "@fontsource/archivo/400.css";

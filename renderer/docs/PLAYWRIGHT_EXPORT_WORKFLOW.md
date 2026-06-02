@@ -15,10 +15,10 @@ Deterministic carousel export. Implementation: `../scripts/export-carousel.ts` (
 
 ```bash
 cd renderer
-npm install
-npx playwright install chromium     # once
-npm run export -- 2026-06-02_ai-phishing-training
-npm run package -- 2026-06-02_ai-phishing-training   # caption/alt/sources/licenses/QA
+bun install
+bunx playwright install chromium     # once
+bun run export -- 2026-06-02_ai-phishing-training
+bun run package -- 2026-06-02_ai-phishing-training   # caption/alt/sources/licenses/QA
 ```
 
 ## Export settings (and why)

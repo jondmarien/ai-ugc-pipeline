@@ -19,7 +19,7 @@
   },
   "canvas": { "width": 1080, "height": 1350, "safe_margin": 96 },
   "brand": {
-    "handle": "@your_handle",
+    "handle": "@chron0s_cyb3r_w0rld.ai",
     "accent_name": "electric blue",
     "pillar_accent": "model_security",
     "palette": { "bg": "#05070d", "fg": "#f8fafc", "muted": "#94a3b8", "accent": "#3b82f6", "danger": "#ef4444" },
@@ -158,7 +158,7 @@
     "export_name": "2026-06-04_prompt-injection-agents_reel.mp4",
     "caption_mode": "highlight",
     "audio": {
-      "voice_mode": "voxcpm2",
+      "voice_mode": "http",
       "voice_file": "/audio/2026-06-04_prompt-injection-agents/voice.wav",
       "voice_gain_db": 0,
       "music_mode": "none",

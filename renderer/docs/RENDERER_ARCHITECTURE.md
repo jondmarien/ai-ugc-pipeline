@@ -45,20 +45,20 @@ ai-ugc-pipeline/
 Install once:
 ```bash
 cd renderer
-npm install
-npx playwright install chromium    # carousel export
-# Remotion downloads its own headless browser on first `npm run reel`.
+bun install
+bunx playwright install chromium    # carousel export
+# Remotion downloads its own headless browser on first `bun run reel`.
 ```
 
 ## Commands
 
 | Command | Does |
 | --- | --- |
-| `npm run dev` | Live preview server (`http://localhost:4317/?post=<slug>&mode=deck`). |
-| `npm run validate -- <post>` | Validate a post JSON against the schema. |
-| `npm run export -- <post>` | Render 8 carousel PNGs → `pipeline/renders/<folder>/`. |
-| `npm run package -- <post>` | Write caption/alt/sources/licenses/QA files into the same folder. |
-| `npm run reel -- <post>` | Render the Reel MP4 (if `video.enabled`) + ffprobe check. |
+| `bun run dev` | Live preview server (`http://localhost:4317/?post=<slug>&mode=deck`). |
+| `bun run validate -- <post>` | Validate a post JSON against the schema. |
+| `bun run export -- <post>` | Render 8 carousel PNGs → `pipeline/renders/<folder>/`. |
+| `bun run package -- <post>` | Write caption/alt/sources/licenses/QA files into the same folder. |
+| `bun run reel -- <post>` | Render the Reel MP4 (if `video.enabled`) + ffprobe check. |
 
 `<post>` = slug / post_id / filename_prefix (e.g. `2026-06-02_ai-phishing-training`).
 

@@ -8,9 +8,9 @@ No agent required. This is the full self-serve guide to producing carousels + re
 
 ```bash
 cd renderer
-npm install
-npx playwright install chromium     # carousel screenshots
-npx remotion browser ensure         # reels (downloads a headless browser once)
+bun install
+bunx playwright install chromium     # carousel screenshots
+bunx remotion browser ensure         # reels (downloads a headless browser once)
 ```
 
 ## 2. The commands
@@ -19,21 +19,26 @@ Every command takes a **post key** = any unique substring of a file in `content/
 
 | Command | Output |
 | --- | --- |
-| `npm run new -- <YYYY-MM-DD> <slug> <pillar>` | scaffold a new blank, schema-valid post JSON |
-| `npm run validate -- <key>` | check a post JSON is well-formed (fails loud on mistakes) |
-| `npm run export -- <key>` | 8 carousel PNGs (1080×1350) → `pipeline/renders/<date_slug>/` |
-| `npm run package -- <key>` | `caption.txt`, `alt_text.txt`, `sources.md`, `LICENSES.md`, `render_qa_checklist.md` |
-| `npm run reel -- <key>` | `<date_slug>_reel.mp4` (1080×1920 @30fps) — only if `video.enabled: true` |
-| `npm run dev` | live preview at `http://localhost:4317/?post=<slug>&mode=deck` |
+| `bun run new -- <YYYY-MM-DD> <slug> <pillar>` | scaffold a new blank, schema-valid post JSON |
+| `bun run validate -- <key>` | check a post JSON is well-formed (fails loud on mistakes) |
+| `bun run export -- <key>` | 8 carousel PNGs (1080×1350) → `pipeline/renders/<date_slug>/` |
+| `bun run package -- <key>` | `caption.txt`, `alt_text.txt`, `sources.md`, `LICENSES.md`, `render_qa_checklist.md` |
+| `bun run reel -- <key>` | `<date_slug>_reel.mp4` (1080×1920 @30fps) — only if `video.enabled: true` |
+| `bun run voice -- <key>` | generate narration → `public/audio/<prefix>/voice.wav` (routes by `voice_mode`) |
+| `bun run align -- <key>` | Whisper word-timestamps → `beat.words[]` for exact `word`/`highlight` caption sync |
+| `bun run dev` | live preview at `http://localhost:4317/?post=<slug>&mode=deck` |
+| `bun run typecheck` | typecheck app + remotion |
 
 `pillar` ∈ `offensive_ai · model_security · data_leakage · defensive_ai · governance · myth_busting`.
 
+> **Runtime note:** this project runs on **Bun** (package manager + script runner; Bun runs the `.ts`/`.mjs` scripts natively — no `tsx`/`node` needed). Two carve-outs run on **Node** because Bun's runtime can't drive their Chromium: `bun run export` invokes `tsx` (Node) for Playwright, and `bun run reel` shells `bunx remotion` (Node-backed render). You don't do anything differently — the `bun run` commands handle it.
+
 ### Typical full run for one post
 ```bash
-npm run validate -- 2026-06-02_ai-phishing-training
-npm run export   -- 2026-06-02_ai-phishing-training
-npm run package  -- 2026-06-02_ai-phishing-training
-npm run reel     -- 2026-06-02_ai-phishing-training
+bun run validate -- 2026-06-02_ai-phishing-training
+bun run export   -- 2026-06-02_ai-phishing-training
+bun run package  -- 2026-06-02_ai-phishing-training
+bun run reel     -- 2026-06-02_ai-phishing-training
 ```
 
 ---
@@ -51,7 +56,7 @@ It researches real sources (WebSearch), writes a schema-valid `content/posts/<da
 **Headless / one-liner / CI:**
 ```bash
 cd renderer
-npm run draft -- "AI agents leaking RAG data" model_security
+bun run draft -- "AI agents leaking RAG data" model_security
 #   add [YYYY-MM-DD] to set the date
 #   --captions=block|word|highlight   reel subtitle animation (default block)
 #   --no-render       stop after JSON + validate (review before rendering)
@@ -65,11 +70,11 @@ npm run draft -- "AI agents leaking RAG data" model_security
 # interactive:
 /draft-week voice clone fraud::offensive_ai | RAG leaks::model_security::captions=highlight | shadow AI::governance
 # headless:
-cd renderer && npm run draft-week -- "voice clone fraud::offensive_ai" "RAG leaks::model_security::captions=highlight" "shadow AI::governance"
+cd renderer && bun run draft-week -- "voice clone fraud::offensive_ai" "RAG leaks::model_security::captions=highlight" "shadow AI::governance"
 ```
 Spreads posts across pillars, assigns sequential weekday dates, drafts + renders each into `pipeline/renders/`, and prints a week table. Per-idea options: `::pillar` and `::captions=word|highlight`. (Token-heavy — add `--no-render` to review copy first.)
 
-> The LLM does the **content + source research**; your deterministic `npm` scripts do the **rendering**. The no-fabrication rule still applies — **review the generated `sources[]` and confirm the links are real before you post.** Quote the idea so it's one argument.
+> The LLM does the **content + source research**; your deterministic `bun` scripts do the **rendering**. The no-fabrication rule still applies — **review the generated `sources[]` and confirm the links are real before you post.** Quote the idea so it's one argument.
 
 ---
 
@@ -77,7 +82,7 @@ Spreads posts across pillars, assigns sequential weekday dates, drafts + renders
 
 ### Fastest: scaffold + fill
 ```bash
-npm run new -- 2026-06-13 ai-agent-permissions model_security
+bun run new -- 2026-06-13 ai-agent-permissions model_security
 # → content/posts/2026-06-13_ai-agent-permissions.json  (8 slides, reel enabled, all TODOs)
 ```
 Then open the file and replace every `TODO`:
@@ -90,8 +95,8 @@ Then open the file and replace every `TODO`:
 
 Then:
 ```bash
-npm run validate -- 2026-06-13_ai-agent-permissions    # confirm it's clean
-npm run export -- 2026-06-13_ai-agent-permissions && npm run package -- 2026-06-13_ai-agent-permissions && npm run reel -- 2026-06-13_ai-agent-permissions
+bun run validate -- 2026-06-13_ai-agent-permissions    # confirm it's clean
+bun run export -- 2026-06-13_ai-agent-permissions && bun run package -- 2026-06-13_ai-agent-permissions && bun run reel -- 2026-06-13_ai-agent-permissions
 ```
 
 ### Alternative: copy an existing post
@@ -108,23 +113,25 @@ cp content/posts/2026-06-02_ai-phishing-training.json content/posts/2026-06-13_m
 ### Reels specifically
 A reel renders from the post's `video` block. Each `beat` = `{start, end, slide_ref, purpose, motion, caption}`; the beat with `"purpose": "cta"` becomes the end card. Keep beats 3–6s, hook in the first ~2s. Full model: `REMOTION_REEL_WORKFLOW.md`.
 
-**Subtitle style** is `video.caption_mode`: `block` (paragraph per scene, default), `word` (one word at a time), or `highlight` (full line, active word lit). Set it with `npm run new -- … --captions=<mode>` (or `--captions=` on draft, `captions=` in the slash commands), or just edit `video.caption_mode` in the JSON and re-run `npm run reel`.
+**Subtitle style** is `video.caption_mode`: `block` (paragraph per scene, default), `word` (one word at a time), or `highlight` (full line, active word lit). Set it with `bun run new -- … --captions=<mode>` (or `--captions=` on draft, `captions=` in the slash commands), or just edit `video.caption_mode` in the JSON and re-run `bun run reel`.
+
+**Exact word sync (Whisper):** by default `word`/`highlight` distribute word timing evenly across each beat (good enough). For *lip-tight* sync, after you've generated `voice.wav`, run **`bun run align -- <key>`** — it transcribes the audio with Whisper (`faster-whisper`, word timestamps, uses your `.venv`/GPU) and writes real per-word timings into `video.beats[].words[]`. Then `bun run reel -- <key>` snaps each word to the audio. Setup: `uv pip install faster-whisper`. Model via `WHISPER_MODEL` (default `base.en`). Whisper is **speech→text** — it aligns the existing narration, it does not generate the voice.
 
 **Audio** is `video.audio` and is optional + file-driven (default = silent):
 - `voice_mode`: `none` | `voxcpm2` (generate locally) | `file` (you supply `voice.wav`).
 - `music_mode`: `none` | `free` | `licensed` | `generated` | `file`.
 - Files live in `renderer/public/audio/<prefix>/` (`voice.wav`, `music.mp3`). Music is auto-ducked under the voice (`music_gain_db`, default −18).
 - `voice_mode` choices: `none` · **`voxcpm2`** (local model) · **`http`** (OpenAI-compatible TTS server) · `file` (your own WAV).
-- Set modes at generation: `npm run new -- … --voice=voxcpm2 --music=free` (also `--voice=`/`--music=` on `npm run draft`).
-- **Generate narration:** `npm run voice -- <key>` (routes by `voice_mode`; override with `--voxcpm2`/`--http`):
+- Set modes at generation: `bun run new -- … --voice=voxcpm2 --music=free` (also `--voice=`/`--music=` on `bun run draft`).
+- **Generate narration:** `bun run voice -- <key>` (routes by `voice_mode`; override with `--voxcpm2`/`--http`):
   - **voxcpm2** — local model. Setup with **uv**: `cd renderer && uv venv && uv pip install voxcpm soundfile torch`. The dispatcher auto-uses `.venv`. VoxCPM2 ≈ 5 GB / 48 kHz; smaller via `VOXCPM_MODEL=openbmb/VoxCPM1.5`.
-  - **http** — no download. Run a TTS server, then `npm run voice -- <key> --http`. Easiest: **Kokoro-FastAPI** `docker run -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-gpu` (~80 MB, Apache-2.0). Configure with `TTS_BASE_URL` / `TTS_MODEL` / `TTS_VOICE` / `TTS_FORMAT`. **LM Studio (:1234) does not serve `/v1/audio/speech`, and Gemma is an LLM — use a TTS server.**
+  - **http** — no download. Run a TTS server, then `bun run voice -- <key> --http`. Easiest: **Kokoro-FastAPI** `docker run -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-gpu` (~80 MB, Apache-2.0). Configure with `TTS_BASE_URL` / `TTS_MODEL` / `TTS_VOICE` / `TTS_FORMAT`. **LM Studio (:1234) does not serve `/v1/audio/speech`, and Gemma is an LLM — use a TTS server.**
   - Apply the AI-audio disclosure; use a synthetic or your own authorized voice.
-- **Music:** drop a commercial-safe track at `public/audio/<prefix>/music.mp3` (Pixabay / YouTube Audio Library / Mixkit — see `../../pipeline/media/MUSIC_SFX_GUIDE.md`). **Don't want music? Set `music_mode: none`** → voice-only reel; **commands don't change** (`npm run voice` then `npm run reel`).
-- **If a file is missing**, `npm run reel` warns and renders **silent/voice-only** (it won't crash) — add files later and re-run `npm run reel -- <key>`. Log every audio asset in `LICENSES.md` (QA Gate 7). **Never use F5-TTS base weights commercially (CC-BY-NC).** The PoC reel has **no audio** — to add narration (VoxCPM2) + music, follow that doc's "Growing the stub into a narrated cut" section and log everything in `LICENSES.md`.
+- **Music:** drop a commercial-safe track at `public/audio/<prefix>/music.mp3` (Pixabay / YouTube Audio Library / Mixkit — see `../../pipeline/media/MUSIC_SFX_GUIDE.md`). **Don't want music? Set `music_mode: none`** → voice-only reel; **commands don't change** (`bun run voice` then `bun run reel`).
+- **If a file is missing**, `bun run reel` warns and renders **silent/voice-only** (it won't crash) — add files later and re-run `bun run reel -- <key>`. Log every audio asset in `LICENSES.md` (QA Gate 7). **Never use F5-TTS base weights commercially (CC-BY-NC).** The PoC reel has **no audio** — to add narration (VoxCPM2) + music, follow that doc's "Growing the stub into a narrated cut" section and log everything in `LICENSES.md`.
 
 ### Render the rest of Week 1
-Only Post 1 ships as JSON. Posts 2–5 are Markdown in `../../pipeline/content/WEEK_1_POSTS.md` — scaffold one JSON per post (`npm run new …`), paste that post's slides/caption/sources, then export.
+Only Post 1 ships as JSON. Posts 2–5 are Markdown in `../../pipeline/content/WEEK_1_POSTS.md` — scaffold one JSON per post (`bun run new …`), paste that post's slides/caption/sources, then export.
 
 ---
 
@@ -136,7 +143,7 @@ The renderer only draws decided content. New ideas come from the content kit (hu
 2. **Score & pick** → keep the 5 best (produce if total ≥ 18); vary the pillars.
 3. **Draft** → use `../../pipeline/content/POST_TEMPLATE.md` (8-slide script + caption + sources).
 4. **QA** → run `../../pipeline/content/QA_CHECKLIST.md`.
-5. **Render** → `npm run new …`, fill it from your draft, then export/package/reel.
+5. **Render** → `bun run new …`, fill it from your draft, then export/package/reel.
 
 Weekly cadence (Mon intake → Tue score → Wed script → Thu render → Fri QA/post) lives in `../../pipeline/content/CONTENT_PIPELINE.md`. "Week 2" is just repeating that loop and dropping new JSON into `content/posts/`.
 
@@ -147,7 +154,7 @@ Weekly cadence (Mon intake → Tue score → Wed script → Thu render → Fri Q
 | Symptom | Fix |
 | --- | --- |
 | `export`/`dev` hangs at startup | A stale dev server holds port 4317. Find + kill it: `netstat -ano \| grep :4317` then `taskkill //PID <pid> //F`. |
-| `reel` errors "setting up headless browser" | Run `npx remotion browser ensure` once. |
+| `reel` errors "setting up headless browser" | Run `bunx remotion browser ensure` once. |
 | `reel` prints a `zod version mismatch` warning | Harmless — the renderer doesn't use Remotion's zod feature. Ignore it. |
 | `validate`/`export` exits non-zero with field errors | The JSON is incomplete/inconsistent. Fix the named field — the renderer never guesses. Common ones: `alt_text` count ≠ 8, `score.total` ≠ sum, slide 1 not `cover`. |
 | Cover renders blank/procedural when you expected an image | The PNG isn't in `public/backgrounds/` or `asset_status` isn't `"existing"`. |
