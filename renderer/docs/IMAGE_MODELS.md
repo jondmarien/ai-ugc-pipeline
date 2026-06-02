@@ -74,6 +74,36 @@ On an 8 GB card, fp16 FLUX (~24 GB) doesn't fit, so `enable_model_cpu_offload()`
 
 Combine them: `ART_QUANTIZE=4bit ART_STEPS=3 bun run art -- <key>`. (The model loads once and generates all 7 inner slides, so per-image cost is what matters.)
 
+## ComfyUI + GGUF (FLUX.1-schnell — best for 8 GB, ungated)
+GGUF Q4/Q5 is the most VRAM-efficient local route and needs **no HF login**. One-time setup, then generate the 7 inner backgrounds and drop them into the pipeline.
+
+### A. Install ComfyUI + the GGUF node (put it on E: to save space)
+1. Download **ComfyUI Desktop** (or the Windows portable zip) and install/extract it to **`E:\ComfyUI`** so models land on E:.
+2. Install **ComfyUI-Manager** if it isn't bundled (Desktop has it). Open Manager → **Custom Nodes** → install **“ComfyUI-GGUF” (city96)** → restart.
+
+### B. Download 3 model files (all ungated) into `E:\ComfyUI\models\…`
+| File | From (HF repo) | Put in |
+| --- | --- | --- |
+| `flux1-schnell-Q5_K_S.gguf` (or `Q4_K_S` for less VRAM) | `city96/FLUX.1-schnell-gguf` | `models\unet\` |
+| `t5xxl_fp8_e4m3fn.safetensors` + `clip_l.safetensors` | `comfyanonymous/flux_text_encoders` | `models\clip\` |
+| `ae.safetensors` (FLUX VAE) | `Comfy-Org/Lumina_Image_2.0_Repackaged` *(or copy from your HF cache `E:\ai-ugc-hf\hub` after the diffusers download)* | `models\vae\` |
+
+> ComfyUI-Manager’s **Model Manager** can fetch the GGUF + encoders for you (search “flux schnell gguf”, “t5xxl fp8”, “clip_l”) — easiest.
+
+### C. Build the workflow (or load Manager’s Flux GGUF template)
+Nodes: **Unet Loader (GGUF)** → pick the `.gguf`; **DualCLIPLoader** (type `flux`) → `t5xxl_fp8…` + `clip_l`; **Load VAE** → `ae.safetensors`; **CLIP Text Encode (Prompt)**; **EmptyLatentImage** `832×1216` (or `768×1024`); **KSampler** → `steps 4`, `cfg 1.0`, `sampler euler`, `scheduler simple`, `denoise 1.0`; **VAE Decode** → **Save Image**. (Schnell uses cfg 1.0 / 4 steps — no FluxGuidance node needed.)
+
+### D. Generate one image per inner slide
+For each slide 2–8, paste that slide’s `visual_prompt` from `content/posts/2026-06-04_prompt-injection-agents.json` (e.g. append `electric blue accent glow, no text` to keep the look). Queue → save each PNG.
+
+### E. Bring them into the pipeline
+1. Put the PNGs in `renderer/public/backgrounds/2026-06-04_prompt-injection-agents/` named by slide+role:
+   `02_context.png 03_risk.png 04_mechanism.png 05_failure-point.png 06_defense.png 07_takeaway.png 08_cta.png`
+2. In the post JSON, for those slides set `"asset_status": "existing"` and `"background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/NN_role.png"`.
+3. `cd renderer && bun run export -- 2026-06-04_prompt-injection-agents` → React composites your headline/captions over the GGUF backgrounds.
+
+This sidesteps diffusers entirely (no WinError, no offload thrash) and is the fastest local option on 8 GB.
+
 ## Run FLUX.2 [klein] 4B (the commercial upgrade)
 
 It's a *different* diffusers pipeline than FLUX.1, and quantization matters on 8 GB. Two routes:
