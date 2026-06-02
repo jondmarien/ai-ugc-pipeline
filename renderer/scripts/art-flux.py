@@ -111,9 +111,28 @@ def main():
             'Install:  uv pip install "diffusers>=0.31" transformers accelerate torch sentencepiece protobuf pillow'
         )
 
-    print(f"Loading {ART_MODEL} (first run downloads weights)…")
-    pipe = FluxPipeline.from_pretrained(ART_MODEL, torch_dtype=torch.bfloat16)
-    pipe.enable_model_cpu_offload()  # fit in 8GB VRAM
+    # FLUX.2 [klein] 4B (Apache-2.0, fits 8GB at FP8) uses a DIFFERENT pipeline class
+    # than FLUX.1. We try it, but the most reliable 8GB route for FLUX.2 is ComfyUI's
+    # official FP8 Klein-4B workflow. FLUX.2 [dev]/[klein] 9B are non-commercial + too big.
+    is_flux2 = any(t in ART_MODEL.lower() for t in ("flux.2", "flux2", "klein"))
+    if is_flux2:
+        try:
+            from diffusers import Flux2KleinPipeline as Pipe  # type: ignore
+        except Exception:
+            sys.exit(
+                "This diffusers build lacks Flux2KleinPipeline (needed for FLUX.2 klein).\n"
+                "Options: (1) upgrade diffusers (uv pip install -U diffusers), "
+                "(2) run FLUX.2 klein 4B in ComfyUI with the official FP8 workflow (best for 8GB), "
+                "or (3) keep ART_MODEL=black-forest-labs/FLUX.1-schnell (verified path).\n"
+                "Use only the Apache-2.0 4B variant for commercial work — the 9B/dev models are non-commercial."
+            )
+        print(f"Loading {ART_MODEL} via Flux2KleinPipeline (first run downloads weights)…")
+        pipe = Pipe.from_pretrained(ART_MODEL, torch_dtype=torch.bfloat16)
+        pipe.enable_sequential_cpu_offload()  # aggressive offload to fit 8GB
+    else:
+        print(f"Loading {ART_MODEL} via FluxPipeline (first run downloads weights)…")
+        pipe = FluxPipeline.from_pretrained(ART_MODEL, torch_dtype=torch.bfloat16)
+        pipe.enable_model_cpu_offload()  # fit in 8GB VRAM
 
     for i, s in targets:
         role = ROLE_FILE.get(s["role"], s["role"])

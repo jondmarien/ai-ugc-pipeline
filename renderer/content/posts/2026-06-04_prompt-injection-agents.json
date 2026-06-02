@@ -8,7 +8,10 @@
   "pillar": "model_security",
   "audience": "builders",
   "core_claim": "Indirect prompt injection — malicious instructions hidden in content an AI agent reads — gets dangerous when the agent can take actions.",
-  "claim_tags": ["reported_fact", "practitioner_takeaway"],
+  "claim_tags": [
+    "reported_fact",
+    "practitioner_takeaway"
+  ],
   "score": {
     "credibility": 5,
     "relevance": 5,
@@ -17,12 +20,22 @@
     "defender_usefulness": 5,
     "total": 24
   },
-  "canvas": { "width": 1080, "height": 1350, "safe_margin": 96 },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
   "brand": {
     "handle": "@chron0s_cyb3r_w0rld.ai",
     "accent_name": "electric blue",
     "pillar_accent": "model_security",
-    "palette": { "bg": "#05070d", "fg": "#f8fafc", "muted": "#94a3b8", "accent": "#3b82f6", "danger": "#ef4444" },
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#3b82f6",
+      "danger": "#ef4444"
+    },
     "font_stack": "Archivo, Inter, system-ui, sans-serif"
   },
   "upload_package": {
@@ -120,7 +133,15 @@
     }
   ],
   "caption": "The weirdest AI attack doesn't get typed into the chat box. It hides in the content your AI agent reads.\n\nThat's indirect prompt injection: instructions tucked into a web page, email, document, or image that the model treats as commands. OWASP's Top 10 for LLM Applications lists prompt injection, sensitive-information disclosure, and excessive agency as core risks — and the danger spikes the moment your agent can act (send mail, read files, call APIs) on what it just read.\n\nDefender move: isolate untrusted content from privileged tools, scope agent permissions to the minimum, log every action, and require human confirmation for sensitive steps.\n\nIf your agent summarizes a random webpage, should it also be allowed to email your team? Where would you draw that line?\n\nFollow for AI security breakdowns without the fake panic.",
-  "hashtags": ["#Cybersecurity", "#AISecurity", "#PromptInjection", "#LLMSecurity", "#AIagents", "#AppSec", "#OWASP"],
+  "hashtags": [
+    "#Cybersecurity",
+    "#AISecurity",
+    "#PromptInjection",
+    "#LLMSecurity",
+    "#AIagents",
+    "#AppSec",
+    "#OWASP"
+  ],
   "comment_prompt": "Would your agent trust a webpage it was told to summarize?",
   "alt_text": [
     "Slide 1: Dark cinematic cover, an AI browser agent reading a page with hidden instruction shadows, headline about the weirdest AI attack hiding where your agent reads.",
@@ -165,18 +186,324 @@
       "music_gain_db": -18
     },
     "narration": [
-      { "start": 0, "end": 5, "text": "The weirdest AI attack hides where your agent reads." },
-      { "start": 5, "end": 11, "text": "Indirect prompt injection lives in the content, not the chat box." },
-      { "start": 11, "end": 17, "text": "Isolate untrusted content, limit tools, and log every action." },
-      { "start": 17, "end": 22, "text": "Treat external content like user input wearing a costume." },
-      { "start": 22, "end": 26, "text": "Would your agent trust a page it was told to summarize?" }
+      {
+        "start": 0,
+        "end": 5,
+        "text": "The weirdest AI attack hides where your agent reads."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "text": "Indirect prompt injection lives in the content, not the chat box."
+      },
+      {
+        "start": 11,
+        "end": 17,
+        "text": "Isolate untrusted content, limit tools, and log every action."
+      },
+      {
+        "start": 17,
+        "end": 22,
+        "text": "Treat external content like user input wearing a costume."
+      },
+      {
+        "start": 22,
+        "end": 26,
+        "text": "Would your agent trust a page it was told to summarize?"
+      }
     ],
     "beats": [
-      { "start": 0, "end": 5, "slide_ref": 1, "purpose": "hook", "motion": "slow push-in over cover", "caption": "The weirdest AI attack hides where your agent reads." },
-      { "start": 5, "end": 11, "slide_ref": 3, "purpose": "context", "motion": "parallax over scanned content", "caption": "It hides in the content, not the chat box." },
-      { "start": 11, "end": 17, "slide_ref": 6, "purpose": "defense", "motion": "slow push-in on controls", "caption": "Isolate untrusted content. Limit tools. Log actions." },
-      { "start": 17, "end": 22, "slide_ref": 7, "purpose": "takeaway", "motion": "static high contrast", "caption": "External content is user input in a costume." },
-      { "start": 22, "end": 26, "slide_ref": 8, "purpose": "cta", "motion": "end card", "caption": "Comment + save." }
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "The weirdest AI attack hides where your agent reads.",
+        "words": [
+          {
+            "text": "The",
+            "start": 0.0,
+            "end": 0.1
+          },
+          {
+            "text": "weirdest",
+            "start": 0.1,
+            "end": 0.46
+          },
+          {
+            "text": "AI",
+            "start": 0.46,
+            "end": 0.7
+          },
+          {
+            "text": "attack",
+            "start": 0.7,
+            "end": 1.22
+          },
+          {
+            "text": "hides",
+            "start": 1.22,
+            "end": 1.5
+          },
+          {
+            "text": "where",
+            "start": 1.5,
+            "end": 1.76
+          },
+          {
+            "text": "your",
+            "start": 1.76,
+            "end": 1.88
+          },
+          {
+            "text": "agent",
+            "start": 1.88,
+            "end": 2.12
+          },
+          {
+            "text": "reads.",
+            "start": 2.12,
+            "end": 2.64
+          },
+          {
+            "text": "Indirect",
+            "start": 3.2,
+            "end": 3.44
+          },
+          {
+            "text": "prompt",
+            "start": 3.44,
+            "end": 3.72
+          },
+          {
+            "text": "injection",
+            "start": 3.72,
+            "end": 4.0
+          },
+          {
+            "text": "lives",
+            "start": 4.0,
+            "end": 4.52
+          },
+          {
+            "text": "in",
+            "start": 4.52,
+            "end": 4.7
+          },
+          {
+            "text": "the",
+            "start": 4.7,
+            "end": 4.78
+          },
+          {
+            "text": "content,",
+            "start": 4.78,
+            "end": 5.1
+          }
+        ]
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "slide_ref": 3,
+        "purpose": "context",
+        "motion": "parallax over scanned content",
+        "caption": "It hides in the content, not the chat box.",
+        "words": [
+          {
+            "text": "not",
+            "start": 0.38,
+            "end": 0.46
+          },
+          {
+            "text": "the",
+            "start": 0.46,
+            "end": 0.62
+          },
+          {
+            "text": "chat",
+            "start": 0.62,
+            "end": 0.78
+          },
+          {
+            "text": "box.",
+            "start": 0.78,
+            "end": 1.0
+          },
+          {
+            "text": "Isolate",
+            "start": 1.5,
+            "end": 1.78
+          },
+          {
+            "text": "untrusted",
+            "start": 1.78,
+            "end": 2.38
+          },
+          {
+            "text": "content,",
+            "start": 2.38,
+            "end": 2.72
+          },
+          {
+            "text": "limit",
+            "start": 3.14,
+            "end": 3.28
+          },
+          {
+            "text": "tools,",
+            "start": 3.28,
+            "end": 3.58
+          },
+          {
+            "text": "and",
+            "start": 3.98,
+            "end": 4.06
+          },
+          {
+            "text": "log",
+            "start": 4.06,
+            "end": 4.28
+          },
+          {
+            "text": "every",
+            "start": 4.28,
+            "end": 4.54
+          },
+          {
+            "text": "action.",
+            "start": 4.54,
+            "end": 4.92
+          },
+          {
+            "text": "Treat",
+            "start": 5.28,
+            "end": 5.3
+          },
+          {
+            "text": "external",
+            "start": 5.3,
+            "end": 5.54
+          },
+          {
+            "text": "content",
+            "start": 5.54,
+            "end": 6.04
+          }
+        ]
+      },
+      {
+        "start": 11,
+        "end": 17,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in on controls",
+        "caption": "Isolate untrusted content. Limit tools. Log actions.",
+        "words": [
+          {
+            "text": "like",
+            "start": 0.04,
+            "end": 0.34
+          },
+          {
+            "text": "user",
+            "start": 0.34,
+            "end": 0.58
+          },
+          {
+            "text": "input",
+            "start": 0.58,
+            "end": 0.86
+          },
+          {
+            "text": "wearing",
+            "start": 0.86,
+            "end": 1.18
+          },
+          {
+            "text": "a",
+            "start": 1.18,
+            "end": 1.32
+          },
+          {
+            "text": "costume.",
+            "start": 1.32,
+            "end": 1.6
+          },
+          {
+            "text": "Would",
+            "start": 2.34,
+            "end": 2.36
+          },
+          {
+            "text": "your",
+            "start": 2.36,
+            "end": 2.48
+          },
+          {
+            "text": "agent",
+            "start": 2.48,
+            "end": 2.76
+          },
+          {
+            "text": "trust",
+            "start": 2.76,
+            "end": 3.02
+          },
+          {
+            "text": "a",
+            "start": 3.02,
+            "end": 3.18
+          },
+          {
+            "text": "page",
+            "start": 3.18,
+            "end": 3.4
+          },
+          {
+            "text": "it",
+            "start": 3.4,
+            "end": 3.64
+          },
+          {
+            "text": "was",
+            "start": 3.64,
+            "end": 3.74
+          },
+          {
+            "text": "told",
+            "start": 3.74,
+            "end": 3.94
+          },
+          {
+            "text": "to",
+            "start": 3.94,
+            "end": 4.12
+          },
+          {
+            "text": "summarize?",
+            "start": 4.12,
+            "end": 4.34
+          }
+        ]
+      },
+      {
+        "start": 17,
+        "end": 22,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "External content is user input in a costume."
+      },
+      {
+        "start": 22,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Comment + save."
+      }
     ],
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
@@ -192,6 +519,13 @@
     "defender_value_present": true,
     "media_rights_logged": true,
     "manual_review_required": true,
-    "render_checks_required": ["exact_resolution", "no_text_overflow", "safe_margins", "mobile_readability", "filename_order", "license_metadata"]
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
   }
 }
