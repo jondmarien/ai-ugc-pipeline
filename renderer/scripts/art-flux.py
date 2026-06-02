@@ -24,6 +24,15 @@ import json
 import os
 import sys
 
+# Windows TxF/KTM mitigation: Python puts this script's ABSOLUTE dir on sys.path[0];
+# if that dir carries a stale NTFS kernel-transaction marker, importing torch/diffusers
+# fails with `OSError: [WinError 6714]` while it lists the dir. Blanking sys.path[0]
+# (== "use cwd", relative) avoids scanning the absolute path. If the error persists on
+# a DIFFERENT dir (e.g. the venv DLLs), that dir is also polluted — see docs/IMAGE_MODELS.md
+# (rebuild it / use ComfyUI). Harmless on healthy systems.
+if sys.path and os.path.isabs(sys.path[0]):
+    sys.path[0] = ""
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 RENDERER = os.path.dirname(HERE)
 POSTS = os.path.join(RENDERER, "content", "posts")

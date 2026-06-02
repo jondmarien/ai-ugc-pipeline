@@ -6,6 +6,7 @@ import "@fontsource/jetbrains-mono/500.css";
 import { palette, pillarAccent } from "./theme";
 import { Scene } from "./Scene";
 import { CaptionLayer, type CaptionMode, type WordTiming } from "./CaptionLayer";
+import { CaptionTrack, type CaptionLine } from "./CaptionTrack";
 import { EndCard } from "./EndCard";
 import { AudioBed, type AudioConfig } from "./AudioBed";
 
@@ -16,7 +17,7 @@ type Post = {
   brand?: { handle?: string };
   comment_prompt?: string;
   slides: Slide[];
-  video: { beats: Beat[]; caption_mode?: CaptionMode; audio?: AudioConfig };
+  video: { beats: Beat[]; caption_mode?: CaptionMode; audio?: AudioConfig; captions?: CaptionLine[] };
 };
 
 // 1080x1920 @ fps. Each VideoSpec beat → a timed Sequence with a Scene + caption.
@@ -27,6 +28,9 @@ export function ReelComposition({ post }: { post: Post }) {
   const handle = post.brand?.handle ?? "@your_handle";
   const beats = post.video.beats;
   const captionMode: CaptionMode = post.video.caption_mode ?? "block";
+  // Voice-synced transcript captions (from `bun run align`) win over planned beat captions.
+  const syncedCaptions = post.video.captions;
+  const useSynced = !!(syncedCaptions && syncedCaptions.length);
 
   return (
     <AbsoluteFill style={{ backgroundColor: palette.bgDeep }}>
@@ -41,12 +45,15 @@ export function ReelComposition({ post }: { post: Post }) {
             <Scene slide={slide} accent={accent} durationInFrames={durationInFrames} />
             {isCta ? (
               <EndCard question={post.comment_prompt ?? slide.on_slide_copy ?? ""} handle={handle} accent={accent} />
-            ) : (
+            ) : useSynced ? null : (
               <CaptionLayer text={beat.caption} accent={accent} mode={captionMode} durationInFrames={durationInFrames} words={beat.words} />
             )}
           </Sequence>
         );
       })}
+
+      {/* Voice-synced caption track (overrides per-beat captions when present) */}
+      {useSynced && <CaptionTrack captions={syncedCaptions!} accent={accent} mode={captionMode} />}
 
       {/* Persistent quiet brand mark + accent hairline */}
       <AbsoluteFill style={{ pointerEvents: "none" }}>

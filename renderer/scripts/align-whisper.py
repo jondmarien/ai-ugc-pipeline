@@ -77,26 +77,35 @@ def main() -> None:
         sys.exit("Whisper returned no words — check the audio.")
     print(f"  {len(words)} words, {words[-1]['end']:.1f}s total")
 
-    # Assign words to beats by midpoint, store times RELATIVE to each beat start
-    # (CaptionLayer runs relative to the beat's Sequence).
-    assigned = 0
-    for beat in beats:
-        b0, b1 = float(beat["start"]), float(beat["end"])
-        bw = []
-        for w in words:
-            mid = (w["start"] + w["end"]) / 2
-            if b0 <= mid < b1:
-                bw.append({"text": w["text"], "start": round(w["start"] - b0, 3), "end": round(w["end"] - b0, 3)})
-        if bw:
-            beat["words"] = bw
-            assigned += len(bw)
-        else:
-            beat.pop("words", None)
+    # Re-chunk the transcript into short caption lines (≤ ~7 words, ≤ ~3.5s, or a
+    # >0.6s pause), each with absolute word timings. The reel renders these EXACTLY
+    # synced to the voice — they ARE the spoken words, not the planned beat text.
+    MAX_WORDS, MAX_DUR, GAP = 7, 3.5, 0.6
+    captions, cur = [], []
 
+    def flush():
+        if cur:
+            captions.append({
+                "start": round(cur[0]["start"], 3),
+                "end": round(cur[-1]["end"], 3),
+                "text": " ".join(w["text"] for w in cur),
+                "words": [{"text": w["text"], "start": round(w["start"], 3), "end": round(w["end"], 3)} for w in cur],
+            })
+
+    for i, w in enumerate(words):
+        if cur:
+            too_long = len(cur) >= MAX_WORDS or (w["end"] - cur[0]["start"]) > MAX_DUR
+            big_gap = (w["start"] - cur[-1]["end"]) > GAP
+            if too_long or big_gap:
+                flush(); cur = []
+        cur.append(w)
+    flush()
+
+    post.setdefault("video", {})["captions"] = captions
     json.dump(post, open(post_path, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
     open(post_path, "a", encoding="utf-8").write("\n")
-    print(f"\n✓ Wrote word timings into {assigned} beat-words across {len(beats)} beats → {os.path.relpath(post_path, RENDERER)}")
-    print(f"  Caption modes word/highlight will now sync exactly. Re-render: bun run reel -- {sys.argv[1]}")
+    print(f"\n✓ Wrote {len(captions)} voice-synced caption lines → video.captions in {os.path.relpath(post_path, RENDERER)}")
+    print(f"  These now match the voice exactly (transcript + real timing). Re-render: bun run reel -- {sys.argv[1]} --fit-voice")
 
 
 if __name__ == "__main__":
