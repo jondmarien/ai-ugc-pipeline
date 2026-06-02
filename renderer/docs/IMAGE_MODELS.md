@@ -85,7 +85,7 @@ bun run art    -- 2026-06-04_prompt-injection-agents   # AI backgrounds on every
 bun run export -- 2026-06-04_prompt-injection-agents   # carousel PNGs with imagery baked in
 bun run voice  -- 2026-06-04_prompt-injection-agents   # narration (voxcpm2 / bark — local, no server)
 bun run align  -- 2026-06-04_prompt-injection-agents   # Whisper word-timestamps → exact caption sync
-bun run reel   -- 2026-06-04_prompt-injection-agents   # narrated reel (voice over ducked music)
+bun run reel   -- 2026-06-04_prompt-injection-agents --fit-voice  # narrated reel, auto-trimmed to the voice (no silent tail)
 bun run package -- 2026-06-04_prompt-injection-agents  # caption/alt/sources/LICENSES/QA
 ```
 Skip any step you don't need: no `art` → procedural backgrounds; no `voice` → silent reel; no `align` → captions distribute evenly. Output lands in `../../pipeline/renders/<date_slug>/`. Always review sources + media licenses before posting.
