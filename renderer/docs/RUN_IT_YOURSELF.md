@@ -26,6 +26,7 @@ Every command takes a **post key** = any unique substring of a file in `content/
 | `bun run reel -- <key>` | `<date_slug>_reel.mp4` (1080×1920 @30fps) — only if `video.enabled: true` |
 | `bun run voice -- <key>` | generate narration → `public/audio/<prefix>/voice.wav` (routes by `voice_mode`) |
 | `bun run align -- <key>` | Whisper word-timestamps → `beat.words[]` for exact `word`/`highlight` caption sync |
+| `bun run art -- <key>` | generate AI backgrounds for inner slides (FLUX.1-schnell, local) → `public/backgrounds/<prefix>/` |
 | `bun run dev` | live preview at `http://localhost:4317/?post=<slug>&mode=deck` |
 | `bun run typecheck` | typecheck app + remotion |
 
@@ -106,8 +107,10 @@ cp content/posts/2026-06-02_ai-phishing-training.json content/posts/2026-06-13_m
 ```
 
 ### Backgrounds
-- **Inner slides** default to `asset_status: "procedural"` → CSS-generated cyber background, no image needed.
-- **Cover** (or any slide) can use a real image: drop a **1080×1350** text-free PNG in `public/backgrounds/`, set the slide's `background_asset: "/backgrounds/<file>.png"` and `asset_status: "existing"`.
+- **Inner slides** default to `asset_status: "procedural"` → a CSS-generated cyber background (dark + accent glow + grid). No image needed, but it's minimalist — that's the "blank-ish" look.
+- **Real AI imagery on every slide:** `bun run art -- <key>` generates a background per inner slide with **FLUX.1-schnell** (local, Apache-2.0, commercial-OK — no server/Docker), writing to `public/backgrounds/<prefix>/` and flipping each slide to `asset_status: "generated"`. It builds each prompt from the slide's `visual_prompt` (or its on-slide copy + the post's core claim, so the image matches the topic). Then `bun run export` bakes them in.
+  - Setup (uv): `uv pip install "diffusers>=0.31" transformers accelerate torch sentencepiece protobuf pillow`. Fits 8GB via cpu-offload (~10–20s/image after a one-time weights download). Preview prompts with `--dry-run`; include the cover too with `--all`; swap models with `ART_MODEL` (e.g. an SDXL repo). Log the model in the package `LICENSES.md`.
+- **Cover** (or any slide) can use a hand-made image: drop a text-free PNG in `public/backgrounds/`, set `background_asset` + `asset_status: "existing"`.
 - The scaffolder pre-points the cover at `public/backgrounds/<prefix>_cover.png` with status `needed` (renders procedurally until the file exists + you flip it to `existing`).
 
 ### Reels specifically
