@@ -115,6 +115,23 @@ export const Beat = z.object({
 //   highlight — full line shown, the currently-spoken word lit in the accent
 export const CaptionMode = z.enum(["block", "word", "highlight"]);
 
+// Audio options (selectable per post, like caption modes).
+//   voice_mode: none (silent) | voxcpm2 (generate locally) | file (you supply a WAV)
+//   music_mode: none | free | licensed | generated | file (all resolve to "is there a music file?")
+// The mode is metadata that drives LICENSES.md guidance + where files come from;
+// the renderer plays whatever audio FILES exist (see render-reel's missing-file guard).
+export const VoiceMode = z.enum(["none", "voxcpm2", "file"]);
+export const MusicMode = z.enum(["none", "free", "licensed", "generated", "file"]);
+
+export const AudioSpec = z.object({
+  voice_mode: VoiceMode.default("none"),
+  voice_file: z.string().optional(), // e.g. /audio/<prefix>/voice.wav (served from public/)
+  voice_gain_db: z.number().default(0),
+  music_mode: MusicMode.default("none"),
+  music_file: z.string().optional(), // e.g. /audio/<prefix>/music.mp3
+  music_gain_db: z.number().default(-18), // ducked under narration
+});
+
 export const Narration = z.object({
   start: z.number().nonnegative(),
   end: z.number().positive(),
@@ -127,6 +144,7 @@ export const VideoSpec = z.object({
   fps: z.number().positive(),
   export_name: z.string().min(1),
   caption_mode: CaptionMode.default("block"),
+  audio: AudioSpec.default({ voice_mode: "none", music_mode: "none", voice_gain_db: 0, music_gain_db: -18 }),
   narration: z.array(Narration).default([]),
   beats: z.array(Beat).min(1),
   subtitle_style: z.string().optional().default(""),

@@ -1,0 +1,198 @@
+{
+  "post_id": "2026-06-04-prompt-injection-agents",
+  "date": "2026-06-04",
+  "slug": "prompt-injection-agents",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "approved",
+  "pillar": "model_security",
+  "audience": "builders",
+  "core_claim": "Indirect prompt injection — malicious instructions hidden in content an AI agent reads — gets dangerous when the agent can take actions.",
+  "claim_tags": ["reported_fact", "practitioner_takeaway"],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 5,
+    "defender_usefulness": 5,
+    "total": 24
+  },
+  "canvas": { "width": 1080, "height": 1350, "safe_margin": 96 },
+  "brand": {
+    "handle": "@your_handle",
+    "accent_name": "electric blue",
+    "pillar_accent": "model_security",
+    "palette": { "bg": "#05070d", "fg": "#f8fafc", "muted": "#94a3b8", "accent": "#3b82f6", "danger": "#ef4444" },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-04_prompt-injection-agents",
+    "filename_prefix": "2026-06-04_prompt-injection-agents",
+    "expected_files": [
+      "2026-06-04_prompt-injection-agents_01_cover.png",
+      "2026-06-04_prompt-injection-agents_02_context.png",
+      "2026-06-04_prompt-injection-agents_03_risk.png",
+      "2026-06-04_prompt-injection-agents_04_mechanism.png",
+      "2026-06-04_prompt-injection-agents_05_failure-point.png",
+      "2026-06-04_prompt-injection-agents_06_defense.png",
+      "2026-06-04_prompt-injection-agents_07_takeaway.png",
+      "2026-06-04_prompt-injection-agents_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "THE WEIRDEST AI ATTACK HIDES WHERE YOUR AGENT READS",
+      "subline": "Prompt injection isn't always typed by the user.",
+      "visual_direction": "AI browser agent reading a webpage; hidden instruction shadows behind document blocks; electric-blue accent; dark lower-third.",
+      "visual_prompt": "realistic editorial cybersecurity cover, glowing abstract AI agent reading a web page, faint hidden instruction patterns, electric blue, no rendered text, no logos",
+      "background_asset": "/backgrounds/cover_bg_02_prompt_injection.png",
+      "asset_status": "existing",
+      "cta": "SWIPE →",
+      "notes": "Reuses the text-free pipeline cover background; React renders the headline on top."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "Direct injection: the user manipulates the model. Indirect: the content does.",
+      "subline": "The instruction can come from data, not the chat box.",
+      "asset_status": "procedural"
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "It can live in web pages, emails, documents, images — anywhere the agent reads.",
+      "subline": "Untrusted content becomes untrusted instructions.",
+      "asset_status": "procedural"
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "The risk spikes when the AI can act: send email, read files, call APIs.",
+      "subline": "Reading is one thing. Acting is another.",
+      "asset_status": "procedural"
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "OWASP flags the pattern: injection, sensitive disclosure, excessive agency.",
+      "subline": "It's a known risk class, not a surprise.",
+      "asset_status": "procedural"
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Isolate untrusted content. Limit tools. Log actions. Confirm sensitive steps.",
+      "subline": "Least privilege for agents, not just users.",
+      "asset_status": "procedural"
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "Treat external content like user input wearing a costume.",
+      "subline": "",
+      "asset_status": "procedural"
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Would your agent trust a webpage it was told to summarize?",
+      "subline": "Save this for your next agent design review.",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE"
+    }
+  ],
+  "caption": "The weirdest AI attack doesn't get typed into the chat box. It hides in the content your AI agent reads.\n\nThat's indirect prompt injection: instructions tucked into a web page, email, document, or image that the model treats as commands. OWASP's Top 10 for LLM Applications lists prompt injection, sensitive-information disclosure, and excessive agency as core risks — and the danger spikes the moment your agent can act (send mail, read files, call APIs) on what it just read.\n\nDefender move: isolate untrusted content from privileged tools, scope agent permissions to the minimum, log every action, and require human confirmation for sensitive steps.\n\nIf your agent summarizes a random webpage, should it also be allowed to email your team? Where would you draw that line?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": ["#Cybersecurity", "#AISecurity", "#PromptInjection", "#LLMSecurity", "#AIagents", "#AppSec", "#OWASP"],
+  "comment_prompt": "Would your agent trust a webpage it was told to summarize?",
+  "alt_text": [
+    "Slide 1: Dark cinematic cover, an AI browser agent reading a page with hidden instruction shadows, headline about the weirdest AI attack hiding where your agent reads.",
+    "Slide 2: Context slide contrasting direct prompt injection (user manipulates the model) with indirect (the content does).",
+    "Slide 3: Risk slide listing where injected instructions can live: web pages, emails, documents, images.",
+    "Slide 4: Mechanism slide noting the risk spikes when the AI can act — send email, read files, call APIs.",
+    "Slide 5: Failure-point slide referencing the OWASP pattern: prompt injection, sensitive disclosure, excessive agency.",
+    "Slide 6: Defense slide: isolate untrusted content, limit tools, log actions, confirm sensitive steps.",
+    "Slide 7: Takeaway slide: treat external content like user input wearing a costume.",
+    "Slide 8: Call-to-action slide asking whether your agent should trust a webpage it was told to summarize, with a save and comment prompt."
+  ],
+  "sources": [
+    {
+      "source": "OWASP Top 10 for LLM Applications (2025)",
+      "link": "https://genai.owasp.org/llm-top-10/",
+      "supports": "Prompt Injection, Sensitive Information Disclosure, and Excessive Agency are listed risk entries for LLM applications.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/cover_bg_02_prompt_injection.png",
+      "source": "existing_pipeline_asset",
+      "license_or_terms": "Generated demo asset from this project's own asset pack; text-free background for typography.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "No rendered text, no logos, no credentials."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 26,
+    "fps": 30,
+    "export_name": "2026-06-04_prompt-injection-agents_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-04_prompt-injection-agents/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "free",
+      "music_file": "/audio/2026-06-04_prompt-injection-agents/music.mp3",
+      "music_gain_db": -18
+    },
+    "narration": [
+      { "start": 0, "end": 5, "text": "The weirdest AI attack hides where your agent reads." },
+      { "start": 5, "end": 11, "text": "Indirect prompt injection lives in the content, not the chat box." },
+      { "start": 11, "end": 17, "text": "Isolate untrusted content, limit tools, and log every action." },
+      { "start": 17, "end": 22, "text": "Treat external content like user input wearing a costume." },
+      { "start": 22, "end": 26, "text": "Would your agent trust a page it was told to summarize?" }
+    ],
+    "beats": [
+      { "start": 0, "end": 5, "slide_ref": 1, "purpose": "hook", "motion": "slow push-in over cover", "caption": "The weirdest AI attack hides where your agent reads." },
+      { "start": 5, "end": 11, "slide_ref": 3, "purpose": "context", "motion": "parallax over scanned content", "caption": "It hides in the content, not the chat box." },
+      { "start": 11, "end": 17, "slide_ref": 6, "purpose": "defense", "motion": "slow push-in on controls", "caption": "Isolate untrusted content. Limit tools. Log actions." },
+      { "start": 17, "end": 22, "slide_ref": 7, "purpose": "takeaway", "motion": "static high contrast", "caption": "External content is user input in a costume." },
+      { "start": 22, "end": 26, "slide_ref": 8, "purpose": "cta", "motion": "end card", "caption": "Comment + save." }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": true,
+    "manual_review_required": true,
+    "render_checks_required": ["exact_resolution", "no_text_overflow", "safe_margins", "mobile_readability", "filename_order", "license_metadata"]
+  }
+}

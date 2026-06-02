@@ -67,13 +67,18 @@ npm run reel -- 2026-06-02_ai-phishing-training
 ## Output spec
 `1080×1920`, 30fps, H.264 MP4, 20–45s. Verified by ffprobe in the script.
 
-## Growing the stub into a narrated cut (next slice)
-The PoC ships **without audio** to avoid license tracking. To produce a real narrated Reel:
-1. Generate narration with **VoxCPM2** (Apache-2.0, commercial-OK; apply the AI-audio disclosure its TOS requires) — see `../../pipeline/media/VOICEOVER_BAKEOFF.md`. Save `voice.wav` in the package.
-2. Add a royalty-free instrumental bed (`music.mp3`) per `../../pipeline/media/MUSIC_SFX_GUIDE.md`; keep it under the voice.
-3. In `ReelComposition`, add an `<Audio>`/`AudioBed` track; sync `narration[]` spans to captions.
-4. Populate `video.licenses[]` and `LICENSES.md` (QA Gate 7) — **F5-TTS base weights are CC-BY-NC, not for commercial use**; prefer VoxCPM2.
-5. Re-run QA: subtitles inside safe margins, voice intelligible at phone volume, ~−14 LUFS, no exploit detail in narration.
+## Audio (narration + music) — built in
+
+Reel audio is driven by `video.audio` (see CONTENT_SCHEMA.md) and played by `remotion/AudioBed.tsx`: narration at full volume over a music bed ducked to `music_gain_db` (default −18 dB). It's **optional and file-driven** — `render-reel.ts` only includes audio whose files exist under `renderer/public/`, otherwise it renders **silent + warns**. So a post can declare `voice_mode: voxcpm2` / `music_mode: free` before the files exist.
+
+**Produce a narrated cut:**
+1. **Voice (VoxCPM2 — Apache-2.0, commercial-OK):** `npm run voice -- <post-key>` runs `scripts/voice-voxcpm.py`, which synthesizes the post's `narration[]` into `public/audio/<prefix>/voice.wav`. Requires a local VoxCPM2 install (`python -m pip install voxcpm soundfile`; CUDA torch recommended). Apply the AI-audio disclosure VoxCPM2's TOS requires; clone only a synthetic or **your own authorized** voice. **Do not use F5-TTS base weights — CC-BY-NC, not commercial.**
+2. **Music:** drop a commercial-safe track at `public/audio/<prefix>/music.mp3`. Options (set `music_mode`): `free` (Pixabay / YouTube Audio Library / Mixkit), `licensed` (a track you've licensed), `generated` (local MusicGen/Stable Audio Open — verify output license), or `file` (bring your own). See `../../pipeline/media/MUSIC_SFX_GUIDE.md`.
+3. `npm run reel -- <post-key>` → the reel now carries an AAC stereo track (narration over ducked music). Verify with ffprobe (an `aac` stream appears).
+4. Log every audio asset in `LICENSES.md` (QA Gate 7). `build-package.ts` records the modes; fill in the actual track/source.
+5. QA: subtitles inside safe margins, voice intelligible at phone volume, ~−14 LUFS, no exploit detail in narration.
+
+> Word-synced captions: `caption_mode: word|highlight` currently distributes word timing evenly across each beat. With real narration audio you can later add `beat.words[]` timestamps (e.g. from faster-whisper) for exact lip-tight sync.
 
 ## QA (reel)
 | Check | Pass |

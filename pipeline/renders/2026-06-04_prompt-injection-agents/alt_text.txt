@@ -1,0 +1,8 @@
+01. Slide 1: Dark cinematic cover, an AI browser agent reading a page with hidden instruction shadows, headline about the weirdest AI attack hiding where your agent reads.
+02. Slide 2: Context slide contrasting direct prompt injection (user manipulates the model) with indirect (the content does).
+03. Slide 3: Risk slide listing where injected instructions can live: web pages, emails, documents, images.
+04. Slide 4: Mechanism slide noting the risk spikes when the AI can act — send email, read files, call APIs.
+05. Slide 5: Failure-point slide referencing the OWASP pattern: prompt injection, sensitive disclosure, excessive agency.
+06. Slide 6: Defense slide: isolate untrusted content, limit tools, log actions, confirm sensitive steps.
+07. Slide 7: Takeaway slide: treat external content like user input wearing a costume.
+08. Slide 8: Call-to-action slide asking whether your agent should trust a webpage it was told to summarize, with a save and comment prompt.

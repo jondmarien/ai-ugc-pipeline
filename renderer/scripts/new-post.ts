@@ -14,6 +14,13 @@ const CAPTION_MODES = ["block", "word", "highlight"] as const;
 const captionsFlag = flagArgs.find((a) => a.startsWith("--captions="))?.split("=")[1] ?? "block";
 const captionMode = (CAPTION_MODES as readonly string[]).includes(captionsFlag) ? captionsFlag : "block";
 
+const VOICE_MODES = ["none", "voxcpm2", "file"] as const;
+const MUSIC_MODES = ["none", "free", "licensed", "generated", "file"] as const;
+const voiceFlag = flagArgs.find((a) => a.startsWith("--voice="))?.split("=")[1] ?? "none";
+const musicFlag = flagArgs.find((a) => a.startsWith("--music="))?.split("=")[1] ?? "none";
+const voiceMode = (VOICE_MODES as readonly string[]).includes(voiceFlag) ? voiceFlag : "none";
+const musicMode = (MUSIC_MODES as readonly string[]).includes(musicFlag) ? musicFlag : "none";
+
 const PILLARS = Object.keys(pillarAccent) as Pillar[];
 
 function usageAndExit(msg?: string): never {
@@ -29,6 +36,8 @@ if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) usageAndExit(`date "${date}" must be YYYY
 if (!/^[a-z0-9-]+$/.test(slug)) usageAndExit(`slug "${slug}" must be lowercase kebab-case (a-z 0-9 -).`);
 if (!PILLARS.includes(pillarArg as Pillar)) usageAndExit(`pillar "${pillarArg}" is not valid.`);
 if (!(CAPTION_MODES as readonly string[]).includes(captionsFlag)) usageAndExit(`--captions "${captionsFlag}" must be one of: ${CAPTION_MODES.join(", ")}.`);
+if (!(VOICE_MODES as readonly string[]).includes(voiceFlag)) usageAndExit(`--voice "${voiceFlag}" must be one of: ${VOICE_MODES.join(", ")}.`);
+if (!(MUSIC_MODES as readonly string[]).includes(musicFlag)) usageAndExit(`--music "${musicFlag}" must be one of: ${MUSIC_MODES.join(", ")}.`);
 
 const pillar = pillarArg as Pillar;
 const prefix = `${date}_${slug}`;
@@ -113,6 +122,14 @@ const post = {
     fps: 30,
     export_name: `${prefix}_reel.mp4`,
     caption_mode: captionMode,
+    audio: {
+      voice_mode: voiceMode,
+      voice_file: voiceMode === "none" ? undefined : `/audio/${prefix}/voice.wav`,
+      voice_gain_db: 0,
+      music_mode: musicMode,
+      music_file: musicMode === "none" ? undefined : `/audio/${prefix}/music.mp3`,
+      music_gain_db: -18,
+    },
     narration: [
       { start: 0, end: 5, text: "TODO hook line." },
       { start: 5, end: 11, text: "TODO context line." },
