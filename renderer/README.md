@@ -32,6 +32,7 @@ Week-1 Post 1 renders end-to-end: 8× **1080×1350** PNGs (cover reuses the text
 | Doc | What |
 | --- | --- |
 | [docs/RUN_IT_YOURSELF.md](docs/RUN_IT_YOURSELF.md) | **self-serve terminal guide** — new reels/carousels, Week-2 content, troubleshooting |
+| [docs/IMAGE_MODELS.md](docs/IMAGE_MODELS.md) | slide background generation — FLUX.1-schnell / FLUX.2-klein-4B / SDXL matrix, FLUX.2 download, rich-export path |
 | [docs/RENDERER_ARCHITECTURE.md](docs/RENDERER_ARCHITECTURE.md) | structure, deps, commands, boundaries |
 | [docs/CONTENT_SCHEMA.md](docs/CONTENT_SCHEMA.md) | JSON contract + Markdown→JSON mapping + filenames |
 | [docs/CAROUSEL_COMPONENTS.md](docs/CAROUSEL_COMPONENTS.md) | role components + shared shell |
