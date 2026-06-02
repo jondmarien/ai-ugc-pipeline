@@ -27,6 +27,7 @@ Every command takes a **post key** = any unique substring of a file in `content/
 | `bun run voice -- <key>` | generate narration → `public/audio/<prefix>/voice.wav` (routes by `voice_mode`) |
 | `bun run align -- <key>` | Whisper word-timestamps → `beat.words[]` for exact `word`/`highlight` caption sync |
 | `bun run art -- <key>` | generate AI backgrounds for inner slides (FLUX.1-schnell, local) → `public/backgrounds/<prefix>/` |
+| `bun run import-bg -- <key> <folder>` | import externally-generated backgrounds (e.g. ComfyUI GGUF) → copies + sets `asset_status: existing` |
 | `bun run dev` | live preview at `http://localhost:4317/?post=<slug>&mode=deck` |
 | `bun run typecheck` | typecheck app + remotion |
 
