@@ -12,3 +12,7 @@ public/audio/
 
 # Generated per-post background art (regenerable via `bun run art`; final art is baked into pipeline/renders/)
 public/backgrounds/*/
+
+# local env (HF_HOME, HF_TOKEN, etc.)
+.env
+.env.local
