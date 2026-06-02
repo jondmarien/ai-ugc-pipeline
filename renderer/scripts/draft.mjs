@@ -28,7 +28,7 @@ const date = pos[2] && /^\d{4}-\d{2}-\d{2}$/.test(pos[2]) ? pos[2] : new Date().
 const MODES = ["block", "word", "highlight"];
 const captionsFlag = [...flags].find((f) => f.startsWith("--captions="))?.split("=")[1] ?? "block";
 const captions = MODES.includes(captionsFlag) ? captionsFlag : "block";
-const VOICE = ["none", "voxcpm2", "file"];
+const VOICE = ["none", "voxcpm2", "http", "file"];
 const MUSIC = ["none", "free", "licensed", "generated", "file"];
 const voiceFlag = [...flags].find((f) => f.startsWith("--voice="))?.split("=")[1] ?? "none";
 const musicFlag = [...flags].find((f) => f.startsWith("--music="))?.split("=")[1] ?? "none";

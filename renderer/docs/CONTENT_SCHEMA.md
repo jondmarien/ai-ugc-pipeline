@@ -82,7 +82,7 @@ Set it per post via `npm run new -- … --captions=<mode>`, the `--captions=` fl
 **`video.audio`** — selectable reel audio (like captions):
 ```
 audio: {
-  voice_mode: none | voxcpm2 | file,   // none = silent
+  voice_mode: none | voxcpm2 | http | file,   // none = silent; http = OpenAI-compatible /v1/audio/speech server
   voice_file: "/audio/<prefix>/voice.wav",   // served from public/
   voice_gain_db: 0,
   music_mode: none | free | licensed | generated | file,
