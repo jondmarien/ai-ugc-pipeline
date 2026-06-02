@@ -79,6 +79,19 @@ Each `beat` = `{ start, end, slide_ref, purpose, motion, caption, words? }`. `pu
 
 Set it per post via `npm run new -- … --captions=<mode>`, the `--captions=` flag on `npm run draft`, or `captions=<mode>` in `/draft-post` / `/draft-week`. Word timing is distributed evenly across each beat window; optional per-word `beat.words[]` timings are reserved for future audio-synced alignment.
 
+**`video.audio`** — selectable reel audio (like captions):
+```
+audio: {
+  voice_mode: none | voxcpm2 | file,   // none = silent
+  voice_file: "/audio/<prefix>/voice.wav",   // served from public/
+  voice_gain_db: 0,
+  music_mode: none | free | licensed | generated | file,
+  music_file: "/audio/<prefix>/music.mp3",
+  music_gain_db: -18                    // ducked under narration
+}
+```
+Default is `none`/`none` → **silent** (backward compatible; posts without `audio` validate). The mode is mostly metadata for `LICENSES.md` + where files come from; the reel plays whatever audio **files** exist under `renderer/public/`. **`render-reel.ts` strips any audio ref whose file is missing and renders silent + warns** — so you can set `voice_mode: voxcpm2` now and the reel goes silent until you generate `voice.wav` (`npm run voice -- <key>`). Set via `--voice=`/`--music=` on `npm run new`/`draft`, or in the slash commands.
+
 ## Validation rules (enforced in `schema.ts`)
 - Slide 1 role must be `cover`.
 - Slide numbering contiguous `1..n` matching array order.

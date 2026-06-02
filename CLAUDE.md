@@ -11,6 +11,7 @@ AI-in-cybersecurity UGC pipeline. **Positioning:** *real threats, real tools, no
 - `/draft-week idea1::pillar | idea2::pillar::captions=highlight | …` — batch up to 5 with pillar variety + a posting calendar.
 Both research sources, write schema-valid `renderer/content/posts/<date>_<slug>.json`, validate, and render carousel PNGs + a reel into `pipeline/renders/`. Headless: `cd renderer && npm run draft -- "<idea>" <pillar>` / `npm run draft-week -- "idea::pillar" …`.
 Reel **subtitle style** = `video.caption_mode` ∈ `block | word | highlight` (set via `--captions=` / `captions=`).
+Reel **audio** = `video.audio` — `voice_mode` ∈ `none|voxcpm2|file`, `music_mode` ∈ `none|free|licensed|generated|file` (set via `--voice=`/`--music=`). Files in `renderer/public/audio/<prefix>/`; `npm run voice -- <key>` generates VoxCPM2 narration (local install). Missing file ⇒ reel renders silent + warns. Never use F5-TTS base weights commercially (CC-BY-NC).
 
 ## Non-negotiable rules (enforced by pipeline/content/QA_CHECKLIST.md)
 - **No fabrication** — no invented CVEs, breach details, stats, quotes, or papers. Back every factual claim with a real source (WebSearch/WebFetch) or tag it `[Scenario]`.

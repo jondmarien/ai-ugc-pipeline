@@ -108,7 +108,16 @@ cp content/posts/2026-06-02_ai-phishing-training.json content/posts/2026-06-13_m
 ### Reels specifically
 A reel renders from the post's `video` block. Each `beat` = `{start, end, slide_ref, purpose, motion, caption}`; the beat with `"purpose": "cta"` becomes the end card. Keep beats 3–6s, hook in the first ~2s. Full model: `REMOTION_REEL_WORKFLOW.md`.
 
-**Subtitle style** is `video.caption_mode`: `block` (paragraph per scene, default), `word` (one word at a time), or `highlight` (full line, active word lit). Set it with `npm run new -- … --captions=<mode>` (or `--captions=` on draft, `captions=` in the slash commands), or just edit `video.caption_mode` in the JSON and re-run `npm run reel`. The PoC reel has **no audio** — to add narration (VoxCPM2) + music, follow that doc's "Growing the stub into a narrated cut" section and log everything in `LICENSES.md`.
+**Subtitle style** is `video.caption_mode`: `block` (paragraph per scene, default), `word` (one word at a time), or `highlight` (full line, active word lit). Set it with `npm run new -- … --captions=<mode>` (or `--captions=` on draft, `captions=` in the slash commands), or just edit `video.caption_mode` in the JSON and re-run `npm run reel`.
+
+**Audio** is `video.audio` and is optional + file-driven (default = silent):
+- `voice_mode`: `none` | `voxcpm2` (generate locally) | `file` (you supply `voice.wav`).
+- `music_mode`: `none` | `free` | `licensed` | `generated` | `file`.
+- Files live in `renderer/public/audio/<prefix>/` (`voice.wav`, `music.mp3`). Music is auto-ducked under the voice (`music_gain_db`, default −18).
+- Set modes at generation: `npm run new -- … --voice=voxcpm2 --music=free` (also `--voice=`/`--music=` on `npm run draft`).
+- **Generate narration:** `npm run voice -- <key>` runs VoxCPM2 (needs a local install: `python -m pip install voxcpm soundfile`, CUDA torch recommended) → writes `voice.wav`. Apply the AI-audio disclosure VoxCPM2 requires; use a synthetic or your own authorized voice.
+- **Music:** drop a commercial-safe track at `public/audio/<prefix>/music.mp3` (Pixabay / YouTube Audio Library / Mixkit — see `../../pipeline/media/MUSIC_SFX_GUIDE.md`). Hate licensing? Leave `music_mode: none` → silent is fine.
+- **If a file is missing**, `npm run reel` warns and renders **silent** (it won't crash) — so you can ship a silent reel now and add audio later by dropping the files and re-running `npm run reel -- <key>`. Log every audio asset in the package's `LICENSES.md` (QA Gate 7). **Never use F5-TTS base weights commercially (CC-BY-NC).** The PoC reel has **no audio** — to add narration (VoxCPM2) + music, follow that doc's "Growing the stub into a narrated cut" section and log everything in `LICENSES.md`.
 
 ### Render the rest of Week 1
 Only Post 1 ships as JSON. Posts 2–5 are Markdown in `../../pipeline/content/WEEK_1_POSTS.md` — scaffold one JSON per post (`npm run new …`), paste that post's slides/caption/sources, then export.

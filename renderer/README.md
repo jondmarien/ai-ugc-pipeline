@@ -17,6 +17,7 @@ npm run validate -- 2026-06-02_ai-phishing-training   # check JSON
 npm run export   -- 2026-06-02_ai-phishing-training   # 8 carousel PNGs
 npm run package  -- 2026-06-02_ai-phishing-training   # caption/alt/sources/licenses/QA
 npm run reel     -- 2026-06-02_ai-phishing-training   # 1080×1920 MP4 (optional)
+npm run voice    -- 2026-06-02_ai-phishing-training   # generate narration via VoxCPM2 (needs local install)
 npm run dev                                            # live preview @ :4317
 ```
 

@@ -15,6 +15,7 @@
     "export": "tsx scripts/export-carousel.ts",
     "package": "tsx scripts/build-package.ts",
     "reel": "tsx scripts/render-reel.ts",
+    "voice": "node scripts/voice.mjs",
     "remotion:studio": "remotion studio remotion/index.ts"
   },
   "dependencies": {

@@ -28,6 +28,23 @@ function sourcesMd(post: TPostData): string {
   return lines.join("\n");
 }
 
+function audioLines(post: TPostData): string[] {
+  if (!post.video?.enabled) return ["No Reel in this package."];
+  const a = (post.video as { audio?: { voice_mode?: string; music_mode?: string } }).audio;
+  const voice = a?.voice_mode ?? "none";
+  const music = a?.music_mode ?? "none";
+  if (voice === "none" && music === "none") {
+    return ["This Reel renders **without audio** (voice_mode/music_mode = none). To narrate it, set the modes and add the files — see REMOTION_REEL_WORKFLOW.md → Audio."];
+  }
+  const out = ["| Asset | Mode | Source / license | Commercial use | Disclosure |", "| --- | --- | --- | --- | --- |"];
+  if (voice !== "none")
+    out.push(`| voice.wav | ${voice} | ${voice === "voxcpm2" ? "VoxCPM2 (Apache-2.0)" : "TODO — fill in"} | ${voice === "voxcpm2" ? "yes" : "TODO"} | ${voice === "voxcpm2" ? "AI-audio label required" : "TODO"} |`);
+  if (music !== "none")
+    out.push(`| music.mp3 | ${music} | TODO — name the track + license URL | TODO | TODO |`);
+  out.push("", "> Fill every TODO before publishing (QA Gate 7). Do NOT use F5-TTS base weights (CC-BY-NC).");
+  return out;
+}
+
 function licensesMd(post: TPostData): string {
   const assetLines = (post.asset_licenses as Array<Record<string, unknown>>).map(
     (a) =>
@@ -44,9 +61,7 @@ function licensesMd(post: TPostData): string {
     ...(assetLines.length ? assetLines : ["| (none) | — | — | — | — |"]),
     "",
     "## Audio / video (Reel)",
-    post.video?.enabled
-      ? "This Reel PoC ships **without audio** (no music/voice), so no audio license is required. Add VoxCPM2 voice (Apache-2.0; apply AI-audio disclosure) and a royalty-free music bed here before publishing a narrated cut — see ../../media/MUSIC_SFX_GUIDE.md and REMOTION_REEL_WORKFLOW.md."
-      : "No Reel in this package.",
+    ...audioLines(post),
     "",
   ].join("\n");
 }

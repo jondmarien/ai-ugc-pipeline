@@ -16,6 +16,28 @@ mkdirSync(outDir, { recursive: true });
 const outPath = path.join(outDir, post.video.export_name);
 const entry = path.join(ROOT, "remotion", "index.ts");
 
+// Audio guard: only keep audio refs whose files actually exist under public/.
+// A mode can be set ("voxcpm2"/"free"/…) before the file is produced — in that
+// case we render silent and tell the user how to add it, rather than crashing.
+const audio = post.video.audio;
+if (audio) {
+  const publicDir = path.join(ROOT, "public");
+  const check = (file?: string) => (file ? existsSync(path.join(publicDir, file.replace(/^\//, ""))) : false);
+  if (audio.voice_mode !== "none" && !check(audio.voice_file)) {
+    console.warn(`⚠ voice (${audio.voice_mode}): ${audio.voice_file ?? "no file"} not found in public/ — rendering without narration.`);
+    if (audio.voice_mode === "voxcpm2") console.warn(`  → generate it: npm run voice -- ${key}`);
+    audio.voice_mode = "none";
+  }
+  if (audio.music_mode !== "none" && !check(audio.music_file)) {
+    console.warn(`⚠ music (${audio.music_mode}): ${audio.music_file ?? "no file"} not found in public/ — rendering without music.`);
+    console.warn(`  → drop a commercial-safe track at renderer/public${audio.music_file ?? "/audio/<prefix>/music.mp3"} (see pipeline/media/MUSIC_SFX_GUIDE.md), then re-run.`);
+    audio.music_mode = "none";
+  }
+  const hasVoice = audio.voice_mode !== "none";
+  const hasMusic = audio.music_mode !== "none";
+  console.log(`Audio: voice=${hasVoice ? "yes" : "—"}  music=${hasMusic ? "yes" : "—"}`);
+}
+
 // Pass THIS post to the composition via --props so the reel renders the selected
 // post (not Root.tsx's default). calculateMetadata derives duration/fps from it.
 const propsFile = path.join(os.tmpdir(), `ai-ugc-reel-props-${post.slug}-${post.date}.json`);

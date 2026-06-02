@@ -7,6 +7,7 @@ import { palette, pillarAccent } from "./theme";
 import { Scene } from "./Scene";
 import { CaptionLayer, type CaptionMode } from "./CaptionLayer";
 import { EndCard } from "./EndCard";
+import { AudioBed, type AudioConfig } from "./AudioBed";
 
 type Beat = { start: number; end: number; slide_ref: number; purpose: string; caption: string };
 type Slide = { role: string; background_asset?: string; asset_status?: string; on_slide_copy?: string };
@@ -15,7 +16,7 @@ type Post = {
   brand?: { handle?: string };
   comment_prompt?: string;
   slides: Slide[];
-  video: { beats: Beat[]; caption_mode?: CaptionMode };
+  video: { beats: Beat[]; caption_mode?: CaptionMode; audio?: AudioConfig };
 };
 
 // 1080x1920 @ fps. Each VideoSpec beat → a timed Sequence with a Scene + caption.
@@ -29,6 +30,7 @@ export function ReelComposition({ post }: { post: Post }) {
 
   return (
     <AbsoluteFill style={{ backgroundColor: palette.bgDeep }}>
+      <AudioBed audio={post.video.audio} />
       {beats.map((beat, i) => {
         const from = Math.round(beat.start * fps);
         const durationInFrames = Math.max(1, Math.round((beat.end - beat.start) * fps));
