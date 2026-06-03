@@ -29,7 +29,7 @@ const argv = process.argv.slice(2);
 const flags = new Set(argv.filter((a) => a.startsWith("--")));
 const keys = argv.filter((a) => !a.startsWith("--"));
 if (!keys.length) {
-  console.error("Usage: bun run pipeline -- <post-key> [<post-key> ...] [--flux2] [--art|--no-art] [--no-voice] [--no-reel] [--no-package] [--seed=N] [--tail=N]");
+  console.error("Usage: bun run pipeline -- <post-key> [<post-key> ...] [--flux2] [--art|--no-art] [--vox0.5|--vox2] [--no-voice] [--no-reel] [--no-package] [--seed=N] [--tail=N]");
   process.exit(1);
 }
 const seedArg = [...flags].find((f) => f.startsWith("--seed="));
@@ -62,13 +62,16 @@ function runPost(key) {
   const post = JSON.parse(readFileSync(path.join(POSTS, file), "utf8"));
 
   const voiceMode = post.video?.audio?.voice_mode ?? "none";
+  // --vox0.5 / --vox2 override the voice model for this run (else use the post's voice_mode).
+  const voiceOverride = flags.has("--vox0.5") ? "voxcpm2-0.5b" : flags.has("--vox2") ? "voxcpm2" : null;
+  const effVoiceMode = voiceOverride || voiceMode;
   const innerNeedsArt = (post.slides ?? []).some((s) => s.role !== "cover" && !s.background_asset);
   const wantsArt = flags.has("--art") || (!flags.has("--no-art") && innerNeedsArt);
-  const wantsVoice = !flags.has("--no-voice") && ["voxcpm2", "voxcpm2-0.5b", "bark", "http"].includes(voiceMode);
+  const wantsVoice = !flags.has("--no-voice") && ["voxcpm2", "voxcpm2-0.5b", "bark", "http"].includes(effVoiceMode);
   const wantsReel = !flags.has("--no-reel") && !!post.video?.enabled;
 
   console.log(`\n╭─ ${fullKey}`);
-  console.log(`│  art=${wantsArt ? (flags.has("--flux2") ? "flux2" : "flux1") : "skip"}  ·  voice=${wantsVoice ? voiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
+  console.log(`│  art=${wantsArt ? (flags.has("--flux2") ? "flux2" : "flux1") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
   console.log(`╰─`);
 
   if (wantsArt) step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux2") ? ["--flux2"] : [])], { fatal: false });
@@ -77,7 +80,7 @@ function runPost(key) {
 
   if (wantsVoice) {
     step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
-    step("voice (TTS)", ["voice", "--", fullKey, ...(seedArg ? [seedArg] : [])]);
+    step("voice (TTS)", ["voice", "--", fullKey, ...(voiceOverride ? [`--voice=${voiceOverride}`] : []), ...(seedArg ? [seedArg] : [])]);
     step("align (caption sync)", ["align", "--", fullKey]);
   }
 

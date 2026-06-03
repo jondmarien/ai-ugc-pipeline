@@ -182,8 +182,8 @@ const postPath = path.join(POSTS, file);
 const post = JSON.parse(readFileSync(postPath, "utf8"));
 const prefix = post.upload_package.filename_prefix;
 // Brand theme drives the accent colour + mood (explicit post.theme, else pillar fallback).
-const theme = post.theme || pillarTheme[post.pillar] || "blue";
-const T = themes[theme] || themes.blue;
+const theme = post.theme || pillarTheme[post.pillar] || "defensive";
+const T = themes[theme] || themes.defensive;
 const accentHex = T.accent;
 const accentName = T.name;
 const mood = T.mood;

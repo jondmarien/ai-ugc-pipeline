@@ -83,22 +83,24 @@ export function accentFor(pillar: Pillar): string {
 // A post's THEME drives both the carousel accent and the AI-image colour/mood,
 // so category is readable at a glance and the brand stays consistent. Authors set
 // `theme` explicitly on a post; otherwise it falls back to the pillar mapping.
-export type Theme = "blue" | "red" | "green";
+// Theme = the post's category. Each maps to a signature colour + mood.
+//   defensive → blue   ·   offensive → red   ·   hacking → green
+export type Theme = "offensive" | "defensive" | "hacking";
 
 export const themes: Record<Theme, { name: string; accent: string; accent2: string; mood: string }> = {
-  blue: { name: "electric blue", accent: "#3b82f6", accent2: "#22d3ee", mood: "calm, controlled, shielded, secure — defensive blue-team energy" },
-  red: { name: "alert red", accent: "#ef4444", accent2: "#f43f5e", mood: "alert, aggressive, breach, warning — offensive red-team / vulnerability energy" },
-  green: { name: "neon green", accent: "#39ff88", accent2: "#22d3ee", mood: "matrix terminal, raw exploratory hacking, code-green energy" },
+  defensive: { name: "electric blue", accent: "#3b82f6", accent2: "#22d3ee", mood: "calm, controlled, shielded, secure — defensive blue-team energy" },
+  offensive: { name: "alert red", accent: "#ef4444", accent2: "#f43f5e", mood: "alert, aggressive, breach, warning — offensive red-team / vulnerability energy" },
+  hacking: { name: "neon green", accent: "#39ff88", accent2: "#22d3ee", mood: "matrix terminal, raw exploratory hacking, code-green energy" },
 };
 
 // Default theme per content pillar (used when a post has no explicit `theme`).
 export const pillarTheme: Record<Pillar, Theme> = {
-  offensive_ai: "red",
-  model_security: "blue",
-  data_leakage: "red",
-  defensive_ai: "blue",
-  governance: "blue",
-  myth_busting: "green",
+  offensive_ai: "offensive",
+  model_security: "defensive",
+  data_leakage: "offensive",
+  defensive_ai: "defensive",
+  governance: "defensive",
+  myth_busting: "hacking",
 };
 
 export function themeFor(post: { theme?: Theme; pillar: Pillar }): Theme {
