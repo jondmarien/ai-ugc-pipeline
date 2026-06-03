@@ -74,8 +74,8 @@ export function SlideBackground({ slide, accent }: { slide: TSlideData; accent: 
           position: "absolute",
           inset: 0,
           background: overlays.ambientBottom,
-          backdropFilter: usesImage ? `blur(${overlays.ambientBlurPx}px)` : undefined,
-          WebkitBackdropFilter: usesImage ? `blur(${overlays.ambientBlurPx}px)` : undefined,
+          backdropFilter: usesImage && overlays.ambientBlurPx > 0 ? `blur(${overlays.ambientBlurPx}px)` : undefined,
+          WebkitBackdropFilter: usesImage && overlays.ambientBlurPx > 0 ? `blur(${overlays.ambientBlurPx}px)` : undefined,
         }}
       />
     </div>

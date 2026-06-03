@@ -65,7 +65,10 @@ export const overlays = {
   topVignette: "linear-gradient(0deg, transparent 0%, rgba(2,3,10,0.62) 100%)",
   topHeight: "24%",
   ambientBottom: "linear-gradient(180deg, transparent 28%, rgba(2,3,10,0.30) 64%, rgba(2,3,10,0.62) 100%)",
-  ambientBlurPx: 3,
+  // Full-frame blur over the whole background — keep this 0 so the AI art stays crisp.
+  // (It's a backdrop-filter on an inset:0 layer, so any value > 0 softens the ENTIRE image,
+  // not just the gradient. Text legibility is handled locally by the text plate below.)
+  ambientBlurPx: 0,
   // Content-hugging text plate (the primary legibility layer). Translucent + blurred,
   // so the background image still reads (softly) through it; densest over the text and
   // fading to transparent at the edges. The blur — not opacity — carries legibility.
