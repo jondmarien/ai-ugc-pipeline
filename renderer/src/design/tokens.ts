@@ -66,10 +66,11 @@ export const overlays = {
   topHeight: "24%",
   ambientBottom: "linear-gradient(180deg, transparent 28%, rgba(2,3,10,0.30) 64%, rgba(2,3,10,0.62) 100%)",
   ambientBlurPx: 3,
-  // Content-hugging text plate (the primary legibility layer). Densest over the text,
-  // fading to transparent at the edges so the surrounding art still shows.
-  textPlate: "radial-gradient(125% 135% at 50% 50%, rgba(2,3,10,0.94) 0%, rgba(2,3,10,0.88) 48%, rgba(2,3,10,0.55) 78%, rgba(2,3,10,0) 100%)",
-  textPlateBlurPx: 9,
+  // Content-hugging text plate (the primary legibility layer). Translucent + blurred,
+  // so the background image still reads (softly) through it; densest over the text and
+  // fading to transparent at the edges. The blur — not opacity — carries legibility.
+  textPlate: "radial-gradient(125% 135% at 50% 50%, rgba(2,3,10,0.66) 0%, rgba(2,3,10,0.54) 48%, rgba(2,3,10,0.24) 78%, rgba(2,3,10,0) 100%)",
+  textPlateBlurPx: 10,
   textPlateInset: "-40px -56px", // how far the plate extends beyond the text box (feathered)
   textPlateRadius: 44,
 } as const;
