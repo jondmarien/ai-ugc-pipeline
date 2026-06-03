@@ -97,10 +97,10 @@ ai-ugc-pipeline/
 | **Scaffold** | `renderer/scripts/new-post.ts` | Create a schema-valid skeleton from flags (`--theme/--captions/--voice/--music`). |
 | **Draft (headless)** | `renderer/scripts/draft.mjs`, `draft-week.mjs` | Drive the `claude` CLI + skills to research, fill, validate, render. |
 | **Validate** | `renderer/scripts/validate.ts` | Parse a post against the schema (8 slides, alt_text length, score sum, ≥1 source). |
-| **Art** | `renderer/scripts/art-comfyui.mjs` | Drive ComfyUI HTTP API; FLUX.1-schnell / FLUX.2-klein GGUF graphs; per-slide prompts. |
+| **Art** | `renderer/scripts/art-comfyui.mjs` | Drive ComfyUI HTTP API; **FLUX.2-klein (default)** / FLUX.1-schnell (`--flux1`) GGUF graphs; per-slide prompts, cover included; disk-aware (skips slides whose art already exists). |
 | **Export** | `renderer/scripts/export-carousel.ts` | Playwright → 1080×1350 carousel PNGs. |
 | **Package** | `renderer/scripts/build-package.ts` | Assemble `caption.txt`, `alt_text.txt`, `sources.md`, `LICENSES.md`. |
-| **Voice** | `renderer/scripts/voice.mjs` → `voice-voxcpm.py` / `voice-http.mjs` | TTS narration (VoxCPM2 local or OpenAI-compatible server); logs the seed. |
+| **Voice** | `renderer/scripts/voice.mjs` → `voice-voxcpm.py` / `voice-http.mjs` | TTS narration (**VoxCPM2 2B default, on for every post**; OpenAI-compatible server via `http`); logs a reusable seed. |
 | **Align** | `renderer/scripts/align.mjs` → `align-whisper.py` | faster-whisper word-level caption timings. |
 | **Reel** | `renderer/scripts/render-reel.ts` | Remotion render, audio auto-embedded. |
 | **Orchestrator** | `renderer/scripts/pipeline.mjs` | One command: art → export → package → free-comfyui → voice → align → reel. |
@@ -233,6 +233,6 @@ flowchart LR
 ## 7. Tech stack
 
 - **Authoring/render:** Bun + TypeScript, React (carousel), Playwright (PNG export), Remotion (reel), zod (schema).
-- **Image gen:** ComfyUI + ComfyUI-GGUF — FLUX.1-schnell (Q4) / FLUX.2-klein 4B (Q5). See [IMAGE_MODELS.md](./IMAGE_MODELS.md).
+- **Image gen:** ComfyUI + ComfyUI-GGUF — **FLUX.2-klein 4B (Q5, default)** / FLUX.1-schnell (Q4, `--flux1`). See [IMAGE_MODELS.md](./IMAGE_MODELS.md).
 - **Speech:** VoxCPM2 (Apache-2.0) for TTS; faster-whisper for word alignment. torch/torchaudio/torchvision pinned together (CUDA index) in `pyproject.toml`.
 - **Content/QA:** house docs in `pipeline/content/` (voice, QA gates, idea backlog), enforced by the two skills + the slash commands.
