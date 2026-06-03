@@ -2,6 +2,8 @@
 
 **Positioning:** *AI cybersecurity explained through viral carousels: real threats, real tools, no fake panic.*
 
+> **Voice & tone** (incl. the de-AI ruleset): [VOICE_AND_TONE_GUIDE.md](VOICE_AND_TONE_GUIDE.md). Copy must read human, not machine-made — the `humanizer` skill enforces it.
+
 **Status:** Manual-first (Meta API pending). Structured for later API automation.
 **Default canvas:** 1080 × 1350 px portrait (carousel) · 1080 × 1920 px (Reels/video).
 **Owner:** Jon (D-Sports). **Cadence:** 3–5 posts/week.

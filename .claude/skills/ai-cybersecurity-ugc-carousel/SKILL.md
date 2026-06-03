@@ -47,6 +47,8 @@ Use current sources when facts matter. Prefer primary sources such as vendor pos
 
 Do not invent statistics, timelines, company names, breach details, CVEs, tool capabilities, or quotes. If a claim is uncertain, use wording such as “could,” “may,” “reported,” “demoed,” or “the risk is.”
 
+**Research as a loop, not a single lookup.** (1) Landscape scan — a broad search to map the claim space and the strongest counter-arguments. (2) Gather primaries. (3) **Triangulate** — find ≥2 independent reputable sources for any load-bearing factual claim; a single or weak source means you tag the claim down. (4) **Confidence-tier** each claim: `[Verified]` (≥2 independent agree) · `[Emerging]` (one reputable, or weak corroboration) · `[Scenario]` (illustrative, no confirming source — label it in-copy). Hard gates: no fabricated URLs; re-open each link and confirm it still says what you claim; disclose angles that came up empty; never name a real victim without a cited public source.
+
 ### 3. Build the carousel narrative
 
 Use this default 8-slide structure unless another structure fits better.
@@ -101,6 +103,8 @@ Use the prompt templates in `references/prompt-and-caption-templates.md` when pr
 
 Use short paragraphs. Start with a restated hook, then explain what happened, why it matters, the defender implication, and a specific comment question. End with a follow/save CTA.
 
+**Then humanize it.** Run the copy through the `humanizer` skill (and `pipeline/content/VOICE_AND_TONE_GUIDE.md`): strip AI tells (em-dash overuse, listicle cadence, "delve/leverage", "not just X but Y", voice-flat symmetry, generic CTA closes) while keeping the house voice — sharp, dry, specific, a visible stance, one voice-signal line that could only be ours. Humanizing changes *how* it reads, never *what* it claims.
+
 | Caption section | Function |
 | --- | --- |
 | First line | Repeat or sharpen the hook |
@@ -122,6 +126,7 @@ Before final delivery, check the content against this gate.
 | Practitioner value | Include at least one defender takeaway |
 | Visual feasibility | Headline is short enough for a mobile cover |
 | Brand consistency | Tone, format, CTA, and typography guidance are repeatable |
+| Voice de-AI scan | Copy passes the humanizer audit / `VOICE_AND_TONE_GUIDE.md` pre-publish scan; reads human, not machine |
 
 If the content fails, revise before delivering.
 

@@ -3,6 +3,8 @@
 Plug-and-play copy for Stage 3 (Frame) and Stage 6 (Caption) of [CONTENT_PIPELINE.md](CONTENT_PIPELINE.md).
 House voice: direct, sharp, practical — a security-literate operator explaining what the AI hype actually means. Curiosity on the cover, nuance in the caption.
 
+> Full voice spec + the de-AI ruleset: **[VOICE_AND_TONE_GUIDE.md](VOICE_AND_TONE_GUIDE.md)** (this file is the quick hook/caption/CTA bank). Final copy runs through the `humanizer` skill.
+
 ---
 
 ## 1. Cover hook formulas
