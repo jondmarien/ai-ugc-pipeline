@@ -11,7 +11,7 @@ bunx playwright install chromium     # carousel screenshots
 bunx remotion browser ensure         # reel rendering (once)
 
 # ONE command — art → carousel → package → free GPU → voice → synced captions → reel:
-bun run pipeline   -- 2026-06-02_ai-phishing-training --flux2          # add --vox2/--vox0.5, --seed=N, --no-voice/--no-reel
+bun run pipeline   -- 2026-06-02_ai-phishing-training                 # FLUX.2 + VoxCPM2-2B default; add --flux1 (legacy), --vox0.5, --seed=N, --no-voice/--no-reel
 
 # idea → researched + humanized JSON → rendered (skills + claude CLI):
 bun run draft      -- "AI agents leaking RAG data" model_security --theme=defensive --voice=voxcpm2
@@ -20,7 +20,7 @@ bun run draft-week -- "idea1::offensive_ai" "idea2::model_security::captions=hig
 # individual steps:
 bun run new        -- 2026-06-13 my-topic model_security --theme=defensive --captions=highlight   # scaffold a blank post
 bun run validate -- 2026-06-02_ai-phishing-training   # check JSON against the schema
-bun run art      -- 2026-06-02_ai-phishing-training --flux2   # FLUX.2-klein backgrounds (needs running ComfyUI)
+bun run art      -- 2026-06-02_ai-phishing-training   # FLUX.2-klein backgrounds by default, cover included (needs ComfyUI; --flux1 = legacy)
 bun run export   -- 2026-06-02_ai-phishing-training   # 8× 1080×1350 carousel PNGs
 bun run package  -- 2026-06-02_ai-phishing-training   # caption/alt/sources/licenses/QA
 bun run voice    -- 2026-06-02_ai-phishing-training --vox2 --seed=12345   # narration (VoxCPM2); seed logged

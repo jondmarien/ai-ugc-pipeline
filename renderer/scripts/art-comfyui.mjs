@@ -30,7 +30,7 @@ const opt = (name, def) => {
 };
 const key = args.find((a) => !a.startsWith("--"));
 if (!key) {
-  console.error("Usage: bun run art -- <post-key> [--all] [--flux2] [--only=N[,N]] [--dry-run] [--steps=N] [--width=N] [--height=N] [--seed=N]");
+  console.error("Usage: bun run art -- <post-key> [--all|--force] [--flux1 (legacy FLUX.1; default is FLUX.2)] [--only=N[,N]] [--dry-run] [--steps=N] [--width=N] [--height=N] [--seed=N]");
   process.exit(1);
 }
 
@@ -40,7 +40,9 @@ const URL_BASE = (process.env.COMFYUI_URL || "http://127.0.0.1:8000").replace(/\
 // text encoder (CLIPLoader type "flux2", run on CPU), the flux2 VAE, and the
 // Flux2Scheduler → CFGGuider → SamplerCustomAdvanced sampling stack. Writes to a SEPARATE
 // public/backgrounds/<prefix>_flux2/ folder when --compare; otherwise updates the post JSON.
-const FLUX2 = flags.has("--flux2");
+// FLUX.2 [klein] is the DEFAULT art engine. Opt out to the legacy FLUX.1-schnell GGUF with --flux1.
+// (--flux2 is still accepted as a harmless no-op alias so older commands keep working.)
+const FLUX2 = !flags.has("--flux1");
 // --flux2 writes REAL backgrounds (updates the post JSON), like FLUX.1. Add --compare to
 // instead do a non-destructive A/B into <prefix>_flux2/ without touching the JSON.
 const COMPARE = flags.has("--compare");

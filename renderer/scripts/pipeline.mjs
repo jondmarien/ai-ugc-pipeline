@@ -9,7 +9,7 @@
 //   7. reel         Remotion reel — AUTO-EMBEDS the voice from step 5 (no more silent reels)
 //
 // Flags:
-//   --flux2        use the FLUX.2 klein graph for step 1 (else FLUX.1-schnell)
+//   --flux1        use the legacy FLUX.1-schnell graph for step 1 (default is FLUX.2 klein)
 //   --art          force background regeneration even if slides already have art
 //   --no-art       skip background generation
 //   --no-package   skip the package step
@@ -29,7 +29,7 @@ const argv = process.argv.slice(2);
 const flags = new Set(argv.filter((a) => a.startsWith("--")));
 const keys = argv.filter((a) => !a.startsWith("--"));
 if (!keys.length) {
-  console.error("Usage: bun run pipeline -- <post-key> [<post-key> ...] [--flux2] [--art|--no-art] [--vox0.5|--vox2] [--no-voice] [--no-reel] [--no-package] [--seed=N] [--tail=N]");
+  console.error("Usage: bun run pipeline -- <post-key> [<post-key> ...] [--flux1] [--art|--no-art] [--vox0.5|--vox2] [--no-voice] [--no-reel] [--no-package] [--seed=N] [--tail=N]");
   process.exit(1);
 }
 const seedArg = [...flags].find((f) => f.startsWith("--seed="));
@@ -76,11 +76,11 @@ function runPost(key) {
   const wantsReel = !flags.has("--no-reel") && !!post.video?.enabled;
 
   console.log(`\n╭─ ${fullKey}`);
-  console.log(`│  art=${wantsArt ? (flags.has("--flux2") ? "flux2" : "flux1") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
+  console.log(`│  art=${wantsArt ? (flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
   console.log(`╰─`);
 
   // Default art run generates every needy slide (cover included). `--art` forces a full regen (→ art --all).
-  if (wantsArt) step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux2") ? ["--flux2"] : []), ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
+  if (wantsArt) step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux1") ? ["--flux1"] : []), ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
   step("export (carousel)", ["export", "--", fullKey]);
   if (!flags.has("--no-package")) step("package (upload files)", ["package", "--", fullKey]);
 

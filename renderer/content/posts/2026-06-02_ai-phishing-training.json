@@ -273,7 +273,7 @@
     "export_name": "2026-06-02_ai-phishing-training_reel.mp4",
     "caption_mode": "highlight",
     "audio": {
-      "voice_mode": "voxcpm2-0.5b",
+      "voice_mode": "voxcpm2",
       "voice_file": "/audio/2026-06-02_ai-phishing-training/voice.wav",
       "voice_gain_db": 0,
       "music_mode": "none",
@@ -354,13 +354,13 @@
     "licenses": [],
     "captions": [
       {
-        "start": 0.0,
+        "start": 0,
         "end": 2.26,
         "text": "AI fishing made old training obsolete.",
         "words": [
           {
             "text": "AI",
-            "start": 0.0,
+            "start": 0,
             "end": 0.24
           },
           {
