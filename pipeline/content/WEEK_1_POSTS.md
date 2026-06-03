@@ -7,7 +7,7 @@ Posts 1–3 **reuse the existing finished assets** in `ai_cybersecurity_carousel
 
 ## Current pipeline (what changed since this doc was first written)
 The process tightened — treat the per-post specs below as the *brief*, then run them through the current stack:
-- **Theme system** drives colour: `offensive` = red, `defensive` = blue, `hacking` = green, `purple` = purple-team (purple), `ai` = generic AI (orange). Each post below now carries a theme.
+- **Theme system** drives colour: `offensive` = red, `defensive` = blue, `hacking` = green, `purple-team` = purple, `ai` = generic AI (orange). Each post below now carries a theme.
 - **Research is a loop:** landscape scan → ≥2 independent reputable sources → tier each claim `[Verified]/[Emerging]/[Scenario]` → hard gates (no fabricated URLs, no uncited victims). See [DRAFT_POST_REFERENCE.md](DRAFT_POST_REFERENCE.md).
 - **Voice:** every post's copy runs through the `humanizer` skill against [VOICE_AND_TONE_GUIDE.md](VOICE_AND_TONE_GUIDE.md) — sharp, specific, no AI tells.
 - **Render:** one command — `cd renderer && bun run pipeline -- <key> --flux2 --vox2` — FLUX.2-klein backgrounds → carousel → package → VoxCPM2 voice → Whisper captions → reel. Design: [renderer/docs/PIPELINE_ARCHITECTURE.md](../../renderer/docs/PIPELINE_ARCHITECTURE.md).
