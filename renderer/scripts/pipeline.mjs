@@ -64,7 +64,7 @@ function runPost(key) {
   const voiceMode = post.video?.audio?.voice_mode ?? "none";
   const innerNeedsArt = (post.slides ?? []).some((s) => s.role !== "cover" && !s.background_asset);
   const wantsArt = flags.has("--art") || (!flags.has("--no-art") && innerNeedsArt);
-  const wantsVoice = !flags.has("--no-voice") && ["voxcpm2", "bark", "http"].includes(voiceMode);
+  const wantsVoice = !flags.has("--no-voice") && ["voxcpm2", "voxcpm2-0.5b", "bark", "http"].includes(voiceMode);
   const wantsReel = !flags.has("--no-reel") && !!post.video?.enabled;
 
   console.log(`\n╭─ ${fullKey}`);
