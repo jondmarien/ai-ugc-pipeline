@@ -1,0 +1,58 @@
+# Python ML deps for the ai-ugc-pipeline renderer (uv-managed venv at renderer/.venv).
+#
+# This powers the LOCAL ML helpers only:
+#   - bun run voice        → VoxCPM2 TTS          (voxcpm, soundfile)
+#   - bun run align        → Whisper word-sync    (faster-whisper)
+#   - bun run art:diffusers→ legacy diffusers FLUX (diffusers/transformers/accelerate/bitsandbytes)
+# Primary image generation now runs through ComfyUI (separate env at E:\ComfyUI\.venv),
+# driven by bun run art → scripts/art-comfyui.mjs. The bun/JS layer is in package.json.
+#
+# Setup / reproduce this env (run from renderer/):
+#   uv sync                      # create/refresh .venv from this file
+#   # or, targeted:  uv pip install -e .
+# Torch/torchaudio/torchvision are pulled from PyTorch's CUDA 12.4 index (below), and the
+# trio is version-locked together so torchaudio matches torch — a mismatch is what caused
+# VoxCPM's "WinError 127" (torchaudio's native _torchaudio.pyd failing to load against torch).
+
+[project]
+name = "ai-ugc-renderer-ml"
+version = "0.1.0"
+description = "Local ML helpers (VoxCPM TTS, faster-whisper alignment, legacy diffusers FLUX) for the ai-ugc-pipeline renderer."
+readme = "docs/RUN_IT_YOURSELF.md"
+requires-python = ">=3.10,<3.13"  # VoxCPM requires <3.13
+
+dependencies = [
+  # --- TTS: bun run voice (voxcpm2) ---
+  "voxcpm>=2.0.3",
+  "soundfile>=0.13",
+  # --- STT word-alignment: bun run align ---
+  "faster-whisper>=1.2",
+  # --- Legacy local diffusers art path: bun run art:diffusers ---
+  "diffusers>=0.37",
+  "transformers>=5.0",
+  "accelerate>=1.0",
+  "sentencepiece>=0.2",
+  "protobuf>=5",
+  "pillow>=11",
+  "bitsandbytes>=0.49",
+  # --- shared ---
+  "huggingface-hub>=1.0",
+  "numpy>=2.0",
+  # --- PyTorch (CUDA 12.4); trio locked together so torchaudio matches torch ---
+  "torch==2.6.0",
+  "torchaudio==2.6.0",
+  "torchvision==0.21.0",
+]
+
+# Pull torch/torchaudio/torchvision from PyTorch's CUDA 12.4 wheels (not PyPI).
+# `explicit = true` keeps this index scoped to the packages routed below.
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+# Use the CUDA index on Windows/Linux; macOS has no CUDA wheels (falls back to PyPI).
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu124", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]
+torchaudio = [{ index = "pytorch-cu124", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cu124", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]

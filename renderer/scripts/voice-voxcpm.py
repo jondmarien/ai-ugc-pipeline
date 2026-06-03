@@ -29,9 +29,15 @@ Notes:
 - Clone only a synthetic voice or your OWN authorized reference sample.
 """
 import argparse
+import faulthandler
 import json
 import os
 import sys
+
+# Surface native (C-level) crashes — VoxCPM/torch can hard-crash without a Python
+# traceback (process dies, cryptic exit code). faulthandler dumps the stack on fatal
+# signals so we can see WHERE it died.
+faulthandler.enable()
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RENDERER = os.path.dirname(HERE)
@@ -71,9 +77,17 @@ def main() -> None:
         import soundfile as sf
         from voxcpm import VoxCPM  # type: ignore
     except Exception as e:  # pragma: no cover - depends on local install
+        hint = ""
+        if "WinError 127" in str(e) or "specified procedure" in str(e):
+            hint = (
+                "\n→ This is almost always a torch/torchaudio VERSION MISMATCH (torchaudio's native\n"
+                "  _torchaudio.pyd can't load against a different torch). Pin them to the same release:\n"
+                "    uv pip install \"torchaudio==2.6.0\" --index-url https://download.pytorch.org/whl/cu124\n"
+                "  (match torchaudio to your installed torch — see renderer/pyproject.toml, which locks the trio)."
+            )
         sys.exit(
-            f"VoxCPM not available ({e}).\n"
-            "Install:  uv pip install voxcpm soundfile torch  (CUDA torch recommended).\n"
+            f"VoxCPM not available ({e}).{hint}\n"
+            "Install (or repair) from renderer/:  uv sync   (or  uv pip install -e .)\n"
             "See renderer/docs/REMOTION_REEL_WORKFLOW.md. Prefer the HTTP TTS mode "
             "(Kokoro-FastAPI) if you'd rather not download a multi-GB model."
         )
@@ -85,7 +99,22 @@ def main() -> None:
     if args.voice_ref:
         kwargs["reference_wav_path"] = args.voice_ref  # clone an AUTHORIZED voice only
 
-    wav = model.generate(text=script, **kwargs)
+    try:
+        wav = model.generate(text=script, **kwargs)
+    except Exception as e:  # pragma: no cover - runtime/VRAM dependent
+        msg = str(e)
+        oom = any(s in msg.lower() for s in ("out of memory", "cuda", "alloc", "cublas", "cudnn"))
+        sys.exit(
+            f"VoxCPM generation failed: {e}\n"
+            + (
+                "→ Almost certainly a VRAM conflict: VoxCPM2 needs ~5 GB on the GPU, and on an 8 GB card\n"
+                "  it can't share with ComfyUI's loaded models. Fix: fully close ComfyUI (or free its VRAM)\n"
+                "  before running voice; OR force CPU with `CUDA_VISIBLE_DEVICES= bun run voice -- <key>` (slow);\n"
+                "  OR switch the post to the HTTP TTS mode (Kokoro-FastAPI). See REMOTION_REEL_WORKFLOW.md.\n"
+                if oom
+                else "→ Re-run and check the traceback above for the cause.\n"
+            )
+        )
     # generate() returns a 1D float32 ndarray (or a generator of chunks when streaming).
     if not isinstance(wav, np.ndarray):
         wav = np.concatenate(list(wav))
