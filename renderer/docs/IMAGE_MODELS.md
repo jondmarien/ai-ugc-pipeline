@@ -122,15 +122,24 @@ FLUX.2 klein is a *different* architecture from FLUX.1 — it uses a **Qwen3-4B*
 
 1. **Update ComfyUI** to a recent build (FLUX.2 support landed Jan 2026). Keep the **ComfyUI-GGUF** node for the GGUF route.
 2. **Easiest:** ComfyUI → **Workflow → Browse Templates → Images → “Flux.2 Klein 4B & 9B”**. Open the **4B distilled** text-to-image template; ComfyUI prompts to download the models for you. (4B distilled = 4 steps, ~8 GB VRAM.)
-3. **Files** (if downloading manually):
-   | File | Put in |
-   | --- | --- |
-   | `qwen_3_4b.safetensors` (FLUX.2's text encoder) | `models\text_encoders\` |
-   | `flux-2-klein-4b-fp8.safetensors` (distilled, fp8) **or** a GGUF (`unsloth/FLUX.2-klein-4B-GGUF`, Q4/Q5) | `models\diffusion_models\` (fp8) / `models\unet\` (GGUF) |
-   | `flux2-vae.safetensors` | `models\vae\` |
-   - On **8 GB**, prefer the **GGUF Q4/Q5** (via Unet Loader (GGUF)) over fp8 for headroom. The `unsloth/FLUX.2-klein-4B-GGUF` repo is **Apache-2.0 + ungated**. Use only the **4B** (Apache-2.0) — not klein 9B / dev (non-commercial).
-4. **Workflow:** distilled = **4 steps**; for GGUF, swap “Load Diffusion Model” → **Unet Loader (GGUF)**. FLUX.2 also does image *editing* (reference images) if you want that later.
-5. Generate the 7 inner slides, then the same hand-off: `bun run import-bg -- <key> <folder>` → `bun run export -- <key>`.
+3. **Download to `E:` manually** (the in-app "Download" button can't target `E:` — use these `hf download` commands, same pattern as the FLUX.1 section). Files land under a `split_files\…` subfolder; ComfyUI scans it fine (the dropdown shows the subpath, like `ae.safetensors`).
+
+   **Shared by every 4B variant — the Qwen3 text encoder + VAE:**
+   ```bat
+   hf download Comfy-Org/flux2-klein split_files/text_encoders/qwen_3_4b.safetensors --local-dir E:\ComfyUI\models\text_encoders
+   hf download Comfy-Org/flux2-dev   split_files/vae/flux2-vae.safetensors          --local-dir E:\ComfyUI\models\vae
+   ```
+
+   **Then the diffusion model. On 8 GB use the distilled GGUF (goes in `models\unet`, loads via `Unet Loader (GGUF)` — same node as FLUX.1):**
+   ```bat
+   hf download unsloth/FLUX.2-klein-4B-GGUF flux-2-klein-4b-Q5_K_S.gguf --local-dir E:\ComfyUI\models\unet
+   ```
+   - `flux-2-klein-4b-Q5_K_S.gguf` ≈ **3.05 GB** (Q4_K_S ≈ 2.5 GB for even more headroom). Apache-2.0, distilled (**4 steps**), built with ComfyUI-GGUF tooling. Fits 8 GB with little/no offload → fast, like our FLUX.1 Q4 win.
+   - ⚠️ **Do NOT use `flux-2-klein-base-4b.safetensors` (7.22 GB bf16) on 8 GB** — it offloads + runs 20 steps → minutes/image (the Q5 problem). (There is **no** `flux-2-klein-4b-fp8.safetensors` in `Comfy-Org/flux2-klein` — earlier note was wrong; use the GGUF.)
+   - **License:** klein **4B** = **Apache-2.0**, commercial-OK. Never use **klein 9B** or **FLUX.2 [dev]** — non-commercial.
+   - The **qwen_3_4b encoder (7.49 GB) must run on CPU** on 8 GB (`CLIPLoader device=cpu`) — same trick as the T5 encoder for FLUX.1; it frees the GPU for the diffusion model.
+4. **Architecture differs from FLUX.1:** loaders are `Unet Loader (GGUF)` + `CLIPLoader` (type `flux2`, `device cpu`) + `VAELoader`; sampling is `Flux2Scheduler` → `RandomNoise`/`KSamplerSelect`/`CFGGuider` → `SamplerCustomAdvanced` (not a plain KSampler). Distilled = 4 steps / CFG 1. Saved as the viewable workflow `flux2_klein_4b_8gb.json` once models are present.
+5. **Pipeline use:** `bun run art --flux2 -- <key>` generates the slides with FLUX.2 into a separate `public/backgrounds/<prefix>_flux2/` folder (non-destructive — keeps the FLUX.1 set for comparison). Override the subpath'd encoder/vae filenames via `ART2_CLIP` / `ART2_VAE` if your dropdown names differ. Or the manual hand-off: `bun run import-bg -- <key> <folder>` → `bun run export -- <key>`.
 
 > Diffusers route for FLUX.2 (`ART_MODEL=black-forest-labs/FLUX.2-klein-4B bun run art …`) also exists, but the BFL repo is **gated** (accept license + `hf login`) and needs a recent diffusers with `Flux2KleinPipeline`. ComfyUI + the ungated unsloth GGUF is the lower-friction 8 GB path.
 

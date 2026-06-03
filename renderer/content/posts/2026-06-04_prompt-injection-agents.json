@@ -80,7 +80,8 @@
       "kicker": "WHAT CHANGED",
       "on_slide_copy": "Direct injection: the user manipulates the model. Indirect: the content does.",
       "subline": "The instruction can come from data, not the chat box.",
-      "asset_status": "procedural"
+      "asset_status": "generated",
+      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/02_context.png"
     },
     {
       "slide": 3,
@@ -88,7 +89,8 @@
       "kicker": "WHY IT MATTERS",
       "on_slide_copy": "It can live in web pages, emails, documents, images — anywhere the agent reads.",
       "subline": "Untrusted content becomes untrusted instructions.",
-      "asset_status": "procedural"
+      "asset_status": "generated",
+      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/03_risk.png"
     },
     {
       "slide": 4,
@@ -96,7 +98,8 @@
       "kicker": "HOW IT WORKS",
       "on_slide_copy": "The risk spikes when the AI can act: send email, read files, call APIs.",
       "subline": "Reading is one thing. Acting is another.",
-      "asset_status": "procedural"
+      "asset_status": "generated",
+      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/04_mechanism.png"
     },
     {
       "slide": 5,
@@ -104,7 +107,8 @@
       "kicker": "WHERE TEAMS FAIL",
       "on_slide_copy": "OWASP flags the pattern: injection, sensitive disclosure, excessive agency.",
       "subline": "It's a known risk class, not a surprise.",
-      "asset_status": "procedural"
+      "asset_status": "generated",
+      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/05_failure-point.png"
     },
     {
       "slide": 6,
@@ -112,7 +116,8 @@
       "kicker": "DEFENSIVE MOVE",
       "on_slide_copy": "Isolate untrusted content. Limit tools. Log actions. Confirm sensitive steps.",
       "subline": "Least privilege for agents, not just users.",
-      "asset_status": "procedural"
+      "asset_status": "generated",
+      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/06_defense.png"
     },
     {
       "slide": 7,
@@ -120,7 +125,8 @@
       "kicker": "TAKEAWAY",
       "on_slide_copy": "Treat external content like user input wearing a costume.",
       "subline": "",
-      "asset_status": "procedural"
+      "asset_status": "generated",
+      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/07_takeaway.png"
     },
     {
       "slide": 8,
@@ -128,8 +134,9 @@
       "kicker": "YOUR MOVE",
       "on_slide_copy": "Would your agent trust a webpage it was told to summarize?",
       "subline": "Save this for your next agent design review.",
-      "asset_status": "procedural",
-      "cta": "COMMENT + SAVE"
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/08_cta.png"
     }
   ],
   "caption": "The weirdest AI attack doesn't get typed into the chat box. It hides in the content your AI agent reads.\n\nThat's indirect prompt injection: instructions tucked into a web page, email, document, or image that the model treats as commands. OWASP's Top 10 for LLM Applications lists prompt injection, sensitive-information disclosure, and excessive agency as core risks — and the danger spikes the moment your agent can act (send mail, read files, call APIs) on what it just read.\n\nDefender move: isolate untrusted content from privileged tools, scope agent permissions to the minimum, log every action, and require human confirmation for sensitive steps.\n\nIf your agent summarizes a random webpage, should it also be allowed to email your team? Where would you draw that line?\n\nFollow for AI security breakdowns without the fake panic.",
@@ -170,6 +177,62 @@
       "commercial_use_allowed": true,
       "disclosure_required": false,
       "notes": "No rendered text, no logos, no credentials."
+    },
+    {
+      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/02_context.png",
+      "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/03_risk.png",
+      "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/04_mechanism.png",
+      "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/05_failure-point.png",
+      "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/06_defense.png",
+      "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/07_takeaway.png",
+      "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/08_cta.png",
+      "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
     }
   ],
   "video": {
@@ -223,7 +286,7 @@
         "words": [
           {
             "text": "The",
-            "start": 0.0,
+            "start": 0,
             "end": 0.1
           },
           {
@@ -279,11 +342,11 @@
           {
             "text": "injection",
             "start": 3.72,
-            "end": 4.0
+            "end": 4
           },
           {
             "text": "lives",
-            "start": 4.0,
+            "start": 4,
             "end": 4.52
           },
           {
@@ -329,7 +392,7 @@
           {
             "text": "box.",
             "start": 0.78,
-            "end": 1.0
+            "end": 1
           },
           {
             "text": "Isolate",
@@ -511,13 +574,13 @@
     "licenses": [],
     "captions": [
       {
-        "start": 0.0,
+        "start": 0,
         "end": 1.88,
         "text": "The weirdest AI attack hides where your",
         "words": [
           {
             "text": "The",
-            "start": 0.0,
+            "start": 0,
             "end": 0.1
           },
           {
@@ -580,11 +643,11 @@
           {
             "text": "injection",
             "start": 3.74,
-            "end": 4.0
+            "end": 4
           },
           {
             "text": "lives",
-            "start": 4.0,
+            "start": 4,
             "end": 4.5
           },
           {
@@ -627,7 +690,7 @@
           {
             "text": "box.",
             "start": 5.78,
-            "end": 6.0
+            "end": 6
           },
           {
             "text": "Isolate",
