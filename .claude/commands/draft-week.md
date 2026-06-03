@@ -23,9 +23,9 @@ If fewer than 5 ideas are given, just do that many. If more than 5, take the fir
 ## Per-idea steps (same as /draft-post)
 For each idea, in turn:
 1. Use `ai-cybersecurity-ugc-carousel` to write the 8-slide post + caption + hashtags + question (house voice).
-2. **Research real sources** with WebSearch/WebFetch. No fabricated CVEs/stats/quotes — back every factual claim with a real source or tag it `[Scenario]`. No payloads/exploit/evasion. Include a defender takeaway.
+2. **Research real sources (a loop, not one search):** landscape scan (broad WebSearch + counter-arguments) → gather primaries (OWASP/NCSC/NIST/CISA/CVE/named journalism) → **triangulate ≥2 independent sources** for load-bearing claims → confidence-tier each (`[Verified]`/`[Emerging]`/`[Scenario]`) and record `{source, link, supports, confidence, claim_tag}`. Hard gates: no fabricated URLs; re-open links; disclose empty angles; no real victim without a cited source. No payloads/exploit/evasion. Include a defender takeaway.
 3. Use `react-remotion-instagram-renderer` to map to the schema. Pick a kebab slug.
-4. `cd renderer && npm run new -- <date> <slug> <pillar> --captions=<mode>`, then Edit the JSON to replace every TODO with real, sourced content. Keep schema rules (8 slides, slide1=cover, alt_text length 8, score.total = sum, ≥1 source, reel beats filled, `video.caption_mode` = requested mode).
+4. `cd renderer && npm run new -- <date> <slug> <pillar> --captions=<mode>`, then Edit the JSON to replace every TODO with real, sourced content. Keep schema rules (8 slides, slide1=cover, alt_text length 8, score.total = sum, ≥1 source, reel beats filled, `video.caption_mode` = requested mode). Then **humanize** the caption/narration/on_slide_copy with the `humanizer` skill (+ `voice-profile.md`) → house voice per `pipeline/content/VOICE_AND_TONE_GUIDE.md`; never alter a sourced fact.
 5. `cd renderer && npm run validate -- <date>_<slug>` → fix until clean.
 6. Render: `cd renderer && npm run export -- <date>_<slug> && npm run package -- <date>_<slug> && npm run reel -- <date>_<slug>`. (If a reel hangs: free port 4317 / `npx remotion browser ensure`.)
 

@@ -56,10 +56,11 @@ The Stage 7 gate in [CONTENT_PIPELINE.md](CONTENT_PIPELINE.md). **A post may not
 
 | # | Check | Pass condition |
 | --- | --- | --- |
-| 6.1 | Voice | Direct/practical; matches [CAPTION_BANK.md](CAPTION_BANK.md) rules; no fear-mongering |
+| 6.1 | Voice | Direct/practical; matches [VOICE_AND_TONE_GUIDE.md](VOICE_AND_TONE_GUIDE.md); no fear-mongering |
 | 6.2 | Style consistency | Pillar accent color, layout, handle, and CTA match the system |
 | 6.3 | Canvas | 1080×1350 (carousel) / 1080×1920 (Reel); consistent across slides |
 | 6.4 | Filenames | Ordered, convention-correct (`YYYY-MM-DD_slug_NN_role.png`) |
+| 6.5 | De-AI scan | Copy passes the humanizer audit / [VOICE_AND_TONE_GUIDE.md](VOICE_AND_TONE_GUIDE.md) pre-publish scan — em-dash overuse, listicle cadence, AI vocab, voice-flat symmetry removed; ≥1 voice-signal line |
 | 6.5 | CTA + question | One clear CTA and one specific comment question |
 
 ## Gate 7 — Media rights (video/audio only)
