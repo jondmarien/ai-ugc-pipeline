@@ -17,7 +17,8 @@
     "reel": "bun scripts/render-reel.ts",
     "voice": "bun scripts/voice.mjs",
     "align": "bun scripts/align.mjs",
-    "art": "bun scripts/art.mjs",
+    "art": "bun scripts/art-comfyui.mjs",
+    "art:diffusers": "bun scripts/art.mjs",
     "import-bg": "bun scripts/import-bg.mjs",
     "typecheck": "tsc --noEmit && tsc --noEmit -p remotion/tsconfig.json",
     "remotion:studio": "bunx remotion studio remotion/index.ts"

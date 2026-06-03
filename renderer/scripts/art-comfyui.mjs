@@ -1,0 +1,232 @@
+// bun run art -- <post-key> [--all] [--dry-run] [--steps=N] [--width=N] [--height=N] [--model=NAME] [--seed=N]
+// Generates per-slide background art by driving a RUNNING ComfyUI server over its HTTP API
+// (the locked-in FLUX.1-schnell Q4_K_S GGUF workflow — fits 8GB, ~30-58s/img). No diffusers,
+// no Docker, no model loading in this process. ComfyUI just has to be running.
+//
+// For each inner slide it: builds an API-format graph with that slide's prompt, POSTs /prompt,
+// polls /history, downloads the PNG via /view into public/backgrounds/<prefix>/NN_role.png,
+// flips the slide to asset_status:"existing" + background_asset, and logs an Apache-2.0 license
+// entry (FLUX.1-schnell). Then: bun run export -- <post-key>.
+//
+// Config via env (or flags): COMFYUI_URL (default http://127.0.0.1:8000),
+//   ART_MODEL (flux1-schnell-Q4_K_S.gguf), ART_STEPS (4), ART_WIDTH (768), ART_HEIGHT (1024),
+//   ART_T5 (t5xxl_fp8_e4m3fn.safetensors), ART_CLIP (clip_l.safetensors),
+//   ART_VAE (split_files\vae\ae.safetensors), ART_CLIP_DEVICE (cpu).
+// Legacy local-diffusers path is still available via:  bun run art:diffusers -- <key>
+import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
+const POSTS = path.join(RENDERER, "content", "posts");
+const ROLE_FILE = { failure_point: "failure-point" };
+
+const args = process.argv.slice(2);
+const flags = new Set(args.filter((a) => a.startsWith("--")));
+const opt = (name, def) => {
+  const hit = args.find((a) => a.startsWith(`--${name}=`));
+  return hit ? hit.split("=")[1] : def;
+};
+const key = args.find((a) => !a.startsWith("--"));
+if (!key) {
+  console.error("Usage: bun run art -- <post-key> [--all] [--flux2] [--only=N[,N]] [--dry-run] [--steps=N] [--width=N] [--height=N] [--seed=N]");
+  process.exit(1);
+}
+
+const URL_BASE = (process.env.COMFYUI_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
+const MODEL = opt("model", process.env.ART_MODEL || "flux1-schnell-Q4_K_S.gguf");
+const STEPS = Number(opt("steps", process.env.ART_STEPS || 4));
+const WIDTH = Number(opt("width", process.env.ART_WIDTH || 768));
+const HEIGHT = Number(opt("height", process.env.ART_HEIGHT || 1024));
+const SEED_BASE = Number(opt("seed", process.env.ART_SEED || 42));
+const T5 = process.env.ART_T5 || "t5xxl_fp8_e4m3fn.safetensors";
+const CLIP_L = process.env.ART_CLIP || "clip_l.safetensors";
+const VAE = process.env.ART_VAE || "split_files\\vae\\ae.safetensors";
+const CLIP_DEVICE = process.env.ART_CLIP_DEVICE || "cpu";
+const DRY = flags.has("--dry-run");
+
+// FLUX.2 [klein] 4B (distilled GGUF) mode — `--flux2`. Different architecture: a single Qwen3
+// text encoder (CLIPLoader type "flux2", run on CPU), the flux2 VAE, and the
+// Flux2Scheduler → CFGGuider → SamplerCustomAdvanced sampling stack. Writes to a SEPARATE
+// public/backgrounds/<prefix>_flux2/ folder and leaves the post JSON untouched, so the FLUX.1
+// set stays live for side-by-side comparison. Override the (subpath'd) filenames via ART2_* env.
+const FLUX2 = flags.has("--flux2");
+const F2_MODEL = process.env.ART2_MODEL || "flux-2-klein-4b-Q5_K_S.gguf";
+const F2_CLIP = process.env.ART2_CLIP || "split_files\\text_encoders\\qwen_3_4b.safetensors";
+const F2_VAE = process.env.ART2_VAE || "split_files\\vae\\flux2-vae.safetensors";
+const F2_CFG = Number(process.env.ART2_CFG || 1);
+
+// Role-aware visual motifs (NO on-slide text — FLUX would render garbled words).
+const ROLE_MOTIF = {
+  context: "two diverging glowing data streams over a dark grid, one clean direct path and one hidden shadowed path, contrast of trusted versus untrusted flow",
+  risk: "untrusted content fanning outward across abstract documents, envelopes, browser windows and image frames, thin glowing connection lines",
+  mechanism: "an abstract AI agent core emitting outbound action beams to connected API nodes and tool icons lighting up in sequence",
+  failure_point: "a dark control panel with glowing warning hotspots and layered risk zones, alert highlights, tension",
+  defense: "a layered protective shield wrapping an isolated sandbox, padlocks and permission gates, controlled gateways, calm and secure",
+  takeaway: "a translucent mask motif and thin data-stream lines pushed to the lower edge and the corners, the entire middle of the frame left open, empty and dark, minimal high-impact composition",
+  cta: "a forward-motion arrow and a softly glowing question mark toward the upper area, sense of momentum inviting a swipe",
+};
+
+// Where the slide's TEXT sits → keep that zone of the image dark/empty so captions stay legible.
+// Takeaway centers its text (centered radial scrim); every other role is bottom-aligned.
+const TEXT_ZONE = {
+  takeaway: "keep the central area of the frame open, dark and empty for a centered text overlay; arrange all focal elements around the edges and corners",
+};
+const DEFAULT_ZONE = "keep the lower portion of the frame dark, calm and uncluttered for a text overlay; place focal elements in the upper third and the periphery";
+
+function buildPrompt(slide, accentHex, accentName) {
+  const motif = ROLE_MOTIF[slide.role] || "abstract flowing data network, nodes and light trails";
+  const subject = slide.visual_prompt && slide.visual_prompt.trim()
+    ? slide.visual_prompt.trim()
+    : `dark cinematic cybersecurity illustration, ${motif}`;
+  const zone = TEXT_ZONE[slide.role] || DEFAULT_ZONE;
+  return `${subject}, ${accentName} (${accentHex}) accent glow on a deep navy void #05070d, subtle circuit-board grid, volumetric haze, fine particle detail, high contrast, ${zone}, no text, no words, no letters, no logos, no watermark, editorial tech aesthetic`;
+}
+
+function buildGraph(promptText, seed) {
+  return {
+    "4": { class_type: "UnetLoaderGGUF", inputs: { unet_name: MODEL } },
+    "5": { class_type: "DualCLIPLoader", inputs: { clip_name1: T5, clip_name2: CLIP_L, type: "flux", device: CLIP_DEVICE } },
+    "6": { class_type: "VAELoader", inputs: { vae_name: VAE } },
+    "7": { class_type: "CLIPTextEncode", inputs: { text: promptText, clip: ["5", 0] } },
+    "8": { class_type: "CLIPTextEncode", inputs: { text: "", clip: ["5", 0] } },
+    "9": { class_type: "EmptySD3LatentImage", inputs: { width: WIDTH, height: HEIGHT, batch_size: 1 } },
+    "10": { class_type: "KSampler", inputs: { seed, steps: STEPS, cfg: 1, sampler_name: "euler", scheduler: "simple", denoise: 1, model: ["4", 0], positive: ["7", 0], negative: ["8", 0], latent_image: ["9", 0] } },
+    "11": { class_type: "VAEDecode", inputs: { samples: ["10", 0], vae: ["6", 0] } },
+    "12": { class_type: "SaveImage", inputs: { filename_prefix: "art_pipeline/bg", images: ["11", 0] } },
+  };
+}
+
+// FLUX.2 [klein] distilled GGUF graph (mirrors the image_flux2_klein_text_to_image template).
+function buildGraphFlux2(promptText, seed) {
+  return {
+    "4": { class_type: "UnetLoaderGGUF", inputs: { unet_name: F2_MODEL } },
+    "5": { class_type: "CLIPLoader", inputs: { clip_name: F2_CLIP, type: "flux2", device: CLIP_DEVICE } },
+    "6": { class_type: "VAELoader", inputs: { vae_name: F2_VAE } },
+    "7": { class_type: "CLIPTextEncode", inputs: { text: promptText, clip: ["5", 0] } },
+    "8": { class_type: "CLIPTextEncode", inputs: { text: "", clip: ["5", 0] } },
+    "9": { class_type: "Flux2Scheduler", inputs: { steps: STEPS, width: WIDTH, height: HEIGHT } },
+    "10": { class_type: "RandomNoise", inputs: { noise_seed: seed } },
+    "11": { class_type: "KSamplerSelect", inputs: { sampler_name: "euler" } },
+    "12": { class_type: "CFGGuider", inputs: { model: ["4", 0], positive: ["7", 0], negative: ["8", 0], cfg: F2_CFG } },
+    "13": { class_type: "EmptySD3LatentImage", inputs: { width: WIDTH, height: HEIGHT, batch_size: 1 } },
+    "14": { class_type: "SamplerCustomAdvanced", inputs: { noise: ["10", 0], guider: ["12", 0], sampler: ["11", 0], sigmas: ["9", 0], latent_image: ["13", 0] } },
+    "15": { class_type: "VAEDecode", inputs: { samples: ["14", 0], vae: ["6", 0] } },
+    "16": { class_type: "SaveImage", inputs: { filename_prefix: "art_pipeline/flux2", images: ["15", 0] } },
+  };
+}
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function generate(promptText, seed) {
+  const client_id = crypto.randomUUID();
+  const graph = FLUX2 ? buildGraphFlux2(promptText, seed) : buildGraph(promptText, seed);
+  const res = await fetch(`${URL_BASE}/prompt`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt: graph, client_id }),
+  });
+  if (!res.ok) throw new Error(`/prompt ${res.status}: ${await res.text()}`);
+  const { prompt_id, node_errors } = await res.json();
+  if (node_errors && Object.keys(node_errors).length) throw new Error(`node_errors: ${JSON.stringify(node_errors)}`);
+
+  // poll /history until this prompt has outputs (or errors out)
+  const deadline = Date.now() + 8 * 60 * 1000;
+  const t0 = Date.now();
+  while (Date.now() < deadline) {
+    await sleep(2000);
+    process.stdout.write(`\r    …rendering ${((Date.now() - t0) / 1000).toFixed(0)}s   `);
+    const h = await fetch(`${URL_BASE}/history/${prompt_id}`).then((r) => r.json());
+    const entry = h[prompt_id];
+    if (!entry) continue;
+    const status = entry.status?.status_str;
+    if (status === "error") throw new Error(`ComfyUI execution error (see ComfyUI logs). messages: ${JSON.stringify(entry.status?.messages)}`);
+    const out = entry.outputs && Object.values(entry.outputs).find((o) => o.images?.length);
+    if (out) return out.images[0]; // { filename, subfolder, type }
+  }
+  throw new Error(`timed out waiting for ${prompt_id}`);
+}
+
+async function fetchImage(img) {
+  const q = new URLSearchParams({ filename: img.filename, subfolder: img.subfolder || "", type: img.type || "output" });
+  const r = await fetch(`${URL_BASE}/view?${q}`);
+  if (!r.ok) throw new Error(`/view ${r.status}`);
+  return Buffer.from(await r.arrayBuffer());
+}
+
+// ---- main ----
+const file = readdirSync(POSTS).find((f) => f.endsWith(".json") && f.includes(key));
+if (!file) { console.error(`No post JSON in ${POSTS} matching "${key}".`); process.exit(1); }
+const postPath = path.join(POSTS, file);
+const post = JSON.parse(readFileSync(postPath, "utf8"));
+const prefix = post.upload_package.filename_prefix;
+const accentHex = post.brand?.palette?.accent || "#3b82f6";
+const accentName = post.brand?.accent_name || "electric blue";
+
+// confirm ComfyUI is reachable + the model exists
+if (!DRY) {
+  let stats;
+  try { stats = await fetch(`${URL_BASE}/system_stats`).then((r) => r.json()); }
+  catch { console.error(`✗ Can't reach ComfyUI at ${URL_BASE}. Start ComfyUI, then retry. (override with COMFYUI_URL)`); process.exit(1); }
+  console.log(`ComfyUI ${stats?.system?.comfyui_version ?? "?"} @ ${URL_BASE} · ${FLUX2 ? "FLUX.2" : "FLUX.1"} model=${FLUX2 ? F2_MODEL : MODEL} · ${WIDTH}x${HEIGHT} · ${STEPS} steps`);
+}
+
+const onlyArg = opt("only", "");
+const onlySet = onlyArg ? new Set(onlyArg.split(",").map((x) => Number(x.trim())).filter((n) => !Number.isNaN(n))) : null;
+const targets = post.slides.filter(
+  (s) => (flags.has("--all") || s.role !== "cover") && (!onlySet || onlySet.has(s.slide)),
+);
+if (onlySet) console.log(`(regenerating only slide(s): ${[...onlySet].join(", ")})`);
+const outPrefix = FLUX2 ? `${prefix}_flux2` : prefix;
+const destDir = path.join(RENDERER, "public", "backgrounds", outPrefix);
+if (!DRY) mkdirSync(destDir, { recursive: true });
+post.asset_licenses = post.asset_licenses || [];
+
+let n = 0;
+for (const slide of targets) {
+  const role = ROLE_FILE[slide.role] ?? slide.role;
+  const nn = String(slide.slide).padStart(2, "0");
+  const destName = `${nn}_${role}.png`;
+  const promptText = buildPrompt(slide, accentHex, accentName);
+  const seed = SEED_BASE + slide.slide;
+  if (DRY) { console.log(`\n[slide ${slide.slide} ${slide.role}] seed=${seed}\n  ${promptText}`); continue; }
+
+  process.stdout.write(`  slide ${slide.slide} (${slide.role})… `);
+  const t0 = Date.now();
+  try {
+    const img = await generate(promptText, seed);
+    writeFileSync(path.join(destDir, destName), await fetchImage(img));
+  } catch (e) {
+    console.log(`✗ ${e.message}`);
+    continue;
+  }
+  // FLUX.2 runs are a non-destructive comparison set — leave the post JSON pointing at FLUX.1.
+  if (!FLUX2) {
+    const assetPath = `/backgrounds/${prefix}/${destName}`;
+    slide.background_asset = assetPath;
+    slide.asset_status = "generated";
+    if (!post.asset_licenses.some((l) => l.asset === assetPath)) {
+      post.asset_licenses.push({
+        asset: assetPath,
+        source: "FLUX.1-schnell (GGUF) via local ComfyUI",
+        license_or_terms: "Apache-2.0 — commercial use allowed; text-free generated background.",
+        commercial_use_allowed: true,
+        disclosure_required: false,
+        notes: `Generated locally with ${MODEL}; no rendered text, no logos.`,
+      });
+    }
+  }
+  console.log(`✓ ${destName} (${((Date.now() - t0) / 1000).toFixed(0)}s)`);
+  n++;
+}
+
+if (!DRY) {
+  if (FLUX2) {
+    console.log(`\n✓ Generated ${n}/${targets.length} FLUX.2 background(s) → public/backgrounds/${outPrefix}/ (comparison set; post JSON untouched).`);
+    console.log(`  Compare against the FLUX.1 set in public/backgrounds/${prefix}/.`);
+  } else {
+    writeFileSync(postPath, JSON.stringify(post, null, 2) + "\n", "utf8");
+    console.log(`\n✓ Generated ${n}/${targets.length} background(s) → public/backgrounds/${prefix}/ (asset_status=generated, licenses logged).`);
+    console.log(`  Next: bun run export -- ${key}`);
+  }
+}
