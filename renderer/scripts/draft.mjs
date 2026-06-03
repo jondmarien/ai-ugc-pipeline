@@ -28,7 +28,7 @@ const date = pos[2] && /^\d{4}-\d{2}-\d{2}$/.test(pos[2]) ? pos[2] : new Date().
 const MODES = ["block", "word", "highlight"];
 const captionsFlag = [...flags].find((f) => f.startsWith("--captions="))?.split("=")[1] ?? "block";
 const captions = MODES.includes(captionsFlag) ? captionsFlag : "block";
-const VOICE = ["none", "voxcpm2", "bark", "http", "file"];
+const VOICE = ["none", "voxcpm2", "voxcpm2-0.5b", "bark", "http", "file"];
 const MUSIC = ["none", "free", "licensed", "generated", "file"];
 const voiceFlag = [...flags].find((f) => f.startsWith("--voice="))?.split("=")[1] ?? "none";
 const musicFlag = [...flags].find((f) => f.startsWith("--music="))?.split("=")[1] ?? "none";
@@ -36,10 +36,17 @@ const voice = VOICE.includes(voiceFlag) ? voiceFlag : "none";
 const music = MUSIC.includes(musicFlag) ? musicFlag : "none";
 
 function die(msg) {
-  console.error(`\n✗ ${msg}`);
-  console.error(`\nUsage: bun run draft -- "<idea>" <pillar> [YYYY-MM-DD] [--captions=block|word|highlight] [--voice=none|voxcpm2|file] [--music=none|free|licensed|generated|file] [--no-render|--carousel-only|--yolo|--dry-run]`);
-  console.error(`  pillar ∈ ${PILLARS.join(" | ")}`);
-  console.error(`  example: bun run draft -- "AI agents leaking RAG data" model_security\n`);
+  if (msg) console.error(`\n✗ ${msg}`);
+  console.error(`\nUsage:\n  bun run draft -- "<idea>" <pillar> [YYYY-MM-DD] [flags]\n`);
+  console.error(`Pillars (pick one for <pillar>):`);
+  for (const p of PILLARS) console.error(`  • ${p}`);
+  console.error(`\nFlags:`);
+  console.error(`  --captions=block|word|highlight        reel subtitle animation (default block)`);
+  console.error(`  --voice=none|voxcpm2|voxcpm2-0.5b|bark|http|file   narration (default none)`);
+  console.error(`  --music=none|free|licensed|generated|file          music bed (default none)`);
+  console.error(`  --carousel-only | --no-render | --yolo | --dry-run`);
+  console.error(`\nExample:`);
+  console.error(`  bun run draft -- "AI agents leaking RAG data through tool calls" model_security --voice=voxcpm2 --captions=highlight\n`);
   process.exit(1);
 }
 

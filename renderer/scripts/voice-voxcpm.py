@@ -61,13 +61,19 @@ def main() -> None:
     ap.add_argument(
         "--seed",
         type=int,
-        default=int(os.environ.get("VOXCPM_SEED", "777")),
-        help="RNG seed for the speaker. VoxCPM2 zero-shot samples a random voice each run; "
-        "a fixed seed makes the voice REPRODUCIBLE (same seed = same speaker). To 'cast' a "
-        "voice you like (e.g. a lower-pitch male), try a few seeds, then lock it via "
-        "VOXCPM_SEED or this flag.",
+        default=None,
+        help="RNG seed to LOCK the speaker (same seed = same voice). Omitted by default → "
+        "random speaker, which is FAST. WARNING: an unlucky seed can make VoxCPM2 generate a "
+        "degenerate, non-terminating sequence (runs toward max_len → very slow). If a seed "
+        "crawls, it's just unlucky — pick another. Also settable via VOXCPM_SEED.",
     )
     args = ap.parse_args()
+    seed = args.seed
+    if seed is None and os.environ.get("VOXCPM_SEED"):
+        try:
+            seed = int(os.environ["VOXCPM_SEED"])
+        except ValueError:
+            seed = None
 
     post = json.load(open(find_post(args.key), encoding="utf-8"))
     narration = (post.get("video") or {}).get("narration") or []
@@ -119,14 +125,18 @@ def main() -> None:
     if args.voice_ref:
         kwargs["reference_wav_path"] = args.voice_ref  # clone an AUTHORIZED voice only
 
-    # Seed the RNG right before generation so the sampled speaker is reproducible —
-    # the SAME voice every run. Change --seed / VOXCPM_SEED to cast a different voice.
+    # Seed the RNG right before generation ONLY if a seed was given — a fixed seed locks
+    # the speaker (reproducible voice) but an unlucky one can stall generation. Default
+    # (no seed) = random + fast, which is the right default.
     import torch  # noqa: E402  (torch is already loaded via voxcpm)
 
-    torch.manual_seed(args.seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(args.seed)
-    print(f"Voice seed: {args.seed}  (same seed = same speaker; change it to cast a different voice)", file=sys.stderr)
+    if seed is not None:
+        torch.manual_seed(seed)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(seed)
+        print(f"Voice seed: {seed} (locked speaker — if this run crawls, the seed is unlucky; try another)", file=sys.stderr)
+    else:
+        print("Voice seed: random (fast). Set --seed=N / VOXCPM_SEED to lock a voice.", file=sys.stderr)
 
     try:
         wav = model.generate(text=script, **kwargs)
