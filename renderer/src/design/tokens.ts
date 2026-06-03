@@ -87,13 +87,17 @@ export function accentFor(pillar: Pillar): string {
 // so category is readable at a glance and the brand stays consistent. Authors set
 // `theme` explicitly on a post; otherwise it falls back to the pillar mapping.
 // Theme = the post's category. Each maps to a signature colour + mood.
-//   defensive → blue   ·   offensive → red   ·   hacking → green
-export type Theme = "offensive" | "defensive" | "hacking";
+//   defensive → blue · offensive → red · hacking → green · purple → purple-team · ai → generic AI
+export type Theme = "offensive" | "defensive" | "hacking" | "purple" | "ai";
 
 export const themes: Record<Theme, { name: string; accent: string; accent2: string; mood: string }> = {
   defensive: { name: "electric blue", accent: "#3b82f6", accent2: "#22d3ee", mood: "calm, controlled, shielded, secure — defensive blue-team energy" },
   offensive: { name: "alert red", accent: "#ef4444", accent2: "#f43f5e", mood: "alert, aggressive, breach, warning — offensive red-team / vulnerability energy" },
   hacking: { name: "neon green", accent: "#39ff88", accent2: "#22d3ee", mood: "matrix terminal, raw exploratory hacking, code-green energy" },
+  // purple-team = red + blue combined (offence + defence). Purple is the canonical purple-team colour.
+  purple: { name: "purple", accent: "#a855f7", accent2: "#c084fc", mood: "purple-team — offence and defence combined, adversary emulation meeting detection, red-and-blue collaboration energy" },
+  // generic AI / model-centric posts. Orange = warm, anti-cliché AI (purple/green/blue are taken by other themes).
+  ai: { name: "orange", accent: "#f97316", accent2: "#fb923c", mood: "generic AI / model-centric — warm, curious, forward-looking, the human side of the technology" },
 };
 
 // Default theme per content pillar (used when a post has no explicit `theme`).
@@ -107,7 +111,7 @@ export const pillarTheme: Record<Pillar, Theme> = {
 };
 
 export function themeFor(post: { theme?: Theme; pillar: Pillar }): Theme {
-  return post.theme ?? pillarTheme[post.pillar] ?? "blue";
+  return post.theme ?? pillarTheme[post.pillar] ?? "defensive";
 }
 export function themeAccent(post: { theme?: Theme; pillar: Pillar }): string {
   return themes[themeFor(post)].accent;

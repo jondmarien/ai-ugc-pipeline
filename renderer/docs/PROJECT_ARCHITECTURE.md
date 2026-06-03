@@ -91,7 +91,7 @@ ai-ugc-pipeline/
 | Component | File | Responsibility |
 |---|---|---|
 | **Schema / validation** | `renderer/src/lib/schema.ts` | The zod `PostData` schema — single contract; fails loud on bad/missing fields. |
-| **Design tokens** | `renderer/src/design/tokens.ts` | `palette`, `pillarAccent`, 3-way `themes` (offensive/defensive/hacking), `BRAND_STYLE`, `overlays` (readability scrim). |
+| **Design tokens** | `renderer/src/design/tokens.ts` | `palette`, `pillarAccent`, 5-way `themes` (offensive/defensive/hacking/purple/ai), `BRAND_STYLE`, `overlays` (readability scrim). |
 | **Carousel UI** | `renderer/src/components/carousel/*` | `CarouselDeck` → `CarouselSlide` (text + scrim) → `SlideBackground` (AI art + overlays); `slides.tsx` per-role renderers. |
 | **Reel composition** | `renderer/remotion/*` | `ReelComposition` (1080×1920@30fps) → `Scene`, `CaptionLayer` (block/word/highlight), `CaptionTrack` (Whisper sync), `AudioBed` (voice+music, missing-file guard), `EndCard`. |
 | **Scaffold** | `renderer/scripts/new-post.ts` | Create a schema-valid skeleton from flags (`--theme/--captions/--voice/--music`). |
@@ -133,7 +133,7 @@ erDiagram
         string date "YYYY-MM-DD"
         enum status "draft approved upload_ready"
         enum pillar
-        enum theme "offensive defensive hacking opt"
+        enum theme "offensive defensive hacking purple ai opt"
         string core_claim
         string_array claim_tags
         string caption
