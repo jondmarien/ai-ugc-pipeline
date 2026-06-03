@@ -10,14 +10,22 @@ bun install
 bunx playwright install chromium     # carousel screenshots
 bunx remotion browser ensure         # reel rendering (once)
 
-bun run draft      -- "AI agents leaking RAG data" model_security   # idea → researched JSON → rendered (skills + claude CLI)
-bun run draft-week -- "idea1::offensive_ai" "idea2::model_security::captions=highlight" "idea3::governance"  # batch a week
-bun run new        -- 2026-06-13 my-topic model_security --captions=highlight   # scaffold a blank post (manual fill)
-bun run validate -- 2026-06-02_ai-phishing-training   # check JSON
-bun run export   -- 2026-06-02_ai-phishing-training   # 8 carousel PNGs
+# ONE command — art → carousel → package → free GPU → voice → synced captions → reel:
+bun run pipeline   -- 2026-06-02_ai-phishing-training --flux2          # add --vox2/--vox0.5, --seed=N, --no-voice/--no-reel
+
+# idea → researched + humanized JSON → rendered (skills + claude CLI):
+bun run draft      -- "AI agents leaking RAG data" model_security --theme=defensive --voice=voxcpm2
+bun run draft-week -- "idea1::offensive_ai" "idea2::model_security::captions=highlight" "idea3::governance"
+
+# individual steps:
+bun run new        -- 2026-06-13 my-topic model_security --theme=defensive --captions=highlight   # scaffold a blank post
+bun run validate -- 2026-06-02_ai-phishing-training   # check JSON against the schema
+bun run art      -- 2026-06-02_ai-phishing-training --flux2   # FLUX.2-klein backgrounds (needs running ComfyUI)
+bun run export   -- 2026-06-02_ai-phishing-training   # 8× 1080×1350 carousel PNGs
 bun run package  -- 2026-06-02_ai-phishing-training   # caption/alt/sources/licenses/QA
-bun run reel     -- 2026-06-02_ai-phishing-training   # 1080×1920 MP4 (optional)
-bun run voice    -- 2026-06-02_ai-phishing-training   # generate narration via VoxCPM2 (needs local install)
+bun run voice    -- 2026-06-02_ai-phishing-training --vox2 --seed=12345   # narration (VoxCPM2); seed logged
+bun run align    -- 2026-06-02_ai-phishing-training   # Whisper word-sync captions
+bun run reel     -- 2026-06-02_ai-phishing-training --fit-voice   # 1080×1920 @30fps MP4, audio embedded
 bun run dev                                            # live preview @ :4317
 ```
 
@@ -25,13 +33,15 @@ bun run dev                                            # live preview @ :4317
 
 Output → `../pipeline/renders/2026-06-02_ai-phishing-training/`.
 
-## What's proven (PoC)
-Week-1 Post 1 renders end-to-end: 8× **1080×1350** PNGs (cover reuses the text-free `cover_bg_01_ai_phishing.png` with the headline rendered on top; inner slides procedural), full upload package, and a **1080×1920 @30fps H.264** reel stub (no audio).
+## What's working
+Both Week-1 carousels (phishing, prompt injection) render end to end: 8× **1080×1350** PNGs over **unique per-post FLUX.2-klein backgrounds** (theme-coloured, text-free), full upload package, and a **1080×1920 @30fps H.264** reel with **VoxCPM2 narration** auto-embedded and **Whisper word-synced captions**. The voice seed is logged to `voice.meta.json` so a voice you like is reproducible. ComfyUI optional — without it, inner slides fall back to procedural CSS.
 
 ## Docs
 | Doc | What |
 | --- | --- |
 | [docs/RUN_IT_YOURSELF.md](docs/RUN_IT_YOURSELF.md) | **self-serve terminal guide** — new reels/carousels, Week-2 content, troubleshooting |
+| [docs/PROJECT_ARCHITECTURE.md](docs/PROJECT_ARCHITECTURE.md) | whole-system view — layers, post-JSON model, GPU boundaries (Mermaid) |
+| [docs/PIPELINE_ARCHITECTURE.md](docs/PIPELINE_ARCHITECTURE.md) | content→render flow — research, the 7 steps, sequence diagrams (Mermaid) |
 | [docs/IMAGE_MODELS.md](docs/IMAGE_MODELS.md) | slide background generation — FLUX.1-schnell / FLUX.2-klein-4B / SDXL matrix, FLUX.2 download, rich-export path |
 | [docs/RENDERER_ARCHITECTURE.md](docs/RENDERER_ARCHITECTURE.md) | structure, deps, commands, boundaries |
 | [docs/CONTENT_SCHEMA.md](docs/CONTENT_SCHEMA.md) | JSON contract + Markdown→JSON mapping + filenames |
@@ -43,7 +53,7 @@ Week-1 Post 1 renders end-to-end: 8× **1080×1350** PNGs (cover reuses the text
 | [docs/PIPELINE_INTEGRATION_NOTES.md](docs/PIPELINE_INTEGRATION_NOTES.md) | how this fits the pipeline |
 
 ## Guardrails
-No fabricated facts; no exploit/payload/evasion content; backgrounds are text-free/logo-free/credential-free; every model/asset that ships must be commercial-licensed (**VoxCPM2 ✅ Apache-2.0; F5-TTS base weights ❌ CC-BY-NC**); manual upload + human approval stay the default — no auto-publishing.
+No fabricated facts (claims triangulated + tagged `[Verified]/[Emerging]/[Scenario]`); no exploit/payload/evasion content; copy reads human, not AI (the `humanizer` skill + [`../pipeline/content/VOICE_AND_TONE_GUIDE.md`](../pipeline/content/VOICE_AND_TONE_GUIDE.md)); backgrounds are text-free/logo-free/credential-free; every model/asset that ships must be commercial-licensed (**VoxCPM2 ✅ Apache-2.0; F5-TTS base weights ❌ CC-BY-NC**); manual upload + human approval stay the default — no auto-publishing.
 
 ## Note on dependencies
 - `node_modules/` is not committed; run `bun install`.
