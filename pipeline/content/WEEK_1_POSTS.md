@@ -5,11 +5,19 @@ Posts 1–3 **reuse the existing finished assets** in `ai_cybersecurity_carousel
 
 > Dates are placeholders (`2026-06-0X`). All factual claims are tagged and sourced; re-check links before posting. No invented numbers, CVEs, or quotes.
 
+## Current pipeline (what changed since this doc was first written)
+The process tightened — treat the per-post specs below as the *brief*, then run them through the current stack:
+- **Theme system** drives colour: `offensive` = red, `defensive` = blue, `hacking` = green. Each post below now carries a theme.
+- **Research is a loop:** landscape scan → ≥2 independent reputable sources → tier each claim `[Verified]/[Emerging]/[Scenario]` → hard gates (no fabricated URLs, no uncited victims). See [DRAFT_POST_REFERENCE.md](DRAFT_POST_REFERENCE.md).
+- **Voice:** every post's copy runs through the `humanizer` skill against [VOICE_AND_TONE_GUIDE.md](VOICE_AND_TONE_GUIDE.md) — sharp, specific, no AI tells.
+- **Render:** one command — `cd renderer && bun run pipeline -- <key> --flux2 --vox2` — FLUX.2-klein backgrounds → carousel → package → VoxCPM2 voice → Whisper captions → reel. Design: [renderer/docs/PIPELINE_ARCHITECTURE.md](../../renderer/docs/PIPELINE_ARCHITECTURE.md).
+- **Backgrounds** are now AI-generated per-post (unique, theme-coloured, text-free), not the reused demo assets.
+
 ---
 
 ## POST 1 — AI phishing made old training obsolete
 
-**Post ID:** `2026-06-02-ai-phishing-training-001` · **Pillar:** Offensive AI · **Status:** Visual-ready (assets exist)
+**Post ID:** `2026-06-02-ai-phishing-training-001` · **Pillar:** Offensive AI · **Theme:** offensive (red) · **Status:** ✅ Rendered (FLUX.2 + VoxCPM2)
 **Audience:** practitioners, leaders · **Core claim:** AI makes phishing cheaper to personalize at scale, weakening "spot the typo" training. · **Claim tag:** [Verified] (capability), [Emerging] (degree)
 **Score:** cred 4 · rel 5 · nov 4 · dram 4 · def 5 → **22/25**
 
@@ -60,7 +68,7 @@ Reuse `finished_carousels/carousel_01_ai_phishing_slide_01..08.png` **after spel
 
 ## POST 2 — The weirdest AI attack hides where your agent reads
 
-**Post ID:** `2026-06-04-prompt-injection-agents-001` · **Pillar:** Model security · **Status:** Visual-ready
+**Post ID:** `2026-06-04-prompt-injection-agents-001` · **Pillar:** Model security · **Theme:** defensive (blue) · **Status:** ✅ Rendered (FLUX.2 + VoxCPM2)
 **Audience:** developers, practitioners · **Core claim:** Indirect prompt injection — malicious instructions hidden in content an AI agent reads — gets dangerous when the agent can take actions. · **Claim tag:** [Verified] (OWASP-listed risk)
 **Score:** cred 5 · rel 5 · nov 4 · dram 5 · def 5 → **24/25**
 
@@ -104,7 +112,9 @@ Reuse `carousel_02_prompt_injection_slide_01..08.png` after review, or rebuild o
 
 ## POST 3 — Stop pasting production logs into chatbots
 
-**Post ID:** `2026-06-06-chatbot-log-leak-001` · **Pillar:** Data leakage · **Status:** Visual-ready
+> **Slot update:** the 2026-06-06 Post 3 slot now ships **"AI malware is real — and mostly overhyped"** (pillar `myth_busting`, **theme hacking/green**) to exercise the third theme — produced + rendered at `renderer/content/posts/2026-06-06_ai-malware-hype.json` (sources: Recorded Future, Expel, Forescout, UIUC). The data-leakage idea below is retained as a **backlog alternate**.
+
+**Post ID:** `2026-06-06-chatbot-log-leak-001` · **Pillar:** Data leakage · **Theme:** offensive (red) · **Status:** Backlog alternate
 **Audience:** developers, leaders · **Core claim:** Pasting logs/code into unmanaged AI tools moves sensitive data outside controlled systems. · **Claim tag:** [Emerging] (pattern/risk)
 **Score:** cred 4 · rel 5 · nov 4 · dram 4 · def 5 → **22/25**
 
@@ -149,7 +159,7 @@ Reuse `carousel_03_data_leakage_slide_01..08.png` after review (note: validation
 
 ## POST 4 — The next password reset might sound exactly like your CFO
 
-**Post ID:** `2026-06-09-deepfake-helpdesk-001` · **Pillar:** Offensive AI (deepfake) · **Status:** Drafted (new assets needed)
+**Post ID:** `2026-06-09-deepfake-helpdesk-001` · **Pillar:** Offensive AI (deepfake) · **Theme:** offensive (red) · **Status:** Drafted (new assets needed)
 **Audience:** practitioners, leaders, finance · **Core claim:** Deepfake voice/video can impersonate a known executive to authorize transfers or resets. · **Claim tag:** [Verified] (Arup case) + [Emerging] (broader trend)
 **Score:** cred 4 · rel 5 · nov 4 · dram 5 · def 5 → **23/25**
 
@@ -198,7 +208,7 @@ New visuals. Generate text-free cover via [VISUAL_PROMPT_BANK.md](VISUAL_PROMPT_
 
 ## POST 5 — Shadow AI: the tools your security team never approved
 
-**Post ID:** `2026-06-11-shadow-ai-inventory-001` · **Pillar:** Governance / Data leakage · **Status:** Drafted (new assets needed)
+**Post ID:** `2026-06-11-shadow-ai-inventory-001` · **Pillar:** Governance / Data leakage · **Theme:** defensive (blue) · **Status:** Drafted (new assets needed)
 **Audience:** leaders, CISOs, practitioners · **Core claim:** Employees adopt unsanctioned AI tools faster than security can inventory them, creating ungoverned data flows. · **Claim tag:** [Emerging] (pattern)
 **Score:** cred 4 · rel 5 · nov 4 · dram 4 · def 5 → **22/25**
 
