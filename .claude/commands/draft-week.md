@@ -30,6 +30,6 @@ For each idea, in turn:
 6. Render: `cd renderer && npm run export -- <date>_<slug> && npm run package -- <date>_<slug> && npm run reel -- <date>_<slug>`. (If a reel hangs: free port 4317 / `npx remotion browser ensure`.)
 
 ## Finish
-Print a **week table**: date | slug | pillar | caption_mode | claim tags (fact vs scenario) | output folder. Then list the human-review items (source re-check, cover legibility, cyber-safety) and remind that a human approves before posting and reels ship without audio (add VoxCPM2 voice + licensed music to narrate). Suggest a Mon→Fri posting order with pillar variety in mind.
+Print a **week table**: date | slug | pillar | caption_mode | claim tags (fact vs scenario) | output folder. Then list the human-review items (source re-check, cover legibility, cyber-safety) and remind that a human approves before posting; reels are **narrated by default** (VoxCPM2 2B — pass `--no-voice` for a silent reel), and licensed music can be layered on. Suggest a Mon→Fri posting order with pillar variety in mind.
 
 > Tip: this is token-intensive (5 researched posts + 5 renders). If you want to review copy before rendering, tell me and I'll stop after step 5 for all five.

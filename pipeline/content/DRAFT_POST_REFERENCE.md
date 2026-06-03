@@ -70,7 +70,7 @@ The `<idea>` is free text — a **specific angle**, not a broad topic. Aim for o
 |---|---|---|
 | `captions=` / `--captions=` | `block` · `word` · `highlight` | Reel subtitle animation (default `block`) |
 | `--theme=` | `offensive` · `defensive` · `hacking` | Brand colour/mood (default from pillar) |
-| `--voice=` | `none` · `voxcpm2` · `voxcpm2-0.5b` · `http` · `file` | Reel narration (default `none`) |
+| `--voice=` | `none` · `voxcpm2` · `voxcpm2-0.5b` · `http` · `file` | Reel narration — **default `voxcpm2` (2B); use `none` (or `--no-voice`) for a silent reel** |
 | `--music=` | `none` · `free` · `licensed` · `generated` · `file` | Music bed (default `none`) |
 | `--seed=N` | integer | Voice seed = consistent speaker. **Avoid 777** (hangs). Reuse the same N for a consistent voice across posts. |
 

@@ -16,9 +16,10 @@ const captionMode = (CAPTION_MODES as readonly string[]).includes(captionsFlag) 
 
 const VOICE_MODES = ["none", "voxcpm2", "voxcpm2-0.5b", "bark", "http", "file"] as const;
 const MUSIC_MODES = ["none", "free", "licensed", "generated", "file"] as const;
-const voiceFlag = flagArgs.find((a) => a.startsWith("--voice="))?.split("=")[1] ?? "none";
+// Voice is ON by default (VoxCPM2 2B) — every post narrates unless you pass --voice=none (or --no-voice at render).
+const voiceFlag = flagArgs.find((a) => a.startsWith("--voice="))?.split("=")[1] ?? "voxcpm2";
 const musicFlag = flagArgs.find((a) => a.startsWith("--music="))?.split("=")[1] ?? "none";
-const voiceMode = (VOICE_MODES as readonly string[]).includes(voiceFlag) ? voiceFlag : "none";
+const voiceMode = (VOICE_MODES as readonly string[]).includes(voiceFlag) ? voiceFlag : "voxcpm2";
 const musicMode = (MUSIC_MODES as readonly string[]).includes(musicFlag) ? musicFlag : "none";
 const THEMES = ["offensive", "defensive", "hacking"] as const;
 const themeFlag = flagArgs.find((a) => a.startsWith("--theme="))?.split("=")[1] ?? "";
@@ -27,7 +28,7 @@ const PILLARS = Object.keys(pillarAccent) as Pillar[];
 
 function usageAndExit(msg?: string): never {
   if (msg) console.error(`\n✗ ${msg}`);
-  console.error(`\nUsage: bun run new -- <YYYY-MM-DD> <slug> <pillar> [--theme=offensive|defensive|hacking] [--captions=…] [--voice=…] [--music=…]`);
+  console.error(`\nUsage: bun run new -- <YYYY-MM-DD> <slug> <pillar> [--theme=offensive|defensive|hacking] [--captions=…] [--voice=… (default voxcpm2; use none for a silent reel)] [--music=…]`);
   console.error(`  pillar ∈ ${PILLARS.join(" | ")}`);
   console.error(`  theme  ∈ offensive (red) | defensive (blue) | hacking (green)  — optional; defaults from pillar`);
   console.error(`  example: bun run new -- 2026-06-13 ai-agent-permissions model_security --theme=defensive\n`);

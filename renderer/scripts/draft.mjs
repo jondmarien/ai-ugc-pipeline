@@ -30,9 +30,9 @@ const captionsFlag = [...flags].find((f) => f.startsWith("--captions="))?.split(
 const captions = MODES.includes(captionsFlag) ? captionsFlag : "block";
 const VOICE = ["none", "voxcpm2", "voxcpm2-0.5b", "bark", "http", "file"];
 const MUSIC = ["none", "free", "licensed", "generated", "file"];
-const voiceFlag = [...flags].find((f) => f.startsWith("--voice="))?.split("=")[1] ?? "none";
+const voiceFlag = [...flags].find((f) => f.startsWith("--voice="))?.split("=")[1] ?? "voxcpm2";
 const musicFlag = [...flags].find((f) => f.startsWith("--music="))?.split("=")[1] ?? "none";
-const voice = VOICE.includes(voiceFlag) ? voiceFlag : "none";
+const voice = VOICE.includes(voiceFlag) ? voiceFlag : "voxcpm2";
 const music = MUSIC.includes(musicFlag) ? musicFlag : "none";
 const THEMES = ["offensive", "defensive", "hacking"];
 const themeFlag = [...flags].find((f) => f.startsWith("--theme="))?.split("=")[1] ?? "";
@@ -46,7 +46,7 @@ function die(msg) {
   console.error(`\nFlags:`);
   console.error(`  --theme=offensive|defensive|hacking    brand theme (offensive=red, defensive=blue, hacking=green; default from pillar)`);
   console.error(`  --captions=block|word|highlight        reel subtitle animation (default block)`);
-  console.error(`  --voice=none|voxcpm2|voxcpm2-0.5b|bark|http|file   narration (default none)`);
+  console.error(`  --voice=none|voxcpm2|voxcpm2-0.5b|bark|http|file   narration (default voxcpm2 = 2B; use none for a silent reel)`);
   console.error(`  --music=none|free|licensed|generated|file          music bed (default none)`);
   console.error(`  --carousel-only | --no-render | --yolo | --dry-run`);
   console.error(`\nExample:`);
