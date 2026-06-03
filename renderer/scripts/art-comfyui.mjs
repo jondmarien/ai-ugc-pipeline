@@ -35,10 +35,25 @@ if (!key) {
 }
 
 const URL_BASE = (process.env.COMFYUI_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
+
+// FLUX.2 [klein] 4B (distilled GGUF) mode — `--flux2`. Different architecture: a single Qwen3
+// text encoder (CLIPLoader type "flux2", run on CPU), the flux2 VAE, and the
+// Flux2Scheduler → CFGGuider → SamplerCustomAdvanced sampling stack. Writes to a SEPARATE
+// public/backgrounds/<prefix>_flux2/ folder when --compare; otherwise updates the post JSON.
+const FLUX2 = flags.has("--flux2");
+// --flux2 writes REAL backgrounds (updates the post JSON), like FLUX.1. Add --compare to
+// instead do a non-destructive A/B into <prefix>_flux2/ without touching the JSON.
+const COMPARE = flags.has("--compare");
+
 const MODEL = opt("model", process.env.ART_MODEL || "flux1-schnell-Q4_K_S.gguf");
-const STEPS = Number(opt("steps", process.env.ART_STEPS || 4));
-const WIDTH = Number(opt("width", process.env.ART_WIDTH || 768));
-const HEIGHT = Number(opt("height", process.env.ART_HEIGHT || 1024));
+// FLUX.2 klein (distilled) coherence: 4 steps suffices for trivial prompts, but 6-8 steps
+// markedly improve structure on complex scenes (community + BFL guidance). FLUX.1-schnell
+// keeps its 4-step distillation. Dimensions MUST be multiples of 16 for FLUX.2 → snapped
+// below; 4:5 to match the 1080x1350 carousel (1024x1280) instead of the old 3:4 768x1024.
+const snap16 = (n) => Math.max(16, Math.round(n / 16) * 16);
+const STEPS = Number(opt("steps", process.env.ART_STEPS || (FLUX2 ? 8 : 4)));
+const WIDTH = snap16(Number(opt("width", process.env.ART_WIDTH || (FLUX2 ? 1024 : 768))));
+const HEIGHT = snap16(Number(opt("height", process.env.ART_HEIGHT || (FLUX2 ? 1280 : 1024))));
 const SEED_BASE = Number(opt("seed", process.env.ART_SEED || 42));
 const T5 = process.env.ART_T5 || "t5xxl_fp8_e4m3fn.safetensors";
 const CLIP_L = process.env.ART_CLIP || "clip_l.safetensors";
@@ -46,19 +61,18 @@ const VAE = process.env.ART_VAE || "split_files\\vae\\ae.safetensors";
 const CLIP_DEVICE = process.env.ART_CLIP_DEVICE || "cpu";
 const DRY = flags.has("--dry-run");
 
-// FLUX.2 [klein] 4B (distilled GGUF) mode — `--flux2`. Different architecture: a single Qwen3
-// text encoder (CLIPLoader type "flux2", run on CPU), the flux2 VAE, and the
-// Flux2Scheduler → CFGGuider → SamplerCustomAdvanced sampling stack. Writes to a SEPARATE
-// public/backgrounds/<prefix>_flux2/ folder and leaves the post JSON untouched, so the FLUX.1
-// set stays live for side-by-side comparison. Override the (subpath'd) filenames via ART2_* env.
-const FLUX2 = flags.has("--flux2");
-// --flux2 writes REAL backgrounds (updates the post JSON), like FLUX.1. Add --compare to
-// instead do a non-destructive A/B into <prefix>_flux2/ without touching the JSON.
-const COMPARE = flags.has("--compare");
 const F2_MODEL = process.env.ART2_MODEL || "flux-2-klein-4b-Q5_K_S.gguf";
 const F2_CLIP = process.env.ART2_CLIP || "split_files\\text_encoders\\qwen_3_4b.safetensors";
 const F2_VAE = process.env.ART2_VAE || "split_files\\vae\\flux2-vae.safetensors";
-const F2_CFG = Number(process.env.ART2_CFG || 1);
+// A gentle true-CFG (>1) so the NEGATIVE prompt actually suppresses fake text/UI — at CFG 1
+// FLUX ignores the negative entirely. 1.2 nudges without the 1.5 over-cook / artifact return.
+const F2_CFG = Number(process.env.ART2_CFG || 1.2);
+
+// Text/UI suppression lives ONLY in the negative node (never the positive — negative phrasing
+// in a FLUX positive prompt can SUMMON the very tokens). Bites only when F2_CFG > 1.
+const NEG_PROMPT =
+  "text, words, letters, numbers, typography, captions, labels, signage, logo, watermark, " +
+  "user interface, dashboard, control panel, charts, diagrams, icons, gibberish, fake writing";
 
 // Role-aware visual motifs (NO on-slide text — FLUX would render garbled words).
 const ROLE_MOTIF = {
@@ -78,19 +92,37 @@ const TEXT_ZONE = {
 };
 const DEFAULT_ZONE = "keep the lower portion of the frame dark, calm and uncluttered for a text overlay; place focal elements in the upper third and the periphery";
 
+// Strip colour words from reused copy (e.g. visual_direction) so it can't fight the theme accent.
+function stripColor(s) {
+  return s
+    .replace(/\b(cyan|electric[- ]?blue|blue|red|teal|neon[- ]?green|green|amber|magenta|crimson|scarlet|azure|orange|purple|violet)\b/gi, "")
+    .replace(/\b(accent|glow)\b/gi, "")
+    .replace(/\s{2,}/g, " ")
+    .replace(/\s+([,.;])/g, "$1")
+    .replace(/,(\s*,)+/g, ",")
+    .trim();
+}
+
 function buildPrompt(slide, accentHex, accentName, topic, mood) {
-  const motif = ROLE_MOTIF[slide.role] || "abstract flowing data network, nodes and light trails";
-  // For slides without their own visual_prompt, blend in the post's TOPIC so different
-  // posts get thematically-distinct imagery for the same role (not the same generic scene).
-  const themed = topic ? `${motif}, evoking the theme of ${topic}` : motif;
-  const subject = slide.visual_prompt && slide.visual_prompt.trim()
-    ? slide.visual_prompt.trim()
-    : `dark cinematic cybersecurity illustration, ${themed}`;
+  // Subject priority — front-load the most POST-SPECIFIC scene available (FLUX anchors on it):
+  //   1. slide.visual_prompt (specific, authored)  2. slide.visual_direction (colour-stripped)
+  //   3. generic ROLE_MOTIF blended with the post topic (last resort).
+  let subject;
+  if (slide.visual_prompt && slide.visual_prompt.trim()) {
+    subject = slide.visual_prompt.trim();
+  } else if (slide.visual_direction && slide.visual_direction.trim()) {
+    subject = `dark cinematic cybersecurity illustration, ${stripColor(slide.visual_direction.trim())}`;
+  } else {
+    const motif = ROLE_MOTIF[slide.role] || "abstract flowing data network, nodes and light trails";
+    const themed = topic ? `${motif}, evoking the theme of ${topic}` : motif;
+    subject = `dark cinematic cybersecurity illustration, ${themed}`;
+  }
   const zone = TEXT_ZONE[slide.role] || DEFAULT_ZONE;
-  const moodPart = mood ? `${mood}, ` : "";
+  const moodPart = mood ? `${mood}. ` : "";
+  // Natural-language sentences (FLUX's qwen/T5 encoder favours prose over comma-tag soup).
   // BRAND_STYLE is the constant house look (so every post reads as one brand); the theme
-  // accent colour + mood are what change per category.
-  return `${subject}, ${accentName} (${accentHex}) accent glow on a deep navy void #05070d, ${moodPart}${BRAND_STYLE}, ${zone}, no text, no words, no letters, no logos, no watermark`;
+  // accent colour + mood change per category. NO "no text" here — that's the negative node.
+  return `${subject}. A single ${accentName} (${accentHex}) accent glow on a deep navy void #05070d. ${moodPart}${BRAND_STYLE}. ${zone}.`;
 }
 
 // Stable per-post seed offset (FNV-1a hash of the prefix) so the same role/slide in
@@ -110,7 +142,7 @@ function buildGraph(promptText, seed) {
     "5": { class_type: "DualCLIPLoader", inputs: { clip_name1: T5, clip_name2: CLIP_L, type: "flux", device: CLIP_DEVICE } },
     "6": { class_type: "VAELoader", inputs: { vae_name: VAE } },
     "7": { class_type: "CLIPTextEncode", inputs: { text: promptText, clip: ["5", 0] } },
-    "8": { class_type: "CLIPTextEncode", inputs: { text: "", clip: ["5", 0] } },
+    "8": { class_type: "CLIPTextEncode", inputs: { text: NEG_PROMPT, clip: ["5", 0] } },
     "9": { class_type: "EmptySD3LatentImage", inputs: { width: WIDTH, height: HEIGHT, batch_size: 1 } },
     "10": { class_type: "KSampler", inputs: { seed, steps: STEPS, cfg: 1, sampler_name: "euler", scheduler: "simple", denoise: 1, model: ["4", 0], positive: ["7", 0], negative: ["8", 0], latent_image: ["9", 0] } },
     "11": { class_type: "VAEDecode", inputs: { samples: ["10", 0], vae: ["6", 0] } },
@@ -125,7 +157,7 @@ function buildGraphFlux2(promptText, seed) {
     "5": { class_type: "CLIPLoader", inputs: { clip_name: F2_CLIP, type: "flux2", device: CLIP_DEVICE } },
     "6": { class_type: "VAELoader", inputs: { vae_name: F2_VAE } },
     "7": { class_type: "CLIPTextEncode", inputs: { text: promptText, clip: ["5", 0] } },
-    "8": { class_type: "CLIPTextEncode", inputs: { text: "", clip: ["5", 0] } },
+    "8": { class_type: "CLIPTextEncode", inputs: { text: NEG_PROMPT, clip: ["5", 0] } },
     "9": { class_type: "Flux2Scheduler", inputs: { steps: STEPS, width: WIDTH, height: HEIGHT } },
     "10": { class_type: "RandomNoise", inputs: { noise_seed: seed } },
     "11": { class_type: "KSamplerSelect", inputs: { sampler_name: "euler" } },

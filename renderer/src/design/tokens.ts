@@ -70,7 +70,7 @@ export const overlays = {
   // so the background image still reads (softly) through it; densest over the text and
   // fading to transparent at the edges. The blur — not opacity — carries legibility.
   textPlate: "radial-gradient(125% 135% at 50% 50%, rgba(2,3,10,0.66) 0%, rgba(2,3,10,0.54) 48%, rgba(2,3,10,0.24) 78%, rgba(2,3,10,0) 100%)",
-  textPlateBlurPx: 10,
+  textPlateBlurPx: 5,
   textPlateInset: "-40px -56px", // how far the plate extends beyond the text box (feathered)
   textPlateRadius: 44,
 } as const;
@@ -113,5 +113,5 @@ export function themeAccent(post: { theme?: Theme; pillar: Pillar }): string {
 // Constant "brand style signature" injected into EVERY AI background prompt so all
 // posts read as the same brand — only the theme colour + mood change by category.
 export const BRAND_STYLE =
-  "signature house style: dark editorial cybersecurity poster art, thin precise neon linework, " +
-  "volumetric haze, fine particle detail, premium minimal, cinematic high contrast, consistent centered composition";
+  "signature house style: dark cinematic cybersecurity key art, thin precise glowing linework, " +
+  "volumetric haze, fine particle detail, premium minimal, high contrast, generous negative space";
