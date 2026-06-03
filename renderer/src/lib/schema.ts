@@ -122,12 +122,13 @@ export const CaptionMode = z.enum(["block", "word", "highlight"]);
 // the renderer plays whatever audio FILES exist (see render-reel's missing-file guard).
 // voice modes (all commercial-safe except where noted):
 //   none     — silent
-//   voxcpm2  — local python, VoxCPM2 (Apache-2.0) — primary
-//   bark     — local python, Suno Bark (MIT) — expressive fallback
+//   voxcpm2       — local python, VoxCPM2 2B (Apache-2.0, 48kHz) — primary, best quality
+//   voxcpm2-0.5b  — local python, VoxCPM-0.5B (Apache-2.0, 16kHz) — smaller/faster on low VRAM
+//   bark          — local python, Suno Bark (MIT) — expressive fallback
 //   http     — OpenAI-compatible /v1/audio/speech server (e.g. Kokoro-FastAPI, Apache-2.0)
 //   file     — you supply the WAV (use ANY tool: WhisperSpeech/Piper/etc.)
 // NOTE: Coqui XTTS and F5-TTS base weights are NON-commercial — not offered as modes.
-export const VoiceMode = z.enum(["none", "voxcpm2", "bark", "http", "file"]);
+export const VoiceMode = z.enum(["none", "voxcpm2", "voxcpm2-0.5b", "bark", "http", "file"]);
 export const MusicMode = z.enum(["none", "free", "licensed", "generated", "file"]);
 
 export const AudioSpec = z.object({

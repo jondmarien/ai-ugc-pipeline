@@ -46,7 +46,11 @@ if (mode === "http") {
   process.exit(res.status ?? 1);
 }
 
-// local python modes (voxcpm2 | bark): pick the venv python (uv) → uv run → system python.
+// local python modes (voxcpm2 | voxcpm2-0.5b | bark): pick the venv python (uv) → uv run → system python.
+// Map the voice_mode → actual VoxCPM model id (voice-voxcpm.py reads VOXCPM_MODEL).
+const VOX_MODEL = { voxcpm2: "openbmb/VoxCPM2", "voxcpm2-0.5b": "openbmb/VoxCPM-0.5B" };
+const pyEnv = { ...process.env };
+if (VOX_MODEL[mode] && !process.env.VOXCPM_MODEL) pyEnv.VOXCPM_MODEL = VOX_MODEL[mode];
 const script = path.join(RENDERER, "scripts", mode === "bark" ? "voice-bark.py" : "voice-voxcpm.py");
 const venvPy = process.platform === "win32"
   ? path.join(RENDERER, ".venv", "Scripts", "python.exe")
@@ -62,5 +66,5 @@ if (existsSync(venvPy)) {
   console.warn("⚠ No .venv or uv found — using system python. Recommended: `uv venv && uv pip install voxcpm soundfile torch`.");
 }
 console.log(`Running: ${path.basename(cmd)} ${cmdArgs.map((a) => (a.includes(" ") ? `"${a}"` : a)).join(" ")}\n`);
-const res = spawnSync(cmd, cmdArgs, { cwd: RENDERER, stdio: "inherit" });
+const res = spawnSync(cmd, cmdArgs, { cwd: RENDERER, stdio: "inherit", env: pyEnv });
 process.exit(res.status ?? 1);
