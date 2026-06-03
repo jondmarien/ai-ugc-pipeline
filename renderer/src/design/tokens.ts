@@ -78,3 +78,38 @@ export const overlays = {
 export function accentFor(pillar: Pillar): string {
   return pillarAccent[pillar].accent;
 }
+
+// ─── Brand themes (the 3-way colour system) ────────────────────────────────
+// A post's THEME drives both the carousel accent and the AI-image colour/mood,
+// so category is readable at a glance and the brand stays consistent. Authors set
+// `theme` explicitly on a post; otherwise it falls back to the pillar mapping.
+export type Theme = "blue" | "red" | "green";
+
+export const themes: Record<Theme, { name: string; accent: string; accent2: string; mood: string }> = {
+  blue: { name: "electric blue", accent: "#3b82f6", accent2: "#22d3ee", mood: "calm, controlled, shielded, secure — defensive blue-team energy" },
+  red: { name: "alert red", accent: "#ef4444", accent2: "#f43f5e", mood: "alert, aggressive, breach, warning — offensive red-team / vulnerability energy" },
+  green: { name: "neon green", accent: "#39ff88", accent2: "#22d3ee", mood: "matrix terminal, raw exploratory hacking, code-green energy" },
+};
+
+// Default theme per content pillar (used when a post has no explicit `theme`).
+export const pillarTheme: Record<Pillar, Theme> = {
+  offensive_ai: "red",
+  model_security: "blue",
+  data_leakage: "red",
+  defensive_ai: "blue",
+  governance: "blue",
+  myth_busting: "green",
+};
+
+export function themeFor(post: { theme?: Theme; pillar: Pillar }): Theme {
+  return post.theme ?? pillarTheme[post.pillar] ?? "blue";
+}
+export function themeAccent(post: { theme?: Theme; pillar: Pillar }): string {
+  return themes[themeFor(post)].accent;
+}
+
+// Constant "brand style signature" injected into EVERY AI background prompt so all
+// posts read as the same brand — only the theme colour + mood change by category.
+export const BRAND_STYLE =
+  "signature house style: dark editorial cybersecurity poster art, thin precise neon linework, " +
+  "volumetric haze, fine particle detail, premium minimal, cinematic high contrast, consistent centered composition";

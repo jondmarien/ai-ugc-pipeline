@@ -3,7 +3,7 @@ import "@fontsource/archivo/700.css";
 import "@fontsource/archivo/800.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/jetbrains-mono/500.css";
-import { palette, pillarAccent } from "./theme";
+import { palette, themeAccent } from "./theme";
 import { Scene } from "./Scene";
 import { CaptionLayer, type CaptionMode, type WordTiming } from "./CaptionLayer";
 import { CaptionTrack, type CaptionLine } from "./CaptionTrack";
@@ -14,6 +14,7 @@ type Beat = { start: number; end: number; slide_ref: number; purpose: string; ca
 type Slide = { role: string; background_asset?: string; asset_status?: string; on_slide_copy?: string };
 type Post = {
   pillar: string;
+  theme?: string;
   brand?: { handle?: string };
   comment_prompt?: string;
   slides: Slide[];
@@ -24,7 +25,7 @@ type Post = {
 // The last beat (purpose "cta") renders the EndCard instead of a caption.
 export function ReelComposition({ post }: { post: Post }) {
   const { fps } = useVideoConfig();
-  const accent = pillarAccent[post.pillar] ?? "#22d3ee";
+  const accent = themeAccent(post);
   const handle = post.brand?.handle ?? "@your_handle";
   const beats = post.video.beats;
   const captionMode: CaptionMode = post.video.caption_mode ?? "block";

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import type { TPostData, TSlideData } from "@/lib/schema";
-import { accentFor, fonts, overlays, palette, type as typeScale } from "@/design/tokens";
+import { fonts, overlays, palette, themeAccent, type as typeScale } from "@/design/tokens";
 import { SlideBackground } from "./SlideBackground";
 
 // Shared canvas shell: exact pixel size, background, safe area, brand mark,
@@ -16,7 +16,7 @@ export function CarouselSlide({
   children: ReactNode;
   align?: "start" | "center" | "end";
 }) {
-  const accent = accentFor(post.pillar);
+  const accent = themeAccent(post);
   const { width, height, safe_margin } = post.canvas;
   const justify = align === "center" ? "center" : align === "start" ? "flex-start" : "flex-end";
 

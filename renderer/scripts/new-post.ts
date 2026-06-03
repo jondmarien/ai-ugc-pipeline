@@ -2,7 +2,7 @@ import { writeFileSync, existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { POSTS_DIR } from "./lib.ts";
 import { PostData } from "../src/lib/schema.ts";
-import { pillarAccent, palette, canvas, type Pillar } from "../src/design/tokens.ts";
+import { pillarAccent, palette, canvas, themes, pillarTheme, type Pillar, type Theme } from "../src/design/tokens.ts";
 
 // Usage: npm run new -- <YYYY-MM-DD> <slug> <pillar> [--captions=block|word|highlight]
 // Generates a schema-valid BLANK post JSON you then fill in.
@@ -20,14 +20,17 @@ const voiceFlag = flagArgs.find((a) => a.startsWith("--voice="))?.split("=")[1] 
 const musicFlag = flagArgs.find((a) => a.startsWith("--music="))?.split("=")[1] ?? "none";
 const voiceMode = (VOICE_MODES as readonly string[]).includes(voiceFlag) ? voiceFlag : "none";
 const musicMode = (MUSIC_MODES as readonly string[]).includes(musicFlag) ? musicFlag : "none";
+const THEMES = ["blue", "red", "green"] as const;
+const themeFlag = flagArgs.find((a) => a.startsWith("--theme="))?.split("=")[1] ?? "";
 
 const PILLARS = Object.keys(pillarAccent) as Pillar[];
 
 function usageAndExit(msg?: string): never {
   if (msg) console.error(`\n✗ ${msg}`);
-  console.error(`\nUsage: npm run new -- <YYYY-MM-DD> <slug> <pillar>`);
+  console.error(`\nUsage: bun run new -- <YYYY-MM-DD> <slug> <pillar> [--theme=blue|red|green] [--captions=…] [--voice=…] [--music=…]`);
   console.error(`  pillar ∈ ${PILLARS.join(" | ")}`);
-  console.error(`  example: npm run new -- 2026-06-13 ai-agent-permissions model_security\n`);
+  console.error(`  theme  ∈ blue (defensive) | red (offensive/vuln) | green (general hacking)  — optional; defaults from pillar`);
+  console.error(`  example: bun run new -- 2026-06-13 ai-agent-permissions model_security --theme=blue\n`);
   process.exit(1);
 }
 
@@ -38,10 +41,13 @@ if (!PILLARS.includes(pillarArg as Pillar)) usageAndExit(`pillar "${pillarArg}" 
 if (!(CAPTION_MODES as readonly string[]).includes(captionsFlag)) usageAndExit(`--captions "${captionsFlag}" must be one of: ${CAPTION_MODES.join(", ")}.`);
 if (!(VOICE_MODES as readonly string[]).includes(voiceFlag)) usageAndExit(`--voice "${voiceFlag}" must be one of: ${VOICE_MODES.join(", ")}.`);
 if (!(MUSIC_MODES as readonly string[]).includes(musicFlag)) usageAndExit(`--music "${musicFlag}" must be one of: ${MUSIC_MODES.join(", ")}.`);
+if (themeFlag && !(THEMES as readonly string[]).includes(themeFlag)) usageAndExit(`--theme "${themeFlag}" must be one of: ${THEMES.join(", ")}.`);
 
 const pillar = pillarArg as Pillar;
 const prefix = `${date}_${slug}`;
-const accent = pillarAccent[pillar];
+// Brand theme: explicit --theme, else the pillar's default. Drives accent colour + image mood.
+const theme = ((THEMES as readonly string[]).includes(themeFlag) ? themeFlag : pillarTheme[pillar]) as Theme;
+const themeDef = themes[theme];
 
 type Role =
   | "cover" | "context" | "risk" | "mechanism" | "failure_point" | "defense" | "takeaway" | "cta";
@@ -49,7 +55,7 @@ type Role =
 // Each slide ships with a rich, art-ready `vp` (visual_prompt) so `bun run art`
 // has a specific scene per role out of the box (no deriving from copy). These are
 // topic-agnostic archetypes — refine the bracketed bits for your exact post.
-const accentName = accent.name;
+const accentName = themeDef.name;
 const SLIDE_SPEC: Array<{ role: Role; kicker: string; copy: string; subline: string; vp: string; cta?: string; status?: string }> = [
   { role: "cover", kicker: "AI × CYBERSECURITY", copy: "YOUR COVER HOOK GOES HERE", subline: "One-line promise of what they'll learn.", cta: "SWIPE →", status: "needed",
     vp: `cinematic establishing shot for an AI-cybersecurity story about [the topic]: a dramatic central subject (analyst, SOC, AI agent, or device) in a dark high-contrast scene, ${accentName} rim light, strong empty lower-third for the headline` },
@@ -93,6 +99,7 @@ const post = {
   format: "carousel",
   status: "draft",
   pillar,
+  theme,
   audience: "security_practitioners",
   core_claim: "TODO: one-sentence claim this post makes.",
   claim_tags: ["scenario"],
@@ -100,9 +107,9 @@ const post = {
   canvas: { width: canvas.carousel.width, height: canvas.carousel.height, safe_margin: canvas.carousel.safeMargin },
   brand: {
     handle: "@chron0s_cyb3r_w0rld.ai",
-    accent_name: accent.name,
+    accent_name: themeDef.name,
     pillar_accent: pillar,
-    palette: { bg: palette.bg, fg: palette.fg, muted: palette.muted, accent: accent.accent, danger: palette.danger },
+    palette: { bg: palette.bg, fg: palette.fg, muted: palette.muted, accent: themeDef.accent, danger: palette.danger },
     font_stack: "Archivo, Inter, system-ui, sans-serif",
   },
   upload_package: {
@@ -190,7 +197,7 @@ if (existsSync(outFile)) usageAndExit(`${outFile} already exists — pick a diff
 writeFileSync(outFile, JSON.stringify(post, null, 2) + "\n", "utf8");
 
 console.log(`✓ Created ${path.relative(path.join(POSTS_DIR, "..", ".."), outFile)}`);
-console.log(`  pillar: ${pillar} (${accent.name})  ·  8 slides  ·  reel enabled  ·  captions: ${captionMode}\n`);
+console.log(`  pillar: ${pillar}  ·  theme: ${theme} (${themeDef.name})  ·  8 slides  ·  reel enabled  ·  captions: ${captionMode}\n`);
 console.log("Next:");
 console.log(`  1. Edit the file — replace every TODO (copy, caption, sources, alt text).`);
 console.log(`  2. (optional) Add a cover image to renderer/public/backgrounds/${prefix}_cover.png and set slide 1 asset_status to "existing".`);
