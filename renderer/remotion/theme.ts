@@ -16,6 +16,21 @@ export const pillarAccent: Record<string, string> = {
   myth_busting: "#ef4444",
 };
 
+// Brand themes (mirror src/design/tokens.ts) — accent by category.
+export const themeAccentColor: Record<string, string> = { blue: "#3b82f6", red: "#ef4444", green: "#39ff88" };
+const pillarTheme: Record<string, string> = {
+  offensive_ai: "red",
+  model_security: "blue",
+  data_leakage: "red",
+  defensive_ai: "blue",
+  governance: "blue",
+  myth_busting: "green",
+};
+export function themeAccent(post: { theme?: string; pillar: string }): string {
+  const theme = post.theme ?? pillarTheme[post.pillar] ?? "blue";
+  return themeAccentColor[theme] ?? "#3b82f6";
+}
+
 export const fonts = {
   headline: '"Archivo", system-ui, sans-serif',
   body: '"Inter", system-ui, sans-serif',

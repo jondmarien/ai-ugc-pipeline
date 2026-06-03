@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import type { TPostData, TSlideData } from "@/lib/schema";
-import { accentFor, fonts, palette, type as t } from "@/design/tokens";
+import { fonts, palette, themeAccent, type as t } from "@/design/tokens";
 import { CarouselSlide, Kicker } from "./CarouselSlide";
 
 type SlideProps = { post: TPostData; slide: TSlideData };
@@ -57,7 +57,7 @@ function SwipeCue({ label, accent }: { label: string; accent: string }) {
 }
 
 export function CoverSlide({ post, slide }: SlideProps) {
-  const accent = accentFor(post.pillar);
+  const accent = themeAccent(post);
   return (
     <CarouselSlide post={post} slide={slide} align="end">
       <Kicker text={slide.kicker} accent={accent} />
@@ -69,7 +69,7 @@ export function CoverSlide({ post, slide }: SlideProps) {
 }
 
 function StandardSlide({ post, slide }: SlideProps) {
-  const accent = accentFor(post.pillar);
+  const accent = themeAccent(post);
   return (
     <CarouselSlide post={post} slide={slide} align="end">
       <Kicker text={slide.kicker} accent={accent} />
@@ -80,7 +80,7 @@ function StandardSlide({ post, slide }: SlideProps) {
 }
 
 export function TakeawaySlide({ post, slide }: SlideProps) {
-  const accent = accentFor(post.pillar);
+  const accent = themeAccent(post);
   return (
     <CarouselSlide post={post} slide={slide} align="center">
       <Kicker text={slide.kicker} accent={accent} />
@@ -91,7 +91,7 @@ export function TakeawaySlide({ post, slide }: SlideProps) {
 }
 
 export function CtaSlide({ post, slide }: SlideProps) {
-  const accent = accentFor(post.pillar);
+  const accent = themeAccent(post);
   return (
     <CarouselSlide post={post} slide={slide} align="end">
       <Kicker text={slide.kicker} accent={accent} />

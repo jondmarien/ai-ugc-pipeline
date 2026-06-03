@@ -34,6 +34,9 @@ const voiceFlag = [...flags].find((f) => f.startsWith("--voice="))?.split("=")[1
 const musicFlag = [...flags].find((f) => f.startsWith("--music="))?.split("=")[1] ?? "none";
 const voice = VOICE.includes(voiceFlag) ? voiceFlag : "none";
 const music = MUSIC.includes(musicFlag) ? musicFlag : "none";
+const THEMES = ["blue", "red", "green"];
+const themeFlag = [...flags].find((f) => f.startsWith("--theme="))?.split("=")[1] ?? "";
+const theme = THEMES.includes(themeFlag) ? themeFlag : ""; // "" = let the agent pick from the topic
 
 function die(msg) {
   if (msg) console.error(`\n✗ ${msg}`);
@@ -41,6 +44,7 @@ function die(msg) {
   console.error(`Pillars (pick one for <pillar>):`);
   for (const p of PILLARS) console.error(`  • ${p}`);
   console.error(`\nFlags:`);
+  console.error(`  --theme=blue|red|green                 brand theme (blue=defensive, red=offensive/vuln, green=hacking; default from pillar)`);
   console.error(`  --captions=block|word|highlight        reel subtitle animation (default block)`);
   console.error(`  --voice=none|voxcpm2|voxcpm2-0.5b|bark|http|file   narration (default none)`);
   console.error(`  --music=none|free|licensed|generated|file          music bed (default none)`);
@@ -77,7 +81,7 @@ const prompt = [
   `1. Design the 8-slide post (cover, context, risk, mechanism, failure_point, defense, takeaway, cta) + caption + hashtags + comment question, house voice.`,
   `2. Research sources with WebSearch/WebFetch; record {source, link, supports, confidence, claim_tag} for each factual claim.`,
   `3. Pick a short kebab-case slug from the idea.`,
-  `4. Run \`cd renderer && bun run new -- ${date} <slug> ${pillar} --captions=${captions} --voice=${voice} --music=${music}\` to scaffold, then EDIT renderer/content/posts/${date}_<slug>.json to replace EVERY TODO with real, sourced content. Keep schema rules (8 slides, slide1=cover, alt_text length 8, score.total = sum of axes, >=1 real source, reel beats filled, video.caption_mode="${captions}", video.audio.voice_mode="${voice}", video.audio.music_mode="${music}"). Write a SPECIFIC, text-free visual_prompt for EVERY slide, tied to this exact topic (a concrete dark cinematic cybersecurity scene per slide; no rendered text/logos/exploit detail) so \`bun run art\` produces rich, on-topic imagery.`,
+  `4. Pick a brand THEME for this post — blue (defensive / blue-team / securing AI), red (offensive / red-team / vulnerabilities / exploits / CVEs), or green (general hacking / how-it-works)${theme ? ` — use "${theme}"` : ", based on the topic"}. Run \`cd renderer && bun run new -- ${date} <slug> ${pillar} --theme=${theme || "<theme>"} --captions=${captions} --voice=${voice} --music=${music}\` to scaffold, then EDIT renderer/content/posts/${date}_<slug>.json to replace EVERY TODO with real, sourced content. Keep schema rules (8 slides, slide1=cover, alt_text length 8, score.total = sum of axes, >=1 real source, reel beats filled, video.caption_mode="${captions}", video.audio.voice_mode="${voice}", video.audio.music_mode="${music}"). Write a SPECIFIC, text-free visual_prompt for EVERY slide, tied to this exact topic (a concrete dark cinematic cybersecurity scene per slide; no rendered text/logos/exploit detail) so \`bun run art\` produces rich, on-topic imagery.`,
   `5. Run \`cd renderer && bun run validate -- ${date}_<slug>\` and fix until clean.`,
   `6. ${renderStep}`,
   `7. FINISH by printing, on its own final line, exactly: POST_KEY=${date}_<slug>`,
