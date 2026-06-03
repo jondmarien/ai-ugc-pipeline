@@ -70,9 +70,9 @@
       "on_slide_copy": "AI PHISHING MADE OLD TRAINING OBSOLETE",
       "subline": "The scam is more personal now.",
       "visual_direction": "Dark SOC scene, analyst, blurred inbox, faint synthetic face reflection; cyan glow; protected dark lower-third.",
-      "visual_prompt": "realistic editorial cybersecurity cover, dark SOC environment, subtle cyan glow, strong negative space, no rendered text, no logos, no credentials",
-      "background_asset": "/backgrounds/cover_bg_01_ai_phishing.png",
-      "asset_status": "existing",
+      "visual_prompt": "realistic editorial cybersecurity cover, a dark quiet security operations room with a single glowing sealed envelope resting on a desk, subtle single accent glow, strong negative space",
+      "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/01_cover.png",
+      "asset_status": "generated",
       "cta": "SWIPE →",
       "notes": "Reuses the text-free pipeline cover background; React renders the headline on top."
     },
@@ -84,6 +84,7 @@
       "subline": "The obvious tells were never the real defense.",
       "visual_direction": "Abstract email previews with grammar-error marks dissolving; cyan accent; no readable text.",
       "asset_status": "generated",
+      "visual_prompt": "A single crisp clean paper letter rising out of a swirling cloud of torn crumpled paper scraps in the dark, the clean letter sharp and whole while the ragged scraps dissolve away, cinematic depth, lots of empty calm space in the lower half",
       "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/02_context.png"
     },
     {
@@ -94,6 +95,7 @@
       "subline": "Cleaner lures, at scale.",
       "visual_direction": "Public-profile fragments connecting toward a single inbox; cyan; no real names.",
       "asset_status": "generated",
+      "visual_prompt": "Faint anonymous human profile silhouettes and small floating shards of broken data drifting along thin trails of light toward one glowing sealed envelope in the dark, the bright envelope the clear focal point high in the frame, calm empty space below",
       "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/03_risk.png"
     },
     {
@@ -104,6 +106,7 @@
       "subline": "AI lowers the cost, not the skill ceiling.",
       "visual_direction": "Branching personalized message bubbles from an abstract workstation; safe, abstract only.",
       "asset_status": "generated",
+      "visual_prompt": "One glowing sealed envelope at the center multiplying outward into a wide sweeping fan of many identical paper envelopes flying off into the dark, a sense of endless effortless duplication at massive scale, focal in the upper area, empty space in the lower half",
       "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/04_mechanism.png"
     },
     {
@@ -114,6 +117,7 @@
       "subline": "Vocabulary checks don't stop clean messages.",
       "visual_direction": "Employee near an approve button; ignored verification checklist behind.",
       "asset_status": "generated",
+      "visual_prompt": "A single lone human hand silhouette slowly reaching out to touch one glowing sealed envelope floating alone in the dark, quiet dangerous stillness, soft rim light on the hand and envelope, calm empty space in the lower third",
       "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/05_failure-point.png"
     },
     {
@@ -124,6 +128,7 @@
       "subline": "Make verification mandatory, not optional.",
       "visual_direction": "Phone callback, ticket workflow, approval chain, identity-check icons.",
       "asset_status": "generated",
+      "visual_prompt": "Two vintage telephone handsets facing each other across the dark, joined by one bright steady glowing thread of light, a small closed padlock floating in the gap between them, calm orderly balanced composition, empty space in the lower third",
       "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/06_defense.png"
     },
     {
@@ -134,6 +139,7 @@
       "subline": "",
       "visual_direction": "Analyst silhouette, lock icon, dark gradient; minimal copy.",
       "asset_status": "generated",
+      "visual_prompt": "A cracked and fractured magnifying glass in the dark, its broken lens revealing one perfectly smooth flawless sealed envelope behind the shattered glass, fine fracture lines spreading toward the edges, the center kept calm, focal weight toward the corners and edges",
       "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/07_takeaway.png"
     },
     {
@@ -145,6 +151,7 @@
       "visual_direction": "Clean dark end card with subtle credibility cue and handle.",
       "asset_status": "generated",
       "cta": "COMMENT + SAVE",
+      "visual_prompt": "A single elegant magnifying glass hovering over one smooth blank sealed envelope in the dark, a soft glowing question mark shape floating near the upper edge, generous empty space, minimal and clean",
       "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/08_cta.png"
     }
   ],
@@ -249,6 +256,14 @@
       "commercial_use_allowed": true,
       "disclosure_required": false,
       "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-02_ai-phishing-training/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
     }
   ],
   "video": {
@@ -336,7 +351,268 @@
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
     "sfx": [],
-    "licenses": []
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 1.76,
+        "text": "AI fishing made old training obsolete.",
+        "words": [
+          {
+            "text": "AI",
+            "start": 0.0,
+            "end": 0.12
+          },
+          {
+            "text": "fishing",
+            "start": 0.12,
+            "end": 0.44
+          },
+          {
+            "text": "made",
+            "start": 0.44,
+            "end": 0.76
+          },
+          {
+            "text": "old",
+            "start": 0.76,
+            "end": 1.04
+          },
+          {
+            "text": "training",
+            "start": 1.04,
+            "end": 1.36
+          },
+          {
+            "text": "obsolete.",
+            "start": 1.36,
+            "end": 1.76
+          }
+        ]
+      },
+      {
+        "start": 2.56,
+        "end": 3.28,
+        "text": "The old red flags,",
+        "words": [
+          {
+            "text": "The",
+            "start": 2.56,
+            "end": 2.56
+          },
+          {
+            "text": "old",
+            "start": 2.56,
+            "end": 2.76
+          },
+          {
+            "text": "red",
+            "start": 2.76,
+            "end": 2.98
+          },
+          {
+            "text": "flags,",
+            "start": 2.98,
+            "end": 3.28
+          }
+        ]
+      },
+      {
+        "start": 3.96,
+        "end": 6.48,
+        "text": "bad grammar, weird phrasing, are fading.",
+        "words": [
+          {
+            "text": "bad",
+            "start": 3.96,
+            "end": 4.14
+          },
+          {
+            "text": "grammar,",
+            "start": 4.14,
+            "end": 4.5
+          },
+          {
+            "text": "weird",
+            "start": 5.04,
+            "end": 5.3
+          },
+          {
+            "text": "phrasing,",
+            "start": 5.3,
+            "end": 5.8
+          },
+          {
+            "text": "are",
+            "start": 6.12,
+            "end": 6.2
+          },
+          {
+            "text": "fading.",
+            "start": 6.2,
+            "end": 6.48
+          }
+        ]
+      },
+      {
+        "start": 7.2,
+        "end": 9.5,
+        "text": "Verify sensitive requests over a second channel.",
+        "words": [
+          {
+            "text": "Verify",
+            "start": 7.2,
+            "end": 7.2
+          },
+          {
+            "text": "sensitive",
+            "start": 7.2,
+            "end": 7.84
+          },
+          {
+            "text": "requests",
+            "start": 7.84,
+            "end": 8.16
+          },
+          {
+            "text": "over",
+            "start": 8.16,
+            "end": 8.7
+          },
+          {
+            "text": "a",
+            "start": 8.7,
+            "end": 8.88
+          },
+          {
+            "text": "second",
+            "start": 8.88,
+            "end": 9.12
+          },
+          {
+            "text": "channel.",
+            "start": 9.12,
+            "end": 9.5
+          }
+        ]
+      },
+      {
+        "start": 9.88,
+        "end": 11.62,
+        "text": "If your defense relies on scams looking",
+        "words": [
+          {
+            "text": "If",
+            "start": 9.88,
+            "end": 9.92
+          },
+          {
+            "text": "your",
+            "start": 9.92,
+            "end": 10.06
+          },
+          {
+            "text": "defense",
+            "start": 10.06,
+            "end": 10.38
+          },
+          {
+            "text": "relies",
+            "start": 10.38,
+            "end": 10.66
+          },
+          {
+            "text": "on",
+            "start": 10.66,
+            "end": 11.02
+          },
+          {
+            "text": "scams",
+            "start": 11.02,
+            "end": 11.2
+          },
+          {
+            "text": "looking",
+            "start": 11.2,
+            "end": 11.62
+          }
+        ]
+      },
+      {
+        "start": 11.62,
+        "end": 13.72,
+        "text": "fake, the game changed. Does your training",
+        "words": [
+          {
+            "text": "fake,",
+            "start": 11.62,
+            "end": 11.9
+          },
+          {
+            "text": "the",
+            "start": 12.34,
+            "end": 12.36
+          },
+          {
+            "text": "game",
+            "start": 12.36,
+            "end": 12.52
+          },
+          {
+            "text": "changed.",
+            "start": 12.52,
+            "end": 12.84
+          },
+          {
+            "text": "Does",
+            "start": 13.38,
+            "end": 13.38
+          },
+          {
+            "text": "your",
+            "start": 13.38,
+            "end": 13.5
+          },
+          {
+            "text": "training",
+            "start": 13.5,
+            "end": 13.72
+          }
+        ]
+      },
+      {
+        "start": 13.72,
+        "end": 14.86,
+        "text": "still teach spot the typo?",
+        "words": [
+          {
+            "text": "still",
+            "start": 13.72,
+            "end": 14.04
+          },
+          {
+            "text": "teach",
+            "start": 14.04,
+            "end": 14.34
+          },
+          {
+            "text": "spot",
+            "start": 14.34,
+            "end": 14.54
+          },
+          {
+            "text": "the",
+            "start": 14.54,
+            "end": 14.7
+          },
+          {
+            "text": "typo?",
+            "start": 14.7,
+            "end": 14.86
+          }
+        ]
+      }
+    ]
   },
   "qa": {
     "fact_checked": true,
