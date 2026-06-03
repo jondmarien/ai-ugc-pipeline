@@ -234,9 +234,22 @@ if (!DRY) {
 
 const onlyArg = opt("only", "");
 const onlySet = onlyArg ? new Set(onlyArg.split(",").map((x) => Number(x.trim())).filter((n) => !Number.isNaN(n))) : null;
-const targets = post.slides.filter(
-  (s) => (flags.has("--all") || s.role !== "cover") && (!onlySet || onlySet.has(s.slide)),
-);
+// Targeting (cover is NOT special-cased — it generates by need, like any slide):
+//   • asset_status "existing" → never touched (locked custom asset, e.g. a hand-made cover).
+//   • --only=N → regenerate exactly those slides (explicit intent overrides the has-art check).
+//   • --all / --force → regenerate every non-"existing" slide (cover included).
+//   • default → only slides that still NEED art (no background_asset yet), cover included.
+// This is why `bun run pipeline` no longer needs `--all` to get a cover background.
+const FORCE = flags.has("--all") || flags.has("--force") || COMPARE;
+// A slide "has art" only if its background_asset actually exists ON DISK — a fresh scaffold points
+// the cover at a not-yet-created path, which must still count as needing art.
+const artExists = (s) =>
+  !!s.background_asset && existsSync(path.join(RENDERER, "public", s.background_asset.replace(/^[\\/]+/, "")));
+const targets = post.slides.filter((s) => {
+  if (s.asset_status === "existing") return false; // locked custom asset — never overwrite
+  if (onlySet) return onlySet.has(s.slide); // explicit selection wins
+  return FORCE || !artExists(s); // else: regenerate-all, or only slides still missing art (cover included)
+});
 if (onlySet) console.log(`(regenerating only slide(s): ${[...onlySet].join(", ")})`);
 const compareMode = FLUX2 && COMPARE;
 const outPrefix = compareMode ? `${prefix}_flux2` : prefix;

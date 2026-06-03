@@ -19,7 +19,7 @@
 //   --tail=N       seconds of silence to keep after the voice (reel; default 0.6)
 //   --seed=N       voice seed (consistent speaker) — forwarded to `bun run voice`
 import { spawnSync } from "node:child_process";
-import { readFileSync, readdirSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -65,8 +65,13 @@ function runPost(key) {
   // --vox0.5 / --vox2 override the voice model for this run (else use the post's voice_mode).
   const voiceOverride = flags.has("--vox0.5") ? "voxcpm2-0.5b" : flags.has("--vox2") ? "voxcpm2" : null;
   const effVoiceMode = voiceOverride || voiceMode;
-  const innerNeedsArt = (post.slides ?? []).some((s) => s.role !== "cover" && !s.background_asset);
-  const wantsArt = flags.has("--art") || (!flags.has("--no-art") && innerNeedsArt);
+  // Any slide that still needs art — INCLUDING the cover (covers used to be skipped here, so the
+  // pipeline never generated 01_cover.png). A locked custom asset (asset_status "existing") never
+  // counts; a background_asset that points at a missing file (e.g. a scaffold's cover placeholder) does.
+  const artExists = (s) =>
+    !!s.background_asset && existsSync(path.join(RENDERER, "public", s.background_asset.replace(/^[\\/]+/, "")));
+  const needsArt = (post.slides ?? []).some((s) => s.asset_status !== "existing" && !artExists(s));
+  const wantsArt = flags.has("--art") || (!flags.has("--no-art") && needsArt);
   const wantsVoice = !flags.has("--no-voice") && ["voxcpm2", "voxcpm2-0.5b", "bark", "http"].includes(effVoiceMode);
   const wantsReel = !flags.has("--no-reel") && !!post.video?.enabled;
 
@@ -74,7 +79,8 @@ function runPost(key) {
   console.log(`│  art=${wantsArt ? (flags.has("--flux2") ? "flux2" : "flux1") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
   console.log(`╰─`);
 
-  if (wantsArt) step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux2") ? ["--flux2"] : [])], { fatal: false });
+  // Default art run generates every needy slide (cover included). `--art` forces a full regen (→ art --all).
+  if (wantsArt) step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux2") ? ["--flux2"] : []), ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
   step("export (carousel)", ["export", "--", fullKey]);
   if (!flags.has("--no-package")) step("package (upload files)", ["package", "--", fullKey]);
 
