@@ -164,8 +164,9 @@ def main() -> None:
     sf.write(out_wav, wav, int(sr))
     print(f"\n✓ Wrote {out_wav}  ({sr} Hz)")
     print(f"  video.audio.voice_file already points to /audio/{prefix}/voice.wav.")
-    print(f"  Next: npm run reel -- {args.key}")
-    print("  Reminder: label AI-generated audio per VoxCPM2's terms.")
+    print(f"  Next: bun run align -- {args.key}   (sync captions to this voice)")
+    print(f"  Then: bun run reel -- {args.key} --fit-voice")
+    print("  Reminder: label AI-generated audio per VoxCPM's terms.")
 
 
 if __name__ == "__main__":

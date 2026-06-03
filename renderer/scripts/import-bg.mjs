@@ -19,19 +19,24 @@ const IMG = /\.(png|jpe?g|webp)$/i;
 const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith("--")));
 const [key, srcArg] = args.filter((a) => !a.startsWith("--"));
-if (!key || !srcArg) {
-  console.error("Usage: bun run import-bg -- <post-key> <source-folder> [--all]");
+if (!key) {
+  console.error("Usage: bun run import-bg -- <post-key> [<source-folder>|flux2] [--all]");
+  console.error("  source defaults to this post's FLUX.2 set: public/backgrounds/<prefix>_flux2");
   process.exit(1);
 }
-
-const srcDir = path.resolve(srcArg);
-if (!existsSync(srcDir)) { console.error(`Source folder not found: ${srcDir}`); process.exit(1); }
 
 const file = readdirSync(POSTS).find((f) => f.endsWith(".json") && f.includes(key));
 if (!file) { console.error(`No post JSON in ${POSTS} matching "${key}".`); process.exit(1); }
 const postPath = path.join(POSTS, file);
 const post = JSON.parse(readFileSync(postPath, "utf8"));
 const prefix = post.upload_package.filename_prefix;
+
+// Source: an explicit folder, or the shorthand "flux2"/"_flux2"/(omitted) = this post's
+// FLUX.2 compare set at public/backgrounds/<prefix>_flux2.
+const srcDir = (!srcArg || srcArg === "flux2" || srcArg === "_flux2")
+  ? path.join(RENDERER, "public", "backgrounds", `${prefix}_flux2`)
+  : path.resolve(srcArg);
+if (!existsSync(srcDir)) { console.error(`Source folder not found: ${srcDir}`); process.exit(1); }
 
 const srcImgs = readdirSync(srcDir).filter((f) => IMG.test(f)).sort();
 if (!srcImgs.length) { console.error(`No images (.png/.jpg/.webp) in ${srcDir}`); process.exit(1); }

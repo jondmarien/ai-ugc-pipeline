@@ -66,14 +66,14 @@ const ROLE_MOTIF = {
   mechanism: "an abstract AI agent core emitting outbound action beams to connected API nodes and tool icons lighting up in sequence",
   failure_point: "a dark control panel with glowing warning hotspots and layered risk zones, alert highlights, tension",
   defense: "a layered protective shield wrapping an isolated sandbox, padlocks and permission gates, controlled gateways, calm and secure",
-  takeaway: "a translucent mask motif and thin data-stream lines pushed to the lower edge and the corners, the entire middle of the frame left open, empty and dark, minimal high-impact composition",
+  takeaway: "translucent mask and glyph motifs glowing in the corners and along the edges, faint ambient circuitry and particle haze across the whole frame, the center kept calm and uncluttered (dark but not empty), minimal high-impact composition",
   cta: "a forward-motion arrow and a softly glowing question mark toward the upper area, sense of momentum inviting a swipe",
 };
 
 // Where the slide's TEXT sits → keep that zone of the image dark/empty so captions stay legible.
 // Takeaway centers its text (centered radial scrim); every other role is bottom-aligned.
 const TEXT_ZONE = {
-  takeaway: "keep the central area of the frame open, dark and empty for a centered text overlay; arrange all focal elements around the edges and corners",
+  takeaway: "keep the central area calm and uncluttered for a centered text overlay (dark but not empty); arrange the focal elements in the corners and along the edges, with faint ambient detail elsewhere",
 };
 const DEFAULT_ZONE = "keep the lower portion of the frame dark, calm and uncluttered for a text overlay; place focal elements in the upper third and the periphery";
 
