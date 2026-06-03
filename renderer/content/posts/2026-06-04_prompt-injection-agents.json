@@ -258,7 +258,7 @@
     "export_name": "2026-06-04_prompt-injection-agents_reel.mp4",
     "caption_mode": "highlight",
     "audio": {
-      "voice_mode": "voxcpm2-0.5b",
+      "voice_mode": "voxcpm2",
       "voice_file": "/audio/2026-06-04_prompt-injection-agents/voice.wav",
       "voice_gain_db": 0,
       "music_mode": "none",
@@ -590,13 +590,13 @@
     "licenses": [],
     "captions": [
       {
-        "start": 0.0,
+        "start": 0,
         "end": 2.26,
         "text": "The weirdest AI attack hides where your",
         "words": [
           {
             "text": "The",
-            "start": 0.0,
+            "start": 0,
             "end": 0.1
           },
           {
@@ -691,11 +691,11 @@
           {
             "text": "not",
             "start": 5.9,
-            "end": 6.0
+            "end": 6
           },
           {
             "text": "the",
-            "start": 6.0,
+            "start": 6,
             "end": 6.16
           },
           {

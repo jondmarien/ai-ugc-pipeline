@@ -64,8 +64,8 @@ if (claudeCheck.status !== 0) die("`claude` CLI not found on PATH. Install Claud
 const renderStep = flags.has("--no-render")
   ? "Do NOT render — stop after validate."
   : flags.has("--carousel-only")
-    ? `Then render the carousel only: \`cd renderer && bun run pipeline -- ${date}_<slug> --flux2 --no-voice --no-reel\` (FLUX.2 klein backgrounds → carousel → package; needs ComfyUI running for AI art, else falls back to procedural).`
-    : `Then run the FULL pipeline in one command: \`cd renderer && bun run pipeline -- ${date}_<slug> --flux2\` — backgrounds (ComfyUI, FLUX.2 klein — the tuned engine) → carousel → package → free GPU → voice → synced captions → reel WITH audio. (Start ComfyUI first for AI backgrounds; the reel auto-embeds the voice.)`;
+    ? `Then render the carousel only: \`cd renderer && bun run pipeline -- ${date}_<slug> --no-voice --no-reel\` (FLUX.2 klein backgrounds → carousel → package; needs ComfyUI running for AI art, else falls back to procedural).`
+    : `Then run the FULL pipeline in one command: \`cd renderer && bun run pipeline -- ${date}_<slug>\` — backgrounds (ComfyUI, FLUX.2 klein, the default engine) → carousel → package → free GPU → voice → synced captions → reel WITH audio. (Start ComfyUI first for AI backgrounds; the reel auto-embeds the voice.)`;
 
 // The prompt mirrors the /draft-post command. Keeping it inline lets this run headless.
 const prompt = [

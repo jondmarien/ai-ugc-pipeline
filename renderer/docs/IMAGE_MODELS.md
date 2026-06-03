@@ -16,15 +16,15 @@ HF_HUB_CACHE=E:/ai-ugc-hf/hub
 
 | Model | License | Commercial | 8 GB fit | Quality / notes |
 | --- | --- | --- | --- | --- |
-| **FLUX.1-schnell** *(default)* | **Apache-2.0** | ✅ yes | ✅ fp16 + cpu-offload, or Q4/Q5 GGUF | 4-step, ~10–20 s/img. Verified-API default. |
-| **FLUX.2 [klein] 4B** | **Apache-2.0** | ✅ yes | ✅ **FP8 ~6 GB** (fp16 ~10 GB) | Newer, sub-second, also does image editing. Best commercial pick — see "Run FLUX.2" below. |
+| **FLUX.2 [klein] 4B** *(default)* | **Apache-2.0** | ✅ yes | ✅ **Q5 GGUF ~3 GB** (FP8 ~6 GB) | Default art engine, tuned for 8 GB (8 steps, 1024×1280, CFG 1.2). Sub-second on FP8; also image editing. |
+| **FLUX.1-schnell** *(legacy `--flux1`)* | **Apache-2.0** | ✅ yes | ✅ fp16 + cpu-offload, or Q4/Q5 GGUF | 4-step, ~10–20 s/img. Legacy fallback engine. |
 | SDXL 1.0 | CreativeML OpenRAIL++ | ✅ yes (use-based restrictions) | ✅ ~8 GB base | Huge LoRA/ControlNet ecosystem; domain-tuned checkpoints shine. |
 | SD 3.5 Medium/Large | Stability Community | ⚠️ free < $1M revenue | Medium ~12 GB / Large ~11 GB TensorRT | Strong text rendering; tighter on 8 GB. |
 | FLUX.2 [klein] 9B | FLUX **Non-Commercial** | ❌ no | ~20 GB | Excluded (license + VRAM). |
 | FLUX.2 [dev] (32B) | FLUX **Non-Commercial** | ❌ no | ❌ 24 GB+ (FP8 ~12 GB) | The flagship — too big for 8 GB **and** non-commercial. |
 | FLUX.1-dev | FLUX **Non-Commercial** | ❌ no | ✅ (GGUF) | Excluded (license). |
 
-**TL;DR:** start on **FLUX.1-schnell** (works out of the box), upgrade to **FLUX.2 [klein] 4B** for newer/better at the same commercial license. Avoid anything labeled *dev* or *9B* — non-commercial.
+**TL;DR:** the default art engine is **FLUX.2 [klein] 4B** (Apache-2.0, tuned for 8 GB); **FLUX.1-schnell** stays as a legacy `--flux1` fallback. Avoid anything labeled *dev* or *9B* — non-commercial.
 
 ## ⚠ First: make sure torch uses your GPU (CUDA)
 A plain `uv pip install torch` on Windows installs the **CPU-only** build (`torch x.y.z+cpu`) — image gen then runs on CPU (minutes per image, often unusable). If `torch.cuda.is_available()` is `False` or logs say *"cuda is not available, using cpu instead"*, you have the CPU build.
