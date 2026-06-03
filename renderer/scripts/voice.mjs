@@ -18,7 +18,7 @@ const pos = args.filter((a) => !a.startsWith("--"));
 const key = pos[0];
 
 if (!key) {
-  console.error("Usage: npm run voice -- <post-key> [--voice-ref ref.wav] [--http|--voxcpm2]");
+  console.error("Usage: bun run voice -- <post-key> [--voice=voxcpm2|voxcpm2-0.5b|bark|http] [--voice-ref ref.wav] [--seed=N]");
   process.exit(1);
 }
 
@@ -28,8 +28,17 @@ try {
   const f = readdirSync(POSTS).find((x) => x.endsWith(".json") && x.includes(key));
   if (f) mode = JSON.parse(readFileSync(path.join(POSTS, f), "utf8")).video?.audio?.voice_mode ?? "voxcpm2";
 } catch { /* fall through to default */ }
+const VOICE_MODES = ["none", "voxcpm2", "voxcpm2-0.5b", "bark", "http", "file"];
+const voiceOverride = [...flags].find((f) => f.startsWith("--voice="))?.split("=")[1];
+if (voiceOverride && VOICE_MODES.includes(voiceOverride)) mode = voiceOverride;
 if (flags.has("--http")) mode = "http";
 if (flags.has("--voxcpm2")) mode = "voxcpm2";
+if (flags.has("--voxcpm2-0.5b")) mode = "voxcpm2-0.5b";
+
+// Forward only args the underlying script understands — strip dispatcher-only flags.
+// (Otherwise --voice=… gets argparse-abbreviation-matched to python's --voice-ref.)
+const isDispatchFlag = (a) => ["--http", "--voxcpm2", "--voxcpm2-0.5b"].includes(a) || a.startsWith("--voice=");
+const passArgs = args.filter((a) => !isDispatchFlag(a));
 
 if (mode === "none") {
   console.log(`Post ${key} has voice_mode=none — nothing to generate. Set --voice=voxcpm2|http (or edit video.audio.voice_mode).`);
@@ -42,7 +51,7 @@ if (mode === "file") {
 
 if (mode === "http") {
   const runner = process.platform === "win32" ? "bun.exe" : "bun";
-  const res = spawnSync(runner, [path.join(RENDERER, "scripts", "voice-http.mjs"), ...args], { cwd: RENDERER, stdio: "inherit", shell: process.platform === "win32" });
+  const res = spawnSync(runner, [path.join(RENDERER, "scripts", "voice-http.mjs"), ...passArgs], { cwd: RENDERER, stdio: "inherit", shell: process.platform === "win32" });
   process.exit(res.status ?? 1);
 }
 
@@ -58,11 +67,11 @@ const venvPy = process.platform === "win32"
 
 let cmd, cmdArgs;
 if (existsSync(venvPy)) {
-  cmd = venvPy; cmdArgs = [script, ...args];
+  cmd = venvPy; cmdArgs = [script, ...passArgs];
 } else if (spawnSync(process.platform === "win32" ? "where" : "which", ["uv"]).status === 0) {
-  cmd = "uv"; cmdArgs = ["run", "python", script, ...args]; // uv auto-uses ./.venv
+  cmd = "uv"; cmdArgs = ["run", "python", script, ...passArgs]; // uv auto-uses ./.venv
 } else {
-  cmd = process.platform === "win32" ? "python" : "python3"; cmdArgs = [script, ...args];
+  cmd = process.platform === "win32" ? "python" : "python3"; cmdArgs = [script, ...passArgs];
   console.warn("⚠ No .venv or uv found — using system python. Recommended: `uv venv && uv pip install voxcpm soundfile torch`.");
 }
 console.log(`Running: ${path.basename(cmd)} ${cmdArgs.map((a) => (a.includes(" ") ? `"${a}"` : a)).join(" ")}\n`);
