@@ -77,13 +77,27 @@ const TEXT_ZONE = {
 };
 const DEFAULT_ZONE = "keep the lower portion of the frame dark, calm and uncluttered for a text overlay; place focal elements in the upper third and the periphery";
 
-function buildPrompt(slide, accentHex, accentName) {
+function buildPrompt(slide, accentHex, accentName, topic) {
   const motif = ROLE_MOTIF[slide.role] || "abstract flowing data network, nodes and light trails";
+  // For slides without their own visual_prompt, blend in the post's TOPIC so different
+  // posts get thematically-distinct imagery for the same role (not the same generic scene).
+  const themed = topic ? `${motif}, evoking the theme of ${topic}` : motif;
   const subject = slide.visual_prompt && slide.visual_prompt.trim()
     ? slide.visual_prompt.trim()
-    : `dark cinematic cybersecurity illustration, ${motif}`;
+    : `dark cinematic cybersecurity illustration, ${themed}`;
   const zone = TEXT_ZONE[slide.role] || DEFAULT_ZONE;
   return `${subject}, ${accentName} (${accentHex}) accent glow on a deep navy void #05070d, subtle circuit-board grid, volumetric haze, fine particle detail, high contrast, ${zone}, no text, no words, no letters, no logos, no watermark, editorial tech aesthetic`;
+}
+
+// Stable per-post seed offset (FNV-1a hash of the prefix) so the same role/slide in
+// DIFFERENT posts renders different images, while a given post stays reproducible.
+function postSeedOffset(s) {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return (h >>> 0) % 90000;
 }
 
 function buildGraph(promptText, seed) {
@@ -165,6 +179,10 @@ const post = JSON.parse(readFileSync(postPath, "utf8"));
 const prefix = post.upload_package.filename_prefix;
 const accentHex = post.brand?.palette?.accent || "#3b82f6";
 const accentName = post.brand?.accent_name || "electric blue";
+// Short, text-free theme hint (≤12 words from the post's claim/slug) for fallback prompts,
+// and a per-post seed base so different posts don't collide on identical images.
+const topic = String(post.core_claim || post.slug || "").replace(/["']/g, "").split(/\s+/).filter(Boolean).slice(0, 12).join(" ");
+const postBaseSeed = SEED_BASE + postSeedOffset(prefix);
 
 // confirm ComfyUI is reachable + the model exists
 if (!DRY) {
@@ -191,8 +209,8 @@ for (const slide of targets) {
   const role = ROLE_FILE[slide.role] ?? slide.role;
   const nn = String(slide.slide).padStart(2, "0");
   const destName = `${nn}_${role}.png`;
-  const promptText = buildPrompt(slide, accentHex, accentName);
-  const seed = SEED_BASE + slide.slide;
+  const promptText = buildPrompt(slide, accentHex, accentName, topic);
+  const seed = postBaseSeed + slide.slide;
   if (DRY) { console.log(`\n[slide ${slide.slide} ${slide.role}] seed=${seed}\n  ${promptText}`); continue; }
 
   process.stdout.write(`  slide ${slide.slide} (${slide.role})… `);
