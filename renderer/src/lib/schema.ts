@@ -200,7 +200,7 @@ export const PostData = z
     pillar: Pillar,
     // Brand colour theme (drives carousel accent + AI-image colour/mood). Optional —
     // falls back to the pillar→theme map in tokens.ts when omitted.
-    theme: z.enum(["blue", "red", "green"]).optional(),
+    theme: z.enum(["offensive", "defensive", "hacking"]).optional(),
     audience: z.string().min(1),
     core_claim: z.string().min(1),
     claim_tags: z.array(z.string()).min(1),

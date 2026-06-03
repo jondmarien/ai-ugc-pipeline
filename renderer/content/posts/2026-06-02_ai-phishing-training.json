@@ -6,9 +6,14 @@
   "format": "carousel",
   "status": "approved",
   "pillar": "offensive_ai",
+  "theme": "offensive",
   "audience": "security_practitioners",
   "core_claim": "AI makes phishing cheaper to personalize at scale, weakening 'spot the typo' awareness training.",
-  "claim_tags": ["reported_fact", "emerging", "practitioner_takeaway"],
+  "claim_tags": [
+    "reported_fact",
+    "emerging",
+    "practitioner_takeaway"
+  ],
   "score": {
     "credibility": 4,
     "relevance": 5,
@@ -17,12 +22,22 @@
     "defender_usefulness": 5,
     "total": 22
   },
-  "canvas": { "width": 1080, "height": 1350, "safe_margin": 96 },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
   "brand": {
     "handle": "@chron0s_cyb3r_w0rld.ai",
-    "accent_name": "cyan",
+    "accent_name": "alert red",
     "pillar_accent": "offensive_ai",
-    "palette": { "bg": "#05070d", "fg": "#f8fafc", "muted": "#94a3b8", "accent": "#22d3ee", "danger": "#ef4444" },
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#ef4444",
+      "danger": "#ef4444"
+    },
     "font_stack": "Archivo, Inter, system-ui, sans-serif"
   },
   "upload_package": {
@@ -68,7 +83,8 @@
       "on_slide_copy": "Old red flags — bad grammar, weird phrasing — are fading.",
       "subline": "The obvious tells were never the real defense.",
       "visual_direction": "Abstract email previews with grammar-error marks dissolving; cyan accent; no readable text.",
-      "asset_status": "procedural"
+      "asset_status": "generated",
+      "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/02_context.png"
     },
     {
       "slide": 3,
@@ -77,7 +93,8 @@
       "on_slide_copy": "NCSC: AI gives attackers uplift in recon and social engineering.",
       "subline": "Cleaner lures, at scale.",
       "visual_direction": "Public-profile fragments connecting toward a single inbox; cyan; no real names.",
-      "asset_status": "procedural"
+      "asset_status": "generated",
+      "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/03_risk.png"
     },
     {
       "slide": 4,
@@ -86,7 +103,8 @@
       "on_slide_copy": "Not magic hacking. Cheaper personalization at scale.",
       "subline": "AI lowers the cost, not the skill ceiling.",
       "visual_direction": "Branching personalized message bubbles from an abstract workstation; safe, abstract only.",
-      "asset_status": "procedural"
+      "asset_status": "generated",
+      "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/04_mechanism.png"
     },
     {
       "slide": 5,
@@ -95,7 +113,8 @@
       "on_slide_copy": "We trained people to spot typos, not to verify requests.",
       "subline": "Vocabulary checks don't stop clean messages.",
       "visual_direction": "Employee near an approve button; ignored verification checklist behind.",
-      "asset_status": "procedural"
+      "asset_status": "generated",
+      "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/05_failure-point.png"
     },
     {
       "slide": 6,
@@ -104,7 +123,8 @@
       "on_slide_copy": "Verify by a second channel. Lock down resets and payment changes.",
       "subline": "Make verification mandatory, not optional.",
       "visual_direction": "Phone callback, ticket workflow, approval chain, identity-check icons.",
-      "asset_status": "procedural"
+      "asset_status": "generated",
+      "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/06_defense.png"
     },
     {
       "slide": 7,
@@ -113,7 +133,8 @@
       "on_slide_copy": "If your defense relies on scams looking fake, the game changed.",
       "subline": "",
       "visual_direction": "Analyst silhouette, lock icon, dark gradient; minimal copy.",
-      "asset_status": "procedural"
+      "asset_status": "generated",
+      "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/07_takeaway.png"
     },
     {
       "slide": 8,
@@ -122,12 +143,21 @@
       "on_slide_copy": "Does your awareness training still teach “spot the typo”?",
       "subline": "Save this for your next awareness review.",
       "visual_direction": "Clean dark end card with subtle credibility cue and handle.",
-      "asset_status": "procedural",
-      "cta": "COMMENT + SAVE"
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "background_asset": "/backgrounds/2026-06-02_ai-phishing-training/08_cta.png"
     }
   ],
   "caption": "AI phishing made “spot the typo” training obsolete.\n\nThe old red flags — bad grammar, clumsy phrasing, obvious urgency — were never the real defense. They were just the easiest tells. The UK's NCSC assessments describe AI giving attackers an uplift in reconnaissance and social engineering, which mostly means cheaper, more personalized lures at scale — not magical hacking.\n\nFor defenders, that's a process problem, not a vocabulary problem. If your training teaches people to hunt for spelling mistakes, a clean AI-written message walks right past it.\n\nDefender move: verify sensitive requests (password resets, payment changes) over a second channel, and make that verification mandatory — not optional politeness.\n\nDoes your awareness training still lean on “spot the typo”?\n\nFollow for AI security breakdowns without the fake panic.",
-  "hashtags": ["#Cybersecurity", "#InfoSec", "#AISecurity", "#Phishing", "#SocialEngineering", "#SecurityAwareness", "#ThreatIntel"],
+  "hashtags": [
+    "#Cybersecurity",
+    "#InfoSec",
+    "#AISecurity",
+    "#Phishing",
+    "#SocialEngineering",
+    "#SecurityAwareness",
+    "#ThreatIntel"
+  ],
   "comment_prompt": "Does your awareness training still lean on “spot the typo”?",
   "alt_text": [
     "Slide 1: Dark cinematic cover with bold headline 'AI phishing made old training obsolete' over a security operations scene with a cyan glow.",
@@ -163,6 +193,62 @@
       "commercial_use_allowed": true,
       "disclosure_required": false,
       "notes": "No rendered text, no logos, no credentials."
+    },
+    {
+      "asset": "/backgrounds/2026-06-02_ai-phishing-training/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-02_ai-phishing-training/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-02_ai-phishing-training/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-02_ai-phishing-training/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-02_ai-phishing-training/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-02_ai-phishing-training/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-02_ai-phishing-training/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
     }
   ],
   "video": {
@@ -170,19 +256,82 @@
     "duration_seconds": 26,
     "fps": 30,
     "export_name": "2026-06-02_ai-phishing-training_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2-0.5b",
+      "voice_file": "/audio/2026-06-02_ai-phishing-training/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
     "narration": [
-      { "start": 0, "end": 5, "text": "AI phishing made old training obsolete." },
-      { "start": 5, "end": 11, "text": "The old red flags — bad grammar, weird phrasing — are fading." },
-      { "start": 11, "end": 17, "text": "Verify sensitive requests over a second channel." },
-      { "start": 17, "end": 22, "text": "If your defense relies on scams looking fake, the game changed." },
-      { "start": 22, "end": 26, "text": "Does your training still teach spot the typo?" }
+      {
+        "start": 0,
+        "end": 5,
+        "text": "AI phishing made old training obsolete."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "text": "The old red flags — bad grammar, weird phrasing — are fading."
+      },
+      {
+        "start": 11,
+        "end": 17,
+        "text": "Verify sensitive requests over a second channel."
+      },
+      {
+        "start": 17,
+        "end": 22,
+        "text": "If your defense relies on scams looking fake, the game changed."
+      },
+      {
+        "start": 22,
+        "end": 26,
+        "text": "Does your training still teach spot the typo?"
+      }
     ],
     "beats": [
-      { "start": 0, "end": 5, "slide_ref": 1, "purpose": "hook", "motion": "slow push-in over cover", "caption": "AI phishing made old training obsolete." },
-      { "start": 5, "end": 11, "slide_ref": 2, "purpose": "context", "motion": "parallax, red flags dissolving", "caption": "Old red flags are fading." },
-      { "start": 11, "end": 17, "slide_ref": 6, "purpose": "defense", "motion": "slow push-in on workflow", "caption": "Verify by a second channel." },
-      { "start": 17, "end": 22, "slide_ref": 7, "purpose": "takeaway", "motion": "static, high contrast", "caption": "The game changed." },
-      { "start": 22, "end": 26, "slide_ref": 8, "purpose": "cta", "motion": "end card", "caption": "Comment + save." }
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "AI phishing made old training obsolete."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax, red flags dissolving",
+        "caption": "Old red flags are fading."
+      },
+      {
+        "start": 11,
+        "end": 17,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in on workflow",
+        "caption": "Verify by a second channel."
+      },
+      {
+        "start": 17,
+        "end": 22,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static, high contrast",
+        "caption": "The game changed."
+      },
+      {
+        "start": 22,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Comment + save."
+      }
     ],
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
@@ -198,6 +347,13 @@
     "defender_value_present": true,
     "media_rights_logged": true,
     "manual_review_required": true,
-    "render_checks_required": ["exact_resolution", "no_text_overflow", "safe_margins", "mobile_readability", "filename_order", "license_metadata"]
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
   }
 }

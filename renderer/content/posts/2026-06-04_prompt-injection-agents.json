@@ -6,6 +6,7 @@
   "format": "carousel",
   "status": "approved",
   "pillar": "model_security",
+  "theme": "defensive",
   "audience": "builders",
   "core_claim": "Indirect prompt injection — malicious instructions hidden in content an AI agent reads — gets dangerous when the agent can take actions.",
   "claim_tags": [
@@ -80,7 +81,7 @@
       "kicker": "WHAT CHANGED",
       "on_slide_copy": "Direct injection: the user manipulates the model. Indirect: the content does.",
       "subline": "The instruction can come from data, not the chat box.",
-      "asset_status": "generated",
+      "asset_status": "existing",
       "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/02_context.png"
     },
     {
@@ -89,7 +90,7 @@
       "kicker": "WHY IT MATTERS",
       "on_slide_copy": "It can live in web pages, emails, documents, images — anywhere the agent reads.",
       "subline": "Untrusted content becomes untrusted instructions.",
-      "asset_status": "generated",
+      "asset_status": "existing",
       "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/03_risk.png"
     },
     {
@@ -98,7 +99,7 @@
       "kicker": "HOW IT WORKS",
       "on_slide_copy": "The risk spikes when the AI can act: send email, read files, call APIs.",
       "subline": "Reading is one thing. Acting is another.",
-      "asset_status": "generated",
+      "asset_status": "existing",
       "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/04_mechanism.png"
     },
     {
@@ -107,7 +108,7 @@
       "kicker": "WHERE TEAMS FAIL",
       "on_slide_copy": "OWASP flags the pattern: injection, sensitive disclosure, excessive agency.",
       "subline": "It's a known risk class, not a surprise.",
-      "asset_status": "generated",
+      "asset_status": "existing",
       "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/05_failure-point.png"
     },
     {
@@ -116,7 +117,7 @@
       "kicker": "DEFENSIVE MOVE",
       "on_slide_copy": "Isolate untrusted content. Limit tools. Log actions. Confirm sensitive steps.",
       "subline": "Least privilege for agents, not just users.",
-      "asset_status": "generated",
+      "asset_status": "existing",
       "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/06_defense.png"
     },
     {
@@ -125,7 +126,7 @@
       "kicker": "TAKEAWAY",
       "on_slide_copy": "Treat external content like user input wearing a costume.",
       "subline": "",
-      "asset_status": "generated",
+      "asset_status": "existing",
       "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/07_takeaway.png"
     },
     {
@@ -134,7 +135,7 @@
       "kicker": "YOUR MOVE",
       "on_slide_copy": "Would your agent trust a webpage it was told to summarize?",
       "subline": "Save this for your next agent design review.",
-      "asset_status": "generated",
+      "asset_status": "existing",
       "cta": "COMMENT + SAVE",
       "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/08_cta.png"
     }
@@ -242,7 +243,7 @@
     "export_name": "2026-06-04_prompt-injection-agents_reel.mp4",
     "caption_mode": "highlight",
     "audio": {
-      "voice_mode": "voxcpm2",
+      "voice_mode": "voxcpm2-0.5b",
       "voice_file": "/audio/2026-06-04_prompt-injection-agents/voice.wav",
       "voice_gain_db": 0,
       "music_mode": "none",
@@ -575,302 +576,309 @@
     "captions": [
       {
         "start": 0,
-        "end": 1.88,
+        "end": 1.98,
         "text": "The weirdest AI attack hides where your",
         "words": [
           {
             "text": "The",
             "start": 0,
-            "end": 0.1
+            "end": 0.08
           },
           {
             "text": "weirdest",
-            "start": 0.1,
-            "end": 0.46
+            "start": 0.08,
+            "end": 0.52
           },
           {
             "text": "AI",
-            "start": 0.46,
-            "end": 0.7
+            "start": 0.52,
+            "end": 0.78
           },
           {
             "text": "attack",
-            "start": 0.7,
-            "end": 1.2
+            "start": 0.78,
+            "end": 1.26
           },
           {
             "text": "hides",
-            "start": 1.2,
-            "end": 1.52
+            "start": 1.26,
+            "end": 1.62
           },
           {
             "text": "where",
-            "start": 1.52,
-            "end": 1.76
+            "start": 1.62,
+            "end": 1.84
           },
           {
             "text": "your",
-            "start": 1.76,
-            "end": 1.88
+            "start": 1.84,
+            "end": 1.98
           }
         ]
       },
       {
-        "start": 1.88,
-        "end": 4.72,
+        "start": 1.98,
+        "end": 4.9,
         "text": "agent reads. Indirect prompt injection lives in",
         "words": [
           {
             "text": "agent",
-            "start": 1.88,
-            "end": 2.12
+            "start": 1.98,
+            "end": 2.28
           },
           {
             "text": "reads.",
-            "start": 2.12,
-            "end": 2.64
+            "start": 2.28,
+            "end": 2.7
           },
           {
             "text": "Indirect",
-            "start": 3.2,
-            "end": 3.44
+            "start": 3.26,
+            "end": 3.54
           },
           {
             "text": "prompt",
-            "start": 3.44,
-            "end": 3.74
+            "start": 3.54,
+            "end": 3.84
           },
           {
             "text": "injection",
-            "start": 3.74,
-            "end": 4
+            "start": 3.84,
+            "end": 4.14
           },
           {
             "text": "lives",
-            "start": 4,
-            "end": 4.5
+            "start": 4.14,
+            "end": 4.7
           },
           {
             "text": "in",
-            "start": 4.5,
-            "end": 4.72
+            "start": 4.7,
+            "end": 4.9
           }
         ]
       },
       {
-        "start": 4.72,
-        "end": 6.78,
-        "text": "the content, not the chat box. Isolate",
+        "start": 4.9,
+        "end": 6.46,
+        "text": "the content, not the chat box.",
         "words": [
           {
             "text": "the",
-            "start": 4.72,
-            "end": 4.78
+            "start": 4.9,
+            "end": 4.98
           },
           {
             "text": "content,",
-            "start": 4.78,
-            "end": 5.1
+            "start": 4.98,
+            "end": 5.3
           },
           {
             "text": "not",
-            "start": 5.38,
-            "end": 5.46
+            "start": 5.74,
+            "end": 5.82
           },
           {
             "text": "the",
-            "start": 5.46,
-            "end": 5.62
-          },
-          {
-            "text": "chat",
-            "start": 5.62,
-            "end": 5.78
-          },
-          {
-            "text": "box.",
-            "start": 5.78,
+            "start": 5.82,
             "end": 6
           },
           {
-            "text": "Isolate",
-            "start": 6.52,
-            "end": 6.78
+            "text": "chat",
+            "start": 6,
+            "end": 6.14
+          },
+          {
+            "text": "box.",
+            "start": 6.14,
+            "end": 6.46
           }
         ]
       },
       {
-        "start": 6.78,
-        "end": 9.54,
-        "text": "untrusted content, limit tools, and log every",
+        "start": 7.1,
+        "end": 9.92,
+        "text": "Isolate untrusted content, limit tools, and log",
         "words": [
           {
+            "text": "Isolate",
+            "start": 7.1,
+            "end": 7.42
+          },
+          {
             "text": "untrusted",
-            "start": 6.78,
-            "end": 7.38
+            "start": 7.42,
+            "end": 8.02
           },
           {
             "text": "content,",
-            "start": 7.38,
-            "end": 7.7
+            "start": 8.02,
+            "end": 8.36
           },
           {
             "text": "limit",
-            "start": 8.14,
-            "end": 8.28
+            "start": 8.82,
+            "end": 9.02
           },
           {
             "text": "tools,",
-            "start": 8.28,
-            "end": 8.58
+            "start": 9.02,
+            "end": 9.3
           },
           {
             "text": "and",
-            "start": 8.98,
-            "end": 9.06
+            "start": 9.64,
+            "end": 9.72
           },
           {
             "text": "log",
-            "start": 9.06,
-            "end": 9.28
-          },
-          {
-            "text": "every",
-            "start": 9.28,
-            "end": 9.54
+            "start": 9.72,
+            "end": 9.92
           }
         ]
       },
       {
-        "start": 9.54,
-        "end": 11.86,
-        "text": "action. Treat external content like user input",
+        "start": 9.92,
+        "end": 10.66,
+        "text": "every action.",
         "words": [
           {
-            "text": "action.",
-            "start": 9.54,
-            "end": 9.92
+            "text": "every",
+            "start": 9.92,
+            "end": 10.2
           },
           {
+            "text": "action.",
+            "start": 10.2,
+            "end": 10.66
+          }
+        ]
+      },
+      {
+        "start": 11.28,
+        "end": 13.18,
+        "text": "Treat external content like user input wearing",
+        "words": [
+          {
             "text": "Treat",
-            "start": 10.3,
-            "end": 10.32
+            "start": 11.28,
+            "end": 11.28
           },
           {
             "text": "external",
-            "start": 10.32,
-            "end": 10.54
+            "start": 11.28,
+            "end": 11.66
           },
           {
             "text": "content",
-            "start": 10.54,
-            "end": 11.04
+            "start": 11.66,
+            "end": 12.08
           },
           {
             "text": "like",
-            "start": 11.04,
-            "end": 11.34
+            "start": 12.08,
+            "end": 12.36
           },
           {
             "text": "user",
-            "start": 11.34,
-            "end": 11.58
+            "start": 12.36,
+            "end": 12.54
           },
           {
             "text": "input",
-            "start": 11.58,
-            "end": 11.86
+            "start": 12.54,
+            "end": 12.88
+          },
+          {
+            "text": "wearing",
+            "start": 12.88,
+            "end": 13.18
           }
         ]
       },
       {
-        "start": 11.86,
-        "end": 12.6,
-        "text": "wearing a costume.",
+        "start": 13.18,
+        "end": 13.62,
+        "text": "a costume.",
         "words": [
           {
-            "text": "wearing",
-            "start": 11.86,
-            "end": 12.18
-          },
-          {
             "text": "a",
-            "start": 12.18,
-            "end": 12.32
+            "start": 13.18,
+            "end": 13.36
           },
           {
             "text": "costume.",
-            "start": 12.32,
-            "end": 12.6
+            "start": 13.36,
+            "end": 13.62
           }
         ]
       },
       {
-        "start": 13.34,
-        "end": 14.64,
+        "start": 14.24,
+        "end": 15.48,
         "text": "Would your agent trust a page it",
         "words": [
           {
             "text": "Would",
-            "start": 13.34,
-            "end": 13.36
+            "start": 14.24,
+            "end": 14.26
           },
           {
             "text": "your",
-            "start": 13.36,
-            "end": 13.48
-          },
-          {
-            "text": "agent",
-            "start": 13.48,
-            "end": 13.76
-          },
-          {
-            "text": "trust",
-            "start": 13.76,
-            "end": 14.02
-          },
-          {
-            "text": "a",
-            "start": 14.02,
-            "end": 14.18
-          },
-          {
-            "text": "page",
-            "start": 14.18,
+            "start": 14.26,
             "end": 14.4
           },
           {
-            "text": "it",
+            "text": "agent",
             "start": 14.4,
-            "end": 14.64
-          }
-        ]
-      },
-      {
-        "start": 14.64,
-        "end": 15.34,
-        "text": "was told to summarize?",
-        "words": [
-          {
-            "text": "was",
-            "start": 14.64,
-            "end": 14.74
+            "end": 14.68
           },
           {
-            "text": "told",
-            "start": 14.74,
+            "text": "trust",
+            "start": 14.68,
             "end": 14.94
           },
           {
-            "text": "to",
+            "text": "a",
             "start": 14.94,
             "end": 15.12
           },
           {
-            "text": "summarize?",
+            "text": "page",
             "start": 15.12,
-            "end": 15.34
+            "end": 15.28
+          },
+          {
+            "text": "it",
+            "start": 15.28,
+            "end": 15.48
+          }
+        ]
+      },
+      {
+        "start": 15.48,
+        "end": 16.14,
+        "text": "was told to summarize?",
+        "words": [
+          {
+            "text": "was",
+            "start": 15.48,
+            "end": 15.56
+          },
+          {
+            "text": "told",
+            "start": 15.56,
+            "end": 15.76
+          },
+          {
+            "text": "to",
+            "start": 15.76,
+            "end": 15.92
+          },
+          {
+            "text": "summarize?",
+            "start": 15.92,
+            "end": 16.14
           }
         ]
       }
