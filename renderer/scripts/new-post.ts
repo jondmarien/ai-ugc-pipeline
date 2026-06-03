@@ -21,16 +21,16 @@ const voiceFlag = flagArgs.find((a) => a.startsWith("--voice="))?.split("=")[1] 
 const musicFlag = flagArgs.find((a) => a.startsWith("--music="))?.split("=")[1] ?? "none";
 const voiceMode = (VOICE_MODES as readonly string[]).includes(voiceFlag) ? voiceFlag : "voxcpm2";
 const musicMode = (MUSIC_MODES as readonly string[]).includes(musicFlag) ? musicFlag : "none";
-const THEMES = ["offensive", "defensive", "hacking", "purple", "ai"] as const;
+const THEMES = ["offensive", "defensive", "hacking", "purple-team", "ai"] as const;
 const themeFlag = flagArgs.find((a) => a.startsWith("--theme="))?.split("=")[1] ?? "";
 
 const PILLARS = Object.keys(pillarAccent) as Pillar[];
 
 function usageAndExit(msg?: string): never {
   if (msg) console.error(`\n✗ ${msg}`);
-  console.error(`\nUsage: bun run new -- <YYYY-MM-DD> <slug> <pillar> [--theme=offensive|defensive|hacking|purple|ai] [--captions=…] [--voice=… (default voxcpm2; use none for a silent reel)] [--music=…]`);
+  console.error(`\nUsage: bun run new -- <YYYY-MM-DD> <slug> <pillar> [--theme=offensive|defensive|hacking|purple-team|ai] [--captions=…] [--voice=… (default voxcpm2; use none for a silent reel)] [--music=…]`);
   console.error(`  pillar ∈ ${PILLARS.join(" | ")}`);
-  console.error(`  theme  ∈ offensive (red) | defensive (blue) | hacking (green) | purple (purple-team) | ai (generic AI, orange)  — optional; defaults from pillar`);
+  console.error(`  theme  ∈ offensive (red) | defensive (blue) | hacking (green) | purple-team (purple) | ai (generic AI, orange)  — optional; defaults from pillar`);
   console.error(`  example: bun run new -- 2026-06-13 ai-agent-permissions model_security --theme=defensive\n`);
   process.exit(1);
 }
