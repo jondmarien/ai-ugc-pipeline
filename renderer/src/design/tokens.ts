@@ -55,6 +55,25 @@ export const type = {
 
 export const radius = { panel: 28 } as const;
 
+// Readability scrims layered between the (AI-generated) background and the text.
+// Strategy: light AMBIENT grounding in SlideBackground (edges/vignette) + a strong
+// CONTENT-HUGGING plate behind the actual text block in CarouselSlide. The plate moves
+// with the text (bottom-aligned or centered) and is feathered (radial → transparent at
+// the edges) so it reads as editorial darkening, never a hard rectangle.
+export const overlays = {
+  // Ambient grounding in SlideBackground (kept light — the text plate does the real work).
+  topVignette: "linear-gradient(0deg, transparent 0%, rgba(2,3,10,0.62) 100%)",
+  topHeight: "24%",
+  ambientBottom: "linear-gradient(180deg, transparent 28%, rgba(2,3,10,0.30) 64%, rgba(2,3,10,0.62) 100%)",
+  ambientBlurPx: 3,
+  // Content-hugging text plate (the primary legibility layer). Densest over the text,
+  // fading to transparent at the edges so the surrounding art still shows.
+  textPlate: "radial-gradient(125% 135% at 50% 50%, rgba(2,3,10,0.94) 0%, rgba(2,3,10,0.88) 48%, rgba(2,3,10,0.55) 78%, rgba(2,3,10,0) 100%)",
+  textPlateBlurPx: 9,
+  textPlateInset: "-40px -56px", // how far the plate extends beyond the text box (feathered)
+  textPlateRadius: 44,
+} as const;
+
 export function accentFor(pillar: Pillar): string {
   return pillarAccent[pillar].accent;
 }

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import type { TPostData, TSlideData } from "@/lib/schema";
-import { accentFor, fonts, palette, type as typeScale } from "@/design/tokens";
+import { accentFor, fonts, overlays, palette, type as typeScale } from "@/design/tokens";
 import { SlideBackground } from "./SlideBackground";
 
 // Shared canvas shell: exact pixel size, background, safe area, brand mark,
@@ -39,7 +39,10 @@ export function CarouselSlide({
       {/* Top accent hairline */}
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 6, background: accent, opacity: 0.9 }} />
 
-      {/* Content frame inside the safe margin */}
+      {/* Content frame inside the safe margin. The text block is wrapped with a
+          content-hugging soft scrim (feathered dark plate + backdrop-blur) that moves
+          with the text — bottom-aligned or centered — so copy stays legible over any
+          background without a hard box. */}
       <div
         style={{
           position: "absolute",
@@ -47,10 +50,25 @@ export function CarouselSlide({
           display: "flex",
           flexDirection: "column",
           justifyContent: justify,
-          gap: 24,
         }}
       >
-        {children}
+        <div style={{ position: "relative", alignSelf: "stretch" }}>
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              inset: overlays.textPlateInset,
+              background: overlays.textPlate,
+              backdropFilter: `blur(${overlays.textPlateBlurPx}px)`,
+              WebkitBackdropFilter: `blur(${overlays.textPlateBlurPx}px)`,
+              borderRadius: overlays.textPlateRadius,
+              pointerEvents: "none",
+            }}
+          />
+          <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 24 }}>
+            {children}
+          </div>
+        </div>
       </div>
 
       {/* Brand mark (quiet, consistent top-left) */}

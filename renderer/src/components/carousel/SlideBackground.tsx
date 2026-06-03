@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import type { TSlideData } from "@/lib/schema";
-import { palette } from "@/design/tokens";
+import { overlays, palette } from "@/design/tokens";
 
 // Procedural, text-free, logo-free cyber backgrounds built purely in CSS so the
 // PoC needs no new image generation. Where `background_asset` + asset_status
@@ -57,26 +57,25 @@ export function SlideBackground({ slide, accent }: { slide: TSlideData; accent: 
           <div style={scanlines()} />
         </>
       )}
-      {/* Protected dark lower-third for headline legibility on every slide. */}
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          bottom: 0,
-          height: "62%",
-          background: "linear-gradient(180deg, transparent 0%, rgba(2,3,10,0.55) 42%, rgba(2,3,10,0.92) 100%)",
-        }}
-      />
-      {/* Top vignette to seat the kicker/brand mark. */}
+      {/* Light AMBIENT grounding only — the strong text legibility scrim is the
+          content-hugging plate in CarouselSlide. Keeps slide edges from glaring. */}
       <div
         style={{
           position: "absolute",
           left: 0,
           right: 0,
           top: 0,
-          height: "26%",
-          background: "linear-gradient(0deg, transparent 0%, rgba(2,3,10,0.7) 100%)",
+          height: overlays.topHeight,
+          background: overlays.topVignette,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: overlays.ambientBottom,
+          backdropFilter: usesImage ? `blur(${overlays.ambientBlurPx}px)` : undefined,
+          WebkitBackdropFilter: usesImage ? `blur(${overlays.ambientBlurPx}px)` : undefined,
         }}
       />
     </div>
