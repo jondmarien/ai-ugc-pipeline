@@ -20,6 +20,7 @@
     "art": "bun scripts/art-comfyui.mjs",
     "art:diffusers": "bun scripts/art.mjs",
     "import-bg": "bun scripts/import-bg.mjs",
+    "free-comfyui": "bun scripts/free-comfyui.mjs",
     "typecheck": "tsc --noEmit && tsc --noEmit -p remotion/tsconfig.json",
     "remotion:studio": "bunx remotion studio remotion/index.ts"
   },

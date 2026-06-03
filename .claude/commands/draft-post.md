@@ -30,4 +30,7 @@ You are producing one complete AI-in-cybersecurity post for this repo, end to en
 7. **Report:** print the output folder `pipeline/renders/<date>_<slug>/`, the list of files, which claims are `reported_fact` vs `scenario`, and the QA items that still need a human eye (cover legibility, source re-check, cyber-safety). Remind: a human approves before posting; the reel ships without audio (add VoxCPM2 voice + licensed music per renderer/docs/REMOTION_REEL_WORKFLOW.md to narrate).
 
 ## Backgrounds
-Inner slides render procedurally (no art needed). For a custom cover, tell the user to drop a 1080×1350 text-free PNG at `renderer/public/backgrounds/<date>_<slug>_cover.png` and set slide 1 `asset_status` to `existing` — otherwise the cover renders procedurally, which is fine.
+Inner slides render procedurally (no art needed). For AI backgrounds, run `cd renderer && bun run art -- <date>_<slug>` (ComfyUI, FLUX.1 Q4 GGUF; add `--flux2` for FLUX.2 klein into a `_flux2/` compare folder). For a custom cover, drop a 1080×1350 text-free PNG at `renderer/public/backgrounds/<date>_<slug>_cover.png` and set slide 1 `asset_status` to `existing`.
+
+## GPU handoff (8 GB — one big model at a time)
+ComfyUI is a persistent server that keeps the diffusion model resident; VoxCPM (voice) and Whisper (align) load their own ~5 GB models in a separate process. They can't coexist on 8 GB. So run **all image gen first** (`bun run art …`), then **`cd renderer && bun run free-comfyui`** (unloads ComfyUI's models + frees VRAM via its `/free` endpoint) **before** any `bun run voice` / `bun run align`. `free-comfyui` is non-fatal if ComfyUI isn't running.
