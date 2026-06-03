@@ -58,6 +58,15 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("key", help="post slug / filename_prefix / path")
     ap.add_argument("--voice-ref", help="optional AUTHORIZED reference WAV for voice cloning")
+    ap.add_argument(
+        "--seed",
+        type=int,
+        default=int(os.environ.get("VOXCPM_SEED", "777")),
+        help="RNG seed for the speaker. VoxCPM2 zero-shot samples a random voice each run; "
+        "a fixed seed makes the voice REPRODUCIBLE (same seed = same speaker). To 'cast' a "
+        "voice you like (e.g. a lower-pitch male), try a few seeds, then lock it via "
+        "VOXCPM_SEED or this flag.",
+    )
     args = ap.parse_args()
 
     post = json.load(open(find_post(args.key), encoding="utf-8"))
@@ -107,6 +116,15 @@ def main() -> None:
     kwargs = {}
     if args.voice_ref:
         kwargs["reference_wav_path"] = args.voice_ref  # clone an AUTHORIZED voice only
+
+    # Seed the RNG right before generation so the sampled speaker is reproducible —
+    # the SAME voice every run. Change --seed / VOXCPM_SEED to cast a different voice.
+    import torch  # noqa: E402  (torch is already loaded via voxcpm)
+
+    torch.manual_seed(args.seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(args.seed)
+    print(f"Voice seed: {args.seed}  (same seed = same speaker; change it to cast a different voice)", file=sys.stderr)
 
     try:
         wav = model.generate(text=script, **kwargs)
