@@ -51,6 +51,9 @@ const DRY = flags.has("--dry-run");
 // public/backgrounds/<prefix>_flux2/ folder and leaves the post JSON untouched, so the FLUX.1
 // set stays live for side-by-side comparison. Override the (subpath'd) filenames via ART2_* env.
 const FLUX2 = flags.has("--flux2");
+// --flux2 writes REAL backgrounds (updates the post JSON), like FLUX.1. Add --compare to
+// instead do a non-destructive A/B into <prefix>_flux2/ without touching the JSON.
+const COMPARE = flags.has("--compare");
 const F2_MODEL = process.env.ART2_MODEL || "flux-2-klein-4b-Q5_K_S.gguf";
 const F2_CLIP = process.env.ART2_CLIP || "split_files\\text_encoders\\qwen_3_4b.safetensors";
 const F2_VAE = process.env.ART2_VAE || "split_files\\vae\\flux2-vae.safetensors";
@@ -177,7 +180,8 @@ const targets = post.slides.filter(
   (s) => (flags.has("--all") || s.role !== "cover") && (!onlySet || onlySet.has(s.slide)),
 );
 if (onlySet) console.log(`(regenerating only slide(s): ${[...onlySet].join(", ")})`);
-const outPrefix = FLUX2 ? `${prefix}_flux2` : prefix;
+const compareMode = FLUX2 && COMPARE;
+const outPrefix = compareMode ? `${prefix}_flux2` : prefix;
 const destDir = path.join(RENDERER, "public", "backgrounds", outPrefix);
 if (!DRY) mkdirSync(destDir, { recursive: true });
 post.asset_licenses = post.asset_licenses || [];
@@ -200,19 +204,21 @@ for (const slide of targets) {
     console.log(`✗ ${e.message}`);
     continue;
   }
-  // FLUX.2 runs are a non-destructive comparison set — leave the post JSON pointing at FLUX.1.
-  if (!FLUX2) {
+  // --flux2 --compare = non-destructive A/B (write images only; leave JSON on the live set).
+  if (!compareMode) {
     const assetPath = `/backgrounds/${prefix}/${destName}`;
     slide.background_asset = assetPath;
     slide.asset_status = "generated";
+    const modelName = FLUX2 ? F2_MODEL : MODEL;
+    const source = FLUX2 ? "FLUX.2 [klein] 4B (GGUF) via local ComfyUI" : "FLUX.1-schnell (GGUF) via local ComfyUI";
     if (!post.asset_licenses.some((l) => l.asset === assetPath)) {
       post.asset_licenses.push({
         asset: assetPath,
-        source: "FLUX.1-schnell (GGUF) via local ComfyUI",
+        source,
         license_or_terms: "Apache-2.0 — commercial use allowed; text-free generated background.",
         commercial_use_allowed: true,
         disclosure_required: false,
-        notes: `Generated locally with ${MODEL}; no rendered text, no logos.`,
+        notes: `Generated locally with ${modelName}; no rendered text, no logos.`,
       });
     }
   }
@@ -221,12 +227,13 @@ for (const slide of targets) {
 }
 
 if (!DRY) {
-  if (FLUX2) {
+  if (compareMode) {
     console.log(`\n✓ Generated ${n}/${targets.length} FLUX.2 background(s) → public/backgrounds/${outPrefix}/ (comparison set; post JSON untouched).`);
-    console.log(`  Compare against the FLUX.1 set in public/backgrounds/${prefix}/.`);
+    console.log(`  Compare against the live set in public/backgrounds/${prefix}/.`);
   } else {
     writeFileSync(postPath, JSON.stringify(post, null, 2) + "\n", "utf8");
-    console.log(`\n✓ Generated ${n}/${targets.length} background(s) → public/backgrounds/${prefix}/ (asset_status=generated, licenses logged).`);
+    const which = FLUX2 ? "FLUX.2 klein" : "FLUX.1-schnell";
+    console.log(`\n✓ Generated ${n}/${targets.length} ${which} background(s) → public/backgrounds/${prefix}/ (asset_status=generated, licenses logged).`);
     console.log(`  Next: bun run export -- ${key}`);
   }
 }

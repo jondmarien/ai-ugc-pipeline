@@ -113,7 +113,9 @@ def main() -> None:
         optimize=os.environ.get("VOXCPM_OPTIMIZE", "0") == "1",
     )
 
-    kwargs = {}
+    # inference_timesteps: diffusion steps (4–30). Lower = faster, slightly less detail.
+    # 10 is the model default; drop to ~6 to speed up on weaker GPUs (VOXCPM_TIMESTEPS).
+    kwargs = {"inference_timesteps": int(os.environ.get("VOXCPM_TIMESTEPS", "10"))}
     if args.voice_ref:
         kwargs["reference_wav_path"] = args.voice_ref  # clone an AUTHORIZED voice only
 
