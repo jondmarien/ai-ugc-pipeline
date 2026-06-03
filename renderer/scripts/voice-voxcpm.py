@@ -29,9 +29,11 @@ Notes:
 - Clone only a synthetic voice or your OWN authorized reference sample.
 """
 import argparse
+import datetime
 import faulthandler
 import json
 import os
+import random
 import sys
 
 # Surface native (C-level) crashes — VoxCPM/torch can hard-crash without a Python
@@ -41,8 +43,11 @@ faulthandler.enable()
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RENDERER = os.path.dirname(HERE)
+REPO = os.path.dirname(RENDERER)
 POSTS = os.path.join(RENDERER, "content", "posts")
 DEFAULT_MODEL = os.environ.get("VOXCPM_MODEL", "openbmb/VoxCPM2")
+# Seeds known to make VoxCPM degenerate into non-terminating generation (very slow). Never auto-pick these.
+BAD_SEEDS = {777}
 
 
 def find_post(key: str) -> str:
@@ -74,6 +79,13 @@ def main() -> None:
             seed = int(os.environ["VOXCPM_SEED"])
         except ValueError:
             seed = None
+    # Always end up with a concrete seed so the voice is reproducible AND loggable. If the
+    # caller didn't pin one, roll a random seed (avoiding known-bad ones) and record it.
+    seed_source = "fixed" if seed is not None else "auto"
+    if seed is None:
+        seed = random.randint(1, 2**31 - 1)
+        while seed in BAD_SEEDS:
+            seed = random.randint(1, 2**31 - 1)
 
     post = json.load(open(find_post(args.key), encoding="utf-8"))
     narration = (post.get("video") or {}).get("narration") or []
@@ -130,13 +142,14 @@ def main() -> None:
     # (no seed) = random + fast, which is the right default.
     import torch  # noqa: E402  (torch is already loaded via voxcpm)
 
-    if seed is not None:
-        torch.manual_seed(seed)
-        if torch.cuda.is_available():
-            torch.cuda.manual_seed_all(seed)
-        print(f"Voice seed: {seed} (locked speaker — if this run crawls, the seed is unlucky; try another)", file=sys.stderr)
-    else:
-        print("Voice seed: random (fast). Set --seed=N / VOXCPM_SEED to lock a voice.", file=sys.stderr)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    print(
+        f"Voice seed: {seed} ({seed_source}) — locks this speaker. "
+        f"Reuse with --seed={seed}. (If a run crawls, that seed is unlucky; pick another.)",
+        file=sys.stderr,
+    )
 
     try:
         wav = model.generate(text=script, **kwargs)
@@ -162,7 +175,31 @@ def main() -> None:
     sr = getattr(getattr(model, "tts_model", None), "sample_rate", None) or 24000
 
     sf.write(out_wav, wav, int(sr))
+
+    # Log the seed (+ run details) so a voice you like can be reproduced exactly. Written next
+    # to the WAV and, if the render package folder exists, into pipeline/renders/<prefix>/ too.
+    meta = {
+        "seed": seed,
+        "seed_source": seed_source,  # "fixed" (you passed --seed) or "auto" (rolled for you)
+        "model": DEFAULT_MODEL,
+        "sample_rate": int(sr),
+        "inference_timesteps": kwargs["inference_timesteps"],
+        "voice_ref": args.voice_ref or None,
+        "script_chars": len(script),
+        "generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
+        "reuse_command": f"bun run pipeline -- {args.key} --seed={seed}",
+    }
+    meta_json = json.dumps(meta, indent=2) + "\n"
+    with open(os.path.join(out_dir, "voice.meta.json"), "w", encoding="utf-8") as f:
+        f.write(meta_json)
+    renders_dir = os.path.join(REPO, "pipeline", "renders", prefix)
+    os.makedirs(renders_dir, exist_ok=True)
+    with open(os.path.join(renders_dir, "voice.meta.json"), "w", encoding="utf-8") as f:
+        f.write(meta_json)
+
     print(f"\n✓ Wrote {out_wav}  ({sr} Hz)")
+    print(f"✓ Voice seed {seed} logged → pipeline/renders/{prefix}/voice.meta.json")
+    print(f"  Like this voice? Reuse it:  bun run pipeline -- {args.key} --seed={seed}")
     print(f"  video.audio.voice_file already points to /audio/{prefix}/voice.wav.")
     print(f"  Next: bun run align -- {args.key}   (sync captions to this voice)")
     print(f"  Then: bun run reel -- {args.key} --fit-voice")
