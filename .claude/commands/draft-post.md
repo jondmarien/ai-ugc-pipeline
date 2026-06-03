@@ -14,7 +14,7 @@ You are producing one complete AI-in-cybersecurity post for this repo, end to en
 - pillar ∈ `offensive_ai | model_security | data_leakage | defensive_ai | governance | myth_busting`. If missing or invalid, pick the best-fit pillar and say which you chose.
 - `captions=` (optional) ∈ `block | word | highlight` — reel subtitle animation (default `block`) → `--captions=` + `video.caption_mode`.
 - `theme=` (optional) ∈ `offensive | defensive | hacking` — brand colour (red / blue / green). If omitted, choose from the pillar (see step 3) → `--theme=`.
-- `voice=` (optional) ∈ `none | voxcpm2 | voxcpm2-0.5b | http | file` — reel narration model (default `none`; `voxcpm2` = the 2B model, `voxcpm2-0.5b` = the smaller/faster one) → `--voice=` + `video.audio.voice_mode`.
+- `voice=` (optional) ∈ `none | voxcpm2 | voxcpm2-0.5b | http | file` — reel narration model. **Default is `voxcpm2` (the 2B model) — every post narrates unless the user passes `voice=none`** (or `--no-voice` at render). `voxcpm2-0.5b` = smaller/faster. → `--voice=` + `video.audio.voice_mode`.
 - `music=` (optional) ∈ `none | free | licensed | generated | file` — music bed (default `none`) → `--music=`.
 - **Honour every key=value the user passes** — pass it through to `bun run new` and set the matching JSON field. Don't silently drop one.
 
