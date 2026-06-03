@@ -93,7 +93,16 @@ def main() -> None:
         )
 
     print(f"Loading {DEFAULT_MODEL} (first run downloads weights)…")
-    model = VoxCPM.from_pretrained(DEFAULT_MODEL)
+    # load_denoiser=False: we do plain TTS, not reference-audio cleanup. The denoiser
+    # (zipenhancer) imports modelscope → datasets → pandas → pyarrow, whose native lib
+    # crashes on Windows (access violation, exit code 5). Skipping it avoids the crash.
+    # optimize: torch.compile needs Triton (absent on Windows by default). Set
+    # VOXCPM_OPTIMIZE=1 only if you've installed triton-windows.
+    model = VoxCPM.from_pretrained(
+        DEFAULT_MODEL,
+        load_denoiser=False,
+        optimize=os.environ.get("VOXCPM_OPTIMIZE", "0") == "1",
+    )
 
     kwargs = {}
     if args.voice_ref:
