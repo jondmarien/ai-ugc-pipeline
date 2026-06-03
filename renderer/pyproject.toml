@@ -39,7 +39,7 @@ dependencies = [
   "huggingface-hub>=1.0",
   "numpy>=2.0",
   # --- PyTorch (CUDA 12.4); trio locked together so torchaudio matches torch ---
-  "torch==2.6.0",
+  "torch==2.8.0",
   "torchaudio==2.6.0",
   "torchvision==0.21.0",
 ]
