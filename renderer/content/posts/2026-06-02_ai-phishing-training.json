@@ -355,260 +355,267 @@
     "captions": [
       {
         "start": 0.0,
-        "end": 1.76,
+        "end": 2.26,
         "text": "AI fishing made old training obsolete.",
         "words": [
           {
             "text": "AI",
             "start": 0.0,
-            "end": 0.12
+            "end": 0.24
           },
           {
             "text": "fishing",
-            "start": 0.12,
-            "end": 0.44
+            "start": 0.24,
+            "end": 0.64
           },
           {
             "text": "made",
-            "start": 0.44,
-            "end": 0.76
+            "start": 0.64,
+            "end": 0.98
           },
           {
             "text": "old",
-            "start": 0.76,
-            "end": 1.04
+            "start": 0.98,
+            "end": 1.3
           },
           {
             "text": "training",
-            "start": 1.04,
-            "end": 1.36
+            "start": 1.3,
+            "end": 1.64
           },
           {
             "text": "obsolete.",
-            "start": 1.36,
-            "end": 1.76
+            "start": 1.64,
+            "end": 2.26
           }
         ]
       },
       {
-        "start": 2.56,
-        "end": 3.28,
+        "start": 3.14,
+        "end": 3.88,
         "text": "The old red flags,",
         "words": [
           {
             "text": "The",
-            "start": 2.56,
-            "end": 2.56
+            "start": 3.14,
+            "end": 3.18
           },
           {
             "text": "old",
-            "start": 2.56,
-            "end": 2.76
+            "start": 3.18,
+            "end": 3.38
           },
           {
             "text": "red",
-            "start": 2.76,
-            "end": 2.98
+            "start": 3.38,
+            "end": 3.6
           },
           {
             "text": "flags,",
-            "start": 2.98,
-            "end": 3.28
+            "start": 3.6,
+            "end": 3.88
           }
         ]
       },
       {
-        "start": 3.96,
-        "end": 6.48,
+        "start": 4.56,
+        "end": 6.94,
         "text": "bad grammar, weird phrasing, are fading.",
         "words": [
           {
             "text": "bad",
-            "start": 3.96,
-            "end": 4.14
+            "start": 4.56,
+            "end": 4.78
           },
           {
             "text": "grammar,",
-            "start": 4.14,
-            "end": 4.5
+            "start": 4.78,
+            "end": 5.06
           },
           {
             "text": "weird",
-            "start": 5.04,
-            "end": 5.3
+            "start": 5.6,
+            "end": 5.7
           },
           {
             "text": "phrasing,",
-            "start": 5.3,
-            "end": 5.8
+            "start": 5.7,
+            "end": 6.14
           },
           {
             "text": "are",
-            "start": 6.12,
-            "end": 6.2
+            "start": 6.58,
+            "end": 6.68
           },
           {
             "text": "fading.",
-            "start": 6.2,
-            "end": 6.48
+            "start": 6.68,
+            "end": 6.94
           }
         ]
       },
       {
-        "start": 7.2,
-        "end": 9.5,
+        "start": 7.76,
+        "end": 10.06,
         "text": "Verify sensitive requests over a second channel.",
         "words": [
           {
             "text": "Verify",
-            "start": 7.2,
-            "end": 7.2
+            "start": 7.76,
+            "end": 7.76
           },
           {
             "text": "sensitive",
-            "start": 7.2,
-            "end": 7.84
+            "start": 7.76,
+            "end": 8.38
           },
           {
             "text": "requests",
-            "start": 7.84,
-            "end": 8.16
-          },
-          {
-            "text": "over",
-            "start": 8.16,
+            "start": 8.38,
             "end": 8.7
           },
           {
-            "text": "a",
+            "text": "over",
             "start": 8.7,
-            "end": 8.88
+            "end": 9.24
+          },
+          {
+            "text": "a",
+            "start": 9.24,
+            "end": 9.4
           },
           {
             "text": "second",
-            "start": 8.88,
-            "end": 9.12
+            "start": 9.4,
+            "end": 9.66
           },
           {
             "text": "channel.",
-            "start": 9.12,
-            "end": 9.5
+            "start": 9.66,
+            "end": 10.06
           }
         ]
       },
       {
-        "start": 9.88,
-        "end": 11.62,
+        "start": 10.54,
+        "end": 12.34,
         "text": "If your defense relies on scams looking",
         "words": [
           {
             "text": "If",
-            "start": 9.88,
-            "end": 9.92
+            "start": 10.54,
+            "end": 10.58
           },
           {
             "text": "your",
-            "start": 9.92,
-            "end": 10.06
+            "start": 10.58,
+            "end": 10.72
           },
           {
             "text": "defense",
-            "start": 10.06,
-            "end": 10.38
+            "start": 10.72,
+            "end": 11.06
           },
           {
             "text": "relies",
-            "start": 10.38,
-            "end": 10.66
+            "start": 11.06,
+            "end": 11.34
           },
           {
             "text": "on",
-            "start": 10.66,
-            "end": 11.02
+            "start": 11.34,
+            "end": 11.76
           },
           {
             "text": "scams",
-            "start": 11.02,
-            "end": 11.2
+            "start": 11.76,
+            "end": 11.92
           },
           {
             "text": "looking",
-            "start": 11.2,
-            "end": 11.62
+            "start": 11.92,
+            "end": 12.34
           }
         ]
       },
       {
-        "start": 11.62,
-        "end": 13.72,
-        "text": "fake, the game changed. Does your training",
+        "start": 12.34,
+        "end": 13.7,
+        "text": "fake, the game changed.",
         "words": [
           {
             "text": "fake,",
-            "start": 11.62,
-            "end": 11.9
+            "start": 12.34,
+            "end": 12.72
           },
           {
             "text": "the",
-            "start": 12.34,
-            "end": 12.36
+            "start": 13.08,
+            "end": 13.16
           },
           {
             "text": "game",
-            "start": 12.36,
-            "end": 12.52
+            "start": 13.16,
+            "end": 13.34
           },
           {
             "text": "changed.",
-            "start": 12.52,
-            "end": 12.84
-          },
-          {
-            "text": "Does",
-            "start": 13.38,
-            "end": 13.38
-          },
-          {
-            "text": "your",
-            "start": 13.38,
-            "end": 13.5
-          },
-          {
-            "text": "training",
-            "start": 13.5,
-            "end": 13.72
+            "start": 13.34,
+            "end": 13.7
           }
         ]
       },
       {
-        "start": 13.72,
-        "end": 14.86,
-        "text": "still teach spot the typo?",
+        "start": 14.36,
+        "end": 15.96,
+        "text": "Does your training still teach spot the",
         "words": [
           {
+            "text": "Does",
+            "start": 14.36,
+            "end": 14.36
+          },
+          {
+            "text": "your",
+            "start": 14.36,
+            "end": 14.5
+          },
+          {
+            "text": "training",
+            "start": 14.5,
+            "end": 14.8
+          },
+          {
             "text": "still",
-            "start": 13.72,
-            "end": 14.04
+            "start": 14.8,
+            "end": 15.14
           },
           {
             "text": "teach",
-            "start": 14.04,
-            "end": 14.34
+            "start": 15.14,
+            "end": 15.46
           },
           {
             "text": "spot",
-            "start": 14.34,
-            "end": 14.54
+            "start": 15.46,
+            "end": 15.72
           },
           {
             "text": "the",
-            "start": 14.54,
-            "end": 14.7
-          },
+            "start": 15.72,
+            "end": 15.96
+          }
+        ]
+      },
+      {
+        "start": 15.96,
+        "end": 16.14,
+        "text": "typo?",
+        "words": [
           {
             "text": "typo?",
-            "start": 14.7,
-            "end": 14.86
+            "start": 15.96,
+            "end": 16.14
           }
         ]
       }
