@@ -40,7 +40,9 @@ cd renderer && bun run pipeline -- <date>_<slug> [--seed=N]
 | `governance` | 🔵 defensive (blue) | Policy, risk, compliance, AI usage rules, shadow AI, vendor/model risk, audit trails | "Writing an acceptable-use policy for AI coding assistants" |
 | `myth_busting` | 🟢 hacking (green) | Correcting hype/FUD: "AI will replace all hackers", "AI is unhackable", overblown headlines | "No, AI didn't just make every password useless" |
 
-> Theme override: add `--theme=offensive|defensive|hacking` to the scaffold step (or `theme` in the JSON) when the default doesn't fit — e.g. a `data_leakage` post you want to read as blue/defensive.
+> Theme override: add `--theme=offensive|defensive|hacking|purple|ai` to the scaffold step (or `theme` in the JSON) when the default doesn't fit. Two themes are **cross-cutting** — no pillar defaults to them, so choose explicitly:
+> - `purple` = **purple-team** (purple) — content that's both offence *and* defence: detection-vs-attack, adversary emulation, red+blue collaboration.
+> - `ai` = **generic AI** (orange) — AI news / explainers / myth-busting that isn't clearly red or blue (the AI counterpart to the green generic-cyber `hacking` theme).
 
 ---
 
@@ -69,7 +71,7 @@ The `<idea>` is free text — a **specific angle**, not a broad topic. Aim for o
 | Flag | Values | Meaning |
 |---|---|---|
 | `captions=` / `--captions=` | `block` · `word` · `highlight` | Reel subtitle animation (default `block`) |
-| `--theme=` | `offensive` · `defensive` · `hacking` | Brand colour/mood (default from pillar) |
+| `--theme=` | `offensive` · `defensive` · `hacking` · `purple` · `ai` | Brand colour/mood — red / blue / green / purple-team-purple / generic-AI-orange (default from pillar; `purple`/`ai` are explicit-only) |
 | `--voice=` | `none` · `voxcpm2` · `voxcpm2-0.5b` · `http` · `file` | Reel narration — **default `voxcpm2` (2B); use `none` (or `--no-voice`) for a silent reel** |
 | `--music=` | `none` · `free` · `licensed` · `generated` · `file` | Music bed (default `none`) |
 | `--seed=N` | integer | Voice seed = consistent speaker. **Avoid 777** (hangs). Reuse the same N for a consistent voice across posts. |

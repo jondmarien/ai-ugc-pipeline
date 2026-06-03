@@ -18,7 +18,7 @@ bun run draft      -- "AI agents leaking RAG data" model_security --theme=defens
 bun run draft-week -- "idea1::offensive_ai" "idea2::model_security::captions=highlight" "idea3::governance"
 
 # individual steps:
-bun run new        -- 2026-06-13 my-topic model_security --theme=defensive --captions=highlight   # scaffold a blank post
+bun run new        -- 2026-06-13 my-topic model_security --theme=defensive --captions=highlight   # scaffold a blank post (themes: offensive/defensive/hacking/purple/ai)
 bun run validate -- 2026-06-02_ai-phishing-training   # check JSON against the schema
 bun run art      -- 2026-06-02_ai-phishing-training   # FLUX.2-klein backgrounds by default, cover included (needs ComfyUI; --flux1 = legacy)
 bun run export   -- 2026-06-02_ai-phishing-training   # 8× 1080×1350 carousel PNGs

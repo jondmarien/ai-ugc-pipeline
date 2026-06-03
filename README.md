@@ -80,5 +80,5 @@ Carousel `1080×1350` · Reel `1080×1920` @30fps H.264 · 8-slide arc: cover �
 
 - Content + media kits, the renderer, and three skills (`ai-cybersecurity-ugc-carousel`, `react-remotion-instagram-renderer`, `humanizer`): complete and in use.
 - **Both Week-1 carousels (phishing, prompt injection) render end to end** — unique per-post FLUX.2-klein backgrounds, narrated reels (VoxCPM2) with Whisper-synced captions, committed under `pipeline/renders/`.
-- Wired into `/draft-post`: a 3-way brand **theme** system (offensive=red / defensive=blue / hacking=green), a **humanizer** voice pass, deeper source-triangulated research, and a reproducible voice seed (`voice.meta.json`).
+- Wired into `/draft-post`: a 5-way brand **theme** system (offensive=red / defensive=blue / hacking=green / purple-team=purple / generic-AI=orange), a **humanizer** voice pass, deeper source-triangulated research, and a reproducible voice seed (`voice.meta.json`).
 - Next: Posts 3–5 from the backlog, then Meta API publishing once access clears — always behind the human approval gate.

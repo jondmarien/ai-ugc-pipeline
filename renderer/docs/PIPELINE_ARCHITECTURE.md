@@ -8,7 +8,7 @@ There are two entry points. **`/draft-post`** (and `/draft-week`) takes an *idea
 
 ## 1. `/draft-post` — idea to rendered post
 
-The slash command (or the headless `bun run draft`) orchestrates both skills. Research and a humanize pass happen *before* the JSON is finalized, so the copy is sourced and reads like a person, not a model.
+The slash command (or the headless `bun run draft`) orchestrates both skills. Research and a humanize pass happen *before* the JSON is finalized, so the copy is sourced and reads like a person, not a model. The `theme=` option sets the brand colour — `offensive` (red), `defensive` (blue), `hacking` (green), `purple` (purple-team), or `ai` (generic AI, orange).
 
 ```mermaid
 sequenceDiagram

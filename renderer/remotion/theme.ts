@@ -17,7 +17,7 @@ export const pillarAccent: Record<string, string> = {
 };
 
 // Brand themes (mirror src/design/tokens.ts) — accent by category.
-export const themeAccentColor: Record<string, string> = { defensive: "#3b82f6", offensive: "#ef4444", hacking: "#39ff88" };
+export const themeAccentColor: Record<string, string> = { defensive: "#3b82f6", offensive: "#ef4444", hacking: "#39ff88", purple: "#a855f7", ai: "#f97316" };
 const pillarTheme: Record<string, string> = {
   offensive_ai: "offensive",
   model_security: "defensive",
