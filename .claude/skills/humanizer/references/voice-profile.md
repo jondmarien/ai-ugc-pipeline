@@ -26,6 +26,9 @@ A cybersecurity grad / builder — CTO at a sports-tech startup, offsec + DevSec
 | Plain verbs (use, build, break, ship) | delve/leverage/harness/seamless/robust/tapestry |
 | A visible stance / opinion | Hedging stacks, generic "future looks bright" close |
 
+## Long-form register (from the ISSessions writeups)
+His CTF/security writeups at [quartz.chron0.tech/ISSessions/Articles](https://quartz.chron0.tech/ISSessions/Articles/) (named pieces like *Phishing Attack Using Zero-Width Characters*, *YouTube Malware Exploitation Campaign*, *Unpatchable Apple Silicon Bug*, plus session recaps) run methodical and teaching-first: recon → mechanism → exploitation → privesc → a "key takeaways" close. Tool-dense and exact (named tools, commands, versions), explains *why* not just *what*, and lands on the defensive lesson. For captions/reels, borrow the **structure and exactness** (one mechanism, explained cleanly, ending on the takeaway) but compress hard — a slide is not a writeup. (Article bodies render behind the Quartz SPA, so this is drawn from the article index + his portfolio; paste a full piece into `references/samples/` to deepen the calibration.)
+
 ## Litmus test
 If you can't point to one line in the draft that *only Jon* would write — a specific number, a dry aside, a named tool, a stance — it's voice-flat. Add one.
 
