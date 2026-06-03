@@ -10,7 +10,7 @@
 # Setup / reproduce this env (run from renderer/):
 #   uv sync                      # create/refresh .venv from this file
 #   # or, targeted:  uv pip install -e .
-# Torch/torchaudio/torchvision are pulled from PyTorch's CUDA 12.4 index (below), and the
+# Torch/torchaudio/torchvision are pulled from PyTorch's CUDA 12.8 index (below), and the
 # trio is version-locked together so torchaudio matches torch — a mismatch is what caused
 # VoxCPM's "WinError 127" (torchaudio's native _torchaudio.pyd failing to load against torch).
 
@@ -38,21 +38,23 @@ dependencies = [
   # --- shared ---
   "huggingface-hub>=1.0",
   "numpy>=2.0",
-  # --- PyTorch (CUDA 12.4); trio locked together so torchaudio matches torch ---
-  "torch==2.6.0",
-  "torchaudio==2.6.0",
-  "torchvision==0.21.0",
+  # --- PyTorch (CUDA 12.8); trio locked together so torchaudio matches torch.
+  # Bumped 2.6.0 → 2.8.0 (torchvision 0.21.0 → 0.23.0) to clear GHSA-887c-mr87-cxwp
+  # (medium, fixed 2.8.0) + GHSA-3749-ghw9-m3mg (low). cu124 has no 2.8.0 wheels → cu128. ---
+  "torch==2.8.0",
+  "torchaudio==2.8.0",
+  "torchvision==0.23.0",
 ]
 
-# Pull torch/torchaudio/torchvision from PyTorch's CUDA 12.4 wheels (not PyPI).
+# Pull torch/torchaudio/torchvision from PyTorch's CUDA 12.8 wheels (not PyPI).
 # `explicit = true` keeps this index scoped to the packages routed below.
 [[tool.uv.index]]
-name = "pytorch-cu124"
-url = "https://download.pytorch.org/whl/cu124"
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
 explicit = true
 
 # Use the CUDA index on Windows/Linux; macOS has no CUDA wheels (falls back to PyPI).
 [tool.uv.sources]
-torch = [{ index = "pytorch-cu124", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]
-torchaudio = [{ index = "pytorch-cu124", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]
-torchvision = [{ index = "pytorch-cu124", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]
+torch = [{ index = "pytorch-cu128", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]
+torchaudio = [{ index = "pytorch-cu128", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cu128", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]

@@ -109,7 +109,7 @@ def main() -> None:
             hint = (
                 "\n→ This is almost always a torch/torchaudio VERSION MISMATCH (torchaudio's native\n"
                 "  _torchaudio.pyd can't load against a different torch). Pin them to the same release:\n"
-                "    uv pip install \"torchaudio==2.6.0\" --index-url https://download.pytorch.org/whl/cu124\n"
+                "    uv pip install \"torchaudio==2.8.0\" --index-url https://download.pytorch.org/whl/cu128\n"
                 "  (match torchaudio to your installed torch — see renderer/pyproject.toml, which locks the trio)."
             )
         sys.exit(
