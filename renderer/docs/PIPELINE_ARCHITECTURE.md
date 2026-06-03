@@ -32,7 +32,7 @@ sequenceDiagram
     NEW-->>RN: skeleton JSON
     RN->>V: bun run validate
     V-->>RN: clean
-    RN->>P: bun run pipeline --flux2
+    RN->>P: bun run pipeline (FLUX.2 + voice on by default)
     P-->>U: pipeline/renders/<key>/
 ```
 
@@ -94,7 +94,7 @@ sequenceDiagram
 
 | # | Step | Script | In → Out | Skips when |
 |---|------|--------|----------|-----------|
-| 1 | art | `art-comfyui.mjs` | slide `visual_prompt` → background PNG (ComfyUI) | every inner slide already has `background_asset` and no `--art` |
+| 1 | art | `art-comfyui.mjs` | each needy slide's `visual_prompt` → background PNG (ComfyUI, **FLUX.2 default**, **cover included**) | every slide's art file already exists on disk (or `asset_status: existing`) and no `--art` |
 | 2 | export | `export-carousel.ts` | JSON + React → 1080×1350 PNGs | — |
 | 3 | package | `build-package.ts` | JSON → `caption.txt`, `alt_text.txt`, `sources.md`, `LICENSES.md` | `--no-package` |
 | 4 | free-comfyui | `free-comfyui.mjs` | ComfyUI `/free` → VRAM released | non-fatal if ComfyUI is down |
@@ -106,13 +106,13 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    K["bun run pipeline -- &lt;key&gt; [flags]"] --> A{"innerNeedsArt<br/>or --art?"}
-    A -- yes --> ART["art (--flux2?)"]
+    K["bun run pipeline -- &lt;key&gt; [flags]"] --> A{"needsArt?<br/>any slide's art file missing<br/>(cover included), or --art"}
+    A -- yes --> ART["art — FLUX.2 default<br/>(--flux1 = legacy)"]
     A -- no --> EXP["export carousel"]
     ART --> EXP
     EXP --> PKG{"--no-package?"}
     PKG -- no --> P2["package"]
-    PKG -- yes --> VQ{"voice wanted?<br/>voice_mode in voxcpm2/0.5b/http<br/>and not --no-voice"}
+    PKG -- yes --> VQ{"voice on?<br/>voice_mode != none (default voxcpm2)<br/>and not --no-voice"}
     P2 --> VQ
     VQ -- yes --> FC["free-comfyui"]
     FC --> VO["voice (--vox2/--vox0.5/--seed)"]
@@ -130,11 +130,11 @@ flowchart TD
 
 | Flag | Applies to | Effect |
 |------|-----------|--------|
-| `--flux2` | art | Use FLUX.2-klein (the tuned engine; default for new posts). Without it, FLUX.1-schnell. |
+| `--flux1` | art | Opt into legacy FLUX.1-schnell. **FLUX.2-klein is the default** (no flag), and the cover is auto-generated. |
 | `--art` / `--no-art` | art | Force regen / skip entirely. |
 | `--vox2` / `--vox0.5` | voice | Override voice model for this run (VoxCPM2 2B / VoxCPM-0.5B) without editing the JSON. |
 | `--seed=N` | voice | Lock the speaker. Same N = same voice. Logged to `voice.meta.json`. Omit → auto-rolled + logged. |
-| `--no-voice` | voice/align | Silent reel. |
+| `--no-voice` | voice/align | Silent reel. **Voice is on by default (VoxCPM2 2B)** — this is how you turn it off. |
 | `--no-reel` | reel | Stop after carousel/package. |
 | `--no-package` | package | Skip the upload-file assembly. |
 | `--no-fit-voice` | reel | Don't trim/realign the reel to the voice length. |
