@@ -27,8 +27,10 @@ Reel **audio** = `video.audio` — `voice_mode` ∈ `none|voxcpm2|http|file`, `m
 - `pipeline/renders/` — upload-ready output packages.
 
 ## Renderer commands (run inside `renderer/`)
-`bun run new -- <date> <slug> <pillar>` · `bun run draft -- "<idea>" <pillar>` · `bun run validate|export|package|reel -- <key>` · `bun run dev`.
-Reel **narration**: `bun run voice -- <key>` (voxcpm2/bark = local, no server; http = OpenAI-compatible server). `bun run align -- <key>` = Whisper word-sync. **Slide imagery**: `bun run art -- <key>` = FLUX.1-schnell (local, Apache-2.0) backgrounds for inner slides; without it inner slides are minimalist procedural CSS. All ML steps use `renderer/.venv` (uv); none require Docker except the optional `http` voice server.
+**One command (full render):** `bun run pipeline -- <key> [<key> …]` — backgrounds → carousel → package → free GPU → voice → synced captions → **reel with audio auto-embedded**. Auto-skips stages not needed (art if slides already have backgrounds; voice if `voice_mode=none`). Flags: `--flux2`, `--art|--no-art`, `--no-voice`, `--no-reel`, `--seed=N`, `--dry-run`. Runs **one model at a time** on 8 GB (calls `free-comfyui` before voice). Accepts multiple keys (batch).
+Individual steps: `bun run new -- <date> <slug> <pillar>` · `bun run draft -- "<idea>" <pillar>` · `bun run validate|export|package|reel -- <key>` · `bun run dev`.
+**Slide imagery**: `bun run art -- <key>` drives a **running ComfyUI** (FLUX.1-schnell Q4 GGUF; `--flux2` = FLUX.2 klein into a `_flux2/` compare folder; `--only=N` one slide). Without ComfyUI, inner slides are procedural CSS. Legacy in-process diffusers path: `bun run art:diffusers`. `bun run free-comfyui` unloads ComfyUI's models for the image→audio GPU handoff.
+Reel **narration**: `bun run voice -- <key>` (voxcpm2 local / http server). `bun run align -- <key>` = Whisper word-sync. Voice is **reproducible** via `VOXCPM_SEED` (or `--seed=N`) — same seed = same speaker; change it to cast a different voice (e.g. a lower-pitch male). All ML steps use `renderer/.venv` (uv; deps in `renderer/pyproject.toml`); none require Docker except the optional `http` voice server.
 Format defaults: carousel 1080×1350, reel 1080×1920@30fps. Filenames `YYYY-MM-DD_slug_NN_role.png`.
 
 ## Gotchas
