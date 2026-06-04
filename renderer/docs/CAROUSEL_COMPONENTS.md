@@ -33,6 +33,7 @@ CarouselDeck(post)                     // stacked half-scale human preview
 | `defense` | `StandardSlide` | " |
 | `takeaway` | `TakeawaySlide` | center-aligned, large, minimal copy |
 | `cta` | `CtaSlide` | headline + subline + CTA chip + handle |
+| `point` | `StandardSlide` | " (generic, repeatable body slide for dynamic slide counts > 8) |
 
 Adding a role = add an enum value in `schema.ts`, a `ROLE_FILENAME` entry, and a registry entry. Everything else (shell, export, naming) follows.
 

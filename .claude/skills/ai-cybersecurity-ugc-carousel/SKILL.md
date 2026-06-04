@@ -51,7 +51,7 @@ Do not invent statistics, timelines, company names, breach details, CVEs, tool c
 
 ### 3. Build the carousel narrative
 
-Use this default 8-slide structure unless another structure fits better.
+Use this default 8-slide structure unless another structure fits better. The slide count is configurable (`slides=N`, 3–20, default 8): **`cover` is always slide 1 and `cta` is always the last**, with `takeaway` at slide N−1; the middle is filled from the named roles below, then **generic `point` body slides** when a post needs more than the five named middle slides (or trimmed from the end of the named list when N < 8).
 
 | Slide | Purpose | Copy pattern |
 | --- | --- | --- |
@@ -64,7 +64,7 @@ Use this default 8-slide structure unless another structure fits better.
 | 7 | Takeaway | Compress the lesson into one memorable line |
 | 8 | CTA | Ask a specific question and invite following/saving |
 
-For list posts, use: cover, context, items 1–N, final synthesis, CTA. For myth-busting posts, use: viral claim, what is true, what is exaggerated, what actually matters, defender takeaway.
+For **longer list posts** (`slides=N`, N>8), keep cover → context → a run of `point` body slides (one item each) → takeaway → CTA. For **short posts** (N<8), drop the least-essential middle roles (e.g. N=5: cover, context, risk, takeaway, cta). For myth-busting posts, use: viral claim, what is true, what is exaggerated, what actually matters, defender takeaway.
 
 ### 4. Write hooks with specificity
 

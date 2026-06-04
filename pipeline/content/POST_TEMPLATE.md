@@ -27,7 +27,11 @@ Fill every field. Leave nothing as `[...]` before QA. Pull hooks/captions from [
 - **Visual direction:** [cinematic scene]
 - **Layout:** 1080×1350, dark lower-third, bold white headline, centered subject, accent color [cyan/green/red/electric-blue], small handle + "SWIPE →".
 
-## Carousel Script (8 slides)
+## Carousel Script (default 8 slides; configurable 3–20 via `slides=N`)
+<!-- Slide count is set at creation (`bun run new --slides=N`). Keep `cover` as slide 1 and
+     `cta` as the last; `takeaway` sits at N−1. For N>8, repeat generic `point` body slides
+     between `defense` and `takeaway`. For N<8, drop the least-essential middle roles. -->
+
 | # | Role | On-slide copy (≤ ~12 words) | Visual direction | Notes |
 | --- | --- | --- | --- | --- |
 | 1 | Cover hook | [headline] | [cover image] | Hook only |

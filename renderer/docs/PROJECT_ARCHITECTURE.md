@@ -14,7 +14,7 @@ Three layers sit on top of one source of truth. Content gets *designed* (skills 
 flowchart TB
     subgraph Content["Content layer"]
         CMD["/draft-post · /draft-week"]
-        SK1["Skill: ai-cybersecurity-ugc-carousel<br/>hooks · 8-slide script · caption"]
+        SK1["Skill: ai-cybersecurity-ugc-carousel<br/>hooks · slide script (3–20, default 8) · caption"]
         SK2["Skill: react-remotion-instagram-renderer<br/>maps content to JSON schema"]
         DOCS["pipeline/content/*.md<br/>QA_CHECKLIST · CAPTION_BANK · VOICE_AND_TONE_GUIDE"]
     end
@@ -96,7 +96,7 @@ ai-ugc-pipeline/
 | **Reel composition** | `renderer/remotion/*` | `ReelComposition` (1080×1920@30fps) → `Scene`, `CaptionLayer` (block/word/highlight), `CaptionTrack` (Whisper sync), `AudioBed` (voice+music, missing-file guard), `EndCard`. |
 | **Scaffold** | `renderer/scripts/new-post.ts` | Create a schema-valid skeleton from flags (`--theme/--captions/--voice/--music`). |
 | **Draft (headless)** | `renderer/scripts/draft.mjs`, `draft-week.mjs` | Drive the `claude` CLI + skills to research, fill, validate, render. |
-| **Validate** | `renderer/scripts/validate.ts` | Parse a post against the schema (8 slides, alt_text length, score sum, ≥1 source). |
+| **Validate** | `renderer/scripts/validate.ts` | Parse a post against the schema (N slides — default 8, alt_text length = N, score sum, ≥1 source). |
 | **Art** | `renderer/scripts/art-comfyui.mjs` | Drive ComfyUI HTTP API; **FLUX.2-klein (default)** / FLUX.1-schnell (`--flux1`) GGUF graphs; per-slide prompts, cover included; disk-aware (skips slides whose art already exists). |
 | **Export** | `renderer/scripts/export-carousel.ts` | Playwright → 1080×1350 carousel PNGs. |
 | **Package** | `renderer/scripts/build-package.ts` | Assemble `caption.txt`, `alt_text.txt`, `sources.md`, `LICENSES.md`. |
@@ -187,7 +187,7 @@ erDiagram
     }
 ```
 
-**Enforced invariants** (`schema.ts` `superRefine`): slide numbers are contiguous `1..n`; slide 1 is the `cover`; `alt_text.length === slides.length`; `score.total` equals the sum of the five axes; at least one source. The 8 slide roles are fixed: `cover, context, risk, mechanism, failure_point, defense, takeaway, cta`.
+**Enforced invariants** (`schema.ts` `superRefine`): slide numbers are contiguous `1..n`; slide 1 is the `cover`; `alt_text.length === slides.length`; `score.total` equals the sum of the five axes; at least one source. **Slide count is dynamic** (`--slides=N`, 3–20, default 8 — set at creation in `new-post.ts`/`draft.mjs`; `pipeline` just renders the slides present in the JSON). Slide roles: `cover, context, risk, mechanism, failure_point, defense, takeaway, cta`, plus a generic repeatable `point` body role used to scale beyond the named 8-arc. `roleSequence(n)` (in `new-post.ts`) keeps `cover` first and `takeaway`+`cta` last, fills the middle from the named roles, then pads with `point`.
 
 ---
 

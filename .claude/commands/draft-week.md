@@ -1,6 +1,6 @@
 ---
 description: Batch-draft a full week (up to 5 ideas) into content/posts/, with pillar variety + a posting calendar
-argument-hint: idea1 | idea2 | idea3 | idea4 | idea5    (optional ::pillar and ::captions=word|highlight per idea)
+argument-hint: idea1 | idea2 | idea3 | idea4 | idea5    (optional ::pillar, ::captions=word|highlight, ::slides=3-20 per idea)
 allowed-tools: Skill, WebSearch, WebFetch, Read, Write, Edit, Glob, Grep, Bash
 ---
 
@@ -9,7 +9,8 @@ Produce a full week of AI-in-cybersecurity posts — one per idea (up to 5) — 
 ## Input
 `$ARGUMENTS` = ideas separated by `|` (up to 5). Each idea may optionally carry:
 - `:: <pillar>` to force a pillar (else you assign one),
-- `:: captions=word|highlight|block` to set the reel caption animation (default `block`).
+- `:: captions=word|highlight|block` to set the reel caption animation (default `block`),
+- `:: slides=N` (integer 3–20, default 8) to set the slide count for that post.
 
 Example: `phishing voice clones :: offensive_ai | RAG leaks :: model_security :: captions=highlight | shadow AI :: governance`
 
@@ -22,10 +23,10 @@ If fewer than 5 ideas are given, just do that many. If more than 5, take the fir
 
 ## Per-idea steps (same as /draft-post)
 For each idea, in turn:
-1. Use `ai-cybersecurity-ugc-carousel` to write the 8-slide post + caption + hashtags + question (house voice).
+1. Use `ai-cybersecurity-ugc-carousel` to write the post (default 8 slides, or N if `::slides=N` was given — `cover` first, `cta` last, `takeaway` at N−1, middle from the named roles then generic `point` slides) + caption + hashtags + question (house voice).
 2. **Research real sources (a loop, not one search):** landscape scan (broad WebSearch + counter-arguments) → gather primaries (OWASP/NCSC/NIST/CISA/CVE/named journalism) → **triangulate ≥2 independent sources** for load-bearing claims → confidence-tier each (`[Verified]`/`[Emerging]`/`[Scenario]`) and record `{source, link, supports, confidence, claim_tag}`. Hard gates: no fabricated URLs; re-open links; disclose empty angles; no real victim without a cited source. No payloads/exploit/evasion. Include a defender takeaway.
 3. Use `react-remotion-instagram-renderer` to map to the schema. Pick a kebab slug.
-4. `cd renderer && npm run new -- <date> <slug> <pillar> --captions=<mode>`, then Edit the JSON to replace every TODO with real, sourced content. Keep schema rules (8 slides, slide1=cover, alt_text length 8, score.total = sum, ≥1 source, reel beats filled, `video.caption_mode` = requested mode). Then **humanize** the caption/narration/on_slide_copy with the `humanizer` skill (+ `voice-profile.md`) → house voice per `pipeline/content/VOICE_AND_TONE_GUIDE.md`; never alter a sourced fact.
+4. `cd renderer && npm run new -- <date> <slug> <pillar> [--slides=N] --captions=<mode>`, then Edit the JSON to replace every TODO with real, sourced content. Keep schema rules (N slides — default 8, slide1=cover, last=cta, alt_text length = N, score.total = sum, ≥1 source, reel beats filled, `video.caption_mode` = requested mode). Then **humanize** the caption/narration/on_slide_copy with the `humanizer` skill (+ `voice-profile.md`) → house voice per `pipeline/content/VOICE_AND_TONE_GUIDE.md`; never alter a sourced fact.
 5. `cd renderer && npm run validate -- <date>_<slug>` → fix until clean.
 6. Render: `cd renderer && npm run export -- <date>_<slug> && npm run package -- <date>_<slug> && npm run reel -- <date>_<slug>`. (If a reel hangs: free port 4317 / `npx remotion browser ensure`.)
 
