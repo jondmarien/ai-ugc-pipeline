@@ -1,0 +1,15 @@
+Google just dropped Gemma 4 12B — and the headline isn't a benchmark, it's where it runs: your laptop.
+
+It's a dense, encoder-free multimodal model — text, image, and audio go in, text comes out. "Encoder-free" means the raw pixels and audio project straight into the model instead of through separate vision and audio encoders, so it's leaner, lower-latency, and you can fine-tune the whole thing in one pass. Unsloth puts the 12B at roughly 8GB of VRAM in 4-bit, so it actually runs on consumer hardware, and it's Apache-2.0 — open weights you can tune on your own data.
+
+Two honest caveats. It's input-only: it reads images and audio, it doesn't generate them — it's not a FLUX or a voice model. And the "nears our 26B model" line is Google's own benchmark; verify it on your task before you trust it.
+
+The real story isn't the score. It's that capable multimodal AI now fits on a laptop and never has to touch the cloud.
+
+Run it locally with Ollama, LM Studio, llama.cpp, or Unsloth.
+
+Would you run your AI fully local if your data never left the machine?
+
+Follow for AI breakdowns without the hype.
+
+#AI #Gemma #LocalLLM #OpenSource #MachineLearning #OnDeviceAI #Unsloth

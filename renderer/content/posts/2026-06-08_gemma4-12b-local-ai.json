@@ -1,0 +1,952 @@
+{
+  "post_id": "2026-06-08_gemma4-12b-local-ai",
+  "date": "2026-06-08",
+  "slug": "gemma4-12b-local-ai",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "myth_busting",
+  "theme": "ai",
+  "audience": "developers, AI-curious practitioners",
+  "core_claim": "Gemma 4 12B is an open (Apache-2.0), encoder-free multimodal model that takes text, image, and audio input and runs locally on consumer hardware — but it only outputs text, and its headline 'near-26B' benchmarks are Google's own.",
+  "claim_tags": [
+    "verified",
+    "emerging"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 4,
+    "novelty": 5,
+    "visual_drama": 3,
+    "defender_usefulness": 3,
+    "total": 20
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "myth_busting",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-08_gemma4-12b-local-ai",
+    "filename_prefix": "2026-06-08_gemma4-12b-local-ai",
+    "expected_files": [
+      "2026-06-08_gemma4-12b-local-ai_01_cover.png",
+      "2026-06-08_gemma4-12b-local-ai_02_context.png",
+      "2026-06-08_gemma4-12b-local-ai_03_risk.png",
+      "2026-06-08_gemma4-12b-local-ai_04_mechanism.png",
+      "2026-06-08_gemma4-12b-local-ai_05_failure-point.png",
+      "2026-06-08_gemma4-12b-local-ai_06_defense.png",
+      "2026-06-08_gemma4-12b-local-ai_07_takeaway.png",
+      "2026-06-08_gemma4-12b-local-ai_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "NEW MODEL · AI",
+      "on_slide_copy": "GOOGLE JUST PUT A MULTIMODAL AI ON YOUR LAPTOP",
+      "subline": "Gemma 4 12B: sees, hears, reasons — and runs offline.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a sleek open laptop on a dark desk with a warm glowing orb of light hovering just above the keyboard, a powerful presence living inside the machine, cinematic, strong empty space in the lower half",
+      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/01_cover.png",
+      "asset_status": "generated",
+      "cta": "SWIPE →",
+      "notes": ""
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT DROPPED",
+      "on_slide_copy": "Gemma 4 12B: a dense, encoder-free model that takes text, image, and audio.",
+      "subline": "Runs locally on ~8GB. Apache-2.0, open weights.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single solid glowing cube floating in the dark with three distinct streams flowing into it — a ribbon of light, a rippling sound wave, and a folded sheet of paper — converging into the cube, focal in the upper area, calm empty space below",
+      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/02_context.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "THE CATCH",
+      "on_slide_copy": "It's input-only — text out. It understands images and audio; it doesn't make them.",
+      "subline": "Great for reading media. Not a FLUX or a voice model.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a wide funnel in the dark swallowing a photograph, a sound wave, and a page from above while only a single thin ribbon of light trickles out the bottom, many things in and one thing out, dark, lower third clear",
+      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/03_risk.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "Encoder-free: raw pixels and audio project straight into the model.",
+      "subline": "No separate vision/audio encoders — leaner, and you fine-tune it in one pass.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "small mosaic tiles and sound-wave fragments streaming on a clean unobstructed path straight into one glowing core, no gates or boxes in between, smooth and direct, dark, focal in the upper area",
+      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/04_mechanism.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "READ THE FINE PRINT",
+      "on_slide_copy": "\"Near the 26B model\" is Google's own benchmark — verify it on your task.",
+      "subline": "Vendor numbers are a starting point, not your workload.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single gleaming trophy on a tall pedestal under one bright spotlight while the ground all around it stays dark and untested, a staged spotlight, dark, lower third clear",
+      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/05_failure-point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "RUN IT YOURSELF",
+      "on_slide_copy": "Local and free: Ollama, LM Studio, llama.cpp, or Unsloth.",
+      "subline": "Open weights — fine-tune it on your own data.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a small glowing cube being connected to an ordinary laptop by a bright cable of light, the power settling onto the local machine, warm and approachable, calm and orderly, dark, empty lower third",
+      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/06_defense.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "THE SHIFT",
+      "on_slide_copy": "Capable multimodal AI now fits on a laptop — and never leaves it.",
+      "subline": "Open, offline, yours.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a warm glowing orb of light cupped safely inside two open hands above a closed laptop, contained and local, the center kept calm and open, dark",
+      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/07_takeaway.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Would you run your AI locally if it never touched the cloud?",
+      "subline": "Save this for your next build.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "an open laptop glowing softly in a dark room with a single warm question-mark shape of light rising from the screen, generous empty space, minimal and clean",
+      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/08_cta.png",
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Google just dropped Gemma 4 12B — and the headline isn't a benchmark, it's where it runs: your laptop.\n\nIt's a dense, encoder-free multimodal model — text, image, and audio go in, text comes out. \"Encoder-free\" means the raw pixels and audio project straight into the model instead of through separate vision and audio encoders, so it's leaner, lower-latency, and you can fine-tune the whole thing in one pass. Unsloth puts the 12B at roughly 8GB of VRAM in 4-bit, so it actually runs on consumer hardware, and it's Apache-2.0 — open weights you can tune on your own data.\n\nTwo honest caveats. It's input-only: it reads images and audio, it doesn't generate them — it's not a FLUX or a voice model. And the \"nears our 26B model\" line is Google's own benchmark; verify it on your task before you trust it.\n\nThe real story isn't the score. It's that capable multimodal AI now fits on a laptop and never has to touch the cloud.\n\nRun it locally with Ollama, LM Studio, llama.cpp, or Unsloth.\n\nWould you run your AI fully local if your data never left the machine?\n\nFollow for AI breakdowns without the hype.",
+  "hashtags": [
+    "#AI",
+    "#Gemma",
+    "#LocalLLM",
+    "#OpenSource",
+    "#MachineLearning",
+    "#OnDeviceAI",
+    "#Unsloth"
+  ],
+  "comment_prompt": "What would you actually build with a private, offline multimodal model on your own box?",
+  "alt_text": [
+    "Slide 1 (cover): a sleek laptop on a dark desk with a warm glowing orb hovering above the keyboard; bold headline space below.",
+    "Slide 2 (context): a glowing cube in the dark with three streams — light, a sound wave, and a sheet of paper — flowing into it.",
+    "Slide 3 (risk): a wide funnel swallowing a photo, a sound wave, and a page, with a single thin ribbon of light trickling out the bottom.",
+    "Slide 4 (mechanism): mosaic tiles and sound-wave fragments streaming directly into one glowing core with nothing in between.",
+    "Slide 5 (failure_point): a single trophy on a tall pedestal under one spotlight while the surrounding ground stays dark.",
+    "Slide 6 (defense): a small glowing cube connected to an ordinary laptop by a bright cable of light.",
+    "Slide 7 (takeaway): a warm glowing orb cupped in two open hands above a closed laptop.",
+    "Slide 8 (cta): an open laptop glowing in a dark room with a warm question-mark of light rising from the screen."
+  ],
+  "sources": [
+    {
+      "source": "Google — \"Introducing Gemma 4 12B: a unified, encoder-free multimodal model\" (Jun 2026)",
+      "link": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/",
+      "supports": "Encoder-free unified architecture; vision + audio flow directly into the LLM backbone; first mid-sized Gemma with native audio input; runs locally on ~16GB; Apache-2.0; MTP drafters. The 'benchmarks nearing our 26B model' claim is Google's own.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "Google Developers Blog — \"Gemma 4 12B: The Developer Guide\" (Jun 2026)",
+      "link": "https://developers.googleblog.com/gemma-4-12b-the-developer-guide/",
+      "supports": "Dense multimodal model; encoder-free (raw 48x48 patches via single matmul; raw 16kHz audio projected linearly); unified fine-tuning via Hugging Face or Unsloth; OpenAI-compatible local serving via litert-lm serve.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "Hugging Face — \"Welcome Gemma 4\" model blog",
+      "link": "https://huggingface.co/blog/gemma4",
+      "supports": "Gemma 4 supports image, text and audio inputs and generates text responses; the 12B Unified variant is encoder-free and supports audio.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "Unsloth — \"Gemma 4 - How to Run Locally\" docs",
+      "link": "https://unsloth.ai/docs/models/gemma-4",
+      "supports": "Gemma-4-12B Unified runs on ~8GB RAM/VRAM (4-bit) or ~14GB (8-bit); GGUF available; run via Unsloth Studio, llama.cpp, Ollama, or LM Studio; Apache-2.0.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 34,
+    "fps": 30,
+    "export_name": "2026-06-08_gemma4-12b-local-ai_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-08_gemma4-12b-local-ai/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": "Google just put a multimodal AI on your laptop."
+      },
+      {
+        "start": 6,
+        "end": 15,
+        "text": "Gemma 4 12B dropped this week. It takes text, images, and audio, it reasons, and it runs offline on about eight gigs of VRAM."
+      },
+      {
+        "start": 15,
+        "end": 22,
+        "text": "One honest catch: it's input-only. It reads images and audio, but it only writes text — it doesn't generate pictures or voice."
+      },
+      {
+        "start": 22,
+        "end": 29,
+        "text": "It's Apache 2.0 and open. Run it with Ollama or Unsloth, fine-tune it on your own data, and nothing leaves your machine."
+      },
+      {
+        "start": 29,
+        "end": 34,
+        "text": "So — would you run your AI fully local if it never touched the cloud?"
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 6,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Google just put a multimodal AI on your laptop."
+      },
+      {
+        "start": 6,
+        "end": 15,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax, streams converging",
+        "caption": "Gemma 4 12B: text, image, audio in — runs on ~8GB, offline."
+      },
+      {
+        "start": 15,
+        "end": 22,
+        "slide_ref": 3,
+        "purpose": "catch",
+        "motion": "slow push-in",
+        "caption": "Input-only: it reads media, it doesn't generate it."
+      },
+      {
+        "start": 22,
+        "end": 29,
+        "slide_ref": 6,
+        "purpose": "how-to-run",
+        "motion": "slow push-in",
+        "caption": "Apache-2.0 — run it local with Ollama or Unsloth."
+      },
+      {
+        "start": 29,
+        "end": 34,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Run your AI where your data never leaves?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.22,
+        "text": "Google just put a multimodal AI on",
+        "words": [
+          {
+            "text": "Google",
+            "start": 0.0,
+            "end": 0.3
+          },
+          {
+            "text": "just",
+            "start": 0.3,
+            "end": 0.66
+          },
+          {
+            "text": "put",
+            "start": 0.66,
+            "end": 0.88
+          },
+          {
+            "text": "a",
+            "start": 0.88,
+            "end": 0.96
+          },
+          {
+            "text": "multimodal",
+            "start": 0.96,
+            "end": 1.64
+          },
+          {
+            "text": "AI",
+            "start": 1.64,
+            "end": 1.88
+          },
+          {
+            "text": "on",
+            "start": 1.88,
+            "end": 2.22
+          }
+        ]
+      },
+      {
+        "start": 2.22,
+        "end": 4.92,
+        "text": "your laptop. Gemma 412b dropped this week.",
+        "words": [
+          {
+            "text": "your",
+            "start": 2.22,
+            "end": 2.32
+          },
+          {
+            "text": "laptop.",
+            "start": 2.32,
+            "end": 2.68
+          },
+          {
+            "text": "Gemma",
+            "start": 3.14,
+            "end": 3.52
+          },
+          {
+            "text": "412b",
+            "start": 3.52,
+            "end": 4.18
+          },
+          {
+            "text": "dropped",
+            "start": 4.18,
+            "end": 4.42
+          },
+          {
+            "text": "this",
+            "start": 4.42,
+            "end": 4.72
+          },
+          {
+            "text": "week.",
+            "start": 4.72,
+            "end": 4.92
+          }
+        ]
+      },
+      {
+        "start": 5.4,
+        "end": 7.46,
+        "text": "It takes text, images, and audio. It",
+        "words": [
+          {
+            "text": "It",
+            "start": 5.4,
+            "end": 5.42
+          },
+          {
+            "text": "takes",
+            "start": 5.42,
+            "end": 5.68
+          },
+          {
+            "text": "text,",
+            "start": 5.68,
+            "end": 5.86
+          },
+          {
+            "text": "images,",
+            "start": 6.14,
+            "end": 6.4
+          },
+          {
+            "text": "and",
+            "start": 6.46,
+            "end": 6.7
+          },
+          {
+            "text": "audio.",
+            "start": 6.7,
+            "end": 6.96
+          },
+          {
+            "text": "It",
+            "start": 7.46,
+            "end": 7.46
+          }
+        ]
+      },
+      {
+        "start": 7.46,
+        "end": 9.38,
+        "text": "reasons, and it runs offline on about",
+        "words": [
+          {
+            "text": "reasons,",
+            "start": 7.46,
+            "end": 7.72
+          },
+          {
+            "text": "and",
+            "start": 7.88,
+            "end": 8.3
+          },
+          {
+            "text": "it",
+            "start": 8.3,
+            "end": 8.4
+          },
+          {
+            "text": "runs",
+            "start": 8.4,
+            "end": 8.56
+          },
+          {
+            "text": "offline",
+            "start": 8.56,
+            "end": 8.86
+          },
+          {
+            "text": "on",
+            "start": 8.86,
+            "end": 9.22
+          },
+          {
+            "text": "about",
+            "start": 9.22,
+            "end": 9.38
+          }
+        ]
+      },
+      {
+        "start": 9.38,
+        "end": 11.6,
+        "text": "eight gigs of VRAM. One honest catch.",
+        "words": [
+          {
+            "text": "eight",
+            "start": 9.38,
+            "end": 9.66
+          },
+          {
+            "text": "gigs",
+            "start": 9.66,
+            "end": 9.92
+          },
+          {
+            "text": "of",
+            "start": 9.92,
+            "end": 10.18
+          },
+          {
+            "text": "VRAM.",
+            "start": 10.18,
+            "end": 10.54
+          },
+          {
+            "text": "One",
+            "start": 10.96,
+            "end": 11.12
+          },
+          {
+            "text": "honest",
+            "start": 11.12,
+            "end": 11.34
+          },
+          {
+            "text": "catch.",
+            "start": 11.34,
+            "end": 11.6
+          }
+        ]
+      },
+      {
+        "start": 12.12,
+        "end": 14.12,
+        "text": "It's input only. It reads images and",
+        "words": [
+          {
+            "text": "It's",
+            "start": 12.12,
+            "end": 12.24
+          },
+          {
+            "text": "input",
+            "start": 12.24,
+            "end": 12.4
+          },
+          {
+            "text": "only.",
+            "start": 12.4,
+            "end": 12.68
+          },
+          {
+            "text": "It",
+            "start": 13.18,
+            "end": 13.28
+          },
+          {
+            "text": "reads",
+            "start": 13.28,
+            "end": 13.48
+          },
+          {
+            "text": "images",
+            "start": 13.48,
+            "end": 13.8
+          },
+          {
+            "text": "and",
+            "start": 13.8,
+            "end": 14.12
+          }
+        ]
+      },
+      {
+        "start": 14.12,
+        "end": 16.1,
+        "text": "audio, but it only writes text. It",
+        "words": [
+          {
+            "text": "audio,",
+            "start": 14.12,
+            "end": 14.32
+          },
+          {
+            "text": "but",
+            "start": 14.4,
+            "end": 14.74
+          },
+          {
+            "text": "it",
+            "start": 14.74,
+            "end": 14.82
+          },
+          {
+            "text": "only",
+            "start": 14.82,
+            "end": 14.92
+          },
+          {
+            "text": "writes",
+            "start": 14.92,
+            "end": 15.24
+          },
+          {
+            "text": "text.",
+            "start": 15.24,
+            "end": 15.56
+          },
+          {
+            "text": "It",
+            "start": 16.02,
+            "end": 16.1
+          }
+        ]
+      },
+      {
+        "start": 16.1,
+        "end": 17.58,
+        "text": "doesn't generate pictures or voice.",
+        "words": [
+          {
+            "text": "doesn't",
+            "start": 16.1,
+            "end": 16.34
+          },
+          {
+            "text": "generate",
+            "start": 16.34,
+            "end": 16.64
+          },
+          {
+            "text": "pictures",
+            "start": 16.64,
+            "end": 17.02
+          },
+          {
+            "text": "or",
+            "start": 17.02,
+            "end": 17.38
+          },
+          {
+            "text": "voice.",
+            "start": 17.38,
+            "end": 17.58
+          }
+        ]
+      },
+      {
+        "start": 18.28,
+        "end": 20.46,
+        "text": "It's Apache 2 .0 and open. Run",
+        "words": [
+          {
+            "text": "It's",
+            "start": 18.28,
+            "end": 18.38
+          },
+          {
+            "text": "Apache",
+            "start": 18.38,
+            "end": 18.5
+          },
+          {
+            "text": "2",
+            "start": 18.5,
+            "end": 18.96
+          },
+          {
+            "text": ".0",
+            "start": 18.96,
+            "end": 19.4
+          },
+          {
+            "text": "and",
+            "start": 19.4,
+            "end": 19.58
+          },
+          {
+            "text": "open.",
+            "start": 19.58,
+            "end": 19.78
+          },
+          {
+            "text": "Run",
+            "start": 20.32,
+            "end": 20.46
+          }
+        ]
+      },
+      {
+        "start": 20.46,
+        "end": 22.54,
+        "text": "it with Alama or Unsloth. Fine -tune",
+        "words": [
+          {
+            "text": "it",
+            "start": 20.46,
+            "end": 20.58
+          },
+          {
+            "text": "with",
+            "start": 20.58,
+            "end": 20.72
+          },
+          {
+            "text": "Alama",
+            "start": 20.72,
+            "end": 21.06
+          },
+          {
+            "text": "or",
+            "start": 21.06,
+            "end": 21.3
+          },
+          {
+            "text": "Unsloth.",
+            "start": 21.3,
+            "end": 21.76
+          },
+          {
+            "text": "Fine",
+            "start": 22.3,
+            "end": 22.3
+          },
+          {
+            "text": "-tune",
+            "start": 22.3,
+            "end": 22.54
+          }
+        ]
+      },
+      {
+        "start": 22.54,
+        "end": 24.0,
+        "text": "it on your own data, and nothing",
+        "words": [
+          {
+            "text": "it",
+            "start": 22.54,
+            "end": 22.66
+          },
+          {
+            "text": "on",
+            "start": 22.66,
+            "end": 22.78
+          },
+          {
+            "text": "your",
+            "start": 22.78,
+            "end": 22.9
+          },
+          {
+            "text": "own",
+            "start": 22.9,
+            "end": 23.08
+          },
+          {
+            "text": "data,",
+            "start": 23.08,
+            "end": 23.28
+          },
+          {
+            "text": "and",
+            "start": 23.6,
+            "end": 23.78
+          },
+          {
+            "text": "nothing",
+            "start": 23.78,
+            "end": 24.0
+          }
+        ]
+      },
+      {
+        "start": 24.0,
+        "end": 26.7,
+        "text": "leaves your machine. So, would you run",
+        "words": [
+          {
+            "text": "leaves",
+            "start": 24.0,
+            "end": 24.2
+          },
+          {
+            "text": "your",
+            "start": 24.2,
+            "end": 24.4
+          },
+          {
+            "text": "machine.",
+            "start": 24.4,
+            "end": 24.66
+          },
+          {
+            "text": "So,",
+            "start": 25.24,
+            "end": 25.34
+          },
+          {
+            "text": "would",
+            "start": 25.64,
+            "end": 26.38
+          },
+          {
+            "text": "you",
+            "start": 26.38,
+            "end": 26.52
+          },
+          {
+            "text": "run",
+            "start": 26.52,
+            "end": 26.7
+          }
+        ]
+      },
+      {
+        "start": 26.7,
+        "end": 28.22,
+        "text": "your AI fully local if it never",
+        "words": [
+          {
+            "text": "your",
+            "start": 26.7,
+            "end": 26.84
+          },
+          {
+            "text": "AI",
+            "start": 26.84,
+            "end": 27.04
+          },
+          {
+            "text": "fully",
+            "start": 27.04,
+            "end": 27.42
+          },
+          {
+            "text": "local",
+            "start": 27.42,
+            "end": 27.78
+          },
+          {
+            "text": "if",
+            "start": 27.78,
+            "end": 27.98
+          },
+          {
+            "text": "it",
+            "start": 27.98,
+            "end": 28.06
+          },
+          {
+            "text": "never",
+            "start": 28.06,
+            "end": 28.22
+          }
+        ]
+      },
+      {
+        "start": 28.22,
+        "end": 28.86,
+        "text": "touched the cloud?",
+        "words": [
+          {
+            "text": "touched",
+            "start": 28.22,
+            "end": 28.5
+          },
+          {
+            "text": "the",
+            "start": 28.5,
+            "end": 28.72
+          },
+          {
+            "text": "cloud?",
+            "start": 28.72,
+            "end": 28.86
+          }
+        ]
+      }
+    ]
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}
