@@ -37,6 +37,10 @@ const music = MUSIC.includes(musicFlag) ? musicFlag : "none";
 const THEMES = ["offensive", "defensive", "hacking", "purple-team", "ai"];
 const themeFlag = [...flags].find((f) => f.startsWith("--theme="))?.split("=")[1] ?? "";
 const theme = THEMES.includes(themeFlag) ? themeFlag : ""; // "" = let the agent pick from the topic
+// Dynamic slide count: --slides=N (default 8, range 3–20). Forwarded to `bun run new`.
+const SLIDES_DEFAULT = 8, SLIDES_MIN = 3, SLIDES_MAX = 20;
+const slidesFlag = [...flags].find((f) => f.startsWith("--slides="))?.split("=")[1];
+const slideCount = slidesFlag === undefined ? SLIDES_DEFAULT : Number(slidesFlag);
 
 function die(msg) {
   if (msg) console.error(`\n✗ ${msg}`);
@@ -44,6 +48,7 @@ function die(msg) {
   console.error(`Pillars (pick one for <pillar>):`);
   for (const p of PILLARS) console.error(`  • ${p}`);
   console.error(`\nFlags:`);
+  console.error(`  --slides=N                              slide count, ${SLIDES_MIN}–${SLIDES_MAX} (default ${SLIDES_DEFAULT})`);
   console.error(`  --theme=offensive|defensive|hacking|purple-team|ai   brand theme (red / blue / green / purple-team-purple / AI-orange; default from pillar)`);
   console.error(`  --captions=block|word|highlight        reel subtitle animation (default block)`);
   console.error(`  --voice=none|voxcpm2|voxcpm2-0.5b|bark|http|file   narration (default voxcpm2 = 2B; use none for a silent reel)`);
@@ -56,6 +61,16 @@ function die(msg) {
 
 if (!idea) die("Missing <idea>.");
 if (!pillar || !PILLARS.includes(pillar)) die(`Missing/invalid <pillar>: "${pillar ?? ""}".`);
+if (slidesFlag !== undefined && (!Number.isInteger(slideCount) || slideCount < SLIDES_MIN || slideCount > SLIDES_MAX)) {
+  die(`--slides "${slidesFlag}" must be an integer in [${SLIDES_MIN}, ${SLIDES_MAX}] (default ${SLIDES_DEFAULT}).`);
+}
+
+// Describe the slide arc for the content prompt. n=8 is the canonical named arc;
+// other counts keep cover/takeaway/cta as bookends and fill the middle (generic body
+// "point" slides past the 5 named middle roles).
+const slideArc = slideCount === 8
+  ? "the 8-slide arc (cover, context, risk, mechanism, failure_point, defense, takeaway, cta)"
+  : `a ${slideCount}-slide arc: slide 1 = cover, the last slide = cta, slide ${slideCount - 1} = takeaway, and the ${slideCount - 2} middle slides drawn from [context, risk, mechanism, failure_point, defense] then generic "point" body slides if more are needed`;
 
 // Resolve `claude` on PATH up front for a clear error.
 const claudeCheck = spawnSync(process.platform === "win32" ? "where" : "which", ["claude"], { encoding: "utf8" });
@@ -78,10 +93,10 @@ const prompt = [
   `HARD RULES (from pipeline/content/QA_CHECKLIST.md): no fabricated CVEs/stats/quotes; every factual claim must be backed by a real source found via WebSearch/WebFetch, or explicitly framed as a [Scenario]; no payloads/exploit/evasion steps; include a concrete defender takeaway.`,
   ``,
   `STEPS:`,
-  `1. Design the 8-slide post (cover, context, risk, mechanism, failure_point, defense, takeaway, cta) + caption + hashtags + comment question, house voice.`,
+  `1. Design the post as ${slideArc} + caption + hashtags + comment question, house voice.`,
   `2. Research sources DEEPLY (a loop, not one search): (a) Landscape scan — a broad WebSearch to map the claim space AND the strongest counter-arguments. (b) Gather primaries (OWASP/NCSC/NIST/CISA/CVE/named journalism) via WebFetch. (c) Triangulate — >=2 independent reputable sources for any load-bearing claim; single/weak source -> tag down. (d) Confidence-tier each claim: [Verified] (>=2 independent agree) / [Emerging] (one reputable or weak) / [Scenario] (illustrative, no source, labelled in-copy); record {source, link, supports, confidence, claim_tag}. HARD GATES: no fabricated URLs; re-open every link and confirm wording; disclose empty angles; never name a real victim without a cited public source. (Optional booster for big topics: the deep-research skill.)`,
   `3. Pick a short kebab-case slug from the idea.`,
-  `4. Pick a brand THEME for this post — offensive (red — red-team, vulnerabilities, exploits, CVEs), defensive (blue — blue-team, securing AI), hacking (green — general cyber / how-it-works), purple-team (purple — combined offence+defence, detection-vs-attack), or ai (orange — generic AI / model-centric news & explainers)${theme ? ` — use "${theme}"` : ", based on the topic"}. Run \`cd renderer && bun run new -- ${date} <slug> ${pillar} --theme=${theme || "<theme>"} --captions=${captions} --voice=${voice} --music=${music}\` to scaffold, then EDIT renderer/content/posts/${date}_<slug>.json to replace EVERY TODO with real, sourced content. Keep schema rules (8 slides, slide1=cover, alt_text length 8, score.total = sum of axes, >=1 real source, reel beats filled, video.caption_mode="${captions}", video.audio.voice_mode="${voice}", video.audio.music_mode="${music}"). Write a SPECIFIC, **distinct, theme-agnostic** visual_prompt for EVERY slide — a concrete dark cinematic scene tied to THIS slide's point and THIS post's topic (so no two slides, and no two posts, share a composition). NO colour words (the theme supplies colour); avoid UI/dashboard/panel/label nouns (they cause garbled text); no rendered text/logos/exploit detail. This is what \`bun run art\` renders. THEN humanize the copy: run the "humanizer" skill (with .claude/skills/humanizer/references/voice-profile.md) over the caption, video.narration[] and every slide on_slide_copy so it reads in the house voice (pipeline/content/VOICE_AND_TONE_GUIDE.md) — strip AI tells (em-dash overuse, listicle cadence, "delve/leverage", voice-flat symmetry), keep the author's cadence; NEVER change a sourced fact, claim_tag, or source to sound smoother.`,
+  `4. Pick a brand THEME for this post — offensive (red — red-team, vulnerabilities, exploits, CVEs), defensive (blue — blue-team, securing AI), hacking (green — general cyber / how-it-works), purple-team (purple — combined offence+defence, detection-vs-attack), or ai (orange — generic AI / model-centric news & explainers)${theme ? ` — use "${theme}"` : ", based on the topic"}. Run \`cd renderer && bun run new -- ${date} <slug> ${pillar} --slides=${slideCount} --theme=${theme || "<theme>"} --captions=${captions} --voice=${voice} --music=${music}\` to scaffold, then EDIT renderer/content/posts/${date}_<slug>.json to replace EVERY TODO with real, sourced content. Keep schema rules (${slideCount} slides, slide1=cover, alt_text length ${slideCount}, score.total = sum of axes, >=1 real source, reel beats filled, video.caption_mode="${captions}", video.audio.voice_mode="${voice}", video.audio.music_mode="${music}"). Write a SPECIFIC, **distinct, theme-agnostic** visual_prompt for EVERY slide — a concrete dark cinematic scene tied to THIS slide's point and THIS post's topic (so no two slides, and no two posts, share a composition). NO colour words (the theme supplies colour); avoid UI/dashboard/panel/label nouns (they cause garbled text); no rendered text/logos/exploit detail. This is what \`bun run art\` renders. THEN humanize the copy: run the "humanizer" skill (with .claude/skills/humanizer/references/voice-profile.md) over the caption, video.narration[] and every slide on_slide_copy so it reads in the house voice (pipeline/content/VOICE_AND_TONE_GUIDE.md) — strip AI tells (em-dash overuse, listicle cadence, "delve/leverage", voice-flat symmetry), keep the author's cadence; NEVER change a sourced fact, claim_tag, or source to sound smoother.`,
   `5. Run \`cd renderer && bun run validate -- ${date}_<slug>\` and fix until clean.`,
   `6. ${renderStep}`,
   `7. FINISH by printing, on its own final line, exactly: POST_KEY=${date}_<slug>`,

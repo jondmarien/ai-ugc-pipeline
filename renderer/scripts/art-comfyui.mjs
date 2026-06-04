@@ -85,6 +85,9 @@ const ROLE_MOTIF = {
   defense: "a layered protective shield wrapping an isolated sandbox, padlocks and permission gates, controlled gateways, calm and secure",
   takeaway: "translucent mask and glyph motifs glowing in the corners and along the edges, faint ambient circuitry and particle haze across the whole frame, the center kept calm and uncluttered (dark but not empty), minimal high-impact composition",
   cta: "a forward-motion arrow and a softly glowing question mark toward the upper area, sense of momentum inviting a swipe",
+  // Generic body slide (dynamic-count posts beyond the named arc). Per-slide visual_prompt
+  // should override this; this is the fallback motif for an unfilled `point` slide.
+  point: "a single focal abstract object glowing in the dark with thin connecting light lines, clean high-contrast composition, one clear idea",
 };
 
 // Where the slide's TEXT sits → keep that zone of the image dark/empty so captions stay legible.

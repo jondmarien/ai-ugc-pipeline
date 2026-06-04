@@ -22,6 +22,9 @@ export const SlideRole = z.enum([
   "defense",
   "takeaway",
   "cta",
+  // Generic body slide for posts with more than the named 8-arc (dynamic slide count).
+  // Reuses the standard layout/motif; repeatable.
+  "point",
 ]);
 
 // Filename role tokens follow the pipeline convention (note hyphen in failure-point).
@@ -34,6 +37,7 @@ export const ROLE_FILENAME: Record<z.infer<typeof SlideRole>, string> = {
   defense: "defense",
   takeaway: "takeaway",
   cta: "cta",
+  point: "point",
 };
 
 export const ScoreSpec = z.object({

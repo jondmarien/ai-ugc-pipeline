@@ -1,7 +1,7 @@
 import { writeFileSync, existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { POSTS_DIR } from "./lib.ts";
-import { PostData } from "../src/lib/schema.ts";
+import { PostData, ROLE_FILENAME } from "../src/lib/schema.ts";
 import { pillarAccent, palette, canvas, themes, pillarTheme, type Pillar, type Theme } from "../src/design/tokens.ts";
 
 // Usage: npm run new -- <YYYY-MM-DD> <slug> <pillar> [--captions=block|word|highlight]
@@ -24,11 +24,18 @@ const musicMode = (MUSIC_MODES as readonly string[]).includes(musicFlag) ? music
 const THEMES = ["offensive", "defensive", "hacking", "purple-team", "ai"] as const;
 const themeFlag = flagArgs.find((a) => a.startsWith("--theme="))?.split("=")[1] ?? "";
 
+// Dynamic slide count: --slides=N (default 8, range 3–20). Range is enforced here at
+// creation time (not in the zod schema) so hand-authored posts for other platforms
+// aren't blocked. The narrative arc scales via roleSequence() below.
+const SLIDES_DEFAULT = 8, SLIDES_MIN = 3, SLIDES_MAX = 20;
+const slidesFlag = flagArgs.find((a) => a.startsWith("--slides="))?.split("=")[1];
+const slideCount = slidesFlag === undefined ? SLIDES_DEFAULT : Number(slidesFlag);
+
 const PILLARS = Object.keys(pillarAccent) as Pillar[];
 
 function usageAndExit(msg?: string): never {
   if (msg) console.error(`\n✗ ${msg}`);
-  console.error(`\nUsage: bun run new -- <YYYY-MM-DD> <slug> <pillar> [--theme=offensive|defensive|hacking|purple-team|ai] [--captions=…] [--voice=… (default voxcpm2; use none for a silent reel)] [--music=…]`);
+  console.error(`\nUsage: bun run new -- <YYYY-MM-DD> <slug> <pillar> [--slides=N (3–20, default 8)] [--theme=offensive|defensive|hacking|purple-team|ai] [--captions=…] [--voice=… (default voxcpm2; use none for a silent reel)] [--music=…]`);
   console.error(`  pillar ∈ ${PILLARS.join(" | ")}`);
   console.error(`  theme  ∈ offensive (red) | defensive (blue) | hacking (green) | purple-team (purple) | ai (generic AI, orange)  — optional; defaults from pillar`);
   console.error(`  example: bun run new -- 2026-06-13 ai-agent-permissions model_security --theme=defensive\n`);
@@ -43,6 +50,9 @@ if (!(CAPTION_MODES as readonly string[]).includes(captionsFlag)) usageAndExit(`
 if (!(VOICE_MODES as readonly string[]).includes(voiceFlag)) usageAndExit(`--voice "${voiceFlag}" must be one of: ${VOICE_MODES.join(", ")}.`);
 if (!(MUSIC_MODES as readonly string[]).includes(musicFlag)) usageAndExit(`--music "${musicFlag}" must be one of: ${MUSIC_MODES.join(", ")}.`);
 if (themeFlag && !(THEMES as readonly string[]).includes(themeFlag)) usageAndExit(`--theme "${themeFlag}" must be one of: ${THEMES.join(", ")}.`);
+if (slidesFlag !== undefined && (!Number.isInteger(slideCount) || slideCount < SLIDES_MIN || slideCount > SLIDES_MAX)) {
+  usageAndExit(`--slides "${slidesFlag}" must be an integer in [${SLIDES_MIN}, ${SLIDES_MAX}] (default ${SLIDES_DEFAULT}).`);
+}
 
 const pillar = pillarArg as Pillar;
 const prefix = `${date}_${slug}`;
@@ -51,47 +61,107 @@ const theme = ((THEMES as readonly string[]).includes(themeFlag) ? themeFlag : p
 const themeDef = themes[theme];
 
 type Role =
-  | "cover" | "context" | "risk" | "mechanism" | "failure_point" | "defense" | "takeaway" | "cta";
+  | "cover" | "context" | "risk" | "mechanism" | "failure_point" | "defense" | "takeaway" | "cta"
+  // generic body slide used to scale beyond the named 8-arc (see roleSequence)
+  | "point";
 
-// Each slide ships with a rich, art-ready `vp` (visual_prompt) so `bun run art`
+// Each role ships with a rich, art-ready `vp` (visual_prompt) so `bun run art`
 // has a specific scene per role out of the box (no deriving from copy). These are
 // topic-agnostic archetypes — refine the bracketed bits for your exact post.
 // THEME-AGNOSTIC `vp` templates — NO colour words; the theme supplies the accent colour
 // + mood at generation time (see art-comfyui.mjs). Tailor [the topic] + each scene per post.
 // Avoid UI/dashboard/panel/label nouns (they make FLUX render garbled text).
-const SLIDE_SPEC: Array<{ role: Role; kicker: string; copy: string; subline: string; vp: string; cta?: string; status?: string }> = [
-  { role: "cover", kicker: "AI × CYBERSECURITY", copy: "YOUR COVER HOOK GOES HERE", subline: "One-line promise of what they'll learn.", cta: "SWIPE →", status: "needed",
+const SLIDE_SPEC: Record<Role, { kicker: string; copy: string; subline: string; vp: string; cta?: string; status?: string }> = {
+  cover: { kicker: "AI × CYBERSECURITY", copy: "YOUR COVER HOOK GOES HERE", subline: "One-line promise of what they'll learn.", cta: "SWIPE →", status: "needed",
     vp: `cinematic establishing shot for an AI-cybersecurity story about [the topic]: a dramatic central subject (analyst, SOC, AI agent, or device) in a dark high-contrast scene, dramatic rim light, strong empty lower-third for the headline` },
-  { role: "context", kicker: "WHAT CHANGED", copy: "What happened, or the pattern to notice.", subline: "Keep it plain-language.",
+  context: { kicker: "WHAT CHANGED", copy: "What happened, or the pattern to notice.", subline: "Keep it plain-language.",
     vp: `an abstract "what changed" scene for [the topic]: a shifting before/after pattern or emerging-signal motif, dark editorial, lower third kept clear, no readable text` },
-  { role: "risk", kicker: "WHY IT MATTERS", copy: "Why this matters to defenders.", subline: "Security impact, not hype.",
+  risk: { kicker: "WHY IT MATTERS", copy: "Why this matters to defenders.", subline: "Security impact, not hype.",
     vp: `a tension-building impact scene for [the topic]: a single focal hazard/stakes motif (a target, a breach path, a fragile control), dark and high-contrast, tense atmosphere` },
-  { role: "mechanism", kicker: "HOW IT WORKS", copy: "Safe, high-level mechanism.", subline: "No payloads or exploit steps.",
+  mechanism: { kicker: "HOW IT WORKS", copy: "Safe, high-level mechanism.", subline: "No payloads or exploit steps.",
     vp: `a clean abstract diagrammatic scene showing the HIGH-LEVEL mechanism of [the topic] — glowing nodes and connections, a flow between abstract components; absolutely no exploit detail, payloads, or readable code; dark, upper-area focus` },
-  { role: "failure_point", kicker: "WHERE TEAMS FAIL", copy: "The people / process / tooling gap.", subline: "Where this slips through today.",
+  failure_point: { kicker: "WHERE TEAMS FAIL", copy: "The people / process / tooling gap.", subline: "Where this slips through today.",
     vp: `a scene depicting a process/control gap for [the topic]: an overlooked checkpoint or skipped verification step, a figure near an approve button with an ignored checklist, dark, lower third clear` },
-  { role: "defense", kicker: "DEFENSIVE MOVE", copy: "One concrete control or review step.", subline: "Something they can do this week.",
+  defense: { kicker: "DEFENSIVE MOVE", copy: "One concrete control or review step.", subline: "Something they can do this week.",
     vp: `a defensive workflow scene for [the topic]: verification, permission gates, an audit trail, approval chain and identity-check motifs, calm and orderly, dark` },
-  { role: "takeaway", kicker: "TAKEAWAY", copy: "One memorable, save-worthy line.", subline: "",
+  takeaway: { kicker: "TAKEAWAY", copy: "One memorable, save-worthy line.", subline: "",
     vp: `a minimal iconic high-contrast scene for [the topic]: a single strong symbol (lock, shield, or verified checkmark) toward the edges in deep negative space, center open and dark` },
-  { role: "cta", kicker: "YOUR MOVE", copy: "A specific question for the comments?", subline: "Save this for your next review.", cta: "COMMENT + SAVE",
+  cta: { kicker: "YOUR MOVE", copy: "A specific question for the comments?", subline: "Save this for your next review.", cta: "COMMENT + SAVE",
     vp: `a clean dark end-card scene with strong empty negative space for a question and handle, premium editorial cybersecurity look` },
-];
+  // Generic body slide — repeated to fill longer posts. Differentiated per-occurrence below.
+  point: { kicker: "POINT", copy: "One more point worth making.", subline: "Keep it specific and concrete.",
+    vp: `a distinct focal scene for one specific aspect of [the topic]: a single concrete physical object doing something physical, dark high-contrast cinematic, lower third kept clear, no readable text` },
+};
 
-const slides = SLIDE_SPEC.map((s, i) => ({
-  slide: i + 1,
-  role: s.role,
-  kicker: s.kicker,
-  on_slide_copy: s.copy,
-  subline: s.subline,
-  visual_direction: "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-  // Rich per-slide art prompt — used directly by `bun run art`. Replace [the topic].
-  visual_prompt: s.vp,
-  background_asset: s.role === "cover" ? `/backgrounds/${prefix}_cover.png` : "",
-  // cover uses 'needed' (swap to 'existing' once you add the PNG); inners are procedural CSS.
-  asset_status: s.status ?? "procedural",
-  cta: s.cta ?? "",
-  notes: s.role === "cover" ? "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'." : "",
+// Map a slide count to an ordered list of roles. Fixed bookends (cover first;
+// takeaway + cta last); the middle is filled from the named arc, then padded with
+// the generic `point` role. n=8 reproduces the original arc exactly.
+const NAMED_MIDDLE: Role[] = ["context", "risk", "mechanism", "failure_point", "defense"];
+function roleSequence(n: number): Role[] {
+  const seq: Role[] = ["cover"];
+  const middleCount = n - 3; // slides between cover and [takeaway, cta]
+  for (let i = 0; i < middleCount; i++) seq.push(NAMED_MIDDLE[i] ?? "point");
+  seq.push("takeaway", "cta");
+  return seq;
+}
+
+const sequence = roleSequence(slideCount);
+let pointN = 0;
+const slides = sequence.map((role, i) => {
+  const s = SLIDE_SPEC[role];
+  let kicker = s.kicker, copy = s.copy;
+  if (role === "point") {
+    pointN += 1;
+    kicker = `POINT ${pointN}`;
+    copy = `Body point ${pointN}: one idea, one line.`;
+  }
+  return {
+    slide: i + 1,
+    role,
+    kicker,
+    on_slide_copy: copy,
+    subline: s.subline,
+    visual_direction: "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+    // Rich per-slide art prompt — used directly by `bun run art`. Replace [the topic].
+    visual_prompt: s.vp,
+    background_asset: role === "cover" ? `/backgrounds/${prefix}_cover.png` : "",
+    // cover uses 'needed' (swap to 'existing' once you add the PNG); inners are procedural CSS.
+    asset_status: s.status ?? "procedural",
+    cta: s.cta ?? "",
+    notes: role === "cover" ? "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'." : "",
+  };
+});
+
+// Reel = a short highlight, not every slide. Anchor a handful of beats to slides that
+// always exist for this count (cover → context → defense → takeaway → cta), dedupe, and
+// divide the duration evenly. At n=8 this yields the original 5 beats on slides 1,2,6,7,8.
+const reelDuration = Math.round(slideCount * 3.25); // n=8 → 26s
+const roleRef = (r: Role): number | null => {
+  const idx = sequence.indexOf(r);
+  return idx >= 0 ? idx + 1 : null;
+};
+const anchorPlan: Array<{ ref: number | null; purpose: string; motion: string }> = [
+  { ref: 1, purpose: "hook", motion: "slow push-in over cover" },
+  { ref: roleRef("context"), purpose: "context", motion: "parallax" },
+  { ref: roleRef("defense"), purpose: "defense", motion: "slow push-in" },
+  { ref: roleRef("takeaway"), purpose: "takeaway", motion: "static high contrast" },
+  { ref: slideCount, purpose: "cta", motion: "end card" },
+];
+const seenRefs = new Set<number>();
+const anchors = anchorPlan.filter((a): a is { ref: number; purpose: string; motion: string } => {
+  if (a.ref == null || seenRefs.has(a.ref)) return false;
+  seenRefs.add(a.ref);
+  return true;
+});
+const beatBound = (i: number) => Math.round((i * reelDuration) / anchors.length);
+const narration = anchors.map((a, i) => ({ start: beatBound(i), end: beatBound(i + 1), text: `TODO ${a.purpose} line.` }));
+const beats = anchors.map((a, i) => ({
+  start: beatBound(i),
+  end: beatBound(i + 1),
+  slide_ref: a.ref,
+  purpose: a.purpose,
+  motion: a.motion,
+  caption: `TODO ${a.purpose} caption.`,
 }));
 
 const post = {
@@ -119,10 +189,7 @@ const post = {
     folder: `pipeline/renders/${prefix}`,
     filename_prefix: prefix,
     expected_files: [
-      ...slides.map((s) => {
-        const role = s.role === "failure_point" ? "failure-point" : s.role;
-        return `${prefix}_${String(s.slide).padStart(2, "0")}_${role}.png`;
-      }),
+      ...slides.map((s) => `${prefix}_${String(s.slide).padStart(2, "0")}_${ROLE_FILENAME[s.role]}.png`),
       "caption.txt", "alt_text.txt", "sources.md", "render_qa_checklist.md",
     ],
     caption_file: "caption.txt",
@@ -134,14 +201,14 @@ const post = {
   caption: "TODO: hook restated · what happened · why it matters · defender takeaway · question.\n\nFollow for AI security breakdowns without the fake panic.",
   hashtags: ["#Cybersecurity", "#InfoSec", "#AISecurity"],
   comment_prompt: "TODO: a specific, easy-to-answer question.",
-  alt_text: SLIDE_SPEC.map((s, i) => `Slide ${i + 1} (${s.role}): TODO accessible description.`),
+  alt_text: slides.map((s) => `Slide ${s.slide} (${s.role}): TODO accessible description.`),
   sources: [
     { source: "TODO source name", link: "https://example.com", supports: "Which claim this supports.", confidence: "medium", claim_tag: "scenario" },
   ],
   asset_licenses: [],
   video: {
     enabled: true,
-    duration_seconds: 26,
+    duration_seconds: reelDuration,
     fps: 30,
     export_name: `${prefix}_reel.mp4`,
     caption_mode: captionMode,
@@ -153,20 +220,8 @@ const post = {
       music_file: musicMode === "none" ? undefined : `/audio/${prefix}/music.mp3`,
       music_gain_db: -18,
     },
-    narration: [
-      { start: 0, end: 5, text: "TODO hook line." },
-      { start: 5, end: 11, text: "TODO context line." },
-      { start: 11, end: 17, text: "TODO defense line." },
-      { start: 17, end: 22, text: "TODO takeaway line." },
-      { start: 22, end: 26, text: "TODO CTA line." },
-    ],
-    beats: [
-      { start: 0, end: 5, slide_ref: 1, purpose: "hook", motion: "slow push-in over cover", caption: "TODO hook caption." },
-      { start: 5, end: 11, slide_ref: 2, purpose: "context", motion: "parallax", caption: "TODO context caption." },
-      { start: 11, end: 17, slide_ref: 6, purpose: "defense", motion: "slow push-in", caption: "TODO defense caption." },
-      { start: 17, end: 22, slide_ref: 7, purpose: "takeaway", motion: "static high contrast", caption: "TODO takeaway caption." },
-      { start: 22, end: 26, slide_ref: 8, purpose: "cta", motion: "end card", caption: "TODO CTA caption." },
-    ],
+    narration,
+    beats,
     subtitle_style: "large centered lower-third, high contrast, two lines max",
     music: null,
     sfx: [],
@@ -200,7 +255,7 @@ if (existsSync(outFile)) usageAndExit(`${outFile} already exists — pick a diff
 writeFileSync(outFile, JSON.stringify(post, null, 2) + "\n", "utf8");
 
 console.log(`✓ Created ${path.relative(path.join(POSTS_DIR, "..", ".."), outFile)}`);
-console.log(`  pillar: ${pillar}  ·  theme: ${theme} (${themeDef.name})  ·  8 slides  ·  reel enabled  ·  captions: ${captionMode}\n`);
+console.log(`  pillar: ${pillar}  ·  theme: ${theme} (${themeDef.name})  ·  ${slideCount} slides  ·  reel enabled (${reelDuration}s)  ·  captions: ${captionMode}\n`);
 console.log("Next:");
 console.log(`  1. Edit the file — replace every TODO (copy, caption, sources, alt text).`);
 console.log(`  2. (optional) Add a cover image to renderer/public/backgrounds/${prefix}_cover.png and set slide 1 asset_status to "existing".`);

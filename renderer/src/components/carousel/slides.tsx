@@ -115,8 +115,9 @@ export function CtaSlide({ post, slide }: SlideProps) {
   );
 }
 
-// Role → component registry. context/risk/mechanism/failure_point/defense share
-// the standard layout; cover/takeaway/cta are specialized.
+// Role → component registry. context/risk/mechanism/failure_point/defense/point share
+// the standard body layout; cover/takeaway/cta are specialized. `point` is the generic
+// body slide used to scale posts beyond the named 8-arc.
 export const SLIDE_COMPONENTS: Record<TSlideData["role"], (p: SlideProps) => ReactElement> = {
   cover: CoverSlide,
   context: StandardSlide,
@@ -126,4 +127,5 @@ export const SLIDE_COMPONENTS: Record<TSlideData["role"], (p: SlideProps) => Rea
   defense: StandardSlide,
   takeaway: TakeawaySlide,
   cta: CtaSlide,
+  point: StandardSlide,
 };
