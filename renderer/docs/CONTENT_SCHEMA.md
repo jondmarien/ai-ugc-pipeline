@@ -56,7 +56,7 @@ The JSON contract the renderer consumes, mapped from `../../pipeline/content/POS
 | Field | Type | Req | Notes |
 | --- | --- | --- | --- |
 | `slide` | int | ✓ | 1-based, contiguous. |
-| `role` | enum | ✓ | `cover\|context\|risk\|mechanism\|failure_point\|defense\|takeaway\|cta`. |
+| `role` | enum | ✓ | `cover\|context\|risk\|mechanism\|failure_point\|defense\|takeaway\|cta\|point`. (`point` = generic repeatable body slide for dynamic slide counts > 8.) |
 | `on_slide_copy` | string | ✓ | the headline; keep ≤ ~12 words. |
 | `kicker` | string | | small role label (design element, not a claim). |
 | `subline` | string | | |

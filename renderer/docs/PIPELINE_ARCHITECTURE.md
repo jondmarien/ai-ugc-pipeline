@@ -21,14 +21,14 @@ sequenceDiagram
     participant NEW as new-post.ts
     participant V as validate.ts
     participant P as pipeline.mjs
-    U->>CMD: idea | pillar | theme= | voice= | captions=
-    CMD->>C: design 8-slide arc + caption
+    U->>CMD: idea | pillar | slides= | theme= | voice= | captions=
+    CMD->>C: design slide arc (N, default 8) + caption
     C->>R: landscape scan, gather, triangulate (>=2)
     R-->>C: sources + confidence tags
     C->>H: humanize caption/narration (voice-profile)
     H-->>C: de-AI'd copy in Jon's voice
     C->>RN: map to schema + per-slide visual_prompt
-    RN->>NEW: bun run new (theme/voice/captions)
+    RN->>NEW: bun run new (slides/theme/voice/captions)
     NEW-->>RN: skeleton JSON
     RN->>V: bun run validate
     V-->>RN: clean
