@@ -23,7 +23,7 @@ When the user asks for a post, carousel, content idea, or workflow, produce the 
 | Carousel script | 6–9 slides unless the user requests a longer list post |
 | Visual direction | One image prompt per slide or per post, depending on scope |
 | Caption | Short narrative caption with a question and follow CTA |
-| Hashtags | 5–10 relevant tags, avoiding spammy stuffing |
+| Topics | A bracketed list of plain-text topics — `[topic1, topic2, …]`, NOT hashtags (no `#`, no 5-tag cap). Stored in the JSON `hashtags` field; the renderer prints them as `[…]` in caption.txt. |
 | QA notes | Source/claim warnings, safety notes, and technical accuracy checks |
 
 ## Workflow
@@ -150,8 +150,8 @@ Visual: ...
 ## Caption
 ...
 
-## Hashtags
-#AI #Cybersecurity ...
+## Topics
+[topic one, topic two, topic three, …]
 
 ## QA Notes
 ...

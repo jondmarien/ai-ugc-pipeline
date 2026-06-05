@@ -47,8 +47,8 @@ Visual: [cinematic visual direction]
 ## Caption
 [Short narrative caption]
 
-## Hashtags
-#AI #Cybersecurity #InfoSec #AIsecurity #[topic-specific tags]
+## Topics
+[AI security, cybersecurity, topic-specific phrase, another topic, …]  (plain bracketed list — NOT hashtags, no `#`, no count cap)
 
 ## QA Notes
 [Source support, uncertainty, safety, and technical caveats]
@@ -69,7 +69,7 @@ Visual: [cinematic visual direction]
 
 Follow for AI security breakdowns without the fake panic.
 
-#[5–10 relevant hashtags]
+[topic one, topic two, topic three, … — plain bracketed list, no hashtags]
 ```
 
 ## Hook Bank

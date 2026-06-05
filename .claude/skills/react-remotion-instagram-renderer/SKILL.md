@@ -90,7 +90,8 @@ Use one post-level JSON object. Keep field names stable so future automation can
     }
   ],
   "caption": "...",
-  "hashtags": ["#AI", "#Cybersecurity"],
+  "hashtags": ["AI agents", "open source AI"],
+
   "alt_text": ["Slide 1 description..."],
   "sources": [{ "source": "Source title", "link": "https://example.com", "supports": "Which claim this source supports.", "confidence": "high", "claim_tag": "reported_fact" }],
   "asset_licenses": [{ "asset": "assets/backgrounds/.../01.png", "source": "generated|stock|owned|existing_pipeline_asset", "license_or_terms": "...", "commercial_use_allowed": true }],
@@ -190,7 +191,7 @@ For a rendered post package, deliver:
 | `content/post.json` | Source data for carousel and/or Reel. |
 | `YYYY-MM-DD_slug_01_cover.png` through `YYYY-MM-DD_slug_08_cta.png` | Final upload-ready slide images. |
 | `YYYY-MM-DD_slug_reel.mp4` | Final Reel if requested. |
-| `caption.txt` | Caption, hashtags, and comment prompt. |
+| `caption.txt` | Caption followed by a bracketed topic list `[topic1, topic2, …]` (the `hashtags` field, rendered without `#`). |
 | `alt_text.txt` | Slide-by-slide alt text. |
 | `sources.md` | Claims, links, and credibility notes. |
 | `LICENSES.md` | Required when stock/generative/audio/video assets need rights tracking. |

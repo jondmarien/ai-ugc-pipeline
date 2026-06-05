@@ -4,7 +4,11 @@ import { loadPost, outputDir, slideFilename } from "./lib.ts";
 import type { TPostData } from "../src/lib/schema.ts";
 
 function captionTxt(post: TPostData): string {
-  return `${post.caption}\n\n${post.hashtags.join(" ")}\n`;
+  // Topics render as a bracketed list, NOT hashtags (they no longer help reach and
+  // cap you at ~5). Strip any legacy leading '#'. e.g. [AI agents, open source, ...]
+  const topics = post.hashtags.map((t) => t.replace(/^#/, "").trim()).filter(Boolean);
+  const topicLine = topics.length ? `[${topics.join(", ")}]\n` : "";
+  return `${post.caption}\n\n${topicLine}`;
 }
 
 function altTextTxt(post: TPostData): string {
