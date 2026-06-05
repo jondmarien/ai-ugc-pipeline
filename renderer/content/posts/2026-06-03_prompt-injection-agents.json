@@ -1,6 +1,6 @@
 {
-  "post_id": "2026-06-04-prompt-injection-agents",
-  "date": "2026-06-04",
+  "post_id": "2026-06-03_prompt-injection-agents",
+  "date": "2026-06-03",
   "slug": "prompt-injection-agents",
   "platform": "instagram",
   "format": "carousel",
@@ -40,17 +40,17 @@
     "font_stack": "Archivo, Inter, system-ui, sans-serif"
   },
   "upload_package": {
-    "folder": "pipeline/renders/2026-06-04_prompt-injection-agents",
-    "filename_prefix": "2026-06-04_prompt-injection-agents",
+    "folder": "pipeline/renders/2026-06-03_prompt-injection-agents",
+    "filename_prefix": "2026-06-03_prompt-injection-agents",
     "expected_files": [
-      "2026-06-04_prompt-injection-agents_01_cover.png",
-      "2026-06-04_prompt-injection-agents_02_context.png",
-      "2026-06-04_prompt-injection-agents_03_risk.png",
-      "2026-06-04_prompt-injection-agents_04_mechanism.png",
-      "2026-06-04_prompt-injection-agents_05_failure-point.png",
-      "2026-06-04_prompt-injection-agents_06_defense.png",
-      "2026-06-04_prompt-injection-agents_07_takeaway.png",
-      "2026-06-04_prompt-injection-agents_08_cta.png",
+      "2026-06-03_prompt-injection-agents_01_cover.png",
+      "2026-06-03_prompt-injection-agents_02_context.png",
+      "2026-06-03_prompt-injection-agents_03_risk.png",
+      "2026-06-03_prompt-injection-agents_04_mechanism.png",
+      "2026-06-03_prompt-injection-agents_05_failure-point.png",
+      "2026-06-03_prompt-injection-agents_06_defense.png",
+      "2026-06-03_prompt-injection-agents_07_takeaway.png",
+      "2026-06-03_prompt-injection-agents_08_cta.png",
       "caption.txt",
       "alt_text.txt",
       "sources.md",
@@ -70,7 +70,7 @@
       "subline": "Prompt injection isn't always typed by the user.",
       "visual_direction": "AI browser agent reading a webpage; hidden instruction shadows behind document blocks; electric-blue accent; dark lower-third.",
       "visual_prompt": "realistic editorial cybersecurity cover, a smooth glowing robotic head in profile quietly reading an open book in the dark, faint wisps of light curling off the pages, subtle single accent glow, strong negative space",
-      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/01_cover.png",
+      "background_asset": "/backgrounds/2026-06-03_prompt-injection-agents/01_cover.png",
       "asset_status": "generated",
       "cta": "SWIPE →",
       "notes": "Reuses the text-free pipeline cover background; React renders the headline on top."
@@ -83,7 +83,7 @@
       "subline": "The instruction can come from data, not the chat box.",
       "asset_status": "generated",
       "visual_prompt": "A smooth glowing robotic head seen in profile quietly reading an open book, thin thread-like wisps of light curling up off the pages and drifting toward the robot head, dark cinematic depth, calm empty space in the lower half",
-      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/02_context.png"
+      "background_asset": "/backgrounds/2026-06-03_prompt-injection-agents/02_context.png"
     },
     {
       "slide": 3,
@@ -93,7 +93,7 @@
       "subline": "Untrusted content becomes untrusted instructions.",
       "asset_status": "generated",
       "visual_prompt": "A glowing robotic head in the dark loosely encircled at a distance by a few floating everyday objects, an open book, a sealed envelope, a framed photograph and a folded sheet of paper, each trailing one faint glowing thread of light toward the head, focal in the upper area, empty space below",
-      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/03_risk.png"
+      "background_asset": "/backgrounds/2026-06-03_prompt-injection-agents/03_risk.png"
     },
     {
       "slide": 4,
@@ -103,7 +103,7 @@
       "subline": "Reading is one thing. Acting is another.",
       "asset_status": "generated",
       "visual_prompt": "A smooth glowing robotic arm reaching out and gently pushing one bright glowing sealed envelope into a narrow slot in the dark, a single clean deliberate mechanical motion, soft rim light, focal in the upper area, calm empty space in the lower half",
-      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/04_mechanism.png"
+      "background_asset": "/backgrounds/2026-06-03_prompt-injection-agents/04_mechanism.png"
     },
     {
       "slide": 5,
@@ -113,7 +113,7 @@
       "subline": "It's a known risk class, not a surprise.",
       "asset_status": "generated",
       "visual_prompt": "One glowing closed book lying in the dark with a single thin thread of light secretly slipping out from between its closed pages unnoticed, quiet hidden danger, soft focused glow, calm empty space in the lower third",
-      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/05_failure-point.png"
+      "background_asset": "/backgrounds/2026-06-03_prompt-injection-agents/05_failure-point.png"
     },
     {
       "slide": 6,
@@ -123,7 +123,7 @@
       "subline": "Least privilege for agents, not just users.",
       "asset_status": "generated",
       "visual_prompt": "A single glowing document sealed inside a clear transparent glass cube with a small closed padlock resting on its lid, fully isolated and contained in the dark, calm orderly and secure, empty space in the lower third",
-      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/06_defense.png"
+      "background_asset": "/backgrounds/2026-06-03_prompt-injection-agents/06_defense.png"
     },
     {
       "slide": 7,
@@ -133,7 +133,7 @@
       "subline": "",
       "asset_status": "generated",
       "visual_prompt": "A smooth translucent theatrical mask floating and gently tilting above a flowing river of light in the dark, the polished mask catching a soft glow, mysterious and quiet, the center kept calm and open",
-      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/07_takeaway.png"
+      "background_asset": "/backgrounds/2026-06-03_prompt-injection-agents/07_takeaway.png"
     },
     {
       "slide": 8,
@@ -144,7 +144,7 @@
       "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "visual_prompt": "One folded sheet of paper in the dark with a thin glowing thread of light hidden inside its folds, facing a soft glowing question mark shape, generous empty space, minimal and clean",
-      "background_asset": "/backgrounds/2026-06-04_prompt-injection-agents/08_cta.png"
+      "background_asset": "/backgrounds/2026-06-03_prompt-injection-agents/08_cta.png"
     }
   ],
   "caption": "The weirdest AI attack doesn't get typed into the chat box. It hides in the content your AI agent reads.\n\nThat's indirect prompt injection: instructions tucked into a web page, email, document, or image that the model treats as commands. OWASP's Top 10 for LLM Applications lists prompt injection, sensitive-information disclosure, and excessive agency as core risks — and the danger spikes the moment your agent can act (send mail, read files, call APIs) on what it just read.\n\nDefender move: isolate untrusted content from privileged tools, scope agent permissions to the minimum, log every action, and require human confirmation for sensitive steps.\n\nIf your agent summarizes a random webpage, should it also be allowed to email your team? Where would you draw that line?\n\nFollow for AI security breakdowns without the fake panic.",
@@ -187,7 +187,7 @@
       "notes": "No rendered text, no logos, no credentials."
     },
     {
-      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/02_context.png",
+      "asset": "/backgrounds/2026-06-03_prompt-injection-agents/02_context.png",
       "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -195,7 +195,7 @@
       "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/03_risk.png",
+      "asset": "/backgrounds/2026-06-03_prompt-injection-agents/03_risk.png",
       "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -203,7 +203,7 @@
       "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/04_mechanism.png",
+      "asset": "/backgrounds/2026-06-03_prompt-injection-agents/04_mechanism.png",
       "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -211,7 +211,7 @@
       "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/05_failure-point.png",
+      "asset": "/backgrounds/2026-06-03_prompt-injection-agents/05_failure-point.png",
       "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -219,7 +219,7 @@
       "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/06_defense.png",
+      "asset": "/backgrounds/2026-06-03_prompt-injection-agents/06_defense.png",
       "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -227,7 +227,7 @@
       "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/07_takeaway.png",
+      "asset": "/backgrounds/2026-06-03_prompt-injection-agents/07_takeaway.png",
       "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -235,7 +235,7 @@
       "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/08_cta.png",
+      "asset": "/backgrounds/2026-06-03_prompt-injection-agents/08_cta.png",
       "source": "FLUX.1-schnell (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -243,7 +243,7 @@
       "notes": "Generated locally with flux1-schnell-Q4_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-04_prompt-injection-agents/01_cover.png",
+      "asset": "/backgrounds/2026-06-03_prompt-injection-agents/01_cover.png",
       "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -255,11 +255,11 @@
     "enabled": true,
     "duration_seconds": 26,
     "fps": 30,
-    "export_name": "2026-06-04_prompt-injection-agents_reel.mp4",
+    "export_name": "2026-06-03_prompt-injection-agents_reel.mp4",
     "caption_mode": "highlight",
     "audio": {
       "voice_mode": "voxcpm2",
-      "voice_file": "/audio/2026-06-04_prompt-injection-agents/voice.wav",
+      "voice_file": "/audio/2026-06-03_prompt-injection-agents/voice.wav",
       "voice_gain_db": 0,
       "music_mode": "none",
       "music_gain_db": -18

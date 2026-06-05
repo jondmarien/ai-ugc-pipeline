@@ -1,6 +1,6 @@
 {
-  "post_id": "2026-06-08_gemma4-12b-local-ai",
-  "date": "2026-06-08",
+  "post_id": "2026-06-04_gemma4-12b-local-ai",
+  "date": "2026-06-04",
   "slug": "gemma4-12b-local-ai",
   "platform": "instagram",
   "format": "carousel",
@@ -40,17 +40,17 @@
     "font_stack": "Archivo, Inter, system-ui, sans-serif"
   },
   "upload_package": {
-    "folder": "pipeline/renders/2026-06-08_gemma4-12b-local-ai",
-    "filename_prefix": "2026-06-08_gemma4-12b-local-ai",
+    "folder": "pipeline/renders/2026-06-04_gemma4-12b-local-ai",
+    "filename_prefix": "2026-06-04_gemma4-12b-local-ai",
     "expected_files": [
-      "2026-06-08_gemma4-12b-local-ai_01_cover.png",
-      "2026-06-08_gemma4-12b-local-ai_02_context.png",
-      "2026-06-08_gemma4-12b-local-ai_03_risk.png",
-      "2026-06-08_gemma4-12b-local-ai_04_mechanism.png",
-      "2026-06-08_gemma4-12b-local-ai_05_failure-point.png",
-      "2026-06-08_gemma4-12b-local-ai_06_defense.png",
-      "2026-06-08_gemma4-12b-local-ai_07_takeaway.png",
-      "2026-06-08_gemma4-12b-local-ai_08_cta.png",
+      "2026-06-04_gemma4-12b-local-ai_01_cover.png",
+      "2026-06-04_gemma4-12b-local-ai_02_context.png",
+      "2026-06-04_gemma4-12b-local-ai_03_risk.png",
+      "2026-06-04_gemma4-12b-local-ai_04_mechanism.png",
+      "2026-06-04_gemma4-12b-local-ai_05_failure-point.png",
+      "2026-06-04_gemma4-12b-local-ai_06_defense.png",
+      "2026-06-04_gemma4-12b-local-ai_07_takeaway.png",
+      "2026-06-04_gemma4-12b-local-ai_08_cta.png",
       "caption.txt",
       "alt_text.txt",
       "sources.md",
@@ -70,7 +70,7 @@
       "subline": "Gemma 4 12B: sees, hears, reasons — and runs offline.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a sleek open laptop on a dark desk with a warm glowing orb of light hovering just above the keyboard, a powerful presence living inside the machine, cinematic, strong empty space in the lower half",
-      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/01_cover.png",
+      "background_asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/01_cover.png",
       "asset_status": "generated",
       "cta": "SWIPE →",
       "notes": ""
@@ -83,7 +83,7 @@
       "subline": "Runs locally on ~8GB. Apache-2.0, open weights.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single solid glowing cube floating in the dark with three distinct streams flowing into it — a ribbon of light, a rippling sound wave, and a folded sheet of paper — converging into the cube, focal in the upper area, calm empty space below",
-      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/02_context.png",
+      "background_asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/02_context.png",
       "asset_status": "generated",
       "cta": "",
       "notes": ""
@@ -96,7 +96,7 @@
       "subline": "Great for reading media. Not a FLUX or a voice model.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a wide funnel in the dark swallowing a photograph, a sound wave, and a page from above while only a single thin ribbon of light trickles out the bottom, many things in and one thing out, dark, lower third clear",
-      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/03_risk.png",
+      "background_asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/03_risk.png",
       "asset_status": "generated",
       "cta": "",
       "notes": ""
@@ -109,7 +109,7 @@
       "subline": "No separate vision/audio encoders — leaner, and you fine-tune it in one pass.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "small mosaic tiles and sound-wave fragments streaming on a clean unobstructed path straight into one glowing core, no gates or boxes in between, smooth and direct, dark, focal in the upper area",
-      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/04_mechanism.png",
+      "background_asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/04_mechanism.png",
       "asset_status": "generated",
       "cta": "",
       "notes": ""
@@ -122,7 +122,7 @@
       "subline": "Vendor numbers are a starting point, not your workload.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single gleaming trophy on a tall pedestal under one bright spotlight while the ground all around it stays dark and untested, a staged spotlight, dark, lower third clear",
-      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/05_failure-point.png",
+      "background_asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/05_failure-point.png",
       "asset_status": "generated",
       "cta": "",
       "notes": ""
@@ -135,7 +135,7 @@
       "subline": "Open weights — fine-tune it on your own data.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a small glowing cube being connected to an ordinary laptop by a bright cable of light, the power settling onto the local machine, warm and approachable, calm and orderly, dark, empty lower third",
-      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/06_defense.png",
+      "background_asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/06_defense.png",
       "asset_status": "generated",
       "cta": "",
       "notes": ""
@@ -148,7 +148,7 @@
       "subline": "Open, offline, yours.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a warm glowing orb of light cupped safely inside two open hands above a closed laptop, contained and local, the center kept calm and open, dark",
-      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/07_takeaway.png",
+      "background_asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/07_takeaway.png",
       "asset_status": "generated",
       "cta": "",
       "notes": ""
@@ -161,7 +161,7 @@
       "subline": "Save this for your next build.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "an open laptop glowing softly in a dark room with a single warm question-mark shape of light rising from the screen, generous empty space, minimal and clean",
-      "background_asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/08_cta.png",
+      "background_asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/08_cta.png",
       "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "notes": ""
@@ -220,7 +220,7 @@
   ],
   "asset_licenses": [
     {
-      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/01_cover.png",
+      "asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/01_cover.png",
       "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -228,7 +228,7 @@
       "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/02_context.png",
+      "asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/02_context.png",
       "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -236,7 +236,7 @@
       "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/03_risk.png",
+      "asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/03_risk.png",
       "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -244,7 +244,7 @@
       "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/04_mechanism.png",
+      "asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/04_mechanism.png",
       "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -252,7 +252,7 @@
       "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/05_failure-point.png",
+      "asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/05_failure-point.png",
       "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -260,7 +260,7 @@
       "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/06_defense.png",
+      "asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/06_defense.png",
       "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -268,7 +268,7 @@
       "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/07_takeaway.png",
+      "asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/07_takeaway.png",
       "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -276,7 +276,7 @@
       "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
     },
     {
-      "asset": "/backgrounds/2026-06-08_gemma4-12b-local-ai/08_cta.png",
+      "asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/08_cta.png",
       "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
       "commercial_use_allowed": true,
@@ -288,11 +288,11 @@
     "enabled": true,
     "duration_seconds": 34,
     "fps": 30,
-    "export_name": "2026-06-08_gemma4-12b-local-ai_reel.mp4",
+    "export_name": "2026-06-04_gemma4-12b-local-ai_reel.mp4",
     "caption_mode": "highlight",
     "audio": {
       "voice_mode": "voxcpm2",
-      "voice_file": "/audio/2026-06-08_gemma4-12b-local-ai/voice.wav",
+      "voice_file": "/audio/2026-06-04_gemma4-12b-local-ai/voice.wav",
       "voice_gain_db": 0,
       "music_mode": "none",
       "music_gain_db": -18
