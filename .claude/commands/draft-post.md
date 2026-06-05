@@ -26,7 +26,7 @@ You are producing one complete AI-in-cybersecurity post for this repo, end to en
 - If you can't verify a claim, soften it ("could", "reported", "the risk is") and tag it `scenario`.
 
 ## Steps
-1. **Invoke the content skill** `ai-cybersecurity-ugc-carousel` to design the post: a defensible cover hook, the slide arc (default 8: cover, context, risk, mechanism, failure_point, defense, takeaway, cta; with `slides=N`, keep `cover` first + `cta` last + `takeaway` at slide N−1, and fill the N−2 middle slides from the named roles then generic `point` body slides), caption, hashtags, and a specific comment question — in the house voice (sharp, practical, no fake panic — see `pipeline/content/VOICE_AND_TONE_GUIDE.md`).
+1. **Invoke the content skill** `ai-cybersecurity-ugc-carousel` to design the post: a defensible cover hook, the slide arc (default 8: cover, context, risk, mechanism, failure_point, defense, takeaway, cta; with `slides=N`, keep `cover` first + `cta` last + `takeaway` at slide N−1, and fill the N−2 middle slides from the named roles then generic `point` body slides), caption, a bracketed topic list (NOT hashtags — plain topics, stored in the `hashtags` field, rendered as `[topic1, topic2, …]`), and a specific comment question — in the house voice (sharp, practical, no fake panic — see `pipeline/content/VOICE_AND_TONE_GUIDE.md`).
 2. **Research sources (deeper — a loop, not one search).**
    1. **Landscape scan** — a broad WebSearch first to map the claim space *and the strongest counter-arguments* before committing to an angle.
    2. **Gather primaries** — WebFetch the best sources; prefer OWASP, NCSC/NIST/CISA, CVE/NVD, vendor security blogs, named journalism, court filings.

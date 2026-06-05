@@ -199,7 +199,8 @@ const post = {
   },
   slides,
   caption: "TODO: hook restated · what happened · why it matters · defender takeaway · question.\n\nFollow for AI security breakdowns without the fake panic.",
-  hashtags: ["#Cybersecurity", "#InfoSec", "#AISecurity"],
+  // Topics (NOT hashtags) — rendered as a bracketed list in caption.txt; no '#', no 5-tag cap.
+  hashtags: ["AI security", "cybersecurity", "threat intel"],
   comment_prompt: "TODO: a specific, easy-to-answer question.",
   alt_text: slides.map((s) => `Slide ${s.slide} (${s.role}): TODO accessible description.`),
   sources: [

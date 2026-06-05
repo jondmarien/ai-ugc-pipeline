@@ -143,7 +143,7 @@
     }
   ],
   "caption": "Short caption goes here. Use the pipeline caption style and do not add unsupported facts.",
-  "hashtags": ["#AI", "#Cybersecurity", "#InfoSec"],
+  "hashtags": ["AI security", "cybersecurity", "threat intel"],
   "comment_prompt": "What would you update in your phishing training first?",
   "alt_text": [
     "Slide 1: Dark cyber-themed cover with headline about AI phishing changing security awareness training.",
