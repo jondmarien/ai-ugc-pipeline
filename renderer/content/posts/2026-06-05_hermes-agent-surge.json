@@ -1,0 +1,369 @@
+{
+  "post_id": "2026-06-05_hermes-agent-surge",
+  "date": "2026-06-05",
+  "slug": "hermes-agent-surge",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "myth_busting",
+  "theme": "ai",
+  "audience": "developers, AI-curious practitioners, security teams",
+  "core_claim": "Hermes Agent — Nous Research's open-source (MIT), self-hosted autonomous agent — is exploding in popularity because of a self-improving learning loop that turns your tasks into reusable skills it curates over time; it's genuinely powerful, but an always-on agent with a terminal and your keys is a new surface to scope, not fear.",
+  "claim_tags": [
+    "verified",
+    "emerging"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 4,
+    "novelty": 5,
+    "visual_drama": 3,
+    "defender_usefulness": 4,
+    "total": 21
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "myth_busting",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-05_hermes-agent-surge",
+    "filename_prefix": "2026-06-05_hermes-agent-surge",
+    "expected_files": [
+      "2026-06-05_hermes-agent-surge_01_cover.png",
+      "2026-06-05_hermes-agent-surge_02_context.png",
+      "2026-06-05_hermes-agent-surge_03_risk.png",
+      "2026-06-05_hermes-agent-surge_04_mechanism.png",
+      "2026-06-05_hermes-agent-surge_05_failure-point.png",
+      "2026-06-05_hermes-agent-surge_06_defense.png",
+      "2026-06-05_hermes-agent-surge_07_point.png",
+      "2026-06-05_hermes-agent-surge_08_point.png",
+      "2026-06-05_hermes-agent-surge_09_takeaway.png",
+      "2026-06-05_hermes-agent-surge_10_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "OPEN SOURCE · AI AGENTS",
+      "on_slide_copy": "THE AGENT THAT WRITES ITS OWN SKILLS IS EATING GITHUB",
+      "subline": "Hermes Agent: launch to most-used agent in the world in ~90 days.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a small winged metal messenger statue standing on a tall stone plinth in the dark, its outstretched wings catching the light, while a stream of tiny luminous moths spirals up toward it from below, cinematic rim light, strong empty space in the lower half",
+      "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": ""
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT IT IS",
+      "on_slide_copy": "An open-source agent that lives on your server and learns as it works.",
+      "subline": "Built by Nous Research. MIT-licensed. Your hardware, your data, no lock-in.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a lone tall server tower standing like a monolith in a quiet dark room, a soft pulse of light climbing its front face like a slow heartbeat, a sense of something living settled inside it, dark, lower third kept clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "THE SURGE",
+      "on_slide_copy": "Launched Feb 25. Past 180,000 GitHub stars and ~1,000 contributors since.",
+      "subline": "Reportedly the most-used agent on OpenRouter — go check the live numbers.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a vast dark night sky where thousands of small star-points are igniting in a steep rising sweep from a single bright origin near the bottom, a constellation filling fast, focal in the upper area, calm empty space below",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "THE SPECIAL SAUCE",
+      "on_slide_copy": "It reads your work, writes a reusable skill, and reuses it next time.",
+      "subline": "A closed learning loop — it curates skills from your conversations and gets sharper the longer it runs.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a small winged automaton working at an anvil in a dark workshop, hammering a glowing hand-tool into shape and hanging it on a wall already lined with neat rows of finished tools, a workshop that keeps adding to itself, focal in the upper area, lower third kept clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "THE SECURITY REALITY",
+      "on_slide_copy": "It's an always-on agent with a terminal, web access, and your API keys.",
+      "subline": "A powerful new surface — not a reason to panic, a reason to scope it.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a heavy iron vault door standing wide open in a dark stone wall, light and a loose tangle of cords spilling out across the floor, the entrance left unguarded, tense atmosphere, dark, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "SCOPE IT",
+      "on_slide_copy": "Run it in a sandbox. Give it least-privilege keys. Log what it touches.",
+      "subline": "And treat shared community skills like untrusted code — skills execute.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a small thriving miniature garden growing under a sealed glass dome on a workbench, a single small controlled vent on the dome, the world beyond the glass kept dark, calm and orderly, empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "point",
+      "kicker": "READ THE FINE PRINT",
+      "on_slide_copy": "'Self-improving' means it curates skill files — not rewriting its own brain.",
+      "subline": "The continuous learning is real and useful. Just not the sci-fi version.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a figure in the dark carefully sorting a tall stack of engraved stone tablets by lamplight, keeping some and setting others aside, separating the genuine from the embellished, center kept calm, dark",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "point",
+      "kicker": "THE SHIFT",
+      "on_slide_copy": "A capable, persistent agent now runs on your own box — swap any model.",
+      "subline": "Local data, no cloud lock-in, every line open to inspect and fork.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single warmly lit workshop glowing through one window of an otherwise dark house seen from outside at night, the whole quiet operation living at home, dark, generous empty space in the lower half",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 9,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "The win isn't 'AI that thinks.' It's an agent you own and can contain.",
+      "subline": "Hype with receipts. Power with a sandbox.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "the small winged messenger automaton now perched calmly inside a sealed glass dome, wings folded and at rest, contained and content, deep negative space around it, center dark and open with light only along the edges",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 10,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Would you give an autonomous agent your terminal if it never left your machine?",
+      "subline": "Save this before your team installs it.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single empty anvil in a dark workshop with a hammer resting on it and a faint glow waiting in the air above, an invitation to begin, generous empty negative space",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "An open-source AI agent quietly became one of the most-used agents in the world, and outside dev circles almost nobody noticed.\n\nHermes Agent, from Nous Research, launched February 25 and has blown past 180,000 GitHub stars since — MIT-licensed, running on your own box. The hook is the learning loop: finish a hard task and it writes a reusable skill from the conversation, then loads that skill next time instead of relearning. It keeps curating those skills as you go, so it gets sharper the longer you use it. That's the genuinely cool part.\n\nHere's the part I keep flagging. This is an always-on agent with a terminal, web access, and your API keys. That's a real new surface, not a reason to panic. Run it in one of its sandbox backends, give it least-privilege keys, log what it touches, and treat community-shared skills like untrusted code — because skills execute.\n\nAnd 'self-improving' isn't the sci-fi version. It curates skill files; it doesn't rewrite its own brain. Useful and real, minus the hype.\n\nWould you hand an autonomous agent your terminal if it never left your machine?\n\nSave this before your team installs it. Follow for AI security without the fake panic.",
+  "hashtags": [
+    "Hermes Agent",
+    "Nous Research",
+    "AI agents",
+    "open source AI",
+    "self-hosted AI",
+    "autonomous agents",
+    "agent security",
+    "self-improving AI",
+    "agentic AI",
+    "LLM tooling",
+    "AI infrastructure",
+    "developer tools"
+  ],
+  "comment_prompt": "Would you trust an autonomous agent with your terminal if it stayed fully on your machine — yes with a sandbox, or no?",
+  "alt_text": [
+    "Slide 1 (cover): a server box in the dark with a glowing orb orbiting it; headline reads that the agent which writes its own skills is eating GitHub.",
+    "Slide 2 (context): a glowing cube on a desk with roots of light spreading out; text says an open-source agent that lives on your server and learns as it works.",
+    "Slide 3 (the surge): a steep arc of light climbing almost vertically; text says launched Feb 25, past 180,000 GitHub stars and about 1,000 contributors.",
+    "Slide 4 (the special sauce): a glowing loop pressing tools into skill tablets onto a growing stack; text says it reads your work, writes a reusable skill, and reuses it next time.",
+    "Slide 5 (security reality): an open glowing doorway with keys and cables spilling out; text says it's an always-on agent with a terminal, web access, and your API keys.",
+    "Slide 6 (scope it): a glowing cube sealed in a reinforced container with one controlled gate; text says run it in a sandbox, give it least-privilege keys, log what it touches.",
+    "Slide 7 (fine print): a magnifying glass over an engraved glowing tablet; text says self-improving means it curates skill files, not rewriting its own brain.",
+    "Slide 8 (the shift): a glowing cube cabled into a home workstation; text says a capable persistent agent now runs on your own box and you can swap any model.",
+    "Slide 9 (takeaway): a calm hand resting on a glowing contained cube; text says the win is an agent you own and can contain.",
+    "Slide 10 (CTA): a glowing arrow and question mark over a dark desk; text asks whether you'd give an autonomous agent your terminal if it never left your machine."
+  ],
+  "sources": [
+    {
+      "source": "Nous Research — Hermes Agent (GitHub repository)",
+      "link": "https://github.com/NousResearch/hermes-agent",
+      "supports": "MIT license; self-hosted self-improving agent with a learning loop that writes/curates reusable skills; messaging platforms; sandbox execution backends; model-agnostic; 180,000+ GitHub stars; v0.15.x.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "Hermes Agent — official site (Nous Research)",
+      "link": "https://hermes-agent.nousresearch.com/",
+      "supports": "'The agent that grows with you'; persistent memory and auto-generated skills; sandbox backends with container hardening and namespace isolation; positioned against IDE copilots and chatbot wrappers; runs on your own server.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "NVIDIA Blog — Hermes self-improving agents on RTX PCs and DGX Spark",
+      "link": "https://blogs.nvidia.com/blog/rtx-ai-garage-hermes-agent-dgx-spark/",
+      "supports": "Learning loop: 'Hermes writes and refines its own skills... saves its learnings as a skill so it can adapt and improve over time'; built to run locally on-device.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "The Decoder — Nous Research releases Hermes Desktop",
+      "link": "https://the-decoder.com/nous-research-releases-hermes-desktop-an-open-source-ai-agent-for-every-platform/",
+      "supports": "Open-source MIT agent across messaging platforms; persistent memory, sub-agents with terminals, sandboxed execution backends; Hermes Desktop public preview (June 2026).",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "TechTimes — Hermes Agent dethrones OpenClaw on OpenRouter",
+      "link": "https://www.techtimes.com/articles/316694/20260515/nous-researchs-hermes-agent-dethrones-openclaw-worlds-most-used-open-source-ai-agent.htm",
+      "supports": "Reportedly became the most-used agent on OpenRouter's daily inference ranking in May 2026 (usage/ranking claim — verify live).",
+      "confidence": "medium",
+      "claim_tag": "emerging"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 33,
+    "fps": 30,
+    "export_name": "2026-06-05_hermes-agent-surge_reel.mp4",
+    "caption_mode": "block",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-05_hermes-agent-surge/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 7,
+        "text": "An open-source AI agent just became one of the most-used agents in the world."
+      },
+      {
+        "start": 7,
+        "end": 14,
+        "text": "Hermes Agent. Launched in February, already past a hundred and eighty thousand GitHub stars."
+      },
+      {
+        "start": 14,
+        "end": 22,
+        "text": "Its trick: it turns your tasks into reusable skills and gets sharper the longer it runs."
+      },
+      {
+        "start": 22,
+        "end": 28,
+        "text": "But it's an always-on agent with a terminal and your keys, so sandbox it and scope the keys."
+      },
+      {
+        "start": 28,
+        "end": 33,
+        "text": "Would you give an agent your terminal if it never left your machine?"
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 7,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "An open-source agent just became one of the most-used agents in the world."
+      },
+      {
+        "start": 7,
+        "end": 14,
+        "slide_ref": 3,
+        "purpose": "surge",
+        "motion": "parallax",
+        "caption": "Launched in February. Already past 180,000 GitHub stars."
+      },
+      {
+        "start": 14,
+        "end": 22,
+        "slide_ref": 4,
+        "purpose": "mechanism",
+        "motion": "slow push-in",
+        "caption": "Its trick: it turns your tasks into reusable skills and compounds over time."
+      },
+      {
+        "start": 22,
+        "end": 28,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "static high contrast",
+        "caption": "Always-on, with a terminal and your keys — so sandbox it and scope the keys."
+      },
+      {
+        "start": 28,
+        "end": 33,
+        "slide_ref": 10,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Would you give an agent your terminal if it never left your machine?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}
