@@ -72,8 +72,8 @@
       "subline": "Hermes Agent: launch to most-used agent in the world in ~90 days.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a small winged metal messenger statue standing on a tall stone plinth in the dark, its outstretched wings catching the light, while a stream of tiny luminous moths spirals up toward it from below, cinematic rim light, strong empty space in the lower half",
-      "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge_cover.png",
-      "asset_status": "needed",
+      "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/01_cover.png",
+      "asset_status": "generated",
       "cta": "SWIPE →",
       "notes": ""
     },
@@ -85,8 +85,8 @@
       "subline": "Built by Nous Research. MIT-licensed. Your hardware, your data, no lock-in.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a lone tall server tower standing like a monolith in a quiet dark room, a soft pulse of light climbing its front face like a slow heartbeat, a sense of something living settled inside it, dark, lower third kept clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/02_context.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -98,8 +98,8 @@
       "subline": "Reportedly the most-used agent on OpenRouter — go check the live numbers.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a vast dark night sky where thousands of small star-points are igniting in a steep rising sweep from a single bright origin near the bottom, a constellation filling fast, focal in the upper area, calm empty space below",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/03_risk.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -111,8 +111,8 @@
       "subline": "A closed learning loop — it curates skills from your conversations and gets sharper the longer it runs.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a small winged automaton working at an anvil in a dark workshop, hammering a glowing hand-tool into shape and hanging it on a wall already lined with neat rows of finished tools, a workshop that keeps adding to itself, focal in the upper area, lower third kept clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/04_mechanism.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -124,8 +124,8 @@
       "subline": "A powerful new surface — not a reason to panic, a reason to scope it.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a heavy iron vault door standing wide open in a dark stone wall, light and a loose tangle of cords spilling out across the floor, the entrance left unguarded, tense atmosphere, dark, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/05_failure-point.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -137,8 +137,8 @@
       "subline": "And treat shared community skills like untrusted code — skills execute.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a small thriving miniature garden growing under a sealed glass dome on a workbench, a single small controlled vent on the dome, the world beyond the glass kept dark, calm and orderly, empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/06_defense.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -150,8 +150,8 @@
       "subline": "The continuous learning is real and useful. Just not the sci-fi version.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a figure in the dark carefully sorting a tall stack of engraved stone tablets by lamplight, keeping some and setting others aside, separating the genuine from the embellished, center kept calm, dark",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/07_point.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -163,8 +163,8 @@
       "subline": "Local data, no cloud lock-in, every line open to inspect and fork.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single warmly lit workshop glowing through one window of an otherwise dark house seen from outside at night, the whole quiet operation living at home, dark, generous empty space in the lower half",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/08_point.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -176,8 +176,8 @@
       "subline": "Hype with receipts. Power with a sandbox.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "the small winged messenger automaton now perched calmly inside a sealed glass dome, wings folded and at rest, contained and content, deep negative space around it, center dark and open with light only along the edges",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/09_takeaway.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -189,8 +189,8 @@
       "subline": "Save this before your team installs it.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single empty anvil in a dark workshop with a hammer resting on it and a faint glow waiting in the air above, an invitation to begin, generous empty negative space",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/10_cta.png",
+      "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "notes": ""
     }
@@ -260,7 +260,88 @@
       "claim_tag": "emerging"
     }
   ],
-  "asset_licenses": [],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-05_hermes-agent-surge/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-05_hermes-agent-surge/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-05_hermes-agent-surge/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-05_hermes-agent-surge/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-05_hermes-agent-surge/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-05_hermes-agent-surge/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-05_hermes-agent-surge/07_point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-05_hermes-agent-surge/08_point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-05_hermes-agent-surge/09_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-05_hermes-agent-surge/10_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
   "video": {
     "enabled": true,
     "duration_seconds": 33,
@@ -346,7 +427,475 @@
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
     "sfx": [],
-    "licenses": []
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.18,
+        "text": "An open -source AI agent just became",
+        "words": [
+          {
+            "text": "An",
+            "start": 0.0,
+            "end": 0.14
+          },
+          {
+            "text": "open",
+            "start": 0.14,
+            "end": 0.3
+          },
+          {
+            "text": "-source",
+            "start": 0.3,
+            "end": 0.68
+          },
+          {
+            "text": "AI",
+            "start": 0.68,
+            "end": 1.06
+          },
+          {
+            "text": "agent",
+            "start": 1.06,
+            "end": 1.6
+          },
+          {
+            "text": "just",
+            "start": 1.6,
+            "end": 1.88
+          },
+          {
+            "text": "became",
+            "start": 1.88,
+            "end": 2.18
+          }
+        ]
+      },
+      {
+        "start": 2.18,
+        "end": 3.96,
+        "text": "one of the most used agents in",
+        "words": [
+          {
+            "text": "one",
+            "start": 2.18,
+            "end": 2.56
+          },
+          {
+            "text": "of",
+            "start": 2.56,
+            "end": 2.66
+          },
+          {
+            "text": "the",
+            "start": 2.66,
+            "end": 2.78
+          },
+          {
+            "text": "most",
+            "start": 2.78,
+            "end": 3.02
+          },
+          {
+            "text": "used",
+            "start": 3.02,
+            "end": 3.34
+          },
+          {
+            "text": "agents",
+            "start": 3.34,
+            "end": 3.7
+          },
+          {
+            "text": "in",
+            "start": 3.7,
+            "end": 3.96
+          }
+        ]
+      },
+      {
+        "start": 3.96,
+        "end": 4.32,
+        "text": "the world,",
+        "words": [
+          {
+            "text": "the",
+            "start": 3.96,
+            "end": 4.06
+          },
+          {
+            "text": "world,",
+            "start": 4.06,
+            "end": 4.32
+          }
+        ]
+      },
+      {
+        "start": 5.0,
+        "end": 5.36,
+        "text": "Hermes Agent.",
+        "words": [
+          {
+            "text": "Hermes",
+            "start": 5.0,
+            "end": 5.0
+          },
+          {
+            "text": "Agent.",
+            "start": 5.0,
+            "end": 5.36
+          }
+        ]
+      },
+      {
+        "start": 6.0,
+        "end": 9.48,
+        "text": "Launched in February, already passed 180 ,000",
+        "words": [
+          {
+            "text": "Launched",
+            "start": 6.0,
+            "end": 6.3
+          },
+          {
+            "text": "in",
+            "start": 6.3,
+            "end": 6.44
+          },
+          {
+            "text": "February,",
+            "start": 6.44,
+            "end": 6.88
+          },
+          {
+            "text": "already",
+            "start": 7.34,
+            "end": 7.64
+          },
+          {
+            "text": "passed",
+            "start": 7.64,
+            "end": 7.98
+          },
+          {
+            "text": "180",
+            "start": 7.98,
+            "end": 8.34
+          },
+          {
+            "text": ",000",
+            "start": 8.34,
+            "end": 9.48
+          }
+        ]
+      },
+      {
+        "start": 9.48,
+        "end": 11.84,
+        "text": "GitHub stars. Its trick, it turns your",
+        "words": [
+          {
+            "text": "GitHub",
+            "start": 9.48,
+            "end": 9.66
+          },
+          {
+            "text": "stars.",
+            "start": 9.66,
+            "end": 10.04
+          },
+          {
+            "text": "Its",
+            "start": 10.6,
+            "end": 10.7
+          },
+          {
+            "text": "trick,",
+            "start": 10.7,
+            "end": 10.94
+          },
+          {
+            "text": "it",
+            "start": 11.2,
+            "end": 11.4
+          },
+          {
+            "text": "turns",
+            "start": 11.4,
+            "end": 11.66
+          },
+          {
+            "text": "your",
+            "start": 11.66,
+            "end": 11.84
+          }
+        ]
+      },
+      {
+        "start": 11.84,
+        "end": 14.32,
+        "text": "tasks into reusable skills and gets sharper",
+        "words": [
+          {
+            "text": "tasks",
+            "start": 11.84,
+            "end": 12.14
+          },
+          {
+            "text": "into",
+            "start": 12.14,
+            "end": 12.58
+          },
+          {
+            "text": "reusable",
+            "start": 12.58,
+            "end": 12.88
+          },
+          {
+            "text": "skills",
+            "start": 12.88,
+            "end": 13.46
+          },
+          {
+            "text": "and",
+            "start": 13.46,
+            "end": 13.86
+          },
+          {
+            "text": "gets",
+            "start": 13.86,
+            "end": 14.0
+          },
+          {
+            "text": "sharper",
+            "start": 14.0,
+            "end": 14.32
+          }
+        ]
+      },
+      {
+        "start": 14.32,
+        "end": 16.1,
+        "text": "the longer it runs. But it's an",
+        "words": [
+          {
+            "text": "the",
+            "start": 14.32,
+            "end": 14.66
+          },
+          {
+            "text": "longer",
+            "start": 14.66,
+            "end": 14.92
+          },
+          {
+            "text": "it",
+            "start": 14.92,
+            "end": 15.12
+          },
+          {
+            "text": "runs.",
+            "start": 15.12,
+            "end": 15.34
+          },
+          {
+            "text": "But",
+            "start": 15.8,
+            "end": 15.86
+          },
+          {
+            "text": "it's",
+            "start": 15.86,
+            "end": 16.04
+          },
+          {
+            "text": "an",
+            "start": 16.04,
+            "end": 16.1
+          }
+        ]
+      },
+      {
+        "start": 16.1,
+        "end": 18.06,
+        "text": "always -on agent with a terminal and",
+        "words": [
+          {
+            "text": "always",
+            "start": 16.1,
+            "end": 16.42
+          },
+          {
+            "text": "-on",
+            "start": 16.42,
+            "end": 16.74
+          },
+          {
+            "text": "agent",
+            "start": 16.74,
+            "end": 17.08
+          },
+          {
+            "text": "with",
+            "start": 17.08,
+            "end": 17.32
+          },
+          {
+            "text": "a",
+            "start": 17.32,
+            "end": 17.4
+          },
+          {
+            "text": "terminal",
+            "start": 17.4,
+            "end": 17.7
+          },
+          {
+            "text": "and",
+            "start": 17.7,
+            "end": 18.06
+          }
+        ]
+      },
+      {
+        "start": 18.06,
+        "end": 20.14,
+        "text": "your keys, so sandbox it and scope",
+        "words": [
+          {
+            "text": "your",
+            "start": 18.06,
+            "end": 18.18
+          },
+          {
+            "text": "keys,",
+            "start": 18.18,
+            "end": 18.4
+          },
+          {
+            "text": "so",
+            "start": 18.88,
+            "end": 18.98
+          },
+          {
+            "text": "sandbox",
+            "start": 18.98,
+            "end": 19.3
+          },
+          {
+            "text": "it",
+            "start": 19.3,
+            "end": 19.74
+          },
+          {
+            "text": "and",
+            "start": 19.74,
+            "end": 19.94
+          },
+          {
+            "text": "scope",
+            "start": 19.94,
+            "end": 20.14
+          }
+        ]
+      },
+      {
+        "start": 20.14,
+        "end": 21.8,
+        "text": "the keys. Would you give an agent",
+        "words": [
+          {
+            "text": "the",
+            "start": 20.14,
+            "end": 20.38
+          },
+          {
+            "text": "keys.",
+            "start": 20.38,
+            "end": 20.58
+          },
+          {
+            "text": "Would",
+            "start": 21.1,
+            "end": 21.14
+          },
+          {
+            "text": "you",
+            "start": 21.14,
+            "end": 21.24
+          },
+          {
+            "text": "give",
+            "start": 21.24,
+            "end": 21.42
+          },
+          {
+            "text": "an",
+            "start": 21.42,
+            "end": 21.54
+          },
+          {
+            "text": "agent",
+            "start": 21.54,
+            "end": 21.8
+          }
+        ]
+      },
+      {
+        "start": 21.8,
+        "end": 23.42,
+        "text": "your terminal if it never left your",
+        "words": [
+          {
+            "text": "your",
+            "start": 21.8,
+            "end": 22.0
+          },
+          {
+            "text": "terminal",
+            "start": 22.0,
+            "end": 22.3
+          },
+          {
+            "text": "if",
+            "start": 22.3,
+            "end": 22.64
+          },
+          {
+            "text": "it",
+            "start": 22.64,
+            "end": 22.76
+          },
+          {
+            "text": "never",
+            "start": 22.76,
+            "end": 22.96
+          },
+          {
+            "text": "left",
+            "start": 22.96,
+            "end": 23.24
+          },
+          {
+            "text": "your",
+            "start": 23.24,
+            "end": 23.42
+          }
+        ]
+      },
+      {
+        "start": 23.42,
+        "end": 23.68,
+        "text": "machine?",
+        "words": [
+          {
+            "text": "machine?",
+            "start": 23.42,
+            "end": 23.68
+          }
+        ]
+      }
+    ]
   },
   "qa": {
     "fact_checked": true,
