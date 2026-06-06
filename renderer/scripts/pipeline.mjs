@@ -30,10 +30,15 @@ const argv = process.argv.slice(2);
 // that path out of the positional post-keys list so it isn't treated as another post.
 const cvIdx = argv.indexOf("--custom-voice");
 const customVoice = cvIdx >= 0 ? argv[cvIdx + 1] : null;
+const cvtIdx = argv.indexOf("--custom-voice-text");
+const customVoiceText = cvtIdx >= 0 ? argv[cvtIdx + 1] : null;
+// indices whose value is consumed by a flag (so they're NOT positional post-keys).
+// Guard with >=0 — otherwise an absent flag (indexOf -1) would exclude argv[0] (the key).
+const consumed = new Set([cvIdx, cvtIdx].filter((i) => i >= 0).map((i) => i + 1));
 const flags = new Set(argv.filter((a) => a.startsWith("--")));
-const keys = argv.filter((a, i) => !a.startsWith("--") && i !== cvIdx + 1);
+const keys = argv.filter((a, i) => !a.startsWith("--") && !consumed.has(i));
 if (!keys.length) {
-  console.error("Usage: bun run pipeline -- <post-key> [<post-key> ...] [--flux1] [--art|--no-art] [--voice=voxcpm2|voxcpm2-0.5b|bark|http|none] [--vox0.5|--vox2] [--custom-voice path.wav] [--no-voice] [--no-reel] [--no-package] [--seed=N] [--tail=N]");
+  console.error("Usage: bun run pipeline -- <post-key> [<post-key> ...] [--flux1] [--art|--no-art] [--voice=voxcpm2|voxcpm2-0.5b|bark|http|none] [--vox0.5|--vox2] [--custom-voice path.wav] [--custom-voice-text \"transcript\"] [--no-hifi] [--no-voice] [--no-reel] [--no-package] [--seed=N] [--tail=N]");
   process.exit(1);
 }
 const seedArg = [...flags].find((f) => f.startsWith("--seed="));
@@ -98,7 +103,7 @@ function runPost(key) {
 
   if (wantsVoice) {
     step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
-    step("voice (TTS)", ["voice", "--", fullKey, ...(voiceOverride ? [`--voice=${voiceOverride}`] : []), ...(customVoice ? ["--custom-voice", customVoice] : []), ...(seedArg ? [seedArg] : [])]);
+    step("voice (TTS)", ["voice", "--", fullKey, ...(voiceOverride ? [`--voice=${voiceOverride}`] : []), ...(customVoice ? ["--custom-voice", customVoice] : []), ...(customVoiceText ? ["--custom-voice-text", customVoiceText] : []), ...(flags.has("--no-hifi") ? ["--no-hifi"] : []), ...(seedArg ? [seedArg] : [])]);
     step("align (caption sync)", ["align", "--", fullKey]);
   }
 

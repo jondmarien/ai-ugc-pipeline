@@ -60,12 +60,35 @@ def find_post(key: str) -> str:
     sys.exit(f"No post JSON in {POSTS} matching '{key}'.")
 
 
+def transcribe_ref(wav_path: str):
+    """Transcribe the reference clip with faster-whisper for Hi-Fi cloning. Forced to
+    CPU/int8 so it never competes with VoxCPM for the 8 GB GPU (a ~30 s clip is quick).
+    Returns the transcript text, or None if faster-whisper isn't available / fails."""
+    try:
+        from faster_whisper import WhisperModel  # type: ignore
+    except Exception:
+        return None
+    try:
+        model = WhisperModel(os.environ.get("WHISPER_MODEL", "base.en"), device="cpu", compute_type="int8")
+        segments, _info = model.transcribe(wav_path, language="en")
+        text = " ".join(s.text.strip() for s in segments).strip()
+        return text or None
+    except Exception as e:  # pragma: no cover
+        print(f"⚠ reference transcription failed ({e}); using reference-only cloning.", file=sys.stderr)
+        return None
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("key", help="post slug / filename_prefix / path")
     ap.add_argument("--custom-voice", "--voice-ref", dest="voice_ref",
                   help="path to an AUTHORIZED reference WAV to clone (your OWN voice only). "
                        "Zero-shot: timbre comes from this clip; a seed is optional.")
+    ap.add_argument("--custom-voice-text", dest="prompt_text", default=None,
+                  help="exact transcript of the --custom-voice clip → Hi-Fi (Ultimate) cloning. "
+                       "If omitted, it's auto-transcribed with Whisper (or read from a sidecar .txt).")
+    ap.add_argument("--no-hifi", action="store_true",
+                  help="force reference-only cloning (timbre only); skip the Hi-Fi transcript path.")
     ap.add_argument(
         "--seed",
         type=int,
@@ -137,8 +160,34 @@ def main() -> None:
     # inference_timesteps: diffusion steps (4–30). Lower = faster, slightly less detail.
     # 10 is the model default; drop to ~6 to speed up on weaker GPUs (VOXCPM_TIMESTEPS).
     kwargs = {"inference_timesteps": int(os.environ.get("VOXCPM_TIMESTEPS", "10"))}
+    clone_src = None
     if args.voice_ref:
-        kwargs["reference_wav_path"] = args.voice_ref  # clone an AUTHORIZED voice only
+        kwargs["reference_wav_path"] = args.voice_ref  # timbre — clone an AUTHORIZED voice only
+        # Hi-Fi ("Ultimate") cloning: also give VoxCPM2 the EXACT transcript of the clip
+        # (reference timbre + prompt audio/text → reproduces cadence + emotion, highest
+        # similarity). Source the transcript so it always MATCHES the audio (mismatch is the
+        # #1 artifact source): explicit flag → sidecar .txt → auto-Whisper. Default ON; opt
+        # out with --no-hifi (or it silently degrades to reference-only if no transcript).
+        prompt_text = None
+        if not args.no_hifi:
+            if args.prompt_text:
+                prompt_text, clone_src = args.prompt_text.strip(), "flag"
+            else:
+                stem = os.path.splitext(args.voice_ref)[0]
+                sidecar = next((p for p in (stem + ".txt", args.voice_ref + ".txt") if os.path.exists(p)), None)
+                if sidecar:
+                    prompt_text = open(sidecar, encoding="utf-8").read().strip() or None
+                    clone_src = "sidecar" if prompt_text else None
+                else:
+                    print("Transcribing reference clip for Hi-Fi cloning (Whisper, CPU)…", file=sys.stderr)
+                    prompt_text = transcribe_ref(args.voice_ref)
+                    clone_src = "whisper" if prompt_text else None
+        if prompt_text:
+            kwargs["prompt_wav_path"] = args.voice_ref  # same clip as acoustic context
+            kwargs["prompt_text"] = prompt_text         # exact transcript → Hi-Fi mode
+            print(f"Hi-Fi cloning ON — transcript via {clone_src} ({len(prompt_text)} chars).", file=sys.stderr)
+        else:
+            print("Reference-only cloning (timbre from the clip; no transcript).", file=sys.stderr)
 
     # Seed the RNG right before generation ONLY if a seed was given — a fixed seed locks
     # the speaker (reproducible voice) but an unlucky one can stall generation. Default
@@ -155,7 +204,18 @@ def main() -> None:
     )
 
     try:
-        wav = model.generate(text=script, **kwargs)
+        try:
+            wav = model.generate(text=script, **kwargs)
+        except TypeError as te:
+            # Older voxcpm builds may not accept the Hi-Fi params — drop them, keep timbre clone.
+            if any(k in kwargs for k in ("prompt_wav_path", "prompt_text")):
+                for k in ("prompt_wav_path", "prompt_text"):
+                    kwargs.pop(k, None)
+                clone_src = None
+                print(f"⚠ Hi-Fi params unsupported by this voxcpm build ({te}); using reference-only.", file=sys.stderr)
+                wav = model.generate(text=script, **kwargs)
+            else:
+                raise
     except Exception as e:  # pragma: no cover - runtime/VRAM dependent
         msg = str(e)
         oom = any(s in msg.lower() for s in ("out of memory", "cuda", "alloc", "cublas", "cudnn"))
@@ -188,6 +248,8 @@ def main() -> None:
         "sample_rate": int(sr),
         "inference_timesteps": kwargs["inference_timesteps"],
         "voice_ref": args.voice_ref or None,
+        "clone_mode": ("hi-fi" if kwargs.get("prompt_text") else ("reference-only" if args.voice_ref else None)),
+        "prompt_text_source": clone_src,
         "script_chars": len(script),
         "generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
         "reuse_command": f"bun run pipeline -- {args.key} --seed={seed}",
