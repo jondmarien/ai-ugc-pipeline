@@ -192,3 +192,41 @@ Pin one as the first comment to drive replies:
 | Nobody is talking about this | Most teams are watching the wrong part of the risk |
 
 Active voice. Short on-slide copy. Nuance lives in the caption. Never imply certainty you can't source.
+
+---
+
+## 9. Posting Schedule Reference (from @_techy.boy carousel "When to Post for MAX REACH")
+
+> **Source:** Ingested carousel, OCR'd 2026-06-06 — see `INGESTED_CAROUSEL_POSTING_SCHEDULE.md`
+> **Use:** Inform `/draft-week` calendar weights, manual upload timing, or adapt as cybersecurity carousel
+
+### Daily Optimal Windows
+
+| Day | Time(s) | Rationale |
+|-----|---------|-----------|
+| **Monday** | 15:00, 17:00, 19:00 | Peak engagement after work hours |
+| **Tuesday** | Consistent daily slot | Consistency builds stronger reach |
+| **Wednesday** | Consistent daily slot | Mid-week scroll time is real |
+| **Thursday** | 14:00, 16:00 | Pre-weekend energy kicks in |
+| **Friday** | Before 17:00 | Post before weekend wind-down |
+| **Saturday** | 10:00, 14:00 | Morning browsers & lunch scrollers |
+| **Sunday** | Morning + Evening | Lazy morning + evening wind-down |
+
+### Cybersecurity Adaptation (Content-Specific)
+
+| Day | AI-Security Rationale | Suggested Pillar |
+|-----|----------------------|------------------|
+| **Monday** | CISOs planning week, reading threat intel | Governance / Defensive |
+| **Tuesday** | Practitioners deep in detection work | Defensive AI / Model Security |
+| **Wednesday** | Mid-week vendor evals, tool reviews | Governance / Data Leakage |
+| **Thursday** | Pre-weekend threat drops, weekend prep | Offensive AI / Myth-busting |
+| **Friday** | Before log-off, quick saves for Monday | Any (high-save CTA) |
+| **Saturday** | Founders/leaders catching up on reading | Long-form / List post |
+| **Sunday** | CISO newsletter reads, strategic planning | Governance / Myth-busting |
+
+### Integration with `/draft-week`
+
+When generating a weekly calendar, weight slots:
+- **Mon/Tue/Wed/Thu**: 2× weight (higher engagement)
+- **Fri**: 1.5× (save-heavy)
+- **Sat/Sun**: 1× (niche audience, but high-save potential)
