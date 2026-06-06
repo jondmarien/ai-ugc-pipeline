@@ -5,7 +5,7 @@ description: Create AI-in-cybersecurity UGC carousel content for Instagram, Link
 
 # AI Cybersecurity UGC Carousel Skill
 
-Use this skill to create **viral-style but technically credible** UGC carousel content about AI in cybersecurity. The style is cinematic, high-contrast, hook-driven, and swipeable, but the standard is **practitioner-grade accuracy**. Do not create fake panic, unsupported claims, exploit instructions, or fabricated numbers.
+Use this skill to create **viral-style but technically credible** UGC carousel content about AI in cybersecurity. The style is cinematic, high-contrast, hook-driven, and swipeable, but the standard is **practitioner-grade accuracy**. Do not create fake panic, unsupported claims, or fabricated numbers. Altitude is per-post: default to high-level mechanisms, but **offensive-theme posts may go deep/technical** (real tools, techniques, tradecraft) when it is educational and framed for authorized security work; never give turnkey instructions whose only purpose is indiscriminate real-world harm.
 
 ## Operating Principle
 
@@ -103,7 +103,7 @@ Use the prompt templates in `references/prompt-and-caption-templates.md` when pr
 
 Use short paragraphs. Start with a restated hook, then explain what happened, why it matters, the defender implication, and a specific comment question. End with a follow/save CTA.
 
-**Then humanize it.** Run the copy through the `humanizer` skill (and `pipeline/content/VOICE_AND_TONE_GUIDE.md`): strip AI tells (em-dash overuse, listicle cadence, "delve/leverage", "not just X but Y", voice-flat symmetry, generic CTA closes) while keeping the house voice — sharp, dry, specific, a visible stance, one voice-signal line that could only be ours. Humanizing changes *how* it reads, never *what* it claims.
+**Then run the copy chain: `humanizer` → `stop-slop` → `professional-proofreader`** (and `pipeline/content/VOICE_AND_TONE_GUIDE.md`). Strip AI tells (**NO em-dashes at all (`—`/`–`), NO sentence fragments**, listicle cadence, "delve/leverage", "not just X but Y", voice-flat symmetry, generic CTA closes) while keeping the house voice: sharp, dry, specific, a visible stance, one voice-signal line that could only be ours, complete sentences with plain punctuation. This changes *how* it reads, never *what* it claims.
 
 | Caption section | Function |
 | --- | --- |
@@ -121,7 +121,7 @@ Before final delivery, check the content against this gate.
 | Check | Required standard |
 | --- | --- |
 | Source support | Claims are sourced, qualified, or framed as scenario/opinion |
-| No exploit walkthrough | Do not provide operational abuse steps, payloads, or evasion details |
+| Altitude per post | High-level by default; offensive-theme posts MAY go deep/technical (tools, techniques, tradecraft) when educational + authorized-security-framed. No turnkey instructions whose only purpose is indiscriminate harm. |
 | No fake authority | Do not invent paper names, CVEs, benchmarks, or quotes |
 | Practitioner value | Include at least one defender takeaway |
 | Visual feasibility | Headline is short enough for a mobile cover |

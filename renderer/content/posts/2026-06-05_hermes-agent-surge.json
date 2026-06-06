@@ -95,7 +95,7 @@
       "role": "risk",
       "kicker": "THE SURGE",
       "on_slide_copy": "Launched Feb 25. Past 180,000 GitHub stars and ~1,000 contributors since.",
-      "subline": "Reportedly the most-used agent on OpenRouter — go check the live numbers.",
+      "subline": "Reportedly the most-used agent on OpenRouter, so go check the live numbers.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a vast dark night sky where thousands of small star-points are igniting in a steep rising sweep from a single bright origin near the bottom, a constellation filling fast, focal in the upper area, calm empty space below",
       "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/03_risk.png",
@@ -108,7 +108,7 @@
       "role": "mechanism",
       "kicker": "THE SPECIAL SAUCE",
       "on_slide_copy": "It reads your work, writes a reusable skill, and reuses it next time.",
-      "subline": "A closed learning loop — it curates skills from your conversations and gets sharper the longer it runs.",
+      "subline": "A closed learning loop curates skills from your conversations, so it gets sharper the longer it runs.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a small winged automaton working at an anvil in a dark workshop, hammering a glowing hand-tool into shape and hanging it on a wall already lined with neat rows of finished tools, a workshop that keeps adding to itself, focal in the upper area, lower third kept clear",
       "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/04_mechanism.png",
@@ -121,7 +121,7 @@
       "role": "failure_point",
       "kicker": "THE SECURITY REALITY",
       "on_slide_copy": "It's an always-on agent with a terminal, web access, and your API keys.",
-      "subline": "A powerful new surface — not a reason to panic, a reason to scope it.",
+      "subline": "A powerful new surface, not a reason to panic but a reason to scope it.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a heavy iron vault door standing wide open in a dark stone wall, light and a loose tangle of cords spilling out across the floor, the entrance left unguarded, tense atmosphere, dark, lower third clear",
       "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/05_failure-point.png",
@@ -134,7 +134,7 @@
       "role": "defense",
       "kicker": "SCOPE IT",
       "on_slide_copy": "Run it in a sandbox. Give it least-privilege keys. Log what it touches.",
-      "subline": "And treat shared community skills like untrusted code — skills execute.",
+      "subline": "Treat shared community skills like untrusted code, because skills execute.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a small thriving miniature garden growing under a sealed glass dome on a workbench, a single small controlled vent on the dome, the world beyond the glass kept dark, calm and orderly, empty lower third",
       "background_asset": "/backgrounds/2026-06-05_hermes-agent-surge/06_defense.png",
@@ -146,7 +146,7 @@
       "slide": 7,
       "role": "point",
       "kicker": "READ THE FINE PRINT",
-      "on_slide_copy": "'Self-improving' means it curates skill files — not rewriting its own brain.",
+      "on_slide_copy": "'Self-improving' means it curates skill files, not rewriting its own brain.",
       "subline": "The continuous learning is real and useful. Just not the sci-fi version.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a figure in the dark carefully sorting a tall stack of engraved stone tablets by lamplight, keeping some and setting others aside, separating the genuine from the embellished, center kept calm, dark",
@@ -159,7 +159,7 @@
       "slide": 8,
       "role": "point",
       "kicker": "THE SHIFT",
-      "on_slide_copy": "A capable, persistent agent now runs on your own box — swap any model.",
+      "on_slide_copy": "A capable, persistent agent now runs on your own box, and you can swap any model.",
       "subline": "Local data, no cloud lock-in, every line open to inspect and fork.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single warmly lit workshop glowing through one window of an otherwise dark house seen from outside at night, the whole quiet operation living at home, dark, generous empty space in the lower half",
@@ -195,7 +195,7 @@
       "notes": ""
     }
   ],
-  "caption": "An open-source AI agent quietly became one of the most-used agents in the world, and outside dev circles almost nobody noticed.\n\nHermes Agent, from Nous Research, launched February 25 and has blown past 180,000 GitHub stars since — MIT-licensed, running on your own box. The hook is the learning loop: finish a hard task and it writes a reusable skill from the conversation, then loads that skill next time instead of relearning. It keeps curating those skills as you go, so it gets sharper the longer you use it. That's the genuinely cool part.\n\nHere's the part I keep flagging. This is an always-on agent with a terminal, web access, and your API keys. That's a real new surface, not a reason to panic. Run it in one of its sandbox backends, give it least-privilege keys, log what it touches, and treat community-shared skills like untrusted code — because skills execute.\n\nAnd 'self-improving' isn't the sci-fi version. It curates skill files; it doesn't rewrite its own brain. Useful and real, minus the hype.\n\nWould you hand an autonomous agent your terminal if it never left your machine?\n\nSave this before your team installs it. Follow for AI security without the fake panic.",
+  "caption": "An open-source AI agent quietly became one of the most-used agents in the world, and outside dev circles almost nobody noticed.\n\nHermes Agent, from Nous Research, launched February 25 and has blown past 180,000 GitHub stars since. It's MIT-licensed and runs on your own box. The hook is the learning loop: finish a hard task and it writes a reusable skill from the conversation, then loads that skill next time instead of relearning. It keeps curating those skills as you go, so it gets sharper the longer you use it. That's the genuinely cool part.\n\nHere's the part I keep flagging. This is an always-on agent with a terminal, web access, and your API keys. That's a real new surface, not a reason to panic. Run it in one of its sandbox backends, give it least-privilege keys, log what it touches, and treat community-shared skills like untrusted code, because skills execute.\n\nAnd 'self-improving' isn't the sci-fi version. It curates skill files; it doesn't rewrite its own brain. Useful and real, minus the hype.\n\nWould you hand an autonomous agent your terminal if it never left your machine?\n\nSave this before your team installs it. Follow for AI security without the fake panic.",
   "hashtags": [
     "Hermes Agent",
     "Nous Research",
@@ -210,7 +210,7 @@
     "AI infrastructure",
     "developer tools"
   ],
-  "comment_prompt": "Would you trust an autonomous agent with your terminal if it stayed fully on your machine — yes with a sandbox, or no?",
+  "comment_prompt": "Would you trust an autonomous agent with your terminal if it stayed fully on your machine: yes with a sandbox, or no?",
   "alt_text": [
     "Slide 1 (cover): a server box in the dark with a glowing orb orbiting it; headline reads that the agent which writes its own skills is eating GitHub.",
     "Slide 2 (context): a glowing cube on a desk with roots of light spreading out; text says an open-source agent that lives on your server and learns as it works.",
@@ -413,7 +413,7 @@
         "slide_ref": 6,
         "purpose": "defense",
         "motion": "static high contrast",
-        "caption": "Always-on, with a terminal and your keys — so sandbox it and scope the keys."
+        "caption": "Always-on, with a terminal and your keys, so sandbox it and scope the keys."
       },
       {
         "start": 28,

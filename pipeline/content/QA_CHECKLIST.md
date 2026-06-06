@@ -22,11 +22,11 @@ The Stage 7 gate in [CONTENT_PIPELINE.md](CONTENT_PIPELINE.md). **A post may not
 
 | # | Check | Pass condition |
 | --- | --- | --- |
-| 2.1 | No exploit walkthrough | No payloads, exploit chains, working injection strings, or step-by-step attack instructions |
-| 2.2 | No evasion guidance | No detection-evasion, AV/EDR bypass, or anti-forensics how-to |
-| 2.3 | No credential/MFA-bypass flow | No operational account-takeover or MFA-defeat steps |
-| 2.4 | Defense paired with mechanism | Any mechanism slide is immediately paired with mitigation/defensive context |
-| 2.5 | No malware enablement | No malware build/deploy instructions |
+| 2.1 | Altitude is intentional | High-level by default, but **offensive-theme posts MAY go deep/technical** (name real tools, techniques, tradecraft) when it's genuinely educational and framed for authorized security work. Not every post must be high-level. |
+| 2.2 | Authorized / educational framing | Offensive depth is framed for defenders, authorized red-team, or research — not "go attack <specific victim>". |
+| 2.3 | No indiscriminate-harm turnkey | No copy whose only purpose is enabling mass/indiscriminate real-world harm (ready-to-run malware kits, credential-theft steps against arbitrary victims). |
+| 2.4 | Defender takeaway present | Every post still carries a concrete defensive takeaway. |
+| 2.5 | No fabrication | No invented capabilities, CVEs, tool features, or stats. |
 
 ---
 
@@ -72,7 +72,7 @@ The Stage 7 gate in [CONTENT_PIPELINE.md](CONTENT_PIPELINE.md). **A post may not
 | 6.4 | Filenames | Ordered, convention-correct (`YYYY-MM-DD_slug_NN_role.png`) |
 | 6.5 | De-AI scan | Copy passes the humanizer audit / [VOICE_AND_TONE_GUIDE.md](VOICE_AND_TONE_GUIDE.md) pre-publish scan — em-dash overuse, listicle cadence, AI vocab, voice-flat symmetry removed; ≥1 voice-signal line |
 | 6.5a | De-slop | `stop-slop` pass clean: no throat-clearing/filler/AI-jargon/vague declarations across caption, narration, on_slide_copy, alt_text; active voice; score ≥35/50 (directness/rhythm/trust/authenticity/density) |
-| 6.5b | Proofread | `professional-proofreader` pass clean: correct grammar/spelling/punctuation/syntax; **every line is a complete spoken sentence with substance** (not a telegraphic fragment); narration flows as connected speech. Dash hygiene: hyphenated compounds glued (`first-ever`), **no spaced dashes** (`word -space`), **no em-dashes in narration**, no word split across two caption lines |
+| 6.5b | Proofread | `professional-proofreader` pass clean: correct grammar/spelling/punctuation/syntax; **every line is a complete spoken sentence with substance** (not a telegraphic fragment); narration flows as connected speech. Dash hygiene: hyphenated compounds glued (`first-ever`), **no spaced dashes** (`word -space`), **NO em-dashes anywhere** (`—`/`–`, every surface), **NO sentence fragments** (complete sentences only), no word split across two caption lines |
 | 6.6 | CTA + question | One clear CTA and one specific comment question |
 | **6.7** | **Hook strength** | **Slide 1 contradicts a common belief in ≤1s (not a generic fact)** |
 | **6.8** | **Value density** | **Slide 7 = non-obvious + tactical (saveable), not common knowledge** |

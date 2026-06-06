@@ -89,7 +89,7 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT MATTERS",
-      "on_slide_copy": "It can live in web pages, emails, documents, images — anywhere the agent reads.",
+      "on_slide_copy": "It can live in web pages, emails, documents, or images, anywhere the agent reads.",
       "subline": "Untrusted content becomes untrusted instructions.",
       "asset_status": "generated",
       "visual_prompt": "A glowing robotic head in the dark loosely encircled at a distance by a few floating everyday objects, an open book, a sealed envelope, a framed photograph and a folded sheet of paper, each trailing one faint glowing thread of light toward the head, focal in the upper area, empty space below",
@@ -147,7 +147,7 @@
       "background_asset": "/backgrounds/2026-06-03_prompt-injection-agents/08_cta.png"
     }
   ],
-  "caption": "The weirdest AI attack doesn't get typed into the chat box. It hides in the content your AI agent reads.\n\nThat's indirect prompt injection: instructions tucked into a web page, email, document, or image that the model treats as commands. OWASP's Top 10 for LLM Applications lists prompt injection, sensitive-information disclosure, and excessive agency as core risks — and the danger spikes the moment your agent can act (send mail, read files, call APIs) on what it just read.\n\nDefender move: isolate untrusted content from privileged tools, scope agent permissions to the minimum, log every action, and require human confirmation for sensitive steps.\n\nIf your agent summarizes a random webpage, should it also be allowed to email your team? Where would you draw that line?\n\nFollow for AI security breakdowns without the fake panic.",
+  "caption": "The weirdest AI attack doesn't get typed into the chat box. It hides in the content your AI agent reads.\n\nThat's indirect prompt injection: instructions tucked into a web page, email, document, or image that the model treats as commands. OWASP's Top 10 for LLM Applications lists prompt injection, sensitive-information disclosure, and excessive agency as core risks. The danger spikes the moment your agent can act on what it just read, whether that's sending mail, reading files, or calling APIs.\n\nDefender move: isolate untrusted content from privileged tools, scope agent permissions to the minimum, log every action, and require human confirmation for sensitive steps.\n\nIf your agent summarizes a random webpage, should it also be allowed to email your team? Where would you draw that line?\n\nFollow for AI security breakdowns without the fake panic.",
   "hashtags": [
     "#Cybersecurity",
     "#AISecurity",
@@ -162,7 +162,7 @@
     "Slide 1: Dark cinematic cover, an AI browser agent reading a page with hidden instruction shadows, headline about the weirdest AI attack hiding where your agent reads.",
     "Slide 2: Context slide contrasting direct prompt injection (user manipulates the model) with indirect (the content does).",
     "Slide 3: Risk slide listing where injected instructions can live: web pages, emails, documents, images.",
-    "Slide 4: Mechanism slide noting the risk spikes when the AI can act — send email, read files, call APIs.",
+    "Slide 4: Mechanism slide noting the risk spikes when the AI can act, like sending email, reading files, or calling APIs.",
     "Slide 5: Failure-point slide referencing the OWASP pattern: prompt injection, sensitive disclosure, excessive agency.",
     "Slide 6: Defense slide: isolate untrusted content, limit tools, log actions, confirm sensitive steps.",
     "Slide 7: Takeaway slide: treat external content like user input wearing a costume.",
