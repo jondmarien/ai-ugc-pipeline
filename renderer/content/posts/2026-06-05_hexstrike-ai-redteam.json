@@ -79,7 +79,7 @@
       "slide": 2,
       "role": "context",
       "kicker": "WHAT CHANGED",
-      "on_slide_copy": "HexStrike AI v6.0 bridges LLMs to 127 security tools via MCP — nmap, nuclei, sqlmap, bloodhound, plus BOAZ's 77 process injection loaders and 12 encoding schemes.",
+      "on_slide_copy": "HexStrike AI v6.0 bridges LLMs to 127 security tools via MCP: nmap, nuclei, sqlmap, bloodhound, plus BOAZ's 77 process injection loaders and 12 encoding schemes.",
       "subline": "The fork (v6.0) adds BOAZ integration and 6 AI client adapters.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a terminal split pane showing an AI prompt on the left and a cascade of tool output on the right — nmap scan results feeding into nuclei templates, dark editorial style, bottom area clear for text",
@@ -118,7 +118,7 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "WHERE TEAMS FAIL",
-      "on_slide_copy": "Static signatures miss BOAZ's polymorphic output. Behavioral rules don't catch threadless injection or VEH/VCH execution guards. Most EDRs still rely on API hooks that Halo's Gate and syscall stubs bypass. Detection assumes human-paced tool chains — not AI-orchestrated parallel execution.",
+      "on_slide_copy": "Static signatures miss BOAZ's polymorphic output. Behavioral rules don't catch threadless injection or VEH/VCH execution guards. Most EDRs still rely on API hooks that Halo's Gate and syscall stubs bypass. Detection assumes human-paced tool chains, not AI-orchestrated parallel execution.",
       "subline": "Defenses built for manual red teams don't match AI velocity.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a SOC analyst overwhelmed by a flood of alerts — traditional detection rules lighting up individually while a coordinated AI-driven attack flows through the gaps, dark high-contrast, tension in the composition",
@@ -131,8 +131,8 @@
       "slide": 6,
       "role": "defense",
       "kicker": "DEFENSIVE MOVE",
-      "on_slide_copy": "Deploy API monitoring on MCP servers — log every tool call with agent identity. Hunt for BOAZ artifacts: entropy anomalies, LLVM-obfuscated binaries, known loader stubs (Ninja, Sifu, Halo's Gate). Enforce LLM tool-use policies: approval gates for payload generation, rate limits on tool chains. Test your EDR against BOAZ loaders in a lab — if it catches them, you have a baseline.",
-      "subline": "Treat MCP servers like any privileged automation — audit, alert, restrict.",
+      "on_slide_copy": "Deploy API monitoring on MCP servers, and log every tool call with agent identity. Hunt for BOAZ artifacts: entropy anomalies, LLVM-obfuscated binaries, known loader stubs (Ninja, Sifu, Halo's Gate). Enforce LLM tool-use policies: approval gates for payload generation, rate limits on tool chains. Test your EDR against BOAZ loaders in a lab; if it catches them, you have a baseline.",
+      "subline": "Treat MCP servers like any privileged automation: audit, alert, and restrict.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a defensive security workflow — approval gate checkpoint, audit trail logging, policy enforcement visualization, calm orderly composition, dark editorial style",
       "background_asset": "",
@@ -167,7 +167,7 @@
       "notes": ""
     }
   ],
-  "caption": "AI agents just got the keys to 127 security tools and an EDR evasion framework.\n\nHexStrike AI v6.0 connects Claude, Cursor, Copilot, and Roo Code to nmap, nuclei, sqlmap, bloodhound — plus BOAZ's 77 process injection loaders, 12 encoding schemes, and Pluto/Akira LLVM obfuscation — all via MCP. One prompt now chains recon → vuln scan → exploitation → stealth payload delivery.\n\nThe skill floor for sophisticated red team tradecraft just collapsed. Static signatures miss polymorphic BOAZ output. Behavioral rules don't catch threadless injection or VEH/VCH execution guards. Halo's Gate and syscall stubs bypass the API hooks most EDRs still rely on.\n\nDefensive move: deploy API monitoring on your MCP servers — log every tool call with agent identity. Hunt for entropy anomalies and known loader stubs (Ninja, Sifu, Halo's Gate). Enforce LLM tool-use policies with approval gates for payload generation. Test your EDR against BOAZ loaders in a lab — if it catches them, you have a baseline.\n\nHow are you testing your detection stack against AI-orchestrated tool chains?\n\nFollow for AI security breakdowns without the fake panic.",
+  "caption": "AI agents just got the keys to 127 security tools and an EDR evasion framework.\n\nHexStrike AI v6.0 connects Claude, Cursor, Copilot, and Roo Code to nmap, nuclei, sqlmap, bloodhound, plus BOAZ's 77 process injection loaders, 12 encoding schemes, and Pluto/Akira LLVM obfuscation, all via MCP. One prompt now chains recon → vuln scan → exploitation → stealth payload delivery.\n\nThe skill floor for sophisticated red team tradecraft just collapsed. Static signatures miss polymorphic BOAZ output. Behavioral rules don't catch threadless injection or VEH/VCH execution guards. Halo's Gate and syscall stubs bypass the API hooks most EDRs still rely on.\n\nDefensive move: deploy API monitoring on your MCP servers, and log every tool call with agent identity. Hunt for entropy anomalies and known loader stubs (Ninja, Sifu, Halo's Gate). Enforce LLM tool-use policies with approval gates for payload generation. Test your EDR against BOAZ loaders in a lab; if it catches them, you have a baseline.\n\nHow are you testing your detection stack against AI-orchestrated tool chains?\n\nFollow for AI security breakdowns without the fake panic.",
   "hashtags": [
     "AI security",
     "cybersecurity",
@@ -181,11 +181,11 @@
   "alt_text": [
     "Slide 1 (cover): Security analyst facing wall of scrolling terminal output with AI agent orchestrating tool chains, red accent glow reflecting in dark glasses.",
     "Slide 2 (context): Terminal split pane showing AI prompt left side, cascade of nmap and nuclei tool output right side, dark editorial style.",
-    "Slide 3 (risk): Red team operator screen showing compressed timeline — reconnaissance, exploitation, evasion phases collapsing into single AI-orchestrated flow, tense high-contrast.",
-    "Slide 4 (mechanism): Abstract flow diagram as glowing nodes — LLM agent center connecting to tool clusters (recon, web, binary, cloud) feeding into evasion engine block, no readable code.",
-    "Slide 5 (failure_point): SOC analyst overwhelmed by flood of alerts — traditional detection rules lighting up individually while coordinated AI-driven attack flows through gaps.",
-    "Slide 6 (defense): Defensive security workflow — approval gate checkpoint, audit trail logging, policy enforcement visualization, calm orderly dark composition.",
-    "Slide 7 (takeaway): Single strong symbol — shield with hairline crack catching red light — centered in deep negative space, minimal high-contrast.",
+    "Slide 3 (risk): Red team operator screen showing a compressed timeline where reconnaissance, exploitation, and evasion phases collapse into a single AI-orchestrated flow, tense high-contrast.",
+    "Slide 4 (mechanism): Abstract flow diagram as glowing nodes, an LLM agent at center connecting to tool clusters (recon, web, binary, cloud) that feed into an evasion engine block, no readable code.",
+    "Slide 5 (failure_point): SOC analyst overwhelmed by a flood of alerts, with traditional detection rules lighting up individually while a coordinated AI-driven attack flows through the gaps.",
+    "Slide 6 (defense): Defensive security workflow showing an approval-gate checkpoint, audit-trail logging, and policy enforcement, calm orderly dark composition.",
+    "Slide 7 (takeaway): A single strong symbol, a shield with a hairline crack catching red light, centered in deep negative space, minimal high-contrast.",
     "Slide 8 (cta): Clean dark end-card with empty negative space for question and handle, premium editorial cybersecurity look."
   ],
   "sources": [
@@ -296,7 +296,7 @@
         "slide_ref": 7,
         "purpose": "takeaway",
         "motion": "static high contrast",
-        "caption": "AI-driven red teaming isn't coming — it's protocollized."
+        "caption": "AI-driven red teaming isn't coming. It's here now."
       },
       {
         "start": 21,

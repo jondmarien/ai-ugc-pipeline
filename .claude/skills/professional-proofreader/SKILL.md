@@ -24,9 +24,10 @@ A reel/caption line must be a **complete thought a human could say aloud and und
 - Narration especially must **flow as connected spoken prose** across the reel — each line should make sense after the previous one, not read as five unrelated bullet fragments.
 - Prefer concrete, plain phrasing. Explain the *why*, not just the *what*. (Still tight — this is short-form, not an essay.)
 
-## Dash hygiene (this pipeline burns captions into video — dashes must be clean)
-- **Hyphenated compounds are glued with no surrounding spaces:** `first-ever`, `AI-assisting`, `force-multiplier` — never `first -ever`, `word- space`, or `word - space`.
-- **Avoid the em-dash (—) in `video.narration[]`.** Spoken text + Whisper captions handle it badly (it becomes a lone "—" or an awkward pause). Replace narration em-dashes with a comma, period, or "and"/"but" so it reads as clean speech. (Em-dashes are fine in the written `caption`, used sparingly.)
+## Dash hygiene (this pipeline burns captions into video; dashes must be clean)
+- **Em-dashes (`—`, `–`) are BANNED everywhere** (caption, narration, on_slide_copy, subline, alt_text). Replace each with a period, comma, colon, parentheses, or "and"/"but", and restructure the sentence. No exceptions, all surfaces.
+- **No sentence fragments** anywhere: every line is a complete sentence/clause with a subject and verb.
+- **Hyphenated compounds are glued with no surrounding spaces:** `first-ever`, `AI-assisting`, `force-multiplier`; never `first -ever`, `word- space`, or `word - space`.
 - A word must **never** be split across two lines (`wor-‑ds`). The renderer enforces this with non-breaking hyphens + `hyphens:none`; your job is to not introduce stray spaced dashes in the first place.
 
 ## Workflow

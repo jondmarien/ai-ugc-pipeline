@@ -80,7 +80,7 @@
       "role": "context",
       "kicker": "WHAT IT IS",
       "on_slide_copy": "An open-source framework that lets an AI agent run 150+ security tools.",
-      "subline": "Built for authorized red teams via MCP — Claude, GPT, or Copilot as the operator.",
+      "subline": "Built for authorized red teams via MCP, with Claude, GPT, or Copilot as the operator.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a calm articulated robotic arm poised before an enormous dark wall of neatly hung mechanical hand-tools, a single bright control thread running down to it from above, an unseen operator, dark, lower third kept clear",
       "background_asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/02_context.png",
@@ -93,7 +93,7 @@
       "role": "risk",
       "kicker": "WHAT ACTUALLY HAPPENED",
       "on_slide_copy": "Hours after a Citrix zero-day dropped, attackers discussed using it to mass-exploit.",
-      "subline": "Reported on dark-web forums by Check Point — chatter, not confirmed forensics.",
+      "subline": "Reported on dark-web forums by Check Point: chatter, not confirmed forensics.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a hairline crack splitting open across a vast dark wall while a swarm of small luminous drones immediately streams through the narrow opening, fast and relentless, tense atmosphere, lower third clear",
       "background_asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/03_risk.png",
@@ -157,7 +157,7 @@
       "slide": 8,
       "role": "cta",
       "kicker": "YOUR MOVE",
-      "on_slide_copy": "How fast can your team patch an internet-facing zero-day — honestly?",
+      "on_slide_copy": "How fast can your team patch an internet-facing zero-day, honestly?",
       "subline": "Save this for your next patch-SLA review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single stopwatch held up in the dark with a finger poised on its button, the sense of a race about to begin, premium editorial look, generous empty negative space",
@@ -167,7 +167,7 @@
       "notes": ""
     }
   ],
-  "caption": "An open-source tool just let an AI agent drive 150+ hacking tools by itself — and within hours of a fresh Citrix zero-day, attackers were already talking about pointing it at the internet.\n\nThat tool is HexStrike AI (v6.0). MIT-licensed, built for authorized red teams and bug bounty work: you hand an AI agent like Claude or GPT a plain-language goal, and a decision engine picks the tools, chains recon into exploitation, and retries what fails. Genuinely useful for defenders testing their own systems.\n\nHere's the part that matters. After Citrix disclosed three NetScaler zero-days last year, Check Point Research saw threat actors on underground forums discussing HexStrike to scan and exploit them. One bug, CVE-2025-7775, scored 9.2 and had roughly 28,000 boxes exposed. Check Point estimated AI could compress exploit development from days or weeks to under ten minutes.\n\nThe honest caveat: that's forum chatter, not confirmed forensic attribution. No fake panic. But the direction is real — the gap between a disclosure and mass exploitation is collapsing.\n\nSo the takeaway isn't 'AI hacks everything.' It's that patch velocity and exposure management matter more than ever, because you get less time to apply the same fundamentals. Patch internet-facing gear first, watch threat intel on disclosure day, and tune detection for that window.\n\nHow fast can your team realistically patch an internet-facing zero-day?\n\nSave this for your next patch-SLA review. Follow for AI security without the fake panic.",
+  "caption": "An open-source tool just let an AI agent drive 150+ hacking tools by itself, and within hours of a fresh Citrix zero-day, attackers were already talking about pointing it at the internet.\n\nThat tool is HexStrike AI (v6.0). MIT-licensed, built for authorized red teams and bug bounty work: you hand an AI agent like Claude or GPT a plain-language goal, and a decision engine picks the tools, chains recon into exploitation, and retries what fails. Genuinely useful for defenders testing their own systems.\n\nHere's the part that matters. After Citrix disclosed three NetScaler zero-days last year, Check Point Research saw threat actors on underground forums discussing HexStrike to scan and exploit them. One bug, CVE-2025-7775, scored 9.2 and had roughly 28,000 boxes exposed. Check Point estimated AI could compress exploit development from days or weeks to under ten minutes.\n\nThe honest caveat: that's forum chatter, not confirmed forensic attribution. No fake panic. But the direction is real. The gap between a disclosure and mass exploitation is collapsing.\n\nSo the takeaway isn't 'AI hacks everything.' It's that patch velocity and exposure management matter more than ever, because you get less time to apply the same fundamentals. Patch internet-facing gear first, watch threat intel on disclosure day, and tune detection for that window.\n\nHow fast can your team realistically patch an internet-facing zero-day?\n\nSave this for your next patch-SLA review. Follow for AI security without the fake panic.",
   "hashtags": [
     "HexStrike AI",
     "offensive AI",
@@ -184,7 +184,7 @@
     "bug bounty",
     "Check Point Research"
   ],
-  "comment_prompt": "Honestly — what's your real patch SLA for an internet-facing zero-day: hours, days, or weeks?",
+  "comment_prompt": "Honestly, what's your real patch SLA for an internet-facing zero-day: hours, days, or weeks?",
   "alt_text": [
     "Slide 1 (cover): a robotic arm grabbing tools off a huge wall in a blur of motion; headline reads that AI just cut exploit development from weeks to minutes.",
     "Slide 2 (context): a robotic arm poised before a wall of mechanical tools with one control thread from above; text says an open-source framework lets an AI agent run 150+ security tools.",

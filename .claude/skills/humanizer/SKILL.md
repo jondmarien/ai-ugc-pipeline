@@ -17,8 +17,8 @@ In the content pipeline, this is the **humanize pass** after the caption / `narr
 
 **KEEP (this is the voice — do not sand these off):**
 - First person, direct, dry confidence. A little playful when it earns it.
-- Contractions. Fragments for punch. The occasional one-line landing ("It fits.").
-- **Em-dashes used sparingly and deliberately** — Jon's real prose uses them. The enemy is *overuse* (two+ in a short paragraph, dash-as-cheap-amplifier), not the mark itself.
+- Contractions. Short, punchy **complete** sentences (a subject and a verb) for impact.
+- Plain punctuation only: periods, commas, colons, parentheses. (Em-dashes are banned project-wide; see KILL.)
 - Concrete specifics: real numbers, tools, named systems (e.g. "28.4K requests, 0% error rate", ">90% across 109+ tests"). Specificity is the strongest human signal.
 - Security-native vocabulary, practitioner framing, no hype.
 - One emoji *maximum*, only where it genuinely fits the line (a wink, not decoration).
@@ -28,24 +28,25 @@ In the content pipeline, this is the **humanize pass** after the caption / `narr
 - **AI vocabulary** — delve, leverage, harness, unlock, navigate, foster, elevate, embark, robust, seamless, comprehensive, holistic, tapestry, realm. Use the plain word.
 - **Negative parallelism** — "It's not just X, it's Y." State Y directly. (At most once per post, only if it's doing real work.)
 - **Rule of three / forced tricolons** — "fast, cheap, and secure." Use the natural number of items.
-- **Em-dash overuse / punch-up punctuation** — replace surplus dashes with a period, comma, colon, or parenthesis. Keep the few that are deliberate.
+- **Em-dashes — BANNED entirely (hard project rule).** Never use `—` or `–` anywhere (caption, narration, on_slide_copy, subline, alt_text). Replace every one with a period, comma, colon, or parentheses, and restructure the sentence if needed.
+- **Sentence fragments — banned.** Every line is a complete sentence/clause with a subject and a verb. No telegraphic noun-piles.
 - **Listicle brain** — bullets where prose belongs; `**Header:** description` lines in a caption.
 - **Vague attribution** — "experts say", "studies show", "industry observers note". Name the source or cut it.
 - **Hedging stacks** — "could potentially possibly". Pick one.
 - **Sycophancy / chatbot residue** — "Great question!", "I hope this helps!", "Let's dive in", cutoff disclaimers.
 - **Generic CTA close** — "The future looks bright", "Stay tuned." End on a specific question or the sharpest line of the argument.
-- **Voice-flat symmetry** — every sentence the same length, fluent and forgettable. Vary rhythm (burstiness): short, then a longer one that builds, then a fragment.
+- **Voice-flat symmetry** — every sentence the same length, fluent and forgettable. Vary rhythm (burstiness): a short sentence, then a longer one that builds, then a short one. (Keep them all complete sentences.)
 - **Boldface/emoji spam, Title Case Headings, curly-quote tells.**
 
 ## Workflow (3 passes)
 
-1. **Strip** — remove the KILL patterns above. Swap AI vocab for plain words; thin out em-dashes to the deliberate ones; break any tricolon/negative-parallelism; cut filler and vague attribution.
+1. **Strip** — remove the KILL patterns above. Swap AI vocab for plain words; remove ALL em-dashes (no exceptions); turn fragments into complete sentences; break any tricolon/negative-parallelism; cut filler and vague attribution.
 2. **Re-voice** — apply `references/voice-profile.md`: vary sentence length, add at least **one voice-signal line** that could only be Jon (a specific aside, a dry call, a real number), make the stance visible, end on something specific.
 3. **Audit** — read it back cold and ask "would this obviously read as AI?" Run the pre-publish scan below. If anything trips, do one more targeted rewrite.
 
 ## Pre-publish scan (fast)
 
-- Em-dash count: only the deliberate ones survive (no 2+ in a short paragraph).
+- Em-dash count: ZERO (`—`/`–` banned everywhere). Fragments: ZERO (complete sentences only).
 - AI-vocab scan: zero from the KILL list.
 - Hook: not a symmetric two-clause "X, but Y" opener; not generic.
 - "not just X, but Y": zero or one.

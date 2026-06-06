@@ -67,7 +67,7 @@
       "role": "cover",
       "kicker": "NEW MODEL · AI",
       "on_slide_copy": "GOOGLE JUST PUT A MULTIMODAL AI ON YOUR LAPTOP",
-      "subline": "Gemma 4 12B: sees, hears, reasons — and runs offline.",
+      "subline": "Gemma 4 12B sees, hears, reasons, and runs offline.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a sleek open laptop on a dark desk with a warm glowing orb of light hovering just above the keyboard, a powerful presence living inside the machine, cinematic, strong empty space in the lower half",
       "background_asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/01_cover.png",
@@ -92,7 +92,7 @@
       "slide": 3,
       "role": "risk",
       "kicker": "THE CATCH",
-      "on_slide_copy": "It's input-only — text out. It understands images and audio; it doesn't make them.",
+      "on_slide_copy": "It's input-only, text out. It understands images and audio, but it doesn't make them.",
       "subline": "Great for reading media. Not a FLUX or a voice model.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a wide funnel in the dark swallowing a photograph, a sound wave, and a page from above while only a single thin ribbon of light trickles out the bottom, many things in and one thing out, dark, lower third clear",
@@ -106,7 +106,7 @@
       "role": "mechanism",
       "kicker": "HOW IT WORKS",
       "on_slide_copy": "Encoder-free: raw pixels and audio project straight into the model.",
-      "subline": "No separate vision/audio encoders — leaner, and you fine-tune it in one pass.",
+      "subline": "No separate vision or audio encoders, so it's leaner and you fine-tune it in one pass.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "small mosaic tiles and sound-wave fragments streaming on a clean unobstructed path straight into one glowing core, no gates or boxes in between, smooth and direct, dark, focal in the upper area",
       "background_asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/04_mechanism.png",
@@ -118,7 +118,7 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "READ THE FINE PRINT",
-      "on_slide_copy": "\"Near the 26B model\" is Google's own benchmark — verify it on your task.",
+      "on_slide_copy": "\"Near the 26B model\" is Google's own benchmark, so verify it on your task.",
       "subline": "Vendor numbers are a starting point, not your workload.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single gleaming trophy on a tall pedestal under one bright spotlight while the ground all around it stays dark and untested, a staged spotlight, dark, lower third clear",
@@ -132,7 +132,7 @@
       "role": "defense",
       "kicker": "RUN IT YOURSELF",
       "on_slide_copy": "Local and free: Ollama, LM Studio, llama.cpp, or Unsloth.",
-      "subline": "Open weights — fine-tune it on your own data.",
+      "subline": "Open weights, so fine-tune it on your own data.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a small glowing cube being connected to an ordinary laptop by a bright cable of light, the power settling onto the local machine, warm and approachable, calm and orderly, dark, empty lower third",
       "background_asset": "/backgrounds/2026-06-04_gemma4-12b-local-ai/06_defense.png",
@@ -144,7 +144,7 @@
       "slide": 7,
       "role": "takeaway",
       "kicker": "THE SHIFT",
-      "on_slide_copy": "Capable multimodal AI now [[fits on a laptop]] — and [[never leaves it]].",
+      "on_slide_copy": "Capable multimodal AI now [[fits on a laptop]], and [[never leaves it]].",
       "subline": "Open, offline, yours.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a warm glowing orb of light cupped safely inside two open hands above a closed laptop, contained and local, the center kept calm and open, dark",
@@ -167,7 +167,7 @@
       "notes": ""
     }
   ],
-  "caption": "Google just dropped Gemma 4 12B — and the headline isn't a benchmark, it's where it runs: your laptop.\n\nIt's a dense, encoder-free multimodal model — text, image, and audio go in, text comes out. \"Encoder-free\" means the raw pixels and audio project straight into the model instead of through separate vision and audio encoders, so it's leaner, lower-latency, and you can fine-tune the whole thing in one pass. Unsloth puts the 12B at roughly 8GB of VRAM in 4-bit, so it actually runs on consumer hardware, and it's Apache-2.0 — open weights you can tune on your own data.\n\nTwo honest caveats. It's input-only: it reads images and audio, it doesn't generate them — it's not a FLUX or a voice model. And the \"nears our 26B model\" line is Google's own benchmark; verify it on your task before you trust it.\n\nThe real story isn't the score. It's that capable multimodal AI now fits on a laptop and never has to touch the cloud.\n\nRun it locally with Ollama, LM Studio, llama.cpp, or Unsloth.\n\nWould you run your AI fully local if your data never left the machine?\n\nFollow for AI breakdowns without the hype.",
+  "caption": "Google just dropped Gemma 4 12B, and the headline isn't a benchmark. It's where it runs: your laptop.\n\nIt's a dense, encoder-free multimodal model. Text, image, and audio go in, and text comes out. \"Encoder-free\" means the raw pixels and audio project straight into the model instead of through separate vision and audio encoders, so it's leaner, lower-latency, and you can fine-tune the whole thing in one pass. Unsloth puts the 12B at roughly 8GB of VRAM in 4-bit, so it actually runs on consumer hardware, and it's Apache-2.0, with open weights you can tune on your own data.\n\nTwo honest caveats. It's input-only: it reads images and audio, but it doesn't generate them, so it's not a FLUX or a voice model. And the \"nears our 26B model\" line is Google's own benchmark; verify it on your task before you trust it.\n\nThe real story isn't the score. It's that capable multimodal AI now fits on a laptop and never has to touch the cloud.\n\nRun it locally with Ollama, LM Studio, llama.cpp, or Unsloth.\n\nWould you run your AI fully local if your data never left the machine?\n\nFollow for AI breakdowns without the hype.",
   "hashtags": [
     "#AI",
     "#Gemma",
@@ -180,7 +180,7 @@
   "comment_prompt": "What would you actually build with a private, offline multimodal model on your own box?",
   "alt_text": [
     "Slide 1 (cover): a sleek laptop on a dark desk with a warm glowing orb hovering above the keyboard; bold headline space below.",
-    "Slide 2 (context): a glowing cube in the dark with three streams — light, a sound wave, and a sheet of paper — flowing into it.",
+    "Slide 2 (context): a glowing cube in the dark with three streams (light, a sound wave, and a sheet of paper) flowing into it.",
     "Slide 3 (risk): a wide funnel swallowing a photo, a sound wave, and a page, with a single thin ribbon of light trickling out the bottom.",
     "Slide 4 (mechanism): mosaic tiles and sound-wave fragments streaming directly into one glowing core with nothing in between.",
     "Slide 5 (failure_point): a single trophy on a tall pedestal under one spotlight while the surrounding ground stays dark.",
@@ -339,7 +339,7 @@
         "slide_ref": 2,
         "purpose": "context",
         "motion": "parallax, streams converging",
-        "caption": "Gemma 4 12B: text, image, audio in — runs on ~8GB, offline."
+        "caption": "Gemma 4 12B: text, image, audio in, runs on ~8GB, offline."
       },
       {
         "start": 15,
@@ -355,7 +355,7 @@
         "slide_ref": 6,
         "purpose": "how-to-run",
         "motion": "slow push-in",
-        "caption": "Apache-2.0 — run it local with Ollama or Unsloth."
+        "caption": "Apache-2.0, run it local with Ollama or Unsloth."
       },
       {
         "start": 29,

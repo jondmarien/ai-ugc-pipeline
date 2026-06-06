@@ -21,9 +21,10 @@ Reel **audio** = `video.audio` — `voice_mode` ∈ `none|voxcpm2|voxcpm2-0.5b|b
 
 ## Non-negotiable rules (enforced by pipeline/content/QA_CHECKLIST.md)
 - **No fabrication** — no invented CVEs, breach details, stats, quotes, or papers. Back every factual claim with a real source (WebSearch/WebFetch) or tag it `[Scenario]`.
-- **No offensive how-to** — no payloads, exploit chains, evasion, or credential-theft steps; keep mechanisms high-level.
+- **Offensive depth is allowed on *some* posts** — default to high-level mechanisms, but offensive-theme posts MAY go deep/technical (name real tools, techniques, tradecraft) when it's genuinely educational and framed for authorized security work. Not every post needs to be high-level; pick the altitude per post. Still no turnkey instructions whose only purpose is enabling indiscriminate real-world harm, and never fabricate.
 - Every post needs a concrete **defender takeaway**.
-- **Human voice** — copy reads like Jon, not a model: run the `humanizer` skill + the de-AI scan in `VOICE_AND_TONE_GUIDE.md` (kill em-dash overuse / listicle cadence / "delve/leverage" / voice-flat symmetry; keep his specifics and cadence). Voice changes *how* it reads, never *what* it claims.
+- **Human voice** — copy reads like Jon, not a model: run the copy chain (`humanizer` → `stop-slop` → `professional-proofreader`) + the de-AI scan in `VOICE_AND_TONE_GUIDE.md` (kill listicle cadence / "delve/leverage" / voice-flat symmetry; keep his specifics and cadence). Voice changes *how* it reads, never *what* it claims.
+- **No em-dashes, no fragments** (hard, every surface — caption, narration, on_slide_copy, subline, alt_text): never use `—`/`–` (replace with a period, comma, colon, parentheses, or "and"/"but"); every line is a complete sentence/clause with a subject and verb.
 - **Media rights**: only commercial-licensed models/assets ship (VoxCPM2 ✅ Apache-2.0; F5-TTS base weights ❌ CC-BY-NC). Log in `LICENSES.md`.
 - Manual upload + human approval before posting. No auto-publishing.
 

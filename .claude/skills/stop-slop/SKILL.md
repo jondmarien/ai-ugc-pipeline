@@ -25,9 +25,10 @@ the burned-in captions), each **on_slide_copy** + **subline**, and the **alt_tex
 
 ## Sentence rules
 - **Active voice, human subject.** No "mistakes were made"; no inanimate objects doing human things ("the data tells us") unless deliberate.
-- **Vary rhythm (burstiness):** short, then a longer one that builds, then a clip. Avoid every sentence the same length.
+- **Vary rhythm (burstiness):** a short sentence, then a longer one that builds, then a short one. Avoid every sentence the same length. (All complete sentences.)
 - **Be concrete:** real numbers, named tools/systems, specific actions over abstractions.
-- **Em-dashes / fragments:** stop-slop's source bans them outright. In THIS brand we keep the *deliberate* ones that are Jon's voice (see `.claude/skills/humanizer/references/voice-profile.md`) — but kill em-dash *spam* and accidental fragments. When in doubt, fewer. **For `video.narration[]` specifically: no em-dashes** (they read and caption badly — use a comma/period/"and"/"but").
+- **Em-dashes — BANNED, no exceptions** (`—` and `–`), on every surface: caption, narration, on_slide_copy, subline, alt_text. Replace with a period, comma, colon, parentheses, or "and"/"but", and restructure if needed.
+- **Sentence fragments — BANNED.** Every line is a complete sentence/clause (subject + verb). No telegraphic noun-piles, no one-word "punch" lines.
 
 ## Score it (revise if < 35/50)
 Rate the copy 1–10 on each, then fix the lowest:
