@@ -92,8 +92,8 @@ export type Theme = "offensive" | "defensive" | "hacking" | "purple-team" | "ai"
 
 export const themes: Record<Theme, { name: string; accent: string; accent2: string; mood: string }> = {
   defensive: { name: "electric blue", accent: "#3b82f6", accent2: "#22d3ee", mood: "calm, controlled, shielded, secure — defensive blue-team energy" },
-  offensive: { name: "alert red", accent: "#ef4444", accent2: "#f43f5e", mood: "alert, aggressive, breach, warning — offensive red-team / vulnerability energy" },
-  hacking: { name: "neon green", accent: "#39ff88", accent2: "#22d3ee", mood: "matrix terminal, raw exploratory hacking, code-green energy" },
+  offensive: { name: "alert red", accent: "#ef4444", accent2: "#f43f5e", mood: "aggressive, high-stakes, intrusion-and-exposure tension — offensive red-team / vulnerability energy" },
+  hacking: { name: "neon green", accent: "#39ff88", accent2: "#22d3ee", mood: "raw, exploratory underground hacker energy, glowing circuitry and signal traces" },
   // purple-team = red + blue combined (offence + defence). Purple is the canonical purple-team colour.
   "purple-team": { name: "purple", accent: "#a855f7", accent2: "#c084fc", mood: "purple-team — offence and defence combined, adversary emulation meeting detection, red-and-blue collaboration energy" },
   // generic AI / model-centric posts. Orange = warm, anti-cliché AI (purple/green/blue are taken by other themes).

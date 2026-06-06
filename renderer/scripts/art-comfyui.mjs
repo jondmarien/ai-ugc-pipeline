@@ -78,10 +78,10 @@ const NEG_PROMPT =
 
 // Role-aware visual motifs (NO on-slide text — FLUX would render garbled words).
 const ROLE_MOTIF = {
-  context: "two diverging glowing data streams over a dark grid, one clean direct path and one hidden shadowed path, contrast of trusted versus untrusted flow",
-  risk: "untrusted content fanning outward across abstract documents, envelopes, browser windows and image frames, thin glowing connection lines",
-  mechanism: "an abstract AI agent core emitting outbound action beams to connected API nodes and tool icons lighting up in sequence",
-  failure_point: "a dark control panel with glowing warning hotspots and layered risk zones, alert highlights, tension",
+  context: "two diverging glowing streams of light over a dark grid, one clean direct path and one hidden shadowed path, contrast of a trusted versus an untrusted flow",
+  risk: "untrusted signals fanning outward through the dark toward many small floating targets, thin glowing connection lines, a sense of spreading exposure",
+  mechanism: "an abstract glowing core emitting outbound beams of light to a sequence of connected nodes lighting up one after another, an automated chain",
+  failure_point: "a dark scene of glowing hazard hotspots and overlapping risk zones, tense highlights, a sense of an overlooked gap in the defenses",
   defense: "a layered protective shield wrapping an isolated sandbox, padlocks and permission gates, controlled gateways, calm and secure",
   takeaway: "translucent mask and glyph motifs glowing in the corners and along the edges, faint ambient circuitry and particle haze across the whole frame, the center kept calm and uncluttered (dark but not empty), minimal high-impact composition",
   cta: "a forward-motion arrow and a softly glowing question mark toward the upper area, sense of momentum inviting a swipe",
@@ -92,10 +92,13 @@ const ROLE_MOTIF = {
 
 // Where the slide's TEXT sits → keep that zone of the image dark/empty so captions stay legible.
 // Takeaway centers its text (centered radial scrim); every other role is bottom-aligned.
+// NOTE: never use the word "text"/"overlay"/"headline"/"caption" here — these live in the
+// POSITIVE prompt and FLUX renders them as literal (garbled) lettering. Describe the empty
+// zone purely as composition (dark, uncluttered) and let the carousel place real copy later.
 const TEXT_ZONE = {
-  takeaway: "keep the central area calm and uncluttered for a centered text overlay (dark but not empty); arrange the focal elements in the corners and along the edges, with faint ambient detail elsewhere",
+  takeaway: "keep the central area calm and uncluttered (dark but not empty); arrange the focal elements in the corners and along the edges, with faint ambient detail elsewhere",
 };
-const DEFAULT_ZONE = "keep the lower portion of the frame dark, calm and uncluttered for a text overlay; place focal elements in the upper third and the periphery";
+const DEFAULT_ZONE = "keep the lower portion of the frame dark, calm and uncluttered; place the focal elements in the upper third and around the edges";
 
 // Strip colour words from reused copy (e.g. visual_direction) so it can't fight the theme accent.
 function stripColor(s) {
@@ -123,11 +126,15 @@ function buildPrompt(slide, accentHex, accentName, topic, mood) {
     subject = `dark cinematic cybersecurity illustration, ${themed}`;
   }
   const zone = TEXT_ZONE[slide.role] || DEFAULT_ZONE;
-  const moodPart = mood ? `${mood}. ` : "";
+  // Strip signage/alarm words from the accent name + mood — FLUX renders "alert"/"warning"
+  // as literal lettering (a garbled title card), especially on the offensive/red theme.
+  const SIGNAGE = /\b(alert|warning|danger|caution|breach|threat|notice)\b/gi;
+  const cleanAccent = (accentName || "").replace(SIGNAGE, "").replace(/\s{2,}/g, " ").trim() || "red";
+  const moodPart = mood ? `${mood.replace(SIGNAGE, "").replace(/\s{2,}/g, " ").replace(/\s+([,.;—-])/g, "$1").replace(/,\s*,/g, ",").trim()}. ` : "";
   // Natural-language sentences (FLUX's qwen/T5 encoder favours prose over comma-tag soup).
   // BRAND_STYLE is the constant house look (so every post reads as one brand); the theme
   // accent colour + mood change per category. NO "no text" here — that's the negative node.
-  return `${subject}. A single ${accentName} (${accentHex}) accent glow on a deep navy void #05070d. ${moodPart}${BRAND_STYLE}. ${zone}.`;
+  return `${subject}. A single ${cleanAccent} (${accentHex}) accent glow on a deep navy void #05070d. ${moodPart}${BRAND_STYLE}. ${zone}.`;
 }
 
 // Stable per-post seed offset (FNV-1a hash of the prefix) so the same role/slide in
