@@ -14,7 +14,7 @@ Fill every field. Leave nothing as `[...]` before QA. Pull hooks/captions from [
 **Primary audience:** [practitioners / founders / developers / students / executives]
 **Core claim:** [One sentence.]
 **Claim tag:** [Verified | Emerging | Scenario]
-**Score:** cred __/5 · relevance __/5 · novelty __/5 · drama __/5 · defender __/5 → **total __/25**
+**Score:** cred __/5 · relevance __/5 · novelty __/5 · drama __/5 · defender __/5 · **hook __/5 · value __/5 · resonance __/5** → **total __/40**
 
 ## Source Notes
 | Source | Link | What it supports | Confidence |
@@ -32,23 +32,25 @@ Fill every field. Leave nothing as `[...]` before QA. Pull hooks/captions from [
      `cta` as the last; `takeaway` sits at N−1. For N>8, repeat generic `point` body slides
      between `defense` and `takeaway`. For N<8, drop the least-essential middle roles. -->
 
-| # | Role | On-slide copy (≤ ~12 words) | Visual direction | Notes |
-| --- | --- | --- | --- | --- |
-| 1 | Cover hook | [headline] | [cover image] | Hook only |
-| 2 | Context | [what happened / pattern] | [context image] | Plain language |
-| 3 | Risk | [why it matters] | [impact image] | Security impact, not hype |
-| 4 | Mechanism | [safe high-level how] | [mechanism metaphor] | No exploit steps |
-| 5 | Failure point | [where teams are weak] | [gap image] | People/process/tooling |
-| 6 | Defense | [practical control] | [control image] | Actionable |
-| 7 | Takeaway | [one memorable line] | [summary image] | Save-worthy |
-| 8 | CTA | [specific question] | [brand/CTA image] | Invite save/follow |
+### Hook → Value → Resonance Arc
+
+| # | Phase | Role | On-slide copy (≤ ~12 words) | Visual direction | Notes |
+| --- | --- | --- | --- | --- | --- |
+| 1 | **HOOK** | Cover hook | [headline — contradicts common belief in 1s] | [cover image] | **Skip Rate optimizer** |
+| 2 | | Context | [what happened / pattern — plain language] | [context image] | Tag: Verified/Emerging/Scenario |
+| 3 | | Risk | [why it matters — practical security terms] | [impact image] | Security impact, not hype |
+| 4 | | Mechanism | [safe high-level how it works] | [mechanism metaphor] | **NO exploit steps** |
+| 5 | | Failure point | [where teams/processes/tools are weak] | [gap image] | People/process/tooling |
+| 6 | | Defense | [practical control] | [control image] | Actionable this week |
+| 7 | **VALUE** | Takeaway | [non-obvious + tactical — saveable] | [summary image] | **Shares/Saves optimizer** |
+| 8 | **RESONANCE** | CTA | [specific question — labels shared feeling] | [brand/CTA image] | **Likes/Comments optimizer** |
 
 ## Image Prompts
 ### Cover (no rendered text)
 [paste from VISUAL_PROMPT_BANK.md, customized]
 
 ### Inner-slide family (shared style + per-slide subject)
-[paste shared style block + slide 2–8 subjects]
+[paste shared style block + slide 2–8 subjects — note: Slide 7 = Value icon, Slide 8 = Resonance frame]
 
 ## Caption
 [Hook restated in one sentence.]
@@ -59,7 +61,7 @@ Fill every field. Leave nothing as `[...]` before QA. Pull hooks/captions from [
 
 [Defender takeaway: policy, detection, process, training, review, logging, access, or vendor risk.]
 
-[One specific comment question.]
+[One specific comment question that labels a shared feeling.]
 
 Follow for AI security breakdowns without the fake panic.
 
@@ -87,6 +89,10 @@ Follow for AI security breakdowns without the fake panic.
 | Defender value included | [Pass/Fail] | |
 | Mobile-readable cover | [Pass/Fail] | |
 | Brand/style consistency | [Pass/Fail] | |
+| **Hook: flips common belief in 1s** | [Pass/Fail] | |
+| **Value: non-obvious + tactical** | [Pass/Fail] | |
+| **Resonance: labels shared feeling** | [Pass/Fail] | |
+
 ```
 
 ---
@@ -98,3 +104,24 @@ YYYY-MM-DD_post-slug_01_cover.png … _08_cta.png
 ```
 
 Use the same date as the planned post date. The slug is short kebab-case (e.g. `ai-phishing-training`, `prompt-injection-agents`, `chatbot-secret-leak`).
+
+---
+
+## Quick Hook Reference (from CAPTION_BANK.md)
+
+**Hook formulas:**
+- `"Everyone thinks X. Actually Y."`
+- `"Stop doing X. Start doing Y."`
+- `"The [common advice] is wrong because [reason]."`
+- `"Someone used AI to [action] and [consequence]"`
+- `"Most teams missed [hidden risk]"`
+
+**Value templates (Slide 7):**
+- `"Before you [action], check [specific control]."`
+- `"The control that stops this: [one concrete step]."`
+- `"Save this [checklist/framework] for your next [scenario]."`
+
+**Resonance templates (Slide 8):**
+- `"You've felt [feeling] when [situation]. That's [label]."`
+- `"The 2am thought: [unspoken worry]."`
+- `"What nobody says: [hard truth]."`

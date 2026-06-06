@@ -7,7 +7,7 @@ House voice: direct, sharp, practical — a security-literate operator explainin
 
 ---
 
-## 1. Cover hook formulas
+## 1. Cover Hook Formulas
 
 Formula = **specific actor/object + unexpected AI action + clear consequence.** Avoid fake precision.
 
@@ -23,13 +23,21 @@ Formula = **specific actor/object + unexpected AI action + clear consequence.** 
 | `No, [viral claim]. Here's what actually happened.` | No, the AI didn't hack the company by itself. Here's what actually happened. |
 | `Your [thing] is its own attack surface` | Your AI agent's permissions are its attack surface |
 
+> **NEW: Algorithmic Growth Hook Principles** (Chris Chung @iamchrischung)
+> - **Contradict common belief** in the first second
+> - State a widely-held assumption → immediately flip it
+> - `"Everyone thinks X. Actually Y."` — "Everyone thinks you need 10k followers. Actually you need 100 true fans."
+> - `"Stop doing X. Start doing Y."` — "Stop posting 3×/day. Start posting 1× with a system."
+> - `"The [common advice] is wrong because [reason]."` — "Posting at 9am is wrong because your audience is at work."
+
 **Hook hygiene:** if a number isn't sourced, drop it. "Most," "many," "a lot of" beat an invented "73%."
 
 ---
 
-## 2. Caption frameworks
+## 2. Caption Frameworks
 
-### A. Standard (default 8-slide post)
+### A. Standard (default 8-slide post — Hook → Value → Resonance)
+
 ```
 [Hook restated in one sharp sentence.]
 
@@ -37,9 +45,9 @@ Formula = **specific actor/object + unexpected AI action + clear consequence.** 
 
 [Why it matters in practical security terms — for attackers, defenders, builders, or leaders.]
 
-[Defender takeaway: one concrete control — verification, detection, policy, logging, access, training, or vendor review.]
+[Defender takeaway: ONE concrete control — verification, detection, policy, logging, access, training, or vendor review.]
 
-[One specific comment question.]
+[One specific comment question that labels a shared feeling.]
 
 Follow for AI security breakdowns without the fake panic.
 
@@ -47,6 +55,7 @@ Follow for AI security breakdowns without the fake panic.
 ```
 
 ### B. Myth-busting
+
 ```
 The viral version of this story is missing the important part.
 
@@ -64,6 +73,7 @@ Follow for AI security breakdowns without the fake panic.
 ```
 
 ### C. Practitioner-focused
+
 ```
 This isn't an AI magic trick. It's a workflow problem.
 
@@ -81,6 +91,7 @@ Follow for practical AI security breakdowns.
 ```
 
 ### D. List post (e.g. "5 questions / 9 ways")
+
 ```
 [Hook as a promise of a usable list.]
 
@@ -95,7 +106,33 @@ Follow for AI security breakdowns without the fake panic.
 
 ---
 
-## 3. CTA variations
+## 3. Value Phase Templates (Slide 7 / Takeaway — for Shares/Saves)
+
+> **Principle:** Non-obvious + highly tactical = saveable
+
+| Template | Example |
+| --- | --- |
+| `"Before you [action], check [specific control]."` | "Before you deploy an AI agent, check its permission scope — calendar? email? files?" |
+| `"The control that stops this: [one concrete step]."` | "The control that stops prompt injection: a second-channel verification before any agent action." |
+| `"Save this [checklist/framework] for your next [scenario]."` | "Save this 3-question vendor eval for your next AI tool purchase." |
+| `"Most teams skip [step]. Don't."` | "Most teams skip output validation on agent tool calls. Don't." |
+
+---
+
+## 4. Resonance Phase Templates (Slide 8 / CTA — for Likes/Comments)
+
+> **Principle:** Label a feeling they've had 100× but couldn't name
+
+| Template | Example |
+| --- | --- |
+| `"You've felt [feeling] when [situation]. That's [label]."` | "You've felt that knot when an agent asks for calendar access. That's permission anxiety." |
+| `"The 2am thought: [unspoken worry]."` | "The 2am thought: 'Did my agent just email the board?'" |
+| `"What nobody says: [hard truth]."` | "What nobody says: your agent's permissions ARE the attack surface." |
+| `"[Identity] don't [behavior]. We [better behavior]."` | "Security teams don't hope agents behave. We scope permissions." |
+
+---
+
+## 5. CTA Variations
 
 Rotate so the account doesn't sound robotic. One CTA per post.
 
@@ -113,7 +150,7 @@ Rotate so the account doesn't sound robotic. One CTA per post.
 
 ---
 
-## 4. Hashtag sets (5–10 tags, no stuffing)
+## 6. Hashtag Sets (5–10 tags, no stuffing)
 
 Mix 2–3 broad + 3–5 niche + 1–2 topic-specific. Drop any that look spammy.
 
@@ -131,7 +168,7 @@ Mix 2–3 broad + 3–5 niche + 1–2 topic-specific. Drop any that look spammy.
 
 ---
 
-## 5. Comment-prompt bank (seed the conversation)
+## 7. Comment-Prompt Bank (seed the conversation)
 
 Pin one as the first comment to drive replies:
 
@@ -141,10 +178,11 @@ Pin one as the first comment to drive replies:
 - "Founders/leaders: would this survive your next board risk review?"
 - "What did I get wrong? I'd rather be corrected than confident."
 - "Drop your team's 'safe AI usage' rule — best one gets pinned."
+- "What's the 2am AI-security thought keeping you up?"
 
 ---
 
-## 6. Voice rules (quick reference)
+## 8. Voice Rules (quick reference)
 
 | Weak | Better |
 | --- | --- |

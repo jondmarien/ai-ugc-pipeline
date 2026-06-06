@@ -16,6 +16,8 @@ The Stage 7 gate in [CONTENT_PIPELINE.md](CONTENT_PIPELINE.md). **A post may not
 | 1.4 | Mechanism accuracy | The "how it works" slide is correct at a high level; nothing technically wrong |
 | 1.5 | Practitioner test | A security pro reading this would not call it misleading or hype |
 
+---
+
 ## Gate 2 — Safety / responsible disclosure
 
 | # | Check | Pass condition |
@@ -26,6 +28,8 @@ The Stage 7 gate in [CONTENT_PIPELINE.md](CONTENT_PIPELINE.md). **A post may not
 | 2.4 | Defense paired with mechanism | Any mechanism slide is immediately paired with mitigation/defensive context |
 | 2.5 | No malware enablement | No malware build/deploy instructions |
 
+---
+
 ## Gate 3 — Sources
 
 | # | Check | Pass condition |
@@ -35,12 +39,16 @@ The Stage 7 gate in [CONTENT_PIPELINE.md](CONTENT_PIPELINE.md). **A post may not
 | 3.3 | Victims | No real victim/company named without a cited, public source |
 | 3.4 | Confidence logged | High/Med/Low confidence recorded; Low-confidence claims reframed as scenario |
 
+---
+
 ## Gate 4 — Defender value
 
 | # | Check | Pass condition |
 | --- | --- | --- |
 | 4.1 | Takeaway present | At least one concrete control, process, or behavior change |
 | 4.2 | Actionable | A reader could actually do/ask the takeaway this week |
+
+---
 
 ## Gate 5 — Accessibility & readability
 
@@ -52,6 +60,8 @@ The Stage 7 gate in [CONTENT_PIPELINE.md](CONTENT_PIPELINE.md). **A post may not
 | 5.4 | Captions (video) | Burned-in subtitles present, synced, readable on mobile (Reels) |
 | 5.5 | Contrast | Text passes a basic contrast check against its band |
 
+---
+
 ## Gate 6 — Brand & platform
 
 | # | Check | Pass condition |
@@ -61,7 +71,12 @@ The Stage 7 gate in [CONTENT_PIPELINE.md](CONTENT_PIPELINE.md). **A post may not
 | 6.3 | Canvas | 1080×1350 (carousel) / 1080×1920 (Reel); consistent across slides |
 | 6.4 | Filenames | Ordered, convention-correct (`YYYY-MM-DD_slug_NN_role.png`) |
 | 6.5 | De-AI scan | Copy passes the humanizer audit / [VOICE_AND_TONE_GUIDE.md](VOICE_AND_TONE_GUIDE.md) pre-publish scan — em-dash overuse, listicle cadence, AI vocab, voice-flat symmetry removed; ≥1 voice-signal line |
-| 6.5 | CTA + question | One clear CTA and one specific comment question |
+| 6.6 | CTA + question | One clear CTA and one specific comment question |
+| **6.7** | **Hook strength** | **Slide 1 contradicts a common belief in ≤1s (not a generic fact)** |
+| **6.8** | **Value density** | **Slide 7 = non-obvious + tactical (saveable), not common knowledge** |
+| **6.9** | **Resonance** | **Slide 8 labels a shared feeling 100× unnamed (not generic close)** |
+
+---
 
 ## Gate 7 — Media rights (video/audio only)
 
@@ -91,7 +106,9 @@ Overall: APPROVED / REVISE
 Notes: ____
 ```
 
-## Fast triage (the 6 questions, if short on time)
+---
+
+## Fast triage (the 9 questions, if short on time)
 
 1. Verified claim or scenario — and is that obvious from the wording?
 2. Could this help someone execute abuse? (Must be **no**.)
@@ -99,5 +116,8 @@ Notes: ____
 4. Does it give defenders something to do?
 5. Is the cover readable on a phone?
 6. Are all media assets (music/footage/voice/model) licensed for commercial use?
+7. **Does Slide 1 flip a common belief in the first second?**
+8. **Is Slide 7 a non-obvious tactical framework (not a generic tip)?**
+9. **Does Slide 8 name a feeling the audience has actually had?**
 
 If any answer is wrong, it doesn't ship.

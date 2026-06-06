@@ -29,6 +29,15 @@ Package like a high-performing AI/tech carousel; judge claims like a security pr
 | End every post with a defender takeaway | Leave the audience with hype and no action |
 | Cite a primary/reputable source when factual | Name real victims without a source |
 
+> **NEW: Algorithmic Growth Sequence** (Chris Chung @iamchrischung)
+> Instagram growth follows a specific order of operations — optimize in sequence, not in parallel:
+> ```
+> 1. HOOK (Skip Rate)     → 2. VALUE (Shares/Saves)  → 3. RESONANCE (Likes)
+> ```
+> - **Hook**: Contradict common belief in first 1s
+> - **Value**: Non-obvious + highly tactical = saveable
+> - **Resonance**: Label a feeling they've had 100× but couldn't name
+
 ---
 
 ## 2. Pipeline stages (idea → posted)
@@ -36,9 +45,9 @@ Package like a high-performing AI/tech carousel; judge claims like a security pr
 | Stage | Input | Process | Output | File used |
 | --- | --- | --- | --- | --- |
 | 1. Intake | News, papers, CVEs, vendor posts, repos, observations | Capture topic + source + claim + angle + pillar | Raw idea row | [IDEA_BACKLOG.md](IDEA_BACKLOG.md) |
-| 2. Score | Raw ideas | 5-axis 1–5 rubric, threshold ≥18 | Ranked candidates | [IDEA_BACKLOG.md](IDEA_BACKLOG.md) §rubric |
+| 2. Score | Raw ideas | 8-axis 1–5 rubric, threshold ≥ 24 | Ranked candidates | [IDEA_BACKLOG.md](IDEA_BACKLOG.md) §rubric |
 | 3. Frame | Selected idea | One defensible hook + one audience promise + claim tag | Cover headline + thesis | [CAPTION_BANK.md](CAPTION_BANK.md) hook formulas |
-| 4. Script | Hook + sources | 8-slide arc | Slide-by-slide script | [POST_TEMPLATE.md](POST_TEMPLATE.md) |
+| 4. Script | Hook + sources | 8-slide arc (Hook→Value→Resonance) | Slide-by-slide script | [POST_TEMPLATE.md](POST_TEMPLATE.md) |
 | 5. Visual | Slide script | Cover + inner prompts, **no rendered text** | Image prompts + layout notes | [VISUAL_PROMPT_BANK.md](VISUAL_PROMPT_BANK.md) |
 | 6. Caption | Final thesis | Narrative caption + question + CTA + hashtags + alt text | Caption package | [CAPTION_BANK.md](CAPTION_BANK.md) |
 | 7. QA | Full draft | Credibility / safety / source / a11y / brand gates | Approved or revised | [QA_CHECKLIST.md](QA_CHECKLIST.md) |
@@ -53,7 +62,7 @@ Package like a high-performing AI/tech carousel; judge claims like a security pr
 | Day | Focus | Target output |
 | --- | --- | --- |
 | **Mon** | Intake | Add 15–25 raw ideas to backlog |
-| **Tue** | Score + select | Lock 5 posts (≥18) for the week |
+| **Tue** | Score + select | Lock 5 posts (≥24) for the week |
 | **Wed** | Script + caption | 5 slide scripts + 5 caption packages |
 | **Thu** | Visuals + assembly | 5 carousels designed & exported (+ any Reel cut) |
 | **Fri** | QA + schedule | 5 QA-passed packages posted or queued |
@@ -80,7 +89,7 @@ Aim for pillar variety across the week (don't post three Offensive-AI hooks in a
 
 ## 5. Scoring rubric (Stage 2)
 
-Score 1–5 on each axis. **Produce if total ≥ 18.** If **Technical credibility < 3**, do not produce as fact — reframe as **[Scenario]** or **Myth-busting**, or skip.
+Score 1–5 on each axis. **Produce if total ≥ 24.** If **Technical credibility < 3**, do not produce as fact — reframe as **[Scenario]** or **Myth-busting**, or skip.
 
 | Axis | 1 | 3 | 5 |
 | --- | --- | --- | --- |
@@ -89,6 +98,9 @@ Score 1–5 on each axis. **Produce if total ≥ 18.** If **Technical credibilit
 | Novelty | Recycled | Familiar topic, fresh angle | Timely, surprising, under-discussed |
 | Visual drama | Hard to visualize | Some metaphor | Strong cinematic cover potential |
 | Defender usefulness | No takeaway | General advice | Concrete control, process, or question |
+| **Hook strength (Skip Rate)** | Generic fact | Contradicts assumption | Flips common belief in 1s |
+| **Value density (Shares/Saves)** | Common knowledge | Useful tip | Non-obvious + tactical framework |
+| **Resonance (Likes)** | Generic close | Names a pain point | Labels a 100× unnamed feeling |
 
 ---
 
@@ -146,6 +158,8 @@ Track lightweight metrics per post in the backlog:
 | Comments + top question | Future post fuel |
 | Reach / non-follower reach | Hook discoverability |
 | Hook formula used | Learn which formulas win |
+| **Value tag** | Was takeaway non-obvious + tactical? |
+| **Resonance tag** | Did CTA label a shared feeling? |
 
 Rule: when a hook formula lands (high saves), reuse the **pattern** on a new topic; when one flops, retire it for that pillar.
 
@@ -177,9 +191,11 @@ Because the upload package is already structured (ordered filenames + `caption.t
 
 ## 10. Definition of done (per post)
 
-- [ ] Scored ≥ 18 (or justified myth-bust/scenario)
+- [ ] Scored ≥ 24 (or justified myth-bust/scenario)
 - [ ] Every factual claim sourced and claim-tagged
 - [ ] 8 slides scripted; cover mobile-readable
+- [ ] **Slide 7 = Value phase (non-obvious + tactical)**
+- [ ] **Slide 8 = Resonance phase (labels shared feeling)**
 - [ ] Image prompts produced (no rendered text)
 - [ ] Caption + question + CTA + 5–10 hashtags + alt text
 - [ ] QA checklist fully passed
