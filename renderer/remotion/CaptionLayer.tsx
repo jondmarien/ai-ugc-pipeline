@@ -97,7 +97,11 @@ export function CaptionLayer({
     );
   }
 
-  // block (default)
+  // block (default) → rolling window of up to 3 words, advancing with the active word,
+  // so each screen holds 2–3 words instead of the whole beat line.
+  const CHUNK = 3;
+  const start = Math.floor(Math.max(0, activeIdx) / CHUNK) * CHUNK;
+  const phrase = words.slice(start, start + CHUNK).join(" ");
   const opacity = interpolate(frame, [0, 8], [0, 1], { extrapolateRight: "clamp" });
   const y = interpolate(frame, [0, 10], [24, 0], { extrapolateRight: "clamp" });
   return (
@@ -105,13 +109,13 @@ export function CaptionLayer({
       <div
         style={{
           ...baseText,
-          fontSize: 78,
+          fontSize: 92,
           opacity,
           transform: `translateY(${y}px)`,
           textShadow: `0 4px 40px rgba(0,0,0,0.8), 0 0 48px ${accent}33`,
         }}
       >
-        {text}
+        {phrase}
       </div>
     </AbsoluteFill>
   );

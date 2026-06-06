@@ -38,11 +38,14 @@ const consumed = new Set([cvIdx, cvtIdx].filter((i) => i >= 0).map((i) => i + 1)
 const flags = new Set(argv.filter((a) => a.startsWith("--")));
 const keys = argv.filter((a, i) => !a.startsWith("--") && !consumed.has(i));
 if (!keys.length) {
-  console.error("Usage: bun run pipeline -- <post-key> [<post-key> ...] [--flux1] [--art|--no-art] [--voice=voxcpm2|voxcpm2-0.5b|bark|http|none] [--vox0.5|--vox2] [--custom-voice path.wav] [--custom-voice-text \"transcript\"] [--no-hifi] [--no-voice] [--no-reel] [--no-package] [--seed=N] [--tail=N]");
+  console.error("Usage: bun run pipeline -- <post-key> [<post-key> ...] [--flux1] [--art|--no-art] [--voice=voxcpm2|voxcpm2-0.5b|bark|http|none] [--vox0.5|--vox2] [--custom-voice path.wav] [--custom-voice-text \"transcript\"] [--no-hifi] [--no-clone] [--captions=block|word|highlight] [--no-voice] [--no-reel] [--no-package] [--seed=N] [--tail=N]");
   process.exit(1);
 }
 const seedArg = [...flags].find((f) => f.startsWith("--seed="));
 const tailArg = [...flags].find((f) => f.startsWith("--tail="));
+// Captions default to "highlight" for pipeline reels; override with --captions=block|word.
+const capFlag = [...flags].find((f) => f.startsWith("--captions="))?.split("=")[1];
+const captionMode = ["block", "word", "highlight"].includes(capFlag) ? capFlag : "highlight";
 
 const DRY = flags.has("--dry-run");
 const bun = process.platform === "win32" ? "bun.exe" : "bun";
@@ -103,12 +106,12 @@ function runPost(key) {
 
   if (wantsVoice) {
     step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
-    step("voice (TTS)", ["voice", "--", fullKey, ...(voiceOverride ? [`--voice=${voiceOverride}`] : []), ...(customVoice ? ["--custom-voice", customVoice] : []), ...(customVoiceText ? ["--custom-voice-text", customVoiceText] : []), ...(flags.has("--no-hifi") ? ["--no-hifi"] : []), ...(seedArg ? [seedArg] : [])]);
+    step("voice (TTS)", ["voice", "--", fullKey, ...(voiceOverride ? [`--voice=${voiceOverride}`] : []), ...(customVoice ? ["--custom-voice", customVoice] : []), ...(customVoiceText ? ["--custom-voice-text", customVoiceText] : []), ...(flags.has("--no-hifi") ? ["--no-hifi"] : []), ...(flags.has("--no-clone") ? ["--no-clone"] : []), ...(seedArg ? [seedArg] : [])]);
     step("align (caption sync)", ["align", "--", fullKey]);
   }
 
   if (wantsReel) {
-    const reelArgs = ["reel", "--", fullKey];
+    const reelArgs = ["reel", "--", fullKey, `--captions=${captionMode}`];
     if (!flags.has("--no-fit-voice")) reelArgs.push("--fit-voice");
     if (tailArg) reelArgs.push(tailArg);
     step("reel (audio auto-embedded)", reelArgs);

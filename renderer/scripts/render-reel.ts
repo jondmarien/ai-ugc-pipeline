@@ -19,6 +19,12 @@ if (!post.video?.enabled) {
   process.exit(0);
 }
 
+// --captions=<mode> overrides the post's caption_mode for this render (in-memory only).
+const capArg = [...flags].find((f) => f.startsWith("--captions="))?.split("=")[1];
+if (capArg && ["block", "word", "highlight"].includes(capArg) && post.video) {
+  post.video.caption_mode = capArg as typeof post.video.caption_mode;
+}
+
 const outDir = outputDir(post);
 mkdirSync(outDir, { recursive: true });
 const outPath = path.join(outDir, post.video.export_name);

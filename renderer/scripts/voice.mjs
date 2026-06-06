@@ -18,7 +18,7 @@ const pos = args.filter((a) => !a.startsWith("--"));
 const key = pos[0];
 
 if (!key) {
-  console.error("Usage: bun run voice -- <post-key> [--voice=voxcpm2|voxcpm2-0.5b|bark|http] [--custom-voice ref.wav] [--seed=N]");
+  console.error("Usage: bun run voice -- <post-key> [--voice=voxcpm2|voxcpm2-0.5b|bark|http] [--custom-voice ref.wav | --no-clone] [--seed=N]");
   process.exit(1);
 }
 
@@ -37,7 +37,7 @@ if (flags.has("--voxcpm2-0.5b")) mode = "voxcpm2-0.5b";
 
 // Forward only args the underlying script understands — strip dispatcher-only flags.
 // (Otherwise --voice=… gets argparse-abbreviation-matched to python's --voice-ref.)
-const isDispatchFlag = (a) => ["--http", "--voxcpm2", "--voxcpm2-0.5b"].includes(a) || a.startsWith("--voice=");
+const isDispatchFlag = (a) => ["--http", "--voxcpm2", "--voxcpm2-0.5b", "--no-clone"].includes(a) || a.startsWith("--voice=");
 const passArgs = args.filter((a) => !isDispatchFlag(a));
 
 if (mode === "none") {
@@ -53,6 +53,25 @@ if (mode === "http") {
   const runner = process.platform === "win32" ? "bun.exe" : "bun";
   const res = spawnSync(runner, [path.join(RENDERER, "scripts", "voice-http.mjs"), ...passArgs], { cwd: RENDERER, stdio: "inherit", shell: process.platform === "win32" });
   process.exit(res.status ?? 1);
+}
+
+// Default cloned voice: for VoxCPM modes, if you didn't pass --custom-voice/--voice-ref and
+// didn't pass --no-clone, auto-use a default reference WAV so every render sounds like the
+// cloned "Jon" voice (Hi-Fi is on by default). Resolution order: $VOICE_REF env →
+// public/audio/_voiceref/jon.wav → E:\ai-ugc\_voiceref\jon_48k.wav. Missing everywhere →
+// silently falls back to the normal seeded voice. (Bark/http/file modes are unaffected.)
+if ((mode === "voxcpm2" || mode === "voxcpm2-0.5b") && !flags.has("--no-clone")
+    && !passArgs.some((a) => a === "--custom-voice" || a === "--voice-ref")) {
+  const candidates = [
+    process.env.VOICE_REF,
+    path.join(RENDERER, "public", "audio", "_voiceref", "jon.wav"),
+    "E:\\ai-ugc\\_voiceref\\jon_48k.wav",
+  ].filter(Boolean);
+  const ref = candidates.find((p) => existsSync(p));
+  if (ref) {
+    passArgs.push("--custom-voice", ref);
+    console.log(`Default cloned voice: ${ref}  (pass --no-clone for the plain seeded voice)`);
+  }
 }
 
 // local python modes (voxcpm2 | voxcpm2-0.5b | bark): pick the venv python (uv) → uv run → system python.

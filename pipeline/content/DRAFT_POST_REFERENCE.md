@@ -23,7 +23,7 @@ Example: `/draft-post AI agents leaking RAG data through tool calls | model_secu
 ```
 cd renderer && bun run pipeline -- <date>_<slug> [--seed=N] [--voice=bark] [--custom-voice path/to/jon.wav]
 ```
-(Art auto-skips when backgrounds already exist. Use the **same `--seed=N`** across posts for one consistent voice. `--custom-voice` clones your OWN authorized voice (VoxCPM2 zero-shot) from a clean ~20–40 s mono-48 kHz clip — timbre comes from the clip, so a seed is optional; label AI-generated audio. **Hi-Fi cloning is on by default** (auto-transcribes the clip with Whisper to also match cadence/emotion); use `--custom-voice-text "…"` to supply the transcript yourself, or `--no-hifi` for timbre-only.)
+(Art auto-skips when backgrounds already exist. Use the **same `--seed=N`** across posts for one consistent voice. `--custom-voice` clones your OWN authorized voice (VoxCPM2 zero-shot) from a clean ~20–40 s mono-48 kHz clip — timbre comes from the clip, so a seed is optional; label AI-generated audio. **Hi-Fi cloning is on by default** (auto-transcribes the clip with Whisper to also match cadence/emotion); use `--custom-voice-text "…"` to supply the transcript yourself, or `--no-hifi` for timbre-only. The clone is also the **default voice** when a reference clip exists (`$VOICE_REF` / `public/audio/_voiceref/jon.wav` / `E:\ai-ugc\_voiceref\jon_48k.wav`); pass `--no-clone` for the plain seeded voice.)
 
 ---
 
@@ -74,7 +74,7 @@ The `<idea>` is free text — a **specific angle**, not a broad topic. Aim for o
 | Flag | Values | Meaning |
 |---|---|---|
 | `slides=` / `--slides=` | integer `3`–`20` | Number of carousel slides (default `8`). Applies at **creation** (`bun run new` / `draft` / `/draft-post`); `bun run pipeline` reads the count from the JSON. Arc: `cover` first, `cta` last, `takeaway` at N−1; middle filled from the named roles then generic `point` slides. |
-| `captions=` / `--captions=` | `block` · `word` · `highlight` | Reel subtitle animation (default `block`) |
+| `captions=` / `--captions=` | `block` · `word` · `highlight` | Reel subtitle animation — **default `highlight`** (lights the spoken word). `block` = rolling 2–3 word window; `word` = one at a time. |
 | `--theme=` | `offensive` · `defensive` · `hacking` · `purple-team` · `ai` | Brand colour/mood — red / blue / green / purple-team-purple / generic-AI-orange (default from pillar; `purple-team`/`ai` are explicit-only) |
 | `--voice=` | `none` · `voxcpm2` · `voxcpm2-0.5b` · `bark` · `http` · `file` | Reel narration — **default `voxcpm2` (2B); use `none` (or `--no-voice`) for a silent reel.** `bark` = Suno (MIT); needs `uv pip install bark soundfile` (small models forced + cached on `E:\ai-ugc` for 8 GB). |
 | `--music=` | `none` · `free` · `licensed` · `generated` · `file` | Music bed (default `none`) |

@@ -51,11 +51,15 @@ export function CaptionTrack({ captions, accent, mode = "block" }: { captions: C
       </AbsoluteFill>
     );
   }
-  // block
+  // block → a rolling window of up to 3 words, advancing with the spoken word, so each
+  // screen holds 2–3 words (never a lone word or a 7-word wall). Keeps attention tight.
+  const CHUNK = 3;
+  const start = Math.floor(Math.max(0, activeIdx) / CHUNK) * CHUNK;
+  const phrase = words.slice(start, start + CHUNK).join(" ");
   const opacity = interpolate(t - line.start, [0, 0.2], [0, 1], { extrapolateRight: "clamp" });
   return (
     <AbsoluteFill style={wrap}>
-      <div style={{ ...base, fontSize: 78, opacity, textShadow: `0 4px 40px rgba(0,0,0,0.8), 0 0 48px ${accent}33` }}>{line.text}</div>
+      <div style={{ ...base, fontSize: 92, opacity, textShadow: `0 4px 40px rgba(0,0,0,0.8), 0 0 48px ${accent}33` }}>{phrase}</div>
     </AbsoluteFill>
   );
 }

@@ -11,8 +11,8 @@ const flagArgs = rawArgs.filter((a) => a.startsWith("--"));
 const [date, slug, pillarArg] = rawArgs.filter((a) => !a.startsWith("--"));
 
 const CAPTION_MODES = ["block", "word", "highlight"] as const;
-const captionsFlag = flagArgs.find((a) => a.startsWith("--captions="))?.split("=")[1] ?? "block";
-const captionMode = (CAPTION_MODES as readonly string[]).includes(captionsFlag) ? captionsFlag : "block";
+const captionsFlag = flagArgs.find((a) => a.startsWith("--captions="))?.split("=")[1] ?? "highlight";
+const captionMode = (CAPTION_MODES as readonly string[]).includes(captionsFlag) ? captionsFlag : "highlight";
 
 const VOICE_MODES = ["none", "voxcpm2", "voxcpm2-0.5b", "bark", "http", "file"] as const;
 const MUSIC_MODES = ["none", "free", "licensed", "generated", "file"] as const;
