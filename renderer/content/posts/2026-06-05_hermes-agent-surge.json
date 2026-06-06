@@ -430,458 +430,589 @@
     "licenses": [],
     "captions": [
       {
-        "start": 0,
-        "end": 2.42,
+        "start": 0.0,
+        "end": 2.2,
         "text": "An open-source AI agent just became one",
         "words": [
           {
             "text": "An",
-            "start": 0,
-            "end": 0.38
+            "start": 0.0,
+            "end": 0.3
           },
           {
             "text": "open-source",
-            "start": 0.38,
-            "end": 0.84
+            "start": 0.3,
+            "end": 0.76
           },
           {
             "text": "AI",
-            "start": 0.84,
-            "end": 1.16
+            "start": 0.76,
+            "end": 1.04
           },
           {
             "text": "agent",
-            "start": 1.16,
-            "end": 1.66
+            "start": 1.04,
+            "end": 1.48
           },
           {
             "text": "just",
-            "start": 1.66,
-            "end": 1.88
+            "start": 1.48,
+            "end": 1.72
           },
           {
             "text": "became",
-            "start": 1.88,
-            "end": 2.12
+            "start": 1.72,
+            "end": 1.92
           },
           {
             "text": "one",
-            "start": 2.12,
-            "end": 2.42
+            "start": 1.92,
+            "end": 2.2
           }
         ]
       },
       {
-        "start": 2.42,
-        "end": 3.72,
-        "text": "of the most used agents in the",
+        "start": 2.2,
+        "end": 3.78,
+        "text": "of the most-used agents in the world.",
         "words": [
           {
             "text": "of",
-            "start": 2.42,
-            "end": 2.52
+            "start": 2.2,
+            "end": 2.28
           },
           {
             "text": "the",
-            "start": 2.52,
-            "end": 2.64
+            "start": 2.28,
+            "end": 2.4
           },
           {
-            "text": "most",
-            "start": 2.64,
-            "end": 2.84
-          },
-          {
-            "text": "used",
-            "start": 2.84,
-            "end": 3.06
+            "text": "most-used",
+            "start": 2.4,
+            "end": 2.86
           },
           {
             "text": "agents",
-            "start": 3.06,
-            "end": 3.42
+            "start": 2.86,
+            "end": 3.26
           },
           {
             "text": "in",
-            "start": 3.42,
-            "end": 3.64
+            "start": 3.26,
+            "end": 3.46
           },
           {
             "text": "the",
-            "start": 3.64,
-            "end": 3.72
-          }
-        ]
-      },
-      {
-        "start": 3.72,
-        "end": 5.06,
-        "text": "world. Hermes Agent,",
-        "words": [
+            "start": 3.46,
+            "end": 3.54
+          },
           {
             "text": "world.",
-            "start": 3.72,
-            "end": 3.94
-          },
-          {
-            "text": "Hermes",
-            "start": 4.52,
-            "end": 4.78
-          },
-          {
-            "text": "Agent,",
-            "start": 4.78,
-            "end": 5.06
+            "start": 3.54,
+            "end": 3.78
           }
         ]
       },
       {
-        "start": 5.74,
-        "end": 8.78,
-        "text": "launched in February, already passed 180 ,000",
+        "start": 4.56,
+        "end": 5.08,
+        "text": "Hermes Agent.",
         "words": [
           {
-            "text": "launched",
-            "start": 5.74,
-            "end": 5.8
+            "text": "Hermes",
+            "start": 4.56,
+            "end": 4.74
+          },
+          {
+            "text": "Agent.",
+            "start": 4.74,
+            "end": 5.08
+          }
+        ]
+      },
+      {
+        "start": 5.7,
+        "end": 7.86,
+        "text": "Launched in February, already passed a hundred",
+        "words": [
+          {
+            "text": "Launched",
+            "start": 5.7,
+            "end": 5.88
           },
           {
             "text": "in",
-            "start": 5.8,
-            "end": 6.1
+            "start": 5.88,
+            "end": 6.02
           },
           {
             "text": "February,",
-            "start": 6.1,
-            "end": 6.48
+            "start": 6.02,
+            "end": 6.36
           },
           {
             "text": "already",
             "start": 6.86,
-            "end": 7.2
+            "end": 7.1
           },
           {
             "text": "passed",
-            "start": 7.2,
-            "end": 7.5
+            "start": 7.1,
+            "end": 7.4
           },
           {
-            "text": "180",
-            "start": 7.5,
-            "end": 7.84
+            "text": "a",
+            "start": 7.4,
+            "end": 7.64
           },
           {
-            "text": ",000",
-            "start": 7.84,
-            "end": 8.78
+            "text": "hundred",
+            "start": 7.64,
+            "end": 7.86
           }
         ]
       },
       {
-        "start": 8.78,
-        "end": 9.36,
-        "text": "GitHub stars.",
+        "start": 7.86,
+        "end": 9.34,
+        "text": "and eighty thousand GitHub stars.",
         "words": [
           {
+            "text": "and",
+            "start": 7.86,
+            "end": 8.08
+          },
+          {
+            "text": "eighty",
+            "start": 8.08,
+            "end": 8.22
+          },
+          {
+            "text": "thousand",
+            "start": 8.22,
+            "end": 8.7
+          },
+          {
             "text": "GitHub",
-            "start": 8.78,
-            "end": 8.96
+            "start": 8.7,
+            "end": 8.92
           },
           {
             "text": "stars.",
-            "start": 8.96,
-            "end": 9.36
+            "start": 8.92,
+            "end": 9.34
           }
         ]
       },
       {
-        "start": 10.04,
-        "end": 11.92,
-        "text": "It's trick, it turns your tasks into",
+        "start": 10.1,
+        "end": 12.0,
+        "text": "Its trick, it turns your tasks into",
         "words": [
           {
-            "text": "It's",
-            "start": 10.04,
-            "end": 10.2
+            "text": "Its",
+            "start": 10.1,
+            "end": 10.28
           },
           {
             "text": "trick,",
-            "start": 10.2,
-            "end": 10.36
+            "start": 10.28,
+            "end": 10.52
           },
           {
             "text": "it",
-            "start": 10.78,
-            "end": 10.94
+            "start": 10.76,
+            "end": 10.9
           },
           {
             "text": "turns",
-            "start": 10.94,
-            "end": 11.12
+            "start": 10.9,
+            "end": 11.08
           },
           {
             "text": "your",
-            "start": 11.12,
-            "end": 11.3
+            "start": 11.08,
+            "end": 11.28
           },
           {
             "text": "tasks",
-            "start": 11.3,
-            "end": 11.54
+            "start": 11.28,
+            "end": 11.56
           },
           {
             "text": "into",
-            "start": 11.54,
-            "end": 11.92
+            "start": 11.56,
+            "end": 12.0
           }
         ]
       },
       {
-        "start": 11.92,
-        "end": 14.12,
+        "start": 12.0,
+        "end": 14.14,
         "text": "reusable skills and gets sharper the longer",
         "words": [
           {
             "text": "reusable",
-            "start": 11.92,
-            "end": 12.18
+            "start": 12.0,
+            "end": 12.26
           },
           {
             "text": "skills",
-            "start": 12.18,
-            "end": 12.74
+            "start": 12.26,
+            "end": 12.86
           },
           {
             "text": "and",
-            "start": 12.74,
-            "end": 13.12
+            "start": 12.86,
+            "end": 13.22
           },
           {
             "text": "gets",
-            "start": 13.12,
-            "end": 13.24
+            "start": 13.22,
+            "end": 13.32
           },
           {
             "text": "sharper",
-            "start": 13.24,
-            "end": 13.56
+            "start": 13.32,
+            "end": 13.6
           },
           {
             "text": "the",
-            "start": 13.56,
-            "end": 13.9
+            "start": 13.6,
+            "end": 13.92
           },
           {
             "text": "longer",
-            "start": 13.9,
-            "end": 14.12
+            "start": 13.92,
+            "end": 14.14
           }
         ]
       },
       {
-        "start": 14.12,
-        "end": 14.54,
+        "start": 14.14,
+        "end": 14.58,
         "text": "it runs.",
         "words": [
           {
             "text": "it",
-            "start": 14.12,
-            "end": 14.34
+            "start": 14.14,
+            "end": 14.36
           },
           {
             "text": "runs.",
-            "start": 14.34,
-            "end": 14.54
+            "start": 14.36,
+            "end": 14.58
           }
         ]
       },
       {
-        "start": 15.24,
-        "end": 16.88,
+        "start": 15.28,
+        "end": 16.7,
         "text": "But it's an always-on agent with a",
         "words": [
           {
             "text": "But",
-            "start": 15.24,
-            "end": 15.3
+            "start": 15.28,
+            "end": 15.34
           },
           {
             "text": "it's",
-            "start": 15.3,
-            "end": 15.38
+            "start": 15.34,
+            "end": 15.48
           },
           {
             "text": "an",
-            "start": 15.38,
-            "end": 15.5
+            "start": 15.48,
+            "end": 15.56
           },
           {
             "text": "always-on",
-            "start": 15.5,
-            "end": 15.96
+            "start": 15.56,
+            "end": 16.1
           },
           {
             "text": "agent",
-            "start": 15.96,
-            "end": 16.26
+            "start": 16.1,
+            "end": 16.4
           },
           {
             "text": "with",
-            "start": 16.26,
-            "end": 16.76
+            "start": 16.4,
+            "end": 16.62
           },
           {
             "text": "a",
-            "start": 16.76,
-            "end": 16.88
+            "start": 16.62,
+            "end": 16.7
           }
         ]
       },
       {
-        "start": 16.88,
-        "end": 19.26,
-        "text": "terminal and your keys, so sandbox it",
+        "start": 16.7,
+        "end": 17.68,
+        "text": "terminal and your keys,",
         "words": [
           {
             "text": "terminal",
-            "start": 16.88,
-            "end": 17.2
+            "start": 16.7,
+            "end": 17.0
           },
           {
             "text": "and",
-            "start": 17.2,
-            "end": 17.54
+            "start": 17.0,
+            "end": 17.34
           },
           {
             "text": "your",
-            "start": 17.54,
-            "end": 17.68
+            "start": 17.34,
+            "end": 17.46
           },
           {
             "text": "keys,",
-            "start": 17.68,
-            "end": 17.92
-          },
+            "start": 17.46,
+            "end": 17.68
+          }
+        ]
+      },
+      {
+        "start": 18.34,
+        "end": 19.94,
+        "text": "so sandbox it and scope the keys.",
+        "words": [
           {
             "text": "so",
-            "start": 18.48,
-            "end": 18.58
+            "start": 18.34,
+            "end": 18.44
           },
           {
             "text": "sandbox",
-            "start": 18.58,
-            "end": 18.82
+            "start": 18.44,
+            "end": 18.74
           },
           {
             "text": "it",
-            "start": 18.82,
-            "end": 19.26
-          }
-        ]
-      },
-      {
-        "start": 19.26,
-        "end": 20.28,
-        "text": "and scope the keys.",
-        "words": [
+            "start": 18.74,
+            "end": 19.14
+          },
           {
             "text": "and",
-            "start": 19.26,
-            "end": 19.64
+            "start": 19.14,
+            "end": 19.36
           },
           {
             "text": "scope",
-            "start": 19.64,
-            "end": 19.86
+            "start": 19.36,
+            "end": 19.54
           },
           {
             "text": "the",
-            "start": 19.86,
-            "end": 20.08
+            "start": 19.54,
+            "end": 19.74
           },
           {
             "text": "keys.",
-            "start": 20.08,
-            "end": 20.28
+            "start": 19.74,
+            "end": 19.94
           }
         ]
       },
       {
-        "start": 21,
-        "end": 22.2,
+        "start": 20.86,
+        "end": 22.04,
         "text": "Would you give an agent your terminal",
         "words": [
           {
             "text": "Would",
-            "start": 21,
-            "end": 21.02
+            "start": 20.86,
+            "end": 20.9
           },
           {
             "text": "you",
+            "start": 20.9,
+            "end": 21.02
+          },
+          {
+            "text": "give",
             "start": 21.02,
             "end": 21.16
           },
           {
-            "text": "give",
-            "start": 21.16,
-            "end": 21.34
-          },
-          {
             "text": "an",
-            "start": 21.34,
-            "end": 21.48
+            "start": 21.16,
+            "end": 21.3
           },
           {
             "text": "agent",
-            "start": 21.48,
-            "end": 21.74
+            "start": 21.3,
+            "end": 21.54
           },
           {
             "text": "your",
-            "start": 21.74,
-            "end": 21.92
+            "start": 21.54,
+            "end": 21.74
           },
           {
             "text": "terminal",
-            "start": 21.92,
-            "end": 22.2
+            "start": 21.74,
+            "end": 22.04
           }
         ]
       },
       {
-        "start": 22.2,
-        "end": 23.5,
-        "text": "if it never left your machine?",
+        "start": 22.04,
+        "end": 23.28,
+        "text": "if it never left your machine? An",
         "words": [
           {
             "text": "if",
-            "start": 22.2,
-            "end": 22.52
+            "start": 22.04,
+            "end": 22.28
           },
           {
             "text": "it",
-            "start": 22.52,
-            "end": 22.64
+            "start": 22.28,
+            "end": 22.38
           },
           {
             "text": "never",
-            "start": 22.64,
-            "end": 22.8
+            "start": 22.38,
+            "end": 22.54
           },
           {
             "text": "left",
-            "start": 22.8,
-            "end": 23.08
+            "start": 22.54,
+            "end": 22.82
           },
           {
             "text": "your",
-            "start": 23.08,
-            "end": 23.24
+            "start": 22.82,
+            "end": 23.0
           },
           {
             "text": "machine?",
-            "start": 23.24,
-            "end": 23.5
+            "start": 23.0,
+            "end": 23.28
+          },
+          {
+            "text": "An",
+            "start": 23.28,
+            "end": 23.28
+          }
+        ]
+      },
+      {
+        "start": 23.28,
+        "end": 23.62,
+        "text": "open-source AI agent just became... An open-source",
+        "words": [
+          {
+            "text": "open-source",
+            "start": 23.28,
+            "end": 23.28
+          },
+          {
+            "text": "AI",
+            "start": 23.28,
+            "end": 23.28
+          },
+          {
+            "text": "agent",
+            "start": 23.28,
+            "end": 23.44
+          },
+          {
+            "text": "just",
+            "start": 23.44,
+            "end": 23.44
+          },
+          {
+            "text": "became...",
+            "start": 23.44,
+            "end": 23.62
+          },
+          {
+            "text": "An",
+            "start": 23.62,
+            "end": 23.62
+          },
+          {
+            "text": "open-source",
+            "start": 23.62,
+            "end": 23.62
+          }
+        ]
+      },
+      {
+        "start": 23.62,
+        "end": 23.66,
+        "text": "AI agent just became one of the",
+        "words": [
+          {
+            "text": "AI",
+            "start": 23.62,
+            "end": 23.62
+          },
+          {
+            "text": "agent",
+            "start": 23.62,
+            "end": 23.62
+          },
+          {
+            "text": "just",
+            "start": 23.62,
+            "end": 23.62
+          },
+          {
+            "text": "became",
+            "start": 23.62,
+            "end": 23.62
+          },
+          {
+            "text": "one",
+            "start": 23.62,
+            "end": 23.66
+          },
+          {
+            "text": "of",
+            "start": 23.66,
+            "end": 23.66
+          },
+          {
+            "text": "the",
+            "start": 23.66,
+            "end": 23.66
+          }
+        ]
+      },
+      {
+        "start": 23.66,
+        "end": 23.66,
+        "text": "most-used agents in the world.",
+        "words": [
+          {
+            "text": "most-used",
+            "start": 23.66,
+            "end": 23.66
+          },
+          {
+            "text": "agents",
+            "start": 23.66,
+            "end": 23.66
+          },
+          {
+            "text": "in",
+            "start": 23.66,
+            "end": 23.66
+          },
+          {
+            "text": "the",
+            "start": 23.66,
+            "end": 23.66
+          },
+          {
+            "text": "world.",
+            "start": 23.66,
+            "end": 23.66
           }
         ]
       }
