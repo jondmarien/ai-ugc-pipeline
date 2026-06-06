@@ -84,6 +84,7 @@
 | Y3 | AI won't replace your SOC. It will replace some of its busywork. | E | 4 | 4 | 3 | 3 | 5 | **19** | Avoid both hype and dismissal | Myth |
 | Y4 | The viral "unhackable AI" claim, debunked calmly | E | 3 | 4 | 4 | 4 | 4 | **19** | Cite the specific claim being corrected | Myth |
 | Y5 | "Deepfakes broke trust" is half the story — the other half is process | E | 4 | 4 | 4 | 4 | 5 | **21** | Tie to verification controls | Myth |
+| Y6 | "Post at 9am for max reach" — the real schedule CISOs actually read | E | 3 | 4 | 4 | 3 | 4 | **18** | Cite engagement studies per platform; label as pattern not law | Myth |
 
 ---
 
