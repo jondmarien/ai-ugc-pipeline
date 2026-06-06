@@ -28,8 +28,14 @@ dependencies = [
   # --- STT word-alignment: bun run align ---
   "faster-whisper>=1.2",
   # --- Legacy local diffusers art path: bun run art:diffusers ---
-  "diffusers>=0.37",
+  # 0.38.0 fixes the trust_remote_code bypass via custom_pipeline / local custom
+  # components (GHSA, 2 high; was pinned >=0.37, resolving to vulnerable 0.37.1).
+  "diffusers>=0.38",
   "transformers>=5.0",
+  # diffusers 0.38.0 (the security fix) requires safetensors>=0.8.0rc0, which is still
+  # pre-release (no 0.8.0 stable yet). Request it explicitly so uv permits the pre-release;
+  # drop the rc pin back to a stable range once safetensors 0.8.0 final ships.
+  "safetensors>=0.8.0rc0",
   "accelerate>=1.0",
   "sentencepiece>=0.2",
   "protobuf>=5",
