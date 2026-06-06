@@ -63,6 +63,9 @@ The `<idea>` is free text — a **specific angle**, not a broad topic. Aim for o
 2. **Real or `[Scenario]`** — either it's sourced, or framed explicitly as a hypothetical.
 3. **Defender takeaway exists** — there's a concrete action a blue-teamer can take.
 4. **No how-to** — it illustrates the *risk*, never a working exploit.
+5. **Hook potential** — can it contradict a common belief in the first second?
+6. **Value potential** — does it yield a non-obvious tactical framework?
+7. **Resonance potential** — does it label a feeling the audience actually has?
 
 ---
 
@@ -82,3 +85,41 @@ The `<idea>` is free text — a **specific angle**, not a broad topic. Aim for o
 ## Image-prompt rule (so backgrounds don't garble)
 
 When the renderer writes each slide's `visual_prompt`, it must be a **single concrete physical object doing something physical, in a natural sentence** — e.g. *"a cracked magnifying glass revealing one flawless envelope in the dark."* **Never** UI/abstract nouns (*dashboard, node, chat bubble, panel, icon, poster, diagram*) — FLUX.2 renders those as garbled fake text. Colour comes from the **theme**, never the prompt. See `renderer/docs/IMAGE_MODELS.md` for the model settings.
+
+---
+
+## NEW: Algorithmic Growth Sequence (Chris Chung @iamchrischung)
+
+Every post must optimize in sequence:
+
+| Phase | Slide | Metric | Target |
+|---|---|---|---|
+| **HOOK** | 1 (Cover) | Skip Rate | Contradict common belief in ≤1s |
+| **VALUE** | 7 (Takeaway) | Shares/Saves | Non-obvious + tactical framework |
+| **RESONANCE** | 8 (CTA) | Likes/Comments | Label a 100× unnamed feeling |
+
+**Scoring threshold:** Total ≥ 24/40 (8 axes × 5)
+- If Hook < 3 → rewrite cover
+- If Value < 3 → rewrite takeaway
+- If Resonance < 3 → rewrite CTA
+
+---
+
+## Quick Hook Reference (from CAPTION_BANK.md)
+
+**Hook formulas:**
+- `"Everyone thinks X. Actually Y."`
+- `"Stop doing X. Start doing Y."`
+- `"The [common advice] is wrong because [reason]."`
+- `"Someone used AI to [action] and [consequence]"`
+- `"Most teams missed [hidden risk]"`
+
+**Value templates (Slide 7):**
+- `"Before you [action], check [specific control]."`
+- `"The control that stops this: [one concrete step]."`
+- `"Save this [checklist/framework] for your next [scenario]."`
+
+**Resonance templates (Slide 8):**
+- `"You've felt [feeling] when [situation]. That's [label]."`
+- `"The 2am thought: [unspoken worry]."`
+- `"What nobody says: [hard truth]."`

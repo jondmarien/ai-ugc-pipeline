@@ -32,6 +32,8 @@ Composition: portrait 4:5, 1080x1350, dramatic central subject, strong empty dar
 Text/content to render: no text.
 ```
 
+---
+
 ## 3. Inner-slide prompt template
 
 ```text
@@ -62,13 +64,14 @@ Text/content to render: no text.
 
 | Slide role | Safe visual subject |
 | --- | --- |
-| Context | Abstract "before/after" pattern — old red flags fading, a new clean lure emerging; or a timeline/wave motif. |
-| Risk | A threat-map metaphor: scattered public-profile fragments connecting toward a single target inbox/identity. No real names. |
-| Mechanism | A safe high-level diagram metaphor — e.g. external content passing a scanner; a permission gate; a costume/mask over an input. NO payloads. |
-| Failure point | A person near an "approve" button while a verification checklist sits ignored in the background. |
-| Defense | A control room: callback/second-channel verification, ticket workflow, approval chain, identity-check and audit-log icons. |
-| Takeaway | A single strong icon — a lock, a shield, a verified checkmark — over a dark gradient, room for one line of text. |
-| CTA | Brand-consistent dark frame with space for a question + "SAVE THIS / FOLLOW" and a small handle. |
+| Cover (1) | [See pillar cover scenes above] |
+| Context (2) | Abstract "before/after" pattern — old red flags fading, a new clean lure emerging; or a timeline/wave motif. |
+| Risk (3) | A threat-map metaphor: scattered public-profile fragments connecting toward a single target inbox/identity. No real names. |
+| Mechanism (4) | A safe high-level diagram metaphor — e.g. external content passing a scanner; a permission gate; a costume/mask over an input. NO payloads. |
+| Failure point (5) | A person near an "approve" button while a verification checklist sits ignored in the background. |
+| Defense (6) | A control room: callback/second-channel verification, ticket workflow, approval chain, identity-check and audit-log icons. |
+| **Takeaway / Value (7)** | A single strong icon — a lock, a shield, a verified checkmark — over a dark gradient, room for one line of text. **Non-obvious + tactical.** |
+| **CTA / Resonance (8)** | Brand-consistent dark frame with space for a question + "SAVE THIS / FOLLOW" and a small handle. **Labels shared feeling.** |
 
 ---
 
@@ -85,6 +88,8 @@ Text/content to render: no text.
 | SOC triage with AI | "a towering wall of alert cards collapsing into three prioritized cards, an AI glow assisting a human analyst who makes the final call" |
 | Shadow AI | "a corporate app inventory board where several glowing 'unapproved' AI tools sit outside the sanctioned perimeter" |
 | Governance / audit | "an audit-trail timeline with an 'who approved this action?' checkpoint highlighted, calm amber tone" |
+| **Permission anxiety (Resonance)** | "a hand hovering over 'allow calendar access' for an AI agent, subtle tension in the gesture, cool blue warning glow" |
+| **Output validation gap (Value)** | "a document with a green checkmark that's actually a warning sign — AI output accepted without verification" |
 
 ---
 
@@ -110,5 +115,5 @@ The repo already contains 3 finished demo carousels + 3 text-free cover backgrou
 
 - No real logos, real credentials, real customer data, or readable private info.
 - No step-by-step exploit visuals; keep mechanisms abstract and pair with defense.
-- Synthetic faces only; never imply a real, identifiable person did something.
+- Synthetic faces only; never imply a real, identifiable person did something they didn't.
 - Keep the lower-third dark and clean so manual headlines stay readable on mobile.
