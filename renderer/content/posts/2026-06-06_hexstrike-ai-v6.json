@@ -386,23 +386,18 @@
     "licenses": [],
     "captions": [
       {
-        "start": 0,
-        "end": 1.9,
-        "text": "An open source AI tool can now",
+        "start": 0.0,
+        "end": 2.1,
+        "text": "An open-source AI tool can now run",
         "words": [
           {
             "text": "An",
-            "start": 0,
-            "end": 0.38
+            "start": 0.0,
+            "end": 0.26
           },
           {
-            "text": "open",
-            "start": 0.38,
-            "end": 0.52
-          },
-          {
-            "text": "source",
-            "start": 0.52,
+            "text": "open-source",
+            "start": 0.26,
             "end": 0.78
           },
           {
@@ -418,394 +413,476 @@
           {
             "text": "can",
             "start": 1.44,
-            "end": 1.7
+            "end": 1.64
           },
           {
             "text": "now",
-            "start": 1.7,
-            "end": 1.9
+            "start": 1.64,
+            "end": 1.88
+          },
+          {
+            "text": "run",
+            "start": 1.88,
+            "end": 2.1
           }
         ]
       },
       {
-        "start": 1.9,
-        "end": 3.94,
-        "text": "run over 150 hacking tools on its",
+        "start": 2.1,
+        "end": 3.84,
+        "text": "over a hundred and fifty hacking tools",
         "words": [
-          {
-            "text": "run",
-            "start": 1.9,
-            "end": 2.1
-          },
           {
             "text": "over",
             "start": 2.1,
-            "end": 2.34
+            "end": 2.46
           },
           {
-            "text": "150",
-            "start": 2.34,
-            "end": 2.7
+            "text": "a",
+            "start": 2.46,
+            "end": 2.56
+          },
+          {
+            "text": "hundred",
+            "start": 2.56,
+            "end": 2.8
+          },
+          {
+            "text": "and",
+            "start": 2.8,
+            "end": 2.94
+          },
+          {
+            "text": "fifty",
+            "start": 2.94,
+            "end": 3.16
           },
           {
             "text": "hacking",
-            "start": 2.7,
-            "end": 3.4
+            "start": 3.16,
+            "end": 3.48
           },
           {
             "text": "tools",
-            "start": 3.4,
-            "end": 3.62
-          },
+            "start": 3.48,
+            "end": 3.84
+          }
+        ]
+      },
+      {
+        "start": 3.84,
+        "end": 6.48,
+        "text": "on its own. Hours after Citrix zero-day",
+        "words": [
           {
             "text": "on",
-            "start": 3.62,
-            "end": 3.8
+            "start": 3.84,
+            "end": 4.06
           },
           {
             "text": "its",
-            "start": 3.8,
-            "end": 3.94
-          }
-        ]
-      },
-      {
-        "start": 3.94,
-        "end": 6.58,
-        "text": "own. Hours after Citrix, Zero Day dropped,",
-        "words": [
+            "start": 4.06,
+            "end": 4.2
+          },
           {
             "text": "own.",
-            "start": 3.94,
-            "end": 4.12
+            "start": 4.2,
+            "end": 4.36
           },
           {
             "text": "Hours",
-            "start": 4.7,
-            "end": 4.7
+            "start": 4.86,
+            "end": 4.86
           },
           {
             "text": "after",
-            "start": 4.7,
-            "end": 5.02
+            "start": 4.86,
+            "end": 5.22
           },
           {
-            "text": "Citrix,",
-            "start": 5.02,
-            "end": 5.46
+            "text": "Citrix",
+            "start": 5.22,
+            "end": 5.7
           },
           {
-            "text": "Zero",
-            "start": 5.9,
-            "end": 6.02
-          },
-          {
-            "text": "Day",
-            "start": 6.02,
-            "end": 6.32
-          },
-          {
-            "text": "dropped,",
-            "start": 6.32,
-            "end": 6.58
+            "text": "zero-day",
+            "start": 5.7,
+            "end": 6.48
           }
         ]
       },
       {
-        "start": 7.02,
-        "end": 8.88,
-        "text": "attackers were already discussing using it to",
+        "start": 6.48,
+        "end": 9.0,
+        "text": "dropped, attackers were already discussing using it",
         "words": [
           {
+            "text": "dropped,",
+            "start": 6.48,
+            "end": 6.8
+          },
+          {
             "text": "attackers",
-            "start": 7.02,
-            "end": 7.14
+            "start": 7.2,
+            "end": 7.36
           },
           {
             "text": "were",
-            "start": 7.14,
-            "end": 7.48
-          },
-          {
-            "text": "already",
-            "start": 7.48,
+            "start": 7.36,
             "end": 7.72
           },
           {
-            "text": "discussing",
+            "text": "already",
             "start": 7.72,
-            "end": 8.16
+            "end": 7.9
+          },
+          {
+            "text": "discussing",
+            "start": 7.9,
+            "end": 8.38
           },
           {
             "text": "using",
-            "start": 8.16,
-            "end": 8.6
+            "start": 8.38,
+            "end": 8.8
           },
           {
             "text": "it",
-            "start": 8.6,
-            "end": 8.76
-          },
+            "start": 8.8,
+            "end": 9.0
+          }
+        ]
+      },
+      {
+        "start": 9.0,
+        "end": 11.78,
+        "text": "to mass-exploit. So patch your internet-facing systems",
+        "words": [
           {
             "text": "to",
-            "start": 8.76,
-            "end": 8.88
-          }
-        ]
-      },
-      {
-        "start": 8.88,
-        "end": 9.28,
-        "text": "mass exploit.",
-        "words": [
-          {
-            "text": "mass",
-            "start": 8.88,
-            "end": 9.04
+            "start": 9.0,
+            "end": 9.12
           },
           {
-            "text": "exploit.",
-            "start": 9.04,
-            "end": 9.28
-          }
-        ]
-      },
-      {
-        "start": 9.96,
-        "end": 11.66,
-        "text": "So patch your internet phasing systems first,",
-        "words": [
+            "text": "mass-exploit.",
+            "start": 9.12,
+            "end": 9.74
+          },
           {
             "text": "So",
-            "start": 9.96,
-            "end": 10
+            "start": 10.26,
+            "end": 10.32
           },
           {
             "text": "patch",
-            "start": 10,
-            "end": 10.2
+            "start": 10.32,
+            "end": 10.54
           },
           {
             "text": "your",
-            "start": 10.2,
-            "end": 10.4
+            "start": 10.54,
+            "end": 10.74
           },
           {
-            "text": "internet",
-            "start": 10.4,
-            "end": 10.58
-          },
-          {
-            "text": "phasing",
-            "start": 10.58,
-            "end": 11.02
+            "text": "internet-facing",
+            "start": 10.74,
+            "end": 11.3
           },
           {
             "text": "systems",
-            "start": 11.02,
-            "end": 11.28
-          },
-          {
-            "text": "first,",
-            "start": 11.28,
-            "end": 11.66
+            "start": 11.3,
+            "end": 11.78
           }
         ]
       },
       {
-        "start": 12.08,
-        "end": 12.36,
-        "text": "and fast.",
+        "start": 11.78,
+        "end": 12.86,
+        "text": "first, and fast.",
         "words": [
           {
+            "text": "first,",
+            "start": 11.78,
+            "end": 12.14
+          },
+          {
             "text": "and",
-            "start": 12.08,
-            "end": 12.18
+            "start": 12.54,
+            "end": 12.66
           },
           {
             "text": "fast.",
-            "start": 12.18,
-            "end": 12.36
+            "start": 12.66,
+            "end": 12.86
           }
         ]
       },
       {
-        "start": 13.08,
-        "end": 15.76,
+        "start": 13.54,
+        "end": 16.74,
         "text": "Assume exploitation is automated now. AI lowers",
         "words": [
           {
             "text": "Assume",
-            "start": 13.08,
-            "end": 13.24
+            "start": 13.54,
+            "end": 13.74
           },
           {
             "text": "exploitation",
-            "start": 13.24,
-            "end": 13.52
+            "start": 13.74,
+            "end": 14.0
           },
           {
             "text": "is",
-            "start": 13.52,
-            "end": 14.1
+            "start": 14.0,
+            "end": 14.68
           },
           {
             "text": "automated",
-            "start": 14.1,
-            "end": 14.34
+            "start": 14.68,
+            "end": 14.96
           },
           {
             "text": "now.",
-            "start": 14.34,
-            "end": 14.82
+            "start": 14.96,
+            "end": 15.44
           },
           {
             "text": "AI",
-            "start": 15.36,
-            "end": 15.36
+            "start": 16.02,
+            "end": 16.2
           },
           {
             "text": "lowers",
-            "start": 15.36,
-            "end": 15.76
+            "start": 16.2,
+            "end": 16.74
           }
         ]
       },
       {
-        "start": 15.76,
-        "end": 16.9,
+        "start": 16.74,
+        "end": 18.02,
         "text": "the skill floor for attackers.",
         "words": [
           {
             "text": "the",
-            "start": 15.76,
-            "end": 15.96
+            "start": 16.74,
+            "end": 16.98
           },
           {
             "text": "skill",
-            "start": 15.96,
-            "end": 16.14
+            "start": 16.98,
+            "end": 17.18
           },
           {
             "text": "floor",
-            "start": 16.14,
-            "end": 16.38
+            "start": 17.18,
+            "end": 17.44
           },
           {
             "text": "for",
-            "start": 16.38,
-            "end": 16.6
+            "start": 17.44,
+            "end": 17.74
           },
           {
             "text": "attackers.",
-            "start": 16.6,
-            "end": 16.9
+            "start": 17.74,
+            "end": 18.02
           }
         ]
       },
       {
-        "start": 17.72,
-        "end": 19.7,
+        "start": 19.1,
+        "end": 21.62,
         "text": "Patch speed matters more, not less. How",
         "words": [
           {
             "text": "Patch",
-            "start": 17.72,
-            "end": 17.72
+            "start": 19.1,
+            "end": 19.1
           },
           {
             "text": "speed",
-            "start": 17.72,
-            "end": 17.92
+            "start": 19.1,
+            "end": 19.32
           },
           {
             "text": "matters",
-            "start": 17.92,
-            "end": 18.14
+            "start": 19.32,
+            "end": 19.7
           },
           {
             "text": "more,",
-            "start": 18.14,
-            "end": 18.54
-          },
-          {
-            "text": "not",
-            "start": 18.8,
-            "end": 18.94
-          },
-          {
-            "text": "less.",
-            "start": 18.94,
-            "end": 19.14
-          },
-          {
-            "text": "How",
-            "start": 19.64,
-            "end": 19.7
-          }
-        ]
-      },
-      {
-        "start": 19.7,
-        "end": 21.16,
-        "text": "fast can your team patch an internet",
-        "words": [
-          {
-            "text": "fast",
             "start": 19.7,
-            "end": 19.94
-          },
-          {
-            "text": "can",
-            "start": 19.94,
             "end": 20.14
           },
           {
-            "text": "your",
-            "start": 20.14,
-            "end": 20.26
+            "text": "not",
+            "start": 20.56,
+            "end": 20.72
           },
           {
-            "text": "team",
-            "start": 20.26,
-            "end": 20.48
-          },
-          {
-            "text": "patch",
-            "start": 20.48,
-            "end": 20.78
-          },
-          {
-            "text": "an",
-            "start": 20.78,
+            "text": "less.",
+            "start": 20.72,
             "end": 20.96
           },
           {
-            "text": "internet",
-            "start": 20.96,
-            "end": 21.16
+            "text": "How",
+            "start": 21.54,
+            "end": 21.62
           }
         ]
       },
       {
-        "start": 21.16,
-        "end": 22.16,
-        "text": "phasing Zero Day?",
+        "start": 21.62,
+        "end": 23.8,
+        "text": "fast can your team patch an internet-facing",
         "words": [
           {
-            "text": "phasing",
-            "start": 21.16,
-            "end": 21.62
-          },
-          {
-            "text": "Zero",
+            "text": "fast",
             "start": 21.62,
-            "end": 21.96
+            "end": 21.9
           },
           {
-            "text": "Day?",
-            "start": 21.96,
-            "end": 22.16
+            "text": "can",
+            "start": 21.9,
+            "end": 22.18
+          },
+          {
+            "text": "your",
+            "start": 22.18,
+            "end": 22.32
+          },
+          {
+            "text": "team",
+            "start": 22.32,
+            "end": 22.54
+          },
+          {
+            "text": "patch",
+            "start": 22.54,
+            "end": 22.9
+          },
+          {
+            "text": "an",
+            "start": 22.9,
+            "end": 23.18
+          },
+          {
+            "text": "internet-facing",
+            "start": 23.18,
+            "end": 23.8
+          }
+        ]
+      },
+      {
+        "start": 23.8,
+        "end": 24.78,
+        "text": "zero-day? An open-source AI tool can now",
+        "words": [
+          {
+            "text": "zero-day?",
+            "start": 23.8,
+            "end": 24.54
+          },
+          {
+            "text": "An",
+            "start": 24.54,
+            "end": 24.54
+          },
+          {
+            "text": "open-source",
+            "start": 24.54,
+            "end": 24.64
+          },
+          {
+            "text": "AI",
+            "start": 24.64,
+            "end": 24.64
+          },
+          {
+            "text": "tool",
+            "start": 24.64,
+            "end": 24.78
+          },
+          {
+            "text": "can",
+            "start": 24.78,
+            "end": 24.78
+          },
+          {
+            "text": "now",
+            "start": 24.78,
+            "end": 24.78
+          }
+        ]
+      },
+      {
+        "start": 24.78,
+        "end": 24.78,
+        "text": "run over a hundred and fifty hacking",
+        "words": [
+          {
+            "text": "run",
+            "start": 24.78,
+            "end": 24.78
+          },
+          {
+            "text": "over",
+            "start": 24.78,
+            "end": 24.78
+          },
+          {
+            "text": "a",
+            "start": 24.78,
+            "end": 24.78
+          },
+          {
+            "text": "hundred",
+            "start": 24.78,
+            "end": 24.78
+          },
+          {
+            "text": "and",
+            "start": 24.78,
+            "end": 24.78
+          },
+          {
+            "text": "fifty",
+            "start": 24.78,
+            "end": 24.78
+          },
+          {
+            "text": "hacking",
+            "start": 24.78,
+            "end": 24.78
+          }
+        ]
+      },
+      {
+        "start": 24.78,
+        "end": 24.78,
+        "text": "tools on its own.",
+        "words": [
+          {
+            "text": "tools",
+            "start": 24.78,
+            "end": 24.78
+          },
+          {
+            "text": "on",
+            "start": 24.78,
+            "end": 24.78
+          },
+          {
+            "text": "its",
+            "start": 24.78,
+            "end": 24.78
+          },
+          {
+            "text": "own.",
+            "start": 24.78,
+            "end": 24.78
           }
         ]
       }

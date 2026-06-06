@@ -1,5 +1,5 @@
 01. Slide 1 (cover): a sleek laptop on a dark desk with a warm glowing orb hovering above the keyboard; bold headline space below.
-02. Slide 2 (context): a glowing cube in the dark with three streams — light, a sound wave, and a sheet of paper — flowing into it.
+02. Slide 2 (context): a glowing cube in the dark with three streams (light, a sound wave, and a sheet of paper) flowing into it.
 03. Slide 3 (risk): a wide funnel swallowing a photo, a sound wave, and a page, with a single thin ribbon of light trickling out the bottom.
 04. Slide 4 (mechanism): mosaic tiles and sound-wave fragments streaming directly into one glowing core with nothing in between.
 05. Slide 5 (failure_point): a single trophy on a tall pedestal under one spotlight while the surrounding ground stays dark.

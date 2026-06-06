@@ -354,268 +354,325 @@
     "licenses": [],
     "captions": [
       {
-        "start": 0,
-        "end": 1.78,
-        "text": "AI fishing made old training obsolete.",
+        "start": 0.0,
+        "end": 1.8,
+        "text": "AI phishing made old training obsolete.",
         "words": [
           {
             "text": "AI",
-            "start": 0,
-            "end": 0.34
+            "start": 0.0,
+            "end": 0.46
           },
           {
-            "text": "fishing",
-            "start": 0.34,
-            "end": 0.66
+            "text": "phishing",
+            "start": 0.46,
+            "end": 0.92
           },
           {
             "text": "made",
-            "start": 0.66,
-            "end": 1
+            "start": 0.92,
+            "end": 1.1
           },
           {
             "text": "old",
-            "start": 1,
-            "end": 1.24
+            "start": 1.1,
+            "end": 1.28
           },
           {
             "text": "training",
-            "start": 1.24,
+            "start": 1.28,
             "end": 1.5
           },
           {
             "text": "obsolete.",
             "start": 1.5,
-            "end": 1.78
+            "end": 1.8
           }
         ]
       },
       {
-        "start": 2.92,
-        "end": 4.94,
-        "text": "The old red flags, bad grammar, weird",
+        "start": 2.58,
+        "end": 4.34,
+        "text": "The old red flags, bad grammar and",
         "words": [
           {
             "text": "The",
-            "start": 2.92,
-            "end": 2.94
+            "start": 2.58,
+            "end": 2.6
           },
           {
             "text": "old",
-            "start": 2.94,
-            "end": 3.12
+            "start": 2.6,
+            "end": 2.76
           },
           {
             "text": "red",
-            "start": 3.12,
-            "end": 3.3
+            "start": 2.76,
+            "end": 2.94
           },
           {
             "text": "flags,",
-            "start": 3.3,
-            "end": 3.54
+            "start": 2.94,
+            "end": 3.18
           },
           {
             "text": "bad",
-            "start": 4.04,
-            "end": 4.16
+            "start": 3.62,
+            "end": 3.74
           },
           {
-            "text": "grammar,",
-            "start": 4.16,
-            "end": 4.42
+            "text": "grammar",
+            "start": 3.74,
+            "end": 4.0
           },
           {
-            "text": "weird",
-            "start": 4.84,
-            "end": 4.94
+            "text": "and",
+            "start": 4.0,
+            "end": 4.34
           }
         ]
       },
       {
-        "start": 4.94,
+        "start": 4.34,
         "end": 5.96,
-        "text": "phrasing, or fading.",
+        "text": "weird phrasing, are fading fast.",
         "words": [
           {
+            "text": "weird",
+            "start": 4.34,
+            "end": 4.54
+          },
+          {
             "text": "phrasing,",
-            "start": 4.94,
-            "end": 5.32
+            "start": 4.54,
+            "end": 4.98
           },
           {
-            "text": "or",
-            "start": 5.68,
-            "end": 5.74
+            "text": "are",
+            "start": 5.2,
+            "end": 5.4
           },
           {
-            "text": "fading.",
-            "start": 5.74,
+            "text": "fading",
+            "start": 5.4,
+            "end": 5.6
+          },
+          {
+            "text": "fast.",
+            "start": 5.6,
             "end": 5.96
           }
         ]
       },
       {
-        "start": 7.24,
-        "end": 9.22,
+        "start": 6.88,
+        "end": 8.9,
         "text": "Verify sensitive requests over a second channel.",
         "words": [
           {
             "text": "Verify",
-            "start": 7.24,
-            "end": 7.24
+            "start": 6.88,
+            "end": 6.88
           },
           {
             "text": "sensitive",
-            "start": 7.24,
-            "end": 7.78
+            "start": 6.88,
+            "end": 7.44
           },
           {
             "text": "requests",
-            "start": 7.78,
-            "end": 8.14
+            "start": 7.44,
+            "end": 7.72
           },
           {
             "text": "over",
-            "start": 8.14,
-            "end": 8.62
+            "start": 7.72,
+            "end": 8.28
           },
           {
             "text": "a",
-            "start": 8.62,
-            "end": 8.7
+            "start": 8.28,
+            "end": 8.36
           },
           {
             "text": "second",
-            "start": 8.7,
-            "end": 8.94
+            "start": 8.36,
+            "end": 8.6
           },
           {
             "text": "channel.",
-            "start": 8.94,
-            "end": 9.22
+            "start": 8.6,
+            "end": 8.9
           }
         ]
       },
       {
-        "start": 10.12,
-        "end": 11.8,
+        "start": 9.5,
+        "end": 11.12,
         "text": "If your defense relies on scams looking",
         "words": [
           {
             "text": "If",
-            "start": 10.12,
-            "end": 10.22
+            "start": 9.5,
+            "end": 9.58
           },
           {
             "text": "your",
-            "start": 10.22,
-            "end": 10.36
+            "start": 9.58,
+            "end": 9.7
           },
           {
             "text": "defense",
-            "start": 10.36,
-            "end": 10.68
+            "start": 9.7,
+            "end": 10.0
           },
           {
             "text": "relies",
-            "start": 10.68,
-            "end": 10.92
+            "start": 10.0,
+            "end": 10.3
           },
           {
             "text": "on",
-            "start": 10.92,
-            "end": 11.26
+            "start": 10.3,
+            "end": 10.58
           },
           {
             "text": "scams",
-            "start": 11.26,
-            "end": 11.42
+            "start": 10.58,
+            "end": 10.74
           },
           {
             "text": "looking",
-            "start": 11.42,
-            "end": 11.8
+            "start": 10.74,
+            "end": 11.12
           }
         ]
       },
       {
-        "start": 11.8,
-        "end": 12.92,
+        "start": 11.12,
+        "end": 12.18,
         "text": "fake, the game changed.",
         "words": [
           {
             "text": "fake,",
-            "start": 11.8,
-            "end": 12.1
+            "start": 11.12,
+            "end": 11.4
           },
           {
             "text": "the",
-            "start": 12.52,
-            "end": 12.56
+            "start": 11.76,
+            "end": 11.78
           },
           {
             "text": "game",
-            "start": 12.56,
-            "end": 12.7
+            "start": 11.78,
+            "end": 11.94
           },
           {
             "text": "changed.",
-            "start": 12.7,
-            "end": 12.92
+            "start": 11.94,
+            "end": 12.18
           }
         ]
       },
       {
-        "start": 13.86,
-        "end": 15.22,
-        "text": "Does your training still teach spot the",
+        "start": 12.9,
+        "end": 14.32,
+        "text": "Does your training still teach people to",
         "words": [
           {
             "text": "Does",
-            "start": 13.86,
-            "end": 13.86
+            "start": 12.9,
+            "end": 12.9
           },
           {
             "text": "your",
-            "start": 13.86,
-            "end": 14
+            "start": 12.9,
+            "end": 13.02
           },
           {
             "text": "training",
-            "start": 14,
-            "end": 14.26
+            "start": 13.02,
+            "end": 13.28
           },
           {
             "text": "still",
-            "start": 14.26,
-            "end": 14.56
+            "start": 13.28,
+            "end": 13.58
           },
           {
             "text": "teach",
-            "start": 14.56,
-            "end": 14.8
+            "start": 13.58,
+            "end": 13.82
           },
           {
+            "text": "people",
+            "start": 13.82,
+            "end": 14.06
+          },
+          {
+            "text": "to",
+            "start": 14.06,
+            "end": 14.32
+          }
+        ]
+      },
+      {
+        "start": 14.32,
+        "end": 15.1,
+        "text": "spot the typo? Solve the typo. you.",
+        "words": [
+          {
             "text": "spot",
-            "start": 14.8,
+            "start": 14.32,
+            "end": 14.5
+          },
+          {
+            "text": "the",
+            "start": 14.5,
+            "end": 14.68
+          },
+          {
+            "text": "typo?",
+            "start": 14.68,
+            "end": 14.86
+          },
+          {
+            "text": "Solve",
+            "start": 14.86,
             "end": 15.04
           },
           {
             "text": "the",
             "start": 15.04,
-            "end": 15.22
+            "end": 15.04
+          },
+          {
+            "text": "typo.",
+            "start": 15.04,
+            "end": 15.04
+          },
+          {
+            "text": "you.",
+            "start": 15.04,
+            "end": 15.1
           }
         ]
       },
       {
-        "start": 15.22,
-        "end": 15.38,
-        "text": "typo?",
+        "start": 15.18,
+        "end": 15.34,
+        "text": "Good luck.",
         "words": [
           {
-            "text": "typo?",
-            "start": 15.22,
-            "end": 15.38
+            "text": "Good",
+            "start": 15.18,
+            "end": 15.34
+          },
+          {
+            "text": "luck.",
+            "start": 15.34,
+            "end": 15.34
           }
         ]
       }

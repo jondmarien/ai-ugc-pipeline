@@ -1,5 +1,5 @@
 {
-  "seed": 2081613700,
+  "seed": 707937188,
   "seed_source": "auto",
   "model": "openbmb/VoxCPM2",
   "sample_rate": 48000,
@@ -8,6 +8,6 @@
   "clone_mode": "hi-fi",
   "prompt_text_source": "whisper",
   "script_chars": 294,
-  "generated_at": "2026-06-06T04:09:28",
-  "reuse_command": "bun run pipeline -- 2026-06-03_prompt-injection-agents --seed=2081613700"
+  "generated_at": "2026-06-06T06:07:06",
+  "reuse_command": "bun run pipeline -- 2026-06-03_prompt-injection-agents --seed=707937188"
 }
