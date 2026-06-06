@@ -155,7 +155,7 @@
       "background_asset": "/backgrounds/2026-06-01_ai-phishing-training/08_cta.png"
     }
   ],
-  "caption": "AI phishing made “spot the typo” training obsolete.\n\nThe old red flags — bad grammar, clumsy phrasing, obvious urgency — were never the real defense. They were just the easiest tells. The UK's NCSC assessments describe AI giving attackers an uplift in reconnaissance and social engineering, which mostly means cheaper, more personalized lures at scale — not magical hacking.\n\nFor defenders, that's a process problem, not a vocabulary problem. If your training teaches people to hunt for spelling mistakes, a clean AI-written message walks right past it.\n\nDefender move: verify sensitive requests (password resets, payment changes) over a second channel, and make that verification mandatory — not optional politeness.\n\nDoes your awareness training still lean on “spot the typo”?\n\nFollow for AI security breakdowns without the fake panic.",
+  "caption": "AI phishing made “spot the typo” training obsolete.\n\nThe old red flags (bad grammar, clumsy phrasing, obvious urgency) were never the real defense. They were just the easiest tells. The UK's NCSC assessments describe AI giving attackers an uplift in reconnaissance and social engineering, which mostly means cheaper, more personalized lures at scale, not magical hacking.\n\nFor defenders, that's a process problem, not a vocabulary problem. If your training teaches people to hunt for spelling mistakes, a clean AI-written message walks right past it.\n\nDefender move: verify sensitive requests (password resets, payment changes) over a second channel, and make that verification mandatory, not optional politeness.\n\nDoes your awareness training still lean on “spot the typo”?\n\nFollow for AI security breakdowns without the fake panic.",
   "hashtags": [
     "#Cybersecurity",
     "#InfoSec",
@@ -288,7 +288,7 @@
       {
         "start": 5,
         "end": 11,
-        "text": "The old red flags — bad grammar, weird phrasing — are fading."
+        "text": "The old red flags, bad grammar and weird phrasing, are fading fast."
       },
       {
         "start": 11,
@@ -303,7 +303,7 @@
       {
         "start": 22,
         "end": 26,
-        "text": "Does your training still teach spot the typo?"
+        "text": "Does your training still teach people to spot the typo?"
       }
     ],
     "beats": [
