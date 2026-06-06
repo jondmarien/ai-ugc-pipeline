@@ -144,7 +144,7 @@
       "slide": 7,
       "role": "takeaway",
       "kicker": "TAKEAWAY",
-      "on_slide_copy": "AI-driven red teaming isn't coming — it's protocollized. MCP + BOAZ means one prompt replaces days of manual tradecraft.",
+      "on_slide_copy": "AI-driven red teaming {{isn't coming}} — [[it's protocollized]]. MCP + BOAZ means [[one prompt replaces days of manual tradecraft]].",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single strong symbol — a shield with a hairline crack catching red light — centered in deep negative space, minimal high-contrast composition",

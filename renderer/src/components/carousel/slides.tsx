@@ -5,7 +5,19 @@ import { CarouselSlide, Kicker } from "./CarouselSlide";
 
 type SlideProps = { post: TPostData; slide: TSlideData };
 
-function Headline({ text, size, accent }: { text: string; size: number; accent?: string }) {
+// Inline emphasis markup for on-slide headlines (mainly the takeaway):
+//   [[text]] → the post's THEME ACCENT colour   ·   {{text}} → danger red (denial/negation)
+// Everything else renders in the normal foreground. Markers live only in on_slide_copy and
+// are consumed here (alt_text + reel captions are separate, so they never see the markers).
+function colorize(text: string, accent: string, danger: string) {
+  return text.split(/(\[\[[^\]]+\]\]|\{\{[^}]+\}\})/g).map((seg, i) => {
+    if (seg.startsWith("[[") && seg.endsWith("]]")) return <span key={i} style={{ color: accent }}>{seg.slice(2, -2)}</span>;
+    if (seg.startsWith("{{") && seg.endsWith("}}")) return <span key={i} style={{ color: danger }}>{seg.slice(2, -2)}</span>;
+    return seg;
+  });
+}
+
+function Headline({ text, size, accent, danger = "#ef4444" }: { text: string; size: number; accent?: string; danger?: string }) {
   return (
     <h1
       style={{
@@ -19,7 +31,7 @@ function Headline({ text, size, accent }: { text: string; size: number; accent?:
         textShadow: accent ? `0 0 48px ${accent}33` : undefined,
       }}
     >
-      {text}
+      {colorize(text, accent ?? palette.fg, danger)}
     </h1>
   );
 }

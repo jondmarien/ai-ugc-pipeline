@@ -36,18 +36,28 @@ def find_post_path(key: str) -> str:
     sys.exit(f"No post JSON in {POSTS} matching '{key}'.")
 
 
+# Whisper mishears a few project-specific proper nouns; fix them after transcription.
+# Key is matched case-insensitively as a whole word; value is the correct spelling.
+CORRECTIONS = {
+    "olima": "Ollama", "ollamma": "Ollama", "olama": "Ollama",
+    "unslot": "Unsloth", "unsloss": "Unsloth",
+    "vox cpm": "VoxCPM", "voxcom": "VoxCPM",
+    "hexstrike": "HexStrike", "net scaler": "NetScaler",
+}
+
+
 def merge_hyphens(words):
-    """Whisper splits hyphenated compounds at the hyphen ('first-ever' -> 'first' + '-ever';
-    'AI-assisting' -> 'AI' + '-assisting'). Glue any token that begins with a hyphen (or a bare
-    '-') onto the previous word with NO space, and glue a word ending in a dangling hyphen onto
-    the next — so captions read 'first-ever', never 'first -ever' or a lone '-assisting'. Word
-    timings merge (prev.start … this.end) so highlight/word modes still sync."""
+    """Whisper splits compounds and numbers at their punctuation ('first-ever' -> 'first' +
+    '-ever'; 'AI-assisting' -> 'AI' + '-assisting'; '180,000' -> '180' + ',000'). Glue any token
+    that BEGINS with joining punctuation (- , . ' ’) onto the previous word with NO space, and
+    glue a word ending in a dangling hyphen onto the next — so captions read 'first-ever' and
+    '180,000', never 'first -ever', a lone '-assisting', or '180' then ',000'. Timings merge."""
     out = []
     for w in words:
         t = (w.get("text") or "").strip()
         if not t:
             continue
-        if out and t[0] == "-":                       # leading-hyphen fragment → glue to prev
+        if out and t[0] in "-,.'’":                   # leading joining-punctuation fragment → glue to prev
             out[-1]["text"] += t
             out[-1]["end"] = w["end"]
         elif out and out[-1]["text"].endswith("-"):   # prev had a dangling hyphen → glue this
@@ -56,6 +66,15 @@ def merge_hyphens(words):
         else:
             out.append({"text": t, "start": w["start"], "end": w["end"]})
     return out
+
+
+def fix_proper_nouns(words):
+    """Apply CORRECTIONS to merged caption words (case-insensitive, punctuation-preserving)."""
+    import re
+    for w in words:
+        for bad, good in CORRECTIONS.items():
+            w["text"] = re.sub(rf"(?i)\b{re.escape(bad)}\b", good, w["text"])
+    return words
 
 
 def main() -> None:
@@ -89,7 +108,10 @@ def main() -> None:
 
     print(f"Whisper: {WHISPER_MODEL} on {device} ({compute}) → {os.path.basename(voice_wav)}")
     model = WhisperModel(WHISPER_MODEL, device=device, compute_type=compute)
-    segments, _info = model.transcribe(voice_wav, word_timestamps=True, language="en")
+    # Feed the actual narration text as a bias prompt so Whisper spells our proper nouns
+    # right (Ollama, Unsloth, VoxCPM, HexStrike, NetScaler…) instead of guessing ("Olima").
+    hint = " ".join((n.get("text") or "").strip() for n in (video.get("narration") or [])).strip()
+    segments, _info = model.transcribe(voice_wav, word_timestamps=True, language="en", initial_prompt=hint or None)
 
     words = []  # absolute-time word list
     for seg in segments:
@@ -97,7 +119,7 @@ def main() -> None:
             words.append({"text": w.word.strip(), "start": float(w.start), "end": float(w.end)})
     if not words:
         sys.exit("Whisper returned no words — check the audio.")
-    words = merge_hyphens(words)  # un-split hyphenated compounds (first-ever, AI-assisting)
+    words = fix_proper_nouns(merge_hyphens(words))  # un-split compounds/numbers + fix proper nouns
     print(f"  {len(words)} words, {words[-1]['end']:.1f}s total")
 
     # Re-chunk the transcript into short caption lines (≤ ~7 words, ≤ ~3.5s, or a

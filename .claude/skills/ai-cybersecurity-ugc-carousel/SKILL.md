@@ -61,7 +61,7 @@ Use this default 8-slide structure unless another structure fits better. The sli
 | 4 | How it works | Describe the mechanism at a safe, high level |
 | 5 | Where teams fail | Identify the gap in people, process, or tooling |
 | 6 | Defensive move | Give practical controls or review steps |
-| 7 | Takeaway | Compress the lesson into one memorable line |
+| 7 | Takeaway | Compress the lesson into one memorable line. **Accent-mark it:** wrap the affirmative point in `[[…]]` (renders in the theme accent colour) and any negation/"what it's NOT" in `{{…}}` (renders red). e.g. `The win {{isn't 'AI that thinks.'}} [[It's an agent you own and can contain.]]` |
 | 8 | CTA | Ask a specific question and invite following/saving |
 
 For **longer list posts** (`slides=N`, N>8), keep cover → context → a run of `point` body slides (one item each) → takeaway → CTA. For **short posts** (N<8), drop the least-essential middle roles (e.g. N=5: cover, context, risk, takeaway, cta). For myth-busting posts, use: viral claim, what is true, what is exaggerated, what actually matters, defender takeaway.
