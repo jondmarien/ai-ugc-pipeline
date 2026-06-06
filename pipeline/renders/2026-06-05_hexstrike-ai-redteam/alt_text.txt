@@ -1,0 +1,8 @@
+01. Slide 1 (cover): Security analyst facing wall of scrolling terminal output with AI agent orchestrating tool chains, red accent glow reflecting in dark glasses.
+02. Slide 2 (context): Terminal split pane showing AI prompt left side, cascade of nmap and nuclei tool output right side, dark editorial style.
+03. Slide 3 (risk): Red team operator screen showing compressed timeline — reconnaissance, exploitation, evasion phases collapsing into single AI-orchestrated flow, tense high-contrast.
+04. Slide 4 (mechanism): Abstract flow diagram as glowing nodes — LLM agent center connecting to tool clusters (recon, web, binary, cloud) feeding into evasion engine block, no readable code.
+05. Slide 5 (failure_point): SOC analyst overwhelmed by flood of alerts — traditional detection rules lighting up individually while coordinated AI-driven attack flows through gaps.
+06. Slide 6 (defense): Defensive security workflow — approval gate checkpoint, audit trail logging, policy enforcement visualization, calm orderly dark composition.
+07. Slide 7 (takeaway): Single strong symbol — shield with hairline crack catching red light — centered in deep negative space, minimal high-contrast.
+08. Slide 8 (cta): Clean dark end-card with empty negative space for question and handle, premium editorial cybersecurity look.
