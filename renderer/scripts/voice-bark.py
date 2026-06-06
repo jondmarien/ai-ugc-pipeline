@@ -34,7 +34,9 @@ BARK_VOICE = os.environ.get("BARK_VOICE", "v2/en_speaker_6")
 # checkpoint (TORCH_HOME) — so point all three at E:\ai-ugc to keep C:/J: clear.
 os.environ.setdefault("SUNO_USE_SMALL_MODELS", "1")
 os.environ.setdefault("XDG_CACHE_HOME", r"E:\ai-ugc\cache")   # → E:\ai-ugc\cache\suno\bark_v0
-os.environ.setdefault("HF_HOME", r"E:\ai-ugc\hf")             # → BERT tokenizer
+# Reuse the EXISTING HF hub (VoxCPM already populates E:\ai-ugc-hf\hub) so the BERT
+# tokenizer doesn't fork a second cache. setdefault respects an HF_HOME already in your env.
+os.environ.setdefault("HF_HOME", r"E:\ai-ugc-hf")             # → BERT tokenizer (shared hub)
 os.environ.setdefault("TORCH_HOME", r"E:\ai-ugc\torch")       # → encodec_24khz checkpoint
 
 
