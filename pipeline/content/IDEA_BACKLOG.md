@@ -47,7 +47,8 @@
 | M6 | Your AI agent's permissions are its attack surface | E | 4 | 5 | 4 | 3 | 5 | **21** | Least-privilege framing | 8-slide |
 | M7 | Model supply chain: you didn't train it, so what's in it? | E | 3 | 3 | 4 | 3 | 4 | **17** | Keep general; below threshold → reframe/sharpen | List |
 | M8 | "Ignore previous instructions" is the tip of the injection iceberg | E | 4 | 4 | 4 | 4 | 4 | **20** | No working payloads on slide | 8-slide |
-| M9 | Why a confused agent is a security problem, not just a UX bug | E | 4 | 4 | 4 | 3 | 5 | **20** | OWASP Excessive Agency | 8-slide |
+|| M9 | Why a confused agent is a security problem, not just a UX bug | E | 4 | 4 | 4 | 3 | 5 | **20** | OWASP Excessive Agency | 8-slide |
+|| M10 | DETECTION RULES ARE DEAD. WRITE QUERIES LIKE A SEARCH ENGINE. | V | 4 | 5 | 4 | 4 | 5 | **22** | Tie to Sigma/ES|QL shift; cite Elastic/Splunk AI queries | 8-slide |
 
 ## Pillar: Data Leakage / Privacy
 
