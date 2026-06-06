@@ -39,6 +39,19 @@ os.environ.setdefault("XDG_CACHE_HOME", r"E:\ai-ugc\cache")   # → E:\ai-ugc\ca
 os.environ.setdefault("HF_HOME", r"E:\ai-ugc-hf")             # → BERT tokenizer (shared hub)
 os.environ.setdefault("TORCH_HOME", r"E:\ai-ugc\torch")       # → encodec_24khz checkpoint
 
+# --- PyTorch 2.6+ compatibility for Bark's checkpoints ---
+# Torch >=2.6 flipped torch.load's default to weights_only=True, which rejects Bark's
+# .pt files (they embed numpy scalars → "Unsupported global numpy.core.multiarray.scalar").
+# Bark calls torch.load WITHOUT weights_only=False, so it crashes on load. Bark's weights are
+# the official Suno files you downloaded (trusted), so force the full loader for THIS process.
+import torch  # noqa: E402
+
+_torch_load = torch.load
+def _torch_load_full(*args, **kwargs):
+    kwargs.setdefault("weights_only", False)
+    return _torch_load(*args, **kwargs)
+torch.load = _torch_load_full
+
 
 def find_post(key: str) -> str:
     if key.endswith(".json") and os.path.exists(key):
