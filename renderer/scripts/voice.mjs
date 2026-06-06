@@ -1,4 +1,4 @@
-// npm run voice -- <post-key> [--voice-ref ref.wav]
+// npm run voice -- <post-key> [--voice=bark|voxcpm2|…] [--custom-voice ref.wav]
 // Generates reel narration into renderer/public/audio/<prefix>/voice.wav, routing by
 // the post's video.audio.voice_mode:
 //   voxcpm2 → scripts/voice-voxcpm.py (local model; uses .venv / uv automatically)
@@ -18,7 +18,7 @@ const pos = args.filter((a) => !a.startsWith("--"));
 const key = pos[0];
 
 if (!key) {
-  console.error("Usage: bun run voice -- <post-key> [--voice=voxcpm2|voxcpm2-0.5b|bark|http] [--voice-ref ref.wav] [--seed=N]");
+  console.error("Usage: bun run voice -- <post-key> [--voice=voxcpm2|voxcpm2-0.5b|bark|http] [--custom-voice ref.wav] [--seed=N]");
   process.exit(1);
 }
 
