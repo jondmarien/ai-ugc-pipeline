@@ -1,4 +1,4 @@
-# Sources — 2026-06-04-prompt-injection-agents
+# Sources — 2026-06-03_prompt-injection-agents
 
 **Core claim:** Indirect prompt injection — malicious instructions hidden in content an AI agent reads — gets dangerous when the agent can take actions.
 **Claim tags:** reported_fact, practitioner_takeaway

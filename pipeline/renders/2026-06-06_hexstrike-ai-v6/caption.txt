@@ -1,0 +1,15 @@
+An open-source tool just let an AI agent drive 150+ hacking tools by itself — and within hours of a fresh Citrix zero-day, attackers were already talking about pointing it at the internet.
+
+That tool is HexStrike AI (v6.0). MIT-licensed, built for authorized red teams and bug bounty work: you hand an AI agent like Claude or GPT a plain-language goal, and a decision engine picks the tools, chains recon into exploitation, and retries what fails. Genuinely useful for defenders testing their own systems.
+
+Here's the part that matters. After Citrix disclosed three NetScaler zero-days last year, Check Point Research saw threat actors on underground forums discussing HexStrike to scan and exploit them. One bug, CVE-2025-7775, scored 9.2 and had roughly 28,000 boxes exposed. Check Point estimated AI could compress exploit development from days or weeks to under ten minutes.
+
+The honest caveat: that's forum chatter, not confirmed forensic attribution. No fake panic. But the direction is real — the gap between a disclosure and mass exploitation is collapsing.
+
+So the takeaway isn't 'AI hacks everything.' It's that patch velocity and exposure management matter more than ever, because you get less time to apply the same fundamentals. Patch internet-facing gear first, watch threat intel on disclosure day, and tune detection for that window.
+
+How fast can your team realistically patch an internet-facing zero-day?
+
+Save this for your next patch-SLA review. Follow for AI security without the fake panic.
+
+[HexStrike AI, offensive AI, red team, AI agents, MCP, penetration testing, Citrix NetScaler, CVE-2025-7775, vulnerability management, patch management, threat intelligence, AI security, bug bounty, Check Point Research]

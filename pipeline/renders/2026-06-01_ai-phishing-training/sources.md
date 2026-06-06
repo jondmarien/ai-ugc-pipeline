@@ -1,4 +1,4 @@
-# Sources — 2026-06-02-ai-phishing-training
+# Sources — 2026-06-01_ai-phishing-training
 
 **Core claim:** AI makes phishing cheaper to personalize at scale, weakening 'spot the typo' awareness training.
 **Claim tags:** reported_fact, emerging, practitioner_takeaway

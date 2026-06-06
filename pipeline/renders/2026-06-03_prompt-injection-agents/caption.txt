@@ -8,4 +8,4 @@ If your agent summarizes a random webpage, should it also be allowed to email yo
 
 Follow for AI security breakdowns without the fake panic.
 
-#Cybersecurity #AISecurity #PromptInjection #LLMSecurity #AIagents #AppSec #OWASP
+[Cybersecurity, AISecurity, PromptInjection, LLMSecurity, AIagents, AppSec, OWASP]

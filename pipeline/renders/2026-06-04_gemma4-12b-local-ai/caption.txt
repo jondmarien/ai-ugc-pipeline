@@ -12,4 +12,4 @@ Would you run your AI fully local if your data never left the machine?
 
 Follow for AI breakdowns without the hype.
 
-#AI #Gemma #LocalLLM #OpenSource #MachineLearning #OnDeviceAI #Unsloth
+[AI, Gemma, LocalLLM, OpenSource, MachineLearning, OnDeviceAI, Unsloth]

@@ -1,18 +1,18 @@
-# LICENSES — 2026-06-08_gemma4-12b-local-ai
+# LICENSES — 2026-06-04_gemma4-12b-local-ai
 
 Tracks rights for every asset that appears in the rendered package (QA Gate 7).
 
 ## Image / background assets
 | Asset | Source | License / terms | Commercial use | Disclosure |
 | --- | --- | --- | --- | --- |
-| /backgrounds/2026-06-08_gemma4-12b-local-ai/01_cover.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
-| /backgrounds/2026-06-08_gemma4-12b-local-ai/02_context.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
-| /backgrounds/2026-06-08_gemma4-12b-local-ai/03_risk.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
-| /backgrounds/2026-06-08_gemma4-12b-local-ai/04_mechanism.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
-| /backgrounds/2026-06-08_gemma4-12b-local-ai/05_failure-point.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
-| /backgrounds/2026-06-08_gemma4-12b-local-ai/06_defense.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
-| /backgrounds/2026-06-08_gemma4-12b-local-ai/07_takeaway.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
-| /backgrounds/2026-06-08_gemma4-12b-local-ai/08_cta.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
+| /backgrounds/2026-06-04_gemma4-12b-local-ai/01_cover.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
+| /backgrounds/2026-06-04_gemma4-12b-local-ai/02_context.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
+| /backgrounds/2026-06-04_gemma4-12b-local-ai/03_risk.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
+| /backgrounds/2026-06-04_gemma4-12b-local-ai/04_mechanism.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
+| /backgrounds/2026-06-04_gemma4-12b-local-ai/05_failure-point.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
+| /backgrounds/2026-06-04_gemma4-12b-local-ai/06_defense.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
+| /backgrounds/2026-06-04_gemma4-12b-local-ai/07_takeaway.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
+| /backgrounds/2026-06-04_gemma4-12b-local-ai/08_cta.png | FLUX.2 [klein] 4B (GGUF) via local ComfyUI | Apache-2.0 — commercial use allowed; text-free generated background. | yes | no |
 
 ## Audio / video (Reel)
 | Asset | Mode | Source / license | Commercial use | Disclosure |

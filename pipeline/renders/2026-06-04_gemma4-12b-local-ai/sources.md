@@ -1,4 +1,4 @@
-# Sources — 2026-06-08_gemma4-12b-local-ai
+# Sources — 2026-06-04_gemma4-12b-local-ai
 
 **Core claim:** Gemma 4 12B is an open (Apache-2.0), encoder-free multimodal model that takes text, image, and audio input and runs locally on consumer hardware — but it only outputs text, and its headline 'near-26B' benchmarks are Google's own.
 **Claim tags:** verified, emerging
