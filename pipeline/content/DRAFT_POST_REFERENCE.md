@@ -23,7 +23,7 @@ Example: `/draft-post AI agents leaking RAG data through tool calls | model_secu
 ```
 cd renderer && bun run pipeline -- <date>_<slug> [--seed=N] [--voice=bark] [--custom-voice path/to/jon.wav]
 ```
-(Art auto-skips when backgrounds already exist. Use the **same `--seed=N`** across posts for one consistent voice. `--custom-voice` clones your OWN authorized voice (VoxCPM2 zero-shot) from a clean ~20–40 s mono-48 kHz clip — timbre comes from the clip, so a seed is optional; label AI-generated audio.)
+(Art auto-skips when backgrounds already exist. Use the **same `--seed=N`** across posts for one consistent voice. `--custom-voice` clones your OWN authorized voice (VoxCPM2 zero-shot) from a clean ~20–40 s mono-48 kHz clip — timbre comes from the clip, so a seed is optional; label AI-generated audio. **Hi-Fi cloning is on by default** (auto-transcribes the clip with Whisper to also match cadence/emotion); use `--custom-voice-text "…"` to supply the transcript yourself, or `--no-hifi` for timbre-only.)
 
 ---
 
