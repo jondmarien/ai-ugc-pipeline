@@ -43,6 +43,11 @@ CORRECTIONS = {
     "unslot": "Unsloth", "unsloss": "Unsloth",
     "vox cpm": "VoxCPM", "voxcom": "VoxCPM",
     "hexstrike": "HexStrike", "net scaler": "NetScaler",
+    # Whisper fuses fast-spoken word pairs or drops a trailing consonant. Corrections are
+    # applied per word token, so keys must be single tokens; these are never legitimate in
+    # this domain ("lease" → "least privilege" context), so they're safe to apply globally.
+    "patchfast": "Patch fast",
+    "lease": "least",
 }
 
 
@@ -77,6 +82,70 @@ def fix_proper_nouns(words):
     return words
 
 
+# Extra project nouns Whisper should spell right but that aren't in CORRECTIONS' typo map.
+KNOWN_NOUNS = ["Ollama", "Unsloth", "VoxCPM", "HexStrike", "NetScaler", "Gemma", "Hermes"]
+
+
+def build_noun_hint(narration) -> str:
+    """A SHORT proper-noun vocabulary string to bias Whisper's spelling (e.g. 'Ollama, VoxCPM,
+    MFA, LLM'). Deliberately NOT the full narration: feeding whole sentences makes the decoder
+    skip the opening. We seed with KNOWN_NOUNS, then add acronyms (ALL-CAPS, 2+ chars) and
+    CamelCase tokens found in this post's narration so new names get biased too."""
+    import re
+    vocab = list(dict.fromkeys(KNOWN_NOUNS))  # ordered, de-duped
+    seen = {v.lower() for v in vocab}
+    text = " ".join((n.get("text") or "") for n in narration)
+    for tok in re.findall(r"[A-Za-z][A-Za-z0-9]+", text):
+        is_acronym = tok.isupper() and len(tok) >= 2          # MFA, LLM, API, OWASP
+        is_camel = bool(re.search(r"[a-z][A-Z]", tok))        # VoxCPM, NetScaler, PoCs
+        if (is_acronym or is_camel) and tok.lower() not in seen:
+            vocab.append(tok); seen.add(tok.lower())
+    return ", ".join(vocab) + "."
+
+
+def trim_trailing_hallucination(words, narration, voice_wav):
+    """VoxCPM2 cloning sometimes keeps talking past the script, appending a few seconds of
+    hallucinated audio (e.g. '...I really think it needs to be done'). Detect it by anchoring on
+    the narration's final 3 words: if Whisper produced extra words AFTER the script ends, trim
+    both the caption word list AND voice.wav to the end of the real narration. Conservative — only
+    fires when the anchor is found and there is >0.4s of trailing extra past the last 75% of audio,
+    so a clean render or a missed anchor is never wrongly truncated."""
+    import re
+    import shutil
+    import subprocess
+
+    norm = lambda s: re.sub(r"[^a-z0-9]+", "", s.lower())
+    ntoks = [norm(t) for n in narration for t in (n.get("text") or "").split()]
+    ntoks = [t for t in ntoks if t]
+    if len(ntoks) < 3 or len(words) < 4:
+        return words
+    anchor = ntoks[-3:]
+    wn = [norm(w["text"]) for w in words]
+    cut = None
+    for j in range(len(wn) - 1, 1, -1):                 # last occurrence of the 3-word anchor
+        if wn[j - 2:j + 1] == anchor:
+            cut = j
+            break
+    if cut is None or cut >= len(words) - 1:
+        return words                                    # no anchor found, or nothing trailing it
+    end_t = words[cut]["end"]
+    total = words[-1]["end"]
+    extra = total - end_t
+    if extra < 0.4 or end_t < 0.75 * total:             # too little trailing, or anchor too early
+        return words
+    new_end = round(end_t + 0.20, 3)                    # small pad so the last word isn't clipped
+    tmp = voice_wav + ".trim.wav"
+    try:
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", voice_wav,
+                        "-t", f"{new_end}", "-c:a", "pcm_s16le", tmp], check=True)
+        shutil.move(tmp, voice_wav)
+    except Exception as e:                              # leave audio untouched if ffmpeg fails
+        print(f"  ⚠ detected a {extra:.1f}s hallucinated tail but could not trim audio ({e}).")
+        return words
+    print(f"  ↳ trimmed {extra:.1f}s of clone hallucination past the script (audio now {new_end:.1f}s).")
+    return words[:cut + 1]
+
+
 def main() -> None:
     if len(sys.argv) < 2:
         sys.exit("Usage: python scripts/align-whisper.py <post-key>")
@@ -108,9 +177,13 @@ def main() -> None:
 
     print(f"Whisper: {WHISPER_MODEL} on {device} ({compute}) → {os.path.basename(voice_wav)}")
     model = WhisperModel(WHISPER_MODEL, device=device, compute_type=compute)
-    # Feed the actual narration text as a bias prompt so Whisper spells our proper nouns
-    # right (Ollama, Unsloth, VoxCPM, HexStrike, NetScaler…) instead of guessing ("Olima").
-    hint = " ".join((n.get("text") or "").strip() for n in (video.get("narration") or [])).strip()
+    # Bias Whisper toward our proper nouns with a SHORT vocabulary hint, NOT the full script.
+    # Feeding the whole narration as initial_prompt makes the decoder think it already spoke the
+    # opening lines and skip ahead, dropping the first ~10-20s of captions entirely (the audio is
+    # fine; only the transcript is truncated). A short noun-only hint biases spelling without the
+    # skip. We assemble it from the known project terms (CORRECTIONS targets) plus any acronyms
+    # (MFA, LLM) or CamelCase names (VoxCPM) found in this post's narration.
+    hint = build_noun_hint(video.get("narration") or [])
     segments, _info = model.transcribe(voice_wav, word_timestamps=True, language="en", initial_prompt=hint or None)
 
     words = []  # absolute-time word list
@@ -120,6 +193,7 @@ def main() -> None:
     if not words:
         sys.exit("Whisper returned no words — check the audio.")
     words = fix_proper_nouns(merge_hyphens(words))  # un-split compounds/numbers + fix proper nouns
+    words = trim_trailing_hallucination(words, video.get("narration") or [], voice_wav)
     print(f"  {len(words)} words, {words[-1]['end']:.1f}s total")
 
     # Re-chunk the transcript into short caption lines (≤ ~7 words, ≤ ~3.5s, or a
