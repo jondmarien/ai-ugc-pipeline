@@ -26,6 +26,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RENDERER = os.path.dirname(HERE)
 POSTS = os.path.join(RENDERER, "content", "posts")
 BARK_VOICE = os.environ.get("BARK_VOICE", "v2/en_speaker_6")
+# Bark is a fully-generative model and loves to ad-lib "uh"/"um" + non-verbal sounds.
+# Lower temperatures = more conservative, fewer hallucinated fillers (default 0.7 each is
+# chatty). 0.4/0.5 is a calmer narrator; raise via env if it sounds flat. (Note: min_eos_p,
+# which also trims trailing mumbles, isn't exposed by generate_audio — would need the
+# low-level generate_text_semantic path.)
+BARK_TEXT_TEMP = float(os.environ.get("BARK_TEXT_TEMP", "0.4"))
+BARK_WAVEFORM_TEMP = float(os.environ.get("BARK_WAVEFORM_TEMP", "0.5"))
 
 # --- 8 GB-card defaults + model cache on E: (MUST be set before `import bark`) ---
 # Full Bark needs ~12 GB VRAM; the small models fit ~8 GB. Always on here (export
@@ -70,7 +77,7 @@ def main() -> None:
     if not narration:
         sys.exit("Post has no video.narration[] to synthesize.")
     lines = [n["text"].strip() for n in narration if n.get("text")]
-    print(f"Bark voice: {BARK_VOICE}  ·  {len(lines)} line(s)")
+    print(f"Bark voice: {BARK_VOICE}  ·  {len(lines)} line(s)  ·  text_temp={BARK_TEXT_TEMP} waveform_temp={BARK_WAVEFORM_TEMP}")
 
     prefix = post["upload_package"]["filename_prefix"]
     out_dir = os.path.join(RENDERER, "public", "audio", prefix)
@@ -97,7 +104,7 @@ def main() -> None:
     pieces = []
     for i, line in enumerate(lines):
         print(f"  [{i + 1}/{len(lines)}] {line[:70]}")
-        audio = generate_audio(line, history_prompt=BARK_VOICE)
+        audio = generate_audio(line, history_prompt=BARK_VOICE, text_temp=BARK_TEXT_TEMP, waveform_temp=BARK_WAVEFORM_TEMP)
         pieces.append(np.asarray(audio, dtype=np.float32))
         pieces.append(pause)
     wav = np.concatenate(pieces) if pieces else np.zeros(1, dtype=np.float32)
