@@ -1,0 +1,333 @@
+{
+  "post_id": "2026-06-05_hexstrike-ai-redteam",
+  "date": "2026-06-05",
+  "slug": "hexstrike-ai-redteam",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "offensive_ai",
+  "theme": "offensive",
+  "audience": "security_practitioners",
+  "core_claim": "HexStrike AI v6.0 connects AI agents (Claude, Cursor, Copilot) to 127 security tools plus the BOAZ EDR evasion framework via MCP, turning prompt-driven red team ops into a click.",
+  "claim_tags": [
+    "verified",
+    "emerging"
+  ],
+  "score": {
+    "credibility": 4,
+    "relevance": 4,
+    "novelty": 4,
+    "visual_drama": 4,
+    "defender_usefulness": 4,
+    "total": 20
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "alert red",
+    "pillar_accent": "offensive_ai",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#ef4444",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-05_hexstrike-ai-redteam",
+    "filename_prefix": "2026-06-05_hexstrike-ai-redteam",
+    "expected_files": [
+      "2026-06-05_hexstrike-ai-redteam_01_cover.png",
+      "2026-06-05_hexstrike-ai-redteam_02_context.png",
+      "2026-06-05_hexstrike-ai-redteam_03_risk.png",
+      "2026-06-05_hexstrike-ai-redteam_04_mechanism.png",
+      "2026-06-05_hexstrike-ai-redteam_05_failure-point.png",
+      "2026-06-05_hexstrike-ai-redteam_06_defense.png",
+      "2026-06-05_hexstrike-ai-redteam_07_takeaway.png",
+      "2026-06-05_hexstrike-ai-redteam_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "AI AGENTS NOW DRIVE 127 TOOLS + EDR EVASION IN A SINGLE PROMPT",
+      "subline": "MCP turns red team ops into conversation",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a lone security analyst facing a wall of scrolling terminal output — AI agent orchestrating tool chains autonomously, red accent glow on the terminal reflecting in dark glasses, dramatic rim light, bottom 35% clean and dark for headline text",
+      "background_asset": "/backgrounds/2026-06-05_hexstrike-ai-redteam_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "HexStrike AI v6.0 bridges LLMs to 127 security tools via MCP — nmap, nuclei, sqlmap, bloodhound, plus BOAZ's 77 process injection loaders and 12 encoding schemes.",
+      "subline": "The fork (v6.0) adds BOAZ integration and 6 AI client adapters.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a terminal split pane showing an AI prompt on the left and a cascade of tool output on the right — nmap scan results feeding into nuclei templates, dark editorial style, bottom area clear for text",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "One prompt can now chain recon → vuln scan → exploitation → EDR-evading payload delivery. Attack velocity compresses from days to minutes. BOAZ's Pluto/Akira LLVM obfuscation and 77 loaders bypass signature, heuristic, and behavioral detection.",
+      "subline": "Lowers the skill floor for sophisticated red team tradecraft.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a red team operator's screen showing a compressed timeline — reconnaissance, exploitation, and evasion phases collapsing into a single AI-orchestrated flow, tense atmosphere, dark high-contrast lighting",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "FastMCP server exposes 127 tools + BOAZ as MCP functions. AI client (Claude Desktop, Cursor, VS Code Copilot, Roo Code) calls tools via standardized protocol. Decision engine selects tools, optimizes params, handles chaining. BOAZ pipeline: msfvenom payload → entropy analysis → evasion layers (encoding, obfuscation, anti-analysis) → stealth binary.",
+      "subline": "MCP standardizes the LLM ↔ tool contract; BOAZ wraps the output.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "abstract flow diagram rendered as glowing nodes — LLM agent at center connecting to tool clusters (recon, web, binary, cloud) which feed into an evasion engine block, dark cybersecurity aesthetic, no readable code or exploit detail",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Static signatures miss BOAZ's polymorphic output. Behavioral rules don't catch threadless injection or VEH/VCH execution guards. Most EDRs still rely on API hooks that Halo's Gate and syscall stubs bypass. Detection assumes human-paced tool chains — not AI-orchestrated parallel execution.",
+      "subline": "Defenses built for manual red teams don't match AI velocity.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a SOC analyst overwhelmed by a flood of alerts — traditional detection rules lighting up individually while a coordinated AI-driven attack flows through the gaps, dark high-contrast, tension in the composition",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Deploy API monitoring on MCP servers — log every tool call with agent identity. Hunt for BOAZ artifacts: entropy anomalies, LLVM-obfuscated binaries, known loader stubs (Ninja, Sifu, Halo's Gate). Enforce LLM tool-use policies: approval gates for payload generation, rate limits on tool chains. Test your EDR against BOAZ loaders in a lab — if it catches them, you have a baseline.",
+      "subline": "Treat MCP servers like any privileged automation — audit, alert, restrict.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a defensive security workflow — approval gate checkpoint, audit trail logging, policy enforcement visualization, calm orderly composition, dark editorial style",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "AI-driven red teaming isn't coming — it's protocollized. MCP + BOAZ means one prompt replaces days of manual tradecraft.",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single strong symbol — a shield with a hairline crack catching red light — centered in deep negative space, minimal high-contrast composition",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "How are you testing your detection stack against AI-orchestrated tool chains?",
+      "subline": "Save this for your next purple team session.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene with strong empty negative space for a question and handle, premium editorial cybersecurity look",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "AI agents just got the keys to 127 security tools and an EDR evasion framework.\n\nHexStrike AI v6.0 connects Claude, Cursor, Copilot, and Roo Code to nmap, nuclei, sqlmap, bloodhound — plus BOAZ's 77 process injection loaders, 12 encoding schemes, and Pluto/Akira LLVM obfuscation — all via MCP. One prompt now chains recon → vuln scan → exploitation → stealth payload delivery.\n\nThe skill floor for sophisticated red team tradecraft just collapsed. Static signatures miss polymorphic BOAZ output. Behavioral rules don't catch threadless injection or VEH/VCH execution guards. Halo's Gate and syscall stubs bypass the API hooks most EDRs still rely on.\n\nDefensive move: deploy API monitoring on your MCP servers — log every tool call with agent identity. Hunt for entropy anomalies and known loader stubs (Ninja, Sifu, Halo's Gate). Enforce LLM tool-use policies with approval gates for payload generation. Test your EDR against BOAZ loaders in a lab — if it catches them, you have a baseline.\n\nHow are you testing your detection stack against AI-orchestrated tool chains?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "AI security",
+    "cybersecurity",
+    "red team",
+    "MCP",
+    "EDR evasion",
+    "BOAZ",
+    "HexStrike AI"
+  ],
+  "comment_prompt": "How are you testing your detection stack against AI-orchestrated tool chains?",
+  "alt_text": [
+    "Slide 1 (cover): Security analyst facing wall of scrolling terminal output with AI agent orchestrating tool chains, red accent glow reflecting in dark glasses.",
+    "Slide 2 (context): Terminal split pane showing AI prompt left side, cascade of nmap and nuclei tool output right side, dark editorial style.",
+    "Slide 3 (risk): Red team operator screen showing compressed timeline — reconnaissance, exploitation, evasion phases collapsing into single AI-orchestrated flow, tense high-contrast.",
+    "Slide 4 (mechanism): Abstract flow diagram as glowing nodes — LLM agent center connecting to tool clusters (recon, web, binary, cloud) feeding into evasion engine block, no readable code.",
+    "Slide 5 (failure_point): SOC analyst overwhelmed by flood of alerts — traditional detection rules lighting up individually while coordinated AI-driven attack flows through gaps.",
+    "Slide 6 (defense): Defensive security workflow — approval gate checkpoint, audit trail logging, policy enforcement visualization, calm orderly dark composition.",
+    "Slide 7 (takeaway): Single strong symbol — shield with hairline crack catching red light — centered in deep negative space, minimal high-contrast.",
+    "Slide 8 (cta): Clean dark end-card with empty negative space for question and handle, premium editorial cybersecurity look."
+  ],
+  "sources": [
+    {
+      "source": "Cyber Security News",
+      "link": "https://cybersecuritynews.com/hexstrike-ai-red-team-tool/",
+      "supports": "HexStrike AI v6.0 architecture, 127 tools, BOAZ integration, 6 AI client adapters, fork contributors, installation model",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "Hackers Manifest",
+      "link": "https://hackersmanifest.com/offensive-ai/02-hexstrike/",
+      "supports": "MCP server architecture, 150+ tools claim, 12+ AI agents, 4000+ Nuclei templates, installation steps, client configs",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "Medium - Andrey Pautov",
+      "link": "https://medium.com/@1200km/hexstrike-ai-a-force-multiplier-for-red-teams-and-a-dangerous-shift-in-the-threat-landscape-3e1d4e86f3ae",
+      "supports": "Real-world pentesting use cases (web app, network, wireless, OSINT), AI-driven automation velocity, defender implications",
+      "confidence": "medium",
+      "claim_tag": "emerging"
+    },
+    {
+      "source": "GitHub - thomasxm/BOAZ_beta",
+      "link": "https://github.com/thomasxm/BOAZ_beta",
+      "supports": "BOAZ architecture (Bypass, Obfuscate, Adapt, Zero-trace), 77+ loaders, 12 encoding schemes, Pluto/Akira LLVM obfuscation, ETW bypass, threadless execution",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "Napier University Repository",
+      "link": "https://napier-repository.worktribe.com/output/4728310/boaz-a-multilayered-approach-to-avedr-evasion-engineering",
+      "supports": "BOAZ academic presentation at DEF CON 33, multi-layered evasion engineering, tested against 14 AVs + 7 EDRs",
+      "confidence": "high",
+      "claim_tag": "verified"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 26,
+    "fps": 30,
+    "export_name": "2026-06-05_hexstrike-ai-redteam_reel.mp4",
+    "caption_mode": "block",
+    "audio": {
+      "voice_mode": "none",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "AI agents just got the keys to 127 security tools and an EDR evasion framework."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "text": "HexStrike AI v6.0 connects Claude, Cursor, Copilot to nmap, nuclei, sqlmap — plus BOAZ's 77 loaders and 12 encoding schemes — all via MCP."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "text": "Deploy API monitoring on MCP servers. Hunt for BOAZ artifacts — entropy anomalies, LLVM-obfuscated binaries, known loader stubs. Test your EDR against BOAZ in a lab."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "text": "AI-driven red teaming isn't coming — it's protocollized. One prompt replaces days of manual tradecraft."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "text": "How are you testing your detection stack against AI-orchestrated tool chains? Comment and save."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "AI agents just got the keys to 127 security tools and an EDR evasion framework."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "HexStrike AI v6.0 connects Claude, Cursor, Copilot to 127 tools + BOAZ via MCP."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "Deploy API monitoring on MCP servers. Hunt BOAZ artifacts. Test EDR against BOAZ loaders."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "AI-driven red teaming isn't coming — it's protocollized."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "How are you testing your detection stack against AI-orchestrated tool chains?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}

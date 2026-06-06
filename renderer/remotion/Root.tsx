@@ -1,6 +1,6 @@
 import { Composition } from "remotion";
 import { ReelComposition } from "./ReelComposition";
-import postJson from "../content/posts/2026-06-02_ai-phishing-training.json";
+import postJson from "../content/posts/2026-06-05_hexstrike-ai-redteam.json";
 
 // The reel reuses the SAME post JSON as the carousel — one source of truth.
 // defaultProps loads Post 1 so Remotion Studio has something to preview, but the
