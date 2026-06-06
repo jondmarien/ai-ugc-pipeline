@@ -311,7 +311,7 @@
       {
         "start": 15,
         "end": 22,
-        "text": "One honest catch: it's input-only. It reads images and audio, but it only writes text — it doesn't generate pictures or voice."
+        "text": "One honest catch: it's input-only. It reads images and audio, but it only writes text. It can't generate pictures or voice."
       },
       {
         "start": 22,
@@ -321,7 +321,7 @@
       {
         "start": 29,
         "end": 34,
-        "text": "So — would you run your AI fully local if it never touched the cloud?"
+        "text": "Would you run your AI fully local if it never touched the cloud?"
       }
     ],
     "beats": [

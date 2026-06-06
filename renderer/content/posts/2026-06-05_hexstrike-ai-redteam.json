@@ -144,7 +144,7 @@
       "slide": 7,
       "role": "takeaway",
       "kicker": "TAKEAWAY",
-      "on_slide_copy": "AI-driven red teaming {{isn't coming}} — [[it's protocollized]]. MCP + BOAZ means [[one prompt replaces days of manual tradecraft]].",
+      "on_slide_copy": "AI-driven red teaming {{isn't coming}}. [[It's here now]]. MCP + BOAZ means [[one prompt replaces days of manual tradecraft]].",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single strong symbol — a shield with a hairline crack catching red light — centered in deep negative space, minimal high-contrast composition",
@@ -242,22 +242,22 @@
       {
         "start": 0,
         "end": 5,
-        "text": "AI agents just got the keys to 127 security tools and an EDR evasion framework."
+        "text": "AI agents just got the keys to 127 security tools and an EDR-evasion framework."
       },
       {
         "start": 5,
         "end": 10,
-        "text": "HexStrike AI v6.0 connects Claude, Cursor, Copilot to nmap, nuclei, sqlmap — plus BOAZ's 77 loaders and 12 encoding schemes — all via MCP."
+        "text": "HexStrike AI v6.0 connects Claude, Cursor, and Copilot to nmap, nuclei, and sqlmap, plus BOAZ's loaders and encoding schemes, all through MCP."
       },
       {
         "start": 10,
         "end": 16,
-        "text": "Deploy API monitoring on MCP servers. Hunt for BOAZ artifacts — entropy anomalies, LLVM-obfuscated binaries, known loader stubs. Test your EDR against BOAZ in a lab."
+        "text": "Deploy API monitoring on your MCP servers. Hunt for BOAZ artifacts like entropy anomalies and known loader stubs, and test your EDR against BOAZ in a lab."
       },
       {
         "start": 16,
         "end": 21,
-        "text": "AI-driven red teaming isn't coming — it's protocollized. One prompt replaces days of manual tradecraft."
+        "text": "AI-driven red teaming isn't coming. It's here now, and one prompt replaces days of manual tradecraft."
       },
       {
         "start": 21,
