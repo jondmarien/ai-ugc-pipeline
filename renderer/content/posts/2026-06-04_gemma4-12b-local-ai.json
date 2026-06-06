@@ -144,7 +144,7 @@
       "slide": 7,
       "role": "takeaway",
       "kicker": "THE SHIFT",
-      "on_slide_copy": "Capable multimodal AI now fits on a laptop — and never leaves it.",
+      "on_slide_copy": "Capable multimodal AI now [[fits on a laptop]] — and [[never leaves it]].",
       "subline": "Open, offline, yours.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a warm glowing orb of light cupped safely inside two open hands above a closed laptop, contained and local, the center kept calm and open, dark",
@@ -372,560 +372,562 @@
     "licenses": [],
     "captions": [
       {
-        "start": 0.0,
-        "end": 2.22,
-        "text": "Google just put a multimodal AI on",
+        "start": 0,
+        "end": 1.9,
+        "text": "Google just put a multi-modal AI on",
         "words": [
           {
             "text": "Google",
-            "start": 0.0,
-            "end": 0.3
+            "start": 0,
+            "end": 0.18
           },
           {
             "text": "just",
-            "start": 0.3,
-            "end": 0.66
+            "start": 0.18,
+            "end": 0.44
           },
           {
             "text": "put",
-            "start": 0.66,
-            "end": 0.88
+            "start": 0.44,
+            "end": 0.64
           },
           {
             "text": "a",
-            "start": 0.88,
-            "end": 0.96
+            "start": 0.64,
+            "end": 0.76
           },
           {
-            "text": "multimodal",
-            "start": 0.96,
-            "end": 1.64
+            "text": "multi-modal",
+            "start": 0.76,
+            "end": 1.4
           },
           {
             "text": "AI",
-            "start": 1.64,
-            "end": 1.88
+            "start": 1.4,
+            "end": 1.6
           },
           {
             "text": "on",
-            "start": 1.88,
-            "end": 2.22
+            "start": 1.6,
+            "end": 1.9
           }
         ]
       },
       {
-        "start": 2.22,
-        "end": 4.92,
-        "text": "your laptop. Gemma 412b dropped this week.",
+        "start": 1.9,
+        "end": 2.28,
+        "text": "your laptop,",
         "words": [
           {
             "text": "your",
-            "start": 2.22,
-            "end": 2.32
+            "start": 1.9,
+            "end": 2
           },
           {
-            "text": "laptop.",
-            "start": 2.32,
-            "end": 2.68
-          },
+            "text": "laptop,",
+            "start": 2,
+            "end": 2.28
+          }
+        ]
+      },
+      {
+        "start": 2.98,
+        "end": 5.56,
+        "text": "Gemma412b dropped this week. It takes text,",
+        "words": [
           {
-            "text": "Gemma",
-            "start": 3.14,
-            "end": 3.52
-          },
-          {
-            "text": "412b",
-            "start": 3.52,
-            "end": 4.18
+            "text": "Gemma412b",
+            "start": 2.98,
+            "end": 3.9
           },
           {
             "text": "dropped",
-            "start": 4.18,
-            "end": 4.42
+            "start": 3.9,
+            "end": 4.16
           },
           {
             "text": "this",
-            "start": 4.42,
-            "end": 4.72
+            "start": 4.16,
+            "end": 4.44
           },
           {
             "text": "week.",
-            "start": 4.72,
-            "end": 4.92
-          }
-        ]
-      },
-      {
-        "start": 5.4,
-        "end": 7.46,
-        "text": "It takes text, images, and audio. It",
-        "words": [
+            "start": 4.44,
+            "end": 4.62
+          },
           {
             "text": "It",
-            "start": 5.4,
-            "end": 5.42
+            "start": 5.2,
+            "end": 5.2
           },
           {
             "text": "takes",
-            "start": 5.42,
-            "end": 5.68
+            "start": 5.2,
+            "end": 5.36
           },
           {
             "text": "text,",
-            "start": 5.68,
-            "end": 5.86
-          },
+            "start": 5.36,
+            "end": 5.56
+          }
+        ]
+      },
+      {
+        "start": 6,
+        "end": 8.34,
+        "text": "images, and audio. It reasons, and it",
+        "words": [
           {
             "text": "images,",
-            "start": 6.14,
-            "end": 6.4
+            "start": 6,
+            "end": 6.2
           },
           {
             "text": "and",
-            "start": 6.46,
-            "end": 6.7
+            "start": 6.2,
+            "end": 6.6
           },
           {
             "text": "audio.",
-            "start": 6.7,
-            "end": 6.96
+            "start": 6.6,
+            "end": 6.88
           },
           {
             "text": "It",
-            "start": 7.46,
+            "start": 7.44,
             "end": 7.46
-          }
-        ]
-      },
-      {
-        "start": 7.46,
-        "end": 9.38,
-        "text": "reasons, and it runs offline on about",
-        "words": [
+          },
           {
             "text": "reasons,",
             "start": 7.46,
-            "end": 7.72
+            "end": 7.7
           },
           {
             "text": "and",
-            "start": 7.88,
-            "end": 8.3
+            "start": 8.1,
+            "end": 8.26
           },
           {
             "text": "it",
-            "start": 8.3,
-            "end": 8.4
-          },
-          {
-            "text": "runs",
-            "start": 8.4,
-            "end": 8.56
-          },
-          {
-            "text": "offline",
-            "start": 8.56,
-            "end": 8.86
-          },
-          {
-            "text": "on",
-            "start": 8.86,
-            "end": 9.22
-          },
-          {
-            "text": "about",
-            "start": 9.22,
-            "end": 9.38
+            "start": 8.26,
+            "end": 8.34
           }
         ]
       },
       {
-        "start": 9.38,
-        "end": 11.6,
-        "text": "eight gigs of VRAM. One honest catch.",
+        "start": 8.34,
+        "end": 10.02,
+        "text": "runs offline on about 8 gigs of",
         "words": [
           {
-            "text": "eight",
+            "text": "runs",
+            "start": 8.34,
+            "end": 8.5
+          },
+          {
+            "text": "offline",
+            "start": 8.5,
+            "end": 8.82
+          },
+          {
+            "text": "on",
+            "start": 8.82,
+            "end": 9.24
+          },
+          {
+            "text": "about",
+            "start": 9.24,
+            "end": 9.38
+          },
+          {
+            "text": "8",
             "start": 9.38,
-            "end": 9.66
+            "end": 9.62
           },
           {
             "text": "gigs",
-            "start": 9.66,
-            "end": 9.92
+            "start": 9.62,
+            "end": 9.8
           },
           {
             "text": "of",
-            "start": 9.92,
-            "end": 10.18
-          },
+            "start": 9.8,
+            "end": 10.02
+          }
+        ]
+      },
+      {
+        "start": 10.02,
+        "end": 12.62,
+        "text": "VRAM. One honest catch, it's input only.",
+        "words": [
           {
             "text": "VRAM.",
-            "start": 10.18,
-            "end": 10.54
+            "start": 10.02,
+            "end": 10.38
           },
           {
             "text": "One",
             "start": 10.96,
-            "end": 11.12
+            "end": 11.18
           },
           {
             "text": "honest",
-            "start": 11.12,
-            "end": 11.34
+            "start": 11.18,
+            "end": 11.48
           },
           {
-            "text": "catch.",
-            "start": 11.34,
-            "end": 11.6
-          }
-        ]
-      },
-      {
-        "start": 12.12,
-        "end": 14.12,
-        "text": "It's input only. It reads images and",
-        "words": [
+            "text": "catch,",
+            "start": 11.48,
+            "end": 11.76
+          },
           {
-            "text": "It's",
-            "start": 12.12,
-            "end": 12.24
+            "text": "it's",
+            "start": 12.02,
+            "end": 12.2
           },
           {
             "text": "input",
-            "start": 12.24,
+            "start": 12.2,
             "end": 12.4
           },
           {
             "text": "only.",
             "start": 12.4,
-            "end": 12.68
-          },
-          {
-            "text": "It",
-            "start": 13.18,
-            "end": 13.28
-          },
-          {
-            "text": "reads",
-            "start": 13.28,
-            "end": 13.48
-          },
-          {
-            "text": "images",
-            "start": 13.48,
-            "end": 13.8
-          },
-          {
-            "text": "and",
-            "start": 13.8,
-            "end": 14.12
+            "end": 12.62
           }
         ]
       },
       {
-        "start": 14.12,
-        "end": 16.1,
-        "text": "audio, but it only writes text. It",
+        "start": 13.14,
+        "end": 14.9,
+        "text": "It reads images and audio, but it",
         "words": [
           {
+            "text": "It",
+            "start": 13.14,
+            "end": 13.24
+          },
+          {
+            "text": "reads",
+            "start": 13.24,
+            "end": 13.4
+          },
+          {
+            "text": "images",
+            "start": 13.4,
+            "end": 13.68
+          },
+          {
+            "text": "and",
+            "start": 13.68,
+            "end": 14.02
+          },
+          {
             "text": "audio,",
-            "start": 14.12,
-            "end": 14.32
+            "start": 14.02,
+            "end": 14.26
           },
           {
             "text": "but",
-            "start": 14.4,
-            "end": 14.74
-          },
-          {
-            "text": "it",
-            "start": 14.74,
+            "start": 14.68,
             "end": 14.82
           },
           {
-            "text": "only",
+            "text": "it",
             "start": 14.82,
-            "end": 14.92
+            "end": 14.9
+          }
+        ]
+      },
+      {
+        "start": 14.9,
+        "end": 16.96,
+        "text": "only writes text. It doesn't generate pictures",
+        "words": [
+          {
+            "text": "only",
+            "start": 14.9,
+            "end": 15.02
           },
           {
             "text": "writes",
-            "start": 14.92,
-            "end": 15.24
+            "start": 15.02,
+            "end": 15.32
           },
           {
             "text": "text.",
-            "start": 15.24,
+            "start": 15.32,
             "end": 15.56
           },
           {
             "text": "It",
-            "start": 16.02,
+            "start": 16.06,
             "end": 16.1
-          }
-        ]
-      },
-      {
-        "start": 16.1,
-        "end": 17.58,
-        "text": "doesn't generate pictures or voice.",
-        "words": [
+          },
           {
             "text": "doesn't",
             "start": 16.1,
-            "end": 16.34
+            "end": 16.32
           },
           {
             "text": "generate",
-            "start": 16.34,
-            "end": 16.64
+            "start": 16.32,
+            "end": 16.58
           },
           {
             "text": "pictures",
-            "start": 16.64,
-            "end": 17.02
-          },
-          {
-            "text": "or",
-            "start": 17.02,
-            "end": 17.38
-          },
-          {
-            "text": "voice.",
-            "start": 17.38,
-            "end": 17.58
+            "start": 16.58,
+            "end": 16.96
           }
         ]
       },
       {
-        "start": 18.28,
-        "end": 20.46,
-        "text": "It's Apache 2 .0 and open. Run",
+        "start": 16.96,
+        "end": 19.02,
+        "text": "or voice, since it's Apache 2 .0",
         "words": [
           {
-            "text": "It's",
-            "start": 18.28,
-            "end": 18.38
+            "text": "or",
+            "start": 16.96,
+            "end": 17.28
+          },
+          {
+            "text": "voice,",
+            "start": 17.28,
+            "end": 17.46
+          },
+          {
+            "text": "since",
+            "start": 18,
+            "end": 18.06
+          },
+          {
+            "text": "it's",
+            "start": 18.06,
+            "end": 18.42
           },
           {
             "text": "Apache",
-            "start": 18.38,
-            "end": 18.5
+            "start": 18.42,
+            "end": 18.42
           },
           {
             "text": "2",
-            "start": 18.5,
-            "end": 18.96
+            "start": 18.42,
+            "end": 18.64
           },
           {
             "text": ".0",
-            "start": 18.96,
-            "end": 19.4
-          },
+            "start": 18.64,
+            "end": 19.02
+          }
+        ]
+      },
+      {
+        "start": 19.02,
+        "end": 19.42,
+        "text": "and open.",
+        "words": [
           {
             "text": "and",
-            "start": 19.4,
-            "end": 19.58
+            "start": 19.02,
+            "end": 19.24
           },
           {
             "text": "open.",
-            "start": 19.58,
-            "end": 19.78
-          },
-          {
-            "text": "Run",
-            "start": 20.32,
-            "end": 20.46
+            "start": 19.24,
+            "end": 19.42
           }
         ]
       },
       {
-        "start": 20.46,
-        "end": 22.54,
-        "text": "it with Alama or Unsloth. Fine -tune",
+        "start": 20.1,
+        "end": 22.26,
+        "text": "Run it with Olima or Unsloth, fine-tune",
         "words": [
           {
+            "text": "Run",
+            "start": 20.1,
+            "end": 20.2
+          },
+          {
             "text": "it",
-            "start": 20.46,
-            "end": 20.58
+            "start": 20.2,
+            "end": 20.34
           },
           {
             "text": "with",
-            "start": 20.58,
-            "end": 20.72
+            "start": 20.34,
+            "end": 20.48
           },
           {
-            "text": "Alama",
-            "start": 20.72,
-            "end": 21.06
+            "text": "Olima",
+            "start": 20.48,
+            "end": 20.86
           },
           {
             "text": "or",
-            "start": 21.06,
-            "end": 21.3
+            "start": 20.86,
+            "end": 21.1
           },
           {
-            "text": "Unsloth.",
-            "start": 21.3,
-            "end": 21.76
+            "text": "Unsloth,",
+            "start": 21.1,
+            "end": 21.52
           },
           {
-            "text": "Fine",
-            "start": 22.3,
-            "end": 22.3
-          },
-          {
-            "text": "-tune",
-            "start": 22.3,
-            "end": 22.54
+            "text": "fine-tune",
+            "start": 21.88,
+            "end": 22.26
           }
         ]
       },
       {
-        "start": 22.54,
-        "end": 24.0,
+        "start": 22.26,
+        "end": 23.58,
         "text": "it on your own data, and nothing",
         "words": [
           {
             "text": "it",
-            "start": 22.54,
-            "end": 22.66
+            "start": 22.26,
+            "end": 22.4
           },
           {
             "text": "on",
-            "start": 22.66,
-            "end": 22.78
+            "start": 22.4,
+            "end": 22.52
           },
           {
             "text": "your",
-            "start": 22.78,
-            "end": 22.9
+            "start": 22.52,
+            "end": 22.64
           },
           {
             "text": "own",
-            "start": 22.9,
-            "end": 23.08
+            "start": 22.64,
+            "end": 22.8
           },
           {
             "text": "data,",
-            "start": 23.08,
-            "end": 23.28
+            "start": 22.8,
+            "end": 22.96
           },
           {
             "text": "and",
-            "start": 23.6,
-            "end": 23.78
+            "start": 23.28,
+            "end": 23.34
           },
           {
             "text": "nothing",
-            "start": 23.78,
-            "end": 24.0
+            "start": 23.34,
+            "end": 23.58
           }
         ]
       },
       {
-        "start": 24.0,
-        "end": 26.7,
-        "text": "leaves your machine. So, would you run",
+        "start": 23.58,
+        "end": 24.2,
+        "text": "leaves your machine.",
         "words": [
           {
             "text": "leaves",
-            "start": 24.0,
-            "end": 24.2
+            "start": 23.58,
+            "end": 23.8
           },
           {
             "text": "your",
-            "start": 24.2,
-            "end": 24.4
+            "start": 23.8,
+            "end": 23.96
           },
           {
             "text": "machine.",
-            "start": 24.4,
-            "end": 24.66
-          },
+            "start": 23.96,
+            "end": 24.2
+          }
+        ]
+      },
+      {
+        "start": 25.16,
+        "end": 26.76,
+        "text": "So, would you run your AI fully",
+        "words": [
           {
             "text": "So,",
-            "start": 25.24,
+            "start": 25.16,
             "end": 25.34
           },
           {
             "text": "would",
-            "start": 25.64,
-            "end": 26.38
+            "start": 25.62,
+            "end": 25.8
           },
           {
             "text": "you",
-            "start": 26.38,
-            "end": 26.52
+            "start": 25.8,
+            "end": 25.9
           },
           {
             "text": "run",
-            "start": 26.52,
-            "end": 26.7
-          }
-        ]
-      },
-      {
-        "start": 26.7,
-        "end": 28.22,
-        "text": "your AI fully local if it never",
-        "words": [
+            "start": 25.9,
+            "end": 26.08
+          },
           {
             "text": "your",
-            "start": 26.7,
-            "end": 26.84
+            "start": 26.08,
+            "end": 26.22
           },
           {
             "text": "AI",
-            "start": 26.84,
-            "end": 27.04
+            "start": 26.22,
+            "end": 26.4
           },
           {
             "text": "fully",
-            "start": 27.04,
-            "end": 27.42
-          },
-          {
-            "text": "local",
-            "start": 27.42,
-            "end": 27.78
-          },
-          {
-            "text": "if",
-            "start": 27.78,
-            "end": 27.98
-          },
-          {
-            "text": "it",
-            "start": 27.98,
-            "end": 28.06
-          },
-          {
-            "text": "never",
-            "start": 28.06,
-            "end": 28.22
+            "start": 26.4,
+            "end": 26.76
           }
         ]
       },
       {
-        "start": 28.22,
-        "end": 28.86,
-        "text": "touched the cloud?",
+        "start": 26.76,
+        "end": 28.28,
+        "text": "local if it never touched the cloud?",
         "words": [
           {
+            "text": "local",
+            "start": 26.76,
+            "end": 27.06
+          },
+          {
+            "text": "if",
+            "start": 27.06,
+            "end": 27.38
+          },
+          {
+            "text": "it",
+            "start": 27.38,
+            "end": 27.5
+          },
+          {
+            "text": "never",
+            "start": 27.5,
+            "end": 27.64
+          },
+          {
             "text": "touched",
-            "start": 28.22,
-            "end": 28.5
+            "start": 27.64,
+            "end": 27.92
           },
           {
             "text": "the",
-            "start": 28.5,
-            "end": 28.72
+            "start": 27.92,
+            "end": 28.16
           },
           {
             "text": "cloud?",
-            "start": 28.72,
-            "end": 28.86
+            "start": 28.16,
+            "end": 28.28
           }
         ]
       }

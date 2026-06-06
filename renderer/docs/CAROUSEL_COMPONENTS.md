@@ -37,6 +37,13 @@ CarouselDeck(post)                     // stacked half-scale human preview
 
 Adding a role = add an enum value in `schema.ts`, a `ROLE_FILENAME` entry, and a registry entry. Everything else (shell, export, naming) follows.
 
+### Headline emphasis markup (`on_slide_copy`)
+The shared `Headline` (`slides.tsx`) parses two inline markers so key words can be colour-accented — used mainly on the **takeaway** slide:
+- `[[text]]` → the post's **theme accent** colour (the affirmative point).
+- `{{text}}` → **danger red** (`#ef4444`) — the negation / "what it's NOT".
+
+Example (Hermes, `ai`/orange theme): `The win {{isn't 'AI that thinks.'}} [[It's an agent you own and can contain.]]`. On red-theme posts (`offensive`) accent ≈ danger, so both read red — still highlighted, just not two-tone. Markers live only in `on_slide_copy`; `alt_text` and reel captions never see them.
+
 ## `CarouselSlide` (shared shell) — contract
 
 | Element | Rule |

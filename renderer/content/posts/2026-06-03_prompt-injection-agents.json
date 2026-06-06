@@ -129,7 +129,7 @@
       "slide": 7,
       "role": "takeaway",
       "kicker": "TAKEAWAY",
-      "on_slide_copy": "Treat external content like user input wearing a costume.",
+      "on_slide_copy": "Treat external content [[like user input wearing a costume]].",
       "subline": "",
       "asset_status": "generated",
       "visual_prompt": "A smooth translucent theatrical mask floating and gently tilting above a flowing river of light in the dark, the polished mask catching a soft glow, mysterious and quiet, the center kept calm and open",
@@ -591,309 +591,309 @@
     "captions": [
       {
         "start": 0,
-        "end": 2.26,
+        "end": 1.88,
         "text": "The weirdest AI attack hides where your",
         "words": [
           {
             "text": "The",
             "start": 0,
-            "end": 0.1
+            "end": 0.12
           },
           {
             "text": "weirdest",
-            "start": 0.1,
-            "end": 0.56
+            "start": 0.12,
+            "end": 0.5
           },
           {
             "text": "AI",
-            "start": 0.56,
-            "end": 0.86
+            "start": 0.5,
+            "end": 0.72
           },
           {
             "text": "attack",
-            "start": 0.86,
-            "end": 1.4
+            "start": 0.72,
+            "end": 1.12
           },
           {
             "text": "hides",
-            "start": 1.4,
-            "end": 1.84
+            "start": 1.12,
+            "end": 1.5
           },
           {
             "text": "where",
-            "start": 1.84,
-            "end": 2.14
+            "start": 1.5,
+            "end": 1.78
           },
           {
             "text": "your",
-            "start": 2.14,
-            "end": 2.26
+            "start": 1.78,
+            "end": 1.88
           }
         ]
       },
       {
-        "start": 2.26,
-        "end": 5.02,
+        "start": 1.88,
+        "end": 4.44,
         "text": "agent reads. Indirect prompt injection lives in",
         "words": [
           {
             "text": "agent",
-            "start": 2.26,
-            "end": 2.54
+            "start": 1.88,
+            "end": 2.1
           },
           {
             "text": "reads.",
-            "start": 2.54,
-            "end": 2.96
+            "start": 2.1,
+            "end": 2.48
           },
           {
             "text": "Indirect",
-            "start": 3.42,
-            "end": 3.66
+            "start": 2.96,
+            "end": 3.18
           },
           {
             "text": "prompt",
-            "start": 3.66,
-            "end": 3.98
+            "start": 3.18,
+            "end": 3.42
           },
           {
             "text": "injection",
-            "start": 3.98,
-            "end": 4.24
+            "start": 3.42,
+            "end": 3.7
           },
           {
             "text": "lives",
-            "start": 4.24,
-            "end": 4.82
+            "start": 3.7,
+            "end": 4.24
           },
           {
             "text": "in",
-            "start": 4.82,
-            "end": 5.02
+            "start": 4.24,
+            "end": 4.44
           }
         ]
       },
       {
-        "start": 5.02,
-        "end": 7.42,
+        "start": 4.44,
+        "end": 6.88,
         "text": "the content, not the chat box. Isolate",
         "words": [
           {
             "text": "the",
-            "start": 5.02,
-            "end": 5.08
+            "start": 4.44,
+            "end": 4.5
           },
           {
             "text": "content,",
-            "start": 5.08,
-            "end": 5.42
+            "start": 4.5,
+            "end": 4.84
           },
           {
             "text": "not",
-            "start": 5.9,
-            "end": 6
+            "start": 5.16,
+            "end": 5.36
           },
           {
             "text": "the",
-            "start": 6,
-            "end": 6.16
+            "start": 5.36,
+            "end": 5.54
           },
           {
             "text": "chat",
-            "start": 6.16,
-            "end": 6.34
+            "start": 5.54,
+            "end": 5.68
           },
           {
             "text": "box.",
-            "start": 6.34,
-            "end": 6.62
+            "start": 5.68,
+            "end": 5.96
           },
           {
             "text": "Isolate",
-            "start": 7.14,
-            "end": 7.42
+            "start": 6.56,
+            "end": 6.88
           }
         ]
       },
       {
-        "start": 7.42,
-        "end": 10.4,
+        "start": 6.88,
+        "end": 9.28,
         "text": "untrusted content, limit tools, and log every",
         "words": [
           {
             "text": "untrusted",
-            "start": 7.42,
-            "end": 8.08
+            "start": 6.88,
+            "end": 7.4
           },
           {
             "text": "content,",
-            "start": 8.08,
-            "end": 8.4
+            "start": 7.4,
+            "end": 7.72
           },
           {
             "text": "limit",
-            "start": 8.88,
-            "end": 9.04
+            "start": 8.12,
+            "end": 8.28
           },
           {
             "text": "tools,",
-            "start": 9.04,
-            "end": 9.3
+            "start": 8.28,
+            "end": 8.54
           },
           {
             "text": "and",
-            "start": 9.76,
-            "end": 9.84
+            "start": 8.84,
+            "end": 8.88
           },
           {
             "text": "log",
-            "start": 9.84,
-            "end": 10.08
+            "start": 8.88,
+            "end": 9.08
           },
           {
             "text": "every",
-            "start": 10.08,
-            "end": 10.4
+            "start": 9.08,
+            "end": 9.28
           }
         ]
       },
       {
-        "start": 10.4,
-        "end": 10.92,
+        "start": 9.28,
+        "end": 9.74,
         "text": "action.",
         "words": [
           {
             "text": "action.",
-            "start": 10.4,
-            "end": 10.92
+            "start": 9.28,
+            "end": 9.74
           }
         ]
       },
       {
-        "start": 11.6,
-        "end": 13.72,
-        "text": "Treat external content like user input wearing",
+        "start": 10.36,
+        "end": 12.68,
+        "text": "Treat external content like user input, wearing",
         "words": [
           {
             "text": "Treat",
-            "start": 11.6,
-            "end": 11.6
+            "start": 10.36,
+            "end": 10.36
           },
           {
             "text": "external",
-            "start": 11.6,
-            "end": 11.96
+            "start": 10.36,
+            "end": 10.72
           },
           {
             "text": "content",
-            "start": 11.96,
-            "end": 12.4
+            "start": 10.72,
+            "end": 11.16
           },
           {
             "text": "like",
-            "start": 12.4,
-            "end": 12.74
+            "start": 11.16,
+            "end": 11.6
           },
           {
             "text": "user",
-            "start": 12.74,
-            "end": 12.96
+            "start": 11.6,
+            "end": 11.84
           },
           {
-            "text": "input",
-            "start": 12.96,
-            "end": 13.32
+            "text": "input,",
+            "start": 11.84,
+            "end": 12.24
           },
           {
             "text": "wearing",
-            "start": 13.32,
-            "end": 13.72
+            "start": 12.5,
+            "end": 12.68
           }
         ]
       },
       {
-        "start": 13.72,
-        "end": 14.2,
+        "start": 12.68,
+        "end": 13.12,
         "text": "a costume.",
         "words": [
           {
             "text": "a",
-            "start": 13.72,
-            "end": 13.86
+            "start": 12.68,
+            "end": 12.86
           },
           {
             "text": "costume.",
-            "start": 13.86,
-            "end": 14.2
+            "start": 12.86,
+            "end": 13.12
           }
         ]
       },
       {
-        "start": 14.88,
-        "end": 16.22,
+        "start": 14.1,
+        "end": 15.5,
         "text": "Would your agent trust a page it",
         "words": [
           {
             "text": "Would",
-            "start": 14.88,
-            "end": 14.88
+            "start": 14.1,
+            "end": 14.12
           },
           {
             "text": "your",
-            "start": 14.88,
-            "end": 15.02
+            "start": 14.12,
+            "end": 14.28
           },
           {
             "text": "agent",
-            "start": 15.02,
-            "end": 15.3
+            "start": 14.28,
+            "end": 14.56
           },
           {
             "text": "trust",
-            "start": 15.3,
-            "end": 15.58
+            "start": 14.56,
+            "end": 14.82
           },
           {
             "text": "a",
-            "start": 15.58,
-            "end": 15.8
+            "start": 14.82,
+            "end": 15
           },
           {
             "text": "page",
-            "start": 15.8,
-            "end": 15.98
+            "start": 15,
+            "end": 15.18
           },
           {
             "text": "it",
-            "start": 15.98,
-            "end": 16.22
+            "start": 15.18,
+            "end": 15.5
           }
         ]
       },
       {
-        "start": 16.22,
-        "end": 17.02,
+        "start": 15.5,
+        "end": 16.18,
         "text": "was told to summarize?",
         "words": [
           {
             "text": "was",
-            "start": 16.22,
-            "end": 16.32
+            "start": 15.5,
+            "end": 15.58
           },
           {
             "text": "told",
-            "start": 16.32,
-            "end": 16.52
+            "start": 15.58,
+            "end": 15.78
           },
           {
             "text": "to",
-            "start": 16.52,
-            "end": 16.74
+            "start": 15.78,
+            "end": 15.94
           },
           {
             "text": "summarize?",
-            "start": 16.74,
-            "end": 17.02
+            "start": 15.94,
+            "end": 16.18
           }
         ]
       }

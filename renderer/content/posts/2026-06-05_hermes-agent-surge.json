@@ -172,7 +172,7 @@
       "slide": 9,
       "role": "takeaway",
       "kicker": "TAKEAWAY",
-      "on_slide_copy": "The win isn't 'AI that thinks.' It's an agent you own and can contain.",
+      "on_slide_copy": "The win {{isn't 'AI that thinks.'}} [[It's an agent you own and can contain.]]",
       "subline": "Hype with receipts. Power with a sandbox.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "the small winged messenger automaton now perched calmly inside a sealed glass dome, wings folded and at rest, contained and content, deep negative space around it, center dark and open with light only along the edges",
@@ -430,468 +430,458 @@
     "licenses": [],
     "captions": [
       {
-        "start": 0.0,
-        "end": 2.18,
-        "text": "An open -source AI agent just became",
+        "start": 0,
+        "end": 2.42,
+        "text": "An open-source AI agent just became one",
         "words": [
           {
             "text": "An",
-            "start": 0.0,
-            "end": 0.14
+            "start": 0,
+            "end": 0.38
           },
           {
-            "text": "open",
-            "start": 0.14,
-            "end": 0.3
-          },
-          {
-            "text": "-source",
-            "start": 0.3,
-            "end": 0.68
+            "text": "open-source",
+            "start": 0.38,
+            "end": 0.84
           },
           {
             "text": "AI",
-            "start": 0.68,
-            "end": 1.06
+            "start": 0.84,
+            "end": 1.16
           },
           {
             "text": "agent",
-            "start": 1.06,
-            "end": 1.6
+            "start": 1.16,
+            "end": 1.66
           },
           {
             "text": "just",
-            "start": 1.6,
+            "start": 1.66,
             "end": 1.88
           },
           {
             "text": "became",
             "start": 1.88,
-            "end": 2.18
+            "end": 2.12
+          },
+          {
+            "text": "one",
+            "start": 2.12,
+            "end": 2.42
           }
         ]
       },
       {
-        "start": 2.18,
-        "end": 3.96,
-        "text": "one of the most used agents in",
+        "start": 2.42,
+        "end": 3.72,
+        "text": "of the most used agents in the",
         "words": [
           {
-            "text": "one",
-            "start": 2.18,
-            "end": 2.56
-          },
-          {
             "text": "of",
-            "start": 2.56,
-            "end": 2.66
+            "start": 2.42,
+            "end": 2.52
           },
           {
             "text": "the",
-            "start": 2.66,
-            "end": 2.78
+            "start": 2.52,
+            "end": 2.64
           },
           {
             "text": "most",
-            "start": 2.78,
-            "end": 3.02
+            "start": 2.64,
+            "end": 2.84
           },
           {
             "text": "used",
-            "start": 3.02,
-            "end": 3.34
+            "start": 2.84,
+            "end": 3.06
           },
           {
             "text": "agents",
-            "start": 3.34,
-            "end": 3.7
+            "start": 3.06,
+            "end": 3.42
           },
           {
             "text": "in",
-            "start": 3.7,
-            "end": 3.96
-          }
-        ]
-      },
-      {
-        "start": 3.96,
-        "end": 4.32,
-        "text": "the world,",
-        "words": [
+            "start": 3.42,
+            "end": 3.64
+          },
           {
             "text": "the",
-            "start": 3.96,
-            "end": 4.06
-          },
-          {
-            "text": "world,",
-            "start": 4.06,
-            "end": 4.32
+            "start": 3.64,
+            "end": 3.72
           }
         ]
       },
       {
-        "start": 5.0,
-        "end": 5.36,
-        "text": "Hermes Agent.",
+        "start": 3.72,
+        "end": 5.06,
+        "text": "world. Hermes Agent,",
         "words": [
+          {
+            "text": "world.",
+            "start": 3.72,
+            "end": 3.94
+          },
           {
             "text": "Hermes",
-            "start": 5.0,
-            "end": 5.0
+            "start": 4.52,
+            "end": 4.78
           },
           {
-            "text": "Agent.",
-            "start": 5.0,
-            "end": 5.36
+            "text": "Agent,",
+            "start": 4.78,
+            "end": 5.06
           }
         ]
       },
       {
-        "start": 6.0,
-        "end": 9.48,
-        "text": "Launched in February, already passed 180 ,000",
+        "start": 5.74,
+        "end": 8.78,
+        "text": "launched in February, already passed 180 ,000",
         "words": [
           {
-            "text": "Launched",
-            "start": 6.0,
-            "end": 6.3
+            "text": "launched",
+            "start": 5.74,
+            "end": 5.8
           },
           {
             "text": "in",
-            "start": 6.3,
-            "end": 6.44
+            "start": 5.8,
+            "end": 6.1
           },
           {
             "text": "February,",
-            "start": 6.44,
-            "end": 6.88
+            "start": 6.1,
+            "end": 6.48
           },
           {
             "text": "already",
-            "start": 7.34,
-            "end": 7.64
+            "start": 6.86,
+            "end": 7.2
           },
           {
             "text": "passed",
-            "start": 7.64,
-            "end": 7.98
+            "start": 7.2,
+            "end": 7.5
           },
           {
             "text": "180",
-            "start": 7.98,
-            "end": 8.34
+            "start": 7.5,
+            "end": 7.84
           },
           {
             "text": ",000",
-            "start": 8.34,
-            "end": 9.48
+            "start": 7.84,
+            "end": 8.78
           }
         ]
       },
       {
-        "start": 9.48,
-        "end": 11.84,
-        "text": "GitHub stars. Its trick, it turns your",
+        "start": 8.78,
+        "end": 9.36,
+        "text": "GitHub stars.",
         "words": [
           {
             "text": "GitHub",
-            "start": 9.48,
-            "end": 9.66
+            "start": 8.78,
+            "end": 8.96
           },
           {
             "text": "stars.",
-            "start": 9.66,
-            "end": 10.04
-          },
+            "start": 8.96,
+            "end": 9.36
+          }
+        ]
+      },
+      {
+        "start": 10.04,
+        "end": 11.92,
+        "text": "It's trick, it turns your tasks into",
+        "words": [
           {
-            "text": "Its",
-            "start": 10.6,
-            "end": 10.7
+            "text": "It's",
+            "start": 10.04,
+            "end": 10.2
           },
           {
             "text": "trick,",
-            "start": 10.7,
+            "start": 10.2,
+            "end": 10.36
+          },
+          {
+            "text": "it",
+            "start": 10.78,
             "end": 10.94
           },
           {
-            "text": "it",
-            "start": 11.2,
-            "end": 11.4
-          },
-          {
             "text": "turns",
-            "start": 11.4,
-            "end": 11.66
+            "start": 10.94,
+            "end": 11.12
           },
           {
             "text": "your",
-            "start": 11.66,
-            "end": 11.84
-          }
-        ]
-      },
-      {
-        "start": 11.84,
-        "end": 14.32,
-        "text": "tasks into reusable skills and gets sharper",
-        "words": [
+            "start": 11.12,
+            "end": 11.3
+          },
           {
             "text": "tasks",
-            "start": 11.84,
-            "end": 12.14
+            "start": 11.3,
+            "end": 11.54
           },
           {
             "text": "into",
-            "start": 12.14,
-            "end": 12.58
-          },
+            "start": 11.54,
+            "end": 11.92
+          }
+        ]
+      },
+      {
+        "start": 11.92,
+        "end": 14.12,
+        "text": "reusable skills and gets sharper the longer",
+        "words": [
           {
             "text": "reusable",
-            "start": 12.58,
-            "end": 12.88
+            "start": 11.92,
+            "end": 12.18
           },
           {
             "text": "skills",
-            "start": 12.88,
-            "end": 13.46
+            "start": 12.18,
+            "end": 12.74
           },
           {
             "text": "and",
-            "start": 13.46,
-            "end": 13.86
+            "start": 12.74,
+            "end": 13.12
           },
           {
             "text": "gets",
-            "start": 13.86,
-            "end": 14.0
+            "start": 13.12,
+            "end": 13.24
           },
           {
             "text": "sharper",
-            "start": 14.0,
-            "end": 14.32
-          }
-        ]
-      },
-      {
-        "start": 14.32,
-        "end": 16.1,
-        "text": "the longer it runs. But it's an",
-        "words": [
+            "start": 13.24,
+            "end": 13.56
+          },
           {
             "text": "the",
-            "start": 14.32,
-            "end": 14.66
+            "start": 13.56,
+            "end": 13.9
           },
           {
             "text": "longer",
-            "start": 14.66,
-            "end": 14.92
-          },
+            "start": 13.9,
+            "end": 14.12
+          }
+        ]
+      },
+      {
+        "start": 14.12,
+        "end": 14.54,
+        "text": "it runs.",
+        "words": [
           {
             "text": "it",
-            "start": 14.92,
-            "end": 15.12
+            "start": 14.12,
+            "end": 14.34
           },
           {
             "text": "runs.",
-            "start": 15.12,
-            "end": 15.34
-          },
+            "start": 14.34,
+            "end": 14.54
+          }
+        ]
+      },
+      {
+        "start": 15.24,
+        "end": 16.88,
+        "text": "But it's an always-on agent with a",
+        "words": [
           {
             "text": "But",
-            "start": 15.8,
-            "end": 15.86
+            "start": 15.24,
+            "end": 15.3
           },
           {
             "text": "it's",
-            "start": 15.86,
-            "end": 16.04
+            "start": 15.3,
+            "end": 15.38
           },
           {
             "text": "an",
-            "start": 16.04,
-            "end": 16.1
-          }
-        ]
-      },
-      {
-        "start": 16.1,
-        "end": 18.06,
-        "text": "always -on agent with a terminal and",
-        "words": [
-          {
-            "text": "always",
-            "start": 16.1,
-            "end": 16.42
+            "start": 15.38,
+            "end": 15.5
           },
           {
-            "text": "-on",
-            "start": 16.42,
-            "end": 16.74
+            "text": "always-on",
+            "start": 15.5,
+            "end": 15.96
           },
           {
             "text": "agent",
-            "start": 16.74,
-            "end": 17.08
+            "start": 15.96,
+            "end": 16.26
           },
           {
             "text": "with",
-            "start": 17.08,
-            "end": 17.32
+            "start": 16.26,
+            "end": 16.76
           },
           {
             "text": "a",
-            "start": 17.32,
-            "end": 17.4
-          },
-          {
-            "text": "terminal",
-            "start": 17.4,
-            "end": 17.7
-          },
-          {
-            "text": "and",
-            "start": 17.7,
-            "end": 18.06
+            "start": 16.76,
+            "end": 16.88
           }
         ]
       },
       {
-        "start": 18.06,
-        "end": 20.14,
-        "text": "your keys, so sandbox it and scope",
+        "start": 16.88,
+        "end": 19.26,
+        "text": "terminal and your keys, so sandbox it",
         "words": [
           {
+            "text": "terminal",
+            "start": 16.88,
+            "end": 17.2
+          },
+          {
+            "text": "and",
+            "start": 17.2,
+            "end": 17.54
+          },
+          {
             "text": "your",
-            "start": 18.06,
-            "end": 18.18
+            "start": 17.54,
+            "end": 17.68
           },
           {
             "text": "keys,",
-            "start": 18.18,
-            "end": 18.4
+            "start": 17.68,
+            "end": 17.92
           },
           {
             "text": "so",
-            "start": 18.88,
-            "end": 18.98
+            "start": 18.48,
+            "end": 18.58
           },
           {
             "text": "sandbox",
-            "start": 18.98,
-            "end": 19.3
+            "start": 18.58,
+            "end": 18.82
           },
           {
             "text": "it",
-            "start": 19.3,
-            "end": 19.74
-          },
+            "start": 18.82,
+            "end": 19.26
+          }
+        ]
+      },
+      {
+        "start": 19.26,
+        "end": 20.28,
+        "text": "and scope the keys.",
+        "words": [
           {
             "text": "and",
-            "start": 19.74,
-            "end": 19.94
+            "start": 19.26,
+            "end": 19.64
           },
           {
             "text": "scope",
-            "start": 19.94,
-            "end": 20.14
-          }
-        ]
-      },
-      {
-        "start": 20.14,
-        "end": 21.8,
-        "text": "the keys. Would you give an agent",
-        "words": [
+            "start": 19.64,
+            "end": 19.86
+          },
           {
             "text": "the",
-            "start": 20.14,
-            "end": 20.38
+            "start": 19.86,
+            "end": 20.08
           },
           {
             "text": "keys.",
-            "start": 20.38,
-            "end": 20.58
-          },
+            "start": 20.08,
+            "end": 20.28
+          }
+        ]
+      },
+      {
+        "start": 21,
+        "end": 22.2,
+        "text": "Would you give an agent your terminal",
+        "words": [
           {
             "text": "Would",
-            "start": 21.1,
-            "end": 21.14
+            "start": 21,
+            "end": 21.02
           },
           {
             "text": "you",
-            "start": 21.14,
-            "end": 21.24
+            "start": 21.02,
+            "end": 21.16
           },
           {
             "text": "give",
-            "start": 21.24,
-            "end": 21.42
+            "start": 21.16,
+            "end": 21.34
           },
           {
             "text": "an",
-            "start": 21.42,
-            "end": 21.54
+            "start": 21.34,
+            "end": 21.48
           },
           {
             "text": "agent",
-            "start": 21.54,
-            "end": 21.8
-          }
-        ]
-      },
-      {
-        "start": 21.8,
-        "end": 23.42,
-        "text": "your terminal if it never left your",
-        "words": [
+            "start": 21.48,
+            "end": 21.74
+          },
           {
             "text": "your",
-            "start": 21.8,
-            "end": 22.0
+            "start": 21.74,
+            "end": 21.92
           },
           {
             "text": "terminal",
-            "start": 22.0,
-            "end": 22.3
-          },
-          {
-            "text": "if",
-            "start": 22.3,
-            "end": 22.64
-          },
-          {
-            "text": "it",
-            "start": 22.64,
-            "end": 22.76
-          },
-          {
-            "text": "never",
-            "start": 22.76,
-            "end": 22.96
-          },
-          {
-            "text": "left",
-            "start": 22.96,
-            "end": 23.24
-          },
-          {
-            "text": "your",
-            "start": 23.24,
-            "end": 23.42
+            "start": 21.92,
+            "end": 22.2
           }
         ]
       },
       {
-        "start": 23.42,
-        "end": 23.68,
-        "text": "machine?",
+        "start": 22.2,
+        "end": 23.5,
+        "text": "if it never left your machine?",
         "words": [
           {
+            "text": "if",
+            "start": 22.2,
+            "end": 22.52
+          },
+          {
+            "text": "it",
+            "start": 22.52,
+            "end": 22.64
+          },
+          {
+            "text": "never",
+            "start": 22.64,
+            "end": 22.8
+          },
+          {
+            "text": "left",
+            "start": 22.8,
+            "end": 23.08
+          },
+          {
+            "text": "your",
+            "start": 23.08,
+            "end": 23.24
+          },
+          {
             "text": "machine?",
-            "start": 23.42,
-            "end": 23.68
+            "start": 23.24,
+            "end": 23.5
           }
         ]
       }

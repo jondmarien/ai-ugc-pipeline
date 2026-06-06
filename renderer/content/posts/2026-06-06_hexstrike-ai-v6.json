@@ -1,0 +1,832 @@
+{
+  "post_id": "2026-06-06_hexstrike-ai-v6",
+  "date": "2026-06-06",
+  "slug": "hexstrike-ai-v6",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "offensive_ai",
+  "theme": "offensive",
+  "audience": "security practitioners, red teamers, blue teamers",
+  "core_claim": "HexStrike AI is an open-source (MIT) MCP framework that lets AI agents autonomously orchestrate 150+ security tools; shortly after its 2025 release, Check Point Research reported threat actors discussing it to speed up exploitation of fresh Citrix NetScaler zero-days — collapsing the disclosure-to-exploitation window from weeks to hours, though direct attribution remains forum chatter, not confirmed forensics.",
+  "claim_tags": [
+    "verified",
+    "emerging"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 4,
+    "defender_usefulness": 5,
+    "total": 23
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "alert red",
+    "pillar_accent": "offensive_ai",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#ef4444",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-06_hexstrike-ai-v6",
+    "filename_prefix": "2026-06-06_hexstrike-ai-v6",
+    "expected_files": [
+      "2026-06-06_hexstrike-ai-v6_01_cover.png",
+      "2026-06-06_hexstrike-ai-v6_02_context.png",
+      "2026-06-06_hexstrike-ai-v6_03_risk.png",
+      "2026-06-06_hexstrike-ai-v6_04_mechanism.png",
+      "2026-06-06_hexstrike-ai-v6_05_failure-point.png",
+      "2026-06-06_hexstrike-ai-v6_06_defense.png",
+      "2026-06-06_hexstrike-ai-v6_07_takeaway.png",
+      "2026-06-06_hexstrike-ai-v6_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "OFFENSIVE AI · RED TEAM TOOLS",
+      "on_slide_copy": "AI JUST CUT EXPLOIT DEVELOPMENT FROM WEEKS TO MINUTES",
+      "subline": "HexStrike AI: one open-source tool, 150+ hacking tools, driven by an AI agent.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single robotic arm in the dark snatching tools one after another off a vast wall of hanging instruments in a blur of rapid motion, faint sparks of light trailing its movement, speed and automation, cinematic rim light, strong empty space in the lower half",
+      "background_asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/01_cover.png",
+      "asset_status": "generated",
+      "cta": "SWIPE →",
+      "notes": ""
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT IT IS",
+      "on_slide_copy": "An open-source framework that lets an AI agent run 150+ security tools.",
+      "subline": "Built for authorized red teams via MCP — Claude, GPT, or Copilot as the operator.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a calm articulated robotic arm poised before an enormous dark wall of neatly hung mechanical hand-tools, a single bright control thread running down to it from above, an unseen operator, dark, lower third kept clear",
+      "background_asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/02_context.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHAT ACTUALLY HAPPENED",
+      "on_slide_copy": "Hours after a Citrix zero-day dropped, attackers discussed using it to mass-exploit.",
+      "subline": "Reported on dark-web forums by Check Point — chatter, not confirmed forensics.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a hairline crack splitting open across a vast dark wall while a swarm of small luminous drones immediately streams through the narrow opening, fast and relentless, tense atmosphere, lower third clear",
+      "background_asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/03_risk.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "A decision engine turns a plain-language goal into a recon-to-exploit loop.",
+      "subline": "It selects the tools, chains them, and retries failures on its own. That's the leap.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a branching river of light flowing from one bright source at the top and splitting into many smaller self-correcting channels that re-route around dark obstacles, an automated cascade, focal in the upper area, lower third kept clear",
+      "background_asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/04_mechanism.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "THE SHRINKING WINDOW",
+      "on_slide_copy": "The gap between disclosure and mass exploitation is now hours, not weeks.",
+      "subline": "~28,000 NetScaler boxes were exposed to one bug (CVE-2025-7775, CVSS 9.2).",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a tall hourglass in the dark with its sand rushing downward far too fast, the upper chamber already almost empty, a sense of collapsing time, dramatic side light, lower third clear",
+      "background_asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/05_failure-point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "WHAT ACTUALLY WORKS",
+      "on_slide_copy": "Patch internet-facing gear first, and fast. Assume n-day exploitation is automated.",
+      "subline": "Track exposure, watch threat intel on disclosure day, tune detection for the window.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single focused figure rapidly bolting a heavy steel plate over an exposed gap in a dark wall, working fast and deliberately before anything can pass through, urgent and orderly, dark, empty lower third",
+      "background_asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/06_defense.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "THE REAL SHIFT",
+      "on_slide_copy": "AI lowers the skill floor for attackers. [[Patch velocity matters more]], {{not less}}.",
+      "subline": "Same fundamentals. Far less time to apply them.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a tall steep staircase in the dark flattening into a smooth gentle ramp that anyone could simply walk up, a barrier dissolving, minimal high-contrast composition, center kept open and dark",
+      "background_asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/07_takeaway.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "How fast can your team patch an internet-facing zero-day — honestly?",
+      "subline": "Save this for your next patch-SLA review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single stopwatch held up in the dark with a finger poised on its button, the sense of a race about to begin, premium editorial look, generous empty negative space",
+      "background_asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/08_cta.png",
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "An open-source tool just let an AI agent drive 150+ hacking tools by itself — and within hours of a fresh Citrix zero-day, attackers were already talking about pointing it at the internet.\n\nThat tool is HexStrike AI (v6.0). MIT-licensed, built for authorized red teams and bug bounty work: you hand an AI agent like Claude or GPT a plain-language goal, and a decision engine picks the tools, chains recon into exploitation, and retries what fails. Genuinely useful for defenders testing their own systems.\n\nHere's the part that matters. After Citrix disclosed three NetScaler zero-days last year, Check Point Research saw threat actors on underground forums discussing HexStrike to scan and exploit them. One bug, CVE-2025-7775, scored 9.2 and had roughly 28,000 boxes exposed. Check Point estimated AI could compress exploit development from days or weeks to under ten minutes.\n\nThe honest caveat: that's forum chatter, not confirmed forensic attribution. No fake panic. But the direction is real — the gap between a disclosure and mass exploitation is collapsing.\n\nSo the takeaway isn't 'AI hacks everything.' It's that patch velocity and exposure management matter more than ever, because you get less time to apply the same fundamentals. Patch internet-facing gear first, watch threat intel on disclosure day, and tune detection for that window.\n\nHow fast can your team realistically patch an internet-facing zero-day?\n\nSave this for your next patch-SLA review. Follow for AI security without the fake panic.",
+  "hashtags": [
+    "HexStrike AI",
+    "offensive AI",
+    "red team",
+    "AI agents",
+    "MCP",
+    "penetration testing",
+    "Citrix NetScaler",
+    "CVE-2025-7775",
+    "vulnerability management",
+    "patch management",
+    "threat intelligence",
+    "AI security",
+    "bug bounty",
+    "Check Point Research"
+  ],
+  "comment_prompt": "Honestly — what's your real patch SLA for an internet-facing zero-day: hours, days, or weeks?",
+  "alt_text": [
+    "Slide 1 (cover): a robotic arm grabbing tools off a huge wall in a blur of motion; headline reads that AI just cut exploit development from weeks to minutes.",
+    "Slide 2 (context): a robotic arm poised before a wall of mechanical tools with one control thread from above; text says an open-source framework lets an AI agent run 150+ security tools.",
+    "Slide 3 (what happened): a crack in a dark wall with a swarm of small drones streaming through; text says hours after a Citrix zero-day dropped, attackers discussed using it to mass-exploit.",
+    "Slide 4 (how it works): a branching river of light splitting into self-correcting channels; text says a decision engine turns a plain-language goal into a recon-to-exploit loop.",
+    "Slide 5 (shrinking window): an hourglass with sand rushing through too fast; text says the gap between disclosure and mass exploitation is now hours, not weeks, with ~28,000 NetScaler boxes exposed to CVE-2025-7775.",
+    "Slide 6 (defense): a figure rapidly bolting a steel plate over a gap in a wall; text says patch internet-facing gear first and fast, and assume n-day exploitation is automated.",
+    "Slide 7 (takeaway): a steep staircase flattening into a gentle ramp; text says AI lowers the skill floor for attackers, so patch velocity matters more, not less.",
+    "Slide 8 (CTA): a stopwatch held up with a finger on the button; text asks how fast your team can patch an internet-facing zero-day."
+  ],
+  "sources": [
+    {
+      "source": "HexStrike AI — GitHub repository (0x4m4/hexstrike-ai)",
+      "link": "https://github.com/0x4m4/hexstrike-ai",
+      "supports": "Open-source (MIT) MCP server letting AI agents autonomously run 150+ security tools and 12+ agents for authorized pentest/bug-bounty/red-team use; includes explicit authorized-use-only disclaimer.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "Kali Linux — HexStrike AI tool page",
+      "link": "https://www.kali.org/tools/hexstrike-ai/",
+      "supports": "Official packaging as an AI-powered MCP cybersecurity automation platform with 150+ modules and an adaptive AI decision engine; distributed in Kali.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "Cyber Security News — HexStrike AI red-team tool (v6.0)",
+      "link": "https://cybersecuritynews.com/hexstrike-ai-red-team-tool/",
+      "supports": "v6.0 MCP-based framework with a FastMCP orchestration brain / Intelligent Decision Engine connecting LLMs to offensive tooling; six AI client integrations.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "Check Point Research — Hexstrike-AI: When LLMs Meet Zero-Day Exploitation",
+      "link": "https://blog.checkpoint.com/executive-insights/hexstrike-ai-when-llms-meet-zero-day-exploitation/",
+      "supports": "Threat actors on underground forums discussed using HexStrike to exploit Citrix NetScaler zero-days within ~12 hours of disclosure; AI could cut exploit development from days/weeks to under 10 minutes; explicit caveat that direct involvement is chatter, not confirmed forensic attribution.",
+      "confidence": "medium",
+      "claim_tag": "emerging"
+    },
+    {
+      "source": "The Hacker News — Threat Actors Weaponize HexStrike AI to Exploit Citrix Flaws",
+      "link": "https://thehackernews.com/2025/09/threat-actors-weaponize-hexstrike-ai-to.html",
+      "supports": "Independent reporting on the Check Point findings; Citrix NetScaler CVE-2025-7775 (CVSS 9.2, unauth RCE) and ~28,000 exposed endpoints (ShadowServer).",
+      "confidence": "high",
+      "claim_tag": "verified"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-06_hexstrike-ai-v6/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 26,
+    "fps": 30,
+    "export_name": "2026-06-06_hexstrike-ai-v6_reel.mp4",
+    "caption_mode": "block",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-06_hexstrike-ai-v6/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "An open-source AI tool can now run over a hundred and fifty hacking tools on its own."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "text": "Hours after a Citrix zero-day dropped, attackers were already discussing using it to mass-exploit."
+      },
+      {
+        "start": 11,
+        "end": 17,
+        "text": "So patch your internet-facing systems first, and fast. Assume exploitation is automated now."
+      },
+      {
+        "start": 17,
+        "end": 22,
+        "text": "AI lowers the skill floor for attackers. Patch speed matters more, not less."
+      },
+      {
+        "start": 22,
+        "end": 26,
+        "text": "How fast can your team patch an internet-facing zero-day?"
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "An open-source AI tool can now run 150+ hacking tools on its own."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "slide_ref": 3,
+        "purpose": "story",
+        "motion": "parallax",
+        "caption": "Hours after a Citrix zero-day, attackers discussed using it to mass-exploit."
+      },
+      {
+        "start": 11,
+        "end": 17,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "Patch internet-facing systems first, and fast. Assume it's automated."
+      },
+      {
+        "start": 17,
+        "end": 22,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "AI lowers the skill floor. Patch velocity matters more, not less."
+      },
+      {
+        "start": 22,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "How fast can your team patch an internet-facing zero-day?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0,
+        "end": 1.9,
+        "text": "An open source AI tool can now",
+        "words": [
+          {
+            "text": "An",
+            "start": 0,
+            "end": 0.38
+          },
+          {
+            "text": "open",
+            "start": 0.38,
+            "end": 0.52
+          },
+          {
+            "text": "source",
+            "start": 0.52,
+            "end": 0.78
+          },
+          {
+            "text": "AI",
+            "start": 0.78,
+            "end": 1.08
+          },
+          {
+            "text": "tool",
+            "start": 1.08,
+            "end": 1.44
+          },
+          {
+            "text": "can",
+            "start": 1.44,
+            "end": 1.7
+          },
+          {
+            "text": "now",
+            "start": 1.7,
+            "end": 1.9
+          }
+        ]
+      },
+      {
+        "start": 1.9,
+        "end": 3.94,
+        "text": "run over 150 hacking tools on its",
+        "words": [
+          {
+            "text": "run",
+            "start": 1.9,
+            "end": 2.1
+          },
+          {
+            "text": "over",
+            "start": 2.1,
+            "end": 2.34
+          },
+          {
+            "text": "150",
+            "start": 2.34,
+            "end": 2.7
+          },
+          {
+            "text": "hacking",
+            "start": 2.7,
+            "end": 3.4
+          },
+          {
+            "text": "tools",
+            "start": 3.4,
+            "end": 3.62
+          },
+          {
+            "text": "on",
+            "start": 3.62,
+            "end": 3.8
+          },
+          {
+            "text": "its",
+            "start": 3.8,
+            "end": 3.94
+          }
+        ]
+      },
+      {
+        "start": 3.94,
+        "end": 6.58,
+        "text": "own. Hours after Citrix, Zero Day dropped,",
+        "words": [
+          {
+            "text": "own.",
+            "start": 3.94,
+            "end": 4.12
+          },
+          {
+            "text": "Hours",
+            "start": 4.7,
+            "end": 4.7
+          },
+          {
+            "text": "after",
+            "start": 4.7,
+            "end": 5.02
+          },
+          {
+            "text": "Citrix,",
+            "start": 5.02,
+            "end": 5.46
+          },
+          {
+            "text": "Zero",
+            "start": 5.9,
+            "end": 6.02
+          },
+          {
+            "text": "Day",
+            "start": 6.02,
+            "end": 6.32
+          },
+          {
+            "text": "dropped,",
+            "start": 6.32,
+            "end": 6.58
+          }
+        ]
+      },
+      {
+        "start": 7.02,
+        "end": 8.88,
+        "text": "attackers were already discussing using it to",
+        "words": [
+          {
+            "text": "attackers",
+            "start": 7.02,
+            "end": 7.14
+          },
+          {
+            "text": "were",
+            "start": 7.14,
+            "end": 7.48
+          },
+          {
+            "text": "already",
+            "start": 7.48,
+            "end": 7.72
+          },
+          {
+            "text": "discussing",
+            "start": 7.72,
+            "end": 8.16
+          },
+          {
+            "text": "using",
+            "start": 8.16,
+            "end": 8.6
+          },
+          {
+            "text": "it",
+            "start": 8.6,
+            "end": 8.76
+          },
+          {
+            "text": "to",
+            "start": 8.76,
+            "end": 8.88
+          }
+        ]
+      },
+      {
+        "start": 8.88,
+        "end": 9.28,
+        "text": "mass exploit.",
+        "words": [
+          {
+            "text": "mass",
+            "start": 8.88,
+            "end": 9.04
+          },
+          {
+            "text": "exploit.",
+            "start": 9.04,
+            "end": 9.28
+          }
+        ]
+      },
+      {
+        "start": 9.96,
+        "end": 11.66,
+        "text": "So patch your internet phasing systems first,",
+        "words": [
+          {
+            "text": "So",
+            "start": 9.96,
+            "end": 10
+          },
+          {
+            "text": "patch",
+            "start": 10,
+            "end": 10.2
+          },
+          {
+            "text": "your",
+            "start": 10.2,
+            "end": 10.4
+          },
+          {
+            "text": "internet",
+            "start": 10.4,
+            "end": 10.58
+          },
+          {
+            "text": "phasing",
+            "start": 10.58,
+            "end": 11.02
+          },
+          {
+            "text": "systems",
+            "start": 11.02,
+            "end": 11.28
+          },
+          {
+            "text": "first,",
+            "start": 11.28,
+            "end": 11.66
+          }
+        ]
+      },
+      {
+        "start": 12.08,
+        "end": 12.36,
+        "text": "and fast.",
+        "words": [
+          {
+            "text": "and",
+            "start": 12.08,
+            "end": 12.18
+          },
+          {
+            "text": "fast.",
+            "start": 12.18,
+            "end": 12.36
+          }
+        ]
+      },
+      {
+        "start": 13.08,
+        "end": 15.76,
+        "text": "Assume exploitation is automated now. AI lowers",
+        "words": [
+          {
+            "text": "Assume",
+            "start": 13.08,
+            "end": 13.24
+          },
+          {
+            "text": "exploitation",
+            "start": 13.24,
+            "end": 13.52
+          },
+          {
+            "text": "is",
+            "start": 13.52,
+            "end": 14.1
+          },
+          {
+            "text": "automated",
+            "start": 14.1,
+            "end": 14.34
+          },
+          {
+            "text": "now.",
+            "start": 14.34,
+            "end": 14.82
+          },
+          {
+            "text": "AI",
+            "start": 15.36,
+            "end": 15.36
+          },
+          {
+            "text": "lowers",
+            "start": 15.36,
+            "end": 15.76
+          }
+        ]
+      },
+      {
+        "start": 15.76,
+        "end": 16.9,
+        "text": "the skill floor for attackers.",
+        "words": [
+          {
+            "text": "the",
+            "start": 15.76,
+            "end": 15.96
+          },
+          {
+            "text": "skill",
+            "start": 15.96,
+            "end": 16.14
+          },
+          {
+            "text": "floor",
+            "start": 16.14,
+            "end": 16.38
+          },
+          {
+            "text": "for",
+            "start": 16.38,
+            "end": 16.6
+          },
+          {
+            "text": "attackers.",
+            "start": 16.6,
+            "end": 16.9
+          }
+        ]
+      },
+      {
+        "start": 17.72,
+        "end": 19.7,
+        "text": "Patch speed matters more, not less. How",
+        "words": [
+          {
+            "text": "Patch",
+            "start": 17.72,
+            "end": 17.72
+          },
+          {
+            "text": "speed",
+            "start": 17.72,
+            "end": 17.92
+          },
+          {
+            "text": "matters",
+            "start": 17.92,
+            "end": 18.14
+          },
+          {
+            "text": "more,",
+            "start": 18.14,
+            "end": 18.54
+          },
+          {
+            "text": "not",
+            "start": 18.8,
+            "end": 18.94
+          },
+          {
+            "text": "less.",
+            "start": 18.94,
+            "end": 19.14
+          },
+          {
+            "text": "How",
+            "start": 19.64,
+            "end": 19.7
+          }
+        ]
+      },
+      {
+        "start": 19.7,
+        "end": 21.16,
+        "text": "fast can your team patch an internet",
+        "words": [
+          {
+            "text": "fast",
+            "start": 19.7,
+            "end": 19.94
+          },
+          {
+            "text": "can",
+            "start": 19.94,
+            "end": 20.14
+          },
+          {
+            "text": "your",
+            "start": 20.14,
+            "end": 20.26
+          },
+          {
+            "text": "team",
+            "start": 20.26,
+            "end": 20.48
+          },
+          {
+            "text": "patch",
+            "start": 20.48,
+            "end": 20.78
+          },
+          {
+            "text": "an",
+            "start": 20.78,
+            "end": 20.96
+          },
+          {
+            "text": "internet",
+            "start": 20.96,
+            "end": 21.16
+          }
+        ]
+      },
+      {
+        "start": 21.16,
+        "end": 22.16,
+        "text": "phasing Zero Day?",
+        "words": [
+          {
+            "text": "phasing",
+            "start": 21.16,
+            "end": 21.62
+          },
+          {
+            "text": "Zero",
+            "start": 21.62,
+            "end": 21.96
+          },
+          {
+            "text": "Day?",
+            "start": 21.96,
+            "end": 22.16
+          }
+        ]
+      }
+    ]
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}
