@@ -6,6 +6,7 @@ AI-in-cybersecurity UGC pipeline. **Positioning:** *real threats, real tools, no
 - **ai-cybersecurity-ugc-carousel** — writes the content (hooks, slide scripts — default 8, configurable 3–20 via `slides=N`, captions, QA). Use when drafting post copy/ideas.
 - **react-remotion-instagram-renderer** — maps approved content to the renderer JSON schema and produces assets. Use when turning content into files.
 - **humanizer** — rewrites caption/narration/slide copy so it reads human (Jon's voice), not AI. Strips the AI tells, keeps the voice (`.claude/skills/humanizer/references/voice-profile.md`). Run it on the final copy of every post.
+- **professional-proofreader** — final correctness + clarity pass over caption/narration/on_slide_copy/subline: grammar, spelling, punctuation, syntax; every line must be a complete spoken sentence with substance (not a telegraphic fragment); dash hygiene (glue `first-ever`/`AI-assisting`, no em-dashes in narration). Runs AFTER the humanizer, never alters sourced facts.
 
 **Read first:** architecture in `renderer/docs/PROJECT_ARCHITECTURE.md` + `renderer/docs/PIPELINE_ARCHITECTURE.md`; voice in `pipeline/content/VOICE_AND_TONE_GUIDE.md`; the command/pillar cheat-sheet in `pipeline/content/DRAFT_POST_REFERENCE.md`.
 

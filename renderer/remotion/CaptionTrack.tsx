@@ -4,6 +4,10 @@ import type { CaptionMode, WordTiming } from "./CaptionLayer";
 
 export type CaptionLine = { start: number; end: number; text: string; words?: WordTiming[] };
 
+// Render hyphenated compounds with a NON-breaking hyphen (U+2011) so "first-ever" / "AI-assisting"
+// can never split across two lines. Paired with hyphens:"none" in the text style below.
+const nbh = (s: string) => s.replace(/(\w)-(\w)/g, "$1‑$2");
+
 // Voice-synced caption track (written by `bun run align` from Whisper). Each line is
 // shown during its absolute [start,end]; word/highlight modes light the current word
 // by real timestamp. This is the accurate path — the displayed words ARE the spoken
@@ -26,13 +30,13 @@ export function CaptionTrack({ captions, accent, mode = "block" }: { captions: C
   }
 
   const wrap: React.CSSProperties = { justifyContent: "flex-end", alignItems: "center", padding: "0 96px 280px" };
-  const base: React.CSSProperties = { fontFamily: fonts.headline, fontWeight: 800, lineHeight: 1.05, textAlign: "center", color: palette.fg, maxWidth: 900 };
+  const base: React.CSSProperties = { fontFamily: fonts.headline, fontWeight: 800, lineHeight: 1.05, textAlign: "center", color: palette.fg, maxWidth: 900, hyphens: "none", WebkitHyphens: "none", overflowWrap: "normal", wordBreak: "normal" };
 
   if (mode === "word") {
     return (
       <AbsoluteFill style={wrap}>
         <div style={{ ...base, fontSize: 116, textShadow: `0 4px 40px rgba(0,0,0,0.85), 0 0 56px ${accent}55` }}>
-          {words[activeIdx] ?? words[words.length - 1] ?? ""}
+          {nbh(words[activeIdx] ?? words[words.length - 1] ?? "")}
         </div>
       </AbsoluteFill>
     );
@@ -44,7 +48,7 @@ export function CaptionTrack({ captions, accent, mode = "block" }: { captions: C
           {words.map((w, i) => {
             const on = i === activeIdx;
             return (
-              <span key={i} style={{ color: on ? accent : palette.fg, opacity: on ? 1 : 0.42, textShadow: on ? `0 4px 40px rgba(0,0,0,0.85), 0 0 40px ${accent}66` : "0 2px 24px rgba(0,0,0,0.7)" }}>{w}</span>
+              <span key={i} style={{ color: on ? accent : palette.fg, opacity: on ? 1 : 0.42, textShadow: on ? `0 4px 40px rgba(0,0,0,0.85), 0 0 40px ${accent}66` : "0 2px 24px rgba(0,0,0,0.7)" }}>{nbh(w)}</span>
             );
           })}
         </div>
@@ -59,7 +63,7 @@ export function CaptionTrack({ captions, accent, mode = "block" }: { captions: C
   const opacity = interpolate(t - line.start, [0, 0.2], [0, 1], { extrapolateRight: "clamp" });
   return (
     <AbsoluteFill style={wrap}>
-      <div style={{ ...base, fontSize: 92, opacity, textShadow: `0 4px 40px rgba(0,0,0,0.8), 0 0 48px ${accent}33` }}>{phrase}</div>
+      <div style={{ ...base, fontSize: 92, opacity, textShadow: `0 4px 40px rgba(0,0,0,0.8), 0 0 48px ${accent}33` }}>{nbh(phrase)}</div>
     </AbsoluteFill>
   );
 }
