@@ -4,6 +4,9 @@ import { fonts, palette } from "./theme";
 export type CaptionMode = "block" | "word" | "highlight";
 export type WordTiming = { text: string; start: number; end: number }; // seconds, relative to beat
 
+// Non-breaking hyphen for compounds so "first-ever" never wraps across lines (with hyphens:"none").
+const nbh = (s: string) => s.replace(/(\w)-(\w)/g, "$1‑$2");
+
 // Burned-in lower-third captions with three animation modes:
 //   block     — full caption fades in (default)
 //   word      — one word at a time (karaoke), with a small pop
@@ -49,6 +52,10 @@ export function CaptionLayer({
     textAlign: "center",
     color: palette.fg,
     maxWidth: 900,
+    hyphens: "none",
+    WebkitHyphens: "none",
+    overflowWrap: "normal",
+    wordBreak: "normal",
   };
 
   if (mode === "word") {
@@ -66,7 +73,7 @@ export function CaptionLayer({
             textShadow: `0 4px 40px rgba(0,0,0,0.85), 0 0 56px ${accent}55`,
           }}
         >
-          {words[activeIdx] ?? ""}
+          {nbh(words[activeIdx] ?? "")}
         </div>
       </AbsoluteFill>
     );
@@ -88,7 +95,7 @@ export function CaptionLayer({
                   transition: "none",
                 }}
               >
-                {w}
+                {nbh(w)}
               </span>
             );
           })}
@@ -115,7 +122,7 @@ export function CaptionLayer({
           textShadow: `0 4px 40px rgba(0,0,0,0.8), 0 0 48px ${accent}33`,
         }}
       >
-        {phrase}
+        {nbh(phrase)}
       </div>
     </AbsoluteFill>
   );

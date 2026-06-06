@@ -71,6 +71,7 @@ The Stage 7 gate in [CONTENT_PIPELINE.md](CONTENT_PIPELINE.md). **A post may not
 | 6.3 | Canvas | 1080×1350 (carousel) / 1080×1920 (Reel); consistent across slides |
 | 6.4 | Filenames | Ordered, convention-correct (`YYYY-MM-DD_slug_NN_role.png`) |
 | 6.5 | De-AI scan | Copy passes the humanizer audit / [VOICE_AND_TONE_GUIDE.md](VOICE_AND_TONE_GUIDE.md) pre-publish scan — em-dash overuse, listicle cadence, AI vocab, voice-flat symmetry removed; ≥1 voice-signal line |
+| 6.5b | Proofread | `professional-proofreader` pass clean: correct grammar/spelling/punctuation/syntax; **every line is a complete spoken sentence with substance** (not a telegraphic fragment); narration flows as connected speech. Dash hygiene: hyphenated compounds glued (`first-ever`), **no spaced dashes** (`word -space`), **no em-dashes in narration**, no word split across two caption lines |
 | 6.6 | CTA + question | One clear CTA and one specific comment question |
 | **6.7** | **Hook strength** | **Slide 1 contradicts a common belief in ≤1s (not a generic fact)** |
 | **6.8** | **Value density** | **Slide 7 = non-obvious + tactical (saveable), not common knowledge** |

@@ -36,6 +36,28 @@ def find_post_path(key: str) -> str:
     sys.exit(f"No post JSON in {POSTS} matching '{key}'.")
 
 
+def merge_hyphens(words):
+    """Whisper splits hyphenated compounds at the hyphen ('first-ever' -> 'first' + '-ever';
+    'AI-assisting' -> 'AI' + '-assisting'). Glue any token that begins with a hyphen (or a bare
+    '-') onto the previous word with NO space, and glue a word ending in a dangling hyphen onto
+    the next — so captions read 'first-ever', never 'first -ever' or a lone '-assisting'. Word
+    timings merge (prev.start … this.end) so highlight/word modes still sync."""
+    out = []
+    for w in words:
+        t = (w.get("text") or "").strip()
+        if not t:
+            continue
+        if out and t[0] == "-":                       # leading-hyphen fragment → glue to prev
+            out[-1]["text"] += t
+            out[-1]["end"] = w["end"]
+        elif out and out[-1]["text"].endswith("-"):   # prev had a dangling hyphen → glue this
+            out[-1]["text"] += t
+            out[-1]["end"] = w["end"]
+        else:
+            out.append({"text": t, "start": w["start"], "end": w["end"]})
+    return out
+
+
 def main() -> None:
     if len(sys.argv) < 2:
         sys.exit("Usage: python scripts/align-whisper.py <post-key>")
@@ -75,6 +97,7 @@ def main() -> None:
             words.append({"text": w.word.strip(), "start": float(w.start), "end": float(w.end)})
     if not words:
         sys.exit("Whisper returned no words — check the audio.")
+    words = merge_hyphens(words)  # un-split hyphenated compounds (first-ever, AI-assisting)
     print(f"  {len(words)} words, {words[-1]['end']:.1f}s total")
 
     # Re-chunk the transcript into short caption lines (≤ ~7 words, ≤ ~3.5s, or a
