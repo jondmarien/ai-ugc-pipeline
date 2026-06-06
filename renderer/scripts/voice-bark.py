@@ -12,8 +12,9 @@ Setup (uv):
     bun run voice -- <post-key>         # routes here when voice_mode=bark
 
 Voice preset via BARK_VOICE (default v2/en_speaker_6 — a clear narrator).
-GPU (your 3070 Ti) is used automatically if torch sees CUDA. Small-model mode:
-    SUNO_USE_SMALL_MODELS=1 bun run voice -- <key>   (faster, a bit lower quality)
+GPU (your 3070 Ti) is used automatically if torch sees CUDA. Small models are forced
+ON by default for the 8 GB card (export SUNO_USE_SMALL_MODELS=0 to use the full models).
+Model weights download to E:\ai-ugc (XDG_CACHE_HOME / HF_HOME / TORCH_HOME) — see below.
 
 Usage: python scripts/voice-bark.py <post-key>
 """
@@ -25,6 +26,16 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RENDERER = os.path.dirname(HERE)
 POSTS = os.path.join(RENDERER, "content", "posts")
 BARK_VOICE = os.environ.get("BARK_VOICE", "v2/en_speaker_6")
+
+# --- 8 GB-card defaults + model cache on E: (MUST be set before `import bark`) ---
+# Full Bark needs ~12 GB VRAM; the small models fit ~8 GB. Always on here (export
+# SUNO_USE_SMALL_MODELS=0 to opt out). Bark splits its downloads across three caches —
+# bark_v0 weights (XDG_CACHE_HOME), the BERT tokenizer (HF_HOME), and the EnCodec
+# checkpoint (TORCH_HOME) — so point all three at E:\ai-ugc to keep C:/J: clear.
+os.environ.setdefault("SUNO_USE_SMALL_MODELS", "1")
+os.environ.setdefault("XDG_CACHE_HOME", r"E:\ai-ugc\cache")   # → E:\ai-ugc\cache\suno\bark_v0
+os.environ.setdefault("HF_HOME", r"E:\ai-ugc\hf")             # → BERT tokenizer
+os.environ.setdefault("TORCH_HOME", r"E:\ai-ugc\torch")       # → encodec_24khz checkpoint
 
 
 def find_post(key: str) -> str:

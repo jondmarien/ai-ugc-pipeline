@@ -26,10 +26,14 @@ import { fileURLToPath } from "node:url";
 const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
 const POSTS = path.join(RENDERER, "content", "posts");
 const argv = process.argv.slice(2);
+// --custom-voice <path>: capture its value (an authorized reference WAV to clone) and keep
+// that path out of the positional post-keys list so it isn't treated as another post.
+const cvIdx = argv.indexOf("--custom-voice");
+const customVoice = cvIdx >= 0 ? argv[cvIdx + 1] : null;
 const flags = new Set(argv.filter((a) => a.startsWith("--")));
-const keys = argv.filter((a) => !a.startsWith("--"));
+const keys = argv.filter((a, i) => !a.startsWith("--") && i !== cvIdx + 1);
 if (!keys.length) {
-  console.error("Usage: bun run pipeline -- <post-key> [<post-key> ...] [--flux1] [--art|--no-art] [--vox0.5|--vox2] [--no-voice] [--no-reel] [--no-package] [--seed=N] [--tail=N]");
+  console.error("Usage: bun run pipeline -- <post-key> [<post-key> ...] [--flux1] [--art|--no-art] [--voice=voxcpm2|voxcpm2-0.5b|bark|http|none] [--vox0.5|--vox2] [--custom-voice path.wav] [--no-voice] [--no-reel] [--no-package] [--seed=N] [--tail=N]");
   process.exit(1);
 }
 const seedArg = [...flags].find((f) => f.startsWith("--seed="));
@@ -62,8 +66,16 @@ function runPost(key) {
   const post = JSON.parse(readFileSync(path.join(POSTS, file), "utf8"));
 
   const voiceMode = post.video?.audio?.voice_mode ?? "none";
-  // --vox0.5 / --vox2 override the voice model for this run (else use the post's voice_mode).
-  const voiceOverride = flags.has("--vox0.5") ? "voxcpm2-0.5b" : flags.has("--vox2") ? "voxcpm2" : null;
+  // Voice override for this run (else use the post's voice_mode):
+  //   --voice=<mode> (voxcpm2 | voxcpm2-0.5b | bark | http | none)  ·  --vox2 / --vox0.5 are aliases.
+  const voiceFlag = [...flags].find((f) => f.startsWith("--voice="))?.split("=")[1];
+  const voiceOverride = flags.has("--vox0.5")
+    ? "voxcpm2-0.5b"
+    : flags.has("--vox2")
+      ? "voxcpm2"
+      : voiceFlag && ["voxcpm2", "voxcpm2-0.5b", "bark", "http", "none"].includes(voiceFlag)
+        ? voiceFlag
+        : null;
   const effVoiceMode = voiceOverride || voiceMode;
   // Any slide that still needs art — INCLUDING the cover (covers used to be skipped here, so the
   // pipeline never generated 01_cover.png). A locked custom asset (asset_status "existing") never
@@ -86,7 +98,7 @@ function runPost(key) {
 
   if (wantsVoice) {
     step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
-    step("voice (TTS)", ["voice", "--", fullKey, ...(voiceOverride ? [`--voice=${voiceOverride}`] : []), ...(seedArg ? [seedArg] : [])]);
+    step("voice (TTS)", ["voice", "--", fullKey, ...(voiceOverride ? [`--voice=${voiceOverride}`] : []), ...(customVoice ? ["--custom-voice", customVoice] : []), ...(seedArg ? [seedArg] : [])]);
     step("align (caption sync)", ["align", "--", fullKey]);
   }
 

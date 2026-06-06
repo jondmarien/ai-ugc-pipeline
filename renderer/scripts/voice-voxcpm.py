@@ -22,7 +22,8 @@ For a much smaller download set VOXCPM_MODEL:
     VOXCPM_MODEL=openbmb/VoxCPM-0.5B # 0.5B, EN/ZH, 16 kHz
 
 Usage:
-    python scripts/voice-voxcpm.py <post-key> [--voice-ref path/to/reference.wav]
+    python scripts/voice-voxcpm.py <post-key> [--custom-voice path/to/reference.wav] [--seed N]
+    (--voice-ref is kept as an alias of --custom-voice)
 
 Notes:
 - Per VoxCPM2's terms of use: no impersonation/fraud; LABEL AI-generated audio.
@@ -62,7 +63,9 @@ def find_post(key: str) -> str:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("key", help="post slug / filename_prefix / path")
-    ap.add_argument("--voice-ref", help="optional AUTHORIZED reference WAV for voice cloning")
+    ap.add_argument("--custom-voice", "--voice-ref", dest="voice_ref",
+                  help="path to an AUTHORIZED reference WAV to clone (your OWN voice only). "
+                       "Zero-shot: timbre comes from this clip; a seed is optional.")
     ap.add_argument(
         "--seed",
         type=int,
