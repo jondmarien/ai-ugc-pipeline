@@ -21,9 +21,9 @@ Example: `/draft-post AI agents leaking RAG data through tool calls | model_secu
 
 **Render only (post JSON already exists / was hand-edited):**
 ```
-cd renderer && bun run pipeline -- <date>_<slug> [--seed=N]
+cd renderer && bun run pipeline -- <date>_<slug> [--seed=N] [--voice=bark] [--custom-voice path/to/jon.wav]
 ```
-(Art auto-skips when backgrounds already exist. Use the **same `--seed=N`** across posts for one consistent voice.)
+(Art auto-skips when backgrounds already exist. Use the **same `--seed=N`** across posts for one consistent voice. `--custom-voice` clones your OWN authorized voice (VoxCPM2 zero-shot) from a clean ~20–40 s mono-48 kHz clip — timbre comes from the clip, so a seed is optional; label AI-generated audio.)
 
 ---
 
@@ -76,7 +76,7 @@ The `<idea>` is free text — a **specific angle**, not a broad topic. Aim for o
 | `slides=` / `--slides=` | integer `3`–`20` | Number of carousel slides (default `8`). Applies at **creation** (`bun run new` / `draft` / `/draft-post`); `bun run pipeline` reads the count from the JSON. Arc: `cover` first, `cta` last, `takeaway` at N−1; middle filled from the named roles then generic `point` slides. |
 | `captions=` / `--captions=` | `block` · `word` · `highlight` | Reel subtitle animation (default `block`) |
 | `--theme=` | `offensive` · `defensive` · `hacking` · `purple-team` · `ai` | Brand colour/mood — red / blue / green / purple-team-purple / generic-AI-orange (default from pillar; `purple-team`/`ai` are explicit-only) |
-| `--voice=` | `none` · `voxcpm2` · `voxcpm2-0.5b` · `http` · `file` | Reel narration — **default `voxcpm2` (2B); use `none` (or `--no-voice`) for a silent reel** |
+| `--voice=` | `none` · `voxcpm2` · `voxcpm2-0.5b` · `bark` · `http` · `file` | Reel narration — **default `voxcpm2` (2B); use `none` (or `--no-voice`) for a silent reel.** `bark` = Suno (MIT); needs `uv pip install bark soundfile` (small models forced + cached on `E:\ai-ugc` for 8 GB). |
 | `--music=` | `none` · `free` · `licensed` · `generated` · `file` | Music bed (default `none`) |
 | `--seed=N` | integer | Voice seed = consistent speaker. **Avoid 777** (hangs). Reuse the same N for a consistent voice across posts. |
 

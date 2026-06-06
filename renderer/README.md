@@ -24,6 +24,8 @@ bun run art      -- 2026-06-02_ai-phishing-training   # FLUX.2-klein backgrounds
 bun run export   -- 2026-06-02_ai-phishing-training   # one 1080×1350 PNG per slide (N slides, default 8)
 bun run package  -- 2026-06-02_ai-phishing-training   # caption/alt/sources/licenses/QA
 bun run voice    -- 2026-06-02_ai-phishing-training --vox2 --seed=12345   # narration (VoxCPM2); seed logged
+# voice options: --voice=bark (Suno; uv pip install bark soundfile; small models + E:\ai-ugc cache) ·
+#                --custom-voice path/to/jon.wav (clone your OWN voice, VoxCPM2 zero-shot; seed optional)
 bun run align    -- 2026-06-02_ai-phishing-training   # Whisper word-sync captions
 bun run reel     -- 2026-06-02_ai-phishing-training --fit-voice   # 1080×1920 @30fps MP4, audio embedded
 bun run dev                                            # live preview @ :4317
