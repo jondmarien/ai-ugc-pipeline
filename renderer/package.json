@@ -11,6 +11,7 @@
     "new": "bun scripts/new-post.ts",
     "draft": "bun scripts/draft.mjs",
     "draft-week": "bun scripts/draft-week.mjs",
+    "draft-context": "bun scripts/draft-reference.mjs",
     "validate": "bun scripts/validate.ts",
     "export": "tsx scripts/export-carousel.ts",
     "package": "bun scripts/build-package.ts",
