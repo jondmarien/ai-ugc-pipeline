@@ -7,6 +7,8 @@ type SlideProps = { post: TPostData; slide: TSlideData };
 
 // Inline emphasis markup for on-slide headlines (mainly the takeaway):
 //   [[text]] → the post's THEME ACCENT colour   ·   {{text}} → danger red (denial/negation)
+// On a red-accent theme (offensive / data_leakage) the {{negation}} falls back from red to muted
+// slate so it doesn't disappear into the red [[affirmative]] (see Headline's neg fallback).
 // Everything else renders in the normal foreground. Markers live only in on_slide_copy and
 // are consumed here (alt_text + reel captions are separate, so they never see the markers).
 function colorize(text: string, accent: string, danger: string) {
@@ -17,7 +19,12 @@ function colorize(text: string, accent: string, danger: string) {
   });
 }
 
-function Headline({ text, size, accent, danger = "#ef4444" }: { text: string; size: number; accent?: string; danger?: string }) {
+function Headline({ text, size, accent, danger }: { text: string; size: number; accent?: string; danger?: string }) {
+  const acc = accent ?? palette.fg;
+  // {{negation}} normally renders danger red. On a red-accent theme (offensive / data_leakage) that
+  // would be red-on-red with the [[affirmative]] accent, so fall back to muted slate — keeping a
+  // distinct, legible third tone: white base, red affirmative, slate negation.
+  const neg = danger ?? (acc.toLowerCase() === palette.danger.toLowerCase() ? palette.muted : palette.danger);
   return (
     <h1
       style={{
@@ -31,7 +38,7 @@ function Headline({ text, size, accent, danger = "#ef4444" }: { text: string; si
         textShadow: accent ? `0 0 48px ${accent}33` : undefined,
       }}
     >
-      {colorize(text, accent ?? palette.fg, danger)}
+      {colorize(text, acc, neg)}
     </h1>
   );
 }
