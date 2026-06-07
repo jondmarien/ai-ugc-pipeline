@@ -117,6 +117,19 @@ export function themeAccent(post: { theme?: Theme; pillar: Pillar }): string {
   return themes[themeFor(post)].accent;
 }
 
+// Themed "wall" backgrounds (renderer/public/walls). One per theme: a still PNG (carousel) and an
+// animated WebM loop (reel), both 1080x1920. Used when a post sets wall.enabled.
+export const themeWall: Record<Theme, { still: string; loop: string }> = {
+  defensive: { still: "/walls/01-defensive-aegis.png", loop: "/walls/01-defensive-aegis.webm" },
+  offensive: { still: "/walls/02-offensive-breach.png", loop: "/walls/02-offensive-breach.webm" },
+  hacking: { still: "/walls/03-hacking-datastream.png", loop: "/walls/03-hacking-datastream.webm" },
+  "purple-team": { still: "/walls/04-purple-team-convergence.png", loop: "/walls/04-purple-team-convergence.webm" },
+  ai: { still: "/walls/05-ai-latent-mesh.png", loop: "/walls/05-ai-latent-mesh.webm" },
+};
+export function wallFor(post: { theme?: Theme; pillar: Pillar }): { still: string; loop: string } {
+  return themeWall[themeFor(post)];
+}
+
 // Constant "brand style signature" injected into EVERY AI background prompt so all
 // posts read as the same brand — only the theme colour + mood change by category.
 export const BRAND_STYLE =

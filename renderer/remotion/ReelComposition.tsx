@@ -1,9 +1,9 @@
-import { AbsoluteFill, Sequence, useVideoConfig } from "remotion";
+import { AbsoluteFill, Loop, OffthreadVideo, Sequence, staticFile, useVideoConfig } from "remotion";
 import "@fontsource/archivo/700.css";
 import "@fontsource/archivo/800.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/jetbrains-mono/500.css";
-import { palette, themeAccent } from "./theme";
+import { palette, themeAccent, wallFor } from "./theme";
 import { Scene } from "./Scene";
 import { CaptionLayer, type CaptionMode, type WordTiming } from "./CaptionLayer";
 import { CaptionTrack, type CaptionLine } from "./CaptionTrack";
@@ -19,6 +19,7 @@ type Post = {
   comment_prompt?: string;
   slides: Slide[];
   video: { beats: Beat[]; caption_mode?: CaptionMode; audio?: AudioConfig; captions?: CaptionLine[] };
+  wall?: { enabled?: boolean; art_opacity?: number };
 };
 
 // 1080x1920 @ fps. Each VideoSpec beat → a timed Sequence with a Scene + caption.
@@ -32,9 +33,24 @@ export function ReelComposition({ post }: { post: Post }) {
   // Voice-synced transcript captions (from `bun run align`) win over planned beat captions.
   const syncedCaptions = post.video.captions;
   const useSynced = !!(syncedCaptions && syncedCaptions.length);
+  // Optional themed wall: an animated loop behind every scene. Each Scene then draws its art
+  // semi-transparent (artOpacity) so the wall shows through.
+  const wall = post.wall?.enabled ? wallFor(post) : null;
+  const wallArtOpacity = post.wall?.art_opacity ?? 0.6;
 
   return (
     <AbsoluteFill style={{ backgroundColor: palette.bgDeep }}>
+      {wall && (
+        <AbsoluteFill>
+          <Loop durationInFrames={Math.max(1, Math.round(wall.seconds * fps))}>
+            <OffthreadVideo
+              src={staticFile(wall.loop.replace(/^\//, ""))}
+              muted
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </Loop>
+        </AbsoluteFill>
+      )}
       <AudioBed audio={post.video.audio} />
       {beats.map((beat, i) => {
         const from = Math.round(beat.start * fps);
@@ -43,7 +59,7 @@ export function ReelComposition({ post }: { post: Post }) {
         const isCta = beat.purpose === "cta";
         return (
           <Sequence key={i} from={from} durationInFrames={durationInFrames}>
-            <Scene slide={slide} accent={accent} durationInFrames={durationInFrames} />
+            <Scene slide={slide} accent={accent} durationInFrames={durationInFrames} wallActive={!!wall} artOpacity={wallArtOpacity} />
             {isCta ? (
               <EndCard question={post.comment_prompt ?? slide.on_slide_copy ?? ""} handle={handle} accent={accent} />
             ) : useSynced ? null : (

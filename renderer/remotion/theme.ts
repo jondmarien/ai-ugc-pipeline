@@ -31,6 +31,21 @@ export function themeAccent(post: { theme?: string; pillar: string }): string {
   return themeAccentColor[theme] ?? "#3b82f6";
 }
 
+// Themed "wall" backgrounds (public/walls), mirrors src/design/tokens.ts. The reel uses the
+// animated WebM loop; the still PNG is the carousel's job.
+type Wall = { still: string; loop: string; seconds: number };
+export const themeWall: Record<string, Wall> = {
+  defensive: { still: "/walls/01-defensive-aegis.png", loop: "/walls/01-defensive-aegis.webm", seconds: 5.93 },
+  offensive: { still: "/walls/02-offensive-breach.png", loop: "/walls/02-offensive-breach.webm", seconds: 7.65 },
+  hacking: { still: "/walls/03-hacking-datastream.png", loop: "/walls/03-hacking-datastream.webm", seconds: 7.6 },
+  "purple-team": { still: "/walls/04-purple-team-convergence.png", loop: "/walls/04-purple-team-convergence.webm", seconds: 8.93 },
+  ai: { still: "/walls/05-ai-latent-mesh.png", loop: "/walls/05-ai-latent-mesh.webm", seconds: 4.82 },
+};
+export function wallFor(post: { theme?: string; pillar: string }): Wall | null {
+  const theme = post.theme ?? pillarTheme[post.pillar] ?? "defensive";
+  return themeWall[theme] ?? null;
+}
+
 export const fonts = {
   headline: '"Archivo", system-ui, sans-serif',
   body: '"Inter", system-ui, sans-serif',

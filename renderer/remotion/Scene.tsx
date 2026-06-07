@@ -13,10 +13,14 @@ export function Scene({
   slide,
   accent,
   durationInFrames,
+  wallActive = false,
+  artOpacity = 0.6,
 }: {
   slide: Slide;
   accent: string;
   durationInFrames: number;
+  wallActive?: boolean;
+  artOpacity?: number;
 }) {
   const frame = useCurrentFrame();
   const scale = interpolate(frame, [0, durationInFrames], [1.04, 1.12], {
@@ -27,14 +31,14 @@ export function Scene({
     (slide.asset_status === "existing" || slide.asset_status === "generated" || slide.asset_status === "stock");
 
   return (
-    <AbsoluteFill style={{ backgroundColor: palette.bgDeep, overflow: "hidden" }}>
+    <AbsoluteFill style={{ backgroundColor: wallActive ? "transparent" : palette.bgDeep, overflow: "hidden" }}>
       <AbsoluteFill style={{ transform: `scale(${scale})` }}>
         {useImage ? (
           <Img
             src={staticFile(slide.background_asset!.replace(/^\//, ""))}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            style={{ width: "100%", height: "100%", objectFit: "cover", opacity: wallActive ? artOpacity : 1 }}
           />
-        ) : (
+        ) : wallActive ? null : (
           <AbsoluteFill
             style={{
               background: `radial-gradient(60% 40% at 50% 32%, ${accent}38 0%, ${accent}10 34%, ${palette.bg} 70%, ${palette.bgDeep} 100%)`,
@@ -43,7 +47,7 @@ export function Scene({
         )}
       </AbsoluteFill>
       {/* Grid + scanline texture for procedural scenes */}
-      {!useImage && (
+      {!useImage && !wallActive && (
         <AbsoluteFill
           style={{
             backgroundImage: `linear-gradient(${accent}22 1px, transparent 1px), linear-gradient(90deg, ${accent}22 1px, transparent 1px)`,
