@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
-import type { TSlideData } from "@/lib/schema";
-import { overlays, palette } from "@/design/tokens";
+import type { TPostData, TSlideData } from "@/lib/schema";
+import { overlays, palette, wallFor } from "@/design/tokens";
 
 // Procedural, text-free, logo-free cyber backgrounds built purely in CSS so the
 // PoC needs no new image generation. Where `background_asset` + asset_status
@@ -35,20 +35,25 @@ function scanlines(): CSSProperties {
   };
 }
 
-export function SlideBackground({ slide, accent }: { slide: TSlideData; accent: string }) {
+export function SlideBackground({ post, slide, accent }: { post: TPostData; slide: TSlideData; accent: string }) {
   const usesImage =
     slide.background_asset &&
     (slide.asset_status === "existing" || slide.asset_status === "generated" || slide.asset_status === "stock");
+  // Optional themed wall: the post theme's still becomes the BASE layer and the per-slide art is
+  // composited on top at art_opacity, so the moving/glowing wall shows through the dark areas.
+  const wall = post.wall?.enabled ? wallFor(post) : null;
+  const artOpacity = post.wall?.art_opacity ?? 0.6;
+  const cover: CSSProperties = { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" };
 
   return (
     <div style={{ position: "absolute", inset: 0, background: palette.bgDeep, overflow: "hidden" }}>
-      {usesImage ? (
-        <img
-          src={slide.background_asset}
-          alt=""
-          data-bg-image
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-        />
+      {wall ? (
+        <>
+          <img src={wall.still} alt="" data-bg-wall style={cover} />
+          {usesImage && <img src={slide.background_asset} alt="" data-bg-image style={{ ...cover, opacity: artOpacity }} />}
+        </>
+      ) : usesImage ? (
+        <img src={slide.background_asset} alt="" data-bg-image style={cover} />
       ) : (
         <>
           <div style={{ position: "absolute", inset: 0, background: `radial-gradient(140% 120% at 50% 0%, #0a1322 0%, ${palette.bg} 55%, ${palette.bgDeep} 100%)` }} />

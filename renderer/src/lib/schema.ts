@@ -224,6 +224,16 @@ export const PostData = z
     sources: z.array(SourceNote).min(1, "at least one source is required for factual posts"),
     asset_licenses: z.array(z.unknown()).default([]),
     video: VideoSpec.optional(),
+    // Optional themed "wall" background (renderer/public/walls). When enabled, the carousel and
+    // reel use the post theme's wall as the BASE background (still PNG on carousel, animated WebM
+    // loop on the reel) and composite the per-slide art on top at art_opacity, so the wall shows
+    // through. Omit (or enabled:false) to keep the plain per-slide art background.
+    wall: z
+      .object({
+        enabled: z.boolean().default(false),
+        art_opacity: z.number().min(0).max(1).default(0.6),
+      })
+      .optional(),
     qa: z.record(z.string(), z.unknown()).default({}),
   })
   .superRefine((post, ctx) => {

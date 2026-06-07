@@ -34,7 +34,7 @@ export function CarouselSlide({
         fontFamily: fonts.body,
       }}
     >
-      <SlideBackground slide={slide} accent={accent} />
+      <SlideBackground post={post} slide={slide} accent={accent} />
 
       {/* Top accent hairline */}
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 6, background: accent, opacity: 0.9 }} />
