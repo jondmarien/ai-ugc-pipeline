@@ -57,6 +57,16 @@ const STEPS = Number(opt("steps", process.env.ART_STEPS || (FLUX2 ? 8 : 4)));
 const WIDTH = snap16(Number(opt("width", process.env.ART_WIDTH || (FLUX2 ? 1024 : 768))));
 const HEIGHT = snap16(Number(opt("height", process.env.ART_HEIGHT || (FLUX2 ? 1280 : 1024))));
 const SEED_BASE = Number(opt("seed", process.env.ART_SEED || 42));
+// Breather BETWEEN slide generations. Back-to-back FLUX on a low-VRAM card keeps CPU+GPU pinned
+// with heavy offload; on a thermally/power-marginal rig that sustained load can trip an OS CPU
+// watchdog after a few images. A cooldown lets the system settle between gens. Default 25s (from
+// community thermal-pacing guidance for 8GB FLUX; see renderer/docs/IMAGE_MODELS.md). Override with
+// `--cooldown=<seconds>` or env ART_COOLDOWN_MS=<ms>; `--cooldown=0` (or ART_COOLDOWN_MS=0) disables.
+const COOLDOWN_MS = opt("cooldown", "")
+  ? Math.max(0, Number(opt("cooldown", "")) * 1000)
+  : process.env.ART_COOLDOWN_MS !== undefined
+    ? Math.max(0, Number(process.env.ART_COOLDOWN_MS))
+    : 25000;
 const T5 = process.env.ART_T5 || "t5xxl_fp8_e4m3fn.safetensors";
 const CLIP_L = process.env.ART_CLIP || "clip_l.safetensors";
 const VAE = process.env.ART_VAE || "split_files\\vae\\ae.safetensors";
@@ -183,6 +193,22 @@ function buildGraphFlux2(promptText, seed) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// In-place countdown for the between-generation cooldown (overwrites the line in a TTY).
+async function cooldownPause(ms) {
+  let remain = Math.round(ms / 1000);
+  if (!process.stdout.isTTY) {
+    console.log(`  cooldown ${remain}s (ease sustained CPU/GPU load)…`);
+    await sleep(ms);
+    return;
+  }
+  while (remain > 0) {
+    process.stdout.write(`\r  cooldown ${String(remain).padStart(2, " ")}s … (let CPU/GPU settle) `);
+    await sleep(1000);
+    remain -= 1;
+  }
+  process.stdout.write(`\r  cooldown done.                       \n`);
+}
+
 async function generate(promptText, seed) {
   const client_id = crypto.randomUUID();
   const graph = FLUX2 ? buildGraphFlux2(promptText, seed) : buildGraph(promptText, seed);
@@ -270,7 +296,10 @@ if (!DRY) mkdirSync(destDir, { recursive: true });
 post.asset_licenses = post.asset_licenses || [];
 
 let n = 0;
-for (const slide of targets) {
+for (let ti = 0; ti < targets.length; ti++) {
+  const slide = targets[ti];
+  // Cooldown between generations (not before the first) — eases sustained load. Live countdown.
+  if (COOLDOWN_MS && ti > 0 && !DRY) await cooldownPause(COOLDOWN_MS);
   const role = ROLE_FILE[slide.role] ?? slide.role;
   const nn = String(slide.slide).padStart(2, "0");
   const destName = `${nn}_${role}.png`;
@@ -280,13 +309,19 @@ for (const slide of targets) {
 
   process.stdout.write(`  slide ${slide.slide} (${slide.role})… `);
   const t0 = Date.now();
+  // In-place elapsed-seconds counter while ComfyUI renders (each FLUX gen is slow on 8GB).
+  const tick = process.stdout.isTTY
+    ? setInterval(() => process.stdout.write(`\r  slide ${slide.slide} (${slide.role})… ${Math.round((Date.now() - t0) / 1000)}s  `), 1000)
+    : null;
   try {
     const img = await generate(promptText, seed);
     writeFileSync(path.join(destDir, destName), await fetchImage(img));
   } catch (e) {
-    console.log(`✗ ${e.message}`);
+    if (tick) clearInterval(tick);
+    process.stdout.write(`\r  slide ${slide.slide} (${slide.role})… ✗ ${e.message}        \n`);
     continue;
   }
+  if (tick) clearInterval(tick);
   // --flux2 --compare = non-destructive A/B (write images only; leave JSON on the live set).
   if (!compareMode) {
     const assetPath = `/backgrounds/${prefix}/${destName}`;
@@ -305,7 +340,7 @@ for (const slide of targets) {
       });
     }
   }
-  console.log(`✓ ${destName} (${((Date.now() - t0) / 1000).toFixed(0)}s)`);
+  process.stdout.write(`\r  slide ${slide.slide} (${slide.role})… ✓ ${destName} (${((Date.now() - t0) / 1000).toFixed(0)}s)        \n`);
   n++;
 }
 

@@ -26,6 +26,19 @@ HF_HUB_CACHE=E:/ai-ugc-hf/hub
 
 **TL;DR:** the default art engine is **FLUX.2 [klein] 4B** (Apache-2.0, tuned for 8 GB); **FLUX.1-schnell** stays as a legacy `--flux1` fallback. Avoid anything labeled *dev* or *9B* — non-commercial.
 
+## Thermal stability: cooldown between generations (8 GB cards)
+
+Back-to-back FLUX on an 8 GB card pins CPU+GPU with heavy GGUF/CPU offload. On a thermally or power-marginal rig that sustained load can trip an OS **CPU watchdog** (a core stops responding) around the 3rd–5th image. `bun run art` therefore inserts a **cooldown between generations** — default **25 s**, shown as a live in-place countdown.
+
+- Override: `bun run art -- <key> --cooldown=45` (seconds), or env `ART_COOLDOWN_MS=45000`. Disable with `--cooldown=0`.
+- Start at **25 s**; if it still trips on the 3rd–5th gen, raise to **45–60 s**. Tune by watching temps in HWiNFO64: let GPU core fall below ~75 °C and VRAM/memory-junction below ~90 °C before the next gen.
+
+Cooldown treats the symptom. The higher-leverage fixes (cheap, ~low-single-digit % speed cost) are:
+- **Power-limit the GPU to ~80 %** (MSI Afterburner power-limit slider, or `nvidia-smi -pl`) and/or **undervolt** to ~0.9–0.95 V — this caps the heat/power spikes that actually trip the watchdog, and power-limiting is the single highest-leverage change for an inference rig.
+- **Aggressive fan curve** (e.g. ~75 % by 70 °C).
+- If the **CPU core** is what trips (same class of crash as a game install maxing every core), test with **XMP/DOCP off** and update your **BIOS + GPU driver** — these are the most common root causes of CPU soft-lockup/watchdog under sustained load.
+- For long sessions, restart ComfyUI periodically (FLUX VRAM fragmentation) or clear cache between gens.
+
 ## ⚠ First: make sure torch uses your GPU (CUDA)
 A plain `uv pip install torch` on Windows installs the **CPU-only** build (`torch x.y.z+cpu`) — image gen then runs on CPU (minutes per image, often unusable). If `torch.cuda.is_available()` is `False` or logs say *"cuda is not available, using cpu instead"*, you have the CPU build.
 
