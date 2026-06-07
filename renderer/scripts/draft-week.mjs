@@ -18,6 +18,13 @@ const REPO = path.resolve(RENDERER, "..");
 const PILLARS = ["offensive_ai", "model_security", "data_leakage", "defensive_ai", "governance", "myth_busting"];
 const MODES = ["block", "word", "highlight"];
 
+// Variety digest (read-only): prior posts' hooks, image motifs, and takeaway angles, injected so
+// the week varies against RECENT posts too, not just within itself.
+const digest = (() => {
+  const r = spawnSync("bun", [path.join("scripts", "draft-reference.mjs")], { cwd: RENDERER, encoding: "utf8", shell: process.platform === "win32" });
+  return r.status === 0 && r.stdout ? r.stdout.trim() : "";
+})();
+
 const argv = process.argv.slice(2);
 const flags = new Set(argv.filter((a) => a.startsWith("--")));
 const ideas = argv.filter((a) => !a.startsWith("--")).slice(0, 5);
@@ -64,10 +71,11 @@ const prompt = [
   `Ideas (${parsed.length}):`,
   list,
   ``,
-  `WEEK RULES: spread across different pillars (don't repeat); assign sequential weekday dates starting from \`date +%F\` (use Bash); sharpen overlapping angles so the week doesn't repeat.`,
-  `HARD RULES: no fabricated CVEs/stats/quotes — back every factual claim with a real source via WebSearch/WebFetch or tag it [Scenario]; no payloads/exploit/evasion; each post needs a defender takeaway.`,
+  `WEEK RULES: spread across different pillars (don't repeat); assign sequential weekday dates starting from \`date +%F\` (use Bash); sharpen overlapping angles so the week doesn't repeat. Also vary against RECENT posts using the VARIETY DIGEST below: rotate cover-hook formulas, image motifs, and defender-takeaway angles, and do not default every post to "indirect prompt injection / it's unsafe."`,
+  `HARD RULES (from pipeline/content/QA_CHECKLIST.md): no fabricated CVEs/stats/quotes; back every factual claim with a real source via WebSearch/WebFetch, or tag it [Scenario]; each post needs a concrete defender takeaway. Offensive depth is OK on offensive-theme posts (real tools, techniques, tradecraft, educational + authorized-security framing), default high-level and go deep when it fits; never give turnkey instructions whose only purpose is indiscriminate harm. NO em-dashes anywhere (—/–) and NO sentence fragments; complete sentences with plain punctuation on every surface (caption, narration, on_slide_copy, subline, alt_text).`,
+  digest ? `\nVARIETY DIGEST (NOT-list, do not reuse these recent hooks, motifs, or angles):\n${digest}\n` : ``,
   ``,
-  `For EACH idea: design the 8-slide post + caption + hashtags + question; research sources; pick a kebab slug; run \`cd renderer && bun run new -- <date> <slug> <pillar> --captions=<mode>\`; EDIT the JSON replacing every TODO with real sourced content (8 slides, slide1=cover, alt_text length 8, score.total = sum, >=1 source, reel beats filled, video.caption_mode set, and a SPECIFIC text-free visual_prompt per slide tied to that post's topic for \`bun run art\`); \`bun run validate -- <date>_<slug>\` until clean. ${renderLine}`,
+  `For EACH idea: design the 8-slide post + caption + hashtags + question; research sources; pick a kebab slug; run \`cd renderer && bun run new -- <date> <slug> <pillar> --captions=<mode>\`; EDIT the JSON replacing every TODO with real sourced content (8 slides, slide1=cover, alt_text length 8, score.total = sum, >=1 source, reel beats filled, video.caption_mode set, and a SPECIFIC text-free visual_prompt per slide tied to that post's topic for \`bun run art\`, with fresh motifs per the VARIETY DIGEST); then run the humanizer, stop-slop, and professional-proofreader skills over caption/narration/on_slide_copy/subline/alt_text (house voice, no em-dashes, no fragments, complete sentences, never alter a sourced fact); \`bun run validate -- <date>_<slug>\` until clean. ${renderLine}`,
   ``,
   `FINISH by printing one line per post: POST_KEY=<date>_<slug>  — then a summary table (date | slug | pillar | caption_mode | fact/scenario | output folder).`,
 ].join("\n");

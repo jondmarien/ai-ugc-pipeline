@@ -88,6 +88,23 @@ When the renderer writes each slide's `visual_prompt`, it must be a **single con
 
 ---
 
+## Keep every post distinct (variety digest)
+
+Before drafting, run:
+```
+cd renderer && bun run draft-context      # add a number to widen the window, e.g. draft-context 20
+```
+It scans recent posts and prints a **NOT-list**: overused cover-hook openers, overused image motifs (padlock, key, envelope, mask, glass…), and a tally of which **defender-takeaway angles** keep repeating, plus the angles you have NOT used lately.
+
+Vary three things on purpose:
+- **Hook** — rotate the formula (contradiction, command, number/stat, named scenario, blunt question, myth flip). Don't open two posts the same way.
+- **Image motifs** — pick fresh central objects per slide; don't rebuild every post from locks and keys.
+- **Takeaway ANGLE** — *not every AI-tool post is "indirect prompt injection / this is unsafe."* When the topic supports it, rotate to an under-used angle: data exfiltration, credential/token scope, supply-chain trust, cost/resource abuse, identity/auth, autonomy/blast radius, auditability/logging, governance/approval, detection, or a myth-bust. Same standards (sourced, defender takeaway), a different point each time.
+
+Both `/draft-post` and `/draft-week` read this digest automatically; the headless `bun run draft` / `bun run draft-week` inject it straight into the prompt.
+
+---
+
 ## NEW: Algorithmic Growth Sequence (Chris Chung @iamchrischung)
 
 Every post must optimize in sequence:
