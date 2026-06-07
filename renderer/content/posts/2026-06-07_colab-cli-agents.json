@@ -8,7 +8,7 @@
   "pillar": "data_leakage",
   "theme": "ai",
   "audience": "security_practitioners",
-  "core_claim": "Google's Colab CLI lets AI agents run arbitrary Python on remote GPUs and TPUs under your Google identity, so the data-leakage risk is agent code-exec with your credentials and a two-way data path you have to scope down.",
+  "core_claim": "Google's Colab CLI lets AI agents run arbitrary Python on remote GPUs and TPUs under your Google identity, so the data-leakage risk is agent code execution with your credentials and a two-way data path you have to scope down.",
   "claim_tags": [
     "reported_fact",
     "emerging",
@@ -67,12 +67,12 @@
       "slide": 1,
       "role": "cover",
       "kicker": "AI × CYBERSECURITY",
-      "on_slide_copy": "YOUR AI AGENT CAN NOW RUN CODE ON GOOGLE'S GPUS, AS YOU",
+      "on_slide_copy": "YOUR AI AGENT CAN NOW RUN CODE ON GOOGLE'S GPUS UNDER YOUR LOGIN",
       "subline": "Google's Colab CLI gives agents a one-command path to remote GPUs and TPUs. Your login comes along for the ride.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a long mechanical arm stretching across a wide dark chasm to press a single glowing button on a distant tall metal pillar, dramatic rim light, strong empty lower third",
-      "background_asset": "/backgrounds/2026-06-07_colab-cli-agents_cover.png",
-      "asset_status": "needed",
+      "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/01_cover.png",
+      "asset_status": "generated",
       "cta": "SWIPE →",
       "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
     },
@@ -84,8 +84,8 @@
       "subline": "It is built so AI agents can drive it, not just people.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single glowing thread running from a small handheld remote out across a vast dark distance to a faraway machine, calm empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/02_context.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -97,8 +97,8 @@
       "subline": "Your data moves both ways through upload, download, and a mounted Drive.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "two open suitcases facing each other in the dark with a stream of glowing papers flowing both directions between them, tense high contrast, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/03_risk.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -110,8 +110,8 @@
       "subline": "One leaked token or an over-broad scope widens the blast radius into your cloud project.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single brass key plugged into a small lockbox that feeds a long glowing cable off into the dark, focal in the upper area",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/04_mechanism.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -123,8 +123,8 @@
       "subline": "Auto-teardown then deletes the runtime, and most of the forensic trail with it.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a wide-open vault door with a key left in the lock while a small warning tag lies ignored on the floor, dark, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/05_failure-point.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -136,8 +136,8 @@
       "subline": "Keep the session logs the CLI exports as an audit trail of what the runtime actually did.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a small modest key on a short tether beside a closed ledger book in the dark, calm and orderly, empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/06_defense.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -145,12 +145,12 @@
       "slide": 7,
       "role": "takeaway",
       "kicker": "TAKEAWAY",
-      "on_slide_copy": "Agent code-exec {{is not a convenience}}. [[It is your identity running untrusted code on someone else's GPU.]]",
+      "on_slide_copy": "Agent code execution {{is not a convenience}}. [[It is your identity running untrusted code on someone else's GPU.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single glowing fingerprint pressed onto a cold metal surface in deep shadow, center kept dark and open",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/07_takeaway.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -162,13 +162,13 @@
       "subline": "Save this before you wire an agent into your cloud.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a clean dark end-card scene, a single unplugged cable coiled in vast empty negative space, premium editorial cybersecurity look",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/08_cta.png",
+      "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "notes": ""
     }
   ],
-  "caption": "Google shipped a Colab CLI that runs Python on remote GPUs and TPUs straight from the terminal, and it is explicitly built so AI agents can drive it, not just people. It is open source under Apache-2.0, and it authenticates with your Google account.\n\nThat is the exposure. An agent with terminal access now has a one-command path to spin up a GPU or TPU box and run arbitrary code on Google's network, authenticated as you. If that agent gets prompt-injected, it acts with your identity. Data moves both ways through upload, download, and a mounted Drive, which is a clean exfil channel. The session token sits on your machine, so a leaked token or an over-broad scope widens the blast radius into your cloud project. The auto-teardown that deletes the runtime also deletes most of the forensic trail.\n\nTreat agent code-exec as untrusted. Do not hand an agent a long-lived, broadly scoped token from your primary account. Give it a dedicated low-privilege Google account with the narrowest scope and short-lived auth, then keep the session logs the CLI can export as your audit trail.\n\nAgent code-exec is not a convenience. It is your identity running untrusted code on someone else's GPU.\n\nWould you let an agent run code on remote GPUs with your Google login?\n\nFollow for AI security breakdowns without the fake panic.",
+  "caption": "Google shipped a Colab CLI that runs Python on remote GPUs and TPUs straight from the terminal, and it is explicitly built so AI agents can drive it, not just people. It is open source under Apache-2.0, and it authenticates with your Google account.\n\nThat is the exposure. An agent with terminal access now has a one-command path to spin up a GPU or TPU box and run arbitrary code on Google's network, authenticated as you. If that agent gets prompt-injected, it acts with your identity. Data moves both ways through upload, download, and a mounted Drive, which is a clean exfil channel. The session token sits on your machine, so a leaked token or an over-broad scope widens the blast radius into your cloud project. The auto-teardown that deletes the runtime also deletes most of the forensic trail.\n\nTreat agent code execution as untrusted. Do not hand an agent a long-lived, broadly scoped token from your primary account. Give it a dedicated low-privilege Google account with the narrowest scope and short-lived auth, then keep the session logs the CLI can export as your audit trail.\n\nAgent code execution is not a convenience. It is your identity running untrusted code on someone else's GPU.\n\nWould you let an agent run code on remote GPUs with your Google login?\n\nFollow for AI security breakdowns without the fake panic.",
   "hashtags": [
     "AI agents",
     "data leakage",
@@ -210,7 +210,72 @@
       "claim_tag": "reported_fact"
     }
   ],
-  "asset_licenses": [],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-07_colab-cli-agents/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_colab-cli-agents/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_colab-cli-agents/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_colab-cli-agents/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_colab-cli-agents/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_colab-cli-agents/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_colab-cli-agents/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_colab-cli-agents/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
   "video": {
     "enabled": true,
     "duration_seconds": 28,
@@ -243,7 +308,7 @@
       {
         "start": 18,
         "end": 23,
-        "text": "Agent code-exec is not a convenience. It is your identity running untrusted code on someone else's GPU."
+        "text": "Agent code execution is not a convenience. It is your identity running untrusted code on someone else's GPU."
       },
       {
         "start": 23,
@@ -282,7 +347,7 @@
         "slide_ref": 7,
         "purpose": "takeaway",
         "motion": "static high contrast",
-        "caption": "Agent code-exec is not a convenience. It is your identity running untrusted code on someone else's GPU."
+        "caption": "Agent code execution is not a convenience. It is your identity running untrusted code on someone else's GPU."
       },
       {
         "start": 23,
@@ -296,7 +361,589 @@
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
     "sfx": [],
-    "licenses": []
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.4,
+        "text": "Google's new Colab CLI lets an AI",
+        "words": [
+          {
+            "text": "Google's",
+            "start": 0.0,
+            "end": 0.6
+          },
+          {
+            "text": "new",
+            "start": 0.6,
+            "end": 0.76
+          },
+          {
+            "text": "Colab",
+            "start": 0.76,
+            "end": 1.22
+          },
+          {
+            "text": "CLI",
+            "start": 1.22,
+            "end": 1.46
+          },
+          {
+            "text": "lets",
+            "start": 1.46,
+            "end": 2.02
+          },
+          {
+            "text": "an",
+            "start": 2.02,
+            "end": 2.2
+          },
+          {
+            "text": "AI",
+            "start": 2.2,
+            "end": 2.4
+          }
+        ]
+      },
+      {
+        "start": 2.4,
+        "end": 4.82,
+        "text": "agent run Python on remote GPUs and",
+        "words": [
+          {
+            "text": "agent",
+            "start": 2.4,
+            "end": 2.84
+          },
+          {
+            "text": "run",
+            "start": 2.84,
+            "end": 3.06
+          },
+          {
+            "text": "Python",
+            "start": 3.06,
+            "end": 3.3
+          },
+          {
+            "text": "on",
+            "start": 3.3,
+            "end": 3.76
+          },
+          {
+            "text": "remote",
+            "start": 3.76,
+            "end": 4.02
+          },
+          {
+            "text": "GPUs",
+            "start": 4.02,
+            "end": 4.34
+          },
+          {
+            "text": "and",
+            "start": 4.34,
+            "end": 4.82
+          }
+        ]
+      },
+      {
+        "start": 4.82,
+        "end": 7.82,
+        "text": "TPUs straight from your terminal. It authenticates",
+        "words": [
+          {
+            "text": "TPUs",
+            "start": 4.82,
+            "end": 5.56
+          },
+          {
+            "text": "straight",
+            "start": 5.56,
+            "end": 5.9
+          },
+          {
+            "text": "from",
+            "start": 5.9,
+            "end": 6.16
+          },
+          {
+            "text": "your",
+            "start": 6.16,
+            "end": 6.32
+          },
+          {
+            "text": "terminal.",
+            "start": 6.32,
+            "end": 6.64
+          },
+          {
+            "text": "It",
+            "start": 7.1,
+            "end": 7.14
+          },
+          {
+            "text": "authenticates",
+            "start": 7.14,
+            "end": 7.82
+          }
+        ]
+      },
+      {
+        "start": 7.82,
+        "end": 9.34,
+        "text": "with your Google account, and it is",
+        "words": [
+          {
+            "text": "with",
+            "start": 7.82,
+            "end": 7.94
+          },
+          {
+            "text": "your",
+            "start": 7.94,
+            "end": 8.08
+          },
+          {
+            "text": "Google",
+            "start": 8.08,
+            "end": 8.32
+          },
+          {
+            "text": "account,",
+            "start": 8.32,
+            "end": 8.64
+          },
+          {
+            "text": "and",
+            "start": 9.08,
+            "end": 9.14
+          },
+          {
+            "text": "it",
+            "start": 9.14,
+            "end": 9.26
+          },
+          {
+            "text": "is",
+            "start": 9.26,
+            "end": 9.34
+          }
+        ]
+      },
+      {
+        "start": 9.34,
+        "end": 10.86,
+        "text": "built so agents can drive it not",
+        "words": [
+          {
+            "text": "built",
+            "start": 9.34,
+            "end": 9.54
+          },
+          {
+            "text": "so",
+            "start": 9.54,
+            "end": 9.78
+          },
+          {
+            "text": "agents",
+            "start": 9.78,
+            "end": 10.04
+          },
+          {
+            "text": "can",
+            "start": 10.04,
+            "end": 10.3
+          },
+          {
+            "text": "drive",
+            "start": 10.3,
+            "end": 10.54
+          },
+          {
+            "text": "it",
+            "start": 10.54,
+            "end": 10.7
+          },
+          {
+            "text": "not",
+            "start": 10.7,
+            "end": 10.86
+          }
+        ]
+      },
+      {
+        "start": 10.86,
+        "end": 12.82,
+        "text": "just people. So don't hand an agent",
+        "words": [
+          {
+            "text": "just",
+            "start": 10.86,
+            "end": 11.1
+          },
+          {
+            "text": "people.",
+            "start": 11.1,
+            "end": 11.28
+          },
+          {
+            "text": "So",
+            "start": 11.84,
+            "end": 12.0
+          },
+          {
+            "text": "don't",
+            "start": 12.0,
+            "end": 12.22
+          },
+          {
+            "text": "hand",
+            "start": 12.22,
+            "end": 12.4
+          },
+          {
+            "text": "an",
+            "start": 12.4,
+            "end": 12.58
+          },
+          {
+            "text": "agent",
+            "start": 12.58,
+            "end": 12.82
+          }
+        ]
+      },
+      {
+        "start": 12.82,
+        "end": 14.72,
+        "text": "your main login. Give it a dedicated",
+        "words": [
+          {
+            "text": "your",
+            "start": 12.82,
+            "end": 13.04
+          },
+          {
+            "text": "main",
+            "start": 13.04,
+            "end": 13.22
+          },
+          {
+            "text": "login.",
+            "start": 13.22,
+            "end": 13.52
+          },
+          {
+            "text": "Give",
+            "start": 14.08,
+            "end": 14.14
+          },
+          {
+            "text": "it",
+            "start": 14.14,
+            "end": 14.28
+          },
+          {
+            "text": "a",
+            "start": 14.28,
+            "end": 14.32
+          },
+          {
+            "text": "dedicated",
+            "start": 14.32,
+            "end": 14.72
+          }
+        ]
+      },
+      {
+        "start": 14.72,
+        "end": 17.14,
+        "text": "low-privilege account with a narrow short-lived scope",
+        "words": [
+          {
+            "text": "low-privilege",
+            "start": 14.72,
+            "end": 15.46
+          },
+          {
+            "text": "account",
+            "start": 15.46,
+            "end": 15.74
+          },
+          {
+            "text": "with",
+            "start": 15.74,
+            "end": 15.98
+          },
+          {
+            "text": "a",
+            "start": 15.98,
+            "end": 16.08
+          },
+          {
+            "text": "narrow",
+            "start": 16.08,
+            "end": 16.3
+          },
+          {
+            "text": "short-lived",
+            "start": 16.3,
+            "end": 16.86
+          },
+          {
+            "text": "scope",
+            "start": 16.86,
+            "end": 17.14
+          }
+        ]
+      },
+      {
+        "start": 17.14,
+        "end": 18.5,
+        "text": "and keep the session logs.",
+        "words": [
+          {
+            "text": "and",
+            "start": 17.14,
+            "end": 17.62
+          },
+          {
+            "text": "keep",
+            "start": 17.62,
+            "end": 17.78
+          },
+          {
+            "text": "the",
+            "start": 17.78,
+            "end": 17.96
+          },
+          {
+            "text": "session",
+            "start": 17.96,
+            "end": 18.2
+          },
+          {
+            "text": "logs.",
+            "start": 18.2,
+            "end": 18.5
+          }
+        ]
+      },
+      {
+        "start": 19.42,
+        "end": 21.1,
+        "text": "Agent code-exac is not a convenience.",
+        "words": [
+          {
+            "text": "Agent",
+            "start": 19.42,
+            "end": 19.42
+          },
+          {
+            "text": "code-exac",
+            "start": 19.42,
+            "end": 20.34
+          },
+          {
+            "text": "is",
+            "start": 20.34,
+            "end": 20.56
+          },
+          {
+            "text": "not",
+            "start": 20.56,
+            "end": 20.76
+          },
+          {
+            "text": "a",
+            "start": 20.76,
+            "end": 20.86
+          },
+          {
+            "text": "convenience.",
+            "start": 20.86,
+            "end": 21.1
+          }
+        ]
+      },
+      {
+        "start": 21.9,
+        "end": 23.92,
+        "text": "It is your identity running untrusted code",
+        "words": [
+          {
+            "text": "It",
+            "start": 21.9,
+            "end": 22.0
+          },
+          {
+            "text": "is",
+            "start": 22.0,
+            "end": 22.1
+          },
+          {
+            "text": "your",
+            "start": 22.1,
+            "end": 22.24
+          },
+          {
+            "text": "identity",
+            "start": 22.24,
+            "end": 22.6
+          },
+          {
+            "text": "running",
+            "start": 22.6,
+            "end": 23.0
+          },
+          {
+            "text": "untrusted",
+            "start": 23.0,
+            "end": 23.66
+          },
+          {
+            "text": "code",
+            "start": 23.66,
+            "end": 23.92
+          }
+        ]
+      },
+      {
+        "start": 23.92,
+        "end": 24.96,
+        "text": "on someone else's GPU.",
+        "words": [
+          {
+            "text": "on",
+            "start": 23.92,
+            "end": 24.14
+          },
+          {
+            "text": "someone",
+            "start": 24.14,
+            "end": 24.34
+          },
+          {
+            "text": "else's",
+            "start": 24.34,
+            "end": 24.74
+          },
+          {
+            "text": "GPU.",
+            "start": 24.74,
+            "end": 24.96
+          }
+        ]
+      },
+      {
+        "start": 25.62,
+        "end": 26.96,
+        "text": "Would you let an agent run code",
+        "words": [
+          {
+            "text": "Would",
+            "start": 25.62,
+            "end": 25.8
+          },
+          {
+            "text": "you",
+            "start": 25.8,
+            "end": 25.92
+          },
+          {
+            "text": "let",
+            "start": 25.92,
+            "end": 26.06
+          },
+          {
+            "text": "an",
+            "start": 26.06,
+            "end": 26.18
+          },
+          {
+            "text": "agent",
+            "start": 26.18,
+            "end": 26.46
+          },
+          {
+            "text": "run",
+            "start": 26.46,
+            "end": 26.7
+          },
+          {
+            "text": "code",
+            "start": 26.7,
+            "end": 26.96
+          }
+        ]
+      },
+      {
+        "start": 26.96,
+        "end": 28.98,
+        "text": "on remote GPUs with your Google login?",
+        "words": [
+          {
+            "text": "on",
+            "start": 26.96,
+            "end": 27.2
+          },
+          {
+            "text": "remote",
+            "start": 27.2,
+            "end": 27.44
+          },
+          {
+            "text": "GPUs",
+            "start": 27.44,
+            "end": 27.74
+          },
+          {
+            "text": "with",
+            "start": 27.74,
+            "end": 28.28
+          },
+          {
+            "text": "your",
+            "start": 28.28,
+            "end": 28.42
+          },
+          {
+            "text": "Google",
+            "start": 28.42,
+            "end": 28.6
+          },
+          {
+            "text": "login?",
+            "start": 28.6,
+            "end": 28.98
+          }
+        ]
+      },
+      {
+        "start": 28.98,
+        "end": 30.0,
+        "text": "Tell me below.",
+        "words": [
+          {
+            "text": "Tell",
+            "start": 28.98,
+            "end": 29.66
+          },
+          {
+            "text": "me",
+            "start": 29.66,
+            "end": 29.78
+          },
+          {
+            "text": "below.",
+            "start": 29.78,
+            "end": 30.0
+          }
+        ]
+      }
+    ]
   },
   "qa": {
     "fact_checked": true,

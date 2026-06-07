@@ -71,8 +71,8 @@
       "subline": "Nous shipped Hermes Desktop, a GUI for its autonomous agent. It streams every tool call, but seeing is not stopping.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a large clear glass pane standing upright in the dark with a leather leash and collar lying unused on the floor beside it, dramatic rim light, strong empty lower third",
-      "background_asset": "/backgrounds/2026-06-07_hermes-desktop_cover.png",
-      "asset_status": "needed",
+      "background_asset": "/backgrounds/2026-06-07_hermes-desktop/01_cover.png",
+      "asset_status": "generated",
       "cta": "SWIPE →",
       "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
     },
@@ -84,8 +84,8 @@
       "subline": "It is the same agent, with the same keys and skills, now one click away with no terminal.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single marionette puppet lifted out of a wooden travel case and set upright on a tabletop in the dark, its strings still attached, calm empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_hermes-desktop/02_context.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -97,8 +97,8 @@
       "subline": "That prompt-injection-to-tool-abuse surface did not shrink. It just got easier to reach.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a small robot figure standing in an open doorway holding simple tools, stepping from a dark hallway into a bare plain room, tense high contrast, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_hermes-desktop/03_risk.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -110,8 +110,8 @@
       "subline": "But a stream you click straight past is visibility, not a control.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a long strip of film unspooling quickly past a still magnifying glass in the dark, frames sliding by faster than the lens can hold, focal in the upper area",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_hermes-desktop/04_mechanism.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -123,8 +123,8 @@
       "subline": "Last time we said skills execute. Now people who never used a terminal run them too.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a hand pressing a glowing approval stamp onto a long scroll of paper without unrolling it, dark, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_hermes-desktop/05_failure-point.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -136,8 +136,8 @@
       "subline": "Scope it, do not fear it.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a small robot working calmly inside a sturdy open-topped crate with a lantern and a closed latch on the side, contained and orderly, dark, empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_hermes-desktop/06_defense.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -149,8 +149,8 @@
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single pair of reading glasses resting on a closed gate latch in deep shadow, a thin rim of light along the metal, center kept dark and open",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_hermes-desktop/07_takeaway.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -162,8 +162,8 @@
       "subline": "Save this for your next agent setup.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a clean dark end-card scene, a single leather leash coiled neatly in vast empty negative space, premium editorial cybersecurity look",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_hermes-desktop/08_cta.png",
+      "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "notes": ""
     }
@@ -210,13 +210,82 @@
       "claim_tag": "reported_fact"
     }
   ],
-  "asset_licenses": [],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-07_hermes-desktop/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_hermes-desktop/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_hermes-desktop/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_hermes-desktop/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_hermes-desktop/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_hermes-desktop/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_hermes-desktop/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_hermes-desktop/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
   "video": {
     "enabled": true,
     "duration_seconds": 28,
     "fps": 30,
     "export_name": "2026-06-07_hermes-desktop_reel.mp4",
     "caption_mode": "highlight",
+    "caption_corrections": {
+      "new": "Nous",
+      "nu": "Nous"
+    },
     "audio": {
       "voice_mode": "voxcpm2",
       "voice_file": "/audio/2026-06-07_hermes-desktop/voice.wav",
@@ -233,7 +302,7 @@
       {
         "start": 5,
         "end": 11,
-        "text": "Nous Research put its autonomous agent in a native GUI for Mac, Windows, and Linux, with the same keys and skills as the terminal."
+        "text": "Noo Research put its autonomous agent in a native GUI for Mac, Windows, and Linux, with the same keys and skills as the terminal."
       },
       {
         "start": 11,
@@ -296,7 +365,693 @@
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
     "sfx": [],
-    "licenses": []
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.2,
+        "text": "Hermes now has a desktop app, and",
+        "words": [
+          {
+            "text": "Hermes",
+            "start": 0.0,
+            "end": 0.38
+          },
+          {
+            "text": "now",
+            "start": 0.38,
+            "end": 0.74
+          },
+          {
+            "text": "has",
+            "start": 0.74,
+            "end": 0.98
+          },
+          {
+            "text": "a",
+            "start": 0.98,
+            "end": 1.1
+          },
+          {
+            "text": "desktop",
+            "start": 1.1,
+            "end": 1.34
+          },
+          {
+            "text": "app,",
+            "start": 1.34,
+            "end": 1.76
+          },
+          {
+            "text": "and",
+            "start": 2.16,
+            "end": 2.2
+          }
+        ]
+      },
+      {
+        "start": 2.2,
+        "end": 3.54,
+        "text": "a window into your agent is not",
+        "words": [
+          {
+            "text": "a",
+            "start": 2.2,
+            "end": 2.26
+          },
+          {
+            "text": "window",
+            "start": 2.26,
+            "end": 2.48
+          },
+          {
+            "text": "into",
+            "start": 2.48,
+            "end": 2.7
+          },
+          {
+            "text": "your",
+            "start": 2.7,
+            "end": 2.9
+          },
+          {
+            "text": "agent",
+            "start": 2.9,
+            "end": 3.1
+          },
+          {
+            "text": "is",
+            "start": 3.1,
+            "end": 3.38
+          },
+          {
+            "text": "not",
+            "start": 3.38,
+            "end": 3.54
+          }
+        ]
+      },
+      {
+        "start": 3.54,
+        "end": 4.66,
+        "text": "the same as a leash on it.",
+        "words": [
+          {
+            "text": "the",
+            "start": 3.54,
+            "end": 3.7
+          },
+          {
+            "text": "same",
+            "start": 3.7,
+            "end": 3.9
+          },
+          {
+            "text": "as",
+            "start": 3.9,
+            "end": 4.06
+          },
+          {
+            "text": "a",
+            "start": 4.06,
+            "end": 4.1
+          },
+          {
+            "text": "leash",
+            "start": 4.1,
+            "end": 4.28
+          },
+          {
+            "text": "on",
+            "start": 4.28,
+            "end": 4.5
+          },
+          {
+            "text": "it.",
+            "start": 4.5,
+            "end": 4.66
+          }
+        ]
+      },
+      {
+        "start": 5.0,
+        "end": 7.08,
+        "text": "Nous research put its autonomous agent in",
+        "words": [
+          {
+            "text": "Nous",
+            "start": 5.0,
+            "end": 5.16
+          },
+          {
+            "text": "research",
+            "start": 5.16,
+            "end": 5.56
+          },
+          {
+            "text": "put",
+            "start": 5.56,
+            "end": 5.88
+          },
+          {
+            "text": "its",
+            "start": 5.88,
+            "end": 6.0
+          },
+          {
+            "text": "autonomous",
+            "start": 6.0,
+            "end": 6.32
+          },
+          {
+            "text": "agent",
+            "start": 6.32,
+            "end": 6.78
+          },
+          {
+            "text": "in",
+            "start": 6.78,
+            "end": 7.08
+          }
+        ]
+      },
+      {
+        "start": 7.08,
+        "end": 8.84,
+        "text": "a native GUI for Mac, Windows, and",
+        "words": [
+          {
+            "text": "a",
+            "start": 7.08,
+            "end": 7.16
+          },
+          {
+            "text": "native",
+            "start": 7.16,
+            "end": 7.4
+          },
+          {
+            "text": "GUI",
+            "start": 7.4,
+            "end": 7.64
+          },
+          {
+            "text": "for",
+            "start": 7.64,
+            "end": 7.92
+          },
+          {
+            "text": "Mac,",
+            "start": 7.92,
+            "end": 8.14
+          },
+          {
+            "text": "Windows,",
+            "start": 8.46,
+            "end": 8.56
+          },
+          {
+            "text": "and",
+            "start": 8.82,
+            "end": 8.84
+          }
+        ]
+      },
+      {
+        "start": 8.84,
+        "end": 10.72,
+        "text": "Linux, with the same keys and skills",
+        "words": [
+          {
+            "text": "Linux,",
+            "start": 8.84,
+            "end": 8.98
+          },
+          {
+            "text": "with",
+            "start": 9.46,
+            "end": 9.62
+          },
+          {
+            "text": "the",
+            "start": 9.62,
+            "end": 9.74
+          },
+          {
+            "text": "same",
+            "start": 9.74,
+            "end": 9.94
+          },
+          {
+            "text": "keys",
+            "start": 9.94,
+            "end": 10.24
+          },
+          {
+            "text": "and",
+            "start": 10.24,
+            "end": 10.5
+          },
+          {
+            "text": "skills",
+            "start": 10.5,
+            "end": 10.72
+          }
+        ]
+      },
+      {
+        "start": 10.72,
+        "end": 12.86,
+        "text": "as the terminal. Streaming tool output is",
+        "words": [
+          {
+            "text": "as",
+            "start": 10.72,
+            "end": 11.0
+          },
+          {
+            "text": "the",
+            "start": 11.0,
+            "end": 11.14
+          },
+          {
+            "text": "terminal.",
+            "start": 11.14,
+            "end": 11.4
+          },
+          {
+            "text": "Streaming",
+            "start": 11.92,
+            "end": 12.14
+          },
+          {
+            "text": "tool",
+            "start": 12.14,
+            "end": 12.38
+          },
+          {
+            "text": "output",
+            "start": 12.38,
+            "end": 12.64
+          },
+          {
+            "text": "is",
+            "start": 12.64,
+            "end": 12.86
+          }
+        ]
+      },
+      {
+        "start": 12.86,
+        "end": 14.96,
+        "text": "good, so use it. Run Hermes in",
+        "words": [
+          {
+            "text": "good,",
+            "start": 12.86,
+            "end": 13.08
+          },
+          {
+            "text": "so",
+            "start": 13.42,
+            "end": 13.58
+          },
+          {
+            "text": "use",
+            "start": 13.58,
+            "end": 13.78
+          },
+          {
+            "text": "it.",
+            "start": 13.78,
+            "end": 13.92
+          },
+          {
+            "text": "Run",
+            "start": 14.32,
+            "end": 14.4
+          },
+          {
+            "text": "Hermes",
+            "start": 14.4,
+            "end": 14.64
+          },
+          {
+            "text": "in",
+            "start": 14.64,
+            "end": 14.96
+          }
+        ]
+      },
+      {
+        "start": 14.96,
+        "end": 17.0,
+        "text": "a sandbox like Docker, scope its keys,",
+        "words": [
+          {
+            "text": "a",
+            "start": 14.96,
+            "end": 15.02
+          },
+          {
+            "text": "sandbox",
+            "start": 15.02,
+            "end": 15.2
+          },
+          {
+            "text": "like",
+            "start": 15.2,
+            "end": 15.7
+          },
+          {
+            "text": "Docker,",
+            "start": 15.7,
+            "end": 15.92
+          },
+          {
+            "text": "scope",
+            "start": 16.44,
+            "end": 16.56
+          },
+          {
+            "text": "its",
+            "start": 16.56,
+            "end": 16.8
+          },
+          {
+            "text": "keys,",
+            "start": 16.8,
+            "end": 17.0
+          }
+        ]
+      },
+      {
+        "start": 17.56,
+        "end": 18.9,
+        "text": "and read the tool calls before you",
+        "words": [
+          {
+            "text": "and",
+            "start": 17.56,
+            "end": 17.62
+          },
+          {
+            "text": "read",
+            "start": 17.62,
+            "end": 17.74
+          },
+          {
+            "text": "the",
+            "start": 17.74,
+            "end": 17.9
+          },
+          {
+            "text": "tool",
+            "start": 17.9,
+            "end": 18.06
+          },
+          {
+            "text": "calls",
+            "start": 18.06,
+            "end": 18.3
+          },
+          {
+            "text": "before",
+            "start": 18.3,
+            "end": 18.7
+          },
+          {
+            "text": "you",
+            "start": 18.7,
+            "end": 18.9
+          }
+        ]
+      },
+      {
+        "start": 18.9,
+        "end": 20.86,
+        "text": "approve them. Streaming output is not a",
+        "words": [
+          {
+            "text": "approve",
+            "start": 18.9,
+            "end": 19.04
+          },
+          {
+            "text": "them.",
+            "start": 19.04,
+            "end": 19.34
+          },
+          {
+            "text": "Streaming",
+            "start": 19.72,
+            "end": 19.98
+          },
+          {
+            "text": "output",
+            "start": 19.98,
+            "end": 20.28
+          },
+          {
+            "text": "is",
+            "start": 20.28,
+            "end": 20.58
+          },
+          {
+            "text": "not",
+            "start": 20.58,
+            "end": 20.74
+          },
+          {
+            "text": "a",
+            "start": 20.74,
+            "end": 20.86
+          }
+        ]
+      },
+      {
+        "start": 20.86,
+        "end": 23.16,
+        "text": "safety feature by itself. It becomes one",
+        "words": [
+          {
+            "text": "safety",
+            "start": 20.86,
+            "end": 21.04
+          },
+          {
+            "text": "feature",
+            "start": 21.04,
+            "end": 21.5
+          },
+          {
+            "text": "by",
+            "start": 21.5,
+            "end": 21.72
+          },
+          {
+            "text": "itself.",
+            "start": 21.72,
+            "end": 21.94
+          },
+          {
+            "text": "It",
+            "start": 22.54,
+            "end": 22.58
+          },
+          {
+            "text": "becomes",
+            "start": 22.58,
+            "end": 22.84
+          },
+          {
+            "text": "one",
+            "start": 22.84,
+            "end": 23.16
+          }
+        ]
+      },
+      {
+        "start": 23.16,
+        "end": 24.44,
+        "text": "when you gate what you approve.",
+        "words": [
+          {
+            "text": "when",
+            "start": 23.16,
+            "end": 23.6
+          },
+          {
+            "text": "you",
+            "start": 23.6,
+            "end": 23.76
+          },
+          {
+            "text": "gate",
+            "start": 23.76,
+            "end": 23.92
+          },
+          {
+            "text": "what",
+            "start": 23.92,
+            "end": 24.14
+          },
+          {
+            "text": "you",
+            "start": 24.14,
+            "end": 24.28
+          },
+          {
+            "text": "approve.",
+            "start": 24.28,
+            "end": 24.44
+          }
+        ]
+      },
+      {
+        "start": 25.1,
+        "end": 26.94,
+        "text": "Scope it, don't fear it. Do you",
+        "words": [
+          {
+            "text": "Scope",
+            "start": 25.1,
+            "end": 25.32
+          },
+          {
+            "text": "it,",
+            "start": 25.32,
+            "end": 25.52
+          },
+          {
+            "text": "don't",
+            "start": 25.76,
+            "end": 26.02
+          },
+          {
+            "text": "fear",
+            "start": 26.02,
+            "end": 26.16
+          },
+          {
+            "text": "it.",
+            "start": 26.16,
+            "end": 26.36
+          },
+          {
+            "text": "Do",
+            "start": 26.36,
+            "end": 26.86
+          },
+          {
+            "text": "you",
+            "start": 26.86,
+            "end": 26.94
+          }
+        ]
+      },
+      {
+        "start": 26.94,
+        "end": 28.88,
+        "text": "read your agent's tool calls before approving,",
+        "words": [
+          {
+            "text": "read",
+            "start": 26.94,
+            "end": 27.12
+          },
+          {
+            "text": "your",
+            "start": 27.12,
+            "end": 27.28
+          },
+          {
+            "text": "agent's",
+            "start": 27.28,
+            "end": 27.7
+          },
+          {
+            "text": "tool",
+            "start": 27.7,
+            "end": 27.86
+          },
+          {
+            "text": "calls",
+            "start": 27.86,
+            "end": 28.1
+          },
+          {
+            "text": "before",
+            "start": 28.1,
+            "end": 28.48
+          },
+          {
+            "text": "approving,",
+            "start": 28.48,
+            "end": 28.88
+          }
+        ]
+      },
+      {
+        "start": 29.32,
+        "end": 31.06,
+        "text": "or just watch them fly by? Tell",
+        "words": [
+          {
+            "text": "or",
+            "start": 29.32,
+            "end": 29.42
+          },
+          {
+            "text": "just",
+            "start": 29.42,
+            "end": 29.54
+          },
+          {
+            "text": "watch",
+            "start": 29.54,
+            "end": 29.76
+          },
+          {
+            "text": "them",
+            "start": 29.76,
+            "end": 29.98
+          },
+          {
+            "text": "fly",
+            "start": 29.98,
+            "end": 30.18
+          },
+          {
+            "text": "by?",
+            "start": 30.18,
+            "end": 30.38
+          },
+          {
+            "text": "Tell",
+            "start": 30.88,
+            "end": 31.06
+          }
+        ]
+      },
+      {
+        "start": 31.06,
+        "end": 31.4,
+        "text": "me below.",
+        "words": [
+          {
+            "text": "me",
+            "start": 31.06,
+            "end": 31.18
+          },
+          {
+            "text": "below.",
+            "start": 31.18,
+            "end": 31.4
+          }
+        ]
+      }
+    ]
   },
   "qa": {
     "fact_checked": true,
