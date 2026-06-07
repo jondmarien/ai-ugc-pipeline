@@ -1,0 +1,319 @@
+{
+  "post_id": "2026-06-07_hermes-desktop",
+  "date": "2026-06-07",
+  "slug": "hermes-desktop",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "myth_busting",
+  "theme": "ai",
+  "audience": "security_practitioners",
+  "core_claim": "Hermes Desktop wraps Nous Research's autonomous agent in a GUI with streaming tool output, and that visibility only protects you if you sandbox the agent, scope its keys, and read tool calls before approving them.",
+  "claim_tags": [
+    "reported_fact",
+    "emerging",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 4,
+    "novelty": 4,
+    "visual_drama": 3,
+    "defender_usefulness": 5,
+    "total": 21
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "myth_busting",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-07_hermes-desktop",
+    "filename_prefix": "2026-06-07_hermes-desktop",
+    "expected_files": [
+      "2026-06-07_hermes-desktop_01_cover.png",
+      "2026-06-07_hermes-desktop_02_context.png",
+      "2026-06-07_hermes-desktop_03_risk.png",
+      "2026-06-07_hermes-desktop_04_mechanism.png",
+      "2026-06-07_hermes-desktop_05_failure-point.png",
+      "2026-06-07_hermes-desktop_06_defense.png",
+      "2026-06-07_hermes-desktop_07_takeaway.png",
+      "2026-06-07_hermes-desktop_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "A WINDOW INTO YOUR AGENT IS NOT THE SAME AS A LEASH ON IT",
+      "subline": "Nous shipped Hermes Desktop, a GUI for its autonomous agent. It streams every tool call, but seeing is not stopping.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a large clear glass pane standing upright in the dark with a leather leash and collar lying unused on the floor beside it, dramatic rim light, strong empty lower third",
+      "background_asset": "/backgrounds/2026-06-07_hermes-desktop_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "Nous Research put Hermes Agent in a native desktop app for macOS, Windows, and Linux.",
+      "subline": "It is the same agent, with the same keys and skills, now one click away with no terminal.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single marionette puppet lifted out of a wooden travel case and set upright on a tabletop in the dark, its strings still attached, calm empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "A GUI puts a local agent with shell, file, and network tools in front of people who never opened a terminal.",
+      "subline": "That prompt-injection-to-tool-abuse surface did not shrink. It just got easier to reach.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a small robot figure standing in an open doorway holding simple tools, stepping from a dark hallway into a bare plain room, tense high contrast, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "The app streams tool calls live as the agent works, which is genuinely good for security.",
+      "subline": "But a stream you click straight past is visibility, not a control.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a long strip of film unspooling quickly past a still magnifying glass in the dark, frames sliding by faster than the lens can hold, focal in the upper area",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "People run it locally, watch the output scroll, and approve actions without reading them.",
+      "subline": "Last time we said skills execute. Now people who never used a terminal run them too.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a hand pressing a glowing approval stamp onto a long scroll of paper without unrolling it, dark, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Run Hermes in a sandbox backend like Docker, give it scoped keys, and read the streamed tool calls before approving anything that touches the shell, files, or network.",
+      "subline": "Scope it, do not fear it.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a small robot working calmly inside a sturdy open-topped crate with a lantern and a closed latch on the side, contained and orderly, dark, empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "Streaming tool output {{is not a safety feature by itself}}. [[It becomes one when you gate what you approve.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single pair of reading glasses resting on a closed gate latch in deep shadow, a thin rim of light along the metal, center kept dark and open",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Do you read your agent's tool calls before you approve them, or just watch them fly by?",
+      "subline": "Save this for your next agent setup.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene, a single leather leash coiled neatly in vast empty negative space, premium editorial cybersecurity look",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "We covered the Hermes agent surge a few days ago. Now Nous Research has given it a face. Hermes Desktop is a native GUI for the same autonomous agent, on macOS, Windows, and Linux, sharing the same keys, skills, and sessions as the terminal. It was announced around v0.15.2 and ships in the v0.16.0 line, and it is MIT licensed.\n\nThe headline feature is streaming tool output, and here is the honest read. Watching every tool call in real time is genuinely good for security, better than the opaque cloud agents people already trust. But a window into the agent is not a leash on it. The same local agent with shell, file, and network access is now one click away for people who never opened a terminal, so the prompt-injection-to-tool-abuse surface did not shrink. It got easier to reach.\n\nSo do not just watch the stream, gate it. Run Hermes in one of its sandbox backends like Docker or Modal, give it scoped, least-privilege keys, and actually read the streamed tool calls before you approve anything that touches the shell, the filesystem, or the network. Last post we said skills execute. That is still true, and now the people running them may never have used a terminal.\n\nStreaming tool output is not a safety feature by itself. It becomes one when you gate what you approve. Scope it, do not fear it.\n\nDo you read your agent's tool calls before approving, or just watch them fly by?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "AI agents",
+    "Hermes",
+    "prompt injection",
+    "sandboxing",
+    "least privilege"
+  ],
+  "comment_prompt": "Do you read your agent's tool calls before approving them, or just watch them scroll by?",
+  "alt_text": [
+    "Slide 1 (cover): a large clear glass pane standing in the dark with a leash and collar lying unused on the floor beside it, with the headline in the lower third.",
+    "Slide 2 (context): a single marionette puppet lifted from a wooden travel case and set on a tabletop, its strings still attached.",
+    "Slide 3 (risk): a small robot figure in an open doorway holding tools, stepping from a dark hallway into a bare plain room.",
+    "Slide 4 (mechanism): a long strip of film unspooling quickly past a still magnifying glass, frames sliding by faster than the lens can hold.",
+    "Slide 5 (failure_point): a hand pressing a glowing approval stamp onto a long scroll of paper without unrolling it.",
+    "Slide 6 (defense): a small robot working calmly inside a sturdy open-topped crate with a lantern and a closed latch on the side.",
+    "Slide 7 (takeaway): a pair of reading glasses resting on a closed gate latch in deep shadow, a thin rim of light along the metal.",
+    "Slide 8 (cta): a single leash coiled neatly in empty dark space, with the comment question and handle."
+  ],
+  "sources": [
+    {
+      "source": "Nous Research: Hermes Desktop",
+      "link": "https://hermes-agent.nousresearch.com/desktop",
+      "supports": "Hermes Desktop is a native cross-platform GUI for Hermes Agent with streaming tool output, sharing the same agent core, keys, and skills.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Nous Research: hermes-agent (GitHub)",
+      "link": "https://github.com/NousResearch/hermes-agent",
+      "supports": "MIT license, streaming tool output, MCP support, sandbox execution backends (Docker, SSH, Modal and others), Desktop shipping in the v0.16.0 line.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "MarkTechPost: Nous Research Releases Hermes Desktop",
+      "link": "https://www.marktechpost.com/2026/06/03/nous-research-releases-hermes-desktop-a-native-cross-platform-front-end-for-hermes-agent-v0-15-2-with-streaming-tool-output/",
+      "supports": "Hermes Desktop is a native cross-platform front end for Hermes Agent (announced at v0.15.2) with streaming tool output.",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 28,
+    "fps": 30,
+    "export_name": "2026-06-07_hermes-desktop_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-07_hermes-desktop/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "Hermes now has a desktop app, and a window into your agent is not the same as a leash on it."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "text": "Nous Research put its autonomous agent in a native GUI for Mac, Windows, and Linux, with the same keys and skills as the terminal."
+      },
+      {
+        "start": 11,
+        "end": 18,
+        "text": "Streaming tool output is good, so use it. Run Hermes in a sandbox like Docker, scope its keys, and read the tool calls before you approve them."
+      },
+      {
+        "start": 18,
+        "end": 23,
+        "text": "Streaming output is not a safety feature by itself. It becomes one when you gate what you approve. Scope it, don't fear it."
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "text": "Do you read your agent's tool calls before approving, or just watch them fly by? Tell me below."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Hermes now has a desktop app, and a window into your agent is not the same as a leash on it."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Nous put its autonomous agent in a native GUI for Mac, Windows, and Linux, with the same keys and skills."
+      },
+      {
+        "start": 11,
+        "end": 18,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "Run Hermes in a sandbox like Docker, scope its keys, and read the tool calls before you approve them."
+      },
+      {
+        "start": 18,
+        "end": 23,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "Streaming output is a safety feature only when you gate what you approve. Scope it, don't fear it."
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Do you read your agent's tool calls before approving, or just watch them fly by? Tell me below."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": true,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}

@@ -1,0 +1,319 @@
+{
+  "post_id": "2026-06-07_colab-cli-agents",
+  "date": "2026-06-07",
+  "slug": "colab-cli-agents",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "data_leakage",
+  "theme": "ai",
+  "audience": "security_practitioners",
+  "core_claim": "Google's Colab CLI lets AI agents run arbitrary Python on remote GPUs and TPUs under your Google identity, so the data-leakage risk is agent code-exec with your credentials and a two-way data path you have to scope down.",
+  "claim_tags": [
+    "reported_fact",
+    "emerging",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 4,
+    "novelty": 4,
+    "visual_drama": 3,
+    "defender_usefulness": 5,
+    "total": 21
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "data_leakage",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-07_colab-cli-agents",
+    "filename_prefix": "2026-06-07_colab-cli-agents",
+    "expected_files": [
+      "2026-06-07_colab-cli-agents_01_cover.png",
+      "2026-06-07_colab-cli-agents_02_context.png",
+      "2026-06-07_colab-cli-agents_03_risk.png",
+      "2026-06-07_colab-cli-agents_04_mechanism.png",
+      "2026-06-07_colab-cli-agents_05_failure-point.png",
+      "2026-06-07_colab-cli-agents_06_defense.png",
+      "2026-06-07_colab-cli-agents_07_takeaway.png",
+      "2026-06-07_colab-cli-agents_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "YOUR AI AGENT CAN NOW RUN CODE ON GOOGLE'S GPUS, AS YOU",
+      "subline": "Google's Colab CLI gives agents a one-command path to remote GPUs and TPUs. Your login comes along for the ride.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a long mechanical arm stretching across a wide dark chasm to press a single glowing button on a distant tall metal pillar, dramatic rim light, strong empty lower third",
+      "background_asset": "/backgrounds/2026-06-07_colab-cli-agents_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "Google shipped a Colab CLI that runs Python on remote GPUs and TPUs straight from the terminal.",
+      "subline": "It is built so AI agents can drive it, not just people.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single glowing thread running from a small handheld remote out across a vast dark distance to a faraway machine, calm empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "A prompt-injected agent can spin up a GPU box and run arbitrary code on Google's network under your identity.",
+      "subline": "Your data moves both ways through upload, download, and a mounted Drive.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "two open suitcases facing each other in the dark with a stream of glowing papers flowing both directions between them, tense high contrast, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "The CLI authenticates with your Google account and stores the session on your machine, and the agent reuses it for every run.",
+      "subline": "One leaked token or an over-broad scope widens the blast radius into your cloud project.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single brass key plugged into a small lockbox that feeds a long glowing cable off into the dark, focal in the upper area",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "People sign in once with their primary account and hand the agent a long-lived, broadly scoped token.",
+      "subline": "Auto-teardown then deletes the runtime, and most of the forensic trail with it.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a wide-open vault door with a key left in the lock while a small warning tag lies ignored on the floor, dark, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Give agents a dedicated low-privilege Google account with the narrowest scope and short-lived auth, never your main one.",
+      "subline": "Keep the session logs the CLI exports as an audit trail of what the runtime actually did.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a small modest key on a short tether beside a closed ledger book in the dark, calm and orderly, empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "Agent code-exec {{is not a convenience}}. [[It is your identity running untrusted code on someone else's GPU.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single glowing fingerprint pressed onto a cold metal surface in deep shadow, center kept dark and open",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Would you let an agent run code on remote GPUs with your Google login?",
+      "subline": "Save this before you wire an agent into your cloud.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene, a single unplugged cable coiled in vast empty negative space, premium editorial cybersecurity look",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Google shipped a Colab CLI that runs Python on remote GPUs and TPUs straight from the terminal, and it is explicitly built so AI agents can drive it, not just people. It is open source under Apache-2.0, and it authenticates with your Google account.\n\nThat is the exposure. An agent with terminal access now has a one-command path to spin up a GPU or TPU box and run arbitrary code on Google's network, authenticated as you. If that agent gets prompt-injected, it acts with your identity. Data moves both ways through upload, download, and a mounted Drive, which is a clean exfil channel. The session token sits on your machine, so a leaked token or an over-broad scope widens the blast radius into your cloud project. The auto-teardown that deletes the runtime also deletes most of the forensic trail.\n\nTreat agent code-exec as untrusted. Do not hand an agent a long-lived, broadly scoped token from your primary account. Give it a dedicated low-privilege Google account with the narrowest scope and short-lived auth, then keep the session logs the CLI can export as your audit trail.\n\nAgent code-exec is not a convenience. It is your identity running untrusted code on someone else's GPU.\n\nWould you let an agent run code on remote GPUs with your Google login?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "AI agents",
+    "data leakage",
+    "cloud security",
+    "OAuth",
+    "least privilege"
+  ],
+  "comment_prompt": "Would you let an agent run code on remote GPUs with your own Google login, or only a throwaway account?",
+  "alt_text": [
+    "Slide 1 (cover): a long mechanical arm stretching across a dark chasm to press a glowing button on a distant tall metal pillar, with the headline in the lower third.",
+    "Slide 2 (context): a single glowing thread running from a small handheld remote across a vast dark distance to a faraway machine.",
+    "Slide 3 (risk): two open suitcases facing each other with a stream of glowing papers flowing both directions between them.",
+    "Slide 4 (mechanism): a single brass key plugged into a small lockbox that feeds a long glowing cable off into the dark.",
+    "Slide 5 (failure_point): a wide-open vault door with a key left in the lock while a small warning tag lies ignored on the floor.",
+    "Slide 6 (defense): a small modest key on a short tether beside a closed ledger book in the dark.",
+    "Slide 7 (takeaway): a single glowing fingerprint pressed onto a cold metal surface in deep shadow.",
+    "Slide 8 (cta): a single unplugged cable coiled in empty dark space, with the comment question and handle."
+  ],
+  "sources": [
+    {
+      "source": "Google Developers Blog: Introducing the Google Colab CLI",
+      "link": "https://developers.googleblog.com/introducing-the-google-colab-cli/",
+      "supports": "Google released a Colab CLI on June 5, 2026 that runs Python on remote GPUs and TPUs from the terminal and is designed for AI agents to drive.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Google: google-colab-cli (GitHub)",
+      "link": "https://github.com/googlecolab/google-colab-cli",
+      "supports": "OAuth2 Google-account auth by default, Apache-2.0 license, Linux and macOS support, commands including exec, run, upload, download, and drivemount.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "MarkTechPost: Google's New Colab CLI",
+      "link": "https://www.marktechpost.com/2026/06/06/googles-new-colab-cli-lets-developers-and-ai-agents-run-python-on-remote-colab-gpus-and-tpus-from-the-terminal/",
+      "supports": "Developers and AI agents can run Python on remote Colab GPUs and TPUs from the terminal.",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 28,
+    "fps": 30,
+    "export_name": "2026-06-07_colab-cli-agents_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-07_colab-cli-agents/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "Google's new Colab CLI lets an AI agent run Python on remote GPUs and TPUs, straight from your terminal."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "text": "It authenticates with your Google account, and it is built so agents can drive it, not just people."
+      },
+      {
+        "start": 11,
+        "end": 18,
+        "text": "So don't hand an agent your main login. Give it a dedicated low-privilege account with a narrow, short-lived scope, and keep the session logs."
+      },
+      {
+        "start": 18,
+        "end": 23,
+        "text": "Agent code-exec is not a convenience. It is your identity running untrusted code on someone else's GPU."
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "text": "Would you let an agent run code on remote GPUs with your Google login? Tell me below."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Google's new Colab CLI lets an AI agent run Python on remote GPUs and TPUs from your terminal."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "It authenticates with your Google account, and it is built so agents can drive it."
+      },
+      {
+        "start": 11,
+        "end": 18,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "Don't hand an agent your main login. Give it a low-privilege account with a narrow scope, and keep the logs."
+      },
+      {
+        "start": 18,
+        "end": 23,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "Agent code-exec is not a convenience. It is your identity running untrusted code on someone else's GPU."
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Would you let an agent run code on remote GPUs with your Google login? Tell me below."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": true,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}

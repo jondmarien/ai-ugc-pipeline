@@ -1,0 +1,340 @@
+{
+  "post_id": "2026-06-07_nemotron-3-ultra",
+  "date": "2026-06-07",
+  "slug": "nemotron-3-ultra",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "model_security",
+  "theme": "ai",
+  "audience": "security_practitioners",
+  "core_claim": "NVIDIA's open Nemotron 3 Ultra is built for long-running agents with up to a million tokens of context, and open weights remove the vendor guardrail, so the durable control is a least-privilege permission layer around the agent's tools.",
+  "claim_tags": [
+    "reported_fact",
+    "emerging",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 3,
+    "defender_usefulness": 5,
+    "total": 22
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "model_security",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-07_nemotron-3-ultra",
+    "filename_prefix": "2026-06-07_nemotron-3-ultra",
+    "expected_files": [
+      "2026-06-07_nemotron-3-ultra_01_cover.png",
+      "2026-06-07_nemotron-3-ultra_02_context.png",
+      "2026-06-07_nemotron-3-ultra_03_risk.png",
+      "2026-06-07_nemotron-3-ultra_04_mechanism.png",
+      "2026-06-07_nemotron-3-ultra_05_failure-point.png",
+      "2026-06-07_nemotron-3-ultra_06_defense.png",
+      "2026-06-07_nemotron-3-ultra_07_takeaway.png",
+      "2026-06-07_nemotron-3-ultra_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "A 1 MILLION TOKEN AGENT IS A 1 MILLION TOKEN ATTACK SURFACE",
+      "subline": "NVIDIA's open Nemotron 3 Ultra is built for long-running agents. Longer sessions mean more places to hide an instruction.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "an immense ancient stone golem seated in the dark, dwarfing a tiny human figure standing before it, dramatic rim light, strong empty lower third",
+      "background_asset": "/backgrounds/2026-06-07_nemotron-3-ultra_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "NVIDIA released Nemotron 3 Ultra, an open 550 billion parameter model with 55 billion active per token.",
+      "subline": "It is built for long-running agents and holds up to a million tokens of context.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single long unbroken thread spooling out endlessly across a dark floor into the distance, a faint glow along its length, calm empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "This is not theoretical. In its first week, agents pushed tens of billions of tokens a day through it on OpenRouter.",
+      "subline": "Open weights also mean no vendor guardrail, no moderation, and no kill switch stands behind those runs.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a vast torrent of glowing particles pouring through a single open gate with no keeper beside it into the dark, tense high contrast, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "Across hundreds of tool-calling turns, one planted instruction in a document or tool output can sit in context and steer the agent later.",
+      "subline": "This is indirect prompt injection and context poisoning, stretched over a long session.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single folded note tucked deep inside a long row of identical sealed boxes stretching into shadow, one box faintly glowing, focal in the upper area",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Teams trust the model's own guardrails and let the agent call high-impact tools without a second check.",
+      "subline": "When the weights are open, those built-in guardrails are optional.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a row of heavy levers in the dark all switched on with no hand on the guard rail beside them, a small ignored tag swinging, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Put the control outside the model. Require approval for irreversible or high-impact tool calls, and log the agent's stated goal every turn.",
+      "subline": "Treat the growing context window as untrusted input, not a trusted memory.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single sturdy gate with a closed latch standing across a narrow path in the dark, a lantern beside it, calm and orderly, empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "Built-in guardrails ship {{optional when the weights are open}}. [[The permission layer around your tools is the control that holds.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a heavy iron padlock resting alone on bare stone in deep shadow, a thin rim of light along its edge, center kept dark and open",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "How long do you let an agent run before a human checks its goal?",
+      "subline": "Save this for your next agent design review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene, a single hourglass standing in vast empty negative space, premium editorial cybersecurity look",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "NVIDIA released Nemotron 3 Ultra, an open 550 billion parameter model with 55 billion active per token. It is a hybrid Mamba-Transformer mixture of experts, it holds up to a million tokens of context, and it is purpose-built for long-running agents that plan and call tools across many turns. The weights are open under a permissive license, so anyone can self-host it. On OpenRouter it is free through June 18 if you pick the :free variant.\n\nThe security story is the length. A long-running agent keeps a giant context across hundreds of tool-calling turns, and that context is a durable target. One planted instruction in a fetched page, a document, or a tool's output can sit quietly and steer the agent later. That is indirect prompt injection and context poisoning, stretched over a long session. Open weights also mean there is no vendor moderation, no rate limit, and no kill switch standing behind the model. And this is not theoretical. In its first week on OpenRouter's free tier it pulled tens of billions of tokens a day, peaking over 100 billion prompt tokens, and the most-used public app on it was an autonomous agent, Nous Research's Hermes.\n\nSo put the control where you actually own it, outside the model. Require human or policy approval for irreversible and high-impact tool calls. Log the agent's stated goal every turn so goal drift is something you can see. Treat the growing context window as untrusted input, not trusted memory.\n\nBuilt-in guardrails are optional when the weights are open. The permission layer around your tools is the control that holds.\n\nHow long would you let an agent run before a human checks its goal?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "AI agents",
+    "open weights",
+    "prompt injection",
+    "model security",
+    "least privilege"
+  ],
+  "comment_prompt": "How long would you let an autonomous agent run before a human reviews its goal?",
+  "alt_text": [
+    "Slide 1 (cover): an immense stone golem seated in the dark, dwarfing a tiny human figure before it, with the headline in the lower third.",
+    "Slide 2 (context): a single long unbroken thread spooling endlessly across a dark floor into the distance.",
+    "Slide 3 (risk): a vast torrent of glowing particles pouring through a single open gate with no keeper beside it into the dark.",
+    "Slide 4 (mechanism): a folded note tucked deep inside a long row of identical sealed boxes stretching into shadow, one box glowing.",
+    "Slide 5 (failure_point): a row of heavy levers all switched on with no hand on the guard rail, a small ignored tag swinging.",
+    "Slide 6 (defense): a single sturdy gate with a closed latch across a narrow path, a lantern beside it.",
+    "Slide 7 (takeaway): a heavy iron padlock resting alone on bare stone in deep shadow, a thin rim of light along its edge.",
+    "Slide 8 (cta): an hourglass standing in empty dark space, with the comment question and handle."
+  ],
+  "sources": [
+    {
+      "source": "NVIDIA: Nemotron-3-Ultra-550B-A55B model card (Hugging Face)",
+      "link": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+      "supports": "Open 550B total / 55B active mixture-of-experts hybrid Mamba-Transformer, up to 1M token context, OpenMDW-1.1 license, long-running agent positioning.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "NVIDIA Nemotron technical report (arXiv 2512.20856)",
+      "link": "https://arxiv.org/abs/2512.20856",
+      "supports": "Mixture-of-experts hybrid Mamba-Transformer architecture aimed at multi-step tool use and long-horizon agents.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "MarkTechPost: NVIDIA AI Releases Nemotron 3 Ultra",
+      "link": "https://www.marktechpost.com/2026/06/04/nvidia-ai-releases-nemotron-3-ultra-an-open-550b-mixture-of-experts-hybrid-mamba-transformer-for-long-running-agents/",
+      "supports": "Public release on June 4, 2026 of an open 550B MoE hybrid Mamba-Transformer for long-running agents.",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "NVIDIA Developer Blog: Nemotron 3 Ultra Powers Faster, More Efficient Reasoning for Long-Running Agents",
+      "link": "https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents/",
+      "supports": "NVIDIA positions Nemotron 3 Ultra for efficient long-horizon reasoning and multi-step tool use in long-running agents.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Nous Research: Run Nemotron 3 Ultra Free (guide)",
+      "link": "https://hermes-agent.nousresearch.com/docs/guides/run-nemotron-3-ultra-free",
+      "supports": "The nvidia/nemotron-3-ultra:free tier is available June 4 to June 18, 2026; the :free tag keeps it on the no-cost plan.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "OpenRouter: Nemotron 3 Ultra (free) activity and top apps",
+      "link": "https://openrouter.ai/nvidia/nemotron-3-ultra-550b-a55b:free",
+      "supports": "OpenRouter usage shows tens of billions of tokens per day in the model's first week (prompt usage peaking past 100 billion in a day), with autonomous and coding agents (Hermes Agent ranked first, then Kilo Code, OpenClaw, Claude Code, Cline) as the top public apps.",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 28,
+    "fps": 30,
+    "export_name": "2026-06-07_nemotron-3-ultra_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-07_nemotron-3-ultra/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "NVIDIA just open sourced a 550 billion parameter model built to run agents for hours at a time."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "text": "Nemotron 3 Ultra holds up to a million tokens of context, the weights are open, and agents are already pushing tens of billions of tokens a day through it."
+      },
+      {
+        "start": 11,
+        "end": 18,
+        "text": "So put the control outside the model. Require human approval for high-impact tool calls, and log the agent's goal every turn so you can catch drift."
+      },
+      {
+        "start": 18,
+        "end": 23,
+        "text": "Built-in guardrails are optional when the weights are open. The permission layer around your tools is the control that actually holds."
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "text": "How long would you let an agent run before a human checks in? Tell me below."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "NVIDIA open sourced a 550 billion parameter model built to run agents for hours at a time."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Nemotron 3 Ultra holds a million tokens of context, the weights are open, and agents already push tens of billions of tokens a day through it."
+      },
+      {
+        "start": 11,
+        "end": 18,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "Put the control outside the model. Require approval for high-impact tool calls and log the agent's goal."
+      },
+      {
+        "start": 18,
+        "end": 23,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "Built-in guardrails are optional when the weights are open. The permission layer is the control that holds."
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "How long would you let an agent run before a human checks in? Tell me below."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": true,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}
