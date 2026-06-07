@@ -1,0 +1,11 @@
+{
+  "_comment": "Chrono brand 'walls' — animated + still background references, one per theme. 1080x1920 (9:16, reel/story size). Use as an alternative to the static dark/procedural background. Stills (.png) work as carousel/reel/story backgrounds today (set a slide's background_asset to the path below + asset_status 'existing'); the .webm loops are for animated reel/story backgrounds (reel video-background support is a small renderer change, see README.md). Served by Vite from /walls/<file>.",
+  "dimensions": { "width": 1080, "height": 1920 },
+  "walls": [
+    { "theme": "defensive",   "accent": "blue",   "still": "/walls/01-defensive-aegis.png",         "loop": "/walls/01-defensive-aegis.webm",         "loop_seconds": 5.93, "mood": "calm, controlled, shielded" },
+    { "theme": "offensive",   "accent": "red",    "still": "/walls/02-offensive-breach.png",        "loop": "/walls/02-offensive-breach.webm",        "loop_seconds": 7.65, "mood": "aggressive, high-stakes, intrusion" },
+    { "theme": "hacking",     "accent": "green",  "still": "/walls/03-hacking-datastream.png",      "loop": "/walls/03-hacking-datastream.webm",      "loop_seconds": 7.60, "mood": "raw underground hacker, signal traces" },
+    { "theme": "purple-team", "accent": "purple", "still": "/walls/04-purple-team-convergence.png", "loop": "/walls/04-purple-team-convergence.webm", "loop_seconds": 8.93, "mood": "offence and defence converging" },
+    { "theme": "ai",          "accent": "orange", "still": "/walls/05-ai-latent-mesh.png",          "loop": "/walls/05-ai-latent-mesh.webm",          "loop_seconds": 4.82, "mood": "generic AI / model-centric, latent space" }
+  ]
+}
