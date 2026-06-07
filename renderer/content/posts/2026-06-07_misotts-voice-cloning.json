@@ -1,0 +1,319 @@
+{
+  "post_id": "2026-06-07_misotts-voice-cloning",
+  "date": "2026-06-07",
+  "slug": "misotts-voice-cloning",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "offensive_ai",
+  "theme": "offensive",
+  "audience": "security_practitioners",
+  "core_claim": "Miso Labs' open-weights 8B emotive text-to-speech model makes convincing voice cloning cheap and natural, so a familiar voice is no longer proof of identity and sensitive requests must be verified out-of-band.",
+  "claim_tags": [
+    "reported_fact",
+    "emerging",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 4,
+    "defender_usefulness": 5,
+    "total": 23
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "alert red",
+    "pillar_accent": "offensive_ai",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#ef4444",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-07_misotts-voice-cloning",
+    "filename_prefix": "2026-06-07_misotts-voice-cloning",
+    "expected_files": [
+      "2026-06-07_misotts-voice-cloning_01_cover.png",
+      "2026-06-07_misotts-voice-cloning_02_context.png",
+      "2026-06-07_misotts-voice-cloning_03_risk.png",
+      "2026-06-07_misotts-voice-cloning_04_mechanism.png",
+      "2026-06-07_misotts-voice-cloning_05_failure-point.png",
+      "2026-06-07_misotts-voice-cloning_06_defense.png",
+      "2026-06-07_misotts-voice-cloning_07_takeaway.png",
+      "2026-06-07_misotts-voice-cloning_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "A FAMILIAR VOICE IS NO LONGER PROOF IT IS REALLY THEM",
+      "subline": "Miso Labs open-sourced an 8B emotive voice model that clones a voice from seconds of audio.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a smooth featureless theatrical mask resting on an old microphone stand in the dark, catching a hard rim of light, strong empty lower third",
+      "background_asset": "/backgrounds/2026-06-07_misotts-voice-cloning_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "Miso Labs released MisoTTS, an 8 billion parameter emotive text-to-speech model with open weights.",
+      "subline": "It can mimic a voice and its emotion from a short reference clip.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a polished mask tilted toward an old microphone, a faint ripple of sound curling between them, dark editorial, calm empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "Cheaper, more natural synthetic speech weakens the oldest trust signal we have, recognizing a voice.",
+      "subline": "That is the engine behind vishing, fake-relative scams, and wire-transfer fraud.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "an old telephone handset lying off the hook in the dark with a thin glowing thread leading to a faceless silhouette, tense high contrast, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "Open weights let anyone run a convincing voice clone offline from a few seconds of sample audio.",
+      "subline": "The model watermarks its output by default, but a motivated abuser can strip that.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a short coil of recording tape feeding into a blank porcelain mask that is slowly forming a face, dark, focal in the upper area",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Payment approvals and password resets still treat a recognized voice on the phone as identity.",
+      "subline": "Attackers only need one urgent call that sounds like the boss.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a hand reaching to press a single glowing approve button while holding a telephone to the ear, a small ignored note nearby, dark, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Verify any sensitive or financial request on a second channel. Call back a known number or use a pre-agreed code word.",
+      "subline": "Require dual authorization for wire transfers, not a voice on the line.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "two separate telephones on opposite sides of the dark joined by one bright steady thread, a small closed padlock floating between them, calm and orderly, empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "A voice you recognize {{is not identity anymore}}. [[Verify the request on a channel the caller cannot fake.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a cracked porcelain mask in deep shadow with a thin rim of light along the fracture, center kept dark and open",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Does your wire-transfer approval still trust a familiar voice on the phone?",
+      "subline": "Save this for your next fraud-awareness review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene, a single telephone handset resting in vast empty negative space, premium editorial cybersecurity look",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Miso Labs released MisoTTS, an 8 billion parameter emotive text-to-speech model with open weights. It can clone a voice, and the emotion behind it, from seconds of reference audio. The license is a modified MIT, so it is broadly usable, and the model watermarks its output by default.\n\nThe security angle is not a brand-new threat, it is a cheaper and more convincing one. Open, emotive voice cloning keeps eroding the oldest trust signal we have, which is recognizing someone's voice on the phone. That signal is what vishing, fake-relative scams, and CEO wire-transfer fraud run on. The FBI has warned for a while that criminals use AI-generated voice to impersonate relatives in crisis and to impersonate officials. A default watermark helps, but a motivated abuser can strip it, so do not lean on it.\n\nThe fix is process, not detection. Treat a familiar voice as no proof of identity. Verify any sensitive or financial request out-of-band: hang up and call back a known number, or use a code word you agreed on with family and your team. For wire transfers and payment approvals, require dual authorization, not a voice on the line.\n\nA voice you recognize is not identity anymore. Verify the request on a channel the caller cannot fake.\n\nDoes your wire-transfer approval still trust a familiar voice on the phone?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "voice cloning",
+    "vishing",
+    "deepfakes",
+    "social engineering",
+    "fraud prevention"
+  ],
+  "comment_prompt": "Does your team's payment approval still trust a familiar voice on the phone, or do you verify out-of-band?",
+  "alt_text": [
+    "Slide 1 (cover): a smooth featureless theatrical mask resting on an old microphone stand in the dark, with the headline in the lower third.",
+    "Slide 2 (context): a polished mask tilted toward an old microphone, a faint ripple of sound curling between them.",
+    "Slide 3 (risk): an old telephone handset off the hook in the dark, a thin glowing thread leading to a faceless silhouette.",
+    "Slide 4 (mechanism): a short coil of recording tape feeding into a blank porcelain mask that is slowly forming a face.",
+    "Slide 5 (failure_point): a hand reaching to press a glowing approve button while holding a telephone to the ear, a small ignored note nearby.",
+    "Slide 6 (defense): two separate telephones joined by one bright steady thread with a small closed padlock floating between them.",
+    "Slide 7 (takeaway): a cracked porcelain mask in deep shadow with a thin rim of light along the fracture.",
+    "Slide 8 (cta): a single telephone handset resting in empty dark space, with the comment question and handle."
+  ],
+  "sources": [
+    {
+      "source": "MarkTechPost: Miso Labs Releases MisoTTS",
+      "link": "https://www.marktechpost.com/2026/06/04/miso-labs-releases-misotts-an-8b-emotive-text-to-speech-model-with-open-weights/",
+      "supports": "Miso Labs released MisoTTS, an 8B emotive text-to-speech model with open weights.",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Miso Labs: MisoTTS (GitHub)",
+      "link": "https://github.com/MisoLabsAI/MisoTTS",
+      "supports": "8B emotive TTS, open weights under a modified MIT license, voice cloning from a short reference clip, SilentCipher watermarking by default with an explicit anti-impersonation warning.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "FBI IC3 Public Service Announcement, December 2024",
+      "link": "https://www.ic3.gov/PSA/2024/PSA241203",
+      "supports": "Criminals use generative AI voice to impersonate relatives in crisis situations and to access accounts, grounding the AI-voice fraud trend.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 28,
+    "fps": 30,
+    "export_name": "2026-06-07_misotts-voice-cloning_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-07_misotts-voice-cloning/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "A familiar voice is no longer proof that it is really them."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "text": "Miso Labs just open sourced an 8 billion parameter emotive voice model that can clone a voice from seconds of audio."
+      },
+      {
+        "start": 11,
+        "end": 18,
+        "text": "So verify any sensitive request on a second channel. Call back a known number, or agree on a code word with family and your team."
+      },
+      {
+        "start": 18,
+        "end": 23,
+        "text": "A voice you recognize is not identity anymore. Verify the request on a channel the caller cannot fake."
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "text": "Does your wire-transfer approval still trust a familiar voice on the phone? Tell me below."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "A familiar voice is no longer proof that it is really them."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Miso Labs open sourced an 8 billion parameter emotive voice model that clones a voice from seconds of audio."
+      },
+      {
+        "start": 11,
+        "end": 18,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "Verify any sensitive request on a second channel. Call back a known number, or agree on a code word."
+      },
+      {
+        "start": 18,
+        "end": 23,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "A voice you recognize is not identity anymore. Verify the request on a channel the caller cannot fake."
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Does your wire-transfer approval still trust a familiar voice on the phone? Tell me below."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": true,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}

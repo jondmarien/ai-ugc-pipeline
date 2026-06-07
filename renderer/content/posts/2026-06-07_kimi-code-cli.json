@@ -1,0 +1,319 @@
+{
+  "post_id": "2026-06-07_kimi-code-cli",
+  "date": "2026-06-07",
+  "slug": "kimi-code-cli",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "model_security",
+  "theme": "ai",
+  "audience": "security_practitioners",
+  "core_claim": "Kimi Code CLI is a terminal AI coding agent with shell, file, and web access, so the real security risk is not the model but the permissions you grant and the untrusted content it acts on.",
+  "claim_tags": [
+    "reported_fact",
+    "emerging",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 3,
+    "defender_usefulness": 5,
+    "total": 22
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "model_security",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-07_kimi-code-cli",
+    "filename_prefix": "2026-06-07_kimi-code-cli",
+    "expected_files": [
+      "2026-06-07_kimi-code-cli_01_cover.png",
+      "2026-06-07_kimi-code-cli_02_context.png",
+      "2026-06-07_kimi-code-cli_03_risk.png",
+      "2026-06-07_kimi-code-cli_04_mechanism.png",
+      "2026-06-07_kimi-code-cli_05_failure-point.png",
+      "2026-06-07_kimi-code-cli_06_defense.png",
+      "2026-06-07_kimi-code-cli_07_takeaway.png",
+      "2026-06-07_kimi-code-cli_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "YOUR CODING AGENT CAN RUN COMMANDS A WEB PAGE TOLD IT TO",
+      "subline": "Kimi Code CLI is a terminal agent with shell access. The model is fine. The permissions are the risk.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a sleek robotic hand resting on a heavy metal lever in the dark, poised to pull it, dramatic rim light, strong empty lower third",
+      "background_asset": "/backgrounds/2026-06-07_kimi-code-cli_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "Moonshot AI released Kimi Code CLI, a terminal coding agent written in TypeScript.",
+      "subline": "It reads files, edits code, runs shell commands, and fetches web pages on its own.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a smooth robotic arm reaching into an open cardboard box and lifting out a single glowing key, dark editorial, calm empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "An agent that fetches web pages and then runs your shell can be steered by what it reads.",
+      "subline": "That is indirect prompt injection, and the payoff is your files, your keys, and your machine.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a marionette control bar with taut strings descending into the dark toward an unseen puppet, one string faintly glowing, tense high contrast, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "The agent treats the text it fetches as instructions, not just data, so a poisoned page can tell it to act.",
+      "subline": "It asks before editing or running by default. A skip-all-approvals mode removes that gate.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a folded paper note slipped under a heavy closed door, a faint glow leaking through the gap, dark, focal in the upper area",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Teams run it on their main machine with real keys, then flip on the no-prompt mode for speed.",
+      "subline": "MCP servers and plugins from any repo run in your trust context too.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a ring of keys left hanging in an unlocked door while a hand reaches past a small ignored warning tag, dark, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Run it in a throwaway VM with restricted network egress and no real credentials, and keep the approve-before-run gate on.",
+      "subline": "Only add MCP servers and plugins you have pinned and actually read.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single robotic arm working inside a sealed transparent glass box with a closed padlock on the lid, contained and orderly, dark, empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "The risk {{was never the model}}. [[It is every command and key you let the agent reach.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a heavy iron key held alone in deep shadow with a thin rim of light along its edge, center kept dark and open",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Would you give a terminal agent your shell without a sandbox?",
+      "subline": "Save this before you install your next coding agent.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene, a single closed padlock resting in vast empty negative space, premium editorial cybersecurity look",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Moonshot shipped Kimi Code CLI, a terminal AI coding agent written in TypeScript. It reads your code, runs shell commands, and fetches web pages, then it picks the next step on its own. It is MIT licensed and genuinely useful.\n\nHere is the part the launch posts skip. An agent that reads the open web and then runs your shell can be steered by the content it reads. A poisoned page or README turns into instructions, and the payoff is your files, your keys, and your machine. The default build asks before it edits or runs. The skip-all-approvals mode throws that gate away.\n\nTreat it like untrusted code, because that is what it executes. Run it in a throwaway VM with restricted network egress and no real credentials. Keep the approve-before-run gate on outside of disposable boxes. Only load MCP servers and plugins you have pinned and actually read.\n\nThe risk was never the model. It is every command and secret you let the agent reach.\n\nWould you give a terminal agent your shell without a sandbox?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "AI agents",
+    "prompt injection",
+    "AppSec",
+    "coding assistants",
+    "least privilege"
+  ],
+  "comment_prompt": "Would you run a terminal coding agent on your main machine, or only in a sandbox?",
+  "alt_text": [
+    "Slide 1 (cover): a sleek robotic hand resting on a heavy metal lever in the dark, poised to pull it, with the headline in the lower third.",
+    "Slide 2 (context): a robotic arm lifting a single glowing key out of an open box in a dark scene.",
+    "Slide 3 (risk): a puppet control bar with taut strings descending into darkness toward an unseen puppet, one string glowing.",
+    "Slide 4 (mechanism): a folded paper note slipped under a heavy closed door, light leaking through the gap.",
+    "Slide 5 (failure_point): a ring of keys left in an unlocked door while a hand reaches past a small ignored warning tag.",
+    "Slide 6 (defense): a robotic arm working inside a sealed glass box with a padlock on the lid.",
+    "Slide 7 (takeaway): a single iron key held in deep shadow with a thin rim of light along its edge.",
+    "Slide 8 (cta): a closed padlock resting in empty dark space, with the comment question and handle."
+  ],
+  "sources": [
+    {
+      "source": "MarkTechPost: Moonshot AI Releases Kimi Code CLI",
+      "link": "https://www.marktechpost.com/2026/06/06/moonshot-ai-releases-kimi-code-cli-a-terminal-ai-coding-agent-built-in-typescript-for-next-gen-agents/",
+      "supports": "Kimi Code CLI is a terminal AI coding agent built in TypeScript by Moonshot AI for next-gen agents.",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Moonshot AI: kimi-code (GitHub)",
+      "link": "https://github.com/MoonshotAI/kimi-code",
+      "supports": "Capabilities (reads and edits code, runs shell commands, searches files, fetches web pages, chooses next step), MIT license, MCP and plugin support.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Kimi Code docs: Getting Started",
+      "link": "https://moonshotai.github.io/kimi-code/en/guides/getting-started.html",
+      "supports": "Read-only actions run automatically; file edits and shell commands require confirmation by default; a skip-all-approvals mode exists.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 28,
+    "fps": 30,
+    "export_name": "2026-06-07_kimi-code-cli_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-07_kimi-code-cli/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "Moonshot just put an AI coding agent in your terminal, and it can run your shell."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "text": "Kimi Code CLI reads files, runs commands, and fetches web pages, then it decides the next step on its own."
+      },
+      {
+        "start": 11,
+        "end": 18,
+        "text": "So treat it like untrusted code. Run it in a throwaway VM with no real keys, and keep the approve-before-run gate on."
+      },
+      {
+        "start": 18,
+        "end": 23,
+        "text": "The risk was never the model. It is every command and secret you let the agent reach."
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "text": "Would you hand a terminal agent your shell without a sandbox? Tell me below."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Moonshot just put an AI coding agent in your terminal, and it can run your shell."
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Kimi Code CLI reads files, runs commands, and fetches web pages, then decides the next step on its own."
+      },
+      {
+        "start": 11,
+        "end": 18,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "Treat it like untrusted code. Run it in a throwaway VM with no real keys, and keep the approval gate on."
+      },
+      {
+        "start": 18,
+        "end": 23,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "The risk was never the model. It is every command and secret you let the agent reach."
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Would you hand a terminal agent your shell without a sandbox? Tell me below."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": true,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}
