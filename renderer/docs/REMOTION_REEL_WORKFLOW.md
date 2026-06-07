@@ -41,9 +41,9 @@ remotion/theme.ts            → palette + pillar accents (sync with src/design/
 ### Caption animation modes (`video.caption_mode`)
 | Mode | Behavior |
 | --- | --- |
-| `block` (default) | full caption per scene, fades in |
+| `highlight` (default) | full line shown; the current word lit in the pillar accent |
+| `block` | rolling 2–3 word window per scene, fades in |
 | `word` | one word at a time, karaoke style |
-| `highlight` | full line shown; the current word lit in the pillar accent |
 Implemented in `remotion/CaptionLayer.tsx`. Word timing is distributed evenly across each beat window (no audio needed); when real narration audio + word timestamps exist, pass `beat.words[]` for exact sync. Set the mode at generation time (`--captions=` / `captions=`), no code edits needed.
 
 ### Per-post rendering
@@ -83,7 +83,7 @@ Reel audio is driven by `video.audio` (see CONTENT_SCHEMA.md) and played by `rem
 4. Log every audio asset in `LICENSES.md` (QA Gate 7). `build-package.ts` records the modes; fill in the actual track/source.
 5. QA: subtitles inside safe margins, voice intelligible at phone volume, ~−14 LUFS, no exploit detail in narration.
 
-> Word-synced captions: `caption_mode: word|highlight` currently distributes word timing evenly across each beat. With real narration audio you can later add `beat.words[]` timestamps (e.g. from faster-whisper) for exact lip-tight sync.
+> Word-synced captions: `caption_mode: word|highlight` currently distributes word timing evenly across each beat. With real narration audio you can later add `beat.words[]` timestamps (e.g. from faster-whisper) for exact lip-tight sync. `bun run align` also applies an optional per-post `video.caption_corrections` map (and a global proper-noun CORRECTIONS map) to fix Whisper mis-transcriptions before writing the captions.
 
 ## QA (reel)
 | Check | Pass |

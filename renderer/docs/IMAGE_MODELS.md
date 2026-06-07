@@ -38,12 +38,12 @@ uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu
 ```
 You want `CUDA: True 12.4` (and `torch x.y.z+cu124`, not `+cpu`). This also makes VoxCPM/Bark/Whisper use the GPU. (Installing `torchvision` too silences the diffusers `CLIPImageProcessor requires torchvision` warning.) If no cu124 wheel exists for your Python, recreate the venv on 3.12: `uv venv --python 3.12`.
 
-## Default (FLUX.1-schnell) — step by step
+## Legacy (FLUX.1-schnell) — step by step
 FLUX.1-schnell is Apache-2.0 (commercial-OK) **but its Hugging Face repo is GATED** — you must accept the license + log in once (a 403 `GatedRepoError` means you skipped this).
 ```bash
 cd renderer
 # 1. deps (do the CUDA-torch step above FIRST), plus the diffusers stack
-uv pip install "diffusers>=0.31" transformers accelerate sentencepiece protobuf pillow huggingface_hub[cli]
+uv pip install "diffusers>=0.38" transformers accelerate sentencepiece protobuf pillow huggingface_hub[cli]  # (0.38.0 patches a trust_remote_code CVE)
 # 2. accept the license: open https://huggingface.co/black-forest-labs/FLUX.1-schnell
 #    and click "Agree and access repository" (free, instant). Make a READ token at
 #    https://huggingface.co/settings/tokens
@@ -188,7 +188,7 @@ cd renderer
 rm -rf .venv                       # (PowerShell: Remove-Item -Recurse -Force .venv)
 uv venv --python 3.12              # uv downloads 3.12 if missing
 uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
-uv pip install voxcpm soundfile faster-whisper "diffusers>=0.31" transformers accelerate sentencepiece protobuf pillow
+uv pip install voxcpm soundfile faster-whisper "diffusers>=0.38" transformers accelerate sentencepiece protobuf pillow  # (0.38.0 patches a trust_remote_code CVE)
 .venv/Scripts/python -c "import torch,diffusers; print('CUDA',torch.cuda.is_available(),'| diffusers OK')"
 ```
 Packages are served from uv's cache, so this is fast if you've installed them before. The HF model weights live in `~/.cache/huggingface` (not the venv), so nothing re-downloads.

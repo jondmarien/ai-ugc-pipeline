@@ -58,6 +58,7 @@ The Stage 7 gate in [CONTENT_PIPELINE.md](CONTENT_PIPELINE.md). **A post may not
 | 5.2 | On-slide copy | ≤ ~12 words per slide; text inside safe margins (not cropped in grid preview) |
 | 5.3 | Alt text | Every slide has accessible alt text |
 | 5.4 | Captions (video) | Burned-in subtitles present, synced, readable on mobile (Reels) |
+| 5.4a | Caption proper nouns | Reel captions render proper nouns correctly; use `video.caption_corrections` when a name is spelled phonetically in narration |
 | 5.5 | Contrast | Text passes a basic contrast check against its band |
 
 ---
