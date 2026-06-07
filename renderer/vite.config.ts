@@ -11,4 +11,21 @@ export default defineConfig({
   },
   server: { port: 4317, strictPort: true },
   preview: { port: 4317, strictPort: true },
+  // This app is built only so Playwright can screenshot exact-size slide roots locally; it is
+  // never shipped over a network, so chunk size is cosmetic. Still, split node_modules out of the
+  // entry chunk (react / fonts / other vendor) for cleaner output, and lift the warning threshold
+  // so the build log stays quiet.
+  build: {
+    chunkSizeWarningLimit: 1200,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return undefined;
+          if (id.includes("@fontsource")) return "fonts";
+          if (id.includes("/react") || id.includes("react-dom") || id.includes("/scheduler")) return "react-vendor";
+          return "vendor";
+        },
+      },
+    },
+  },
 });
