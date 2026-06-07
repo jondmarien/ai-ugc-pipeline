@@ -4,6 +4,8 @@ The content-to-render pipeline, end to end: how a sourced idea becomes a validat
 
 There are two entry points. **`/draft-post`** (and `/draft-week`) takes an *idea* and does everything — research, write, scaffold, validate, render. **`bun run pipeline`** is the render-only engine you call when the JSON already exists (you hand-edited it, or you're re-rendering).
 
+> **Legend on the diagrams:** `[LLM]` = the agent (Claude) does it · `[code]` = a deterministic script · `[human]` = you. The render path (§3) is entirely `[code]`; the research and copy (§1, §2) are `[LLM]`.
+
 ---
 
 ## 1. `/draft-post` — idea to rendered post
@@ -14,13 +16,13 @@ The slash command (or the headless `bun run draft`) orchestrates both skills. Re
 sequenceDiagram
     actor U as You
     participant CMD as /draft-post
-    participant C as carousel skill
-    participant R as Research (web + sources)
-    participant H as humanizer skill
-    participant RN as renderer skill
-    participant NEW as new-post.ts
-    participant V as validate.ts
-    participant P as pipeline.mjs
+    participant C as carousel skill [LLM]
+    participant R as Research web+sources [LLM]
+    participant H as humanizer skill [LLM]
+    participant RN as renderer skill [LLM]
+    participant NEW as new-post.ts [code]
+    participant V as validate.ts [code]
+    participant P as pipeline.mjs [code]
     U->>CMD: idea | pillar | slides= | theme= | voice= | captions=
     CMD->>C: design slide arc (N, default 8) + caption
     C->>R: landscape scan, gather, triangulate (>=2)
@@ -39,6 +41,8 @@ sequenceDiagram
 ---
 
 ## 2. The expanded research step
+
+*All `[LLM]`: the agent runs this loop and writes `sources[]`. No script fabricates a source.*
 
 Research is no longer "search once, paste a link." It runs a small, source-grounded loop adapted from deep-research practice (tiering + triangulation + hard gates), mapped onto the project's existing claim tags. The goal: load-bearing claims are backed by **two independent sources**, and anything thinner is honestly tagged down.
 
@@ -64,6 +68,8 @@ sequenceDiagram
 ---
 
 ## 3. `bun run pipeline` — the render engine
+
+*All `[code]`: the render path is deterministic, with no LLM in it.*
 
 One command runs seven steps in order. It keeps one GPU model resident at a time (art on ComfyUI, then `free-comfyui`, then VoxCPM/Whisper), and the reel auto-embeds the generated voice.
 
@@ -105,6 +111,8 @@ sequenceDiagram
 | 7 | reel | `render-reel.ts` | slides + captions + audio → `<prefix>_reel.mp4` | `--no-reel` or `video.enabled=false` |
 
 ### Skip / decision logic
+
+*`[code]`: pipeline.mjs decides which stages to run.*
 
 ```mermaid
 flowchart TD
