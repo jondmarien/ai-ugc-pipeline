@@ -16,6 +16,115 @@ Positioning rule for everything below: **real threats, real tools, no fake panic
 
 ---
 
+## Diagrams
+
+### Flow: idea to validated JSON (and the hand-off to render)
+
+```mermaid
+flowchart LR
+  idea(["Idea"]) --> dc["bun run draft-context<br/>(variety digest)"]
+  dc --> design["Content design<br/>ai-cybersecurity-ugc-carousel"]
+  design --> research["Research loop<br/>landscape - triangulate - tier"]
+  research --> map["Schema map<br/>react-remotion-instagram-renderer"]
+  map --> scaffold["bun run new<br/>scaffold skeleton"]
+  scaffold --> fill["Fill JSON<br/>replace TODOs + sources"]
+  fill --> copy["Copy chain<br/>humanizer - stop-slop - proofreader"]
+  copy --> validate{"bun run validate"}
+  validate -- fix --> fill
+  validate -- clean --> json[("post JSON")]
+  json --> render["bun run pipeline<br/>art - carousel - voice - align - reel"]
+```
+
+### Sequence: what `/draft-post` actually does
+
+```mermaid
+sequenceDiagram
+  actor U as User
+  participant C as "Claude (/draft-post)"
+  participant D as draft-context
+  participant W as "Web (Search/Fetch)"
+  participant K as Skills
+  participant J as "post JSON"
+  participant V as validate
+  U->>C: /draft-post idea | pillar
+  C->>D: bun run draft-context
+  D-->>C: NOT-list (hooks, motifs, angles)
+  C->>K: design content (carousel skill)
+  C->>W: landscape scan + triangulate
+  W-->>C: tiered claims + real links
+  C->>J: bun run new (scaffold)
+  C->>J: fill TODOs + sources
+  C->>K: copy chain (humanizer, stop-slop, proofreader)
+  C->>V: bun run validate
+  V-->>C: valid or errors
+  alt errors
+    C->>J: fix fields
+    C->>V: re-validate
+  end
+  C-->>U: post JSON (status: draft)
+```
+
+### Schema (ERD): the post JSON the draft stage produces
+
+```mermaid
+erDiagram
+  POST ||--|{ SLIDE : has
+  POST ||--|{ SOURCE : cites
+  POST ||--|| SCORE : "scored by"
+  POST ||--|| BRAND : "branded by"
+  POST ||--|| UPLOAD_PACKAGE : "packaged by"
+  POST ||--o| VIDEO : "reel (optional)"
+  POST ||--|{ ALT_TEXT : "one per slide"
+  VIDEO ||--|{ NARRATION : speaks
+  VIDEO ||--|{ BEAT : timeline
+  VIDEO ||--o{ CAPTION_LINE : "aligned by Whisper"
+  BEAT ||--o{ WORD : "word timings"
+  CAPTION_LINE ||--o{ WORD : "word timings"
+  POST {
+    string post_id
+    string date
+    string slug
+    enum pillar
+    enum theme
+    string core_claim
+    enum status
+  }
+  SLIDE {
+    int slide
+    enum role
+    string on_slide_copy
+    string subline
+    string visual_prompt
+    enum asset_status
+  }
+  SOURCE {
+    string source
+    string link
+    string supports
+    enum confidence
+    string claim_tag
+  }
+  VIDEO {
+    bool enabled
+    enum caption_mode
+    enum voice_mode
+    map caption_corrections
+  }
+```
+
+### Status lifecycle
+
+```mermaid
+stateDiagram-v2
+  [*] --> draft: bun run new / draft
+  draft --> draft: fix + re-validate
+  draft --> approved: human review passes
+  approved --> upload_ready: bun run pipeline renders + packages
+  upload_ready --> [*]: manual upload (human)
+```
+
+---
+
 ## Entry points
 
 | How | Command | Notes |
