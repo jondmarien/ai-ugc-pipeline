@@ -71,8 +71,8 @@
       "subline": "NVIDIA's open Nemotron 3 Ultra is built for long-running agents. Longer sessions mean more places to hide an instruction.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "an immense ancient stone golem seated in the dark, dwarfing a tiny human figure standing before it, dramatic rim light, strong empty lower third",
-      "background_asset": "/backgrounds/2026-06-07_nemotron-3-ultra_cover.png",
-      "asset_status": "needed",
+      "background_asset": "/backgrounds/2026-06-07_nemotron-3-ultra/01_cover.png",
+      "asset_status": "generated",
       "cta": "SWIPE →",
       "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
     },
@@ -84,8 +84,8 @@
       "subline": "It is built for long-running agents and holds up to a million tokens of context.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single long unbroken thread spooling out endlessly across a dark floor into the distance, a faint glow along its length, calm empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_nemotron-3-ultra/02_context.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -97,8 +97,8 @@
       "subline": "Open weights also mean no vendor guardrail, no moderation, and no kill switch stands behind those runs.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a vast torrent of glowing particles pouring through a single open gate with no keeper beside it into the dark, tense high contrast, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_nemotron-3-ultra/03_risk.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -110,8 +110,8 @@
       "subline": "This is indirect prompt injection and context poisoning, stretched over a long session.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single folded note tucked deep inside a long row of identical sealed boxes stretching into shadow, one box faintly glowing, focal in the upper area",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_nemotron-3-ultra/04_mechanism.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -123,8 +123,8 @@
       "subline": "When the weights are open, those built-in guardrails are optional.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a row of heavy levers in the dark all switched on with no hand on the guard rail beside them, a small ignored tag swinging, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_nemotron-3-ultra/05_failure-point.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -136,8 +136,8 @@
       "subline": "Treat the growing context window as untrusted input, not a trusted memory.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single sturdy gate with a closed latch standing across a narrow path in the dark, a lantern beside it, calm and orderly, empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_nemotron-3-ultra/06_defense.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -149,8 +149,8 @@
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a heavy iron padlock resting alone on bare stone in deep shadow, a thin rim of light along its edge, center kept dark and open",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_nemotron-3-ultra/07_takeaway.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -162,8 +162,8 @@
       "subline": "Save this for your next agent design review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a clean dark end-card scene, a single hourglass standing in vast empty negative space, premium editorial cybersecurity look",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_nemotron-3-ultra/08_cta.png",
+      "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "notes": ""
     }
@@ -231,7 +231,72 @@
       "claim_tag": "reported_fact"
     }
   ],
-  "asset_licenses": [],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-07_nemotron-3-ultra/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_nemotron-3-ultra/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_nemotron-3-ultra/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_nemotron-3-ultra/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_nemotron-3-ultra/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_nemotron-3-ultra/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_nemotron-3-ultra/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_nemotron-3-ultra/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
   "video": {
     "enabled": true,
     "duration_seconds": 28,
@@ -317,7 +382,666 @@
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
     "sfx": [],
-    "licenses": []
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 3.1,
+        "text": "NVIDIA just open-sourced a 550 billion parameter",
+        "words": [
+          {
+            "text": "NVIDIA",
+            "start": 0.0,
+            "end": 0.48
+          },
+          {
+            "text": "just",
+            "start": 0.48,
+            "end": 0.84
+          },
+          {
+            "text": "open-sourced",
+            "start": 0.84,
+            "end": 1.32
+          },
+          {
+            "text": "a",
+            "start": 1.32,
+            "end": 1.52
+          },
+          {
+            "text": "550",
+            "start": 1.52,
+            "end": 1.78
+          },
+          {
+            "text": "billion",
+            "start": 1.78,
+            "end": 2.74
+          },
+          {
+            "text": "parameter",
+            "start": 2.74,
+            "end": 3.1
+          }
+        ]
+      },
+      {
+        "start": 3.1,
+        "end": 5.14,
+        "text": "model built to run agents for hours",
+        "words": [
+          {
+            "text": "model",
+            "start": 3.1,
+            "end": 3.68
+          },
+          {
+            "text": "built",
+            "start": 3.68,
+            "end": 3.9
+          },
+          {
+            "text": "to",
+            "start": 3.9,
+            "end": 4.12
+          },
+          {
+            "text": "run",
+            "start": 4.12,
+            "end": 4.28
+          },
+          {
+            "text": "agents",
+            "start": 4.28,
+            "end": 4.54
+          },
+          {
+            "text": "for",
+            "start": 4.54,
+            "end": 4.86
+          },
+          {
+            "text": "hours",
+            "start": 4.86,
+            "end": 5.14
+          }
+        ]
+      },
+      {
+        "start": 5.14,
+        "end": 7.66,
+        "text": "at a time. Nemotron 3 Ultra holds",
+        "words": [
+          {
+            "text": "at",
+            "start": 5.14,
+            "end": 5.34
+          },
+          {
+            "text": "a",
+            "start": 5.34,
+            "end": 5.38
+          },
+          {
+            "text": "time.",
+            "start": 5.38,
+            "end": 5.64
+          },
+          {
+            "text": "Nemotron",
+            "start": 6.16,
+            "end": 6.6
+          },
+          {
+            "text": "3",
+            "start": 6.6,
+            "end": 6.88
+          },
+          {
+            "text": "Ultra",
+            "start": 6.88,
+            "end": 7.12
+          },
+          {
+            "text": "holds",
+            "start": 7.12,
+            "end": 7.66
+          }
+        ]
+      },
+      {
+        "start": 7.66,
+        "end": 9.04,
+        "text": "up to a million tokens of context.",
+        "words": [
+          {
+            "text": "up",
+            "start": 7.66,
+            "end": 7.82
+          },
+          {
+            "text": "to",
+            "start": 7.82,
+            "end": 7.96
+          },
+          {
+            "text": "a",
+            "start": 7.96,
+            "end": 8.08
+          },
+          {
+            "text": "million",
+            "start": 8.08,
+            "end": 8.28
+          },
+          {
+            "text": "tokens",
+            "start": 8.28,
+            "end": 8.58
+          },
+          {
+            "text": "of",
+            "start": 8.58,
+            "end": 8.88
+          },
+          {
+            "text": "context.",
+            "start": 8.88,
+            "end": 9.04
+          }
+        ]
+      },
+      {
+        "start": 9.78,
+        "end": 11.4,
+        "text": "The weights are open, and agents are",
+        "words": [
+          {
+            "text": "The",
+            "start": 9.78,
+            "end": 9.84
+          },
+          {
+            "text": "weights",
+            "start": 9.84,
+            "end": 10.0
+          },
+          {
+            "text": "are",
+            "start": 10.0,
+            "end": 10.2
+          },
+          {
+            "text": "open,",
+            "start": 10.2,
+            "end": 10.46
+          },
+          {
+            "text": "and",
+            "start": 10.82,
+            "end": 10.88
+          },
+          {
+            "text": "agents",
+            "start": 10.88,
+            "end": 11.18
+          },
+          {
+            "text": "are",
+            "start": 11.18,
+            "end": 11.4
+          }
+        ]
+      },
+      {
+        "start": 11.4,
+        "end": 13.24,
+        "text": "already pushing tens of billions of tokens",
+        "words": [
+          {
+            "text": "already",
+            "start": 11.4,
+            "end": 11.7
+          },
+          {
+            "text": "pushing",
+            "start": 11.7,
+            "end": 12.02
+          },
+          {
+            "text": "tens",
+            "start": 12.02,
+            "end": 12.34
+          },
+          {
+            "text": "of",
+            "start": 12.34,
+            "end": 12.58
+          },
+          {
+            "text": "billions",
+            "start": 12.58,
+            "end": 12.76
+          },
+          {
+            "text": "of",
+            "start": 12.76,
+            "end": 13.04
+          },
+          {
+            "text": "tokens",
+            "start": 13.04,
+            "end": 13.24
+          }
+        ]
+      },
+      {
+        "start": 13.24,
+        "end": 14.82,
+        "text": "a day through it. So put the",
+        "words": [
+          {
+            "text": "a",
+            "start": 13.24,
+            "end": 13.52
+          },
+          {
+            "text": "day",
+            "start": 13.52,
+            "end": 13.66
+          },
+          {
+            "text": "through",
+            "start": 13.66,
+            "end": 13.9
+          },
+          {
+            "text": "it.",
+            "start": 13.9,
+            "end": 14.08
+          },
+          {
+            "text": "So",
+            "start": 14.5,
+            "end": 14.5
+          },
+          {
+            "text": "put",
+            "start": 14.5,
+            "end": 14.68
+          },
+          {
+            "text": "the",
+            "start": 14.68,
+            "end": 14.82
+          }
+        ]
+      },
+      {
+        "start": 14.82,
+        "end": 17.3,
+        "text": "control outside the model, require human approval",
+        "words": [
+          {
+            "text": "control",
+            "start": 14.82,
+            "end": 15.1
+          },
+          {
+            "text": "outside",
+            "start": 15.1,
+            "end": 15.4
+          },
+          {
+            "text": "the",
+            "start": 15.4,
+            "end": 15.76
+          },
+          {
+            "text": "model,",
+            "start": 15.76,
+            "end": 15.98
+          },
+          {
+            "text": "require",
+            "start": 16.38,
+            "end": 16.62
+          },
+          {
+            "text": "human",
+            "start": 16.62,
+            "end": 17.0
+          },
+          {
+            "text": "approval",
+            "start": 17.0,
+            "end": 17.3
+          }
+        ]
+      },
+      {
+        "start": 17.3,
+        "end": 19.56,
+        "text": "for high-impact tool calls, and log the",
+        "words": [
+          {
+            "text": "for",
+            "start": 17.3,
+            "end": 17.64
+          },
+          {
+            "text": "high-impact",
+            "start": 17.64,
+            "end": 18.1
+          },
+          {
+            "text": "tool",
+            "start": 18.1,
+            "end": 18.4
+          },
+          {
+            "text": "calls,",
+            "start": 18.4,
+            "end": 18.7
+          },
+          {
+            "text": "and",
+            "start": 19.12,
+            "end": 19.22
+          },
+          {
+            "text": "log",
+            "start": 19.22,
+            "end": 19.38
+          },
+          {
+            "text": "the",
+            "start": 19.38,
+            "end": 19.56
+          }
+        ]
+      },
+      {
+        "start": 19.56,
+        "end": 21.02,
+        "text": "agent's goal every turn so you can",
+        "words": [
+          {
+            "text": "agent's",
+            "start": 19.56,
+            "end": 19.9
+          },
+          {
+            "text": "goal",
+            "start": 19.9,
+            "end": 20.04
+          },
+          {
+            "text": "every",
+            "start": 20.04,
+            "end": 20.28
+          },
+          {
+            "text": "turn",
+            "start": 20.28,
+            "end": 20.58
+          },
+          {
+            "text": "so",
+            "start": 20.58,
+            "end": 20.76
+          },
+          {
+            "text": "you",
+            "start": 20.76,
+            "end": 20.88
+          },
+          {
+            "text": "can",
+            "start": 20.88,
+            "end": 21.02
+          }
+        ]
+      },
+      {
+        "start": 21.02,
+        "end": 23.72,
+        "text": "catch drift. Built-in guardrails are optional when",
+        "words": [
+          {
+            "text": "catch",
+            "start": 21.02,
+            "end": 21.24
+          },
+          {
+            "text": "drift.",
+            "start": 21.24,
+            "end": 21.52
+          },
+          {
+            "text": "Built-in",
+            "start": 22.1,
+            "end": 22.52
+          },
+          {
+            "text": "guardrails",
+            "start": 22.52,
+            "end": 23.02
+          },
+          {
+            "text": "are",
+            "start": 23.02,
+            "end": 23.12
+          },
+          {
+            "text": "optional",
+            "start": 23.12,
+            "end": 23.38
+          },
+          {
+            "text": "when",
+            "start": 23.38,
+            "end": 23.72
+          }
+        ]
+      },
+      {
+        "start": 23.72,
+        "end": 25.56,
+        "text": "the weights are open. The permission layer",
+        "words": [
+          {
+            "text": "the",
+            "start": 23.72,
+            "end": 23.82
+          },
+          {
+            "text": "weights",
+            "start": 23.82,
+            "end": 23.98
+          },
+          {
+            "text": "are",
+            "start": 23.98,
+            "end": 24.16
+          },
+          {
+            "text": "open.",
+            "start": 24.16,
+            "end": 24.38
+          },
+          {
+            "text": "The",
+            "start": 24.9,
+            "end": 24.96
+          },
+          {
+            "text": "permission",
+            "start": 24.96,
+            "end": 25.22
+          },
+          {
+            "text": "layer",
+            "start": 25.22,
+            "end": 25.56
+          }
+        ]
+      },
+      {
+        "start": 25.56,
+        "end": 27.2,
+        "text": "around your tools is the control that",
+        "words": [
+          {
+            "text": "around",
+            "start": 25.56,
+            "end": 25.86
+          },
+          {
+            "text": "your",
+            "start": 25.86,
+            "end": 26.06
+          },
+          {
+            "text": "tools",
+            "start": 26.06,
+            "end": 26.28
+          },
+          {
+            "text": "is",
+            "start": 26.28,
+            "end": 26.62
+          },
+          {
+            "text": "the",
+            "start": 26.62,
+            "end": 26.74
+          },
+          {
+            "text": "control",
+            "start": 26.74,
+            "end": 27.02
+          },
+          {
+            "text": "that",
+            "start": 27.02,
+            "end": 27.2
+          }
+        ]
+      },
+      {
+        "start": 27.2,
+        "end": 29.24,
+        "text": "actually holds. How long would you let",
+        "words": [
+          {
+            "text": "actually",
+            "start": 27.2,
+            "end": 27.48
+          },
+          {
+            "text": "holds.",
+            "start": 27.48,
+            "end": 27.8
+          },
+          {
+            "text": "How",
+            "start": 27.8,
+            "end": 28.56
+          },
+          {
+            "text": "long",
+            "start": 28.56,
+            "end": 28.78
+          },
+          {
+            "text": "would",
+            "start": 28.78,
+            "end": 29.0
+          },
+          {
+            "text": "you",
+            "start": 29.0,
+            "end": 29.08
+          },
+          {
+            "text": "let",
+            "start": 29.08,
+            "end": 29.24
+          }
+        ]
+      },
+      {
+        "start": 29.24,
+        "end": 30.68,
+        "text": "an agent run before a human checks",
+        "words": [
+          {
+            "text": "an",
+            "start": 29.24,
+            "end": 29.36
+          },
+          {
+            "text": "agent",
+            "start": 29.36,
+            "end": 29.54
+          },
+          {
+            "text": "run",
+            "start": 29.54,
+            "end": 29.78
+          },
+          {
+            "text": "before",
+            "start": 29.78,
+            "end": 30.08
+          },
+          {
+            "text": "a",
+            "start": 30.08,
+            "end": 30.24
+          },
+          {
+            "text": "human",
+            "start": 30.24,
+            "end": 30.44
+          },
+          {
+            "text": "checks",
+            "start": 30.44,
+            "end": 30.68
+          }
+        ]
+      },
+      {
+        "start": 30.68,
+        "end": 31.88,
+        "text": "in? Tell me below.",
+        "words": [
+          {
+            "text": "in?",
+            "start": 30.68,
+            "end": 30.92
+          },
+          {
+            "text": "Tell",
+            "start": 31.46,
+            "end": 31.52
+          },
+          {
+            "text": "me",
+            "start": 31.52,
+            "end": 31.64
+          },
+          {
+            "text": "below.",
+            "start": 31.64,
+            "end": 31.88
+          }
+        ]
+      }
+    ]
   },
   "qa": {
     "fact_checked": true,

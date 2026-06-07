@@ -71,8 +71,8 @@
       "subline": "Miso Labs open-sourced an 8B emotive voice model that clones a voice from seconds of audio.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a smooth featureless theatrical mask resting on an old microphone stand in the dark, catching a hard rim of light, strong empty lower third",
-      "background_asset": "/backgrounds/2026-06-07_misotts-voice-cloning_cover.png",
-      "asset_status": "needed",
+      "background_asset": "/backgrounds/2026-06-07_misotts-voice-cloning/01_cover.png",
+      "asset_status": "generated",
       "cta": "SWIPE →",
       "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
     },
@@ -84,8 +84,8 @@
       "subline": "It can mimic a voice and its emotion from a short reference clip.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a polished mask tilted toward an old microphone, a faint ripple of sound curling between them, dark editorial, calm empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_misotts-voice-cloning/02_context.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -97,8 +97,8 @@
       "subline": "That is the engine behind vishing, fake-relative scams, and wire-transfer fraud.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "an old telephone handset lying off the hook in the dark with a thin glowing thread leading to a faceless silhouette, tense high contrast, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_misotts-voice-cloning/03_risk.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -110,8 +110,8 @@
       "subline": "The model watermarks its output by default, but a motivated abuser can strip that.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a short coil of recording tape feeding into a blank porcelain mask that is slowly forming a face, dark, focal in the upper area",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_misotts-voice-cloning/04_mechanism.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -123,8 +123,8 @@
       "subline": "Attackers only need one urgent call that sounds like the boss.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a hand reaching to press a single glowing approve button while holding a telephone to the ear, a small ignored note nearby, dark, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_misotts-voice-cloning/05_failure-point.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -136,8 +136,8 @@
       "subline": "Require dual authorization for wire transfers, not a voice on the line.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "two separate telephones on opposite sides of the dark joined by one bright steady thread, a small closed padlock floating between them, calm and orderly, empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_misotts-voice-cloning/06_defense.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -149,8 +149,8 @@
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a cracked porcelain mask in deep shadow with a thin rim of light along the fracture, center kept dark and open",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_misotts-voice-cloning/07_takeaway.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -162,8 +162,8 @@
       "subline": "Save this for your next fraud-awareness review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a clean dark end-card scene, a single telephone handset resting in vast empty negative space, premium editorial cybersecurity look",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-07_misotts-voice-cloning/08_cta.png",
+      "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "notes": ""
     }
@@ -210,7 +210,72 @@
       "claim_tag": "reported_fact"
     }
   ],
-  "asset_licenses": [],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-07_misotts-voice-cloning/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_misotts-voice-cloning/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_misotts-voice-cloning/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_misotts-voice-cloning/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_misotts-voice-cloning/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_misotts-voice-cloning/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_misotts-voice-cloning/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-07_misotts-voice-cloning/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
   "video": {
     "enabled": true,
     "duration_seconds": 28,
@@ -296,7 +361,574 @@
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
     "sfx": [],
-    "licenses": []
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 1.94,
+        "text": "A familiar voice is no longer proof",
+        "words": [
+          {
+            "text": "A",
+            "start": 0.0,
+            "end": 0.48
+          },
+          {
+            "text": "familiar",
+            "start": 0.48,
+            "end": 0.74
+          },
+          {
+            "text": "voice",
+            "start": 0.74,
+            "end": 1.1
+          },
+          {
+            "text": "is",
+            "start": 1.1,
+            "end": 1.26
+          },
+          {
+            "text": "no",
+            "start": 1.26,
+            "end": 1.42
+          },
+          {
+            "text": "longer",
+            "start": 1.42,
+            "end": 1.76
+          },
+          {
+            "text": "proof",
+            "start": 1.76,
+            "end": 1.94
+          }
+        ]
+      },
+      {
+        "start": 1.94,
+        "end": 3.0,
+        "text": "that it is really them.",
+        "words": [
+          {
+            "text": "that",
+            "start": 1.94,
+            "end": 2.26
+          },
+          {
+            "text": "it",
+            "start": 2.26,
+            "end": 2.36
+          },
+          {
+            "text": "is",
+            "start": 2.36,
+            "end": 2.48
+          },
+          {
+            "text": "really",
+            "start": 2.48,
+            "end": 2.68
+          },
+          {
+            "text": "them.",
+            "start": 2.68,
+            "end": 3.0
+          }
+        ]
+      },
+      {
+        "start": 3.7,
+        "end": 5.6,
+        "text": "Mizzo Labs just open sourced an 8",
+        "words": [
+          {
+            "text": "Mizzo",
+            "start": 3.7,
+            "end": 4.08
+          },
+          {
+            "text": "Labs",
+            "start": 4.08,
+            "end": 4.26
+          },
+          {
+            "text": "just",
+            "start": 4.26,
+            "end": 4.58
+          },
+          {
+            "text": "open",
+            "start": 4.58,
+            "end": 4.8
+          },
+          {
+            "text": "sourced",
+            "start": 4.8,
+            "end": 5.14
+          },
+          {
+            "text": "an",
+            "start": 5.14,
+            "end": 5.36
+          },
+          {
+            "text": "8",
+            "start": 5.36,
+            "end": 5.6
+          }
+        ]
+      },
+      {
+        "start": 5.6,
+        "end": 8.02,
+        "text": "billion parameter emotive voice model that can",
+        "words": [
+          {
+            "text": "billion",
+            "start": 5.6,
+            "end": 5.86
+          },
+          {
+            "text": "parameter",
+            "start": 5.86,
+            "end": 6.46
+          },
+          {
+            "text": "emotive",
+            "start": 6.46,
+            "end": 6.96
+          },
+          {
+            "text": "voice",
+            "start": 6.96,
+            "end": 7.16
+          },
+          {
+            "text": "model",
+            "start": 7.16,
+            "end": 7.5
+          },
+          {
+            "text": "that",
+            "start": 7.5,
+            "end": 7.9
+          },
+          {
+            "text": "can",
+            "start": 7.9,
+            "end": 8.02
+          }
+        ]
+      },
+      {
+        "start": 8.02,
+        "end": 9.46,
+        "text": "clone a voice from seconds of audio,",
+        "words": [
+          {
+            "text": "clone",
+            "start": 8.02,
+            "end": 8.24
+          },
+          {
+            "text": "a",
+            "start": 8.24,
+            "end": 8.34
+          },
+          {
+            "text": "voice",
+            "start": 8.34,
+            "end": 8.56
+          },
+          {
+            "text": "from",
+            "start": 8.56,
+            "end": 8.74
+          },
+          {
+            "text": "seconds",
+            "start": 8.74,
+            "end": 8.96
+          },
+          {
+            "text": "of",
+            "start": 8.96,
+            "end": 9.2
+          },
+          {
+            "text": "audio,",
+            "start": 9.2,
+            "end": 9.46
+          }
+        ]
+      },
+      {
+        "start": 10.04,
+        "end": 11.78,
+        "text": "so verify any sensitive request on a",
+        "words": [
+          {
+            "text": "so",
+            "start": 10.04,
+            "end": 10.12
+          },
+          {
+            "text": "verify",
+            "start": 10.12,
+            "end": 10.34
+          },
+          {
+            "text": "any",
+            "start": 10.34,
+            "end": 10.7
+          },
+          {
+            "text": "sensitive",
+            "start": 10.7,
+            "end": 11.12
+          },
+          {
+            "text": "request",
+            "start": 11.12,
+            "end": 11.36
+          },
+          {
+            "text": "on",
+            "start": 11.36,
+            "end": 11.7
+          },
+          {
+            "text": "a",
+            "start": 11.7,
+            "end": 11.78
+          }
+        ]
+      },
+      {
+        "start": 11.78,
+        "end": 13.5,
+        "text": "second channel, call back a known number,",
+        "words": [
+          {
+            "text": "second",
+            "start": 11.78,
+            "end": 11.96
+          },
+          {
+            "text": "channel,",
+            "start": 11.96,
+            "end": 12.3
+          },
+          {
+            "text": "call",
+            "start": 12.62,
+            "end": 12.7
+          },
+          {
+            "text": "back",
+            "start": 12.7,
+            "end": 12.88
+          },
+          {
+            "text": "a",
+            "start": 12.88,
+            "end": 13.02
+          },
+          {
+            "text": "known",
+            "start": 13.02,
+            "end": 13.12
+          },
+          {
+            "text": "number,",
+            "start": 13.12,
+            "end": 13.5
+          }
+        ]
+      },
+      {
+        "start": 13.76,
+        "end": 14.8,
+        "text": "or agree on a code word with",
+        "words": [
+          {
+            "text": "or",
+            "start": 13.76,
+            "end": 13.82
+          },
+          {
+            "text": "agree",
+            "start": 13.82,
+            "end": 14.04
+          },
+          {
+            "text": "on",
+            "start": 14.04,
+            "end": 14.2
+          },
+          {
+            "text": "a",
+            "start": 14.2,
+            "end": 14.3
+          },
+          {
+            "text": "code",
+            "start": 14.3,
+            "end": 14.48
+          },
+          {
+            "text": "word",
+            "start": 14.48,
+            "end": 14.66
+          },
+          {
+            "text": "with",
+            "start": 14.66,
+            "end": 14.8
+          }
+        ]
+      },
+      {
+        "start": 14.8,
+        "end": 16.7,
+        "text": "family and your team. A voice you",
+        "words": [
+          {
+            "text": "family",
+            "start": 14.8,
+            "end": 15.1
+          },
+          {
+            "text": "and",
+            "start": 15.1,
+            "end": 15.36
+          },
+          {
+            "text": "your",
+            "start": 15.36,
+            "end": 15.48
+          },
+          {
+            "text": "team.",
+            "start": 15.48,
+            "end": 15.72
+          },
+          {
+            "text": "A",
+            "start": 16.32,
+            "end": 16.32
+          },
+          {
+            "text": "voice",
+            "start": 16.32,
+            "end": 16.54
+          },
+          {
+            "text": "you",
+            "start": 16.54,
+            "end": 16.7
+          }
+        ]
+      },
+      {
+        "start": 16.7,
+        "end": 19.28,
+        "text": "recognize is not identity anymore, verify the",
+        "words": [
+          {
+            "text": "recognize",
+            "start": 16.7,
+            "end": 16.94
+          },
+          {
+            "text": "is",
+            "start": 16.94,
+            "end": 17.3
+          },
+          {
+            "text": "not",
+            "start": 17.3,
+            "end": 17.48
+          },
+          {
+            "text": "identity",
+            "start": 17.48,
+            "end": 17.78
+          },
+          {
+            "text": "anymore,",
+            "start": 17.78,
+            "end": 18.34
+          },
+          {
+            "text": "verify",
+            "start": 18.76,
+            "end": 18.9
+          },
+          {
+            "text": "the",
+            "start": 18.9,
+            "end": 19.28
+          }
+        ]
+      },
+      {
+        "start": 19.28,
+        "end": 21.0,
+        "text": "request on a channel the caller cannot",
+        "words": [
+          {
+            "text": "request",
+            "start": 19.28,
+            "end": 19.5
+          },
+          {
+            "text": "on",
+            "start": 19.5,
+            "end": 19.78
+          },
+          {
+            "text": "a",
+            "start": 19.78,
+            "end": 19.86
+          },
+          {
+            "text": "channel",
+            "start": 19.86,
+            "end": 20.16
+          },
+          {
+            "text": "the",
+            "start": 20.16,
+            "end": 20.42
+          },
+          {
+            "text": "caller",
+            "start": 20.42,
+            "end": 20.6
+          },
+          {
+            "text": "cannot",
+            "start": 20.6,
+            "end": 21.0
+          }
+        ]
+      },
+      {
+        "start": 21.0,
+        "end": 21.22,
+        "text": "fake.",
+        "words": [
+          {
+            "text": "fake.",
+            "start": 21.0,
+            "end": 21.22
+          }
+        ]
+      },
+      {
+        "start": 21.96,
+        "end": 23.76,
+        "text": "Does your wire transfer approval still trust",
+        "words": [
+          {
+            "text": "Does",
+            "start": 21.96,
+            "end": 22.0
+          },
+          {
+            "text": "your",
+            "start": 22.0,
+            "end": 22.14
+          },
+          {
+            "text": "wire",
+            "start": 22.14,
+            "end": 22.36
+          },
+          {
+            "text": "transfer",
+            "start": 22.36,
+            "end": 22.7
+          },
+          {
+            "text": "approval",
+            "start": 22.7,
+            "end": 23.1
+          },
+          {
+            "text": "still",
+            "start": 23.1,
+            "end": 23.42
+          },
+          {
+            "text": "trust",
+            "start": 23.42,
+            "end": 23.76
+          }
+        ]
+      },
+      {
+        "start": 23.76,
+        "end": 25.6,
+        "text": "a familiar voice on the phone? Tell",
+        "words": [
+          {
+            "text": "a",
+            "start": 23.76,
+            "end": 23.9
+          },
+          {
+            "text": "familiar",
+            "start": 23.9,
+            "end": 24.08
+          },
+          {
+            "text": "voice",
+            "start": 24.08,
+            "end": 24.52
+          },
+          {
+            "text": "on",
+            "start": 24.52,
+            "end": 24.7
+          },
+          {
+            "text": "the",
+            "start": 24.7,
+            "end": 24.8
+          },
+          {
+            "text": "phone?",
+            "start": 24.8,
+            "end": 25.02
+          },
+          {
+            "text": "Tell",
+            "start": 25.02,
+            "end": 25.6
+          }
+        ]
+      },
+      {
+        "start": 25.6,
+        "end": 25.94,
+        "text": "me below.",
+        "words": [
+          {
+            "text": "me",
+            "start": 25.6,
+            "end": 25.74
+          },
+          {
+            "text": "below.",
+            "start": 25.74,
+            "end": 25.94
+          }
+        ]
+      }
+    ]
   },
   "qa": {
     "fact_checked": true,

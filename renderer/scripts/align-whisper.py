@@ -43,6 +43,10 @@ CORRECTIONS = {
     "unslot": "Unsloth", "unsloss": "Unsloth",
     "vox cpm": "VoxCPM", "voxcom": "VoxCPM",
     "hexstrike": "HexStrike", "net scaler": "NetScaler",
+    # "Nous" (Nous Research) is French, spoken like "noo" (silent s); narration spells it
+    # phonetically so VoxCPM says it right, and we map the transcription back to "Nous" for the
+    # caption. "Nous" is also in KNOWN_NOUNS so Whisper is biased toward that spelling.
+    "noo": "Nous", "noos": "Nous", "noose": "Nous",
     # Whisper fuses fast-spoken word pairs or drops a trailing consonant. Corrections are
     # applied per word token, so keys must be single tokens; these are never legitimate in
     # this domain ("lease" → "least privilege" context), so they're safe to apply globally.
@@ -73,17 +77,17 @@ def merge_hyphens(words):
     return out
 
 
-def fix_proper_nouns(words):
-    """Apply CORRECTIONS to merged caption words (case-insensitive, punctuation-preserving)."""
+def fix_proper_nouns(words, corrections):
+    """Apply corrections to merged caption words (case-insensitive, punctuation-preserving)."""
     import re
     for w in words:
-        for bad, good in CORRECTIONS.items():
+        for bad, good in corrections.items():
             w["text"] = re.sub(rf"(?i)\b{re.escape(bad)}\b", good, w["text"])
     return words
 
 
 # Extra project nouns Whisper should spell right but that aren't in CORRECTIONS' typo map.
-KNOWN_NOUNS = ["Ollama", "Unsloth", "VoxCPM", "HexStrike", "NetScaler", "Gemma", "Hermes"]
+KNOWN_NOUNS = ["Ollama", "Unsloth", "VoxCPM", "HexStrike", "NetScaler", "Gemma", "Hermes", "Nous"]
 
 
 def build_noun_hint(narration) -> str:
@@ -192,7 +196,10 @@ def main() -> None:
             words.append({"text": w.word.strip(), "start": float(w.start), "end": float(w.end)})
     if not words:
         sys.exit("Whisper returned no words — check the audio.")
-    words = fix_proper_nouns(merge_hyphens(words))  # un-split compounds/numbers + fix proper nouns
+    # Per-post caption_corrections (e.g. {"new": "Nous"}) extend the global map for THIS post only,
+    # so a phonetic narration spelling can be mapped back without risking other posts' captions.
+    corrections = {**CORRECTIONS, **{str(k).lower(): str(v) for k, v in (video.get("caption_corrections") or {}).items()}}
+    words = fix_proper_nouns(merge_hyphens(words), corrections)  # un-split compounds/numbers + fix proper nouns
     words = trim_trailing_hallucination(words, video.get("narration") or [], voice_wav)
     print(f"  {len(words)} words, {words[-1]['end']:.1f}s total")
 

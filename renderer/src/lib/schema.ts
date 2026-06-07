@@ -168,6 +168,10 @@ export const VideoSpec = z.object({
   caption_mode: CaptionMode.default("block"),
   audio: AudioSpec.default({ voice_mode: "none", music_mode: "none", voice_gain_db: 0, music_gain_db: -18 }),
   captions: z.array(CaptionLine).optional(), // written by `bun run align`; voice-synced
+  // Optional per-post fixups applied by `bun run align` AFTER Whisper, e.g. {"new":"Nous"} when
+  // narration spells a name phonetically. Scoped to THIS post, so it can safely remap a common
+  // word (like "new") that would be unsafe to correct globally.
+  caption_corrections: z.record(z.string(), z.string()).optional(),
   narration: z.array(Narration).default([]),
   beats: z.array(Beat).min(1),
   subtitle_style: z.string().optional().default(""),
