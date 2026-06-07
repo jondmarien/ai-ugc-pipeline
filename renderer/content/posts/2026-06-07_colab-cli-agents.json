@@ -8,7 +8,7 @@
   "pillar": "data_leakage",
   "theme": "ai",
   "audience": "security_practitioners",
-  "core_claim": "Google's Colab CLI lets AI agents run arbitrary Python on remote GPUs and TPUs under your Google identity, so the data-leakage risk is agent code execution with your credentials and a two-way data path you have to scope down.",
+  "core_claim": "Google's Colab CLI lets AI agents run arbitrary Python on remote GPUs and TPUs under your Google identity, so the data-leakage risk is a two-way exfiltration channel plus a billable compute account a hijacked agent can drain from Google IP space.",
   "claim_tags": [
     "reported_fact",
     "emerging",
@@ -68,9 +68,9 @@
       "role": "cover",
       "kicker": "AI × CYBERSECURITY",
       "on_slide_copy": "YOUR AI AGENT CAN NOW RUN CODE ON GOOGLE'S GPUS UNDER YOUR LOGIN",
-      "subline": "Google's Colab CLI gives agents a one-command path to remote GPUs and TPUs. Your login comes along for the ride.",
+      "subline": "Google's Colab CLI gives agents a one-command path to billable GPUs and TPUs. Your login and your data ride along.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a long mechanical arm stretching across a wide dark chasm to press a single glowing button on a distant tall metal pillar, dramatic rim light, strong empty lower third",
+      "visual_prompt": "a single steel shipping container suspended on a thick cable high above a dark loading yard at night, slowly lowering toward an unseen dock, hard rim light along its ribs, deep shadow filling the empty lower third",
       "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/01_cover.png",
       "asset_status": "generated",
       "cta": "SWIPE →",
@@ -81,9 +81,9 @@
       "role": "context",
       "kicker": "WHAT CHANGED",
       "on_slide_copy": "Google shipped a Colab CLI that runs Python on remote GPUs and TPUs straight from the terminal.",
-      "subline": "It is built so AI agents can drive it, not just people.",
+      "subline": "It is built so AI agents can drive the loading, not just people.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a single glowing thread running from a small handheld remote out across a vast dark distance to a faraway machine, calm empty lower third",
+      "visual_prompt": "a towering automated cargo crane reaching down into a dark port at night, its long boom swinging a container outward over open water, no operator in the cab, cold rim light tracing the steel lattice, calm empty lower third",
       "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/02_context.png",
       "asset_status": "generated",
       "cta": "",
@@ -93,10 +93,10 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT MATTERS",
-      "on_slide_copy": "A prompt-injected agent can spin up a GPU box and run arbitrary code on Google's network under your identity.",
-      "subline": "Your data moves both ways through upload, download, and a mounted Drive.",
+      "on_slide_copy": "Upload, download, and a mounted Drive turn the runtime into a two-way freight line that carries your data off the premises.",
+      "subline": "A prompt-injected agent ships your files out and pulls payloads back in, all under your identity.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "two open suitcases facing each other in the dark with a stream of glowing papers flowing both directions between them, tense high contrast, lower third clear",
+      "visual_prompt": "a long freight conveyor belt spanning a deep dark chasm with crates riding it in both directions at once, some sliding out toward the void and others returning, tense high contrast, lower third clear",
       "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/03_risk.png",
       "asset_status": "generated",
       "cta": "",
@@ -106,10 +106,10 @@
       "slide": 4,
       "role": "mechanism",
       "kicker": "HOW IT WORKS",
-      "on_slide_copy": "The CLI authenticates with your Google account and stores the session on your machine, and the agent reuses it for every run.",
-      "subline": "One leaked token or an over-broad scope widens the blast radius into your cloud project.",
+      "on_slide_copy": "The CLI signs in with your Google account, so every runtime the agent starts bills A100, H100, or TPU time to you.",
+      "subline": "A hijacked agent becomes a cost-bomb that mines compute from Google IP space on your tab.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a single brass key plugged into a small lockbox that feeds a long glowing cable off into the dark, focal in the upper area",
+      "visual_prompt": "a single industrial fuel pipeline running through the dark into a spinning utility meter whose dial is racing, fluid surging through the pipe under hard rim light, focal in the upper area",
       "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/04_mechanism.png",
       "asset_status": "generated",
       "cta": "",
@@ -119,10 +119,10 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "WHERE TEAMS FAIL",
-      "on_slide_copy": "People sign in once with their primary account and hand the agent a long-lived, broadly scoped token.",
-      "subline": "Auto-teardown then deletes the runtime, and most of the forensic trail with it.",
+      "on_slide_copy": "Teams sign in once with their primary account, so nobody watches the spend or the bytes leaving until the bill lands.",
+      "subline": "Auto-teardown deletes the runtime and most of the trail of what shipped out, so the exfiltration goes unwitnessed.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a wide-open vault door with a key left in the lock while a small warning tag lies ignored on the floor, dark, lower third clear",
+      "visual_prompt": "an empty night loading dock with a single forklift pallet abandoned mid-aisle and a roll-up door left fully open onto darkness, faint rim light on the concrete, lower third clear",
       "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/05_failure-point.png",
       "asset_status": "generated",
       "cta": "",
@@ -132,10 +132,10 @@
       "slide": 6,
       "role": "defense",
       "kicker": "DEFENSIVE MOVE",
-      "on_slide_copy": "Give agents a dedicated low-privilege Google account with the narrowest scope and short-lived auth, never your main one.",
-      "subline": "Keep the session logs the CLI exports as an audit trail of what the runtime actually did.",
+      "on_slide_copy": "Run agents on a dedicated low-privilege Google account with hard budgets and quotas, and review what each runtime uploads.",
+      "subline": "Watch what leaves and what it spends, then keep the session logs the CLI exports as your egress and billing trail.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a small modest key on a short tether beside a closed ledger book in the dark, calm and orderly, empty lower third",
+      "visual_prompt": "a single calibrated utility gauge mounted on a freight pipeline in the dark, its needle resting steady at a marked limit line, calm and orderly under soft rim light, empty lower third",
       "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/06_defense.png",
       "asset_status": "generated",
       "cta": "",
@@ -145,10 +145,10 @@
       "slide": 7,
       "role": "takeaway",
       "kicker": "TAKEAWAY",
-      "on_slide_copy": "Agent code execution {{is not a convenience}}. [[It is your identity running untrusted code on someone else's GPU.]]",
+      "on_slide_copy": "Agent code execution {{is not just compute}}. [[It is a two-way data pipe and a billable account, both signed in as you.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a single glowing fingerprint pressed onto a cold metal surface in deep shadow, center kept dark and open",
+      "visual_prompt": "a single weathered cargo manifest tag wired to a freight crate in deep shadow, swinging slightly under a hard shaft of rim light, center kept dark and open",
       "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/07_takeaway.png",
       "asset_status": "generated",
       "cta": "",
@@ -158,34 +158,34 @@
       "slide": 8,
       "role": "cta",
       "kicker": "YOUR MOVE",
-      "on_slide_copy": "Would you let an agent run code on remote GPUs with your Google login?",
+      "on_slide_copy": "Would you let an agent spend your compute and move your data on your Google login?",
       "subline": "Save this before you wire an agent into your cloud.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a clean dark end-card scene, a single unplugged cable coiled in vast empty negative space, premium editorial cybersecurity look",
+      "visual_prompt": "a clean dark end-card scene, a single closed industrial pump valve standing in vast empty negative space, premium editorial cybersecurity look",
       "background_asset": "/backgrounds/2026-06-07_colab-cli-agents/08_cta.png",
       "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "notes": ""
     }
   ],
-  "caption": "Google shipped a Colab CLI that runs Python on remote GPUs and TPUs straight from the terminal, and it is explicitly built so AI agents can drive it, not just people. It is open source under Apache-2.0, and it authenticates with your Google account.\n\nThat is the exposure. An agent with terminal access now has a one-command path to spin up a GPU or TPU box and run arbitrary code on Google's network, authenticated as you. If that agent gets prompt-injected, it acts with your identity. Data moves both ways through upload, download, and a mounted Drive, which is a clean exfil channel. The session token sits on your machine, so a leaked token or an over-broad scope widens the blast radius into your cloud project. The auto-teardown that deletes the runtime also deletes most of the forensic trail.\n\nTreat agent code execution as untrusted. Do not hand an agent a long-lived, broadly scoped token from your primary account. Give it a dedicated low-privilege Google account with the narrowest scope and short-lived auth, then keep the session logs the CLI can export as your audit trail.\n\nAgent code execution is not a convenience. It is your identity running untrusted code on someone else's GPU.\n\nWould you let an agent run code on remote GPUs with your Google login?\n\nFollow for AI security breakdowns without the fake panic.",
+  "caption": "Google shipped a Colab CLI that runs Python on remote GPUs and TPUs straight from the terminal, and it is explicitly built so AI agents can drive it, not just people. It is open source under Apache-2.0, and it authenticates with your Google account.\n\nThink about the two things that flow through that login. First, data. The CLI ships files with upload, pulls them back with download, and mounts your Drive, so the runtime is a clean two-way exfiltration channel. A prompt-injected agent can quietly push your files out and pull payloads back in, all signed in as you. Second, money. Every runtime the agent starts bills A100, H100, or TPU time to your account, so a hijacked agent turns into a cost-bomb that can mine compute from Google IP space on your tab. The auto-teardown that deletes the runtime also deletes most of the trail of what shipped out and what it spent.\n\nSo watch what leaves and what it spends. Do not hand an agent a long-lived, broadly scoped token from your primary account. Give it a dedicated low-privilege Google account with hard budgets and quotas, review what each runtime uploads, then keep the session logs the CLI can export as your egress and billing trail.\n\nAgent code execution is not just compute. It is a two-way data pipe and a billable account, both signed in as you.\n\nWould you let an agent spend your compute and move your data on your Google login?\n\nFollow for AI security breakdowns without the fake panic.",
   "hashtags": [
     "AI agents",
-    "data leakage",
+    "data exfiltration",
     "cloud security",
-    "OAuth",
-    "least privilege"
+    "cloud cost",
+    "OAuth"
   ],
-  "comment_prompt": "Would you let an agent run code on remote GPUs with your own Google login, or only a throwaway account?",
+  "comment_prompt": "Would you let an agent spend your compute and move your data on your own Google login, or only a throwaway account?",
   "alt_text": [
-    "Slide 1 (cover): a long mechanical arm stretching across a dark chasm to press a glowing button on a distant tall metal pillar, with the headline in the lower third.",
-    "Slide 2 (context): a single glowing thread running from a small handheld remote across a vast dark distance to a faraway machine.",
-    "Slide 3 (risk): two open suitcases facing each other with a stream of glowing papers flowing both directions between them.",
-    "Slide 4 (mechanism): a single brass key plugged into a small lockbox that feeds a long glowing cable off into the dark.",
-    "Slide 5 (failure_point): a wide-open vault door with a key left in the lock while a small warning tag lies ignored on the floor.",
-    "Slide 6 (defense): a small modest key on a short tether beside a closed ledger book in the dark.",
-    "Slide 7 (takeaway): a single glowing fingerprint pressed onto a cold metal surface in deep shadow.",
-    "Slide 8 (cta): a single unplugged cable coiled in empty dark space, with the comment question and handle."
+    "Slide 1 (cover): a single steel shipping container suspended on a thick cable high above a dark loading yard at night, lowering toward an unseen dock, with the headline in the lower third.",
+    "Slide 2 (context): a towering automated cargo crane reaching into a dark port at night, swinging a container out over open water with no operator in the cab.",
+    "Slide 3 (risk): a long freight conveyor belt spanning a deep dark chasm with crates riding it in both directions at once, some sliding out toward the void and others returning.",
+    "Slide 4 (mechanism): an industrial fuel pipeline running through the dark into a spinning utility meter whose dial is racing as fluid surges through the pipe.",
+    "Slide 5 (failure_point): an empty night loading dock with a single forklift pallet abandoned mid-aisle and a roll-up door left fully open onto darkness.",
+    "Slide 6 (defense): a single calibrated utility gauge mounted on a freight pipeline in the dark, its needle resting steady at a marked limit line.",
+    "Slide 7 (takeaway): a single weathered cargo manifest tag wired to a freight crate in deep shadow, swinging slightly under a hard shaft of light.",
+    "Slide 8 (cta): a single closed industrial pump valve standing in empty dark space, with the comment question and handle."
   ],
   "sources": [
     {
@@ -303,17 +303,17 @@
       {
         "start": 11,
         "end": 18,
-        "text": "So don't hand an agent your main login. Give it a dedicated low-privilege account with a narrow, short-lived scope, and keep the session logs."
+        "text": "So don't hand an agent your main login. Give it a low-privilege account with hard budgets, watch what leaves and what it spends, and keep the session logs."
       },
       {
         "start": 18,
         "end": 23,
-        "text": "Agent code execution is not a convenience. It is your identity running untrusted code on someone else's GPU."
+        "text": "Agent code execution is not just compute. It is a two-way data pipe and a billable account, both signed in as you."
       },
       {
         "start": 23,
         "end": 28,
-        "text": "Would you let an agent run code on remote GPUs with your Google login? Tell me below."
+        "text": "Would you let an agent spend your compute and move your data on your Google login? Tell me below."
       }
     ],
     "beats": [
@@ -339,7 +339,7 @@
         "slide_ref": 6,
         "purpose": "defense",
         "motion": "slow push-in",
-        "caption": "Don't hand an agent your main login. Give it a low-privilege account with a narrow scope, and keep the logs."
+        "caption": "Don't hand an agent your main login. Give it a low-privilege account with hard budgets, and watch what leaves."
       },
       {
         "start": 18,
@@ -347,7 +347,7 @@
         "slide_ref": 7,
         "purpose": "takeaway",
         "motion": "static high contrast",
-        "caption": "Agent code execution is not a convenience. It is your identity running untrusted code on someone else's GPU."
+        "caption": "Agent code execution is not just compute. It is a two-way data pipe and a billable account, both signed in as you."
       },
       {
         "start": 23,
@@ -355,7 +355,7 @@
         "slide_ref": 8,
         "purpose": "cta",
         "motion": "end card",
-        "caption": "Would you let an agent run code on remote GPUs with your Google login? Tell me below."
+        "caption": "Would you let an agent spend your compute and move your data on your Google login? Tell me below."
       }
     ],
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
@@ -660,7 +660,7 @@
       {
         "start": 14.72,
         "end": 17.14,
-        "text": "low-privilege account with a narrow short-lived scope",
+        "text": "low-privilege account with hard budgets, watch what leaves,",
         "words": [
           {
             "text": "low-privilege",
@@ -678,23 +678,28 @@
             "end": 15.98
           },
           {
-            "text": "a",
+            "text": "hard",
             "start": 15.98,
-            "end": 16.08
+            "end": 16.2
           },
           {
-            "text": "narrow",
-            "start": 16.08,
-            "end": 16.3
+            "text": "budgets,",
+            "start": 16.2,
+            "end": 16.5
           },
           {
-            "text": "short-lived",
-            "start": 16.3,
-            "end": 16.86
+            "text": "watch",
+            "start": 16.5,
+            "end": 16.72
           },
           {
-            "text": "scope",
-            "start": 16.86,
+            "text": "what",
+            "start": 16.72,
+            "end": 16.92
+          },
+          {
+            "text": "leaves,",
+            "start": 16.92,
             "end": 17.14
           }
         ]
@@ -734,36 +739,41 @@
       {
         "start": 19.42,
         "end": 21.1,
-        "text": "Agent code-exac is not a convenience.",
+        "text": "Agent code execution is not just compute.",
         "words": [
           {
             "text": "Agent",
             "start": 19.42,
-            "end": 19.42
+            "end": 19.7
           },
           {
-            "text": "code-exac",
-            "start": 19.42,
-            "end": 20.34
+            "text": "code",
+            "start": 19.7,
+            "end": 20.0
+          },
+          {
+            "text": "execution",
+            "start": 20.0,
+            "end": 20.5
           },
           {
             "text": "is",
-            "start": 20.34,
-            "end": 20.56
+            "start": 20.5,
+            "end": 20.66
           },
           {
             "text": "not",
-            "start": 20.56,
-            "end": 20.76
-          },
-          {
-            "text": "a",
-            "start": 20.76,
+            "start": 20.66,
             "end": 20.86
           },
           {
-            "text": "convenience.",
+            "text": "just",
             "start": 20.86,
+            "end": 20.98
+          },
+          {
+            "text": "compute.",
+            "start": 20.98,
             "end": 21.1
           }
         ]
@@ -771,7 +781,7 @@
       {
         "start": 21.9,
         "end": 23.92,
-        "text": "It is your identity running untrusted code",
+        "text": "It is a two-way data pipe and a",
         "words": [
           {
             "text": "It",
@@ -784,28 +794,33 @@
             "end": 22.1
           },
           {
-            "text": "your",
+            "text": "a",
             "start": 22.1,
             "end": 22.24
           },
           {
-            "text": "identity",
+            "text": "two-way",
             "start": 22.24,
-            "end": 22.6
+            "end": 22.7
           },
           {
-            "text": "running",
-            "start": 22.6,
-            "end": 23.0
+            "text": "data",
+            "start": 22.7,
+            "end": 23.1
           },
           {
-            "text": "untrusted",
-            "start": 23.0,
-            "end": 23.66
+            "text": "pipe",
+            "start": 23.1,
+            "end": 23.5
           },
           {
-            "text": "code",
-            "start": 23.66,
+            "text": "and",
+            "start": 23.5,
+            "end": 23.7
+          },
+          {
+            "text": "a",
+            "start": 23.7,
             "end": 23.92
           }
         ]
@@ -813,26 +828,41 @@
       {
         "start": 23.92,
         "end": 24.96,
-        "text": "on someone else's GPU.",
+        "text": "billable account, both signed in as you.",
         "words": [
           {
-            "text": "on",
+            "text": "billable",
             "start": 23.92,
-            "end": 24.14
+            "end": 24.24
           },
           {
-            "text": "someone",
-            "start": 24.14,
-            "end": 24.34
+            "text": "account,",
+            "start": 24.24,
+            "end": 24.5
           },
           {
-            "text": "else's",
-            "start": 24.34,
-            "end": 24.74
+            "text": "both",
+            "start": 24.5,
+            "end": 24.66
           },
           {
-            "text": "GPU.",
-            "start": 24.74,
+            "text": "signed",
+            "start": 24.66,
+            "end": 24.8
+          },
+          {
+            "text": "in",
+            "start": 24.8,
+            "end": 24.88
+          },
+          {
+            "text": "as",
+            "start": 24.88,
+            "end": 24.92
+          },
+          {
+            "text": "you.",
+            "start": 24.92,
             "end": 24.96
           }
         ]
@@ -840,7 +870,7 @@
       {
         "start": 25.62,
         "end": 26.96,
-        "text": "Would you let an agent run code",
+        "text": "Would you let an agent spend your compute",
         "words": [
           {
             "text": "Would",
@@ -868,13 +898,18 @@
             "end": 26.46
           },
           {
-            "text": "run",
+            "text": "spend",
             "start": 26.46,
             "end": 26.7
           },
           {
-            "text": "code",
+            "text": "your",
             "start": 26.7,
+            "end": 26.82
+          },
+          {
+            "text": "compute",
+            "start": 26.82,
             "end": 26.96
           }
         ]
@@ -882,26 +917,31 @@
       {
         "start": 26.96,
         "end": 28.98,
-        "text": "on remote GPUs with your Google login?",
+        "text": "and move your data on your Google login?",
         "words": [
           {
-            "text": "on",
+            "text": "and",
             "start": 26.96,
             "end": 27.2
           },
           {
-            "text": "remote",
+            "text": "move",
             "start": 27.2,
             "end": 27.44
           },
           {
-            "text": "GPUs",
+            "text": "your",
             "start": 27.44,
-            "end": 27.74
+            "end": 27.6
           },
           {
-            "text": "with",
-            "start": 27.74,
+            "text": "data",
+            "start": 27.6,
+            "end": 27.9
+          },
+          {
+            "text": "on",
+            "start": 27.9,
             "end": 28.28
           },
           {
