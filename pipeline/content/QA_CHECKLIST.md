@@ -110,7 +110,7 @@ Notes: ____
 
 ---
 
-## Fast triage (the 9 questions, if short on time)
+## Fast triage (the 13 questions, if short on time)
 
 1. Verified claim or scenario — and is that obvious from the wording?
 2. Could this help someone execute abuse? (Must be **no**.)
@@ -121,5 +121,12 @@ Notes: ____
 7. **Does Slide 1 flip a common belief in the first second?**
 8. **Is Slide 7 a non-obvious tactical framework (not a generic tip)?**
 9. **Does Slide 8 name a feeling the audience has actually had?**
+
+**Swipe-funnel gates** (added 2026-06-07 from `pipeline/content/ingested/` + external research):
+
+10. **Cover is 8 words or fewer** (excluding subline), and the promise is concrete and countable (a number, a named object, a verb), not abstract. If it needs more words, the hook isn't sharp enough yet; let the subline carry the qualifier. (The first slide carries roughly 80% of carousel engagement.)
+11. **Slide 2 proves the cover wasn't bait:** it states the problem and the stakes in the reader's terms. Would a skeptic who swiped think "worth my time" from slide 2 alone?
+12. **Standalone test:** each inner slide, screenshotted alone with zero context, still communicates one complete idea. This is a verified mechanism, not taste: Instagram re-serves carousels to non-interactors starting from slide 2, so any slide can be someone's first impression.
+13. **Save-object test:** the takeaway slide (N−1) is something a defender would screenshot — a named checklist, a decision rule, a query/detection snippet, or a fill-in-the-blank framework (fallback: one sharp quotable rule). Saves and DM sends are the highest-weighted ranking signals (Mosseri, Jan 2025: watch time, likes per reach, sends per reach).
 
 If any answer is wrong, it doesn't ship.
