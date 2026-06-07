@@ -100,6 +100,8 @@ sequenceDiagram
 | 4 | free-comfyui | `free-comfyui.mjs` | ComfyUI `/free` → VRAM released | non-fatal if ComfyUI is down |
 | 5 | voice | `voice.mjs` → `voice-voxcpm.py` | `narration[]` → `voice.wav` (+ `voice.meta.json` seed) | `voice_mode=none` or `--no-voice` |
 | 6 | align | `align.mjs` → `align-whisper.py` | `voice.wav` → `captions[]` word timings | runs with voice |
+
+> **align-whisper.py details:** uses a SHORT proper-noun-only Whisper `initial_prompt` (prevents the decoder skipping the opening and dropping early captions); applies a global proper-noun CORRECTIONS map plus an optional per-post `video.caption_corrections` map; and trims trailing VoxCPM clone hallucination from both the audio and the captions (`trim_trailing_hallucination`).
 | 7 | reel | `render-reel.ts` | slides + captions + audio → `<prefix>_reel.mp4` | `--no-reel` or `video.enabled=false` |
 
 ### Skip / decision logic

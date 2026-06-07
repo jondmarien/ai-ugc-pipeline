@@ -26,10 +26,11 @@ Every command takes a **post key** = any unique substring of a file in `content/
 | `bun run reel -- <key>` | `<date_slug>_reel.mp4` (1080×1920 @30fps) — only if `video.enabled: true` |
 | `bun run voice -- <key>` | generate narration → `public/audio/<prefix>/voice.wav` (routes by `voice_mode`) |
 | `bun run align -- <key>` | Whisper word-timestamps → `beat.words[]` for exact `word`/`highlight` caption sync |
-| `bun run art -- <key>` | generate AI backgrounds for inner slides (FLUX.1-schnell, local) → `public/backgrounds/<prefix>/` |
+| `bun run art -- <key>` | generate AI backgrounds for inner slides (FLUX.2-klein 4B by default; FLUX.1-schnell is legacy via `--flux1`; local) → `public/backgrounds/<prefix>/` |
 | `bun run import-bg -- <key> <folder>` | import externally-generated backgrounds (e.g. ComfyUI GGUF) → copies + sets `asset_status: existing` |
 | `bun run dev` | live preview at `http://localhost:4317/?post=<slug>&mode=deck` |
 | `bun run typecheck` | typecheck app + remotion |
+| `bun run draft-context` | print a variety digest of recent posts (overused hooks, image motifs, and defender-takeaway angles) so the next draft stays distinct |
 
 `pillar` ∈ `offensive_ai · model_security · data_leakage · defensive_ai · governance · myth_busting`.
 
@@ -73,7 +74,7 @@ It researches real sources (WebSearch), writes a schema-valid `content/posts/<da
 cd renderer
 bun run draft -- "AI agents leaking RAG data" model_security
 #   add [YYYY-MM-DD] to set the date
-#   --captions=block|word|highlight   reel subtitle animation (default block)
+#   --captions=block|word|highlight   reel subtitle animation (default highlight)
 #   --no-render       stop after JSON + validate (review before rendering)
 #   --carousel-only   skip the reel
 #   --yolo            unattended (claude --permission-mode bypassPermissions)
@@ -122,18 +123,18 @@ cp content/posts/2026-06-02_ai-phishing-training.json content/posts/2026-06-13_m
 
 ### Backgrounds
 - **Inner slides** default to `asset_status: "procedural"` → a CSS-generated cyber background (dark + accent glow + grid). No image needed, but it's minimalist — that's the "blank-ish" look.
-- **Real AI imagery on every slide:** `bun run art -- <key>` generates a background per inner slide with **FLUX.1-schnell** (local, Apache-2.0, commercial-OK — no server/Docker), writing to `public/backgrounds/<prefix>/` and flipping each slide to `asset_status: "generated"`. It builds each prompt from the slide's `visual_prompt` (or its on-slide copy + the post's core claim, so the image matches the topic). Then `bun run export` bakes them in.
-  - Setup (uv): `uv pip install "diffusers>=0.31" transformers accelerate torch sentencepiece protobuf pillow`. Fits 8GB via cpu-offload (~10–20s/image after a one-time weights download). Preview prompts with `--dry-run`; include the cover too with `--all`; swap models with `ART_MODEL` (e.g. an SDXL repo). Log the model in the package `LICENSES.md`.
-  - **Model choices (commercial-safe, 8GB):** default **FLUX.1-schnell** (Apache-2.0). **FLUX.2 [klein] 4B** (`ART_MODEL=black-forest-labs/FLUX.2-klein-4B`, Apache-2.0) is newer and fits 8GB **at FP8 (~6GB)** — the script auto-uses `Flux2KleinPipeline` if your diffusers has it; otherwise the **most reliable 8GB route is ComfyUI's official FP8 Klein-4B workflow**, then drop the PNGs into `public/backgrounds/<prefix>/` and set the slides to `asset_status: "existing"`. **Avoid FLUX.2 [dev]/[klein] 9B — non-commercial and too large for 8GB.** SDXL (OpenRAIL++) is the LoRA-ecosystem alternative.
+- **Real AI imagery on every slide:** `bun run art -- <key>` generates a background per inner slide with **FLUX.2 [klein] 4B** by default (local, Apache-2.0, commercial-OK — no server/Docker; **FLUX.1-schnell is legacy via `--flux1`**), writing to `public/backgrounds/<prefix>/` and flipping each slide to `asset_status: "generated"`. It builds each prompt from the slide's `visual_prompt` (or its on-slide copy + the post's core claim, so the image matches the topic). Then `bun run export` bakes them in.
+  - Setup (uv): `uv pip install "diffusers>=0.38" transformers accelerate torch sentencepiece protobuf pillow` (0.38.0 patches a trust_remote_code CVE). Fits 8GB via cpu-offload (~10–20s/image after a one-time weights download). Preview prompts with `--dry-run`; include the cover too with `--all`; swap models with `ART_MODEL` (e.g. an SDXL repo). Log the model in the package `LICENSES.md`.
+  - **Model choices (commercial-safe, 8GB):** default **FLUX.2 [klein] 4B** (Apache-2.0), tuned for 8GB **at FP8 (~6GB)** / GGUF (~3GB) — the script auto-uses `Flux2KleinPipeline` if your diffusers has it; otherwise the **most reliable 8GB route is ComfyUI's official FP8 Klein-4B workflow**, then drop the PNGs into `public/backgrounds/<prefix>/` and set the slides to `asset_status: "existing"`. **FLUX.1-schnell** (Apache-2.0) is the legacy/fallback engine via `--flux1`. **Avoid FLUX.2 [dev]/[klein] 9B — non-commercial and too large for 8GB.** SDXL (OpenRAIL++) is the LoRA-ecosystem alternative.
 - **Cover** (or any slide) can use a hand-made image: drop a text-free PNG in `public/backgrounds/`, set `background_asset` + `asset_status: "existing"`.
 - The scaffolder pre-points the cover at `public/backgrounds/<prefix>_cover.png` with status `needed` (renders procedurally until the file exists + you flip it to `existing`).
 
 ### Reels specifically
 A reel renders from the post's `video` block. Each `beat` = `{start, end, slide_ref, purpose, motion, caption}`; the beat with `"purpose": "cta"` becomes the end card. Keep beats 3–6s, hook in the first ~2s. Full model: `REMOTION_REEL_WORKFLOW.md`.
 
-**Subtitle style** is `video.caption_mode`: `block` (paragraph per scene, default), `word` (one word at a time), or `highlight` (full line, active word lit). Set it with `bun run new -- … --captions=<mode>` (or `--captions=` on draft, `captions=` in the slash commands), or just edit `video.caption_mode` in the JSON and re-run `bun run reel`.
+**Subtitle style** is `video.caption_mode`: `highlight` (full line, active word lit, default), `block` (rolling 2–3 word window per scene), or `word` (one word at a time). Set it with `bun run new -- … --captions=<mode>` (or `--captions=` on draft, `captions=` in the slash commands), or just edit `video.caption_mode` in the JSON and re-run `bun run reel`.
 
-**Exact word sync (Whisper):** by default `word`/`highlight` distribute word timing evenly across each beat (good enough). For *lip-tight* sync, after you've generated `voice.wav`, run **`bun run align -- <key>`** — it transcribes the audio with Whisper (`faster-whisper`, word timestamps, uses your `.venv`/GPU) and writes real per-word timings into `video.beats[].words[]`. Then `bun run reel -- <key>` snaps each word to the audio. Setup: `uv pip install faster-whisper`. Model via `WHISPER_MODEL` (default `base.en`). Whisper is **speech→text** — it aligns the existing narration, it does not generate the voice.
+**Exact word sync (Whisper):** by default `word`/`highlight` distribute word timing evenly across each beat (good enough). For *lip-tight* sync, after you've generated `voice.wav`, run **`bun run align -- <key>`** — it transcribes the audio with Whisper (`faster-whisper`, word timestamps, uses your `.venv`/GPU) and writes real per-word timings into `video.beats[].words[]`. Then `bun run reel -- <key>` snaps each word to the audio. Setup: `uv pip install faster-whisper`. Model via `WHISPER_MODEL` (default `base.en`). Whisper is **speech→text** — it aligns the existing narration, it does not generate the voice. `align` also applies an optional per-post `video.caption_corrections` map (and a global proper-noun CORRECTIONS map) to fix Whisper mis-transcriptions before writing the captions.
 
 **Audio** is `video.audio` and is optional + file-driven (default = silent):
 - `voice_mode`: `none` | `voxcpm2` (generate locally) | `file` (you supply `voice.wav`).

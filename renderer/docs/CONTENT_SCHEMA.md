@@ -69,15 +69,17 @@ The JSON contract the renderer consumes, mapped from `../../pipeline/content/POS
 `{ source, link, supports, confidence: high|medium|low, claim_tag }` — all required.
 
 ### `VideoSpec` (Reels)
-`{ enabled, duration_seconds, fps, export_name, caption_mode, narration[], beats[], subtitle_style, music, sfx[], licenses[] }`.
+`{ enabled, duration_seconds, fps, export_name, caption_mode, caption_corrections?, narration[], beats[], subtitle_style, music, sfx[], licenses[] }`.
 Each `beat` = `{ start, end, slide_ref, purpose, motion, caption, words? }`. `purpose: "cta"` renders the end card.
 
-**`caption_mode`** ∈ `block | word | highlight` (default `block`) — how burned-in captions animate:
-- `block` — full caption per scene (current behavior).
-- `word` — one word at a time (karaoke).
+**`caption_mode`** ∈ `block | word | highlight` (default `highlight`) — how burned-in captions animate:
 - `highlight` — full line shown, current word lit in the pillar accent.
+- `block` — rolling 2–3 word window per scene.
+- `word` — one word at a time (karaoke).
 
 Set it per post via `bun run new -- … --captions=<mode>`, the `--captions=` flag on `bun run draft`, or `captions=<mode>` in `/draft-post` / `/draft-week`. Word timing is distributed evenly across each beat window; optional per-word `beat.words[]` timings are reserved for future audio-synced alignment.
+
+**`video.caption_corrections`** (optional) — a `{ "from": "to" }` map applied by `bun run align` **after** Whisper transcription, scoped to that one post, to correct mis-transcribed proper nouns. Example: the narration says "Nous" and the voice pronounces it phonetically, so Whisper hears "new" — set `caption_corrections: { "new": "Nous" }` to map the transcription back. Safer than the global proper-noun CORRECTIONS map because it only affects this post.
 
 **`video.audio`** — selectable reel audio (like captions):
 ```
