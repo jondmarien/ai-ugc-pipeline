@@ -8,23 +8,25 @@ How the AI-in-cybersecurity UGC pipeline is put together — the layers, the one
 
 ## 1. The big picture
 
+> **Legend:** `[LLM]` = the agent does this · `[code]` = a deterministic script · `[human]` = you. The Content layer (skills) is `[LLM]`; Authoring, Render, and External are `[code]`.
+
 Three layers sit on top of one source of truth. Content gets *designed* (skills + commands), *written into* a single post JSON, then *rendered* into upload-ready files. Nothing downstream invents claims — if it isn't in the JSON, it doesn't get drawn or spoken.
 
 ```mermaid
 flowchart TB
-    subgraph Content["Content layer"]
+    subgraph Content["Content layer — [LLM] skills + docs"]
         CMD["/draft-post · /draft-week"]
-        SK1["Skill: ai-cybersecurity-ugc-carousel<br/>hooks · slide script (3–20, default 8) · caption"]
-        SK2["Skill: react-remotion-instagram-renderer<br/>maps content to JSON schema"]
+        SK1["[LLM] Skill: ai-cybersecurity-ugc-carousel<br/>hooks · slide script (3–20, default 8) · caption"]
+        SK2["[LLM] Skill: react-remotion-instagram-renderer<br/>maps content to JSON schema"]
         DOCS["pipeline/content/*.md<br/>QA_CHECKLIST · CAPTION_BANK · VOICE_AND_TONE_GUIDE"]
     end
-    subgraph Authoring["Authoring (bun scripts)"]
+    subgraph Authoring["Authoring (bun scripts) — [code]"]
         NEW["new-post.ts"]
         DRAFT["draft.mjs / draft-week.mjs"]
         VAL["validate.ts (zod)"]
     end
     JSON["Post JSON<br/>renderer/content/posts/&lt;key&gt;.json<br/><b>source of truth</b>"]
-    subgraph Render["Render layer · pipeline.mjs orchestrates"]
+    subgraph Render["Render layer · pipeline.mjs orchestrates — [code]"]
         ART["art-comfyui.mjs"]
         EXP["export-carousel.ts<br/>Playwright → PNG"]
         PKG["build-package.ts"]
@@ -32,7 +34,7 @@ flowchart TB
         ALIGN["align.mjs → align-whisper.py"]
         REEL["render-reel.ts (Remotion)"]
     end
-    subgraph External["External / ML (GPU)"]
+    subgraph External["External / ML (GPU) — [code]"]
         COMFY["ComfyUI :8000"]
         VOX["VoxCPM2"]
         WHIS["faster-whisper"]
@@ -109,6 +111,8 @@ ai-ugc-pipeline/
 ---
 
 ## 4. The data model — one post JSON
+
+*Data model: the `[LLM]` agent fills it; `validate.ts` `[code]` enforces the invariants.*
 
 Every post is a single JSON validated by `PostData` in `schema.ts`. It carries the content, the carousel slides, the reel spec, the sources, the QA flags, and the upload manifest. The renderer reads it; it never adds claims.
 
@@ -199,9 +203,9 @@ A post moves `draft → approved → upload_ready`, and a human does the final u
 stateDiagram-v2
     direction LR
     [*] --> draft
-    draft --> approved : QA gates pass
-    approved --> upload_ready : rendered + packaged
-    upload_ready --> [*] : manual human upload
+    draft --> approved : QA gates pass [human]
+    approved --> upload_ready : rendered + packaged [code]
+    upload_ready --> [*] : manual human upload [human]
     note right of draft
         per-slide asset_status:
         needed -> generated / existing / procedural
@@ -211,6 +215,8 @@ stateDiagram-v2
 ---
 
 ## 6. Runtime & process boundaries (8 GB, one model at a time)
+
+*All `[code]`: the GPU hand-off is automated.*
 
 The hard constraint: an RTX 3070 Ti has **8 GB of VRAM**, and the diffusion model (ComfyUI) and the speech models (VoxCPM2, Whisper) can't all live there at once. So the pipeline keeps **one big model resident at a time** — it generates all the art through the persistent ComfyUI server, then calls `free-comfyui` to unload it before voice/align take the GPU. The carousel export and reel render are CPU/Chromium work and don't fight for VRAM.
 

@@ -12,40 +12,44 @@ How an **idea** becomes an **approved, schema-valid post JSON**, before a single
             post JSON ─▶ art (FLUX.2) ─▶ carousel PNGs ─▶ package ─▶ voice (VoxCPM2) ─▶ align (Whisper) ─▶ reel.mp4
 ```
 
+**Who does each step:** `[code]` (a deterministic script, no LLM) = `draft-context`, `bun run new`, `validate`, `pipeline`. `[LLM]` (the agent) = content design, the research loop, filling the JSON with real copy + sources, and the copy chain. `[human]` = approval and the manual upload. The diagrams below carry these tags. (So "Fill JSON / replace TODOs + sources" is `[LLM]` — the scaffolder only writes empty TODOs and a placeholder source.)
+
 Positioning rule for everything below: **real threats, real tools, no fake panic.** Sourced or `[Scenario]`, a concrete defender takeaway, human approval before posting.
 
 ---
 
 ## Diagrams
 
+> **Legend:** `[LLM]` = the agent (Claude) does this step · `[code]` = a deterministic script · `[human]` = you.
+
 ### Flow: idea to validated JSON (and the hand-off to render)
 
 ```mermaid
 flowchart LR
-  idea(["Idea"]) --> dc["bun run draft-context<br/>(variety digest)"]
-  dc --> design["Content design<br/>ai-cybersecurity-ugc-carousel"]
-  design --> research["Research loop<br/>landscape - triangulate - tier"]
-  research --> map["Schema map<br/>react-remotion-instagram-renderer"]
-  map --> scaffold["bun run new<br/>scaffold skeleton"]
-  scaffold --> fill["Fill JSON<br/>replace TODOs + sources"]
-  fill --> copy["Copy chain<br/>humanizer - stop-slop - proofreader"]
-  copy --> validate{"bun run validate"}
+  idea(["Idea"]) --> dc["[code] bun run draft-context<br/>(variety digest)"]
+  dc --> design["[LLM] Content design<br/>ai-cybersecurity-ugc-carousel"]
+  design --> research["[LLM] Research loop<br/>landscape - triangulate - tier"]
+  research --> map["[LLM] Schema map<br/>react-remotion-instagram-renderer"]
+  map --> scaffold["[code] bun run new<br/>scaffold skeleton"]
+  scaffold --> fill["[LLM] Fill JSON<br/>replace TODOs + sources"]
+  fill --> copy["[LLM] Copy chain<br/>humanizer - stop-slop - proofreader"]
+  copy --> validate{"[code] bun run validate"}
   validate -- fix --> fill
   validate -- clean --> json[("post JSON")]
-  json --> render["bun run pipeline<br/>art - carousel - voice - align - reel"]
+  json --> render["[code] bun run pipeline<br/>art - carousel - voice - align - reel"]
 ```
 
 ### Sequence: what `/draft-post` actually does
 
 ```mermaid
 sequenceDiagram
-  actor U as User
-  participant C as "Claude (/draft-post)"
-  participant D as draft-context
-  participant W as "Web (Search/Fetch)"
-  participant K as Skills
-  participant J as "post JSON"
-  participant V as validate
+  actor U as User [human]
+  participant C as Claude [LLM]
+  participant D as draft-context [code]
+  participant W as Web Search/Fetch
+  participant K as Skills [LLM]
+  participant J as post JSON
+  participant V as validate [code]
   U->>C: /draft-post idea | pillar
   C->>D: bun run draft-context
   D-->>C: NOT-list (hooks, motifs, angles)
@@ -65,6 +69,8 @@ sequenceDiagram
 ```
 
 ### Schema (ERD): the post JSON the draft stage produces
+
+*The `[LLM]` agent fills these fields; `validate.ts` `[code]` enforces the invariants (slide numbering, `alt_text` length = slide count, `score.total` = sum of axes).*
 
 ```mermaid
 erDiagram
@@ -116,11 +122,11 @@ erDiagram
 
 ```mermaid
 stateDiagram-v2
-  [*] --> draft: bun run new / draft
-  draft --> draft: fix + re-validate
-  draft --> approved: human review passes
-  approved --> upload_ready: bun run pipeline renders + packages
-  upload_ready --> [*]: manual upload (human)
+  [*] --> draft: bun run new [code]
+  draft --> draft: fix + re-validate [LLM] + [code]
+  draft --> approved: human review [human]
+  approved --> upload_ready: bun run pipeline [code]
+  upload_ready --> [*]: manual upload [human]
 ```
 
 ---
