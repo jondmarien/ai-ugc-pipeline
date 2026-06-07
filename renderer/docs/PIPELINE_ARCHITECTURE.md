@@ -1,6 +1,6 @@
 # Pipeline Architecture
 
-The content-to-render pipeline, end to end: how a sourced idea becomes a validated post JSON and then a carousel + reel. For the system-wide view (layers, data model, GPU boundaries) see [PROJECT_ARCHITECTURE.md](./PROJECT_ARCHITECTURE.md).
+The content-to-render pipeline, end to end: how a sourced idea becomes a validated post JSON and then a carousel + reel. For the system-wide view (layers, data model, GPU boundaries) see [PROJECT_ARCHITECTURE.md](./PROJECT_ARCHITECTURE.md). For the pre-render "Assemble" stage in depth (variety digest, research loop, copy chain) see [DRAFT_PIPELINE_ARCHITECTURE.md](./DRAFT_PIPELINE_ARCHITECTURE.md).
 
 There are two entry points. **`/draft-post`** (and `/draft-week`) takes an *idea* and does everything — research, write, scaffold, validate, render. **`bun run pipeline`** is the render-only engine you call when the JSON already exists (you hand-edited it, or you're re-rendering).
 
