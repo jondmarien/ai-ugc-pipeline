@@ -42,6 +42,7 @@ The whole point: kill the patterns that read as machine-made, keep the traits th
 - "not just X, but Y": zero or one.
 - Rhythm: visibly uneven sentence/paragraph lengths.
 - **Voice signal:** at least one line only Jon would write (a number, a dry aside, a named tool). If you can't point to it, add it.
+- **Name-removed test:** strip the handle; would a regular reader still attribute this caption to Jon? If it could be any AI-security account, run the humanizer again. (Judgment prompt, not a hard gate.)
 - Close: a specific question or the strongest line — never a generic CTA.
 - Facts intact: every claim still matches its source + claim_tag. Voice never invents or softens a fact.
 

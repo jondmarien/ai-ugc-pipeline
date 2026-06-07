@@ -55,14 +55,16 @@ Use this default 8-slide structure unless another structure fits better. The sli
 
 | Slide | Purpose | Copy pattern |
 | --- | --- | --- |
-| 1 | Cover hook | “AI PHISHING JUST CROSSED A LINE MOST TEAMS ARE NOT READY FOR” |
-| 2 | What happened | State the event, pattern, or scenario in plain language |
+| 1 | Cover hook | 8 words max, concrete and countable (a number, a named object, a verb). Its only job is stopping the scroll; the subline carries any qualifier. e.g. “AI PHISHING JUST CROSSED A LINE” |
+| 2 | What happened | Prove the cover wasn’t bait: state the event/pattern AND the stakes in the reader’s terms. Pass/fail: a skeptic who swiped thinks “worth my time” from this slide alone, or the funnel leaks here. |
 | 3 | Why it matters | Explain the security impact, not the hype |
 | 4 | How it works | Describe the mechanism at a safe, high level |
 | 5 | Where teams fail | Identify the gap in people, process, or tooling |
 | 6 | Defensive move | Give practical controls or review steps |
-| 7 | Takeaway | Compress the lesson into one memorable line. **Accent-mark it:** wrap the affirmative point in `[[…]]` (renders in the theme accent colour) and any negation/"what it's NOT" in `{{…}}` (renders red). e.g. `The win {{isn't 'AI that thinks.'}} [[It's an agent you own and can contain.]]` |
+| 7 | Takeaway | The **save-object**: a named checklist, decision rule, query/detection snippet, or fill-in-the-blank framework a defender would screenshot (fallback: one sharp quotable rule — see CAPTION_BANK §3). Compress the lesson into one memorable line. **Accent-mark it:** wrap the affirmative point in `[[…]]` (renders in the theme accent colour) and any negation/"what it's NOT" in `{{…}}` (renders red). e.g. `The win {{isn't 'AI that thinks.'}} [[It's an agent you own and can contain.]]` |
 | 8 | CTA | Ask a specific question and invite following/saving |
+
+**Slide-count guidance (2026-06-07, sourced):** plan the content first, then set the count. Industry data (Hootsuite/Later/Socialinsider, 2025–2026) puts peak engagement at 8–10 slides, but completion rate beats slide count: a tight 5 with zero filler outperforms a padded 10, and low completion reads to the ranking system as a broken promise. Never pad to hit a number. **Every slide must pass the standalone test** (one complete idea with zero context) because Instagram re-serves carousels to non-interactors starting from slide 2: any slide can be someone’s first impression.
 
 For **longer list posts** (`slides=N`, N>8), keep cover → context → a run of `point` body slides (one item each) → takeaway → CTA. For **short posts** (N<8), drop the least-essential middle roles (e.g. N=5: cover, context, risk, takeaway, cta). For myth-busting posts, use: viral claim, what is true, what is exaggerated, what actually matters, defender takeaway.
 

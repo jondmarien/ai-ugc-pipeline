@@ -32,6 +32,10 @@ Formula = **specific actor/object + unexpected AI action + clear consequence.** 
 
 **Hook hygiene:** if a number isn't sourced, drop it. "Most," "many," "a lot of" beat an invented "73%."
 
+> **Cover budget + concrete-promise heuristic** (2026-06-07, `pipeline/content/ingested/`)
+> - **8 words max on the cover** (excluding subline). The cover's only job is stopping the scroll; qualifiers move to the subline. Industry data puts ~80% of carousel engagement on slide 1.
+> - **Concrete and countable beats abstract.** Same-account natural experiment: "steal my X system, 6 rules" pulled ~37x the likes of "the one page system" (@growithalex, May 2026; n=2, uncontrolled — treat as a heuristic, not a law). Prefer numbers, named objects, and verbs over concepts.
+
 ---
 
 ## 2. Caption Frameworks
@@ -117,6 +121,8 @@ Follow for AI security breakdowns without the fake panic.
 | `"Save this [checklist/framework] for your next [scenario]."` | "Save this 3-question vendor eval for your next AI tool purchase." |
 | `"Most teams skip [step]. Don't."` | "Most teams skip output validation on agent tool calls. Don't." |
 
+> **Save-object requirement** (2026-06-07): the takeaway slide must BE the saveable artifact, not just describe one. Pick a format: **named checklist** ("The 3-question agent-permission check"), **decision rule** ("If the agent can write AND reach the internet, it needs a human gate"), **query/detection snippet** (one real KQL/Sigma/SPL line), or **fill-in-the-blank framework** ("Before our agent touches ___, it must ___"). Fallback when the topic resists a framework: one sharp quotable rule. Carousels are the most-saved format on Instagram and saves/sends are the highest-weighted ranking signals; this slide is where reach converts.
+
 ---
 
 ## 4. Resonance Phase Templates (Slide 8 / CTA — for Likes/Comments)
@@ -150,9 +156,11 @@ Rotate so the account doesn't sound robotic. One CTA per post.
 
 ---
 
-## 6. Hashtag Sets (5–10 tags, no stuffing)
+## 6. Hashtag Sets (3–5 tags, categorization only)
 
-Mix 2–3 broad + 3–5 niche + 1–2 topic-specific. Drop any that look spammy.
+> **Updated 2026-06-07 — hashtags are categorization, not reach.** Mosseri (on record, 2025): "Hashtags are no longer a primary way to increase your reach on Instagram. They don't significantly increase your reach." Current platform guidance is **3–5 highly relevant tags max**; more can read as spam. The reach lever moved to **keyword-rich captions**: Instagram indexes caption text for search and recommendations (and is pushing IG content into Google), so write the topic's natural keywords into the caption body ("prompt injection", "SOC triage", "AI agent permissions") instead of stuffing tags. Pick 3–5 from one pillar row below; treat the old 5–10 guidance as deprecated.
+
+Mix 1–2 broad + 2–3 niche. Drop any that look spammy.
 
 | Pillar | Set |
 | --- | --- |
