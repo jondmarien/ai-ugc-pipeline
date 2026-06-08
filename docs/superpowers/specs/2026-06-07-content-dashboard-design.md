@@ -80,11 +80,15 @@ refresh). The app is fully usable offline on cached data.
   profile_picture_url.
 - `GET /api/ig/media` → last 50 posts with id, caption, media_type, timestamp, like_count,
   comments_count, media_url, thumbnail_url, permalink, plus per-post insights. Metrics are split
-  by type because the API rejects mismatches: VIDEO uses views, reach, saved, shares,
+  by type because the API rejects mismatches: VIDEO (Reels) uses views, reach, saved, shares,
   total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time; IMAGE and
-  CAROUSEL_ALBUM use views, reach, saved, shares, total_interactions. (Verified 2026-06-07:
-  `impressions` and `plays` are deprecated for all versions since April 2025; `views` is the
-  universal replacement across media types.)
+  CAROUSEL_ALBUM use reach, saved, shares, total_interactions (NO views). (Verified 2026-06-07
+  against Meta docs + Airbyte's production connector: `impressions`/`plays` deprecated for all
+  versions since April 2025; `views` replaced them but is scoped to FEED/STORY/REELS product
+  types only. Requesting `views` on the CAROUSEL_ALBUM container or an IMAGE returns
+  HTTP 400 (#100), and the insights call is all-or-nothing, so including it would zero out
+  every carousel. The proxy also retries a failed insights call once with a bedrock
+  reach+saved set so one unsupported metric never blanks a post.)
 - `GET /api/repo/posts`, `/api/repo/renders`, `/api/repo/ingested`, `/api/trends`,
   `GET/PUT /api/state/<file>` for local state. `<file>` is validated against an explicit
   allowlist (`schedule.json`, `hooks-meta.json`, `sources.json`); anything else is rejected,
@@ -167,46 +171,4 @@ The chron0s system is built for 1080px slides; the dashboard adapts it rather th
   hairline top edge like slides.
 - **Accents: per-module theme scopes** (approved): Overview + Analytics `theme-defensive` blue,
   Competitor Tracker `theme-offensive` red, Hook Vault `theme-hacking` green, What's Trending
-  `theme-ai` orange, Scheduler + Calendar `theme-purple-team`. Sidebar nav items preview their
-  module's accent.
-- **Charts:** custom minimal bars/sparklines in the module accent on transparent backgrounds.
-  No chart-library default styling.
-- **Motion:** slow cinematic only; hover lifts to accent, soft `cubic-bezier(0.22,0.61,0.36,1)`,
-  no bounce/spin.
-- **Copy rules apply to UI chrome:** no em-dashes, no sentence fragments where a sentence is
-  expected, no AI vocabulary, mono-caps for metadata.
-- Build-time design passes: `impeccable` + `design-taste-frontend` for hierarchy and interaction
-  polish, `huashu-design` for hi-fi iteration and an expert review. The design system is the
-  override authority when guidance conflicts.
-
-## Error handling
-
-- Every module renders fully from cache when its upstream fails, with a mono-caps staleness
-  banner (e.g. `IG DATA · CACHED 14H AGO`).
-- Expired token → one-line fix instruction (run `scripts/refresh_token.ts`), not a stack trace.
-  Sidebar shows token age continuously.
-- IG metric-mismatch errors are prevented structurally by type-splitting in the proxy.
-- Missing repo data (no renders, empty ingested folder, no posts) → designed empty states.
-- Dead RSS sources are skipped and flagged in the source list, never fatal.
-- The server returns `{ data: <cache>, error: <string> }` on upstream failure; it does not crash.
-
-## Ops
-
-- Secrets in `dashboard/.env`, gitignored. Private caches gitignored.
-- `scripts/refresh_token.ts` refreshes the long-lived token, rewrites `.env`, appends to
-  `token_refresh.log`; registered in Windows Task Scheduler at a 58-day interval.
-- `bun run dash` is the single entry point.
-
-## Testing
-
-- `bun test` unit tests on pure logic: engagement formula, metric splitting, hook aggregation,
-  schedule state transitions, RSS parsing.
-- IG proxy tested against recorded fixture responses; no live calls in tests.
-- Playwright screenshot pass per module against fixture data (doubles as future carousel
-  screenshot material).
-- Final gate: verification-before-completion with the dev server running.
-
-## Out of scope (v1)
-
-Auto-posting of any kind; scheduled competitor scraping; trending auto-tagging; YouTube/TikTok
-tabs; Slack/notification digests; multi-user anything.
+  `theme-ai` ora

@@ -6,9 +6,17 @@ const GRAPH = "https://graph.facebook.com/v23.0";
 
 export type MediaType = "VIDEO" | "IMAGE" | "CAROUSEL_ALBUM";
 
+// VIDEO (Reels) supports `views` + reel watch-time metrics.
 const REEL_METRICS = ["views", "reach", "saved", "shares", "total_interactions",
   "ig_reels_avg_watch_time", "ig_reels_video_view_total_time"];
-const FEED_METRICS = ["views", "reach", "saved", "shares", "total_interactions"];
+// IMAGE / CAROUSEL_ALBUM do NOT support `views`: requesting it returns
+// HTTP 400 (#100) "does not support the views metric for this media product type"
+// (Meta scopes `views` to FEED/STORY/REELS; confirmed by Airbyte source PR #72266
+// canary reverts for CAROUSEL_ALBUM and IMAGE). The insights call is all-or-nothing,
+// so including `views` here would 400 the whole request and zero out every carousel.
+const FEED_METRICS = ["reach", "saved", "shares", "total_interactions"];
+// Bedrock metrics supported by every media type; fallback if a richer request 400s.
+const SAFE_METRICS = ["reach", "saved"];
 
 export function metricsFor(type: MediaType): string[] {
   return type === "VIDEO" ? [...REEL_METRICS] : [...FEED_METRICS];
@@ -88,7 +96,14 @@ export async function getMedia(force = false) {
       let insights: Record<string, number> = {};
       try {
         insights = parseInsights(await graphGet(`/${m.id}/insights?metric=${metricsFor(m.media_type).join(",")}`));
-      } catch { /* per-post insights can fail (e.g. very old media); keep the post */ }
+      } catch {
+        // The insights call is all-or-nothing: one unsupported metric 400s the whole
+        // request. Retry once with the bedrock set so a single mismatch (e.g. a legacy
+        // feed video) still yields reach/saved rather than zeroing the post out.
+        try {
+          insights = parseInsights(await graphGet(`/${m.id}/insights?metric=${SAFE_METRICS.join(",")}`));
+        } catch { /* very old / insights-unavailable media: keep the post, empty insights */ }
+      }
       items.push({ ...m, insights });
     }
     return items;
