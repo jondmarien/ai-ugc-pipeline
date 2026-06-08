@@ -1,0 +1,28 @@
+<!-- @dsCard group="Type" viewport="700x250" name="Headline emphasis markup" subtitle="[[accent]] affirmation · {{danger}} negation — used on takeaways" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  html, body { margin: 0; background: var(--bg-deep); color: var(--fg); font-family: var(--font-body); }
+  .wrap { padding: 28px 30px; }
+  .tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  h1 { font-family: var(--font-headline); font-weight: 800; font-size: 42px; line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 18px; text-wrap: balance; }
+  .acc { color: var(--theme-ai); }
+  .neg { color: var(--danger); }
+  .key { font-family: var(--font-mono); font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .key b { color: var(--fg); font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="wrap theme-ai">
+  <div class="tag">Takeaway slide · two-tone emphasis</div>
+  <h1>The win <span class="neg">isn't 'AI that thinks.'</span> <span class="acc">It's an agent you own and can contain.</span></h1>
+  <div class="key">
+    <b>[[ text ]]</b> &nbsp;→ theme accent (the affirmative point)<br/>
+    <b>{{ text }}</b> &nbsp;→ danger red (the negation / what it's NOT)
+  </div>
+</div>
+</body>
+</html>

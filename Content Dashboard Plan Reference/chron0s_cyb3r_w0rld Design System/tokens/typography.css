@@ -1,0 +1,73 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   TYPOGRAPHY — chron0s_cyb3r_w0rld
+   Three families, a tight px scale tuned for a 1080-wide canvas and thumbnail
+   legibility. Headline dominates, subline clarifies, metadata stays quiet —
+   2-3 hierarchy levels per slide, never a paragraph wall.
+   ────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Families ──────────────────────────────────────────────────── */
+  --font-headline: "Archivo", system-ui, sans-serif;   /* 700/800 display */
+  --font-body: "Inter", system-ui, sans-serif;         /* 400-600 body    */
+  --font-mono: "JetBrains Mono", ui-monospace, monospace; /* kicker/meta  */
+
+  /* ── Weights ───────────────────────────────────────────────────── */
+  --weight-body: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-headline: 800;
+
+  /* ── Type scale (px @ 1080-wide canvas) ────────────────────────────
+     These are the on-canvas sizes. In smaller contexts scale them down
+     proportionally (the carousel renders at full 1080 then transforms). */
+  --type-cover-headline: 104px;  /* cover hero — the loudest thing      */
+  --type-headline: 76px;         /* standard slide headline             */
+  --type-takeaway: 96px;         /* takeaway hero (cover - 8)           */
+  --type-subline: 40px;          /* clarifier under the headline        */
+  --type-body: 36px;             /* body copy (rare)                    */
+  --type-cta: 34px;              /* chip / swipe-cue label              */
+  --type-kicker: 26px;           /* mono role label                     */
+  --type-meta: 24px;             /* handle / pagination                 */
+
+  /* ── Line-height + tracking ────────────────────────────────────── */
+  --leading-headline: 1.02;      /* display packs tight                 */
+  --leading-takeaway: 1.05;
+  --leading-subline: 1.22;
+  --tracking-headline: -0.01em;  /* slight negative on big display      */
+  --tracking-kicker: 0.22em;     /* mono labels run wide + uppercase    */
+  --tracking-meta: 0.13em;
+  --tracking-cta: 0.16em;
+}
+
+/* Convenience text roles — opt-in classes mirroring the renderer primitives. */
+.ds-headline {
+  font-family: var(--font-headline);
+  font-weight: var(--weight-headline);
+  font-size: var(--type-headline);
+  line-height: var(--leading-headline);
+  letter-spacing: var(--tracking-headline);
+  text-wrap: balance;
+  margin: 0;
+}
+.ds-subline {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: var(--type-subline);
+  line-height: var(--leading-subline);
+  color: var(--muted);
+  margin: 0;
+}
+.ds-kicker {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-medium);
+  font-size: var(--type-kicker);
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.ds-meta {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-medium);
+  font-size: var(--type-meta);
+  letter-spacing: var(--tracking-meta);
+}
