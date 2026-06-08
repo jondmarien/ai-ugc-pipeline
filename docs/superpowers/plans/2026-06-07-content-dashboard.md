@@ -1301,7 +1301,7 @@ git commit -m "feat(dashboard): RSS/Atom trends fetcher with dead-source flaggin
 **Files:**
 - Modify: `dashboard/server/index.ts`
 
-- [ ] **Step 1: Replace index.ts with the full router**
+- [x] **Step 1: Replace index.ts with the full router**
 
 ```ts
 import { serve } from "bun";
@@ -1387,7 +1387,7 @@ const server = serve({
 console.log(`[dash] server on http://localhost:${server.port}`);
 ```
 
-- [ ] **Step 2: Verify by hand**
+- [x] **Step 2: Verify by hand**
 
 Run `bun run dash`, then:
 - `curl localhost:4400/api/repo/posts` → real posts array, `error: null`.
@@ -1397,11 +1397,11 @@ Run `bun run dash`, then:
 - `curl localhost:4400/api/ig/account` without `.env` → `data: null`, `error` mentions `IG_ACCESS_TOKEN missing` — server still up.
 - `curl localhost:4400/api/trends` → live items (network permitting) and a `trends-cache/trends.json` file appears.
 
-- [ ] **Step 3: Run the whole server test suite**
+- [x] **Step 3: Run the whole server test suite**
 
 Run: `cd dashboard && bun test server` — Expected: all pass.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add dashboard/server/index.ts
