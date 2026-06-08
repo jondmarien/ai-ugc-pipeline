@@ -171,4 +171,46 @@ The chron0s system is built for 1080px slides; the dashboard adapts it rather th
   hairline top edge like slides.
 - **Accents: per-module theme scopes** (approved): Overview + Analytics `theme-defensive` blue,
   Competitor Tracker `theme-offensive` red, Hook Vault `theme-hacking` green, What's Trending
-  `theme-ai` ora
+  `theme-ai` orange, Scheduler + Calendar `theme-purple-team`. Sidebar nav items preview their
+  module's accent.
+- **Charts:** custom minimal bars/sparklines in the module accent on transparent backgrounds.
+  No chart-library default styling.
+- **Motion:** slow cinematic only; hover lifts to accent, soft `cubic-bezier(0.22,0.61,0.36,1)`,
+  no bounce/spin.
+- **Copy rules apply to UI chrome:** no em-dashes, no sentence fragments where a sentence is
+  expected, no AI vocabulary, mono-caps for metadata.
+- Build-time design passes: `impeccable` + `design-taste-frontend` for hierarchy and interaction
+  polish, `huashu-design` for hi-fi iteration and an expert review. The design system is the
+  override authority when guidance conflicts.
+
+## Error handling
+
+- Every module renders fully from cache when its upstream fails, with a mono-caps staleness
+  banner (e.g. `IG DATA · CACHED 14H AGO`).
+- Expired token → one-line fix instruction (run `scripts/refresh_token.ts`), not a stack trace.
+  Sidebar shows token age continuously.
+- IG metric-mismatch errors are prevented structurally by type-splitting in the proxy.
+- Missing repo data (no renders, empty ingested folder, no posts) → designed empty states.
+- Dead RSS sources are skipped and flagged in the source list, never fatal.
+- The server returns `{ data: <cache>, error: <string> }` on upstream failure; it does not crash.
+
+## Ops
+
+- Secrets in `dashboard/.env`, gitignored. Private caches gitignored.
+- `scripts/refresh_token.ts` refreshes the long-lived token, rewrites `.env`, appends to
+  `token_refresh.log`; registered in Windows Task Scheduler at a 58-day interval.
+- `bun run dash` is the single entry point.
+
+## Testing
+
+- `bun test` unit tests on pure logic: engagement formula, metric splitting, hook aggregation,
+  schedule state transitions, RSS parsing.
+- IG proxy tested against recorded fixture responses; no live calls in tests.
+- Playwright screenshot pass per module against fixture data (doubles as future carousel
+  screenshot material).
+- Final gate: verification-before-completion with the dev server running.
+
+## Out of scope (v1)
+
+Auto-posting of any kind; scheduled competitor scraping; trending auto-tagging; YouTube/TikTok
+tabs; Slack/notification digests; multi-user anything.
