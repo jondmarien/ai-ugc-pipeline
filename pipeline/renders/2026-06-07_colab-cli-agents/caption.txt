@@ -1,0 +1,13 @@
+Google shipped a Colab CLI that runs Python on remote GPUs and TPUs straight from the terminal, and it is explicitly built so AI agents can drive it, not just people. It is open source under Apache-2.0, and it authenticates with your Google account.
+
+That is the exposure. An agent with terminal access now has a one-command path to spin up a GPU or TPU box and run arbitrary code on Google's network, authenticated as you. If that agent gets prompt-injected, it acts with your identity. Data moves both ways through upload, download, and a mounted Drive, which is a clean exfil channel. The session token sits on your machine, so a leaked token or an over-broad scope widens the blast radius into your cloud project. The auto-teardown that deletes the runtime also deletes most of the forensic trail.
+
+Treat agent code-exec as untrusted. Do not hand an agent a long-lived, broadly scoped token from your primary account. Give it a dedicated low-privilege Google account with the narrowest scope and short-lived auth, then keep the session logs the CLI can export as your audit trail.
+
+Agent code-exec is not a convenience. It is your identity running untrusted code on someone else's GPU.
+
+Would you let an agent run code on remote GPUs with your Google login?
+
+Follow for AI security breakdowns without the fake panic.
+
+[AI agents, data leakage, cloud security, OAuth, least privilege]

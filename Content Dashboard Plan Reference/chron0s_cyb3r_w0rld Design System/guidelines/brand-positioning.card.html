@@ -1,0 +1,32 @@
+<!-- @dsCard group="Brand" viewport="700x240" name="Positioning & voice" subtitle="Real threats, real tools, no fake panic" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  html, body { margin: 0; background: var(--bg-deep); color: var(--fg); font-family: var(--font-body); }
+  .wrap { padding: 28px 32px; }
+  .pos { font-family: var(--font-headline); font-weight: 800; font-size: 30px; line-height: 1.1; margin: 0 0 6px; }
+  .pos .no { color: var(--theme-hacking); }
+  .sub { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .h { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .do .h { color: var(--theme-defensive); }
+  .dont .h { color: var(--danger); }
+  ul { margin: 0; padding-left: 16px; }
+  li { font-size: 13px; line-height: 1.55; color: var(--fg); }
+  .dont li { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h2 class="pos">Real threats, real tools, <span class="no">no fake panic.</span></h2>
+  <div class="sub">Sharp · practical · dry · first-person · peer-to-peer</div>
+  <div class="cols">
+    <div class="do"><div class="h">We do</div><ul><li>Specific, curiosity-driven hooks</li><li>Tag claims [Verified] / [Emerging] / [Scenario]</li><li>End on a concrete defender takeaway</li></ul></div>
+    <div class="dont"><div class="h">We don't</div><ul><li>Fake panic, invented stats or CVEs</li><li>Em-dashes or sentence fragments</li><li>AI vocab: delve, leverage, seamless, robust</li></ul></div>
+  </div>
+</div>
+</body>
+</html>

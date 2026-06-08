@@ -1,0 +1,30 @@
+<!-- @dsCard group="Spacing" viewport="700x250" name="Slide chrome & rhythm" subtitle="6px accent hairline · 48px kicker rule · 24px content gap" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  html, body { margin: 0; background: var(--bg-deep); color: var(--fg); font-family: var(--font-body); }
+  .slab { position: relative; margin: 24px 30px; height: 200px; background: radial-gradient(120% 100% at 50% 0%, var(--bg-raise), var(--bg) 65%); border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); }
+  .hair { position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--theme-hacking); }
+  .hair-lbl { position: absolute; top: 12px; right: 16px; font-family: var(--font-mono); font-size: 10px; color: var(--muted); }
+  .content { position: absolute; left: 30px; bottom: 26px; display: flex; flex-direction: column; gap: 24px; }
+  .kicker { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--theme-hacking); display:flex; align-items:center; gap:12px; }
+  .kicker span { width: 48px; height: 3px; background: var(--theme-hacking); }
+  .hl { font-family: var(--font-headline); font-weight: 800; font-size: 34px; line-height: 1.02; margin: 0; }
+  .gap-lbl { position: absolute; left: 30px; bottom: 86px; font-family: var(--font-mono); font-size: 10px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="slab">
+  <div class="hair"></div>
+  <div class="hair-lbl">6px accent hairline</div>
+  <div class="content">
+    <div class="kicker"><span></span>Myth vs Reality</div>
+    <h2 class="hl">AI MALWARE IS REAL,<br/>AND MOSTLY OVERHYPED</h2>
+  </div>
+  <div class="gap-lbl">↕ 24px content gap · 48px kicker rule</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!-- @dsCard group="Brand" viewport="700x290" name="Imagery — cinematic key art" subtitle="Dark, high-contrast, one accent glow, generous negative space" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  html, body { margin: 0; background: var(--bg-deep); color: var(--fg); font-family: var(--font-body); }
+  .wrap { padding: 22px 26px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .thumb { aspect-ratio: 4/5; border-radius: 10px; overflow: hidden; border: 1px solid var(--hairline); position: relative; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumb::after { content: attr(data-t); position: absolute; left: 8px; bottom: 7px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg); text-shadow: 0 1px 6px #000; }
+  .cap { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 14px; letter-spacing: 0.03em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grid">
+    <div class="thumb" data-t="defensive · blue"><img src="../assets/backgrounds/blue/01_cover.png" alt="" /></div>
+    <div class="thumb" data-t="offensive · red"><img src="../assets/backgrounds/red/01_cover.png" alt="" /></div>
+    <div class="thumb" data-t="hacking · green"><img src="../assets/backgrounds/green/01_cover.png" alt="" /></div>
+    <div class="thumb" data-t="ai · orange"><img src="../assets/backgrounds/orange/01_cover.png" alt="" /></div>
+  </div>
+  <div class="cap">Text-free, logo-free FLUX key art · prompts carry the house style; only accent + mood change by category. <span style="color:var(--theme-purple-team)">Purple-team</span> has no sample render yet.</div>
+</div>
+</body>
+</html>

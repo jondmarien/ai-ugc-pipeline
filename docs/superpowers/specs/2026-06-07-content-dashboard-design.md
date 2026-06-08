@@ -47,11 +47,16 @@ dashboard/
     ig.ts          IG Graph API proxy. Token from .env, never sent to the browser.
     repo.ts        Read-only access to repo data: renderer/content/posts/*.json,
                    pipeline/renders/, pipeline/content/ingested/, CAPTION_BANK.md.
-    trends.ts      RSS/Atom fetcher driven by an editable sources.json.
+    trends.ts      RSS/Atom fetcher driven by an editable sources.json
+                   (schema: [{ "url": string, "label": string, "enabled": boolean }]).
+                   Ships with a small seed set of AI/security feeds (e.g. Hacker News front
+                   page RSS, BleepingComputer, Simon Willison); Jon edits from there.
     store.ts       Local JSON state (reads/writes dashboard/data/ only).
   src/             Vite + React app
-    design/        chron0s tokens + primitives, copied from the design system folder
-                   ("chron0s_cyb3r_w0rld Design System" is the single upstream source).
+    design/        chron0s tokens + primitives, copied as raw source (.jsx + tokens/*.css)
+                   from "chron0s_cyb3r_w0rld Design System". The prebundled _ds_bundle.js
+                   (window-global) is NOT used; raw sources keep the components typed,
+                   tree-shaken, and editable. The DS folder stays the upstream source of truth.
     modules/       overview/ hooks/ analytics/ competitors/ scheduler/ calendar/ trending/
   data/            schedule.json, hooks-meta.json, sources.json,
                    ig-cache/, trends-cache/   (private caches gitignored)
@@ -75,11 +80,15 @@ refresh). The app is fully usable offline on cached data.
   profile_picture_url.
 - `GET /api/ig/media` → last 50 posts with id, caption, media_type, timestamp, like_count,
   comments_count, media_url, thumbnail_url, permalink, plus per-post insights. Metrics are split
-  by type because the API rejects mismatches: VIDEO uses reach, saved, views, shares,
+  by type because the API rejects mismatches: VIDEO uses views, reach, saved, shares,
   total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time; IMAGE and
-  CAROUSEL_ALBUM use impressions, reach, saved, shares, total_interactions.
+  CAROUSEL_ALBUM use views, reach, saved, shares, total_interactions. (Verified 2026-06-07:
+  `impressions` and `plays` are deprecated for all versions since April 2025; `views` is the
+  universal replacement across media types.)
 - `GET /api/repo/posts`, `/api/repo/renders`, `/api/repo/ingested`, `/api/trends`,
-  `GET/PUT /api/state/<file>` for local state.
+  `GET/PUT /api/state/<file>` for local state. `<file>` is validated against an explicit
+  allowlist (`schedule.json`, `hooks-meta.json`, `sources.json`); anything else is rejected,
+  so no path-style writes outside `dashboard/data/`.
 
 The walkthrough's exact field/metric names are treated as a starting point and verified against
 the live API during implementation; the metric-splitting rule itself is a hard constraint.
@@ -87,16 +96,23 @@ the live API during implementation; the metric-splitting rule itself is a hard c
 **Run:** `bun run dash` from repo root starts server + Vite dev. Port 4400 avoids the renderer's
 4317.
 
+**Build order constraint for planning:** the server proxy/cache contracts and the design-layer
+scaffold land first; modules build on top of those settled contracts and must not be parallelized
+ahead of them.
+
 ## Modules
 
 **Overview.** Greeting bar (handle, follower count from IG cache), three stat cards (IG views 7d,
-follower delta, posts rendered this week), four module summary cards (Hook Vault count + new this
+avg engagement, posts rendered this week; follower delta is deferred to v2 because the Graph API
+exposes no follower history and building a snapshot store is not v1 work), four module summary cards (Hook Vault count + new this
 week; Competitor watchlist + last ingest; Calendar next slots; Trending hook-worthy count).
 Layout mirrors the reference overview slide.
 
 **Hook Vault.** Aggregates hooks from three sources: cover-slide copy in posts JSON, ingested
 analyses in `pipeline/content/ingested/`, and CAPTION_BANK entries. Row = hook text, source,
-type tag (swap / build / claim / list / contrarian), times-used count. Search + filter by type
+type tag (swap / build / claim / list / contrarian), times-used count. Times-used is computed,
+not manual: the count of posts JSON files whose cover `on_slide_copy` matches the hook after
+normalization (case/whitespace), so it stays correct without bookkeeping. Search + filter by type
 and source. "Use this" copies a prefilled `/draft-post <hook> | <pillar>` command to the
 clipboard (the real pipeline entry point; replaces the reference's `/script`). User tags persist
 in `hooks-meta.json`.
@@ -110,12 +126,17 @@ engagement-over-time bars (last 20 posts, likes+comments); best day-of-week and 
 charts (only buckets with ≥1 post); hashtag performance (only tags used 2+, max 12, sorted by
 avg engagement); all-posts grid with sort pills (likes, comments, reach, engagement, saves,
 views, recent), type badges, metric chips, engagement-tier pill, permalink out. Engagement
-rate = (likes + comments + saves + shares) / reach × 100, reach for VIDEO with impressions
-fallback for IMAGE/CAROUSEL. Tiers: ≥5% green, ≥2% accent, below muted. All computed
+rate = (likes + comments + saves + shares) / reach × 100, with views as the denominator
+fallback when reach is missing or zero. Tiers: ≥5% green, ≥2% accent, below muted. All computed
 client-side from the cached payload.
 
 **Competitor Tracker.** Watchlist of handles in local state. Per creator: ingested posts found in
-`pipeline/content/ingested/` (parsed by handle), new-since-last-visit count, last-ingest date.
+`pipeline/content/ingested/`. Attribution is by parsing the `**Handle:**` field from each analysis
+doc's metadata line (a bold-markdown line near the top, not YAML frontmatter; filenames are
+`YYYY-MM-DD_<topic>.md` and do not reliably contain the handle); docs without a handle field group
+under "unattributed". `INDEX.md` and any non-`YYYY-MM-DD_*` file in the folder are excluded from
+analysis-doc parsing. Shows new-since-last-visit count and
+last-ingest date.
 "Queue ingest" copies `/ingest-post <url>` to the clipboard. No scheduled scraping.
 
 **Scheduler (posting queue).** Lists rendered packages from `pipeline/renders/` with their
@@ -123,7 +144,9 @@ caption files. Assign date, time, platforms (labels only). Statuses: queued → 
 "mark posted") with skipped as an exit. State in `schedule.json`. Explicitly does not publish.
 
 **Content Calendar.** Month grid from `schedule.json` plus posted packages (dates parsed from
-`YYYY-MM-DD_slug` folder names). Slot click opens a side panel: full caption, sources file,
+`YYYY-MM-DD_slug` folder names). Folders that do not match the pattern (e.g. the existing
+`pipeline/renders/week 1/`) are skipped for date placement but still listed in the Scheduler's
+package picker. Slot click opens a side panel: full caption, sources file,
 slide thumbnails from the render folder. Platform-colored slot chips like the reference.
 
 **What's Trending.** Items from RSS/Atom sources in editable `sources.json`, cached with
