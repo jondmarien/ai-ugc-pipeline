@@ -1,4 +1,4 @@
-import { AbsoluteFill, Loop, OffthreadVideo, Sequence, staticFile, useVideoConfig } from "remotion";
+import { AbsoluteFill, Img, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import "@fontsource/archivo/700.css";
 import "@fontsource/archivo/800.css";
 import "@fontsource/inter/500.css";
@@ -22,6 +22,21 @@ type Post = {
   wall?: { enabled?: boolean; art_opacity?: number };
 };
 
+// A slow Ken Burns drift over the themed wall still (text-free background). The animated .webm path
+// was dropped because the original source loops had baked-in text; clean animated walls can return
+// later. Spans the whole reel (rendered at the root, not inside a per-beat Sequence).
+function WallBackground({ src }: { src: string }) {
+  const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+  const scale = interpolate(frame, [0, durationInFrames], [1.06, 1.16], { extrapolateRight: "clamp" });
+  const drift = interpolate(frame, [0, durationInFrames], [-2, 2], { extrapolateRight: "clamp" });
+  return (
+    <AbsoluteFill>
+      <Img src={staticFile(src)} style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${scale}) translateX(${drift}%)` }} />
+    </AbsoluteFill>
+  );
+}
+
 // 1080x1920 @ fps. Each VideoSpec beat → a timed Sequence with a Scene + caption.
 // The last beat (purpose "cta") renders the EndCard instead of a caption.
 export function ReelComposition({ post }: { post: Post }) {
@@ -40,17 +55,7 @@ export function ReelComposition({ post }: { post: Post }) {
 
   return (
     <AbsoluteFill style={{ backgroundColor: palette.bgDeep }}>
-      {wall && (
-        <AbsoluteFill>
-          <Loop durationInFrames={Math.max(1, Math.round(wall.seconds * fps))}>
-            <OffthreadVideo
-              src={staticFile(wall.loop.replace(/^\//, ""))}
-              muted
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-          </Loop>
-        </AbsoluteFill>
-      )}
+      {wall && <WallBackground src={wall.still.replace(/^\//, "")} />}
       <AudioBed audio={post.video.audio} />
       {beats.map((beat, i) => {
         const from = Math.round(beat.start * fps);
