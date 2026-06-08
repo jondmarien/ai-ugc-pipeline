@@ -12,7 +12,8 @@
     "@tanstack/react-query": "^5.90.0",
     "fast-xml-parser": "^4.5.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "recharts": "^2.15.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.0",
