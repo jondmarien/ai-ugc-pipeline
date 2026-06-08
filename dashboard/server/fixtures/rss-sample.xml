@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<rss version="2.0"><channel><title>Fixture Feed</title>
+<item><title>AI agent CVE drops</title><link>https://example.com/1</link><pubDate>Sat, 06 Jun 2026 10:00:00 GMT</pubDate></item>
+<item><title>Second item</title><link>https://example.com/2</link><pubDate>Fri, 05 Jun 2026 10:00:00 GMT</pubDate></item>
+</channel></rss>
