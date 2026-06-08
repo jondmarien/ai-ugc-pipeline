@@ -1,0 +1,60 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   COLOR — chron0s_cyb3r_w0rld
+   Dark cinematic AI-cyber editorial. One accent glow per post. The grid stays
+   coherent because the surface system never changes — only the accent swaps.
+   Source of truth: renderer/src/design/tokens.ts (palette + themes + pillars).
+   ────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Base surfaces ─────────────────────────────────────────────── */
+  --bg: #05070d;            /* main cyber-black canvas                */
+  --bg-deep: #02030a;       /* deepest base / letterbox / page bg     */
+  --bg-raise: #0a1322;      /* top of the cover radial wash           */
+  --panel: rgba(2, 6, 23, 0.78);   /* text panels / lower thirds      */
+
+  /* ── Foreground / text ─────────────────────────────────────────── */
+  --fg: #f8fafc;            /* primary text (near-white)              */
+  --muted: #94a3b8;         /* metadata, sublines, captions           */
+  --hairline: rgba(148, 163, 184, 0.18); /* dividers, faint borders   */
+
+  /* ── Semantic ──────────────────────────────────────────────────── */
+  --danger: #ef4444;        /* warnings + the {{negation}} headline ink */
+
+  /* ── Brand themes (the 5-way category colour system) ───────────────
+     A post's THEME drives both the carousel accent and the AI-image
+     mood, so the category reads at a glance. Each theme = accent + a
+     paired secondary used for glows / gradient seconds.                */
+  --theme-defensive: #3b82f6;       /* electric blue — blue-team       */
+  --theme-defensive-2: #22d3ee;
+  --theme-offensive: #ef4444;       /* alert red — red-team / vuln     */
+  --theme-offensive-2: #f43f5e;
+  --theme-hacking: #39ff88;         /* neon green — underground hacker */
+  --theme-hacking-2: #22d3ee;
+  --theme-purple-team: #a855f7;     /* purple — offence + defence      */
+  --theme-purple-team-2: #c084fc;
+  --theme-ai: #f97316;              /* orange — generic / model-centric*/
+  --theme-ai-2: #fb923c;
+
+  /* ── Pillar accents (the older 6-way content-pillar mapping) ───────
+     Still used by some posts; theme overrides when present.            */
+  --pillar-offensive-ai: #22d3ee;   /* cyan          */
+  --pillar-model-security: #3b82f6; /* electric blue */
+  --pillar-data-leakage: #39ff88;   /* neon green    */
+  --pillar-defensive-ai: #2dd4bf;   /* cool teal     */
+  --pillar-governance: #f59e0b;     /* amber         */
+  --pillar-myth-busting: #ef4444;   /* red→blue split (primary = red) */
+
+  /* ── Default accent ────────────────────────────────────────────────
+     Components read --accent / --accent-2; set them per post by adding
+     a theme class (see below). Default = defensive blue.               */
+  --accent: var(--theme-defensive);
+  --accent-2: var(--theme-defensive-2);
+}
+
+/* Theme scopes — put one of these on a slide root (or any wrapper) to
+   recolour every accent-driven element inside it. */
+.theme-defensive   { --accent: var(--theme-defensive);   --accent-2: var(--theme-defensive-2); }
+.theme-offensive   { --accent: var(--theme-offensive);   --accent-2: var(--theme-offensive-2); }
+.theme-hacking     { --accent: var(--theme-hacking);     --accent-2: var(--theme-hacking-2); }
+.theme-purple-team { --accent: var(--theme-purple-team); --accent-2: var(--theme-purple-team-2); }
+.theme-ai          { --accent: var(--theme-ai);          --accent-2: var(--theme-ai-2); }
