@@ -1,0 +1,9 @@
+{ "data": [
+  { "name": "views", "values": [{ "value": 1200 }] },
+  { "name": "reach", "values": [{ "value": 900 }] },
+  { "name": "saved", "values": [{ "value": 30 }] },
+  { "name": "shares", "values": [{ "value": 12 }] },
+  { "name": "total_interactions", "values": [{ "value": 98 }] },
+  { "name": "ig_reels_avg_watch_time", "values": [{ "value": 8200 }] },
+  { "name": "ig_reels_video_view_total_time", "values": [{ "value": 9840000 }] }
+] }
