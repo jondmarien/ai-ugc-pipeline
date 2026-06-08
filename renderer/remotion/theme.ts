@@ -35,11 +35,11 @@ export function themeAccent(post: { theme?: string; pillar: string }): string {
 // animated WebM loop; the still PNG is the carousel's job.
 type Wall = { still: string; loop: string; seconds: number };
 export const themeWall: Record<string, Wall> = {
-  defensive: { still: "/walls/01-defensive-aegis.png", loop: "/walls/01-defensive-aegis.webm", seconds: 5.93 },
-  offensive: { still: "/walls/02-offensive-breach.png", loop: "/walls/02-offensive-breach.webm", seconds: 7.65 },
-  hacking: { still: "/walls/03-hacking-datastream.png", loop: "/walls/03-hacking-datastream.webm", seconds: 7.6 },
-  "purple-team": { still: "/walls/04-purple-team-convergence.png", loop: "/walls/04-purple-team-convergence.webm", seconds: 8.93 },
-  ai: { still: "/walls/05-ai-latent-mesh.png", loop: "/walls/05-ai-latent-mesh.webm", seconds: 4.82 },
+  defensive: { still: "/walls/01-defensive-aegis.png", loop: "/walls/01-defensive-aegis.webm", seconds: 15.83 },
+  offensive: { still: "/walls/02-offensive-breach.png", loop: "/walls/02-offensive-breach.webm", seconds: 11.17 },
+  hacking: { still: "/walls/03-hacking-datastream.png", loop: "/walls/03-hacking-datastream.webm", seconds: 11.1 },
+  "purple-team": { still: "/walls/04-purple-team-convergence.png", loop: "/walls/04-purple-team-convergence.webm", seconds: 18.9 },
+  ai: { still: "/walls/05-ai-latent-mesh.png", loop: "/walls/05-ai-latent-mesh.webm", seconds: 8.17 },
 };
 export function wallFor(post: { theme?: string; pillar: string }): Wall | null {
   const theme = post.theme ?? pillarTheme[post.pillar] ?? "defensive";
