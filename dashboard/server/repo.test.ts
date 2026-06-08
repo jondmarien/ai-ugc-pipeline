@@ -1,5 +1,6 @@
-import { describe, expect, test } from "bun:test";
+import { describe, expect, test, beforeEach, afterEach } from "bun:test";
 import path from "node:path";
+import fs from "node:fs";
 import { listPosts, listRenders, parseRenderDirName } from "./repo";
 
 const fx = path.join(import.meta.dir, "fixtures");
@@ -14,6 +15,25 @@ describe("listPosts", () => {
     expect(p.theme).toBe("defensive");
     expect(p.coverHook).toBe("Your AI agent reads everything. So do attackers.");
     expect(p.slideCount).toBe(2);
+  });
+});
+
+describe("listPosts resilience", () => {
+  const tmp = path.join(fx, "tmp-posts");
+  beforeEach(() => { fs.rmSync(tmp, { recursive: true, force: true }); fs.mkdirSync(tmp, { recursive: true }); });
+  afterEach(() => fs.rmSync(tmp, { recursive: true, force: true }));
+
+  test("skips a corrupt/half-written post instead of throwing", () => {
+    fs.writeFileSync(path.join(tmp, "good.json"), JSON.stringify({
+      post_id: "good", date: "2026-06-08", slug: "good", slides: [{ role: "cover", on_slide_copy: "Hi" }],
+    }));
+    // valid JSON followed by a null-byte tail = the real partial-write artifact we hit
+    fs.writeFileSync(path.join(tmp, "bad.json"), Buffer.concat([
+      Buffer.from(JSON.stringify({ slug: "bad" })), Buffer.alloc(16),
+    ]));
+    const posts = listPosts(tmp);
+    expect(posts).toHaveLength(1);
+    expect(posts[0].slug).toBe("good");
   });
 });
 
