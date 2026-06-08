@@ -231,7 +231,7 @@ export const PostData = z
     wall: z
       .object({
         enabled: z.boolean().default(false),
-        art_opacity: z.number().min(0).max(1).default(0.6),
+        art_opacity: z.number().min(0).max(1).default(0.85),
       })
       .optional(),
     qa: z.record(z.string(), z.unknown()).default({}),

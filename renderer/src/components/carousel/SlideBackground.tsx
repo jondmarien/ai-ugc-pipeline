@@ -42,7 +42,7 @@ export function SlideBackground({ post, slide, accent }: { post: TPostData; slid
   // Optional themed wall: the post theme's still becomes the BASE layer and the per-slide art is
   // composited on top at art_opacity, so the moving/glowing wall shows through the dark areas.
   const wall = post.wall?.enabled ? wallFor(post) : null;
-  const artOpacity = post.wall?.art_opacity ?? 0.6;
+  const artOpacity = post.wall?.art_opacity ?? 0.85;
   const cover: CSSProperties = { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" };
 
   return (
