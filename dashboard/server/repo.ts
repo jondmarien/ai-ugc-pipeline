@@ -21,21 +21,30 @@ export function parseRenderDirName(dirName: string): { date: string | null; slug
 
 export function listPosts(dir: string = POSTS_DIR): RepoPost[] {
   if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir)
-    .filter((f) => f.endsWith(".json"))
-    .map((fileName) => {
-      const j = JSON.parse(fs.readFileSync(path.join(dir, fileName), "utf8"));
-      const slides: any[] = Array.isArray(j.slides) ? j.slides : [];
-      const cover = slides.find((s) => s.role === "cover");
-      return {
-        postId: j.post_id ?? fileName.replace(/\.json$/, ""),
-        date: j.date ?? "", slug: j.slug ?? "", pillar: j.pillar ?? "",
-        theme: j.theme ?? "", caption: j.caption ?? "",
-        coverHook: cover?.on_slide_copy ?? "",
-        slideCount: slides.length, fileName,
-      };
-    })
-    .sort((a, b) => b.date.localeCompare(a.date));
+  const out: RepoPost[] = [];
+  for (const fileName of fs.readdirSync(dir)) {
+    if (!fileName.endsWith(".json")) continue;
+    let j: any;
+    try {
+      // Tolerate a single corrupt/half-written post (e.g. a draft mid-save or a
+      // partial-write artifact): skip it instead of throwing and blanking the whole
+      // posts endpoint, which would take Overview/Analytics/Hooks down with it.
+      j = JSON.parse(fs.readFileSync(path.join(dir, fileName), "utf8"));
+    } catch (e) {
+      console.warn(`[dash] skipping unparseable post ${fileName}: ${e instanceof Error ? e.message : e}`);
+      continue;
+    }
+    const slides: any[] = Array.isArray(j.slides) ? j.slides : [];
+    const cover = slides.find((s) => s.role === "cover");
+    out.push({
+      postId: j.post_id ?? fileName.replace(/\.json$/, ""),
+      date: j.date ?? "", slug: j.slug ?? "", pillar: j.pillar ?? "",
+      theme: j.theme ?? "", caption: j.caption ?? "",
+      coverHook: cover?.on_slide_copy ?? "",
+      slideCount: slides.length, fileName,
+    });
+  }
+  return out.sort((a, b) => b.date.localeCompare(a.date));
 }
 
 export function listRenders(dir: string = RENDERS_DIR): RenderPackage[] {
