@@ -1182,7 +1182,7 @@ git commit -m "feat(dashboard): IG Graph proxy with type-split metrics and disk 
 - Test: `dashboard/server/trends.test.ts`
 - Create: `dashboard/server/fixtures/rss-sample.xml`, `dashboard/server/fixtures/atom-sample.xml`
 
-- [ ] **Step 1: Fixtures.** `rss-sample.xml` (RSS 2.0, two items with `title`, `link`, `pubDate`) and `atom-sample.xml` (Atom, two `entry` elements with `title`, `link href`, `updated`). Keep them minimal but valid.
+- [x] **Step 1: Fixtures.** `rss-sample.xml` (RSS 2.0, two items with `title`, `link`, `pubDate`) and `atom-sample.xml` (Atom, two `entry` elements with `title`, `link href`, `updated`). Keep them minimal but valid.
 
 ```xml
 <?xml version="1.0"?>
@@ -1200,7 +1200,7 @@ git commit -m "feat(dashboard): IG Graph proxy with type-split metrics and disk 
 </feed>
 ```
 
-- [ ] **Step 2: Write the failing tests**
+- [x] **Step 2: Write the failing tests**
 
 `dashboard/server/trends.test.ts`:
 
@@ -1233,9 +1233,9 @@ describe("parseFeed", () => {
 });
 ```
 
-- [ ] **Step 3: Run tests to verify they fail** — `cd dashboard && bun test server/trends.test.ts` → FAIL.
+- [x] **Step 3: Run tests to verify they fail** — `cd dashboard && bun test server/trends.test.ts` → FAIL.
 
-- [ ] **Step 4: Implement trends.ts**
+- [x] **Step 4: Implement trends.ts**
 
 ```ts
 import { XMLParser } from "fast-xml-parser";
@@ -1285,9 +1285,9 @@ export async function getTrends(force = false) {
 
 Dead sources never throw the whole fetch — they're collected into `deadSources` and flagged in the UI per the spec.
 
-- [ ] **Step 5: Run tests to verify they pass** — `cd dashboard && bun test server/trends.test.ts` → PASS.
+- [x] **Step 5: Run tests to verify they pass** — `cd dashboard && bun test server/trends.test.ts` → PASS.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add dashboard/server/trends.ts dashboard/server/trends.test.ts dashboard/server/fixtures/*.xml
