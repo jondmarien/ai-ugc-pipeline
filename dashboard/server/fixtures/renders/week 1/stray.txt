@@ -1,0 +1,1 @@
+non-conforming dir; the real week 1/ holds nested package dirs. listRenders treats both the same (no top-level PNGs, no caption.txt).
