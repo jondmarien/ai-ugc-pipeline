@@ -18,7 +18,7 @@
 
 These were checked against the repo and the live web on 2026-06-07:
 
-- **IG metrics:** `impressions` and `plays` are deprecated for ALL Graph API versions since 2025-04-21. The universal metric is `views`. VIDEO (Reels) insights: `views,reach,saved,shares,total_interactions,ig_reels_avg_watch_time,ig_reels_video_view_total_time`. IMAGE / CAROUSEL_ALBUM insights: `views,reach,saved,shares,total_interactions`. Requesting reel-only metrics on an image is an API error — the proxy MUST split by `media_type`.
+- **IG metrics:** `impressions` and `plays` are deprecated for ALL Graph API versions since 2025-04-21; `views` replaced them but is scoped to FEED/STORY/REELS product types only. VIDEO (Reels) insights: `views,reach,saved,shares,total_interactions,ig_reels_avg_watch_time,ig_reels_video_view_total_time`. IMAGE / CAROUSEL_ALBUM insights: `reach,saved,shares,total_interactions` — **NO `views`**: requesting it on the carousel-album container or an image returns HTTP 400 (#100) "does not support the views metric for this media product type" (Meta docs + Airbyte connector canary PR #72266). The insights call is all-or-nothing, so the proxy MUST split by `media_type` AND retries once with a bedrock `reach,saved` set if a request 400s, so one unsupported metric never blanks a post.
 - **There is no root `package.json`** in the repo. Task 1 creates one (scripts only). `renderer/` keeps its own package untouched.
 - **Design system folder** has `tokens/*.css` (colors, effects, fonts, spacing, typography), `components/primitives/*.jsx` (BrandMark, Chip, ClaimTag, Headline, Kicker, Pagination, Subline) with `.d.ts` files. Theme classes `.theme-defensive|offensive|hacking|purple-team|ai` set `--accent`/`--accent-2` and exist in `tokens/colors.css`. Do NOT use `_ds_bundle.js`.
 - **Ingested docs** (`pipeline/content/ingested/YYYY-MM-DD_*.md`): line 2 is a bold metadata line like `**Source:** <url> · **Handle:** @handle (…) · **Captured:** …`. Not YAML. Some docs have no `**Handle:**`. `INDEX.md` lives in the folder and must be skipped.
@@ -631,7 +631,7 @@ git commit -m "feat(dashboard): read-only repo readers for posts and render pack
 - Test: `dashboard/server/ingested.test.ts`
 - Create: `dashboard/server/fixtures/ingested/2026-06-07_with-handle.md`, `2026-06-07_no-handle.md`, `INDEX.md`
 
-- [ ] **Step 1: Fixtures (mirror the real shape exactly)**
+- [x] **Step 1: Fixtures (mirror the real shape exactly)**
 
 `fixtures/ingested/2026-06-07_with-handle.md`:
 
@@ -659,7 +659,7 @@ General research, no single creator.
 
 `fixtures/ingested/INDEX.md`: any one line (must be excluded by the parser).
 
-- [ ] **Step 2: Write the failing tests**
+- [x] **Step 2: Write the failing tests**
 
 `dashboard/server/ingested.test.ts`:
 
@@ -704,11 +704,11 @@ describe("listIngested", () => {
 });
 ```
 
-- [ ] **Step 3: Run tests to verify they fail**
+- [x] **Step 3: Run tests to verify they fail**
 
 Run: `cd dashboard && bun test server/ingested.test.ts` — Expected: FAIL.
 
-- [ ] **Step 4: Implement ingested.ts**
+- [x] **Step 4: Implement ingested.ts**
 
 ```ts
 import fs from "node:fs";
@@ -768,11 +768,11 @@ export function listIngested(dir: string = INGESTED_DIR): IngestedDoc[] {
 }
 ```
 
-- [ ] **Step 5: Run tests to verify they pass**
+- [x] **Step 5: Run tests to verify they pass**
 
 Run: `cd dashboard && bun test server/ingested.test.ts` — Expected: PASS. Also sanity-check against real data: `cd dashboard && bun -e 'import {listIngested} from "./server/ingested"; console.log(listIngested())'` — expect the two @growithalex docs attributed, `best-practices-research` unattributed, no INDEX.md.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add dashboard/server/ingested.ts dashboard/server/ingested.test.ts dashboard/server/fixtures/ingested
@@ -790,7 +790,7 @@ git commit -m "feat(dashboard): ingested-doc parser with handle attribution"
 
 **Times-used rule (from spec):** computed, not manual — the count of posts whose normalized `coverHook` equals the normalized hook text. Normalize = lowercase, collapse whitespace, strip trailing punctuation.
 
-- [ ] **Step 1: Caption-bank fixture** (`fixtures/CAPTION_BANK_fixture.md`) — mirror the real table shape:
+- [x] **Step 1: Caption-bank fixture** (`fixtures/CAPTION_BANK_fixture.md`) — mirror the real table shape:
 
 ```markdown
 ## 1. Cover Hook Formulas
@@ -808,7 +808,7 @@ Formula = whatever.
 ignored
 ```
 
-- [ ] **Step 2: Write the failing tests**
+- [x] **Step 2: Write the failing tests**
 
 `dashboard/server/hooks.test.ts`:
 
@@ -855,9 +855,9 @@ describe("aggregateHooks", () => {
 });
 ```
 
-- [ ] **Step 3: Run tests to verify they fail** — `cd dashboard && bun test server/hooks.test.ts` → FAIL.
+- [x] **Step 3: Run tests to verify they fail** — `cd dashboard && bun test server/hooks.test.ts` → FAIL.
 
-- [ ] **Step 4: Implement hooks.ts**
+- [x] **Step 4: Implement hooks.ts**
 
 ```ts
 import fs from "node:fs";
@@ -921,9 +921,9 @@ export function aggregateHooks({ posts, ingested, captionBank }: AggInput): Hook
 }
 ```
 
-- [ ] **Step 5: Run tests to verify they pass** — `cd dashboard && bun test server/hooks.test.ts` → PASS.
+- [x] **Step 5: Run tests to verify they pass** — `cd dashboard && bun test server/hooks.test.ts` → PASS.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add dashboard/server/hooks.ts dashboard/server/hooks.test.ts dashboard/server/fixtures/CAPTION_BANK_fixture.md
@@ -941,7 +941,7 @@ git commit -m "feat(dashboard): hook aggregation with computed times-used"
 
 **Hard constraints:** token never reaches the browser (it lives only in `process.env` server-side); metrics split by `media_type`; every response cached to `data/ig-cache/` with `fetchedAt`; cache served when upstream fails. **Do not request `impressions` or `plays` — deprecated.**
 
-- [ ] **Step 1: Fixtures.** Recorded-shape Graph API payloads:
+- [x] **Step 1: Fixtures.** Recorded-shape Graph API payloads:
 
 `fixtures/ig/account.json`:
 
@@ -978,7 +978,7 @@ git commit -m "feat(dashboard): hook aggregation with computed times-used"
 
 `fixtures/ig/insights-image.json`: same shape with only `views, reach, saved, shares, total_interactions`.
 
-- [ ] **Step 2: Write the failing tests**
+- [x] **Step 2: Write the failing tests**
 
 `dashboard/server/ig.test.ts`:
 
@@ -1059,9 +1059,9 @@ describe("fetchWithCache", () => {
 });
 ```
 
-- [ ] **Step 3: Run tests to verify they fail** — `cd dashboard && bun test server/ig.test.ts` → FAIL.
+- [x] **Step 3: Run tests to verify they fail** — `cd dashboard && bun test server/ig.test.ts` → FAIL.
 
-- [ ] **Step 4: Implement ig.ts**
+- [x] **Step 4: Implement ig.ts**
 
 ```ts
 import fs from "node:fs";
@@ -1164,9 +1164,9 @@ export async function getMedia(force = false) {
 
 Notes for the implementer: the per-post insights call count (≤50 sequential requests) is fine for a manual Refresh button; do not add concurrency until rate limits actually bite (YAGNI). `getAccount`/`getMedia` are NOT unit-tested live — only their pure parts (`metricsFor`, `parseInsights`, `fetchWithCache`) are, per the spec's "no live calls in tests".
 
-- [ ] **Step 5: Run tests to verify they pass** — `cd dashboard && bun test server/ig.test.ts` → PASS.
+- [x] **Step 5: Run tests to verify they pass** — `cd dashboard && bun test server/ig.test.ts` → PASS.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add dashboard/server/ig.ts dashboard/server/ig.test.ts dashboard/server/fixtures/ig
@@ -2950,8 +2950,4 @@ git commit -m "test(dashboard): playwright screenshot pass per module"
 7. **Thumbnails are served by the Bun server** from `pipeline/renders/` (read-only) with separator-rejecting path checks.
 8. **Cache-first reads:** fresh disk cache (IG 6h, trends 1h) is served without touching upstream; only `?refresh=1` (the Refresh button / per-module reload) or staleness triggers a live fetch. Module switching never hits the Graph API.
 9. **Pillar vocabulary is underscored** (`model_security`, …), matching `DRAFT_POST_REFERENCE.md` and the posts JSON `pillar` field; `PILLARS` is exported once from HookVault.
-10. **`week 1/` is not recursed.** Its nested packages are reachable only as the single `week 1` picker entry; recursion is v2.
-
-## Deferred / out of scope (mirrors spec)
-
-Auto-posting, scheduled scraping, trending auto-tagging, YouTube/TikTok tabs, notification digests, multi-user, follower history snapshots, IG insights concurrency, design-system edits.
+10. **`week 

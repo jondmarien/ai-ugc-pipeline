@@ -15,10 +15,11 @@ describe("metricsFor", () => {
     expect(m).not.toContain("impressions");
     expect(m).not.toContain("plays");
   });
-  test("IMAGE and CAROUSEL_ALBUM get feed metrics only", () => {
+  test("IMAGE and CAROUSEL_ALBUM get feed metrics WITHOUT views (unsupported, 400s)", () => {
     for (const t of ["IMAGE", "CAROUSEL_ALBUM"] as const) {
       const m = metricsFor(t);
-      expect(m).toEqual(["views", "reach", "saved", "shares", "total_interactions"]);
+      expect(m).toEqual(["reach", "saved", "shares", "total_interactions"]);
+      expect(m).not.toContain("views");
     }
   });
 });
@@ -36,8 +37,8 @@ describe("fetchWithCache", () => {
   test("serves fresh cache WITHOUT calling upstream (cache-first)", async () => {
     let calls = 0;
     const fetcher = async () => { calls++; return { ok: calls }; };
-    const a = await fetchWithCache("k", fetcher, tmpCache);           // cold: fetches
-    const b = await fetchWithCache("k", fetcher, tmpCache);           // warm: cache only
+    const a = await fetchWithCache("k", fetcher, tmpCache);
+    const b = await fetchWithCache("k", fetcher, tmpCache);
     expect(calls).toBe(1);
     expect(b.data).toEqual({ ok: 1 });
     expect(b.fetchedAt).toBe(a.fetchedAt);
@@ -53,7 +54,7 @@ describe("fetchWithCache", () => {
   test("stale cache triggers refetch", async () => {
     let calls = 0;
     const fetcher = async () => { calls++; return { ok: calls }; };
-    await fetchWithCache("k3", fetcher, tmpCache, { maxAgeMs: -1 }); // everything is instantly stale
+    await fetchWithCache("k3", fetcher, tmpCache, { maxAgeMs: -1 });
     await fetchWithCache("k3", fetcher, tmpCache, { maxAgeMs: -1 });
     expect(calls).toBe(2);
   });
@@ -61,9 +62,9 @@ describe("fetchWithCache", () => {
     let calls = 0;
     const fetcher = async () => { calls++; if (calls > 1) throw new Error("down"); return { ok: 1 }; };
     const a = await fetchWithCache("k4", fetcher, tmpCache);
-    const b = await fetchWithCache("k4", fetcher, tmpCache, { force: true }); // fetcher throws now
-    expect(b.data).toEqual({ ok: 1 });   // cache served
-    expect(b.error).toContain("down");   // error surfaced alongside
+    const b = await fetchWithCache("k4", fetcher, tmpCache, { force: true });
+    expect(b.data).toEqual({ ok: 1 });
+    expect(b.error).toContain("down");
     expect(b.fetchedAt).toBe(a.fetchedAt);
   });
   test("failure with no cache returns null data + error", async () => {
