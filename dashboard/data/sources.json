@@ -1,0 +1,5 @@
+[
+  { "url": "https://hnrss.org/frontpage", "label": "Hacker News front page", "enabled": true },
+  { "url": "https://www.bleepingcomputer.com/feed/", "label": "BleepingComputer", "enabled": true },
+  { "url": "https://simonwillison.net/atom/everything/", "label": "Simon Willison", "enabled": true }
+]
