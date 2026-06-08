@@ -1,0 +1,7 @@
+{ "data": [
+  { "name": "views", "values": [{ "value": 600 }] },
+  { "name": "reach", "values": [{ "value": 500 }] },
+  { "name": "saved", "values": [{ "value": 10 }] },
+  { "name": "shares", "values": [{ "value": 2 }] },
+  { "name": "total_interactions", "values": [{ "value": 104 }] }
+] }

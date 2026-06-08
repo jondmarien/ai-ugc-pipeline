@@ -1,0 +1,8 @@
+{ "data": [
+  { "id": "m1", "caption": "Reel caption", "media_type": "VIDEO", "timestamp": "2026-06-05T14:00:00+0000",
+    "like_count": 50, "comments_count": 6, "media_url": "https://example.com/r.mp4",
+    "thumbnail_url": "https://example.com/r.jpg", "permalink": "https://www.instagram.com/reel/x/" },
+  { "id": "m2", "caption": "Carousel caption", "media_type": "CAROUSEL_ALBUM", "timestamp": "2026-06-03T09:00:00+0000",
+    "like_count": 80, "comments_count": 12, "media_url": "https://example.com/c1.jpg",
+    "permalink": "https://www.instagram.com/p/y/" }
+] }
