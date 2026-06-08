@@ -467,7 +467,7 @@ git commit -m "feat(dashboard): allowlisted local JSON state store with seeds"
 - Create: `dashboard/server/fixtures/posts/2026-06-07_fixture-post.json`
 - Create: `dashboard/server/fixtures/renders/2026-06-07_fixture-post/` (touch `caption.txt`, `sources.md`, `2026-06-07_fixture-post_01_cover.png`, `2026-06-07_fixture-post_reel.mp4` — note the PREFIXED reel name, matching real packages), `dashboard/server/fixtures/renders/week 1/` (dir with one stray file; the REAL `week 1/` contains nested package dirs instead, but `listRenders` treats both identically since neither has top-level PNGs or caption.txt)
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 `dashboard/server/repo.test.ts`:
 
@@ -537,11 +537,11 @@ Fixture post JSON (`fixtures/posts/2026-06-07_fixture-post.json`) — a trimmed 
 }
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 Run: `cd dashboard && bun test server/repo.test.ts` — Expected: FAIL (module not found).
 
-- [ ] **Step 3: Implement repo.ts**
+- [x] **Step 3: Implement repo.ts**
 
 ```ts
 import fs from "node:fs";
@@ -611,11 +611,11 @@ export function readRenderFile(dirName: string, file: "caption.txt" | "sources.m
 }
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `cd dashboard && bun test server/repo.test.ts` — Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add dashboard/server/repo.ts dashboard/server/repo.test.ts dashboard/server/fixtures
