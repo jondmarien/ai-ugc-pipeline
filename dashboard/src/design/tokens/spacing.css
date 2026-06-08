@@ -1,0 +1,34 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   SPACING, CANVAS & RADII — chron0s_cyb3r_w0rld
+   The canvas is fixed-size social media art, not a fluid web layout. Spacing is
+   anchored to the 96px safe margin and a 24px content rhythm between text blocks.
+   ────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Canvas formats ────────────────────────────────────────────── */
+  --canvas-carousel-w: 1080px;   /* Instagram carousel 4:5             */
+  --canvas-carousel-h: 1350px;
+  --canvas-reel-w: 1080px;       /* Reel / Story 9:16                  */
+  --canvas-reel-h: 1920px;
+  --safe-margin: 96px;           /* all critical text lives inside this */
+
+  /* ── Spacing rhythm ────────────────────────────────────────────── */
+  --space-content-gap: 24px;     /* between kicker / headline / subline */
+  --space-chip-gap: 16px;        /* between inline chips                */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* ── Radii ─────────────────────────────────────────────────────── */
+  --radius-panel: 28px;          /* generic panels / cards             */
+  --radius-plate: 44px;          /* feathered text-plate behind copy   */
+  --radius-pill: 999px;          /* swipe / CTA chips                  */
+
+  /* ── Strokes ───────────────────────────────────────────────────── */
+  --hairline-w: 6px;             /* the top accent hairline            */
+  --kicker-rule-w: 48px;         /* short rule before a kicker label   */
+  --kicker-rule-h: 3px;
+}

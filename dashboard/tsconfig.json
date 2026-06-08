@@ -12,5 +12,7 @@
     "paths": { "@shared/*": ["./shared/*"] },
     "baseUrl": "."
   },
-  "include": ["src", "server", "shared", "e2e", "scripts"]
+  "include": ["src", "server", "shared", "e2e", "scripts"],
+  "//": "src/design is vendored from the chron0s DS (upstream source of truth, React 18-era .d.ts). Its .jsx primitives run fine; exclude from our strict typecheck rather than edit upstream files.",
+  "exclude": ["node_modules", "src/design"]
 }
