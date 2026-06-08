@@ -1,0 +1,15 @@
+{
+  "post_id": "2026-06-07_fixture-post",
+  "date": "2026-06-07",
+  "slug": "fixture-post",
+  "pillar": "model-security",
+  "theme": "defensive",
+  "caption": "Fixture caption.",
+  "slides": [
+    { "slide": 1, "role": "cover", "kicker": "AI SECURITY",
+      "on_slide_copy": "Your AI agent reads everything. So do attackers.",
+      "subline": "Fixture subline." },
+    { "slide": 2, "role": "cta", "kicker": "FOLLOW",
+      "on_slide_copy": "Follow for more.", "subline": "" }
+  ]
+}
