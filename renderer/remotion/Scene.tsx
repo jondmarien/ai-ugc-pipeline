@@ -14,7 +14,7 @@ export function Scene({
   accent,
   durationInFrames,
   wallActive = false,
-  artOpacity = 0.6,
+  artOpacity = 0.85,
 }: {
   slide: Slide;
   accent: string;

@@ -36,7 +36,7 @@ export function ReelComposition({ post }: { post: Post }) {
   // Optional themed wall: an animated loop behind every scene. Each Scene then draws its art
   // semi-transparent (artOpacity) so the wall shows through.
   const wall = post.wall?.enabled ? wallFor(post) : null;
-  const wallArtOpacity = post.wall?.art_opacity ?? 0.6;
+  const wallArtOpacity = post.wall?.art_opacity ?? 0.85;
 
   return (
     <AbsoluteFill style={{ backgroundColor: palette.bgDeep }}>

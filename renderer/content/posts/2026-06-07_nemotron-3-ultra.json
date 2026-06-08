@@ -386,682 +386,670 @@
     "captions": [
       {
         "start": 0.0,
-        "end": 2.48,
-        "text": "NVIDIA just open sourced a 550 billion",
+        "end": 3.02,
+        "text": "NVIDIA just opened sourced a 550 billion",
         "words": [
           {
             "text": "NVIDIA",
             "start": 0.0,
-            "end": 0.46
+            "end": 0.7
           },
           {
             "text": "just",
-            "start": 0.46,
-            "end": 0.8
+            "start": 0.7,
+            "end": 1.1
           },
           {
-            "text": "open",
-            "start": 0.8,
-            "end": 0.98
-          },
-          {
-            "text": "sourced",
-            "start": 0.98,
+            "text": "opened",
+            "start": 1.1,
             "end": 1.28
           },
           {
-            "text": "a",
+            "text": "sourced",
             "start": 1.28,
-            "end": 1.52
+            "end": 1.6
+          },
+          {
+            "text": "a",
+            "start": 1.6,
+            "end": 1.84
           },
           {
             "text": "550",
-            "start": 1.52,
-            "end": 1.78
+            "start": 1.84,
+            "end": 2.16
           },
           {
             "text": "billion",
-            "start": 1.78,
-            "end": 2.48
+            "start": 2.16,
+            "end": 3.02
           }
         ]
       },
       {
-        "start": 2.48,
-        "end": 4.64,
+        "start": 3.02,
+        "end": 5.14,
         "text": "parameter model built to run agents for",
         "words": [
           {
             "text": "parameter",
-            "start": 2.48,
-            "end": 2.8
+            "start": 3.02,
+            "end": 3.34
           },
           {
             "text": "model",
-            "start": 2.8,
-            "end": 3.38
+            "start": 3.34,
+            "end": 3.94
           },
           {
             "text": "built",
-            "start": 3.38,
-            "end": 3.64
+            "start": 3.94,
+            "end": 4.3
           },
           {
             "text": "to",
-            "start": 3.64,
-            "end": 3.9
+            "start": 4.3,
+            "end": 4.5
           },
           {
             "text": "run",
-            "start": 3.9,
-            "end": 4.06
+            "start": 4.5,
+            "end": 4.64
           },
           {
             "text": "agents",
-            "start": 4.06,
-            "end": 4.34
+            "start": 4.64,
+            "end": 4.86
           },
           {
             "text": "for",
-            "start": 4.34,
-            "end": 4.64
+            "start": 4.86,
+            "end": 5.14
           }
         ]
       },
       {
-        "start": 4.64,
-        "end": 5.5,
-        "text": "hours at a time.",
+        "start": 5.14,
+        "end": 7.28,
+        "text": "hours at a time. Nemotron 3 Ultra",
         "words": [
           {
             "text": "hours",
-            "start": 4.64,
-            "end": 4.92
+            "start": 5.14,
+            "end": 5.4
           },
           {
             "text": "at",
-            "start": 4.92,
-            "end": 5.18
+            "start": 5.4,
+            "end": 5.6
           },
           {
             "text": "a",
-            "start": 5.18,
-            "end": 5.22
+            "start": 5.6,
+            "end": 5.64
           },
           {
             "text": "time.",
-            "start": 5.22,
-            "end": 5.5
-          }
-        ]
-      },
-      {
-        "start": 6.2,
-        "end": 7.98,
-        "text": "Nimotron 3 Ultra holds up to a",
-        "words": [
+            "start": 5.64,
+            "end": 5.92
+          },
           {
-            "text": "Nimotron",
-            "start": 6.2,
-            "end": 6.72
+            "text": "Nemotron",
+            "start": 6.42,
+            "end": 6.88
           },
           {
             "text": "3",
-            "start": 6.72,
-            "end": 6.98
+            "start": 6.88,
+            "end": 7.06
           },
           {
             "text": "Ultra",
-            "start": 6.98,
-            "end": 7.18
-          },
+            "start": 7.06,
+            "end": 7.28
+          }
+        ]
+      },
+      {
+        "start": 7.28,
+        "end": 8.94,
+        "text": "holds up to a million tokens of",
+        "words": [
           {
             "text": "holds",
-            "start": 7.18,
-            "end": 7.58
-          },
-          {
-            "text": "up",
-            "start": 7.58,
+            "start": 7.28,
             "end": 7.74
           },
           {
-            "text": "to",
+            "text": "up",
             "start": 7.74,
-            "end": 7.88
+            "end": 7.9
+          },
+          {
+            "text": "to",
+            "start": 7.9,
+            "end": 8.04
           },
           {
             "text": "a",
-            "start": 7.88,
-            "end": 7.98
-          }
-        ]
-      },
-      {
-        "start": 7.98,
-        "end": 8.98,
-        "text": "million tokens of context.",
-        "words": [
+            "start": 8.04,
+            "end": 8.14
+          },
           {
             "text": "million",
-            "start": 7.98,
-            "end": 8.22
+            "start": 8.14,
+            "end": 8.4
           },
           {
             "text": "tokens",
-            "start": 8.22,
-            "end": 8.54
+            "start": 8.4,
+            "end": 8.7
           },
           {
             "text": "of",
-            "start": 8.54,
-            "end": 8.84
-          },
-          {
-            "text": "context.",
-            "start": 8.84,
-            "end": 8.98
+            "start": 8.7,
+            "end": 8.94
           }
         ]
       },
       {
-        "start": 9.82,
-        "end": 11.46,
-        "text": "The weights are open, and agents are",
+        "start": 8.94,
+        "end": 11.04,
+        "text": "context, the weights are open, and agents",
         "words": [
           {
-            "text": "The",
-            "start": 9.82,
-            "end": 9.84
+            "text": "context,",
+            "start": 8.94,
+            "end": 9.28
+          },
+          {
+            "text": "the",
+            "start": 9.66,
+            "end": 9.68
           },
           {
             "text": "weights",
-            "start": 9.84,
-            "end": 10.0
+            "start": 9.68,
+            "end": 9.86
           },
           {
             "text": "are",
-            "start": 10.0,
-            "end": 10.2
+            "start": 9.86,
+            "end": 10.06
           },
           {
             "text": "open,",
-            "start": 10.2,
-            "end": 10.48
+            "start": 10.06,
+            "end": 10.3
           },
           {
             "text": "and",
-            "start": 10.88,
-            "end": 10.96
+            "start": 10.72,
+            "end": 10.76
           },
           {
             "text": "agents",
-            "start": 10.96,
+            "start": 10.76,
+            "end": 11.04
+          }
+        ]
+      },
+      {
+        "start": 11.04,
+        "end": 12.94,
+        "text": "are already pushing tens of billions of",
+        "words": [
+          {
+            "text": "are",
+            "start": 11.04,
             "end": 11.24
           },
           {
-            "text": "are",
-            "start": 11.24,
-            "end": 11.46
-          }
-        ]
-      },
-      {
-        "start": 11.46,
-        "end": 13.4,
-        "text": "already pushing tens of billions of tokens",
-        "words": [
-          {
             "text": "already",
-            "start": 11.46,
-            "end": 11.74
+            "start": 11.24,
+            "end": 11.54
           },
           {
             "text": "pushing",
-            "start": 11.74,
-            "end": 12.08
+            "start": 11.54,
+            "end": 11.9
           },
           {
             "text": "tens",
-            "start": 12.08,
-            "end": 12.4
+            "start": 11.9,
+            "end": 12.24
           },
           {
             "text": "of",
-            "start": 12.4,
-            "end": 12.62
+            "start": 12.24,
+            "end": 12.46
           },
           {
             "text": "billions",
-            "start": 12.62,
-            "end": 12.84
+            "start": 12.46,
+            "end": 12.66
           },
           {
             "text": "of",
-            "start": 12.84,
-            "end": 13.12
-          },
-          {
-            "text": "tokens",
-            "start": 13.12,
-            "end": 13.4
+            "start": 12.66,
+            "end": 12.94
           }
         ]
       },
       {
-        "start": 13.4,
-        "end": 14.86,
-        "text": "a day through it, so put the",
+        "start": 12.94,
+        "end": 14.78,
+        "text": "tokens a day through it. So put",
         "words": [
           {
+            "text": "tokens",
+            "start": 12.94,
+            "end": 13.18
+          },
+          {
             "text": "a",
-            "start": 13.4,
-            "end": 13.62
+            "start": 13.18,
+            "end": 13.38
           },
           {
             "text": "day",
-            "start": 13.62,
-            "end": 13.76
+            "start": 13.38,
+            "end": 13.54
           },
           {
             "text": "through",
-            "start": 13.76,
-            "end": 14.0
+            "start": 13.54,
+            "end": 13.74
           },
           {
-            "text": "it,",
-            "start": 14.0,
-            "end": 14.16
+            "text": "it.",
+            "start": 13.74,
+            "end": 13.92
           },
           {
-            "text": "so",
-            "start": 14.42,
+            "text": "So",
+            "start": 14.5,
             "end": 14.58
           },
           {
             "text": "put",
             "start": 14.58,
-            "end": 14.74
-          },
-          {
-            "text": "the",
-            "start": 14.74,
-            "end": 14.86
+            "end": 14.78
           }
         ]
       },
       {
-        "start": 14.86,
-        "end": 17.4,
-        "text": "control outside the model. Require human approval",
+        "start": 14.78,
+        "end": 17.1,
+        "text": "the control outside the model, require human",
         "words": [
           {
+            "text": "the",
+            "start": 14.78,
+            "end": 14.94
+          },
+          {
             "text": "control",
-            "start": 14.86,
-            "end": 15.14
+            "start": 14.94,
+            "end": 15.22
           },
           {
             "text": "outside",
-            "start": 15.14,
-            "end": 15.44
+            "start": 15.22,
+            "end": 15.52
           },
           {
             "text": "the",
-            "start": 15.44,
-            "end": 15.74
+            "start": 15.52,
+            "end": 15.88
           },
           {
-            "text": "model.",
-            "start": 15.74,
-            "end": 15.96
+            "text": "model,",
+            "start": 15.88,
+            "end": 16.1
           },
           {
-            "text": "Require",
-            "start": 16.48,
-            "end": 16.82
+            "text": "require",
+            "start": 16.42,
+            "end": 16.68
           },
           {
             "text": "human",
-            "start": 16.82,
-            "end": 17.08
-          },
-          {
-            "text": "approval",
-            "start": 17.08,
-            "end": 17.4
+            "start": 16.68,
+            "end": 17.1
           }
         ]
       },
       {
-        "start": 17.4,
-        "end": 19.4,
-        "text": "for high impact tool calls and log",
+        "start": 17.1,
+        "end": 19.84,
+        "text": "approval for high-impact tool calls, and log",
         "words": [
           {
-            "text": "for",
-            "start": 17.4,
-            "end": 17.72
+            "text": "approval",
+            "start": 17.1,
+            "end": 17.42
           },
           {
-            "text": "high",
-            "start": 17.72,
+            "text": "for",
+            "start": 17.42,
             "end": 17.9
           },
           {
-            "text": "impact",
+            "text": "high-impact",
             "start": 17.9,
-            "end": 18.14
+            "end": 18.4
           },
           {
             "text": "tool",
-            "start": 18.14,
-            "end": 18.44
+            "start": 18.4,
+            "end": 18.72
           },
           {
-            "text": "calls",
-            "start": 18.44,
-            "end": 18.76
+            "text": "calls,",
+            "start": 18.72,
+            "end": 19.02
           },
           {
             "text": "and",
-            "start": 18.76,
-            "end": 19.2
+            "start": 19.54,
+            "end": 19.64
           },
           {
             "text": "log",
-            "start": 19.2,
-            "end": 19.4
+            "start": 19.64,
+            "end": 19.84
           }
         ]
       },
       {
-        "start": 19.4,
-        "end": 21.16,
-        "text": "the agents goal every turn, so you",
+        "start": 19.84,
+        "end": 21.58,
+        "text": "the agent's goal every turn so you",
         "words": [
           {
             "text": "the",
-            "start": 19.4,
-            "end": 19.6
+            "start": 19.84,
+            "end": 20.02
           },
           {
-            "text": "agents",
-            "start": 19.6,
-            "end": 19.84
+            "text": "agent's",
+            "start": 20.02,
+            "end": 20.42
           },
           {
             "text": "goal",
-            "start": 19.84,
-            "end": 20.06
+            "start": 20.42,
+            "end": 20.56
           },
           {
             "text": "every",
-            "start": 20.06,
-            "end": 20.34
+            "start": 20.56,
+            "end": 20.86
           },
           {
-            "text": "turn,",
-            "start": 20.34,
-            "end": 20.62
+            "text": "turn",
+            "start": 20.86,
+            "end": 21.2
           },
           {
             "text": "so",
-            "start": 20.9,
-            "end": 21.04
+            "start": 21.2,
+            "end": 21.46
           },
           {
             "text": "you",
-            "start": 21.04,
-            "end": 21.16
+            "start": 21.46,
+            "end": 21.58
           }
         ]
       },
       {
-        "start": 21.16,
-        "end": 21.76,
+        "start": 21.58,
+        "end": 22.2,
         "text": "can catch drift.",
         "words": [
           {
             "text": "can",
-            "start": 21.16,
-            "end": 21.28
+            "start": 21.58,
+            "end": 21.7
           },
           {
             "text": "catch",
-            "start": 21.28,
-            "end": 21.5
+            "start": 21.7,
+            "end": 21.92
           },
           {
             "text": "drift.",
-            "start": 21.5,
-            "end": 21.76
+            "start": 21.92,
+            "end": 22.2
           }
         ]
       },
       {
-        "start": 22.54,
-        "end": 24.72,
+        "start": 22.86,
+        "end": 24.76,
         "text": "Built-in guardrails are optional when the weights",
         "words": [
           {
             "text": "Built-in",
-            "start": 22.54,
-            "end": 23.14
+            "start": 22.86,
+            "end": 23.32
           },
           {
             "text": "guardrails",
-            "start": 23.14,
-            "end": 23.66
+            "start": 23.32,
+            "end": 23.8
           },
           {
             "text": "are",
-            "start": 23.66,
-            "end": 23.78
+            "start": 23.8,
+            "end": 23.98
           },
           {
             "text": "optional",
-            "start": 23.78,
-            "end": 24.04
+            "start": 23.98,
+            "end": 24.24
           },
           {
             "text": "when",
-            "start": 24.04,
-            "end": 24.42
-          },
-          {
-            "text": "the",
-            "start": 24.42,
+            "start": 24.24,
             "end": 24.54
           },
           {
-            "text": "weights",
+            "text": "the",
             "start": 24.54,
-            "end": 24.72
+            "end": 24.64
+          },
+          {
+            "text": "weights",
+            "start": 24.64,
+            "end": 24.76
           }
         ]
       },
       {
-        "start": 24.72,
-        "end": 26.72,
+        "start": 24.76,
+        "end": 26.9,
         "text": "are open. The permission layer around your",
         "words": [
           {
             "text": "are",
-            "start": 24.72,
-            "end": 24.92
+            "start": 24.76,
+            "end": 24.94
           },
           {
             "text": "open.",
-            "start": 24.92,
-            "end": 25.12
+            "start": 24.94,
+            "end": 25.16
           },
           {
             "text": "The",
-            "start": 25.62,
-            "end": 25.66
+            "start": 25.72,
+            "end": 25.8
           },
           {
             "text": "permission",
-            "start": 25.66,
-            "end": 25.88
+            "start": 25.8,
+            "end": 26.04
           },
           {
             "text": "layer",
-            "start": 25.88,
-            "end": 26.2
+            "start": 26.04,
+            "end": 26.38
           },
           {
             "text": "around",
-            "start": 26.2,
-            "end": 26.54
+            "start": 26.38,
+            "end": 26.72
           },
           {
             "text": "your",
-            "start": 26.54,
-            "end": 26.72
+            "start": 26.72,
+            "end": 26.9
           }
         ]
       },
       {
-        "start": 26.72,
-        "end": 28.56,
+        "start": 26.9,
+        "end": 28.64,
         "text": "tools is the control that actually holds.",
         "words": [
           {
             "text": "tools",
-            "start": 26.72,
-            "end": 26.92
+            "start": 26.9,
+            "end": 27.12
           },
           {
             "text": "is",
-            "start": 26.92,
-            "end": 27.26
+            "start": 27.12,
+            "end": 27.4
           },
           {
             "text": "the",
-            "start": 27.26,
-            "end": 27.42
+            "start": 27.4,
+            "end": 27.54
           },
           {
             "text": "control",
-            "start": 27.42,
-            "end": 27.7
+            "start": 27.54,
+            "end": 27.82
           },
           {
             "text": "that",
-            "start": 27.7,
-            "end": 27.92
+            "start": 27.82,
+            "end": 28.02
           },
           {
             "text": "actually",
-            "start": 27.92,
-            "end": 28.2
+            "start": 28.02,
+            "end": 28.3
           },
           {
             "text": "holds.",
-            "start": 28.2,
-            "end": 28.56
+            "start": 28.3,
+            "end": 28.64
           }
         ]
       },
       {
-        "start": 28.56,
-        "end": 30.12,
+        "start": 28.64,
+        "end": 30.62,
         "text": "How long would you let an agent",
         "words": [
           {
             "text": "How",
-            "start": 28.56,
-            "end": 29.22
+            "start": 28.64,
+            "end": 29.5
           },
           {
             "text": "long",
-            "start": 29.22,
-            "end": 29.38
+            "start": 29.5,
+            "end": 29.72
           },
           {
             "text": "would",
-            "start": 29.38,
-            "end": 29.54
+            "start": 29.72,
+            "end": 29.98
           },
           {
             "text": "you",
-            "start": 29.54,
-            "end": 29.64
+            "start": 29.98,
+            "end": 30.08
           },
           {
             "text": "let",
-            "start": 29.64,
-            "end": 29.78
+            "start": 30.08,
+            "end": 30.26
           },
           {
             "text": "an",
-            "start": 29.78,
-            "end": 29.9
+            "start": 30.26,
+            "end": 30.38
           },
           {
             "text": "agent",
-            "start": 29.9,
-            "end": 30.12
+            "start": 30.38,
+            "end": 30.62
           }
         ]
       },
       {
-        "start": 30.12,
-        "end": 32.06,
+        "start": 30.62,
+        "end": 32.62,
         "text": "run before a human checks in? Tell",
         "words": [
           {
             "text": "run",
-            "start": 30.12,
-            "end": 30.42
+            "start": 30.62,
+            "end": 30.88
           },
           {
             "text": "before",
-            "start": 30.42,
-            "end": 30.76
+            "start": 30.88,
+            "end": 31.2
           },
           {
             "text": "a",
-            "start": 30.76,
-            "end": 30.9
+            "start": 31.2,
+            "end": 31.36
           },
           {
             "text": "human",
-            "start": 30.9,
-            "end": 31.12
+            "start": 31.36,
+            "end": 31.54
           },
           {
             "text": "checks",
-            "start": 31.12,
-            "end": 31.34
+            "start": 31.54,
+            "end": 31.8
           },
           {
             "text": "in?",
-            "start": 31.34,
-            "end": 31.6
+            "start": 31.8,
+            "end": 32.04
           },
           {
             "text": "Tell",
-            "start": 31.98,
-            "end": 32.06
+            "start": 32.54,
+            "end": 32.62
           }
         ]
       },
       {
-        "start": 32.06,
-        "end": 32.44,
+        "start": 32.62,
+        "end": 33.0,
         "text": "me below.",
         "words": [
           {
             "text": "me",
-            "start": 32.06,
-            "end": 32.2
+            "start": 32.62,
+            "end": 32.74
           },
           {
             "text": "below.",
-            "start": 32.2,
-            "end": 32.44
+            "start": 32.74,
+            "end": 33.0
           }
         ]
       }
@@ -1069,7 +1057,7 @@
   },
   "wall": {
     "enabled": true,
-    "art_opacity": 0.55
+    "art_opacity": 0.85
   },
   "qa": {
     "fact_checked": true,
