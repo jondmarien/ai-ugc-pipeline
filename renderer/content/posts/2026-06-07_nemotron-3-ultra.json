@@ -1056,7 +1056,7 @@
     ]
   },
   "wall": {
-    "enabled": true,
+    "enabled": false,
     "art_opacity": 0.85
   },
   "qa": {
