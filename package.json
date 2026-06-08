@@ -1,0 +1,7 @@
+{
+  "name": "ai-ugc-pipeline",
+  "private": true,
+  "scripts": {
+    "dash": "bun dashboard/scripts/dash.ts"
+  }
+}
