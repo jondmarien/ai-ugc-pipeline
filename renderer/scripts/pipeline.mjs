@@ -95,8 +95,18 @@ function runPost(key) {
   const wantsVoice = !flags.has("--no-voice") && ["voxcpm2", "voxcpm2-0.5b", "bark", "http"].includes(effVoiceMode);
   const wantsReel = !flags.has("--no-reel") && !!post.video?.enabled;
 
+  // Ordered list of the stages that will actually run for this post (after the skip logic above).
+  const plan = [];
+  if (wantsArt) plan.push(`art (${flags.has("--flux1") ? "flux1" : "flux2"} backgrounds)`);
+  plan.push("export (carousel)");
+  if (!flags.has("--no-package")) plan.push("package (upload files)");
+  if (wantsVoice) plan.push("free-comfyui (release GPU)", `voice (${effVoiceMode})`, "align (captions)");
+  if (wantsReel) plan.push("reel (audio auto-embedded)");
+
   console.log(`\n╭─ ${fullKey}`);
   console.log(`│  art=${wantsArt ? (flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
+  console.log(`│  steps to run:`);
+  plan.forEach((s, i) => console.log(`│   ${i + 1}. ${s}`));
   console.log(`╰─`);
 
   // Default art run generates every needy slide (cover included). `--art` forces a full regen (→ art --all).
