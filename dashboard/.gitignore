@@ -1,0 +1,6 @@
+.env
+data/ig-cache/
+data/trends-cache/
+node_modules/
+token_refresh.log
+e2e/shots/

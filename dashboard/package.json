@@ -1,0 +1,27 @@
+{
+  "name": "dashboard",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "server": "bun server/index.ts",
+    "test": "bun test server src",
+    "e2e": "playwright test e2e"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.90.0",
+    "fast-xml-parser": "^4.5.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@tanstack/react-query-devtools": "^5.90.0",
+    "@types/bun": "latest",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0"
+  }
+}
