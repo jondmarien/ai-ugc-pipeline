@@ -14,6 +14,7 @@
 //   ART_VAE (split_files\vae\ae.safetensors), ART_CLIP_DEVICE (cpu).
 // Legacy local-diffusers path is still available via:  bun run art:diffusers -- <key>
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { themes, pillarTheme, BRAND_STYLE } from "../src/design/tokens.ts";
@@ -53,7 +54,19 @@ const MODEL = opt("model", process.env.ART_MODEL || "flux1-schnell-Q4_K_S.gguf")
 // keeps its 4-step distillation. Dimensions MUST be multiples of 16 for FLUX.2 → snapped
 // below; 4:5 to match the 1080x1350 carousel (1024x1280) instead of the old 3:4 768x1024.
 const snap16 = (n) => Math.max(16, Math.round(n / 16) * 16);
-const STEPS = Number(opt("steps", process.env.ART_STEPS || (FLUX2 ? 8 : 4)));
+// Sampling steps, a.k.a. "passes". `--passes=N` (forwarded by `bun run pipeline`) is the user-facing
+// alias; `--steps=N` / ART_STEPS still work (lower priority). FLUX.2 klein and FLUX.1-schnell are
+// step-DISTILLED: native ~4, useful 4-8, nothing past ~8 but heat. Clamp to a hard max of 12 and warn
+// outside the recommended band so a stray `--passes=40` can't cook the card for zero quality gain.
+const PASSES_HARD_MAX = 12;
+const PASSES_REC = [4, 8];
+const PASSES_DEFAULT = FLUX2 ? 8 : 4;
+const rawPasses = Number(opt("passes", opt("steps", process.env.ART_STEPS || PASSES_DEFAULT)));
+const STEPS = Math.max(1, Math.min(PASSES_HARD_MAX, Number.isFinite(rawPasses) ? Math.round(rawPasses) : PASSES_DEFAULT));
+if (Number.isFinite(rawPasses) && STEPS !== rawPasses)
+  console.warn(`  ⚠ passes clamped ${rawPasses} → ${STEPS} (hard max ${PASSES_HARD_MAX}; ${FLUX2 ? "FLUX.2 klein" : "FLUX.1-schnell"} is step-distilled, gains nothing past ~8).`);
+else if (STEPS < PASSES_REC[0] || STEPS > PASSES_REC[1])
+  console.warn(`  ⚠ ${STEPS} passes is outside the recommended ${PASSES_REC[0]}-${PASSES_REC[1]} for a distilled model (4 = native; >8 rarely helps).`);
 const WIDTH = snap16(Number(opt("width", process.env.ART_WIDTH || (FLUX2 ? 1024 : 768))));
 const HEIGHT = snap16(Number(opt("height", process.env.ART_HEIGHT || (FLUX2 ? 1280 : 1024))));
 const SEED_BASE = Number(opt("seed", process.env.ART_SEED || 42));
@@ -79,6 +92,30 @@ const F2_VAE = process.env.ART2_VAE || "split_files\\vae\\flux2-vae.safetensors"
 // A gentle true-CFG (>1) so the NEGATIVE prompt actually suppresses fake text/UI — at CFG 1
 // FLUX ignores the negative entirely. 1.2 nudges without the 1.5 over-cook / artifact return.
 const F2_CFG = Number(process.env.ART2_CFG || 1.2);
+
+// `--q6` (via `bun run pipeline`) sets ART2_MODEL=flux-2-klein-4b-Q6_K.gguf. If the selected klein-4B
+// GGUF isn't already in ComfyUI's unet dir, fetch it from the same unsloth repo Q5 came from (the `hf`
+// CLI, same command the docs use). Only the klein-4B GGUFs are auto-fetchable; a remote ComfyUI whose
+// models dir isn't on this box just gets a warning. Override the dir with COMFYUI_UNET_DIR.
+const COMFY_UNET_DIR = process.env.COMFYUI_UNET_DIR || "E:\\ComfyUI\\models\\unet";
+const KLEIN_GGUF_REPO = process.env.KLEIN_GGUF_REPO || "unsloth/FLUX.2-klein-4B-GGUF";
+function ensureFlux2Model(modelFile) {
+  if (!/^flux-2-klein-4b-.*\.gguf$/i.test(modelFile)) return; // only known klein-4B GGUFs
+  let dirExists = false;
+  try { dirExists = existsSync(COMFY_UNET_DIR); } catch { dirExists = false; }
+  if (!dirExists) {
+    console.warn(`  ⚠ ComfyUI unet dir not found at ${COMFY_UNET_DIR} (remote ComfyUI?). Make sure ${modelFile} is present there, or set COMFYUI_UNET_DIR.`);
+    return;
+  }
+  if (existsSync(path.join(COMFY_UNET_DIR, modelFile))) return; // already downloaded
+  console.log(`  ↓ ${modelFile} not in ${COMFY_UNET_DIR} — downloading from ${KLEIN_GGUF_REPO} via hf…`);
+  const r = spawnSync("hf", ["download", KLEIN_GGUF_REPO, modelFile, "--local-dir", COMFY_UNET_DIR],
+    { stdio: "inherit", shell: process.platform === "win32" });
+  if (r.status !== 0)
+    console.warn(`  ⚠ auto-download failed (hf exit ${r.status ?? "?"}). Run manually:  hf download ${KLEIN_GGUF_REPO} ${modelFile} --local-dir ${COMFY_UNET_DIR}`);
+  else
+    console.log(`  ✓ ${modelFile} downloaded.`);
+}
 
 // Text/UI suppression lives ONLY in the negative node (never the positive — negative phrasing
 // in a FLUX positive prompt can SUMMON the very tokens). Bites only when F2_CFG > 1.
@@ -140,11 +177,15 @@ function buildPrompt(slide, accentHex, accentName, topic, mood) {
   // as literal lettering (a garbled title card), especially on the offensive/red theme.
   const SIGNAGE = /\b(alert|warning|danger|caution|breach|threat|notice)\b/gi;
   const cleanAccent = (accentName || "").replace(SIGNAGE, "").replace(/\s{2,}/g, " ").trim() || "red";
-  const moodPart = mood ? `${mood.replace(SIGNAGE, "").replace(/\s{2,}/g, " ").replace(/\s+([,.;—-])/g, "$1").replace(/,\s*,/g, ",").trim()}. ` : "";
+  const cleanMood = mood ? mood.replace(SIGNAGE, "").replace(/\s{2,}/g, " ").replace(/\s+([,.;—-])/g, "$1").replace(/,\s*,/g, ",").trim() : "";
   // Natural-language sentences (FLUX's qwen/T5 encoder favours prose over comma-tag soup).
-  // BRAND_STYLE is the constant house look (so every post reads as one brand); the theme
-  // accent colour + mood change per category. NO "no text" here — that's the negative node.
-  return `${subject}. A single ${cleanAccent} (${accentHex}) accent glow on a deep navy void #05070d. ${moodPart}${BRAND_STYLE}. ${zone}.`;
+  // Shape follows the FLUX.2 [klein] guidance: subject + lighting (the accent glow, phrased as a
+  // light source — lighting is klein's highest-impact lever) + the text-safe zone, then a trailing
+  // `Style: … Mood:` tag (klein's documented consistency trick). BRAND_STYLE is the constant house
+  // look so every post reads as one brand; the theme accent + mood change per category. NO "no text"
+  // here — that lives in the negative node.
+  const styleTag = `Style: ${BRAND_STYLE}.${cleanMood ? ` Mood: ${cleanMood}.` : ""}`;
+  return `${subject}. Lit by a single ${cleanAccent} (${accentHex}) accent glow against a deep navy void #05070d. ${zone}. ${styleTag}`;
 }
 
 // Stable per-post seed offset (FNV-1a hash of the prefix) so the same role/slide in
@@ -261,6 +302,9 @@ const mood = T.mood;
 // and a per-post seed base so different posts don't collide on identical images.
 const topic = String(post.core_claim || post.slug || "").replace(/["']/g, "").split(/\s+/).filter(Boolean).slice(0, 12).join(" ");
 const postBaseSeed = SEED_BASE + postSeedOffset(prefix);
+
+// Ensure the selected FLUX.2 klein GGUF is present (auto-download Q6 etc. on first use).
+if (FLUX2 && !DRY) ensureFlux2Model(F2_MODEL);
 
 // confirm ComfyUI is reachable + the model exists
 if (!DRY) {
