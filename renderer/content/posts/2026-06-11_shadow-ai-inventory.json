@@ -1,0 +1,319 @@
+{
+  "post_id": "2026-06-11_shadow-ai-inventory",
+  "date": "2026-06-11",
+  "slug": "shadow-ai-inventory",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "governance",
+  "theme": "defensive",
+  "audience": "security_practitioners",
+  "core_claim": "Employees adopt unsanctioned AI tools faster than security can inventory them, so company data flows out through tools with no logging, retention, or review, and you cannot govern what you cannot see.",
+  "claim_tags": [
+    "reported_fact",
+    "emerging",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 3,
+    "defender_usefulness": 5,
+    "total": 22
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "electric blue",
+    "pillar_accent": "governance",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#3b82f6",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-11_shadow-ai-inventory",
+    "filename_prefix": "2026-06-11_shadow-ai-inventory",
+    "expected_files": [
+      "2026-06-11_shadow-ai-inventory_01_cover.png",
+      "2026-06-11_shadow-ai-inventory_02_context.png",
+      "2026-06-11_shadow-ai-inventory_03_risk.png",
+      "2026-06-11_shadow-ai-inventory_04_mechanism.png",
+      "2026-06-11_shadow-ai-inventory_05_failure-point.png",
+      "2026-06-11_shadow-ai-inventory_06_defense.png",
+      "2026-06-11_shadow-ai-inventory_07_takeaway.png",
+      "2026-06-11_shadow-ai-inventory_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "THE AI YOUR TEAM USES MOST IS THE AI YOU NEVER APPROVED",
+      "subline": "Microsoft found 78 percent of AI users at work bring their own tools, mostly unsanctioned.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a control-tower radar dish sweeping in the dark, its beam catching dozens of small drifting craft scattered well beyond a single marked ring, hard rim light, strong empty lower third",
+      "background_asset": "/backgrounds/2026-06-11_shadow-ai-inventory_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "People adopt a new AI tool in an afternoon, long before anyone reviews or inventories it.",
+      "subline": "Adoption outruns governance, every time.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a vast dark warehouse of stacked crates stretching into the gloom, most of them bare and unlabelled, only a handful near the front carrying a paper tag, calm empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "Each unsanctioned tool is an ungoverned path for company data to leave through.",
+      "subline": "IBM reported that one in five breached organizations traced a breach to shadow AI.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single lit lantern marking one charted path in the dark while several faint unlit trails branch off it into shadow, tense high contrast, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "No approval means no logging, no retention rule, and no data-handling review behind the tool.",
+      "subline": "The gaps stay invisible until something leaks.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "an open paper manifest on a desk in the dark with most of its lines filled but a run of blank rows in the middle catching a thin rim of light, focal in the upper area",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Security usually learns a tool exists only after the data has already left through it.",
+      "subline": "You cannot review what was never on your list.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single ship already small on the dark horizon with a fresh wake, seen from an empty watchtower in the foreground, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Start with visibility, not bans. Inventory what is in use, offer a sanctioned option, and run each tool through vendor review.",
+      "subline": "A ban with no safe path just drives the tools underground.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a cartographer's hand drawing a fresh boundary onto a dark map, several previously scattered markers now circled and labelled inside it, calm and orderly, empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "You cannot govern {{the AI you cannot see}}. [[Inventory first, then write the policy.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single bright pin dropped onto a dark unmarked map, a faint grid resolving into focus around it, center kept dark and open",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Do you have a current list of the AI tools your team actually uses?",
+      "subline": "Save this for your next governance review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene, a single clipboard holding a blank checklist resting in vast negative space, premium editorial cybersecurity look",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Most AI risk in companies right now is not a sci-fi attack. It is shadow AI, the tools your team adopted before anyone reviewed them.\n\nMicrosoft's 2024 Work Trend Index found that 78 percent of people using AI at work bring their own tools, often unsanctioned. IBM's 2025 Cost of a Data Breach report found that one in five breached organizations traced a breach to shadow AI, that it added about $670,000 to the average breach cost, and that most breached organizations still had no AI governance in place. OWASP lists sensitive information disclosure as a top risk for LLM apps.\n\nThe problem is visibility, not malice. When a tool is not sanctioned, there is usually no logging, no retention policy, and no data-handling review behind it, so data flows out through paths security cannot see. The team often finds out only after the data has already left.\n\nDefender move: start with visibility, not bans. Inventory which AI tools are actually in use, using your proxy, SSO, and browser telemetry. Offer a sanctioned alternative with clear data rules so people do not route around you. Then run every AI tool through the same vendor and security review as any other software.\n\nYou cannot govern the AI you cannot see. Inventory first, then write the policy.\n\nDo you have a current list of the AI tools your team actually uses, and how would you even build it?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "shadow AI",
+    "AI governance",
+    "GRC",
+    "data protection",
+    "CISO"
+  ],
+  "comment_prompt": "Do you have a current, real list of the AI tools your team uses, and how would you even build it?",
+  "alt_text": [
+    "Cover slide: a control-tower radar dish sweeping in the dark, its beam catching dozens of small craft scattered beyond a single marked ring, with the headline in the lower third.",
+    "Context slide: a vast dark warehouse of stacked crates, most bare and unlabelled, only a few near the front carrying a paper tag.",
+    "Risk slide: a single lit lantern marking one charted path while several unlit trails branch off into shadow.",
+    "Mechanism slide: an open manifest on a desk with most lines filled but a run of blank rows in the middle catching a thin rim of light.",
+    "Failure point slide: a ship already small on the dark horizon with a fresh wake, seen from an empty watchtower in the foreground.",
+    "Defense slide: a cartographer's hand drawing a fresh boundary onto a dark map, scattered markers now circled and labelled inside it.",
+    "Takeaway slide: a single bright pin dropped onto a dark unmarked map, a faint grid resolving into focus around it.",
+    "CTA slide: a single clipboard holding a blank checklist resting in vast dark negative space, with the comment question and handle."
+  ],
+  "sources": [
+    {
+      "source": "Microsoft & LinkedIn 2024 Work Trend Index: AI at Work",
+      "link": "https://www.microsoft.com/en-us/worklab/work-trend-index/ai-at-work-is-here-now-comes-the-hard-part",
+      "supports": "78% of AI users at work bring their own AI tools (BYOAI), often without IT sanction.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "IBM Cost of a Data Breach 2025 (newsroom)",
+      "link": "https://newsroom.ibm.com/2025-07-30-ibm-report-13-of-organizations-reported-breaches-of-ai-models-or-applications,-97-of-which-reported-lacking-proper-ai-access-controls",
+      "supports": "One in five breached orgs traced a breach to shadow AI; shadow AI added ~$670K to average breach cost; most breached orgs lacked AI governance.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "OWASP Top 10 for LLM Applications (2025): LLM02 Sensitive Information Disclosure",
+      "link": "https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/",
+      "supports": "Sensitive information disclosure via LLM apps is a top risk; mitigations include data-handling policy and restricting what enters the model.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 28,
+    "fps": 30,
+    "export_name": "2026-06-11_shadow-ai-inventory_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-11_shadow-ai-inventory/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "The AI your team uses the most is probably the AI you never approved."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "text": "Microsoft found that 78 percent of AI users at work bring their own tools, usually before anyone reviews them."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "text": "So start with visibility, not bans. Inventory what is actually in use, offer a sanctioned option, and run each tool through the same vendor review as any other software."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "text": "You cannot govern the AI you cannot see. Inventory first, then write the policy."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "text": "Do you have a current list of the AI tools your team actually uses? Tell me below."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "The AI your team uses the most is probably the AI you never approved."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Microsoft found that 78 percent of AI users at work bring their own tools, usually before anyone reviews them."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "So start with visibility, not bans. Inventory what is actually in use, offer a sanctioned option, and run each tool through the same vendor review as any other software."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "You cannot govern the AI you cannot see. Inventory first, then write the policy."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Do you have a current list of the AI tools your team actually uses? Tell me below."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": true,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}
