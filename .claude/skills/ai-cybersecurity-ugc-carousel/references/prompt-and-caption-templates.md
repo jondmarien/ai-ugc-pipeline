@@ -1,28 +1,39 @@
 # Prompt and Caption Templates for AI Cybersecurity UGC Carousels
 
-Use these templates when generating AI-in-cybersecurity carousel content. Keep claims technically defensible and avoid step-by-step abuse instructions.
+Use these templates when generating AI-in-cybersecurity carousel content. Keep claims technically defensible.
 
-## Cover Image Prompt
+**The image engine is FLUX.2 [klein].** What you write here becomes each slide's **`visual_prompt`** in the post JSON — the literal string FLUX.2 receives (front-loaded by `art-comfyui.mjs`). klein has no prompt upsampler, so the text carries the whole idea. Author per `pipeline/content/VISUAL_PROMPT_BANK.md` (§0 rules). The short version:
 
-```text
-Create a cinematic vertical social media cover image for an AI cybersecurity carousel.
-Subject: [specific scene: security analyst, AI agent, phishing inbox, SOC room, cloud dashboard, exposed API, deepfake call center].
-Composition: portrait 4:5, dramatic central subject, strong empty dark lower-third area for headline text, high contrast, mobile-first readability.
-Style: realistic editorial technology photography, cyberpunk blue/green lighting, premium magazine cover feel, sharp details, dark atmosphere.
-Text/content to render: no text.
-Constraints: leave bottom 35% clean and dark for typography, no real company logos unless requested, no readable secrets, no illegal instructions, avoid distorted hands and gibberish UI.
-```
+- **Prose, not tags.** Order: `Subject + Action + Style + Context`, focal subject first.
+- **Lighting is the #1 quality lever** — describe it like a DP (source / quality / direction / temperature), before anything else.
+- **30–80 words, specific not long.** One or two strong effects, not a stack.
+- **No quoted text or lettering words** inside the prompt (klein renders them as garbled type). Keep type-free zones positive: "clean unmarked surfaces, generous negative space in the lower third."
+- **Do NOT hardcode an accent colour.** The renderer auto-adds the post **theme's** accent glow + hex and a `Style: … Mood:` tag. Describe the subject + lighting *quality/direction* and let the pipeline supply the hue.
 
-## Inner Slide Image Prompt
+## Cover Image Prompt (→ slide 1 `visual_prompt`)
 
 ```text
-Create a realistic cybersecurity explainer visual for an Instagram carousel.
-Subject: [safe high-level concept: AI-generated phishing pretext, prompt injection in a document, chatbot data leakage, SOC alert triage, identity verification failure].
-Composition: portrait 4:5, clear focal point, dark background, space at top or bottom for short slide text.
-Style: cinematic, realistic, high-contrast, blue/green cybersecurity palette, subtle warning tone.
-Text/content to render: no text.
-Constraints: do not show operational exploit steps, real credentials, real company data, or readable private information.
+[image type], [focal subject doing something], lit by [DP-style lighting: source, quality, direction],
+[medium/style: cinematic key art / macro photograph / editorial still], dramatic central subject with
+clean unmarked surfaces and generous negative space across the lower third.
 ```
+
+Example (offensive theme — note: no colour word; the renderer adds the red glow):
+
+```text
+A cinematic close-up of a single brass key dissolving into fine particles mid-air, lit by one hard rim
+light raking from the left through volumetric haze, premium dark key art, the subject held in the upper
+third with soft shadow and clean empty space filling the lower third.
+```
+
+## Inner Slide Image Prompt (→ inner-slide `visual_prompt`)
+
+```text
+[image type], [one safe high-level concept metaphor + action], lit by [DP-style lighting], [medium/style],
+clear single focal point with a calm uncluttered lower third.
+```
+
+Constraints: synthetic faces only, no real logos/credentials/customer data, no turnkey exploit visuals (keep mechanisms conceptual). Offensive-theme posts may depict mechanisms more concretely when genuinely educational.
 
 ## Complete Carousel Output Template
 
