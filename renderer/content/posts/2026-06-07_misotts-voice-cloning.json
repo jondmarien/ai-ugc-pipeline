@@ -298,7 +298,7 @@
       {
         "start": 5,
         "end": 11,
-        "text": "Miso Labs just open sourced an 8 billion parameter emotive voice model that can clone a voice from seconds of audio."
+        "text": "Meesoh Labs just open sourced an 8 billion parameter emotive voice model that can clone a voice from seconds of audio."
       },
       {
         "start": 11,
@@ -365,570 +365,584 @@
     "captions": [
       {
         "start": 0.0,
-        "end": 1.94,
+        "end": 1.84,
         "text": "A familiar voice is no longer proof",
         "words": [
           {
             "text": "A",
             "start": 0.0,
-            "end": 0.48
+            "end": 0.32
           },
           {
             "text": "familiar",
-            "start": 0.48,
-            "end": 0.74
+            "start": 0.32,
+            "end": 0.58
           },
           {
             "text": "voice",
-            "start": 0.74,
-            "end": 1.1
+            "start": 0.58,
+            "end": 0.92
           },
           {
             "text": "is",
-            "start": 1.1,
-            "end": 1.26
+            "start": 0.92,
+            "end": 1.18
           },
           {
             "text": "no",
-            "start": 1.26,
-            "end": 1.42
+            "start": 1.18,
+            "end": 1.38
           },
           {
             "text": "longer",
-            "start": 1.42,
-            "end": 1.76
+            "start": 1.38,
+            "end": 1.66
           },
           {
             "text": "proof",
-            "start": 1.76,
-            "end": 1.94
+            "start": 1.66,
+            "end": 1.84
           }
         ]
       },
       {
-        "start": 1.94,
-        "end": 3.0,
-        "text": "that it is really them.",
+        "start": 1.84,
+        "end": 3.98,
+        "text": "that it is really them. Mistle Labs",
         "words": [
           {
             "text": "that",
-            "start": 1.94,
-            "end": 2.26
+            "start": 1.84,
+            "end": 2.14
           },
           {
             "text": "it",
-            "start": 2.26,
-            "end": 2.36
+            "start": 2.14,
+            "end": 2.24
           },
           {
             "text": "is",
-            "start": 2.36,
-            "end": 2.48
+            "start": 2.24,
+            "end": 2.42
           },
           {
             "text": "really",
-            "start": 2.48,
-            "end": 2.68
+            "start": 2.42,
+            "end": 2.64
           },
           {
             "text": "them.",
-            "start": 2.68,
-            "end": 3.0
-          }
-        ]
-      },
-      {
-        "start": 3.7,
-        "end": 5.6,
-        "text": "Mizzo Labs just open sourced an 8",
-        "words": [
+            "start": 2.64,
+            "end": 2.92
+          },
           {
-            "text": "Mizzo",
-            "start": 3.7,
-            "end": 4.08
+            "text": "Mistle",
+            "start": 3.46,
+            "end": 3.76
           },
           {
             "text": "Labs",
-            "start": 4.08,
-            "end": 4.26
-          },
+            "start": 3.76,
+            "end": 3.98
+          }
+        ]
+      },
+      {
+        "start": 3.98,
+        "end": 6.12,
+        "text": "just open sourced an 8 billion parameter",
+        "words": [
           {
             "text": "just",
-            "start": 4.26,
-            "end": 4.58
+            "start": 3.98,
+            "end": 4.28
           },
           {
             "text": "open",
-            "start": 4.58,
-            "end": 4.8
+            "start": 4.28,
+            "end": 4.54
           },
           {
             "text": "sourced",
-            "start": 4.8,
-            "end": 5.14
+            "start": 4.54,
+            "end": 4.86
           },
           {
             "text": "an",
-            "start": 5.14,
-            "end": 5.36
+            "start": 4.86,
+            "end": 5.14
           },
           {
             "text": "8",
-            "start": 5.36,
-            "end": 5.6
-          }
-        ]
-      },
-      {
-        "start": 5.6,
-        "end": 8.02,
-        "text": "billion parameter emotive voice model that can",
-        "words": [
+            "start": 5.14,
+            "end": 5.32
+          },
           {
             "text": "billion",
-            "start": 5.6,
-            "end": 5.86
+            "start": 5.32,
+            "end": 5.58
           },
           {
             "text": "parameter",
-            "start": 5.86,
-            "end": 6.46
-          },
+            "start": 5.58,
+            "end": 6.12
+          }
+        ]
+      },
+      {
+        "start": 6.12,
+        "end": 8.2,
+        "text": "emotive voice model that can clone a",
+        "words": [
           {
             "text": "emotive",
-            "start": 6.46,
-            "end": 6.96
+            "start": 6.12,
+            "end": 6.64
           },
           {
             "text": "voice",
-            "start": 6.96,
-            "end": 7.16
+            "start": 6.64,
+            "end": 6.86
           },
           {
             "text": "model",
-            "start": 7.16,
-            "end": 7.5
+            "start": 6.86,
+            "end": 7.2
           },
           {
             "text": "that",
-            "start": 7.5,
-            "end": 7.9
+            "start": 7.2,
+            "end": 7.66
           },
           {
             "text": "can",
-            "start": 7.9,
-            "end": 8.02
+            "start": 7.66,
+            "end": 7.78
+          },
+          {
+            "text": "clone",
+            "start": 7.78,
+            "end": 8.06
+          },
+          {
+            "text": "a",
+            "start": 8.06,
+            "end": 8.2
           }
         ]
       },
       {
-        "start": 8.02,
-        "end": 9.46,
-        "text": "clone a voice from seconds of audio,",
+        "start": 8.2,
+        "end": 10.46,
+        "text": "voice from seconds of audio, so verify",
         "words": [
           {
-            "text": "clone",
-            "start": 8.02,
-            "end": 8.24
-          },
-          {
-            "text": "a",
-            "start": 8.24,
-            "end": 8.34
-          },
-          {
             "text": "voice",
-            "start": 8.34,
-            "end": 8.56
+            "start": 8.2,
+            "end": 8.44
           },
           {
             "text": "from",
-            "start": 8.56,
-            "end": 8.74
+            "start": 8.44,
+            "end": 8.68
           },
           {
             "text": "seconds",
-            "start": 8.74,
-            "end": 8.96
+            "start": 8.68,
+            "end": 8.94
           },
           {
             "text": "of",
-            "start": 8.96,
-            "end": 9.2
+            "start": 8.94,
+            "end": 9.22
           },
           {
             "text": "audio,",
-            "start": 9.2,
-            "end": 9.46
-          }
-        ]
-      },
-      {
-        "start": 10.04,
-        "end": 11.78,
-        "text": "so verify any sensitive request on a",
-        "words": [
+            "start": 9.22,
+            "end": 9.48
+          },
           {
             "text": "so",
-            "start": 10.04,
-            "end": 10.12
+            "start": 10.02,
+            "end": 10.14
           },
           {
             "text": "verify",
-            "start": 10.12,
-            "end": 10.34
-          },
+            "start": 10.14,
+            "end": 10.46
+          }
+        ]
+      },
+      {
+        "start": 10.46,
+        "end": 12.48,
+        "text": "any sensitive request on a second channel.",
+        "words": [
           {
             "text": "any",
-            "start": 10.34,
-            "end": 10.7
+            "start": 10.46,
+            "end": 10.86
           },
           {
             "text": "sensitive",
-            "start": 10.7,
-            "end": 11.12
+            "start": 10.86,
+            "end": 11.3
           },
           {
             "text": "request",
-            "start": 11.12,
-            "end": 11.36
+            "start": 11.3,
+            "end": 11.54
           },
           {
             "text": "on",
-            "start": 11.36,
-            "end": 11.7
+            "start": 11.54,
+            "end": 11.9
           },
           {
             "text": "a",
-            "start": 11.7,
-            "end": 11.78
+            "start": 11.9,
+            "end": 12.0
+          },
+          {
+            "text": "second",
+            "start": 12.0,
+            "end": 12.2
+          },
+          {
+            "text": "channel.",
+            "start": 12.2,
+            "end": 12.48
           }
         ]
       },
       {
-        "start": 11.78,
-        "end": 13.5,
-        "text": "second channel, call back a known number,",
+        "start": 13.1,
+        "end": 14.8,
+        "text": "Call back a known number, or agree",
         "words": [
           {
-            "text": "second",
-            "start": 11.78,
-            "end": 11.96
-          },
-          {
-            "text": "channel,",
-            "start": 11.96,
-            "end": 12.3
-          },
-          {
-            "text": "call",
-            "start": 12.62,
-            "end": 12.7
+            "text": "Call",
+            "start": 13.1,
+            "end": 13.2
           },
           {
             "text": "back",
-            "start": 12.7,
-            "end": 12.88
+            "start": 13.2,
+            "end": 13.42
           },
           {
             "text": "a",
-            "start": 12.88,
-            "end": 13.02
+            "start": 13.42,
+            "end": 13.58
           },
           {
             "text": "known",
-            "start": 13.02,
-            "end": 13.12
+            "start": 13.58,
+            "end": 13.7
           },
           {
             "text": "number,",
-            "start": 13.12,
-            "end": 13.5
-          }
-        ]
-      },
-      {
-        "start": 13.76,
-        "end": 14.8,
-        "text": "or agree on a code word with",
-        "words": [
+            "start": 13.7,
+            "end": 14.08
+          },
           {
             "text": "or",
-            "start": 13.76,
-            "end": 13.82
+            "start": 14.46,
+            "end": 14.54
           },
           {
             "text": "agree",
-            "start": 13.82,
-            "end": 14.04
-          },
-          {
-            "text": "on",
-            "start": 14.04,
-            "end": 14.2
-          },
-          {
-            "text": "a",
-            "start": 14.2,
-            "end": 14.3
-          },
-          {
-            "text": "code",
-            "start": 14.3,
-            "end": 14.48
-          },
-          {
-            "text": "word",
-            "start": 14.48,
-            "end": 14.66
-          },
-          {
-            "text": "with",
-            "start": 14.66,
+            "start": 14.54,
             "end": 14.8
           }
         ]
       },
       {
         "start": 14.8,
-        "end": 16.7,
-        "text": "family and your team. A voice you",
+        "end": 16.3,
+        "text": "on a code word with family and",
         "words": [
-          {
-            "text": "family",
-            "start": 14.8,
-            "end": 15.1
-          },
-          {
-            "text": "and",
-            "start": 15.1,
-            "end": 15.36
-          },
-          {
-            "text": "your",
-            "start": 15.36,
-            "end": 15.48
-          },
-          {
-            "text": "team.",
-            "start": 15.48,
-            "end": 15.72
-          },
-          {
-            "text": "A",
-            "start": 16.32,
-            "end": 16.32
-          },
-          {
-            "text": "voice",
-            "start": 16.32,
-            "end": 16.54
-          },
-          {
-            "text": "you",
-            "start": 16.54,
-            "end": 16.7
-          }
-        ]
-      },
-      {
-        "start": 16.7,
-        "end": 19.28,
-        "text": "recognize is not identity anymore, verify the",
-        "words": [
-          {
-            "text": "recognize",
-            "start": 16.7,
-            "end": 16.94
-          },
-          {
-            "text": "is",
-            "start": 16.94,
-            "end": 17.3
-          },
-          {
-            "text": "not",
-            "start": 17.3,
-            "end": 17.48
-          },
-          {
-            "text": "identity",
-            "start": 17.48,
-            "end": 17.78
-          },
-          {
-            "text": "anymore,",
-            "start": 17.78,
-            "end": 18.34
-          },
-          {
-            "text": "verify",
-            "start": 18.76,
-            "end": 18.9
-          },
-          {
-            "text": "the",
-            "start": 18.9,
-            "end": 19.28
-          }
-        ]
-      },
-      {
-        "start": 19.28,
-        "end": 21.0,
-        "text": "request on a channel the caller cannot",
-        "words": [
-          {
-            "text": "request",
-            "start": 19.28,
-            "end": 19.5
-          },
           {
             "text": "on",
-            "start": 19.5,
-            "end": 19.78
+            "start": 14.8,
+            "end": 15.06
           },
           {
             "text": "a",
-            "start": 19.78,
-            "end": 19.86
+            "start": 15.06,
+            "end": 15.16
           },
           {
-            "text": "channel",
-            "start": 19.86,
-            "end": 20.16
+            "text": "code",
+            "start": 15.16,
+            "end": 15.34
+          },
+          {
+            "text": "word",
+            "start": 15.34,
+            "end": 15.58
+          },
+          {
+            "text": "with",
+            "start": 15.58,
+            "end": 15.76
+          },
+          {
+            "text": "family",
+            "start": 15.76,
+            "end": 16.06
+          },
+          {
+            "text": "and",
+            "start": 16.06,
+            "end": 16.3
+          }
+        ]
+      },
+      {
+        "start": 16.3,
+        "end": 16.64,
+        "text": "your team.",
+        "words": [
+          {
+            "text": "your",
+            "start": 16.3,
+            "end": 16.42
+          },
+          {
+            "text": "team.",
+            "start": 16.42,
+            "end": 16.64
+          }
+        ]
+      },
+      {
+        "start": 17.3,
+        "end": 18.96,
+        "text": "A voice you recognize is not identity",
+        "words": [
+          {
+            "text": "A",
+            "start": 17.3,
+            "end": 17.32
+          },
+          {
+            "text": "voice",
+            "start": 17.32,
+            "end": 17.58
+          },
+          {
+            "text": "you",
+            "start": 17.58,
+            "end": 17.74
+          },
+          {
+            "text": "recognize",
+            "start": 17.74,
+            "end": 18.06
+          },
+          {
+            "text": "is",
+            "start": 18.06,
+            "end": 18.42
+          },
+          {
+            "text": "not",
+            "start": 18.42,
+            "end": 18.64
+          },
+          {
+            "text": "identity",
+            "start": 18.64,
+            "end": 18.96
+          }
+        ]
+      },
+      {
+        "start": 18.96,
+        "end": 19.52,
+        "text": "anymore.",
+        "words": [
+          {
+            "text": "anymore.",
+            "start": 18.96,
+            "end": 19.52
+          }
+        ]
+      },
+      {
+        "start": 20.18,
+        "end": 21.86,
+        "text": "Verify the request on a channel, the",
+        "words": [
+          {
+            "text": "Verify",
+            "start": 20.18,
+            "end": 20.18
           },
           {
             "text": "the",
-            "start": 20.16,
-            "end": 20.42
+            "start": 20.18,
+            "end": 20.5
           },
           {
+            "text": "request",
+            "start": 20.5,
+            "end": 20.74
+          },
+          {
+            "text": "on",
+            "start": 20.74,
+            "end": 21.06
+          },
+          {
+            "text": "a",
+            "start": 21.06,
+            "end": 21.16
+          },
+          {
+            "text": "channel,",
+            "start": 21.16,
+            "end": 21.48
+          },
+          {
+            "text": "the",
+            "start": 21.84,
+            "end": 21.86
+          }
+        ]
+      },
+      {
+        "start": 21.86,
+        "end": 22.74,
+        "text": "caller cannot fake.",
+        "words": [
+          {
             "text": "caller",
-            "start": 20.42,
-            "end": 20.6
+            "start": 21.86,
+            "end": 22.08
           },
           {
             "text": "cannot",
-            "start": 20.6,
-            "end": 21.0
-          }
-        ]
-      },
-      {
-        "start": 21.0,
-        "end": 21.22,
-        "text": "fake.",
-        "words": [
+            "start": 22.08,
+            "end": 22.5
+          },
           {
             "text": "fake.",
-            "start": 21.0,
-            "end": 21.22
+            "start": 22.5,
+            "end": 22.74
           }
         ]
       },
       {
-        "start": 21.96,
-        "end": 23.76,
+        "start": 23.34,
+        "end": 25.4,
         "text": "Does your wire transfer approval still trust",
         "words": [
           {
             "text": "Does",
-            "start": 21.96,
-            "end": 22.0
+            "start": 23.34,
+            "end": 23.48
           },
           {
             "text": "your",
-            "start": 22.0,
-            "end": 22.14
+            "start": 23.48,
+            "end": 23.62
           },
           {
             "text": "wire",
-            "start": 22.14,
-            "end": 22.36
+            "start": 23.62,
+            "end": 23.84
           },
           {
             "text": "transfer",
-            "start": 22.36,
-            "end": 22.7
+            "start": 23.84,
+            "end": 24.22
           },
           {
             "text": "approval",
-            "start": 22.7,
-            "end": 23.1
+            "start": 24.22,
+            "end": 24.72
           },
           {
             "text": "still",
-            "start": 23.1,
-            "end": 23.42
+            "start": 24.72,
+            "end": 25.04
           },
           {
             "text": "trust",
-            "start": 23.42,
-            "end": 23.76
+            "start": 25.04,
+            "end": 25.4
           }
         ]
       },
       {
-        "start": 23.76,
-        "end": 25.6,
+        "start": 25.4,
+        "end": 27.2,
         "text": "a familiar voice on the phone? Tell",
         "words": [
           {
             "text": "a",
-            "start": 23.76,
-            "end": 23.9
+            "start": 25.4,
+            "end": 25.58
           },
           {
             "text": "familiar",
-            "start": 23.9,
-            "end": 24.08
+            "start": 25.58,
+            "end": 25.76
           },
           {
             "text": "voice",
-            "start": 24.08,
-            "end": 24.52
+            "start": 25.76,
+            "end": 26.16
           },
           {
             "text": "on",
-            "start": 24.52,
-            "end": 24.7
+            "start": 26.16,
+            "end": 26.36
           },
           {
             "text": "the",
-            "start": 24.7,
-            "end": 24.8
+            "start": 26.36,
+            "end": 26.46
           },
           {
             "text": "phone?",
-            "start": 24.8,
-            "end": 25.02
+            "start": 26.46,
+            "end": 26.68
           },
           {
             "text": "Tell",
-            "start": 25.02,
-            "end": 25.6
+            "start": 26.68,
+            "end": 27.2
           }
         ]
       },
       {
-        "start": 25.6,
-        "end": 25.94,
+        "start": 27.2,
+        "end": 27.54,
         "text": "me below.",
         "words": [
           {
             "text": "me",
-            "start": 25.6,
-            "end": 25.74
+            "start": 27.2,
+            "end": 27.34
           },
           {
             "text": "below.",
-            "start": 25.74,
-            "end": 25.94
+            "start": 27.34,
+            "end": 27.54
           }
         ]
       }
-    ]
+    ],
+    "caption_corrections": {
+      "mistle": "Miso",
+      "meesoh": "Miso",
+      "meeso": "Miso",
+      "meso": "Miso",
+      "miso": "Miso"
+    }
   },
   "qa": {
     "fact_checked": true,
