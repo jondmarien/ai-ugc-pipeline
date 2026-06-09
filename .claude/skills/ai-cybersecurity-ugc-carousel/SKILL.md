@@ -86,20 +86,20 @@ Default social format is **1080 × 1350 px portrait** for Instagram-style carous
 
 | Visual layer | Standard |
 | --- | --- |
-| Background | Cinematic cybersecurity visual, high contrast, dark edges |
+| Background | Dark cinematic key art, lighting-first (described like a DP), high contrast, generous negative space |
 | Text band | Dark lower third or gradient for readability |
 | Typography | Bold condensed sans-serif, high-contrast white |
-| Accent color | One strong color: neon green, cyan, red, or electric blue |
+| Accent color | Theme-driven, set by the renderer — `offensive` red `#ef4444` · `defensive` blue `#3b82f6` · `hacking` green `#39ff88` · `purple-team` `#a855f7` · `ai` orange `#f97316`. Do NOT hardcode a colour in the image prompt. |
 | CTA | Small “SWIPE FOR MORE,” “SAVE THIS,” or platform-appropriate cue |
 | Brand mark | Small handle/logo, unobtrusive |
 
 When generating images, usually ask for **no rendered text** and add exact text in a layout tool unless the user specifically wants text rendered by the image model.
 
-### 6. Use safe image prompts
+### 6. Use safe image prompts (FLUX.2 [klein])
 
-For covers, request a dramatic but non-infringing scene with space for typography. Avoid real company logos unless the user has a legal/brand reason to include them. Avoid depicting illegal step-by-step actions.
+Each slide's **visual direction becomes the `visual_prompt` field in the post JSON** — the literal string FLUX.2 [klein] receives. klein has no prompt upsampler, so write the whole idea in **prose**, `Subject + Action + Style + Context`, **lighting-first** (the highest-impact lever), 30–80 words, specific not long. No quoted text or lettering words (klein garbles them); keep type-free zones positive ("clean unmarked surfaces, generous negative space in the lower third"). **Don't hardcode an accent colour** — the renderer adds the theme glow. Synthetic faces only, no real logos/credentials; keep mechanisms conceptual (offensive-theme posts may go more concrete when genuinely educational).
 
-Use the prompt templates in `references/prompt-and-caption-templates.md` when producing multiple posts or when the user asks for reusable prompts.
+Follow `pipeline/content/VISUAL_PROMPT_BANK.md` (the authority) and the templates in `references/prompt-and-caption-templates.md`.
 
 ### 7. Write captions in the house style
 
