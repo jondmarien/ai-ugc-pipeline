@@ -1,0 +1,326 @@
+{
+  "post_id": "2026-06-08_chatbot-log-leak",
+  "date": "2026-06-08",
+  "slug": "chatbot-log-leak",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "data_leakage",
+  "theme": "offensive",
+  "audience": "security_practitioners",
+  "core_claim": "Pasting production logs and code into unsanctioned chatbots moves secrets, customer data, and internal paths outside your controlled systems, and a clipboard paste slips past file-based data-loss tools.",
+  "claim_tags": [
+    "reported_fact",
+    "emerging",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 4,
+    "defender_usefulness": 5,
+    "total": 23
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "alert red",
+    "pillar_accent": "data_leakage",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#ef4444",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-08_chatbot-log-leak",
+    "filename_prefix": "2026-06-08_chatbot-log-leak",
+    "expected_files": [
+      "2026-06-08_chatbot-log-leak_01_cover.png",
+      "2026-06-08_chatbot-log-leak_02_context.png",
+      "2026-06-08_chatbot-log-leak_03_risk.png",
+      "2026-06-08_chatbot-log-leak_04_mechanism.png",
+      "2026-06-08_chatbot-log-leak_05_failure-point.png",
+      "2026-06-08_chatbot-log-leak_06_defense.png",
+      "2026-06-08_chatbot-log-leak_07_takeaway.png",
+      "2026-06-08_chatbot-log-leak_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "THE LOGS YOU PASTE INTO A CHATBOT LEAVE YOUR CONTROL FOR GOOD",
+      "subline": "Samsung learned it the hard way: engineers pasted source code into ChatGPT, and it banned the tools weeks later.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a lone office photocopier in the dark mid-copy, a bright bar of light sweeping under the lid and a single page easing out of the tray, strong empty lower third",
+      "background_asset": "/backgrounds/2026-06-08_chatbot-log-leak_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "The problem is not the AI. It is sensitive data leaving systems you control, one paste at a time.",
+      "subline": "A chatbot paste is data movement, not a conversation.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a painted boundary line running across a dark floor with a few loose papers drifting across it from one side to the other, dark editorial, calm empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "Logs and code carry the crown jewels: API tokens, customer IDs, stack traces, and internal endpoints.",
+      "subline": "Researchers found a real slice of employees had already pasted confidential data into ChatGPT.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single dark inkwell tipped over on a desk in the gloom, a thin bright rivulet of ink running off the edge toward the floor, tense high contrast, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "Copy and paste strips the file and its label, so classic data-loss tools never see it leave.",
+      "subline": "No file, no scan. The clipboard is the blind spot.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a pair of scissors clipping a small fragment out of a larger printed sheet in the dark, the cut piece lifting free and drifting away, focal in the upper area",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Teams ban the tools instead of offering a safe one, so people just switch to personal accounts.",
+      "subline": "A ban with no sanctioned path pushes the data further out of view.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a closed metal shutter pulled down over one doorway in the dark while a side door stands quietly open beside it, a few papers slipping through the open one, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Give people a sanctioned AI tool with redaction, logging, and retention, plus one rule: never paste production data.",
+      "subline": "Make the safe path the easy path.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single document passing through a small inline filter cartridge on a desk in the dark, a cleaner redacted page coming out the other side, calm and orderly, empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "Once it is pasted, you {{cannot get it back}}. [[Make the safe path easier than the risky one.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single sheet of paper already half dissolved into drifting particles in deep shadow, the intact half catching a thin rim of light, center kept dark and open",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Does your team have a sanctioned way to use AI on real data, or just a rule nobody follows?",
+      "subline": "Save this for your next data-handling review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene, a single rubber stamp resting beside an empty ink pad in vast negative space, premium editorial cybersecurity look",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Pasting production logs into a chatbot feels like a shortcut. It is actually data leaving the systems you control, and you cannot pull it back.\n\nThis is not hypothetical. In 2023, Samsung engineers pasted internal source code and a recorded meeting into ChatGPT, and within weeks the company banned generative AI on its devices. Cyberhaven's analysis of around 1.6 million workers found that, as of mid-2023, 8.6 percent had pasted company data into ChatGPT and 4.7 percent had pasted confidential data. OWASP lists sensitive information disclosure as a top risk for LLM apps.\n\nThe reason it slips through is mechanical. A copy and paste strips the file and its classification, so file-based data-loss tools never see it move. Logs and code are the worst offenders, because they carry API tokens, customer IDs, stack traces, and internal endpoints.\n\nThe fix is not a ban. A ban with no safe path just pushes people to personal accounts, where you have even less visibility. Give people a sanctioned AI tool with redaction, logging, and a clear retention policy, plus one rule everyone understands: never paste production data.\n\nOnce it is pasted, you cannot get it back. Make the safe path easier than the risky one.\n\nDoes your team have a sanctioned way to use AI on real data, or just a rule nobody follows?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "data leakage",
+    "shadow AI",
+    "DLP",
+    "secrets management",
+    "AppSec"
+  ],
+  "comment_prompt": "Does your team have a sanctioned way to use AI on real data, or a rule everyone quietly ignores?",
+  "alt_text": [
+    "Cover slide: a lone office photocopier in the dark mid-copy, a bright bar of light sweeping under the lid and a page easing out of the tray, with the headline in the lower third.",
+    "Context slide: a painted boundary line across a dark floor with loose papers drifting across it from one side to the other.",
+    "Risk slide: a tipped-over inkwell on a desk in the gloom, a thin bright rivulet of ink running off the edge.",
+    "Mechanism slide: scissors clipping a fragment out of a larger printed sheet, the cut piece lifting free and drifting away.",
+    "Failure point slide: a closed metal shutter pulled down over one doorway while a side door stands open beside it, papers slipping through the open one.",
+    "Defense slide: a document passing through a small inline filter cartridge, a cleaner redacted page coming out the other side.",
+    "Takeaway slide: a sheet of paper half dissolved into drifting particles in deep shadow, the intact half catching a thin rim of light.",
+    "CTA slide: a single rubber stamp resting beside an empty ink pad in vast dark negative space, with the comment question and handle."
+  ],
+  "sources": [
+    {
+      "source": "OWASP Top 10 for LLM Applications (2025): LLM02 Sensitive Information Disclosure",
+      "link": "https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/",
+      "supports": "Sensitive information disclosure (credentials, confidential business data, PII) is a top LLM-app risk; user-supplied input is a named vector.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "The Register: Samsung bans generative AI after staff leak",
+      "link": "https://www.theregister.com/2023/05/02/samsung_generative_ai_ban/",
+      "supports": "Samsung engineers pasted internal source code and a recorded meeting into ChatGPT (April 2023); Samsung banned generative AI on company devices.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "TechCrunch: Samsung bans ChatGPT after internal data leak",
+      "link": "https://techcrunch.com/2023/05/02/samsung-bans-use-of-generative-ai-tools-like-chatgpt-after-april-internal-data-leak/",
+      "supports": "Independent confirmation of the Samsung source-code paste incident and the generative-AI ban.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Cyberhaven: workers pasting company data into ChatGPT",
+      "link": "https://www.cyberhaven.com/blog/4-2-of-workers-have-pasted-company-data-into-chatgpt",
+      "supports": "As of June 2023, 8.6% of employees had pasted company data and 4.7% had pasted confidential data into ChatGPT; clipboard paste evades file-based DLP.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 28,
+    "fps": 30,
+    "export_name": "2026-06-08_chatbot-log-leak_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-08_chatbot-log-leak/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "The logs you paste into a chatbot leave your control, and you cannot pull them back."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "text": "Samsung learned this in 2023, when engineers pasted source code into ChatGPT, and the company banned the tools within weeks."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "text": "Copy and paste slips past file-based data-loss tools, so give people a sanctioned tool with redaction and logging, and one rule: never paste production data."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "text": "Once it is pasted, you cannot get it back. Make the safe path easier than the risky one."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "text": "Does your team have a sanctioned way to use AI on real data? Tell me below."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "The logs you paste into a chatbot leave your control, and you cannot pull them back."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Samsung learned this in 2023, when engineers pasted source code into ChatGPT, and the company banned the tools within weeks."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "Copy and paste slips past file-based data-loss tools, so give people a sanctioned tool with redaction and logging, and one rule: never paste production data."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "Once it is pasted, you cannot get it back. Make the safe path easier than the risky one."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Does your team have a sanctioned way to use AI on real data? Tell me below."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": true,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}

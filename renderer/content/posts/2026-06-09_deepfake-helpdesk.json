@@ -1,0 +1,326 @@
+{
+  "post_id": "2026-06-09_deepfake-helpdesk",
+  "date": "2026-06-09",
+  "slug": "deepfake-helpdesk",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "offensive_ai",
+  "theme": "offensive",
+  "audience": "security_practitioners",
+  "core_claim": "In 2024 a finance worker at Arup wired about 25 million dollars after a video call with a deepfaked CFO and fake colleagues, which proves that recognizing a face or voice on a call is not an authorization control.",
+  "claim_tags": [
+    "reported_fact",
+    "emerging",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 5,
+    "defender_usefulness": 5,
+    "total": 24
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "alert red",
+    "pillar_accent": "offensive_ai",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#ef4444",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-09_deepfake-helpdesk",
+    "filename_prefix": "2026-06-09_deepfake-helpdesk",
+    "expected_files": [
+      "2026-06-09_deepfake-helpdesk_01_cover.png",
+      "2026-06-09_deepfake-helpdesk_02_context.png",
+      "2026-06-09_deepfake-helpdesk_03_risk.png",
+      "2026-06-09_deepfake-helpdesk_04_mechanism.png",
+      "2026-06-09_deepfake-helpdesk_05_failure-point.png",
+      "2026-06-09_deepfake-helpdesk_06_defense.png",
+      "2026-06-09_deepfake-helpdesk_07_takeaway.png",
+      "2026-06-09_deepfake-helpdesk_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "THEY DID A VIDEO CALL TO VERIFY THE REQUEST. THE VIDEO CALL WAS THE SCAM.",
+      "subline": "In 2024, a finance worker wired about 25 million dollars after a deepfake call with his CFO.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a long boardroom table in the dark lined with identical faceless suited mannequins seated in the chairs, one empty chair at the head, hard rim light, strong empty lower third",
+      "background_asset": "/backgrounds/2026-06-09_deepfake-helpdesk_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "At the engineering firm Arup, a finance worker joined a video call with people he recognized, then made fifteen transfers.",
+      "subline": "Every person on that call was a deepfake. None of the company's systems were breached.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a grid of small framed portraits hung in the dark, each one actually a flat cardboard cutout propped from behind, a few tipping to reveal the empty backs, dark editorial, calm empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "A request can now look and sound like someone your team trusts, in real time, on a live call.",
+      "subline": "Recognizing a face was never a strong control. AI just made that obvious.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single wax bust of a businessman in the dark beginning to slump and melt at the edges while still holding its features, tense high contrast, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "Several familiar faces agreeing on one call is social proof, and it overrode the employee's first, correct suspicion.",
+      "subline": "The verification step itself was the forgery.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a row of identical standing figurines on a dark table, an unseen hand having just tipped the first so they fall in sequence, focal in the upper area",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Approval flows that trust a recognized person, not a verified process, fail the moment the person can be faked.",
+      "subline": "If a live call can waive your controls, you do not really have controls.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single hand sliding a thick stack of banknotes across a dark table toward a waiting open briefcase, a faint rim of light on the cash, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Verify money movement out-of-band: call back a known, saved number, and require dual approval with a delay.",
+      "subline": "Build it so no one can skip it because the boss was on the call.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a heavy ledger book open on a desk with two distinct ink stamps pressed side by side on one line, a hand poised over a third, calm and orderly, empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "A face on a live call {{is not authorization}}. [[Trust the verified process, not the person you recognize.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single ornate picture frame in deep shadow standing empty with its canvas cut clean out, a thin rim of light along the inner edge, center kept dark and open",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Could a convincing video call trigger a wire transfer at your company today?",
+      "subline": "Save this for your next finance-controls review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene, a single unsigned cheque lying alone in vast negative space, premium editorial cybersecurity look",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "The next urgent request from your CFO might be a deepfake, and it might be on video.\n\nIn 2024, the engineering firm Arup lost about $25 million after a finance worker in its Hong Kong office joined a video call with people he recognized as the CFO and colleagues. Every one of them was a deepfake. He made fifteen transfers before anyone realized. Arup said none of its internal systems were breached, and its own CIO called it technology-enhanced social engineering. CNN, the South China Morning Post, and Fortune all reported the same figures.\n\nThe lesson is not that video calls are dangerous. It is that recognizing a face or a voice was never a strong authorization control, and AI just made that obvious. The cruel part of this case is that the verification step itself, the live call with familiar faces, was the forgery. Real-time social proof overrode the employee's first, correct suspicion.\n\nThe FBI has warned that criminals now generate real-time video of executives and authority figures, and it recommends a pre-agreed code word to confirm identity.\n\nDefender move: require out-of-band verification for money movement, every time. Call back a known, saved number, not one from the request, and require dual approval with a built-in delay. Build it so no one can skip it because the boss was on the call.\n\nCould a convincing video call trigger a wire transfer at your company today?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "deepfakes",
+    "CEO fraud",
+    "social engineering",
+    "wire fraud",
+    "finance controls"
+  ],
+  "comment_prompt": "Could a convincing video call trigger a wire transfer at your company today, or would a callback stop it?",
+  "alt_text": [
+    "Cover slide: a long boardroom table lined with identical faceless suited mannequins in the chairs, one empty chair at the head, with the headline in the lower third.",
+    "Context slide: a grid of framed portraits in the dark, each a flat cardboard cutout, a few tipping to reveal empty backs.",
+    "Risk slide: a wax bust of a businessman beginning to slump and melt at the edges while keeping its features.",
+    "Mechanism slide: a row of identical standing figurines toppling in sequence after an unseen hand tipped the first.",
+    "Failure point slide: a hand sliding a thick stack of banknotes across a dark table toward an open briefcase.",
+    "Defense slide: an open ledger with two ink stamps pressed side by side on one line and a hand poised over a third.",
+    "Takeaway slide: an ornate picture frame standing empty in deep shadow with its canvas cut clean out, a thin rim of light along the inner edge.",
+    "CTA slide: a single unsigned cheque lying alone in vast dark negative space, with the comment question and handle."
+  ],
+  "sources": [
+    {
+      "source": "CNN: British engineering firm Arup loses $25M in deepfake scam",
+      "link": "https://www.cnn.com/2024/05/16/tech/arup-deepfake-scam-loss-hong-kong-intl-hnk/index.html",
+      "supports": "Arup finance worker in Hong Kong duped by a video call with a deepfaked CFO and colleagues; ~HK$200M (~US$25.6M) lost over ~15 transfers; early 2024.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "South China Morning Post: Arup confirmed victim of HK$200M deepfake scam",
+      "link": "https://www.scmp.com/news/hong-kong/law-and-crime/article/3263151/uk-multinational-arup-confirmed-victim-hk200-million-deepfake-scam-used-digital-version-cfo-dupe",
+      "supports": "Independent confirmation: digital version of the CFO used on a video call; 15 transactions to 5 accounts; no internal systems breached.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Fortune: Arup deepfake fraud, Hong Kong, $25 million",
+      "link": "https://fortune.com/europe/2024/05/17/arup-deepfake-fraud-scam-victim-hong-kong-25-million-cfo/",
+      "supports": "Independent confirmation of the ~$25M loss and deepfake video-conference method.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "FBI IC3 Public Service Announcement, December 2024",
+      "link": "https://www.ic3.gov/PSA/2024/PSA241203",
+      "supports": "Criminals generate real-time video of executives and authority figures; FBI recommends a pre-agreed secret word to verify identity.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 28,
+    "fps": 30,
+    "export_name": "2026-06-09_deepfake-helpdesk_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-09_deepfake-helpdesk/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "They did a video call to verify the request, and the video call itself was the scam."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "text": "At the engineering firm Arup in 2024, a finance worker joined a call with his CFO and colleagues and wired about 25 million dollars over fifteen transfers. Every face on that call was a deepfake."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "text": "So verify money movement out of band. Call back a known, saved number, and require dual approval with a built-in delay."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "text": "A face on a live call is not authorization. Trust the verified process, not the person you recognize."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "text": "Could a convincing video call trigger a wire transfer at your company today? Tell me below."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "They did a video call to verify the request, and the video call itself was the scam."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "At the engineering firm Arup in 2024, a finance worker joined a call with his CFO and colleagues and wired about 25 million dollars over fifteen transfers. Every face on that call was a deepfake."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "So verify money movement out of band. Call back a known, saved number, and require dual approval with a built-in delay."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "A face on a live call is not authorization. Trust the verified process, not the person you recognize."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Could a convincing video call trigger a wire transfer at your company today? Tell me below."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": true,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}

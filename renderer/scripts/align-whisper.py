@@ -87,7 +87,7 @@ def fix_proper_nouns(words, corrections):
 
 
 # Extra project nouns Whisper should spell right but that aren't in CORRECTIONS' typo map.
-KNOWN_NOUNS = ["Ollama", "Unsloth", "VoxCPM", "HexStrike", "NetScaler", "Gemma", "Hermes", "Nous", "Miso"]
+KNOWN_NOUNS = ["Ollama", "Unsloth", "VoxCPM", "HexStrike", "NetScaler", "Gemma", "Hermes", "Nous", "Miso", "Arup"]
 
 
 def build_noun_hint(narration) -> str:
