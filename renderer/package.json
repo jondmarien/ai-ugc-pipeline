@@ -19,6 +19,7 @@
     "voice": "bun scripts/voice.mjs",
     "align": "bun scripts/align.mjs",
     "art": "bun scripts/art-comfyui.mjs",
+    "upscale": "bun scripts/upscale-comfyui.mjs",
     "art:diffusers": "bun scripts/art.mjs",
     "import-bg": "bun scripts/import-bg.mjs",
     "free-comfyui": "bun scripts/free-comfyui.mjs",

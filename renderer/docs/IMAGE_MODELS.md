@@ -156,6 +156,18 @@ FLUX.2 klein is a *different* architecture from FLUX.1 — it uses a **Qwen3-4B*
 
 > Diffusers route for FLUX.2 (`ART_MODEL=black-forest-labs/FLUX.2-klein-4B bun run art …`) also exists, but the BFL repo is **gated** (accept license + `hf login`) and needs a recent diffusers with `Flux2KleinPipeline`. ComfyUI + the ungated unsloth GGUF is the lower-friction 8 GB path.
 
+### Quality knobs (opt-in, per `bun run pipeline` run)
+
+All default OFF — a normal run is unchanged. "More passes is a dead lever" on a distilled model, so the real gains are a higher quant **kept entirely on the GPU** (no transformer offload, which is what trips the CPU watchdog) and a post-hoc upscale.
+
+| Flag | Effect | Notes |
+| --- | --- | --- |
+| `--passes=N` | Sampling steps for the art step (alias of `--steps`/`ART_STEPS`). | klein/​schnell are step-distilled: **native 4, recommended 4–8, hard max 12** (clamped + warned). >8 is heat for no gain. Only meaningful with the art step. |
+| `--q6` | Use `flux-2-klein-4b-Q6_K.gguf` for the run (≈98% vs Q5's ≈95%). | A 4B at Q6 (~3.4 GB) fits 8 GB **fully on GPU** — no offload. Auto-downloads from `unsloth/FLUX.2-klein-4B-GGUF` to the unet dir (env `COMFYUI_UNET_DIR`, default `E:\ComfyUI\models\unet`) if missing. Default stays Q5_K_S. |
+| `--upscale` | After art, tiled GAN upscale of each background (`bun run upscale`). | Default model `RealESRGAN_x4plus.pth` (BSD-3); `--upscale-model=4x-UltraSharp.pth` (verify licence) / `--upscale-scale=N` (final size = canvas × N). Warn-skips if the model isn't in `ComfyUI/models/upscale_models`. Logged to `LICENSES.md`. |
+
+**CFG (not a flag, document-only):** `ART2_CFG` defaults to **1.2** (so the negative node suppresses garbled on-image text). Community guidance says **1.5–2.0** sharpens *and* bites harder on text — set `ART2_CFG=1.7 bun run pipeline -- <key> --art` to try it. Left at 1.2 by default to avoid silently changing every post's look.
+
 ## Run FLUX.2 [klein] 4B via diffusers (the commercial upgrade)
 
 It's a *different* diffusers pipeline than FLUX.1, and quantization matters on 8 GB. Two routes:
