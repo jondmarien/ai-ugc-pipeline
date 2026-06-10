@@ -37,8 +37,86 @@ const customVoiceText = cvtIdx >= 0 ? argv[cvtIdx + 1] : null;
 const consumed = new Set([cvIdx, cvtIdx].filter((i) => i >= 0).map((i) => i + 1));
 const flags = new Set(argv.filter((a) => a.startsWith("--")));
 const keys = argv.filter((a, i) => !a.startsWith("--") && !consumed.has(i));
+
+const HELP = `
+bun run pipeline — the one-command render pipeline (post JSON → upload-ready package)
+
+USAGE
+  bun run pipeline -- <post-key> [<post-key> ...] [flags]
+
+  <post-key> matches a file in renderer/content/posts/ (e.g. 2026-06-08_chatbot-log-leak,
+  or any unique substring). Multiple keys render as a batch.
+
+STAGES (in order; each auto-skips when not needed)
+  1. art           backgrounds via a running ComfyUI (FLUX.2 klein 4B GGUF by default) —
+                   only for slides still missing art; --art forces a full regen
+  2. upscale       only when --upscale WITHOUT an art step (sharpens existing backgrounds);
+                   with an art step, upscaling runs INSIDE the art graph instead
+  3. export        carousel PNGs (1080×1350)
+  4. package       upload-ready files → pipeline/renders/<key>/
+  5. free-comfyui  unload ComfyUI's models (8 GB GPU = one big model at a time)
+  6. voice         narration TTS (VoxCPM2 by default; your voice clone if a ref clip exists)
+  7. align         Whisper word-synced captions
+  8. reel          1080×1920 Remotion reel with the voice auto-embedded
+
+ART & IMAGE QUALITY
+  --flux1                   legacy FLUX.1-schnell graph (default is FLUX.2 klein)
+  --art | --no-art          force background regeneration | skip art entirely
+  --passes=N                sampling steps (alias of --steps). klein is step-distilled:
+                            recommended 4–8, hard max 12 (clamped; >8 adds heat, not quality)
+  --q6                      use flux-2-klein-4b-Q6_K.gguf this run (≈98% of fp16 vs Q5's ≈95%);
+                            auto-downloads to the ComfyUI unet dir if missing
+  --upscale                 GAN upscale each background (RealESRGAN_x4plus by default).
+                            With art: integrated generate→upscale→downscale-to-canvas pass.
+                            Without art: standalone pass over existing backgrounds.
+  --upscale-model=NAME.pth  RealESRGAN_x4plus.pth | 4x-UltraSharp.pth (both auto-download)
+  --upscale-scale=N         final size = canvas × N (default 1)
+  --ui-format               art executes the version-controlled ComfyUI workflow FILE from
+                            renderer/comfyui-workflows/ (the _with_upscale variant when
+                            --upscale) instead of the code-built graph. The file's
+                            steps/CFG/resolution win; per-slide prompt + seed are patched.
+
+VOICE & NARRATION
+  --voice=MODE              voxcpm2 (default) | voxcpm2-0.5b | bark | http | none
+  --vox2 | --vox0.5         aliases for --voice=voxcpm2 | --voice=voxcpm2-0.5b
+  --custom-voice PATH.wav   clone YOUR authorized voice (zero-shot; on by default when a
+                            reference clip exists — $VOICE_REF or public/audio/_voiceref/)
+  --custom-voice-text "…"   override the clone clip's transcript (Hi-Fi cloning)
+  --no-hifi                 timbre-only cloning (skip the Whisper transcript match)
+  --no-clone                ignore the reference clip; use the plain seeded voice
+  --seed=N                  lock the speaker (same N = same voice; logged to voice.meta.json)
+
+CAPTIONS & REEL
+  --captions=MODE           highlight (default) | block | word — reel subtitle style
+  --no-fit-voice            don't trim/realign the reel to the voice length
+  --tail=N                  seconds of silence kept after the voice (default 0.6)
+
+STAGE TOGGLES & MISC
+  --no-voice                skip voice + align (silent reel)
+  --no-reel                 stop after the carousel/package
+  --no-package              skip the package step
+  --dry-run                 print what would run, submit nothing
+  --help, -h                this help
+
+EXAMPLES
+  bun run pipeline -- 2026-06-08_chatbot-log-leak
+      full render with all defaults (art only if slides are missing backgrounds)
+  bun run pipeline -- 2026-06-08_chatbot-log-leak --art --q6 --upscale
+      force-regenerate art at Q6 quality with the integrated upscale pass
+  bun run pipeline -- my-post --art --ui-format --upscale-model=4x-UltraSharp.pth
+      execute the version-controlled with-upscale workflow file, UltraSharp model
+  bun run pipeline -- post-a post-b --no-reel
+      batch two posts, carousel + package only
+
+DOCS  renderer/docs/IMAGE_MODELS.md (quality knobs) · PIPELINE_ARCHITECTURE.md · CLAUDE.md
+`;
+
+if (flags.has("--help") || flags.has("-h") || argv.includes("-h")) {
+  console.log(HELP);
+  process.exit(0);
+}
 if (!keys.length) {
-  console.error("Usage: bun run pipeline -- <post-key> [<post-key> ...] [--flux1] [--art|--no-art] [--voice=voxcpm2|voxcpm2-0.5b|bark|http|none] [--vox0.5|--vox2] [--custom-voice path.wav] [--custom-voice-text \"transcript\"] [--no-hifi] [--no-clone] [--captions=block|word|highlight] [--passes=N] [--q6] [--upscale [--upscale-model=NAME] [--upscale-scale=N]] [--ui-format] [--no-voice] [--no-reel] [--no-package] [--seed=N] [--tail=N]");
+  console.error(HELP);
   process.exit(1);
 }
 const seedArg = [...flags].find((f) => f.startsWith("--seed="));
