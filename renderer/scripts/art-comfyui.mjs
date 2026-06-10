@@ -31,7 +31,7 @@ const opt = (name, def) => {
 };
 const key = args.find((a) => !a.startsWith("--"));
 if (!key) {
-  console.error("Usage: bun run art -- <post-key> [--all|--force] [--flux1 (legacy FLUX.1; default is FLUX.2)] [--only=N[,N]] [--dry-run] [--steps=N] [--width=N] [--height=N] [--seed=N]");
+  console.error("Usage: bun run art -- <post-key> [--all|--force] [--flux1 (legacy FLUX.1; default is FLUX.2)] [--only=N[,N]] [--dry-run] [--passes=N|--steps=N] [--width=N] [--height=N] [--seed=N] [--upscale [--upscale-model=NAME.pth] [--upscale-scale=N]] [--ui-format (execute renderer/comfyui-workflows/*.json instead of the code-built graph)]");
   process.exit(1);
 }
 
@@ -86,6 +86,27 @@ const VAE = process.env.ART_VAE || "split_files\\vae\\ae.safetensors";
 const CLIP_DEVICE = process.env.ART_CLIP_DEVICE || "cpu";
 const DRY = flags.has("--dry-run");
 
+// `--upscale` builds the INTEGRATED generate→upscale graph in one pass (the exact node chain in the
+// `<workflow>_with_upscale` ComfyUI workflow): after VAE decode, run a GAN upscaler then downscale to
+// the post's canvas, and save THAT. Forwarded by `bun run pipeline -- <key> --art --upscale`. Without
+// `--upscale` the base graph runs unchanged. (Upscaling EXISTING backgrounds without regen still uses
+// the standalone `bun run upscale`.)
+const UPSCALE = flags.has("--upscale");
+const UPSCALE_MODEL = opt("upscale-model", process.env.UPSCALE_MODEL || "RealESRGAN_x4plus.pth");
+const UPSCALE_SCALE = Math.max(0.25, Number(opt("upscale-scale", "1")) || 1);
+let UP_W = 1080, UP_H = 1350; // downscale target = post canvas × scale; set in main from the post JSON
+
+// `--ui-format`: instead of building the graph in code, LOAD the version-controlled ComfyUI workflow
+// file from renderer/comfyui-workflows/ (UI format, same files you open in the ComfyUI web UI),
+// convert it to API format, patch the per-slide essentials (positive prompt + seed; with --upscale
+// also the upscale model_name + ImageScale canvas), and submit THAT. The file's other settings
+// (steps/CFG/resolution/sampler) win — WYSIWYG. Default (no flag) keeps the code-built graph.
+const UI_FORMAT = flags.has("--ui-format");
+const WF_DIR = path.join(RENDERER, "comfyui-workflows");
+const WF_FILE = () => (UPSCALE ? "flux2_klein_4b_8gb_with_upscale.json" : "flux2_klein_4b_8gb.json");
+if (UI_FORMAT && flags.has("--flux1"))
+  console.warn("  ⚠ --ui-format only mirrors the FLUX.2 graphs; --flux1 keeps the code-built graph.");
+
 const F2_MODEL = process.env.ART2_MODEL || "flux-2-klein-4b-Q5_K_S.gguf";
 const F2_CLIP = process.env.ART2_CLIP || "split_files\\text_encoders\\qwen_3_4b.safetensors";
 const F2_VAE = process.env.ART2_VAE || "split_files\\vae\\flux2-vae.safetensors";
@@ -115,6 +136,101 @@ function ensureFlux2Model(modelFile) {
     console.warn(`  ⚠ auto-download failed (hf exit ${r.status ?? "?"}). Run manually:  hf download ${KLEIN_GGUF_REPO} ${modelFile} --local-dir ${COMFY_UNET_DIR}`);
   else
     console.log(`  ✓ ${modelFile} downloaded.`);
+}
+
+// Upscale model (for the integrated --upscale path). Auto-fetch the known `.pth` to ComfyUI's
+// upscale_models dir if missing (same direct-download idea as scripts/upscale-comfyui.mjs).
+const COMFY_UPSCALE_DIR = process.env.COMFYUI_UPSCALE_DIR || "E:\\ComfyUI\\models\\upscale_models";
+const UPSCALE_SOURCES = {
+  "RealESRGAN_x4plus.pth": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth",
+  "4x-UltraSharp.pth": "https://huggingface.co/lokCX/4x-Ultrasharp/resolve/main/4x-UltraSharp.pth?download=true",
+};
+async function ensureUpscaleModel(modelFile) {
+  const url = UPSCALE_SOURCES[modelFile];
+  if (!url) return;
+  let dirExists = false;
+  try { dirExists = existsSync(COMFY_UPSCALE_DIR); } catch { dirExists = false; }
+  if (!dirExists) {
+    console.warn(`  ⚠ ComfyUI upscale dir not found at ${COMFY_UPSCALE_DIR} (remote ComfyUI?). Put ${modelFile} there, or set COMFYUI_UPSCALE_DIR.`);
+    return;
+  }
+  const dest = path.join(COMFY_UPSCALE_DIR, modelFile);
+  if (existsSync(dest)) return;
+  console.log(`  ↓ ${modelFile} not found — downloading (~65 MB) from ${url.split("?")[0]} …`);
+  try {
+    const r = await fetch(url, { redirect: "follow" });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    writeFileSync(dest, Buffer.from(await r.arrayBuffer()));
+    console.log(`  ✓ ${modelFile} downloaded to ${COMFY_UPSCALE_DIR}.`);
+  } catch (e) {
+    console.warn(`  ⚠ auto-download failed (${e.message}). Get it manually:\n     ${url.split("?")[0]}\n     → ${COMFY_UPSCALE_DIR}`);
+  }
+}
+
+// Append the upscale tail to a built graph: VAE-decoded IMAGE → UpscaleModelLoader/ImageUpscaleWithModel
+// → ImageScale (down to UP_W×UP_H) → and repoint the existing SaveImage to the upscaled image. Uses high
+// node IDs (97/98/99) to avoid colliding with the base graph's IDs. Mirrors `<workflow>_with_upscale`.
+function appendUpscale(graph, decodeId, saveId) {
+  graph["97"] = { class_type: "UpscaleModelLoader", inputs: { model_name: UPSCALE_MODEL } };
+  graph["98"] = { class_type: "ImageUpscaleWithModel", inputs: { upscale_model: ["97", 0], image: [decodeId, 0] } };
+  graph["99"] = { class_type: "ImageScale", inputs: { image: ["98", 0], upscale_method: "lanczos", width: UP_W, height: UP_H, crop: "disabled" } };
+  graph[saveId].inputs.images = ["99", 0];
+  return graph;
+}
+
+// ---- --ui-format support: load a UI-format workflow file and run it ----
+// Convert ComfyUI's saved UI format ({nodes:[],links:[]}) to the API format the /prompt endpoint
+// wants ({id:{class_type,inputs}}). Widget values map positionally onto widget-bearing inputs; a
+// seed widget's trailing control value ("fixed"/"randomize"/…) has no input slot and is skipped.
+// Muted/bypassed nodes (mode 2/4) are dropped.
+function uiToApi(ui) {
+  const linkMap = new Map();
+  for (const l of ui.links || []) linkMap.set(l[0], [String(l[1]), l[2]]);
+  const api = {};
+  for (const n of ui.nodes || []) {
+    if (n.mode === 2 || n.mode === 4) continue;
+    const inputs = {};
+    const wv = n.widgets_values || [];
+    let wi = 0;
+    for (const inp of n.inputs || []) {
+      if (inp.link != null && linkMap.has(inp.link)) {
+        inputs[inp.name] = linkMap.get(inp.link);
+      } else if (inp.widget) {
+        inputs[inp.name] = wv[wi++];
+        if (/seed/i.test(inp.name) && typeof wv[wi] === "string" &&
+            ["fixed", "randomize", "increment", "decrement"].includes(wv[wi])) wi++;
+      }
+    }
+    api[String(n.id)] = { class_type: n.type, inputs };
+  }
+  return api;
+}
+
+let uiGraphCache = null; // parse + convert once per run; deep-copied and patched per slide
+function loadUiGraph(promptText, seed) {
+  if (!uiGraphCache) {
+    const file = path.join(WF_DIR, WF_FILE());
+    if (!existsSync(file)) throw new Error(`--ui-format: workflow file not found: ${file}`);
+    uiGraphCache = uiToApi(JSON.parse(readFileSync(file, "utf8")));
+    console.log(`  (ui-format: executing ${WF_FILE()} — the file's steps/CFG/resolution win)`);
+  }
+  const g = structuredClone(uiGraphCache);
+  // Patch per-slide essentials. Positive prompt = the CLIPTextEncode feeding CFGGuider.positive.
+  const guider = Object.values(g).find((n) => n.class_type === "CFGGuider");
+  const posId = guider?.inputs?.positive?.[0];
+  if (posId && g[posId]?.class_type === "CLIPTextEncode") g[posId].inputs.text = promptText;
+  else throw new Error("--ui-format: couldn't locate the positive CLIPTextEncode via CFGGuider.positive");
+  const noise = Object.values(g).find((n) => n.class_type === "RandomNoise");
+  if (noise) noise.inputs.noise_seed = seed;
+  if (UPSCALE) {
+    const up = Object.values(g).find((n) => n.class_type === "UpscaleModelLoader");
+    const scale = Object.values(g).find((n) => n.class_type === "ImageScale");
+    if (!up || !scale) throw new Error(`--ui-format --upscale: ${WF_FILE()} has no upscale chain`);
+    up.inputs.model_name = UPSCALE_MODEL;
+    scale.inputs.width = UP_W;
+    scale.inputs.height = UP_H;
+  }
+  return g;
 }
 
 // Text/UI suppression lives ONLY in the negative node (never the positive — negative phrasing
@@ -252,7 +368,13 @@ async function cooldownPause(ms) {
 
 async function generate(promptText, seed) {
   const client_id = crypto.randomUUID();
-  const graph = FLUX2 ? buildGraphFlux2(promptText, seed) : buildGraph(promptText, seed);
+  let graph;
+  if (UI_FORMAT && FLUX2) {
+    graph = loadUiGraph(promptText, seed); // execute the version-controlled workflow FILE
+  } else {
+    graph = FLUX2 ? buildGraphFlux2(promptText, seed) : buildGraph(promptText, seed);
+    if (UPSCALE) appendUpscale(graph, FLUX2 ? "15" : "11", FLUX2 ? "16" : "12"); // gen→upscale in one graph
+  }
   const res = await fetch(`${URL_BASE}/prompt`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -306,6 +428,13 @@ const postBaseSeed = SEED_BASE + postSeedOffset(prefix);
 // Ensure the selected FLUX.2 klein GGUF is present (auto-download Q6 etc. on first use).
 if (FLUX2 && !DRY) ensureFlux2Model(F2_MODEL);
 
+// Integrated --upscale: downscale target = this post's canvas × scale; ensure the upscale model exists.
+if (UPSCALE) {
+  UP_W = Math.round((post.canvas?.width ?? 1080) * UPSCALE_SCALE);
+  UP_H = Math.round((post.canvas?.height ?? 1350) * UPSCALE_SCALE);
+  if (!DRY) await ensureUpscaleModel(UPSCALE_MODEL);
+}
+
 // confirm ComfyUI is reachable + the model exists
 if (!DRY) {
   let stats;
@@ -349,7 +478,15 @@ for (let ti = 0; ti < targets.length; ti++) {
   const destName = `${nn}_${role}.png`;
   const promptText = buildPrompt(slide, accentHex, accentName, topic, mood);
   const seed = postBaseSeed + slide.slide;
-  if (DRY) { console.log(`\n[slide ${slide.slide} ${slide.role}] seed=${seed}\n  ${promptText}`); continue; }
+  if (DRY) {
+    console.log(`\n[slide ${slide.slide} ${slide.role}] seed=${seed}\n  ${promptText}`);
+    if (UI_FORMAT && FLUX2) { // validate the file→API conversion + patching without submitting
+      const g = loadUiGraph(promptText, seed);
+      const kinds = Object.values(g).map((n) => n.class_type);
+      console.log(`  (ui-format dry-check: ${kinds.length} nodes — ${kinds.join(", ")})`);
+    }
+    continue;
+  }
 
   process.stdout.write(`  slide ${slide.slide} (${slide.role})… `);
   const t0 = Date.now();
