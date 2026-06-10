@@ -1,0 +1,409 @@
+{
+  "post_id": "2026-06-10_cohere-north-mini-code",
+  "date": "2026-06-10",
+  "slug": "cohere-north-mini-code",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "model_security",
+  "theme": "ai",
+  "audience": "security_practitioners",
+  "core_claim": "Cohere released North Mini Code, a 30B MoE coding agent open-sourced under Apache 2.0 that runs on a single H100, but it generates three times the output tokens of comparable models, a verbosity cost that compounds silently in high-volume agentic pipelines.",
+  "claim_tags": [
+    "reported_fact",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 5,
+    "visual_drama": 4,
+    "defender_usefulness": 4,
+    "total": 23
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "model_security",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-10_cohere-north-mini-code",
+    "filename_prefix": "2026-06-10_cohere-north-mini-code",
+    "expected_files": [
+      "2026-06-10_cohere-north-mini-code_01_cover.png",
+      "2026-06-10_cohere-north-mini-code_02_context.png",
+      "2026-06-10_cohere-north-mini-code_03_risk.png",
+      "2026-06-10_cohere-north-mini-code_04_mechanism.png",
+      "2026-06-10_cohere-north-mini-code_05_failure-point.png",
+      "2026-06-10_cohere-north-mini-code_06_defense.png",
+      "2026-06-10_cohere-north-mini-code_07_takeaway.png",
+      "2026-06-10_cohere-north-mini-code_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "THE FREE CODING AGENT HIDES A THREE-TIMES TOKEN TAX",
+      "subline": "Cohere's North Mini Code runs on one H100. The catch is in the output volume.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A single hard rim light traces a sleek turbine blade spinning in a dark void, glowing particles trailing three times longer than the blade itself, premium dark editorial key art, the blade held in the upper third with clean unmarked negative space filling the lower third.",
+      "background_asset": "/backgrounds/2026-06-10_cohere-north-mini-code/01_cover.png",
+      "asset_status": "generated",
+      "cta": "SWIPE →",
+      "notes": ""
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "THE RELEASE",
+      "on_slide_copy": "Cohere open-sourced North Mini Code on June 9. Thirty billion parameters, three billion active, Apache 2.0, on Hugging Face.",
+      "subline": "It targets the full agentic stack: sub-agents, architecture mapping, code review, terminal work.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Low raking light catches a stack of twelve dark circuit boards fanning open like cards in a dark room, each layer catching the edge glow at a different angle, dark editorial photography, the stack set high over a calm empty lower third.",
+      "background_asset": "/backgrounds/2026-06-10_cohere-north-mini-code/02_context.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "Artificial Analysis measured North Mini Code generating 75 million output tokens on its Intelligence Index run. The class median was 25 million.",
+      "subline": "Three times the tokens. Three times the inference cost. Three times the latency pressure.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A focused side light illuminates three identical glass cylinders in a dark lab, the center one filled to the brim while the outer two sit at one-third, dark premium editorial, the cylinders centered in the upper area with generous negative space below.",
+      "background_asset": "/backgrounds/2026-06-10_cohere-north-mini-code/03_risk.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "THE HIDDEN MECHANIC",
+      "on_slide_copy": "Benchmarks rank North Mini Code eighth of 127 on output speed at 210 tokens per second. They do not surface verbosity.",
+      "subline": "High token-per-second speed plus high verbosity equals compounding pipeline cost.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A hard top-down beam falls on a precision gear train in the dark, the first gear spinning fast but driving three downstream gears that each rotate three times per input turn, dark editorial key art, the train framed in the upper third over clean dark space.",
+      "background_asset": "/backgrounds/2026-06-10_cohere-north-mini-code/04_mechanism.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS MISS IT",
+      "on_slide_copy": "Teams evaluate on intelligence scores and latency. They forget to multiply by the token multiplier across thousands of agent calls per day.",
+      "subline": "A model that talks three times as much costs three times as much to run at scale.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Cool light grazes a dark dashboard in the dark, one gauge showing 210 tps in green while a second gauge below it climbs past 75 million total tokens in amber, tense editorial composition, the gauges held high with a clean lower third.",
+      "background_asset": "/backgrounds/2026-06-10_cohere-north-mini-code/05_failure-point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "THE REAL TRADEOFF",
+      "on_slide_copy": "Fable 5 costs fifty dollars per million output tokens. North Mini Code costs your H100 time and three times the token budget for the same work.",
+      "subline": "Local sovereignty and cost control versus managed convenience. Both paths have hidden line items.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A balanced split composition in the dark: left side a single H100 card glowing amber, right side a cloud abstraction with a fifty-dollar price tag hovering, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
+      "background_asset": "/backgrounds/2026-06-10_cohere-north-mini-code/06_defense.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "Benchmarks sell you speed. {{They do not bill you for verbosity.}} [[Model your agent pipeline on token volume before you commit to any model, open or closed.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A thin rim light traces a calculator display in the dark showing a token count multiplying across a pipeline diagram, the numbers climbing with each stage, minimal high-impact key art, the display drawn toward the edge with the center kept dark and open.",
+      "background_asset": "/backgrounds/2026-06-10_cohere-north-mini-code/07_takeaway.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Have you measured the token multiplier in your agentic pipeline?",
+      "subline": "Save this for your next model evaluation.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Soft pooled light isolates a single(token counter) gauge on a clean dark end-card surface, premium editorial cybersecurity key art, the gauge small in vast negative space with the lower third open.",
+      "background_asset": "/backgrounds/2026-06-10_cohere-north-mini-code/08_cta.png",
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Cohere dropped North Mini Code on June 9. Thirty billion parameters, three billion active, Apache 2.0, runs on a single H100. The open-source coding agent everyone asked for.\n\nArtificial Analysis clocked it at 210 tokens per second. Eighth fastest of 127 models. Time to first token at 0.25 seconds against a 1.95-second median. The speed numbers look great.\n\nThen you check the Intelligence Index run. North Mini Code burned 75 million output tokens. The class median was 25 million. Three times the tokens for the same evaluation.\n\nIn a high-volume agentic pipeline, that verbosity is not a footnote. It is the invoice. Three times the inference cost. Three times the latency pressure. Three times the context window pressure.\n\nBenchmarks rank on intelligence and speed. They do not surface the token multiplier. Fable 5 at fifty dollars per million output tokens makes the tradeoff explicit. North Mini Code makes you pay in H100 hours and token volume instead.\n\nModel your agent pipeline on token volume before you commit to any model, open or closed.\n\nHave you measured the token multiplier in your agentic pipeline?\n\nFollow for AI security breakdowns without the fake panic.\n\n[Cohere North Mini Code, open-source AI, agentic coding, model evaluation, inference cost, verbosity, H100, AI pipeline economics]",
+  "hashtags": [
+    "Cohere North Mini Code",
+    "open-source AI",
+    "agentic coding",
+    "model evaluation",
+    "inference cost",
+    "verbosity",
+    "H100",
+    "AI pipeline economics"
+  ],
+  "comment_prompt": "Have you measured the token multiplier in your agentic pipeline?",
+  "alt_text": [
+    "Slide 1 (cover): a turbine blade in a dark void with glowing particles trailing three times longer than the blade, empty lower third for headline.",
+    "Slide 2 (context): a stack of twelve dark circuit boards fanning open like cards, each catching edge light differently.",
+    "Slide 3 (risk): three identical glass cylinders in a dark lab, the center one filled to the brim while the outer two sit at one-third.",
+    "Slide 4 (mechanism): a precision gear train in the dark, the first gear spinning fast driving three downstream gears that each rotate three times per input turn.",
+    "Slide 5 (gap): a dark dashboard with one gauge showing 210 tps in green and a second gauge climbing past 75 million tokens in amber.",
+    "Slide 6 (tradeoff): a split composition, left side an H100 card glowing amber, right side a cloud abstraction with a price tag, a thin divider between.",
+    "Slide 7 (takeaway): a calculator display in the dark showing a token count multiplying across a pipeline diagram, numbers climbing at each stage.",
+    "Slide 8 (cta): a token counter gauge on a clean dark end-card with open negative space."
+  ],
+  "sources": [
+    {
+      "source": "VentureBeat: Cohere open-sources a coding agent that runs on a single H100",
+      "link": "https://venturebeat.com/technology/cohere-open-sources-a-coding-agent-that-runs-on-a-single-h100",
+      "supports": "Release date June 9; North Mini Code 30B MoE with 3B active; Apache 2.0 on Hugging Face; runs on single H100 or Mac Studio 20GB RAM; 256K context, 64K max generation; agentic coding capabilities; trained on 70K+ verifiable tasks across ~5K repos; multi-harness training (SWE-Agent, Mini-SWE-Agent, OpenCode); 2.8x throughput vs Devstral Small 2; 30% latency advantage; 3x verbosity (75M vs 25M median tokens); Artificial Analysis rankings (8th/127 speed, 18th/127 intelligence); Fable 5 at $50/M output tokens; Frosst quotes on local deployment sovereignty.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Artificial Analysis: North Mini Code model page",
+      "link": "https://artificialanalysis.ai/models/north-mini-code",
+      "supports": "Independent benchmark rankings: 8th of 127 on output speed (210 tok/s), 18th of 127 on Intelligence Index; TTFT 0.25s vs 1.95s median; 75M output tokens vs 25M median on Intelligence Index.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Cohere Labs Hugging Face blog: Introducing North Mini Code",
+      "link": "https://huggingface.co/blog/CohereLabs/introducing-north-mini-code",
+      "supports": "Technical details on MoE architecture (128 experts, 8 active); training methodology; verifiable RL tasks; multi-harness evaluation; benchmark claims against larger models.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-10_cohere-north-mini-code/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_cohere-north-mini-code/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_cohere-north-mini-code/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_cohere-north-mini-code/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_cohere-north-mini-code/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_cohere-north-mini-code/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_cohere-north-mini-code/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_cohere-north-mini-code/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 56,
+    "fps": 30,
+    "export_name": "2026-06-10_cohere-north-mini-code_reel.mp4",
+    "caption_mode": "highlight",
+    "caption_corrections": {},
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-10_cohere-north-mini-code/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": "Cohere just open-sourced a coding agent that runs on one H100. The catch is a three-times token tax."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "text": "North Mini Code is thirty billion parameters, three billion active, Apache 2.0, built for the full agentic stack."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "text": "Artificial Analysis measured it at 210 tokens per second. Fast. But on the Intelligence Index it burned 75 million tokens."
+      },
+      {
+        "start": 20,
+        "end": 27,
+        "text": "The class median was 25 million. Three times the tokens. Three times the inference cost in any high-volume pipeline."
+      },
+      {
+        "start": 27,
+        "end": 34,
+        "text": "Benchmarks rank on speed and intelligence. They do not surface verbosity. That is the hidden invoice."
+      },
+      {
+        "start": 34,
+        "end": 41,
+        "text": "Fable 5 costs fifty dollars per million tokens. North Mini Code costs your H100 hours and triple the token budget."
+      },
+      {
+        "start": 41,
+        "end": 48,
+        "text": "Model your agent pipeline on token volume before you commit to any model, open or closed."
+      },
+      {
+        "start": 48,
+        "end": 54,
+        "text": "Have you measured the token multiplier in your pipeline? Tell me in the comments."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 6,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Free coding agent. Three-times token tax."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "30B MoE, Apache 2.0, runs on one H100."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "slide_ref": 3,
+        "purpose": "risk",
+        "motion": "slow push-in",
+        "caption": "210 tps speed. 75M tokens on the index."
+      },
+      {
+        "start": 20,
+        "end": 27,
+        "slide_ref": 3,
+        "purpose": "risk",
+        "motion": "parallax",
+        "caption": "Class median 25M. Three times the cost."
+      },
+      {
+        "start": 27,
+        "end": 34,
+        "slide_ref": 4,
+        "purpose": "mechanism",
+        "motion": "slow push-in",
+        "caption": "Benchmarks sell speed. They hide verbosity."
+      },
+      {
+        "start": 34,
+        "end": 41,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "parallax",
+        "caption": "Fable 5 at $50/M. North Mini at 3x tokens."
+      },
+      {
+        "start": 41,
+        "end": 48,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "Model on token volume before you commit."
+      },
+      {
+        "start": 48,
+        "end": 54,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "What is your pipeline token multiplier?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": []
+  }
+}
