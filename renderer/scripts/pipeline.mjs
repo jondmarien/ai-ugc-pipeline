@@ -38,7 +38,7 @@ const consumed = new Set([cvIdx, cvtIdx].filter((i) => i >= 0).map((i) => i + 1)
 const flags = new Set(argv.filter((a) => a.startsWith("--")));
 const keys = argv.filter((a, i) => !a.startsWith("--") && !consumed.has(i));
 if (!keys.length) {
-  console.error("Usage: bun run pipeline -- <post-key> [<post-key> ...] [--flux1] [--art|--no-art] [--voice=voxcpm2|voxcpm2-0.5b|bark|http|none] [--vox0.5|--vox2] [--custom-voice path.wav] [--custom-voice-text \"transcript\"] [--no-hifi] [--no-clone] [--captions=block|word|highlight] [--passes=N] [--q6] [--upscale [--upscale-model=NAME] [--upscale-scale=N]] [--no-voice] [--no-reel] [--no-package] [--seed=N] [--tail=N]");
+  console.error("Usage: bun run pipeline -- <post-key> [<post-key> ...] [--flux1] [--art|--no-art] [--voice=voxcpm2|voxcpm2-0.5b|bark|http|none] [--vox0.5|--vox2] [--custom-voice path.wav] [--custom-voice-text \"transcript\"] [--no-hifi] [--no-clone] [--captions=block|word|highlight] [--passes=N] [--q6] [--upscale [--upscale-model=NAME] [--upscale-scale=N]] [--ui-format] [--no-voice] [--no-reel] [--no-package] [--seed=N] [--tail=N]");
   process.exit(1);
 }
 const seedArg = [...flags].find((f) => f.startsWith("--seed="));
@@ -50,9 +50,12 @@ const captionMode = ["block", "word", "highlight"].includes(capFlag) ? capFlag :
 // when there are background images to sharpen). They don't change a normal `bun run pipeline` run.
 const passesArg = [...flags].find((f) => f.startsWith("--passes="));   // forwarded to `bun run art`
 const wantsQ6 = flags.has("--q6");                                     // higher-quality Q6_K GGUF for this run
-const wantsUpscale = flags.has("--upscale");                           // post-art tiled GAN upscale
+const wantsUpscale = flags.has("--upscale");                           // GAN upscale (integrated into art when art runs)
 const upscaleModelArg = [...flags].find((f) => f.startsWith("--upscale-model="));
 const upscaleScaleArg = [...flags].find((f) => f.startsWith("--upscale-scale="));
+// --ui-format: art executes the version-controlled workflow FILE (renderer/comfyui-workflows/) instead
+// of the code-built graph — with --upscale it picks the _with_upscale file. The file's settings win.
+const wantsUiFormat = flags.has("--ui-format");
 const Q6_MODEL = "flux-2-klein-4b-Q6_K.gguf";                          // auto-downloaded by art-comfyui if missing
 
 const DRY = flags.has("--dry-run");
@@ -102,13 +105,15 @@ function runPost(key) {
   const wantsArt = flags.has("--art") || (!flags.has("--no-art") && needsArt);
   const wantsVoice = !flags.has("--no-voice") && ["voxcpm2", "voxcpm2-0.5b", "bark", "http"].includes(effVoiceMode);
   const wantsReel = !flags.has("--no-reel") && !!post.video?.enabled;
-  if ((passesArg || wantsQ6) && !wantsArt)
-    console.warn(`  ⚠ ${[passesArg && "--passes", wantsQ6 && "--q6"].filter(Boolean).join("/")} ignored this run — no art step (pass --art to force background regeneration).`);
+  if ((passesArg || wantsQ6 || wantsUiFormat) && !wantsArt)
+    console.warn(`  ⚠ ${[passesArg && "--passes", wantsQ6 && "--q6", wantsUiFormat && "--ui-format"].filter(Boolean).join("/")} ignored this run — no art step (pass --art to force background regeneration).`);
 
   // Ordered list of the stages that will actually run for this post (after the skip logic above).
+  // --upscale runs INSIDE the art graph when art runs (one generate→upscale pass per slide); the
+  // standalone upscale step only fires for --upscale WITHOUT art (sharpen existing backgrounds).
   const plan = [];
-  if (wantsArt) plan.push(`art (${flags.has("--flux1") ? "flux1" : "flux2"}${wantsQ6 ? " Q6" : ""} backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes` : ""})`);
-  if (wantsUpscale) plan.push(`upscale (tiled GAN${upscaleModelArg ? `, ${upscaleModelArg.split("=")[1]}` : ""})`);
+  if (wantsArt) plan.push(`art (${wantsUiFormat ? "ui-format file" : flags.has("--flux1") ? "flux1" : "flux2"}${wantsQ6 ? " Q6" : ""} backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes` : ""}${wantsUpscale ? " + integrated upscale" : ""})`);
+  if (wantsUpscale && !wantsArt) plan.push(`upscale (existing backgrounds${upscaleModelArg ? `, ${upscaleModelArg.split("=")[1]}` : ""})`);
   plan.push("export (carousel)");
   if (!flags.has("--no-package")) plan.push("package (upload files)");
   if (wantsVoice) plan.push("free-comfyui (release GPU)", `voice (${effVoiceMode})`, "align (captions)");
@@ -121,8 +126,8 @@ function runPost(key) {
   console.log(`╰─`);
 
   // Default art run generates every needy slide (cover included). `--art` forces a full regen (→ art --all).
-  if (wantsArt) step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux1") ? ["--flux1"] : []), ...(flags.has("--art") ? ["--all"] : []), ...(passesArg ? [passesArg] : [])], { fatal: false, env: wantsQ6 ? { ART2_MODEL: Q6_MODEL } : undefined });
-  if (wantsUpscale) step("upscale (tiled GAN)", ["upscale", "--", fullKey, ...(upscaleModelArg ? [upscaleModelArg] : []), ...(upscaleScaleArg ? [upscaleScaleArg] : [])], { fatal: false });
+  if (wantsArt) step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux1") ? ["--flux1"] : []), ...(flags.has("--art") ? ["--all"] : []), ...(passesArg ? [passesArg] : []), ...(wantsUpscale ? ["--upscale"] : []), ...(upscaleModelArg ? [upscaleModelArg] : []), ...(upscaleScaleArg ? [upscaleScaleArg] : []), ...(wantsUiFormat ? ["--ui-format"] : [])], { fatal: false, env: wantsQ6 ? { ART2_MODEL: Q6_MODEL } : undefined });
+  if (wantsUpscale && !wantsArt) step("upscale (existing backgrounds)", ["upscale", "--", fullKey, ...(upscaleModelArg ? [upscaleModelArg] : []), ...(upscaleScaleArg ? [upscaleScaleArg] : [])], { fatal: false });
   step("export (carousel)", ["export", "--", fullKey]);
   if (!flags.has("--no-package")) step("package (upload files)", ["package", "--", fullKey]);
 
