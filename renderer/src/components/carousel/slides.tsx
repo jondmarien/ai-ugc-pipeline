@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import type { TPostData, TSlideData } from "@/lib/schema";
-import { fonts, palette, themeAccent, type as t } from "@/design/tokens";
+import { fitHeadline, fonts, palette, themeAccent, type as t } from "@/design/tokens";
 import { CarouselSlide, Kicker } from "./CarouselSlide";
 
 type SlideProps = { post: TPostData; slide: TSlideData };
@@ -80,7 +80,7 @@ export function CoverSlide({ post, slide }: SlideProps) {
   return (
     <CarouselSlide post={post} slide={slide} align="end">
       <Kicker text={slide.kicker} accent={accent} />
-      <Headline text={slide.on_slide_copy} size={t.coverHeadline} accent={accent} />
+      <Headline text={slide.on_slide_copy} size={fitHeadline(slide.on_slide_copy, t.coverHeadline)} accent={accent} />
       <Subline text={slide.subline} />
       <SwipeCue label={slide.cta} accent={accent} />
     </CarouselSlide>
@@ -92,7 +92,7 @@ function StandardSlide({ post, slide }: SlideProps) {
   return (
     <CarouselSlide post={post} slide={slide} align="end">
       <Kicker text={slide.kicker} accent={accent} />
-      <Headline text={slide.on_slide_copy} size={t.headline} />
+      <Headline text={slide.on_slide_copy} size={fitHeadline(slide.on_slide_copy, t.headline)} />
       <Subline text={slide.subline} />
     </CarouselSlide>
   );
@@ -103,7 +103,7 @@ export function TakeawaySlide({ post, slide }: SlideProps) {
   return (
     <CarouselSlide post={post} slide={slide} align="center">
       <Kicker text={slide.kicker} accent={accent} />
-      <Headline text={slide.on_slide_copy} size={t.coverHeadline - 8} accent={accent} />
+      <Headline text={slide.on_slide_copy} size={fitHeadline(slide.on_slide_copy, t.coverHeadline - 8)} accent={accent} />
       <Subline text={slide.subline} />
     </CarouselSlide>
   );
@@ -114,7 +114,7 @@ export function CtaSlide({ post, slide }: SlideProps) {
   return (
     <CarouselSlide post={post} slide={slide} align="end">
       <Kicker text={slide.kicker} accent={accent} />
-      <Headline text={slide.on_slide_copy} size={t.headline} />
+      <Headline text={slide.on_slide_copy} size={fitHeadline(slide.on_slide_copy, t.headline)} />
       <Subline text={slide.subline} />
       <div style={{ display: "flex", gap: 16, marginTop: 12, flexWrap: "wrap" }}>
         <SwipeCue label={slide.cta || "SAVE + FOLLOW"} accent={accent} />
