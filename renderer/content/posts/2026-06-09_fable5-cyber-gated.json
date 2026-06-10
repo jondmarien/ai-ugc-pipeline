@@ -1,0 +1,1592 @@
+{
+  "post_id": "2026-06-09_fable5-cyber-gated",
+  "date": "2026-06-09",
+  "slug": "fable5-cyber-gated",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "model_security",
+  "theme": "ai",
+  "audience": "security_practitioners",
+  "core_claim": "Anthropic released Fable 5, its most capable public model, but routes cybersecurity, biology, and chemistry requests to a weaker model through safety classifiers, a capability-gating pattern defenders can borrow.",
+  "claim_tags": [
+    "reported_fact",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 5,
+    "visual_drama": 4,
+    "defender_usefulness": 4,
+    "total": 23
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "model_security",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-09_fable5-cyber-gated",
+    "filename_prefix": "2026-06-09_fable5-cyber-gated",
+    "expected_files": [
+      "2026-06-09_fable5-cyber-gated_01_cover.png",
+      "2026-06-09_fable5-cyber-gated_02_context.png",
+      "2026-06-09_fable5-cyber-gated_03_risk.png",
+      "2026-06-09_fable5-cyber-gated_04_mechanism.png",
+      "2026-06-09_fable5-cyber-gated_05_failure-point.png",
+      "2026-06-09_fable5-cyber-gated_06_defense.png",
+      "2026-06-09_fable5-cyber-gated_07_point.png",
+      "2026-06-09_fable5-cyber-gated_08_point.png",
+      "2026-06-09_fable5-cyber-gated_09_takeaway.png",
+      "2026-06-09_fable5-cyber-gated_10_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "ANTHROPIC SHIPPED ITS STRONGEST MODEL WITH THE HACKING PARTS SWITCHED OFF",
+      "subline": "Fable 5 launched June 9. Ask it to help plan an attack and a weaker model answers instead.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Hard rim light catches a heavy brass sluice gate lowered across one of two dark water channels, the flow forced down the narrower side channel, premium dark editorial key art, the gate set high with clean unmarked surfaces and generous negative space across the lower third",
+      "background_asset": "/backgrounds/2026-06-09_fable5-cyber-gated/01_cover.png",
+      "asset_status": "generated",
+      "cta": "SWIPE →",
+      "notes": ""
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "THE PAIN",
+      "on_slide_copy": "For a year the story was simple. Frontier AI kept making attackers faster, and the strongest models were the scariest.",
+      "subline": "Anthropic's own Mythos models alarmed governments with their ability to find software flaws.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Low raking light grazes a towering bank of old switchboard relays in the dark, most of the levers thrown hard to one side under mounting tension, dark editorial photography, the bank set high over a calm empty lower third",
+      "background_asset": "/backgrounds/2026-06-09_fable5-cyber-gated/02_context.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT STINGS",
+      "on_slide_copy": "A model that good at finding flaws is a gift to defenders and a weapon for everyone else.",
+      "subline": "That dual-use problem is exactly why the most capable models stayed locked up.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A single hard side light raises a thin bright line along the edge of a gleaming surgical scalpel balanced upright on a dark steel table, tense high-contrast editorial, the blade held in the upper area with a calm uncluttered lower third",
+      "background_asset": "/backgrounds/2026-06-09_fable5-cyber-gated/03_risk.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "THE OLD ANSWER FAILED",
+      "on_slide_copy": "So the usual fix was to keep frontier capability behind closed doors, which slows the defenders who need it most.",
+      "subline": "Locking the model away protects no one who is actually patching systems.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Cool hard light spills from behind a massive vault door swung most of the way shut in the dark, a thin wedge of glow escaping the narrowing gap, the heavy hinges dominating the upper frame, tense editorial composition, a clean dark lower third",
+      "background_asset": "/backgrounds/2026-06-09_fable5-cyber-gated/04_mechanism.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "THE BENEFIT",
+      "on_slide_copy": "Fable 5 takes a different route. Classifiers watch for cyber, bio, and chemistry requests and hand them to Opus 4.8 instead.",
+      "subline": "Anthropic reports the reroute fires in under five percent of sessions, so normal work never notices.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Focused overhead light falls on a mechanical sorting arm in the dark diverting a single parcel off the main belt onto a side chute while the rest stream straight through, dark editorial key art, the diverter framed in the upper third over generous negative space",
+      "background_asset": "/backgrounds/2026-06-09_fable5-cyber-gated/05_failure-point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "WHAT YOU GET",
+      "on_slide_copy": "In testing it complied with zero requests to plan attacks or build exploits, and survived a thousand hours of jailbreak attempts.",
+      "subline": "You keep a state-of-the-art model for everything else, with only the sharpest edges gated.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Calm even light settles over two parallel conveyor lines in the dark, the wide line running freely while a single narrow gated lane beside it holds one item paused at a lowered barrier, orderly premium editorial, generous negative space below",
+      "background_asset": "/backgrounds/2026-06-09_fable5-cyber-gated/06_defense.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "point",
+      "kicker": "THE MOVE",
+      "on_slide_copy": "Borrow the pattern. Decide which actions your own AI tools must never take on their own.",
+      "subline": "Define the high-risk class before you wire a model to anything that matters.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A tight beam picks out a hand poised over a large industrial track-switch lever in the dark, two rail lines diverging into shadow ahead, dark editorial key art, the lever held in the upper third over generous empty negative space",
+      "background_asset": "/backgrounds/2026-06-09_fable5-cyber-gated/07_point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "point",
+      "kicker": "THE SAUCE",
+      "on_slide_copy": "Route those actions to a slower path with a human or a weaker model in the loop, and log every handoff.",
+      "subline": "Out-of-band review beats trusting one confident model on its own.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A single hard light catches a pneumatic tube station in the dark accepting one capsule into a side tube while a ledger lies open beside it mid-stamp, orderly and tense editorial, framed high with a clean dark lower third",
+      "background_asset": "/backgrounds/2026-06-09_fable5-cyber-gated/08_point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 9,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "The lesson is not {{that the model is simply safe now}}. [[Capability and permission are two switches, and you control the second one.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A thin rim light traces two separate heavy toggle switches mounted side by side on a dark panel, one thrown up and one down, deep shadow around them, minimal high-impact key art, the switches drawn toward the edge with the center kept dark and open",
+      "background_asset": "/backgrounds/2026-06-09_fable5-cyber-gated/09_takeaway.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 10,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Where would you put the classifier in your own AI workflow?",
+      "subline": "Save this for your next AI risk review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Soft pooled light isolates a single unlabeled routing switch resting on a clean dark end-card surface, premium editorial cybersecurity key art, the switch small in vast negative space with the lower third open",
+      "background_asset": "/backgrounds/2026-06-09_fable5-cyber-gated/10_cta.png",
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Anthropic shipped its most capable public model on June 9, then deliberately switched off its best hacking moves.\n\nFable 5 is state-of-the-art on nearly every benchmark, but a layer of classifiers watches for cybersecurity, biology, and chemistry requests and hands those to the weaker Opus 4.8 instead. Anthropic says the reroute fires in under five percent of sessions, and in testing Fable complied with zero requests to plan attacks or build exploits, with no universal jailbreak found in over a thousand hours.\n\nThe interesting part for defenders is the design, not the headline. Capability and permission are separate switches. You can run a very strong model and still refuse to let it take certain actions on its own.\n\nBorrow it: name the high-risk actions your AI tools must never take unassisted, route them to a slower path with a human or a smaller model in the loop, and log every handoff.\n\nWhere would you put the classifier in your own stack?\n\nFollow for AI security breakdowns without the fake panic.\n\n[Claude Fable 5, Anthropic, AI model security, capability gating, frontier AI safety, blue team, AI governance]",
+  "hashtags": [
+    "Claude Fable 5",
+    "Anthropic",
+    "AI model security",
+    "capability gating",
+    "frontier AI safety",
+    "blue team",
+    "AI governance"
+  ],
+  "comment_prompt": "Where would you put the classifier in your own AI workflow?",
+  "alt_text": [
+    "Slide 1 (cover): a brass sluice gate lowered across one of two dark water channels, forcing the flow down the narrower side channel, with an empty lower third for the headline.",
+    "Slide 2 (pain): a tall bank of old switchboard relays in the dark, most levers thrown hard to one side under tension.",
+    "Slide 3 (pain): a surgical scalpel balanced upright on a dark steel table, one hard light tracing the blade edge.",
+    "Slide 4 (pain): a massive vault door swung most of the way shut, a thin wedge of light escaping the narrowing gap.",
+    "Slide 5 (benefit): a mechanical sorting arm diverting a single parcel off the main belt onto a side chute while the rest pass straight through.",
+    "Slide 6 (benefit): two parallel conveyor lines in the dark, the wide line running freely while a narrow gated lane holds one item at a lowered barrier.",
+    "Slide 7 (solution): a hand poised over a large industrial track-switch lever, two rail lines diverging into shadow.",
+    "Slide 8 (solution): a pneumatic tube station accepting one capsule into a side tube while a ledger lies open mid-stamp beside it.",
+    "Slide 9 (takeaway): two heavy toggle switches side by side on a dark panel, one up and one down, with the center kept dark.",
+    "Slide 10 (cta): a single unlabeled routing switch on a clean dark end-card with open negative space."
+  ],
+  "sources": [
+    {
+      "source": "Anthropic: Claude Fable 5 and Claude Mythos 5 (official announcement)",
+      "link": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+      "supports": "Release date; Fable vs Mythos split; classifiers reroute cyber/bio/chem/distillation to Opus 4.8; under 5% of sessions; users informed; zero harmful compliance on cyberattack planning and exploit development; pricing.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "The Decoder: Anthropic releases Claude Fable 5 and Mythos 5",
+      "link": "https://the-decoder.com/anthropic-releases-claude-fable-5-and-mythos-5-with-major-gains-in-coding-and-science/",
+      "supports": "State-of-the-art benchmarks; the Opus 4.8 fallback and under-5% trigger rate; over 1,000 hours of external jailbreak testing with no universal jailbreak.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "NBC News: Anthropic releases Fable 5, built on the same tech that spooked the government",
+      "link": "https://www.nbcnews.com/tech/security/fable-5-anthropic-release-public-mythos-claude-model-rcna349104",
+      "supports": "Mythos models alarmed governments over their vulnerability-finding ability; government early-access testing context.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-09_fable5-cyber-gated/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_fable5-cyber-gated/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_fable5-cyber-gated/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_fable5-cyber-gated/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_fable5-cyber-gated/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_fable5-cyber-gated/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_fable5-cyber-gated/07_point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_fable5-cyber-gated/08_point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_fable5-cyber-gated/09_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_fable5-cyber-gated/10_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 64,
+    "fps": 30,
+    "export_name": "2026-06-09_fable5-cyber-gated_reel.mp4",
+    "caption_mode": "highlight",
+    "caption_corrections": {
+      "mythoss": "Mythos"
+    },
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-09_fable5-cyber-gated/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": "Anthropic just shipped its most capable public model, Fable 5, with the hacking parts switched off."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "text": "For a year the story was that frontier AI keeps making attackers faster, and Anthropic's own Mythoss models alarmed governments."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "text": "A model that good at finding software flaws is a gift to defenders and a weapon for everyone else."
+      },
+      {
+        "start": 20,
+        "end": 27,
+        "text": "The usual fix was to lock that capability away, which slows the defenders who actually need it."
+      },
+      {
+        "start": 27,
+        "end": 35,
+        "text": "Fable takes another route. Classifiers catch cyber, bio, and chemistry requests and hand them to a weaker model, in under five percent of sessions."
+      },
+      {
+        "start": 35,
+        "end": 43,
+        "text": "In testing it complied with zero attack-planning requests and survived more than a thousand hours of jailbreak attempts."
+      },
+      {
+        "start": 43,
+        "end": 50,
+        "text": "Borrow the pattern. Decide which actions your own AI tools must never take on their own."
+      },
+      {
+        "start": 50,
+        "end": 57,
+        "text": "Route those actions to a slower path with a human or a weaker model in the loop, and log every handoff."
+      },
+      {
+        "start": 57,
+        "end": 62,
+        "text": "Capability and permission are two different switches, and you control the second one."
+      },
+      {
+        "start": 62,
+        "end": 68,
+        "text": "Where would you put the classifier in your own stack? Tell me in the comments."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 6,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Strongest model, hacking switched off."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "slide_ref": 2,
+        "purpose": "pain",
+        "motion": "parallax",
+        "caption": "Frontier AI kept arming attackers."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "slide_ref": 3,
+        "purpose": "pain",
+        "motion": "slow push-in",
+        "caption": "A gift to defenders, a weapon to all."
+      },
+      {
+        "start": 20,
+        "end": 27,
+        "slide_ref": 4,
+        "purpose": "pain",
+        "motion": "parallax",
+        "caption": "Locking it away slows defenders too."
+      },
+      {
+        "start": 27,
+        "end": 35,
+        "slide_ref": 5,
+        "purpose": "benefit",
+        "motion": "slow push-in",
+        "caption": "Risky requests reroute to a weaker model."
+      },
+      {
+        "start": 35,
+        "end": 43,
+        "slide_ref": 6,
+        "purpose": "benefit",
+        "motion": "parallax",
+        "caption": "Zero attack help, no jailbreak in 1,000 hours."
+      },
+      {
+        "start": 43,
+        "end": 50,
+        "slide_ref": 7,
+        "purpose": "solution",
+        "motion": "slow push-in",
+        "caption": "Name the actions AI must never take alone."
+      },
+      {
+        "start": 50,
+        "end": 57,
+        "slide_ref": 8,
+        "purpose": "solution",
+        "motion": "parallax",
+        "caption": "Route to a slower path and log it."
+      },
+      {
+        "start": 57,
+        "end": 62,
+        "slide_ref": 9,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "Capability and permission are two switches."
+      },
+      {
+        "start": 62,
+        "end": 68,
+        "slide_ref": 10,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Where does the classifier go in your stack?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.42,
+        "text": "Anthropic just shipped its most capable public",
+        "words": [
+          {
+            "text": "Anthropic",
+            "start": 0.0,
+            "end": 0.86
+          },
+          {
+            "text": "just",
+            "start": 0.86,
+            "end": 1.14
+          },
+          {
+            "text": "shipped",
+            "start": 1.14,
+            "end": 1.34
+          },
+          {
+            "text": "its",
+            "start": 1.34,
+            "end": 1.58
+          },
+          {
+            "text": "most",
+            "start": 1.58,
+            "end": 1.74
+          },
+          {
+            "text": "capable",
+            "start": 1.74,
+            "end": 2.1
+          },
+          {
+            "text": "public",
+            "start": 2.1,
+            "end": 2.42
+          }
+        ]
+      },
+      {
+        "start": 2.42,
+        "end": 4.8,
+        "text": "model, Fable 5, with the hacking parts",
+        "words": [
+          {
+            "text": "model,",
+            "start": 2.42,
+            "end": 2.86
+          },
+          {
+            "text": "Fable",
+            "start": 3.1,
+            "end": 3.28
+          },
+          {
+            "text": "5,",
+            "start": 3.28,
+            "end": 3.64
+          },
+          {
+            "text": "with",
+            "start": 3.96,
+            "end": 4.18
+          },
+          {
+            "text": "the",
+            "start": 4.18,
+            "end": 4.3
+          },
+          {
+            "text": "hacking",
+            "start": 4.3,
+            "end": 4.52
+          },
+          {
+            "text": "parts",
+            "start": 4.52,
+            "end": 4.8
+          }
+        ]
+      },
+      {
+        "start": 4.8,
+        "end": 7.06,
+        "text": "switched off. For a year, the story",
+        "words": [
+          {
+            "text": "switched",
+            "start": 4.8,
+            "end": 5.1
+          },
+          {
+            "text": "off.",
+            "start": 5.1,
+            "end": 5.44
+          },
+          {
+            "text": "For",
+            "start": 6.04,
+            "end": 6.16
+          },
+          {
+            "text": "a",
+            "start": 6.16,
+            "end": 6.3
+          },
+          {
+            "text": "year,",
+            "start": 6.3,
+            "end": 6.48
+          },
+          {
+            "text": "the",
+            "start": 6.76,
+            "end": 6.82
+          },
+          {
+            "text": "story",
+            "start": 6.82,
+            "end": 7.06
+          }
+        ]
+      },
+      {
+        "start": 7.06,
+        "end": 9.04,
+        "text": "was that Frontier AI keeps making attackers",
+        "words": [
+          {
+            "text": "was",
+            "start": 7.06,
+            "end": 7.28
+          },
+          {
+            "text": "that",
+            "start": 7.28,
+            "end": 7.42
+          },
+          {
+            "text": "Frontier",
+            "start": 7.42,
+            "end": 7.64
+          },
+          {
+            "text": "AI",
+            "start": 7.64,
+            "end": 8.1
+          },
+          {
+            "text": "keeps",
+            "start": 8.1,
+            "end": 8.46
+          },
+          {
+            "text": "making",
+            "start": 8.46,
+            "end": 8.74
+          },
+          {
+            "text": "attackers",
+            "start": 8.74,
+            "end": 9.04
+          }
+        ]
+      },
+      {
+        "start": 9.04,
+        "end": 9.6,
+        "text": "faster,",
+        "words": [
+          {
+            "text": "faster,",
+            "start": 9.04,
+            "end": 9.6
+          }
+        ]
+      },
+      {
+        "start": 10.22,
+        "end": 12.6,
+        "text": "and Anthropic's own mythos model's alarmed governments.",
+        "words": [
+          {
+            "text": "and",
+            "start": 10.22,
+            "end": 10.26
+          },
+          {
+            "text": "Anthropic's",
+            "start": 10.26,
+            "end": 10.82
+          },
+          {
+            "text": "own",
+            "start": 10.82,
+            "end": 10.94
+          },
+          {
+            "text": "mythos",
+            "start": 10.94,
+            "end": 11.3
+          },
+          {
+            "text": "model's",
+            "start": 11.3,
+            "end": 11.76
+          },
+          {
+            "text": "alarmed",
+            "start": 11.76,
+            "end": 12.16
+          },
+          {
+            "text": "governments.",
+            "start": 12.16,
+            "end": 12.6
+          }
+        ]
+      },
+      {
+        "start": 13.14,
+        "end": 14.58,
+        "text": "A model that good at finding software",
+        "words": [
+          {
+            "text": "A",
+            "start": 13.14,
+            "end": 13.28
+          },
+          {
+            "text": "model",
+            "start": 13.28,
+            "end": 13.48
+          },
+          {
+            "text": "that",
+            "start": 13.48,
+            "end": 13.68
+          },
+          {
+            "text": "good",
+            "start": 13.68,
+            "end": 13.84
+          },
+          {
+            "text": "at",
+            "start": 13.84,
+            "end": 13.94
+          },
+          {
+            "text": "finding",
+            "start": 13.94,
+            "end": 14.18
+          },
+          {
+            "text": "software",
+            "start": 14.18,
+            "end": 14.58
+          }
+        ]
+      },
+      {
+        "start": 14.58,
+        "end": 16.9,
+        "text": "flaws is a gift to defenders, and",
+        "words": [
+          {
+            "text": "flaws",
+            "start": 14.58,
+            "end": 14.92
+          },
+          {
+            "text": "is",
+            "start": 14.92,
+            "end": 15.52
+          },
+          {
+            "text": "a",
+            "start": 15.52,
+            "end": 15.62
+          },
+          {
+            "text": "gift",
+            "start": 15.62,
+            "end": 15.8
+          },
+          {
+            "text": "to",
+            "start": 15.8,
+            "end": 16.02
+          },
+          {
+            "text": "defenders,",
+            "start": 16.02,
+            "end": 16.3
+          },
+          {
+            "text": "and",
+            "start": 16.78,
+            "end": 16.9
+          }
+        ]
+      },
+      {
+        "start": 16.9,
+        "end": 18.9,
+        "text": "a weapon for everyone else. The usual",
+        "words": [
+          {
+            "text": "a",
+            "start": 16.9,
+            "end": 16.98
+          },
+          {
+            "text": "weapon",
+            "start": 16.98,
+            "end": 17.2
+          },
+          {
+            "text": "for",
+            "start": 17.2,
+            "end": 17.44
+          },
+          {
+            "text": "everyone",
+            "start": 17.44,
+            "end": 17.72
+          },
+          {
+            "text": "else.",
+            "start": 17.72,
+            "end": 17.98
+          },
+          {
+            "text": "The",
+            "start": 18.56,
+            "end": 18.64
+          },
+          {
+            "text": "usual",
+            "start": 18.64,
+            "end": 18.9
+          }
+        ]
+      },
+      {
+        "start": 18.9,
+        "end": 20.86,
+        "text": "fix was to lock that capability away,",
+        "words": [
+          {
+            "text": "fix",
+            "start": 18.9,
+            "end": 19.24
+          },
+          {
+            "text": "was",
+            "start": 19.24,
+            "end": 19.48
+          },
+          {
+            "text": "to",
+            "start": 19.48,
+            "end": 19.64
+          },
+          {
+            "text": "lock",
+            "start": 19.64,
+            "end": 19.82
+          },
+          {
+            "text": "that",
+            "start": 19.82,
+            "end": 20.0
+          },
+          {
+            "text": "capability",
+            "start": 20.0,
+            "end": 20.22
+          },
+          {
+            "text": "away,",
+            "start": 20.22,
+            "end": 20.86
+          }
+        ]
+      },
+      {
+        "start": 21.22,
+        "end": 22.94,
+        "text": "which slows the defenders who actually need",
+        "words": [
+          {
+            "text": "which",
+            "start": 21.22,
+            "end": 21.38
+          },
+          {
+            "text": "slows",
+            "start": 21.38,
+            "end": 21.58
+          },
+          {
+            "text": "the",
+            "start": 21.58,
+            "end": 21.8
+          },
+          {
+            "text": "defenders",
+            "start": 21.8,
+            "end": 22.04
+          },
+          {
+            "text": "who",
+            "start": 22.04,
+            "end": 22.38
+          },
+          {
+            "text": "actually",
+            "start": 22.38,
+            "end": 22.66
+          },
+          {
+            "text": "need",
+            "start": 22.66,
+            "end": 22.94
+          }
+        ]
+      },
+      {
+        "start": 22.94,
+        "end": 25.9,
+        "text": "it. Fable takes another route. Classifiers catch",
+        "words": [
+          {
+            "text": "it.",
+            "start": 22.94,
+            "end": 23.1
+          },
+          {
+            "text": "Fable",
+            "start": 23.68,
+            "end": 23.86
+          },
+          {
+            "text": "takes",
+            "start": 23.86,
+            "end": 24.16
+          },
+          {
+            "text": "another",
+            "start": 24.16,
+            "end": 24.48
+          },
+          {
+            "text": "route.",
+            "start": 24.48,
+            "end": 24.74
+          },
+          {
+            "text": "Classifiers",
+            "start": 24.74,
+            "end": 25.68
+          },
+          {
+            "text": "catch",
+            "start": 25.68,
+            "end": 25.9
+          }
+        ]
+      },
+      {
+        "start": 25.9,
+        "end": 28.76,
+        "text": "cyber, bio, and chemistry requests, and hand",
+        "words": [
+          {
+            "text": "cyber,",
+            "start": 25.9,
+            "end": 26.22
+          },
+          {
+            "text": "bio,",
+            "start": 26.62,
+            "end": 26.78
+          },
+          {
+            "text": "and",
+            "start": 27.2,
+            "end": 27.28
+          },
+          {
+            "text": "chemistry",
+            "start": 27.28,
+            "end": 27.5
+          },
+          {
+            "text": "requests,",
+            "start": 27.5,
+            "end": 28.04
+          },
+          {
+            "text": "and",
+            "start": 28.56,
+            "end": 28.56
+          },
+          {
+            "text": "hand",
+            "start": 28.56,
+            "end": 28.76
+          }
+        ]
+      },
+      {
+        "start": 28.76,
+        "end": 30.16,
+        "text": "them to a weaker model in under",
+        "words": [
+          {
+            "text": "them",
+            "start": 28.76,
+            "end": 28.94
+          },
+          {
+            "text": "to",
+            "start": 28.94,
+            "end": 29.08
+          },
+          {
+            "text": "a",
+            "start": 29.08,
+            "end": 29.2
+          },
+          {
+            "text": "weaker",
+            "start": 29.2,
+            "end": 29.36
+          },
+          {
+            "text": "model",
+            "start": 29.36,
+            "end": 29.68
+          },
+          {
+            "text": "in",
+            "start": 29.68,
+            "end": 30.04
+          },
+          {
+            "text": "under",
+            "start": 30.04,
+            "end": 30.16
+          }
+        ]
+      },
+      {
+        "start": 30.16,
+        "end": 32.48,
+        "text": "5 % of sessions. In testing it",
+        "words": [
+          {
+            "text": "5",
+            "start": 30.16,
+            "end": 30.56
+          },
+          {
+            "text": "%",
+            "start": 30.56,
+            "end": 30.86
+          },
+          {
+            "text": "of",
+            "start": 30.86,
+            "end": 30.98
+          },
+          {
+            "text": "sessions.",
+            "start": 30.98,
+            "end": 31.3
+          },
+          {
+            "text": "In",
+            "start": 31.9,
+            "end": 31.98
+          },
+          {
+            "text": "testing",
+            "start": 31.98,
+            "end": 32.22
+          },
+          {
+            "text": "it",
+            "start": 32.22,
+            "end": 32.48
+          }
+        ]
+      },
+      {
+        "start": 32.48,
+        "end": 34.74,
+        "text": "complied with zero attack planning requests, and",
+        "words": [
+          {
+            "text": "complied",
+            "start": 32.48,
+            "end": 32.66
+          },
+          {
+            "text": "with",
+            "start": 32.66,
+            "end": 33.04
+          },
+          {
+            "text": "zero",
+            "start": 33.04,
+            "end": 33.3
+          },
+          {
+            "text": "attack",
+            "start": 33.3,
+            "end": 33.58
+          },
+          {
+            "text": "planning",
+            "start": 33.58,
+            "end": 33.9
+          },
+          {
+            "text": "requests,",
+            "start": 33.9,
+            "end": 34.22
+          },
+          {
+            "text": "and",
+            "start": 34.64,
+            "end": 34.74
+          }
+        ]
+      },
+      {
+        "start": 34.74,
+        "end": 36.86,
+        "text": "survived more than 1,000 hours of jailbreak",
+        "words": [
+          {
+            "text": "survived",
+            "start": 34.74,
+            "end": 35.02
+          },
+          {
+            "text": "more",
+            "start": 35.02,
+            "end": 35.42
+          },
+          {
+            "text": "than",
+            "start": 35.42,
+            "end": 35.6
+          },
+          {
+            "text": "1,000",
+            "start": 35.6,
+            "end": 36.04
+          },
+          {
+            "text": "hours",
+            "start": 36.04,
+            "end": 36.28
+          },
+          {
+            "text": "of",
+            "start": 36.28,
+            "end": 36.5
+          },
+          {
+            "text": "jailbreak",
+            "start": 36.5,
+            "end": 36.86
+          }
+        ]
+      },
+      {
+        "start": 36.86,
+        "end": 37.14,
+        "text": "attempts.",
+        "words": [
+          {
+            "text": "attempts.",
+            "start": 36.86,
+            "end": 37.14
+          }
+        ]
+      },
+      {
+        "start": 37.82,
+        "end": 38.5,
+        "text": "Borrow the pattern.",
+        "words": [
+          {
+            "text": "Borrow",
+            "start": 37.82,
+            "end": 38.14
+          },
+          {
+            "text": "the",
+            "start": 38.14,
+            "end": 38.3
+          },
+          {
+            "text": "pattern.",
+            "start": 38.3,
+            "end": 38.5
+          }
+        ]
+      },
+      {
+        "start": 39.16,
+        "end": 40.96,
+        "text": "Decide which actions your own AI tools",
+        "words": [
+          {
+            "text": "Decide",
+            "start": 39.16,
+            "end": 39.42
+          },
+          {
+            "text": "which",
+            "start": 39.42,
+            "end": 39.58
+          },
+          {
+            "text": "actions",
+            "start": 39.58,
+            "end": 39.94
+          },
+          {
+            "text": "your",
+            "start": 39.94,
+            "end": 40.2
+          },
+          {
+            "text": "own",
+            "start": 40.2,
+            "end": 40.44
+          },
+          {
+            "text": "AI",
+            "start": 40.44,
+            "end": 40.64
+          },
+          {
+            "text": "tools",
+            "start": 40.64,
+            "end": 40.96
+          }
+        ]
+      },
+      {
+        "start": 40.96,
+        "end": 42.74,
+        "text": "must never take on their own. Root",
+        "words": [
+          {
+            "text": "must",
+            "start": 40.96,
+            "end": 41.26
+          },
+          {
+            "text": "never",
+            "start": 41.26,
+            "end": 41.52
+          },
+          {
+            "text": "take",
+            "start": 41.52,
+            "end": 41.82
+          },
+          {
+            "text": "on",
+            "start": 41.82,
+            "end": 41.96
+          },
+          {
+            "text": "their",
+            "start": 41.96,
+            "end": 42.12
+          },
+          {
+            "text": "own.",
+            "start": 42.12,
+            "end": 42.28
+          },
+          {
+            "text": "Root",
+            "start": 42.74,
+            "end": 42.74
+          }
+        ]
+      },
+      {
+        "start": 42.74,
+        "end": 44.42,
+        "text": "those actions to a slower path with",
+        "words": [
+          {
+            "text": "those",
+            "start": 42.74,
+            "end": 42.92
+          },
+          {
+            "text": "actions",
+            "start": 42.92,
+            "end": 43.22
+          },
+          {
+            "text": "to",
+            "start": 43.22,
+            "end": 43.52
+          },
+          {
+            "text": "a",
+            "start": 43.52,
+            "end": 43.62
+          },
+          {
+            "text": "slower",
+            "start": 43.62,
+            "end": 43.8
+          },
+          {
+            "text": "path",
+            "start": 43.8,
+            "end": 44.16
+          },
+          {
+            "text": "with",
+            "start": 44.16,
+            "end": 44.42
+          }
+        ]
+      },
+      {
+        "start": 44.42,
+        "end": 45.8,
+        "text": "a human or a weaker model in",
+        "words": [
+          {
+            "text": "a",
+            "start": 44.42,
+            "end": 44.5
+          },
+          {
+            "text": "human",
+            "start": 44.5,
+            "end": 44.76
+          },
+          {
+            "text": "or",
+            "start": 44.76,
+            "end": 45.0
+          },
+          {
+            "text": "a",
+            "start": 45.0,
+            "end": 45.12
+          },
+          {
+            "text": "weaker",
+            "start": 45.12,
+            "end": 45.28
+          },
+          {
+            "text": "model",
+            "start": 45.28,
+            "end": 45.58
+          },
+          {
+            "text": "in",
+            "start": 45.58,
+            "end": 45.8
+          }
+        ]
+      },
+      {
+        "start": 45.8,
+        "end": 47.54,
+        "text": "the loop, and log every handoff.",
+        "words": [
+          {
+            "text": "the",
+            "start": 45.8,
+            "end": 45.9
+          },
+          {
+            "text": "loop,",
+            "start": 45.9,
+            "end": 46.1
+          },
+          {
+            "text": "and",
+            "start": 46.38,
+            "end": 46.6
+          },
+          {
+            "text": "log",
+            "start": 46.6,
+            "end": 46.78
+          },
+          {
+            "text": "every",
+            "start": 46.78,
+            "end": 47.12
+          },
+          {
+            "text": "handoff.",
+            "start": 47.12,
+            "end": 47.54
+          }
+        ]
+      },
+      {
+        "start": 48.44,
+        "end": 50.48,
+        "text": "Capability and permission are two different switches,",
+        "words": [
+          {
+            "text": "Capability",
+            "start": 48.44,
+            "end": 48.96
+          },
+          {
+            "text": "and",
+            "start": 48.96,
+            "end": 49.24
+          },
+          {
+            "text": "permission",
+            "start": 49.24,
+            "end": 49.44
+          },
+          {
+            "text": "are",
+            "start": 49.44,
+            "end": 49.8
+          },
+          {
+            "text": "two",
+            "start": 49.8,
+            "end": 49.96
+          },
+          {
+            "text": "different",
+            "start": 49.96,
+            "end": 50.22
+          },
+          {
+            "text": "switches,",
+            "start": 50.22,
+            "end": 50.48
+          }
+        ]
+      },
+      {
+        "start": 50.96,
+        "end": 52.94,
+        "text": "and you control the second one. Where",
+        "words": [
+          {
+            "text": "and",
+            "start": 50.96,
+            "end": 51.08
+          },
+          {
+            "text": "you",
+            "start": 51.08,
+            "end": 51.22
+          },
+          {
+            "text": "control",
+            "start": 51.22,
+            "end": 51.42
+          },
+          {
+            "text": "the",
+            "start": 51.42,
+            "end": 51.7
+          },
+          {
+            "text": "second",
+            "start": 51.7,
+            "end": 51.96
+          },
+          {
+            "text": "one.",
+            "start": 51.96,
+            "end": 52.2
+          },
+          {
+            "text": "Where",
+            "start": 52.6,
+            "end": 52.94
+          }
+        ]
+      },
+      {
+        "start": 52.94,
+        "end": 54.38,
+        "text": "would you put the classifier in your",
+        "words": [
+          {
+            "text": "would",
+            "start": 52.94,
+            "end": 53.1
+          },
+          {
+            "text": "you",
+            "start": 53.1,
+            "end": 53.2
+          },
+          {
+            "text": "put",
+            "start": 53.2,
+            "end": 53.38
+          },
+          {
+            "text": "the",
+            "start": 53.38,
+            "end": 53.5
+          },
+          {
+            "text": "classifier",
+            "start": 53.5,
+            "end": 53.98
+          },
+          {
+            "text": "in",
+            "start": 53.98,
+            "end": 54.24
+          },
+          {
+            "text": "your",
+            "start": 54.24,
+            "end": 54.38
+          }
+        ]
+      },
+      {
+        "start": 54.38,
+        "end": 56.06,
+        "text": "own stack? Tell me in the comments.",
+        "words": [
+          {
+            "text": "own",
+            "start": 54.38,
+            "end": 54.54
+          },
+          {
+            "text": "stack?",
+            "start": 54.54,
+            "end": 54.82
+          },
+          {
+            "text": "Tell",
+            "start": 55.4,
+            "end": 55.4
+          },
+          {
+            "text": "me",
+            "start": 55.4,
+            "end": 55.56
+          },
+          {
+            "text": "in",
+            "start": 55.56,
+            "end": 55.68
+          },
+          {
+            "text": "the",
+            "start": 55.68,
+            "end": 55.76
+          },
+          {
+            "text": "comments.",
+            "start": 55.76,
+            "end": 56.06
+          }
+        ]
+      }
+    ]
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}
