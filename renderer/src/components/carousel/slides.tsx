@@ -103,7 +103,7 @@ export function TakeawaySlide({ post, slide }: SlideProps) {
   return (
     <CarouselSlide post={post} slide={slide} align="center">
       <Kicker text={slide.kicker} accent={accent} />
-      <Headline text={slide.on_slide_copy} size={fitHeadline(slide.on_slide_copy, t.coverHeadline - 8)} accent={accent} />
+      <Headline text={slide.on_slide_copy} size={fitHeadline(slide.on_slide_copy, t.coverHeadline - 8, 14)} accent={accent} />
       <Subline text={slide.subline} />
     </CarouselSlide>
   );

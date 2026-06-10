@@ -67,10 +67,12 @@ export const layout = {
 // Length-based headline auto-fit: long hooks (the dragged-hook covers especially) shrink to fit
 // the bounded text block instead of overflowing it. Deterministic by character count, no measure
 // pass. `base` is the slide's normal size; the result never exceeds base.
-export function fitHeadline(text: string, base: number): number {
+export function fitHeadline(text: string, base: number, bump = 0): number {
   const n = (text ?? "").replace(/\[\[|\]\]|\{\{|\}\}/g, "").length; // ignore accent markers
   const size = n <= 30 ? 104 : n <= 55 ? 84 : n <= 80 ? 68 : n <= 110 ? 58 : 50;
-  return Math.min(base, size);
+  // `bump` lifts every length tier (used by the takeaway so it reads a step larger than body
+  // slides at the same length); still never exceeds `base`.
+  return Math.min(base, size + bump);
 }
 
 // Readability scrims layered between the (AI-generated) background and the text.
