@@ -1,5 +1,5 @@
 {
-  "seed": 1253698825,
+  "seed": 1864302971,
   "seed_source": "auto",
   "model": "openbmb/VoxCPM2",
   "sample_rate": 48000,
@@ -8,6 +8,6 @@
   "clone_mode": "hi-fi",
   "prompt_text_source": "whisper",
   "script_chars": 612,
-  "generated_at": "2026-06-08T05:02:28",
-  "reuse_command": "bun run pipeline -- 2026-06-07_nemotron-3-ultra --seed=1253698825"
+  "generated_at": "2026-06-08T19:27:50",
+  "reuse_command": "bun run pipeline -- 2026-06-07_nemotron-3-ultra --seed=1864302971"
 }

@@ -1,0 +1,15 @@
+Most AI risk in companies right now is not a sci-fi attack. It is shadow AI, the tools your team adopted before anyone reviewed them.
+
+Microsoft's 2024 Work Trend Index found that 78 percent of people using AI at work bring their own tools, often unsanctioned. IBM's 2025 Cost of a Data Breach report found that one in five breached organizations traced a breach to shadow AI, that it added about $670,000 to the average breach cost, and that most breached organizations still had no AI governance in place. OWASP lists sensitive information disclosure as a top risk for LLM apps.
+
+The problem is visibility, not malice. When a tool is not sanctioned, there is usually no logging, no retention policy, and no data-handling review behind it, so data flows out through paths security cannot see. The team often finds out only after the data has already left.
+
+Defender move: start with visibility, not bans. Inventory which AI tools are actually in use, using your proxy, SSO, and browser telemetry. Offer a sanctioned alternative with clear data rules so people do not route around you. Then run every AI tool through the same vendor and security review as any other software.
+
+You cannot govern the AI you cannot see. Inventory first, then write the policy.
+
+Do you have a current list of the AI tools your team actually uses, and how would you even build it?
+
+Follow for AI security breakdowns without the fake panic.
+
+[shadow AI, AI governance, GRC, data protection, CISO]

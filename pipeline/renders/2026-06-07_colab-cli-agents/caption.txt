@@ -1,13 +1,13 @@
 Google shipped a Colab CLI that runs Python on remote GPUs and TPUs straight from the terminal, and it is explicitly built so AI agents can drive it, not just people. It is open source under Apache-2.0, and it authenticates with your Google account.
 
-That is the exposure. An agent with terminal access now has a one-command path to spin up a GPU or TPU box and run arbitrary code on Google's network, authenticated as you. If that agent gets prompt-injected, it acts with your identity. Data moves both ways through upload, download, and a mounted Drive, which is a clean exfil channel. The session token sits on your machine, so a leaked token or an over-broad scope widens the blast radius into your cloud project. The auto-teardown that deletes the runtime also deletes most of the forensic trail.
+Think about the two things that flow through that login. First, data. The CLI ships files with upload, pulls them back with download, and mounts your Drive, so the runtime is a clean two-way exfiltration channel. A prompt-injected agent can quietly push your files out and pull payloads back in, all signed in as you. Second, money. Every runtime the agent starts bills A100, H100, or TPU time to your account, so a hijacked agent turns into a cost-bomb that can mine compute from Google IP space on your tab. The auto-teardown that deletes the runtime also deletes most of the trail of what shipped out and what it spent.
 
-Treat agent code-exec as untrusted. Do not hand an agent a long-lived, broadly scoped token from your primary account. Give it a dedicated low-privilege Google account with the narrowest scope and short-lived auth, then keep the session logs the CLI can export as your audit trail.
+So watch what leaves and what it spends. Do not hand an agent a long-lived, broadly scoped token from your primary account. Give it a dedicated low-privilege Google account with hard budgets and quotas, review what each runtime uploads, then keep the session logs the CLI can export as your egress and billing trail.
 
-Agent code-exec is not a convenience. It is your identity running untrusted code on someone else's GPU.
+Agent code execution is not just compute. It is a two-way data pipe and a billable account, both signed in as you.
 
-Would you let an agent run code on remote GPUs with your Google login?
+Would you let an agent spend your compute and move your data on your Google login?
 
 Follow for AI security breakdowns without the fake panic.
 
-[AI agents, data leakage, cloud security, OAuth, least privilege]
+[AI agents, data exfiltration, cloud security, cloud cost, OAuth]

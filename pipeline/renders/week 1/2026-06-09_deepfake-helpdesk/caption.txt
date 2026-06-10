@@ -1,0 +1,15 @@
+The next urgent request from your CFO might be a deepfake, and it might be on video.
+
+In 2024, the engineering firm Arup lost about $25 million after a finance worker in its Hong Kong office joined a video call with people he recognized as the CFO and colleagues. Every one of them was a deepfake. He made fifteen transfers before anyone realized. Arup said none of its internal systems were breached, and its own CIO called it technology-enhanced social engineering. CNN, the South China Morning Post, and Fortune all reported the same figures.
+
+The lesson is not that video calls are dangerous. It is that recognizing a face or a voice was never a strong authorization control, and AI just made that obvious. The cruel part of this case is that the verification step itself, the live call with familiar faces, was the forgery. Real-time social proof overrode the employee's first, correct suspicion.
+
+The FBI has warned that criminals now generate real-time video of executives and authority figures, and it recommends a pre-agreed code word to confirm identity.
+
+Defender move: require out-of-band verification for money movement, every time. Call back a known, saved number, not one from the request, and require dual approval with a built-in delay. Build it so no one can skip it because the boss was on the call.
+
+Could a convincing video call trigger a wire transfer at your company today?
+
+Follow for AI security breakdowns without the fake panic.
+
+[deepfakes, CEO fraud, social engineering, wire fraud, finance controls]

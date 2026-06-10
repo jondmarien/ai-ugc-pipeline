@@ -1,6 +1,6 @@
 # Sources — 2026-06-07_colab-cli-agents
 
-**Core claim:** Google's Colab CLI lets AI agents run arbitrary Python on remote GPUs and TPUs under your Google identity, so the data-leakage risk is agent code-exec with your credentials and a two-way data path you have to scope down.
+**Core claim:** Google's Colab CLI lets AI agents run arbitrary Python on remote GPUs and TPUs under your Google identity, so the data-leakage risk is a two-way exfiltration channel plus a billable compute account a hijacked agent can drain from Google IP space.
 **Claim tags:** reported_fact, emerging, practitioner_takeaway
 
 | Source | Link | Supports | Confidence | Claim tag |

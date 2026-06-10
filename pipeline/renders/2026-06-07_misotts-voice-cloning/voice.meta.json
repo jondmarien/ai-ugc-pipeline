@@ -1,5 +1,5 @@
 {
-  "seed": 1722871846,
+  "seed": 348652351,
   "seed_source": "auto",
   "model": "openbmb/VoxCPM2",
   "sample_rate": 48000,
@@ -7,7 +7,7 @@
   "voice_ref": "E:\\ai-ugc\\_voiceref\\jon_48k.wav",
   "clone_mode": "hi-fi",
   "prompt_text_source": "whisper",
-  "script_chars": 500,
-  "generated_at": "2026-06-07T04:02:01",
-  "reuse_command": "bun run pipeline -- 2026-06-07_misotts-voice-cloning --seed=1722871846"
+  "script_chars": 544,
+  "generated_at": "2026-06-08T21:07:07",
+  "reuse_command": "bun run pipeline -- 2026-06-07_misotts-voice-cloning --seed=348652351"
 }

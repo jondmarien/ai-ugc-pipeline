@@ -1,5 +1,5 @@
 {
-  "seed": 299845446,
+  "seed": 1348948989,
   "seed_source": "auto",
   "model": "openbmb/VoxCPM2",
   "sample_rate": 48000,
@@ -8,6 +8,6 @@
   "clone_mode": "hi-fi",
   "prompt_text_source": "whisper",
   "script_chars": 469,
-  "generated_at": "2026-06-07T05:46:45",
-  "reuse_command": "bun run pipeline -- 2026-06-07_kimi-code-cli --seed=299845446"
+  "generated_at": "2026-06-08T19:51:47",
+  "reuse_command": "bun run pipeline -- 2026-06-07_kimi-code-cli --seed=1348948989"
 }

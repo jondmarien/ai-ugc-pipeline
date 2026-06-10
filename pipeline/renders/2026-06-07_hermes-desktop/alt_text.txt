@@ -1,8 +1,8 @@
-01. Slide 1 (cover): a large clear glass pane standing in the dark with a leash and collar lying unused on the floor beside it, with the headline in the lower third.
-02. Slide 2 (context): a single marionette puppet lifted from a wooden travel case and set on a tabletop, its strings still attached.
-03. Slide 3 (risk): a small robot figure in an open doorway holding tools, stepping from a dark hallway into a bare plain room.
-04. Slide 4 (mechanism): a long strip of film unspooling quickly past a still magnifying glass, frames sliding by faster than the lens can hold.
-05. Slide 5 (failure_point): a hand pressing a glowing approval stamp onto a long scroll of paper without unrolling it.
-06. Slide 6 (defense): a small robot working calmly inside a sturdy open-topped crate with a lantern and a closed latch on the side.
-07. Slide 7 (takeaway): a pair of reading glasses resting on a closed gate latch in deep shadow, a thin rim of light along the metal.
-08. Slide 8 (cta): a single leash coiled neatly in empty dark space, with the comment question and handle.
+01. Slide 1 (cover): a tall one-way observation mirror set into a dark wall, faintly reflecting an empty room on the near face while the far side stays in shadow, with the headline in the lower third.
+02. Slide 2 (context): a lone watchtower rising over a dark perimeter, its open observation deck lit by a single lamp while the ground below stays in shadow.
+03. Slide 3 (risk): a single waist-high turnstile standing unlatched and freely rotating in a dark concourse, its arms swung open with nobody manning it.
+04. Slide 4 (mechanism): a single security camera lens mounted on a dark wall, its glass eye catching a thin rim of light as it watches a quiet empty corridor.
+05. Slide 5 (failure_point): a checkpoint barrier arm raised wide open over an empty lane in the dark, the control booth beside it unlit and unattended.
+06. Slide 6 (defense): a small thick viewing window set into a heavy steel door, a warm contained glow spilling through the glass from the locked room behind it.
+07. Slide 7 (takeaway): a single velvet rope strung between two heavy stanchions blocking a dark entryway, a thin rim of light tracing the polished posts.
+08. Slide 8 (cta): a single spotlight beam falling on an empty stage floor surrounded by vast black negative space, with the comment question and handle.
