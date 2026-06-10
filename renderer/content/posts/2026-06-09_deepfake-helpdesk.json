@@ -70,9 +70,9 @@
       "on_slide_copy": "THEY DID A VIDEO CALL TO VERIFY THE REQUEST. THE VIDEO CALL WAS THE SCAM.",
       "subline": "In 2024, a finance worker wired about 25 million dollars after a deepfake call with his CFO.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a long boardroom table in the dark lined with identical faceless suited mannequins seated in the chairs, one empty chair at the head, hard rim light, strong empty lower third",
-      "background_asset": "/backgrounds/2026-06-09_deepfake-helpdesk_cover.png",
-      "asset_status": "needed",
+      "visual_prompt": "Hard rim light skims a long boardroom table in the dark lined with identical faceless suited mannequins seated in the chairs, one empty chair at the head catching the glow, cinematic dark key art, the table receding into the upper frame with a clean empty lower third",
+      "background_asset": "/backgrounds/2026-06-09_deepfake-helpdesk/01_cover.png",
+      "asset_status": "generated",
       "cta": "SWIPE →",
       "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
     },
@@ -83,9 +83,9 @@
       "on_slide_copy": "At the engineering firm Arup, a finance worker joined a video call with people he recognized, then made fifteen transfers.",
       "subline": "Every person on that call was a deepfake. None of the company's systems were breached.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a grid of small framed portraits hung in the dark, each one actually a flat cardboard cutout propped from behind, a few tipping to reveal the empty backs, dark editorial, calm empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "Raking side light reveals a grid of small framed portraits hung in the dark to be flat cardboard cutouts propped from behind, a few tipped forward to show their hollow empty backs, dark editorial photography, the grid set high over a calm uncluttered lower third",
+      "background_asset": "/backgrounds/2026-06-09_deepfake-helpdesk/02_context.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -96,9 +96,9 @@
       "on_slide_copy": "A request can now look and sound like someone your team trusts, in real time, on a live call.",
       "subline": "Recognizing a face was never a strong control. AI just made that obvious.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a single wax bust of a businessman in the dark beginning to slump and melt at the edges while still holding its features, tense high contrast, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "A single warm hard light catches a wax bust of a businessman in the dark just beginning to slump and melt at the edges while still holding its features, tense high-contrast editorial, the bust framed in the upper area with a clean dark lower third",
+      "background_asset": "/backgrounds/2026-06-09_deepfake-helpdesk/03_risk.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -109,9 +109,9 @@
       "on_slide_copy": "Several familiar faces agreeing on one call is social proof, and it overrode the employee's first, correct suspicion.",
       "subline": "The verification step itself was the forgery.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a row of identical standing figurines on a dark table, an unseen hand having just tipped the first so they fall in sequence, focal in the upper area",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "Focused directional light runs along a row of identical standing figurines on a dark table, an unseen hand having just tipped the first so they topple in sequence, dark editorial key art, the falling row held in the upper third over generous negative space",
+      "background_asset": "/backgrounds/2026-06-09_deepfake-helpdesk/04_mechanism.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -122,9 +122,9 @@
       "on_slide_copy": "Approval flows that trust a recognized person, not a verified process, fail the moment the person can be faked.",
       "subline": "If a live call can waive your controls, you do not really have controls.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a single hand sliding a thick stack of banknotes across a dark table toward a waiting open briefcase, a faint rim of light on the cash, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "A faint rim light catches the edge of a thick stack of banknotes as a single hand slides it across a dark table toward a waiting open briefcase, tense cinematic editorial, the exchange set high in frame with a clean uncluttered lower third",
+      "background_asset": "/backgrounds/2026-06-09_deepfake-helpdesk/05_failure-point.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -135,9 +135,9 @@
       "on_slide_copy": "Verify money movement out-of-band: call back a known, saved number, and require dual approval with a delay.",
       "subline": "Build it so no one can skip it because the boss was on the call.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a heavy ledger book open on a desk with two distinct ink stamps pressed side by side on one line, a hand poised over a third, calm and orderly, empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "Calm even overhead light settles on a heavy ledger book open on a desk, two distinct ink stamps pressed side by side on one line and a hand poised over a third, orderly premium editorial, the ledger centered high with generous negative space below",
+      "background_asset": "/backgrounds/2026-06-09_deepfake-helpdesk/06_defense.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -148,9 +148,9 @@
       "on_slide_copy": "A face on a live call {{is not authorization}}. [[Trust the verified process, not the person you recognize.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a single ornate picture frame in deep shadow standing empty with its canvas cut clean out, a thin rim of light along the inner edge, center kept dark and open",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "A thin rim light runs along the inner edge of a single ornate picture frame standing in deep shadow, its canvas cut clean out to leave a hollow opening, minimal high-impact key art, the center kept dark and open with the frame drawn toward the edge",
+      "background_asset": "/backgrounds/2026-06-09_deepfake-helpdesk/07_takeaway.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -161,9 +161,9 @@
       "on_slide_copy": "Could a convincing video call trigger a wire transfer at your company today?",
       "subline": "Save this for your next finance-controls review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a clean dark end-card scene, a single unsigned cheque lying alone in vast negative space, premium editorial cybersecurity look",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "Soft pooled light isolates a single unsigned cheque lying alone on a clean dark end-card surface, premium editorial cybersecurity key art, the cheque small in vast negative space with the lower third left open",
+      "background_asset": "/backgrounds/2026-06-09_deepfake-helpdesk/08_cta.png",
+      "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "notes": ""
     }
@@ -217,7 +217,72 @@
       "claim_tag": "reported_fact"
     }
   ],
-  "asset_licenses": [],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-09_deepfake-helpdesk/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_deepfake-helpdesk/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_deepfake-helpdesk/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_deepfake-helpdesk/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_deepfake-helpdesk/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_deepfake-helpdesk/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_deepfake-helpdesk/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-09_deepfake-helpdesk/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
   "video": {
     "enabled": true,
     "duration_seconds": 28,
@@ -303,7 +368,682 @@
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
     "sfx": [],
-    "licenses": []
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 1.76,
+        "text": "They did a video call to verify",
+        "words": [
+          {
+            "text": "They",
+            "start": 0.0,
+            "end": 0.52
+          },
+          {
+            "text": "did",
+            "start": 0.52,
+            "end": 0.68
+          },
+          {
+            "text": "a",
+            "start": 0.68,
+            "end": 0.78
+          },
+          {
+            "text": "video",
+            "start": 0.78,
+            "end": 1.02
+          },
+          {
+            "text": "call",
+            "start": 1.02,
+            "end": 1.34
+          },
+          {
+            "text": "to",
+            "start": 1.34,
+            "end": 1.54
+          },
+          {
+            "text": "verify",
+            "start": 1.54,
+            "end": 1.76
+          }
+        ]
+      },
+      {
+        "start": 1.76,
+        "end": 3.92,
+        "text": "the request, and the video call itself",
+        "words": [
+          {
+            "text": "the",
+            "start": 1.76,
+            "end": 2.16
+          },
+          {
+            "text": "request,",
+            "start": 2.16,
+            "end": 2.44
+          },
+          {
+            "text": "and",
+            "start": 2.94,
+            "end": 3.02
+          },
+          {
+            "text": "the",
+            "start": 3.02,
+            "end": 3.14
+          },
+          {
+            "text": "video",
+            "start": 3.14,
+            "end": 3.38
+          },
+          {
+            "text": "call",
+            "start": 3.38,
+            "end": 3.66
+          },
+          {
+            "text": "itself",
+            "start": 3.66,
+            "end": 3.92
+          }
+        ]
+      },
+      {
+        "start": 3.92,
+        "end": 6.34,
+        "text": "was the scam. At the engineering firm",
+        "words": [
+          {
+            "text": "was",
+            "start": 3.92,
+            "end": 4.42
+          },
+          {
+            "text": "the",
+            "start": 4.42,
+            "end": 4.58
+          },
+          {
+            "text": "scam.",
+            "start": 4.58,
+            "end": 4.84
+          },
+          {
+            "text": "At",
+            "start": 5.38,
+            "end": 5.48
+          },
+          {
+            "text": "the",
+            "start": 5.48,
+            "end": 5.58
+          },
+          {
+            "text": "engineering",
+            "start": 5.58,
+            "end": 5.8
+          },
+          {
+            "text": "firm",
+            "start": 5.8,
+            "end": 6.34
+          }
+        ]
+      },
+      {
+        "start": 6.34,
+        "end": 9.16,
+        "text": "Arup in 2024, a finance worker joined",
+        "words": [
+          {
+            "text": "Arup",
+            "start": 6.34,
+            "end": 6.64
+          },
+          {
+            "text": "in",
+            "start": 6.64,
+            "end": 6.9
+          },
+          {
+            "text": "2024,",
+            "start": 6.9,
+            "end": 7.52
+          },
+          {
+            "text": "a",
+            "start": 7.52,
+            "end": 8.16
+          },
+          {
+            "text": "finance",
+            "start": 8.16,
+            "end": 8.36
+          },
+          {
+            "text": "worker",
+            "start": 8.36,
+            "end": 8.76
+          },
+          {
+            "text": "joined",
+            "start": 8.76,
+            "end": 9.16
+          }
+        ]
+      },
+      {
+        "start": 9.16,
+        "end": 10.82,
+        "text": "a call with his CFO and colleagues",
+        "words": [
+          {
+            "text": "a",
+            "start": 9.16,
+            "end": 9.28
+          },
+          {
+            "text": "call",
+            "start": 9.28,
+            "end": 9.52
+          },
+          {
+            "text": "with",
+            "start": 9.52,
+            "end": 9.72
+          },
+          {
+            "text": "his",
+            "start": 9.72,
+            "end": 9.84
+          },
+          {
+            "text": "CFO",
+            "start": 9.84,
+            "end": 10.28
+          },
+          {
+            "text": "and",
+            "start": 10.28,
+            "end": 10.5
+          },
+          {
+            "text": "colleagues",
+            "start": 10.5,
+            "end": 10.82
+          }
+        ]
+      },
+      {
+        "start": 10.82,
+        "end": 13.68,
+        "text": "and wired about $25 million over 15",
+        "words": [
+          {
+            "text": "and",
+            "start": 10.82,
+            "end": 11.32
+          },
+          {
+            "text": "wired",
+            "start": 11.32,
+            "end": 11.56
+          },
+          {
+            "text": "about",
+            "start": 11.56,
+            "end": 11.8
+          },
+          {
+            "text": "$25",
+            "start": 11.8,
+            "end": 12.4
+          },
+          {
+            "text": "million",
+            "start": 12.4,
+            "end": 12.72
+          },
+          {
+            "text": "over",
+            "start": 12.72,
+            "end": 13.34
+          },
+          {
+            "text": "15",
+            "start": 13.34,
+            "end": 13.68
+          }
+        ]
+      },
+      {
+        "start": 13.68,
+        "end": 14.16,
+        "text": "transfers.",
+        "words": [
+          {
+            "text": "transfers.",
+            "start": 13.68,
+            "end": 14.16
+          }
+        ]
+      },
+      {
+        "start": 14.96,
+        "end": 16.56,
+        "text": "Every face on that call was a",
+        "words": [
+          {
+            "text": "Every",
+            "start": 14.96,
+            "end": 15.04
+          },
+          {
+            "text": "face",
+            "start": 15.04,
+            "end": 15.4
+          },
+          {
+            "text": "on",
+            "start": 15.4,
+            "end": 15.66
+          },
+          {
+            "text": "that",
+            "start": 15.66,
+            "end": 15.82
+          },
+          {
+            "text": "call",
+            "start": 15.82,
+            "end": 16.1
+          },
+          {
+            "text": "was",
+            "start": 16.1,
+            "end": 16.46
+          },
+          {
+            "text": "a",
+            "start": 16.46,
+            "end": 16.56
+          }
+        ]
+      },
+      {
+        "start": 16.56,
+        "end": 16.98,
+        "text": "deep fake.",
+        "words": [
+          {
+            "text": "deep",
+            "start": 16.56,
+            "end": 16.72
+          },
+          {
+            "text": "fake.",
+            "start": 16.72,
+            "end": 16.98
+          }
+        ]
+      },
+      {
+        "start": 17.7,
+        "end": 19.34,
+        "text": "So verify money movement out of band.",
+        "words": [
+          {
+            "text": "So",
+            "start": 17.7,
+            "end": 17.76
+          },
+          {
+            "text": "verify",
+            "start": 17.76,
+            "end": 17.98
+          },
+          {
+            "text": "money",
+            "start": 17.98,
+            "end": 18.36
+          },
+          {
+            "text": "movement",
+            "start": 18.36,
+            "end": 18.68
+          },
+          {
+            "text": "out",
+            "start": 18.68,
+            "end": 19.02
+          },
+          {
+            "text": "of",
+            "start": 19.02,
+            "end": 19.14
+          },
+          {
+            "text": "band.",
+            "start": 19.14,
+            "end": 19.34
+          }
+        ]
+      },
+      {
+        "start": 19.92,
+        "end": 21.76,
+        "text": "Call back a known, saved number, and",
+        "words": [
+          {
+            "text": "Call",
+            "start": 19.92,
+            "end": 20.0
+          },
+          {
+            "text": "back",
+            "start": 20.0,
+            "end": 20.26
+          },
+          {
+            "text": "a",
+            "start": 20.26,
+            "end": 20.42
+          },
+          {
+            "text": "known,",
+            "start": 20.42,
+            "end": 20.6
+          },
+          {
+            "text": "saved",
+            "start": 20.6,
+            "end": 20.94
+          },
+          {
+            "text": "number,",
+            "start": 20.94,
+            "end": 21.34
+          },
+          {
+            "text": "and",
+            "start": 21.66,
+            "end": 21.76
+          }
+        ]
+      },
+      {
+        "start": 21.76,
+        "end": 23.94,
+        "text": "require dual approval with a built-in delay.",
+        "words": [
+          {
+            "text": "require",
+            "start": 21.76,
+            "end": 22.04
+          },
+          {
+            "text": "dual",
+            "start": 22.04,
+            "end": 22.4
+          },
+          {
+            "text": "approval",
+            "start": 22.4,
+            "end": 22.8
+          },
+          {
+            "text": "with",
+            "start": 22.8,
+            "end": 23.2
+          },
+          {
+            "text": "a",
+            "start": 23.2,
+            "end": 23.28
+          },
+          {
+            "text": "built-in",
+            "start": 23.28,
+            "end": 23.72
+          },
+          {
+            "text": "delay.",
+            "start": 23.72,
+            "end": 23.94
+          }
+        ]
+      },
+      {
+        "start": 24.62,
+        "end": 25.9,
+        "text": "A face on a live call is",
+        "words": [
+          {
+            "text": "A",
+            "start": 24.62,
+            "end": 24.64
+          },
+          {
+            "text": "face",
+            "start": 24.64,
+            "end": 24.84
+          },
+          {
+            "text": "on",
+            "start": 24.84,
+            "end": 25.04
+          },
+          {
+            "text": "a",
+            "start": 25.04,
+            "end": 25.14
+          },
+          {
+            "text": "live",
+            "start": 25.14,
+            "end": 25.32
+          },
+          {
+            "text": "call",
+            "start": 25.32,
+            "end": 25.64
+          },
+          {
+            "text": "is",
+            "start": 25.64,
+            "end": 25.9
+          }
+        ]
+      },
+      {
+        "start": 25.9,
+        "end": 26.52,
+        "text": "not authorization.",
+        "words": [
+          {
+            "text": "not",
+            "start": 25.9,
+            "end": 26.14
+          },
+          {
+            "text": "authorization.",
+            "start": 26.14,
+            "end": 26.52
+          }
+        ]
+      },
+      {
+        "start": 27.54,
+        "end": 29.72,
+        "text": "Trust the verified process, not the person",
+        "words": [
+          {
+            "text": "Trust",
+            "start": 27.54,
+            "end": 27.68
+          },
+          {
+            "text": "the",
+            "start": 27.68,
+            "end": 27.9
+          },
+          {
+            "text": "verified",
+            "start": 27.9,
+            "end": 28.12
+          },
+          {
+            "text": "process,",
+            "start": 28.12,
+            "end": 28.68
+          },
+          {
+            "text": "not",
+            "start": 29.04,
+            "end": 29.32
+          },
+          {
+            "text": "the",
+            "start": 29.32,
+            "end": 29.44
+          },
+          {
+            "text": "person",
+            "start": 29.44,
+            "end": 29.72
+          }
+        ]
+      },
+      {
+        "start": 29.72,
+        "end": 31.9,
+        "text": "you run. Recognize. Could a convincing video",
+        "words": [
+          {
+            "text": "you",
+            "start": 29.72,
+            "end": 29.88
+          },
+          {
+            "text": "run.",
+            "start": 29.88,
+            "end": 29.98
+          },
+          {
+            "text": "Recognize.",
+            "start": 29.98,
+            "end": 30.46
+          },
+          {
+            "text": "Could",
+            "start": 30.86,
+            "end": 31.08
+          },
+          {
+            "text": "a",
+            "start": 31.08,
+            "end": 31.16
+          },
+          {
+            "text": "convincing",
+            "start": 31.16,
+            "end": 31.42
+          },
+          {
+            "text": "video",
+            "start": 31.42,
+            "end": 31.9
+          }
+        ]
+      },
+      {
+        "start": 31.9,
+        "end": 33.68,
+        "text": "call trigger a wire transfer at your",
+        "words": [
+          {
+            "text": "call",
+            "start": 31.9,
+            "end": 32.18
+          },
+          {
+            "text": "trigger",
+            "start": 32.18,
+            "end": 32.48
+          },
+          {
+            "text": "a",
+            "start": 32.48,
+            "end": 32.74
+          },
+          {
+            "text": "wire",
+            "start": 32.74,
+            "end": 32.92
+          },
+          {
+            "text": "transfer",
+            "start": 32.92,
+            "end": 33.3
+          },
+          {
+            "text": "at",
+            "start": 33.3,
+            "end": 33.56
+          },
+          {
+            "text": "your",
+            "start": 33.56,
+            "end": 33.68
+          }
+        ]
+      },
+      {
+        "start": 33.68,
+        "end": 34.26,
+        "text": "company today?",
+        "words": [
+          {
+            "text": "company",
+            "start": 33.68,
+            "end": 33.96
+          },
+          {
+            "text": "today?",
+            "start": 33.96,
+            "end": 34.26
+          }
+        ]
+      },
+      {
+        "start": 34.96,
+        "end": 35.54,
+        "text": "Tell me below.",
+        "words": [
+          {
+            "text": "Tell",
+            "start": 34.96,
+            "end": 35.18
+          },
+          {
+            "text": "me",
+            "start": 35.18,
+            "end": 35.32
+          },
+          {
+            "text": "below.",
+            "start": 35.32,
+            "end": 35.54
+          }
+        ]
+      }
+    ]
   },
   "qa": {
     "fact_checked": true,
