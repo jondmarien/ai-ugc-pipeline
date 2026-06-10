@@ -1,0 +1,411 @@
+{
+  "post_id": "2026-06-10_dirty-frag-linux-lpe",
+  "date": "2026-06-10",
+  "slug": "dirty-frag-linux-lpe",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "offensive_ai",
+  "theme": "offensive",
+  "audience": "security_practitioners",
+  "core_claim": "Dirty Frag chains two Linux kernel page-cache write primitives (xfrm-ESP and RxRPC) to achieve deterministic local root on most distributions. Unlike race-condition exploits, it requires no timing window and has very high success rate. It bypasses the Copy Fail mitigation (algif_aead blacklist).",
+  "claim_tags": [
+    "reported_fact",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 5,
+    "visual_drama": 5,
+    "defender_usefulness": 5,
+    "total": 25
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "red",
+    "pillar_accent": "offensive_ai",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#ef4444",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-10_dirty-frag-linux-lpe",
+    "filename_prefix": "2026-06-10_dirty-frag-linux-lpe",
+    "expected_files": [
+      "2026-06-10_dirty-frag-linux-lpe_01_cover.png",
+      "2026-06-10_dirty-frag-linux-lpe_02_context.png",
+      "2026-06-10_dirty-frag-linux-lpe_03_risk.png",
+      "2026-06-10_dirty-frag-linux-lpe_04_mechanism.png",
+      "2026-06-10_dirty-frag-linux-lpe_05_failure-point.png",
+      "2026-06-10_dirty-frag-linux-lpe_06_defense.png",
+      "2026-06-10_dirty-frag-linux-lpe_07_takeaway.png",
+      "2026-06-10_dirty-frag-linux-lpe_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "KERNEL X EXPLOIT",
+      "on_slide_copy": "TWO PRIMITIVES. ONE CHAIN. DETERMINISTIC ROOT.",
+      "subline": "Dirty Frag bypasses Copy Fail mitigation. No race condition. Works on Ubuntu, RHEL, Fedora, openSUSE.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A single hard rim light catches two fractured shards in a dark void fusing together into a single glowing red blade, premium dark editorial key art, the fusion held in the upper third with clean unmarked negative space filling the lower third.",
+      "background_asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/01_cover.png",
+      "asset_status": "generated",
+      "cta": "SWIPE to continue",
+      "notes": ""
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "THE SUCCESSOR",
+      "on_slide_copy": "Dirty Frag extends the Dirty Pipe and Copy Fail bug class. Chains xfrm-ESP Page-Cache Write and RxRPC Page-Cache Write.",
+      "subline": "Reported April 30. Embargo broken after xfrm-ESP details published by unrelated third party. PoC released.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Low raking light grazes a dark family tree of kernel bugs in the dark, Dirty Pipe at root, Copy Fail branching, Dirty Frag as the newest red node, dark editorial photography, the tree set high over a calm empty lower third.",
+      "background_asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/02_context.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT STINGS",
+      "on_slide_copy": "Deterministic logic bug. No race condition required. Kernel does not panic on exploit failure. Very high success rate.",
+      "subline": "Hits Ubuntu 24.04.4, RHEL 10.1, openSUSE Tumbleweed, CentOS Stream 10, AlmaLinux 10, Fedora 44. Microsoft observed limited in-the-wild exploitation.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A focused side light illuminates a precision mechanism in the dark clicking into place smoothly every time, zero variance, dark premium editorial, the mechanism centered in the upper area with generous negative space below.",
+      "background_asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/03_risk.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "THE CHAIN",
+      "on_slide_copy": "xfrm-ESP: 4-byte store primitive via IPSec subsystem. Requires user namespace (blocked by Ubuntu AppArmor). RxRPC: No namespace needed, but rxrpc.ko not in most distros. Ubuntu loads rxrpc.ko by default.",
+      "subline": "Chaining covers blind spots. Namespace allowed: ESP runs first. Ubuntu blocked: RxRPC works. One command root.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A hard top-down beam falls on two gears in the dark meshing perfectly, one marked ESP (needs namespace) and one marked RxRPC (needs module), together driving a single output shaft labeled ROOT, dark editorial key art, the gears framed in the upper third over clean dark space.",
+      "background_asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/04_mechanism.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE MITIGATIONS FAIL",
+      "on_slide_copy": "Copy Fail mitigation blacklists algif_aead module. Dirty Frag works regardless of algif_aead. ESP and RxRPC are separate attack surfaces.",
+      "subline": "CloudLinux: Blocklist esp4, esp6, rxrpc modules. But this breaks IPsec and RxRPC functionality. Patch is the only real fix.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Cool light grazes a shield in the dark marked ALGIF_AEAD BLOCKED, but two red arrows labeled ESP and RxRPC bypass it on either side, tense editorial composition, the shield held high with a clean lower third.",
+      "background_asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/05_failure-point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "THE HARDENING",
+      "on_slide_copy": "Blocklist esp4, esp6, rxrpc modules if you do not need IPsec/RxRPC. Restrict unprivileged user namespaces. Harden container workloads. Monitor for abnormal privilege escalation.",
+      "subline": "CVE-2026-43284 (xfrm-ESP) and CVE-2026-43500 (RxRPC) patched in mainline. Distro kernels updating. Apply updates and reboot.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A balanced split composition in the dark: left side vulnerable kernel with open module slots, right side same kernel with three module slots sealed shut in purple, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
+      "background_asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/06_defense.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "Copy Fail mitigation {{does not cover the xfrm or RxRPC paths.}} [[Dirty Frag proves the bug class is wider than one subsystem. Patch the kernel, not the module.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A thin rim light traces a kernel source tree in the dark, one branch (algif_aead) pruned but two others (xfrm, rxrpc) thriving in red, minimal high-impact key art, the tree drawn toward the edge with the center kept dark and open.",
+      "background_asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/07_takeaway.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Have you blocklisted esp4, esp6, and rxrpc on systems that do not need IPsec?",
+      "subline": "Save this for your next kernel hardening review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Soft pooled light isolates a single modprobe.d config line on a clean dark end-card surface, premium editorial cybersecurity key art, the config small in vast negative space with the lower third open.",
+      "background_asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/08_cta.png",
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Dirty Frag is the successor to Copy Fail. It chains two page-cache write primitives in the Linux kernel: xfrm-ESP (IPSec subsystem) and RxRPC. Together they give deterministic local root on most distributions.\n\nUnlike race-condition exploits, Dirty Frag is a deterministic logic bug. No timing window. Kernel does not panic on failure. Very high success rate. One command root.\n\nThe chain covers blind spots: xfrm-ESP needs user namespaces (blocked by Ubuntu AppArmor). RxRPC needs no namespace but rxrpc.ko is not in most distros — except Ubuntu loads it by default. One works where the other fails.\n\nThe Copy Fail mitigation (blacklisting algif_aead) does not stop Dirty Frag. It works regardless of that module. CloudLinux advises blocklisting esp4, esp6, and rxrpc. But that breaks IPsec/RxRPC functionality.\n\nMicrosoft observed limited in-the-wild exploitation: SSH access, then ELF binary triggers privilege escalation via su, modifies GLPI LDAP auth, accesses sensitive data, wipes PHP sessions.\n\nCVE-2026-43284 (xfrm-ESP) and CVE-2026-43500 (RxRPC) patched in mainline. Ubuntu, Debian, RHEL, Fedora, SUSE, Amazon, AlmaLinux, Rocky, CloudLinux all have advisories.\n\nDirty Frag proves the bug class is wider than one subsystem. Patch the kernel, not the module.\n\nHave you blocklisted esp4, esp6, and rxrpc on systems that do not need IPsec?\n\nFollow for AI security breakdowns without the fake panic.\n\n[Dirty Frag, Linux kernel, local privilege escalation, Copy Fail, xfrm-ESP, RxRPC, page cache, CVE-2026-43284, CVE-2026-43500, kernel hardening]",
+  "hashtags": [
+    "Dirty Frag",
+    "Linux kernel",
+    "local privilege escalation",
+    "Copy Fail",
+    "xfrm-ESP",
+    "RxRPC",
+    "page cache",
+    "CVE-2026-43284",
+    "CVE-2026-43500",
+    "kernel hardening"
+  ],
+  "comment_prompt": "Have you blocklisted esp4, esp6, and rxrpc on systems that do not need IPsec?",
+  "alt_text": [
+    "Slide 1 (cover): two fractured shards in a dark void fusing into a single glowing red blade, empty lower third for headline.",
+    "Slide 2 (context): a dark family tree of kernel bugs, Dirty Pipe at root, Copy Fail branching, Dirty Frag as red node.",
+    "Slide 3 (risk): a precision mechanism clicking into place smoothly every time, zero variance.",
+    "Slide 4 (mechanism): two gears meshing, one marked ESP (needs namespace) one RxRPC (needs module), driving ROOT output.",
+    "Slide 5 (gap): a shield marked ALGIF_AEAD BLOCKED with two red arrows ESP and RxRPC bypassing on either side.",
+    "Slide 6 (defense): split composition, left vulnerable kernel with open module slots, right same kernel with three slots sealed in purple.",
+    "Slide 7 (takeaway): a kernel source tree, one branch pruned but two others thriving in red.",
+    "Slide 8 (cta): a modprobe.d config line on a clean dark end-card with open negative space."
+  ],
+  "sources": [
+    {
+      "source": "The Hacker News: Linux Kernel Dirty Frag LPE Exploit Enables Root Access",
+      "link": "https://thehackernews.com/2026/05/linux-kernel-dirty-frag-lpe-exploit.html",
+      "supports": "Dirty Frag chains xfrm-ESP and RxRPC page-cache writes; reported April 30; embargo broken; deterministic, no race condition; hits Ubuntu 24.04.4, RHEL 10.1, openSUSE Tumbleweed, CentOS Stream 10, AlmaLinux 10, Fedora 44; xfrm-ESP from 2017 commit, RxRPC from 2023; Ubuntu AppArmor blocks namespace; RxRPC module in Ubuntu by default; Copy Fail mitigation (algif_aead blacklist) does not stop Dirty Frag; CVE-2026-43284 and CVE-2026-43500; CloudLinux blocklist mitigation; Microsoft observed in-the-wild exploitation.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Wiz: Dirty Frag Linux Kernel LPE via ESP and RxRPC",
+      "link": "https://www.wiz.io/blog/dirty-frag-linux-kernel-local-privilege-escalation-via-esp-and-rxrpc",
+      "supports": "Vulnerability chain combining two page-cache write primitives; both allow modification of page-cache-backed memory not exclusively owned by kernel; deterministic and highly reliable like Copy Fail and Dirty Pipe; requires CAP_NET_ADMIN; less likely in hardened containers with seccomp.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Microsoft: Active Attack Dirty Frag Linux Vulnerability Expands Post-Compromise Risk",
+      "link": "https://www.microsoft.com/en-us/security/blog/2026/05/08/active-attack-dirty-frag-linux-vulnerability-expands-post-compromise-risk/",
+      "supports": "Limited in-the-wild activity; SSH access then ELF binary triggers su privilege escalation; GLPI LDAP auth file modification; reconnaissance; PHP session file wiping.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 56,
+    "fps": 30,
+    "export_name": "2026-06-10_dirty-frag-linux-lpe_reel.mp4",
+    "caption_mode": "highlight",
+    "caption_corrections": {},
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-10_dirty-frag-linux-lpe/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": "Two primitives. One chain. Deterministic root. Dirty Frag bypasses Copy Fail mitigation."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "text": "Chains xfrm-ESP and RxRPC page-cache writes. No race condition. Kernel does not panic on failure. High success rate."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "text": "Hits Ubuntu, RHEL, Fedora, openSUSE, AlmaLinux, CentOS Stream. Microsoft saw in-the-wild exploitation."
+      },
+      {
+        "start": 20,
+        "end": 27,
+        "text": "xfrm-ESP needs namespace (blocked by Ubuntu AppArmor). RxRPC needs no namespace but module not in most distros. Ubuntu loads it."
+      },
+      {
+        "start": 27,
+        "end": 34,
+        "text": "Chain covers blind spots. One command root. Copy Fail mitigation blacklists algif_aead. Dirty Frag works regardless."
+      },
+      {
+        "start": 34,
+        "end": 41,
+        "text": "Blocklist esp4, esp6, rxrpc if you do not need IPsec. Restrict namespaces. Harden containers. Patch kernel and reboot."
+      },
+      {
+        "start": 41,
+        "end": 48,
+        "text": "Copy Fail mitigation does not cover xfrm or RxRPC paths. Dirty Frag proves bug class is wider than one subsystem."
+      },
+      {
+        "start": 48,
+        "end": 54,
+        "text": "Have you blocklisted esp4, esp6, and rxrpc on systems that do not need IPsec? Tell me in the comments."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 6,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Two primitives. One chain. Deterministic root."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Successor to Copy Fail. Deterministic. No race."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "slide_ref": 3,
+        "purpose": "risk",
+        "motion": "slow push-in",
+        "caption": "Major distros hit. In-the-wild exploitation seen."
+      },
+      {
+        "start": 20,
+        "end": 27,
+        "slide_ref": 4,
+        "purpose": "mechanism",
+        "motion": "parallax",
+        "caption": "ESP needs namespace. RxRPC needs module. Chain covers both."
+      },
+      {
+        "start": 27,
+        "end": 34,
+        "slide_ref": 5,
+        "purpose": "gap",
+        "motion": "slow push-in",
+        "caption": "Copy Fail mitigation bypassed. algif_aead blacklist useless."
+      },
+      {
+        "start": 34,
+        "end": 41,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "parallax",
+        "caption": "Blocklist modules. Restrict namespaces. Patch kernel."
+      },
+      {
+        "start": 41,
+        "end": 48,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "Bug class wider than one subsystem. Patch kernel not module."
+      },
+      {
+        "start": 48,
+        "end": 54,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Have you blocklisted esp4, esp6, rxrpc?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": []
+  }
+}

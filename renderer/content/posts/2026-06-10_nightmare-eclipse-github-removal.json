@@ -1,0 +1,413 @@
+{
+  "post_id": "2026-06-10_nightmare-eclipse-github-removal",
+  "date": "2026-06-10",
+  "slug": "nightmare-eclipse-github-removal",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "governance",
+  "theme": "purple-team",
+  "audience": "security_practitioners",
+  "core_claim": "Microsoft suspended Nightmare Eclipse's GitHub account after they released multiple Windows zero-days. The exploits were republished under MSNightmare. Microsoft threatened legal action, then clarified it would not pursue researchers. The disclosure standoff highlights broken vendor-researcher dynamics.",
+  "claim_tags": [
+    "reported_fact",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 5,
+    "visual_drama": 4,
+    "defender_usefulness": 4,
+    "total": 23
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "purple",
+    "pillar_accent": "governance",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#a855f7",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-10_nightmare-eclipse-github-removal",
+    "filename_prefix": "2026-06-10_nightmare-eclipse-github-removal",
+    "expected_files": [
+      "2026-06-10_nightmare-eclipse-github-removal_01_cover.png",
+      "2026-06-10_nightmare-eclipse-github-removal_02_context.png",
+      "2026-06-10_nightmare-eclipse-github-removal_03_risk.png",
+      "2026-06-10_nightmare-eclipse-github-removal_04_mechanism.png",
+      "2026-06-10_nightmare-eclipse-github-removal_05_failure-point.png",
+      "2026-06-10_nightmare-eclipse-github-removal_06_defense.png",
+      "2026-06-10_nightmare-eclipse-github-removal_07_takeaway.png",
+      "2026-06-10_nightmare-eclipse-github-removal_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "DISCLOSURE X POWER",
+      "on_slide_copy": "MICROSOFT SUSPENDED THE RESEARCHER. THE EXPLOITS REAPPEARED.",
+      "subline": "Nightmare Eclipse account removed. Zero-days republished under MSNightmare. No warning given.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A single hard rim light catches a GitHub octocat silhouette in a dark void, the right half fading into purple static while the left half remains solid, premium dark editorial key art, the figure held in the upper third with clean unmarked negative space filling the lower third.",
+      "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/01_cover.png",
+      "asset_status": "generated",
+      "cta": "SWIPE to continue",
+      "notes": ""
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "THE STANDOFF",
+      "on_slide_copy": "Nightmare Eclipse dropped six Windows zero-days in months. BlueHammer. RedSun. UnDefend. YellowKey. GreenPlasma. RoguePlanet.",
+      "subline": "Researcher cited discontent with Microsoft's disclosure process. Microsoft called for responsible disclosure. Then threatened legal action.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Low raking light grazes a dark ledger in the dark, six entries listed in purple ink with red strike-through marks on three, dark editorial photography, the ledger set high over a calm empty lower third.",
+      "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/02_context.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "GitHub suspended the account without warning. The exploits reappeared on MSNightmare within hours. RoguePlanet validated on fully patched Windows 10/11.",
+      "subline": "Microsoft clarified it would not pursue researchers. But the account suspension happened anyway. The exploits are public and working.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A focused side light illuminates a broken chain in the dark, one link glowing purple where it snapped, the two halves drifting apart, dark premium editorial, the chain centered in the upper area with generous negative space below.",
+      "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/03_risk.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "THE ZERO-DAY WAVE",
+      "on_slide_copy": "BlueHammer: SAM hive access, NTLM dump, SYSTEM. RedSun: System32 file write LPE. UnDefend: Blocks Defender updates or silently disables AV. YellowKey: BitLocker bypass via USB. GreenPlasma: Full SYSTEM via trusted process. RoguePlanet: Defender race condition LPE.",
+      "subline": "Multiple exploited in the wild. Patch Tuesday fixed some. New ones dropped the same week.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A hard top-down beam falls on six distinct keys in the dark, each cut differently, three glowing purple (patched) and three burning red (active), dark editorial key art, the keys framed in the upper third over clean dark space.",
+      "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/04_mechanism.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE THE PROCESS BROKE",
+      "on_slide_copy": "Researcher disclosed privately first. Claims Microsoft ignored or mishandled reports. Went public after frustration. Microsoft responded with legal threats and platform suspension.",
+      "subline": "Community backlash forced Microsoft to clarify. But the GitHub account stayed suspended. The exploits stayed public.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Cool light grazes a cracked negotiation table in the dark, two seats with broken communication lines between them, tense editorial composition, the table held high with a clean lower third.",
+      "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/05_failure-point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "THE DEFENDER LESSON",
+      "on_slide_copy": "You cannot rely on coordinated disclosure to protect you. When the process breaks, exploits go public immediately. Monitor for these specific techniques: SAM access, System32 writes, Defender tampering, BitLocker bypass attempts.",
+      "subline": "Build detection for the behaviors, not just the CVEs. The researcher's frustration became your adversary's toolkit.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A balanced split composition in the dark: left side a vendor shield with a crack, right side a detection radar picking up the same techniques in purple, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
+      "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/06_defense.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "Coordinated disclosure {{is a courtesy, not a guarantee.}} [[When vendors break trust, researchers go public. Defenders must detect the behaviors regardless.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A thin rim light traces a handshake in the dark, one hand glowing purple (vendor) and one red (researcher), the grip fractured with light leaking between fingers, minimal high-impact key art, the handshake drawn toward the edge with the center kept dark and open.",
+      "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/07_takeaway.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Do you have detection for SAM hive access, System32 writes, and Defender tampering?",
+      "subline": "Save this for your next detection engineering sprint.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Soft pooled light isolates a single detection rule snippet on a clean dark end-card surface, premium editorial cybersecurity key art, the snippet small in vast negative space with the lower third open.",
+      "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/08_cta.png",
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Microsoft suspended Nightmare Eclipse's GitHub account after they released multiple Windows zero-days. The exploits reappeared under MSNightmare within hours.\n\nNightmare Eclipse dropped six zero-days in months: BlueHammer (SAM hive, NTLM dump to SYSTEM), RedSun (System32 file write LPE), UnDefend (blocks Defender updates or disables AV silently), YellowKey (BitLocker bypass via USB), GreenPlasma (full SYSTEM via trusted process), RoguePlanet (Defender race condition LPE on patched Win 10/11). Multiple exploited in the wild.\n\nThe researcher cited discontent with Microsoft's disclosure process. Microsoft called for responsible disclosure, then threatened legal action. Community backlash forced a clarification that it would not pursue researchers. But the GitHub account stayed suspended.\n\nYou cannot rely on coordinated disclosure to protect you. When the process breaks, exploits go public immediately.\n\nBuild detection for the behaviors, not just the CVEs: SAM hive access, System32 writes, Defender tampering, BitLocker bypass attempts. The researcher's frustration became your adversary's toolkit.\n\nDo you have detection for SAM hive access, System32 writes, and Defender tampering?\n\nFollow for AI security breakdowns without the fake panic.\n\n[Nightmare Eclipse, Microsoft, GitHub, responsible disclosure, zero-day, BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, RoguePlanet, detection engineering]",
+  "hashtags": [
+    "Nightmare Eclipse",
+    "Microsoft",
+    "GitHub",
+    "responsible disclosure",
+    "zero-day",
+    "BlueHammer",
+    "RedSun",
+    "UnDefend",
+    "YellowKey",
+    "GreenPlasma",
+    "RoguePlanet",
+    "detection engineering"
+  ],
+  "comment_prompt": "Do you have detection for SAM hive access, System32 writes, and Defender tampering?",
+  "alt_text": [
+    "Slide 1 (cover): a GitHub octocat silhouette in a dark void, the right half fading into purple static while the left half remains solid, empty lower third for headline.",
+    "Slide 2 (context): a dark ledger with six entries in purple ink, three with red strike-through marks.",
+    "Slide 3 (risk): a broken chain in the dark, one link glowing purple where it snapped, halves drifting apart.",
+    "Slide 4 (mechanism): six distinct keys in the dark, three glowing purple (patched) and three burning red (active).",
+    "Slide 5 (gap): a cracked negotiation table in the dark, two seats with broken communication lines.",
+    "Slide 6 (defense): split composition, left side vendor shield with crack, right side detection radar picking up techniques in purple.",
+    "Slide 7 (takeaway): a handshake in the dark, one hand purple (vendor) one red (researcher), grip fractured with light leaking.",
+    "Slide 8 (cta): a detection rule snippet on a clean dark end-card with open negative space."
+  ],
+  "sources": [
+    {
+      "source": "SecurityWeek: New Windows Zero-Day Exploit 'RoguePlanet' Released",
+      "link": "https://www.securityweek.com/new-windows-zero-day-exploit-rogueplanet-released/",
+      "supports": "RoguePlanet release; Nightmare Eclipse/Chaotic Eclipse; six zero-days dropped; GitHub account suspended; MSNightmare repo; Microsoft legal threat and clarification; GreenPlasma/YellowKey patched same week; RedSun/UnDefend/BlueHammer history.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "SecurityWeek: Microsoft Tries to Calm Legal Threat Fears After Zero-Day Disclosure Backlash",
+      "link": "https://www.securityweek.com/microsoft-tries-to-calm-legal-threat-fears-after-zero-day-disclosure-backlash/",
+      "supports": "Microsoft legal threat statement; community backlash; clarification on not pursuing researchers; GitHub account suspension context.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "SecurityWeek: Researcher Drops YellowKey GreenPlasma Windows Zero-Days",
+      "link": "https://www.securityweek.com/researcher-drops-yellowkey-greenplasma-windows-zero-days/",
+      "supports": "YellowKey (CVE-2026-50507) BitLocker bypass; GreenPlasma (CVE-2026-45586) CTFMON elevation; Patch Tuesday fixes.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 - commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 56,
+    "fps": 30,
+    "export_name": "2026-06-10_nightmare-eclipse-github-removal_reel.mp4",
+    "caption_mode": "highlight",
+    "caption_corrections": {},
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-10_nightmare-eclipse-github-removal/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": "Microsoft suspended the researcher. The exploits reappeared. Nightmare Eclipse account gone. MSNightmare up in hours."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "text": "Six zero-days in months. BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, RoguePlanet. Multiple exploited in the wild."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "text": "Researcher disclosed privately first. Claims Microsoft ignored reports. Went public. Microsoft threatened legal action."
+      },
+      {
+        "start": 20,
+        "end": 27,
+        "text": "GitHub suspended the account without warning. Exploits reappeared on MSNightmare. RoguePlanet works on fully patched systems."
+      },
+      {
+        "start": 27,
+        "end": 34,
+        "text": "Community backlash forced Microsoft to clarify. But account stayed suspended. Exploits stayed public."
+      },
+      {
+        "start": 34,
+        "end": 41,
+        "text": "You cannot rely on coordinated disclosure. Build detection for behaviors: SAM access, System32 writes, Defender tampering, BitLocker bypass."
+      },
+      {
+        "start": 41,
+        "end": 48,
+        "text": "Coordinated disclosure is a courtesy, not a guarantee. When vendors break trust, researchers go public."
+      },
+      {
+        "start": 48,
+        "end": 54,
+        "text": "Do you have detection for SAM hive access, System32 writes, and Defender tampering? Tell me in the comments."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 6,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Microsoft suspended researcher. Exploits reappeared."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Six zero-days. Multiple exploited in the wild."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "slide_ref": 3,
+        "purpose": "risk",
+        "motion": "slow push-in",
+        "caption": "Private disclosure ignored. Legal threats followed."
+      },
+      {
+        "start": 20,
+        "end": 27,
+        "slide_ref": 3,
+        "purpose": "risk",
+        "motion": "parallax",
+        "caption": "GitHub suspended. MSNightmare up. Patched systems hit."
+      },
+      {
+        "start": 27,
+        "end": 34,
+        "slide_ref": 5,
+        "purpose": "gap",
+        "motion": "slow push-in",
+        "caption": "Backlash forced clarification. Account still suspended."
+      },
+      {
+        "start": 34,
+        "end": 41,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "parallax",
+        "caption": "Detect behaviors not CVEs. SAM, System32, Defender tampering."
+      },
+      {
+        "start": 41,
+        "end": 48,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "Disclosure is courtesy not guarantee. Detect anyway."
+      },
+      {
+        "start": 48,
+        "end": 54,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Do you detect these behaviors?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": []
+  }
+}
