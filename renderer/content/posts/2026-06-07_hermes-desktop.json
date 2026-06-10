@@ -369,685 +369,692 @@
     "captions": [
       {
         "start": 0.0,
-        "end": 2.2,
+        "end": 2.02,
         "text": "Hermes now has a desktop app, and",
         "words": [
           {
             "text": "Hermes",
             "start": 0.0,
-            "end": 0.38
+            "end": 0.24
           },
           {
             "text": "now",
-            "start": 0.38,
-            "end": 0.74
+            "start": 0.24,
+            "end": 0.64
           },
           {
             "text": "has",
-            "start": 0.74,
-            "end": 0.98
+            "start": 0.64,
+            "end": 0.84
           },
           {
             "text": "a",
-            "start": 0.98,
-            "end": 1.1
+            "start": 0.84,
+            "end": 0.96
           },
           {
             "text": "desktop",
-            "start": 1.1,
-            "end": 1.34
+            "start": 0.96,
+            "end": 1.16
           },
           {
             "text": "app,",
-            "start": 1.34,
-            "end": 1.76
+            "start": 1.16,
+            "end": 1.54
           },
           {
             "text": "and",
-            "start": 2.16,
-            "end": 2.2
+            "start": 2.0,
+            "end": 2.02
           }
         ]
       },
       {
-        "start": 2.2,
-        "end": 3.54,
+        "start": 2.02,
+        "end": 3.64,
         "text": "a window into your agent is not",
         "words": [
           {
             "text": "a",
-            "start": 2.2,
-            "end": 2.26
+            "start": 2.02,
+            "end": 2.12
           },
           {
             "text": "window",
-            "start": 2.26,
-            "end": 2.48
+            "start": 2.12,
+            "end": 2.38
           },
           {
             "text": "into",
-            "start": 2.48,
-            "end": 2.7
+            "start": 2.38,
+            "end": 2.62
           },
           {
             "text": "your",
-            "start": 2.7,
-            "end": 2.9
+            "start": 2.62,
+            "end": 2.94
           },
           {
             "text": "agent",
-            "start": 2.9,
-            "end": 3.1
+            "start": 2.94,
+            "end": 3.14
           },
           {
             "text": "is",
-            "start": 3.1,
-            "end": 3.38
+            "start": 3.14,
+            "end": 3.48
           },
           {
             "text": "not",
-            "start": 3.38,
-            "end": 3.54
+            "start": 3.48,
+            "end": 3.64
           }
         ]
       },
       {
-        "start": 3.54,
-        "end": 4.66,
+        "start": 3.64,
+        "end": 4.78,
         "text": "the same as a leash on it.",
         "words": [
           {
             "text": "the",
-            "start": 3.54,
-            "end": 3.7
+            "start": 3.64,
+            "end": 3.82
           },
           {
             "text": "same",
-            "start": 3.7,
-            "end": 3.9
+            "start": 3.82,
+            "end": 4.02
           },
           {
             "text": "as",
-            "start": 3.9,
-            "end": 4.06
+            "start": 4.02,
+            "end": 4.2
           },
           {
             "text": "a",
-            "start": 4.06,
-            "end": 4.1
+            "start": 4.2,
+            "end": 4.24
           },
           {
             "text": "leash",
-            "start": 4.1,
-            "end": 4.28
+            "start": 4.24,
+            "end": 4.44
           },
           {
             "text": "on",
-            "start": 4.28,
-            "end": 4.5
+            "start": 4.44,
+            "end": 4.62
           },
           {
             "text": "it.",
-            "start": 4.5,
-            "end": 4.66
+            "start": 4.62,
+            "end": 4.78
           }
         ]
       },
       {
-        "start": 5.0,
-        "end": 7.08,
+        "start": 5.18,
+        "end": 7.34,
         "text": "Nous research put its autonomous agent in",
         "words": [
           {
             "text": "Nous",
-            "start": 5.0,
-            "end": 5.16
+            "start": 5.18,
+            "end": 5.3
           },
           {
             "text": "research",
-            "start": 5.16,
-            "end": 5.56
+            "start": 5.3,
+            "end": 5.66
           },
           {
             "text": "put",
-            "start": 5.56,
-            "end": 5.88
-          },
-          {
-            "text": "its",
-            "start": 5.88,
+            "start": 5.66,
             "end": 6.0
           },
           {
-            "text": "autonomous",
+            "text": "its",
             "start": 6.0,
-            "end": 6.32
+            "end": 6.14
+          },
+          {
+            "text": "autonomous",
+            "start": 6.14,
+            "end": 6.58
           },
           {
             "text": "agent",
-            "start": 6.32,
-            "end": 6.78
+            "start": 6.58,
+            "end": 7.02
           },
           {
             "text": "in",
-            "start": 6.78,
-            "end": 7.08
+            "start": 7.02,
+            "end": 7.34
           }
         ]
       },
       {
-        "start": 7.08,
-        "end": 8.84,
+        "start": 7.34,
+        "end": 9.44,
         "text": "a native GUI for Mac, Windows, and",
         "words": [
           {
             "text": "a",
-            "start": 7.08,
-            "end": 7.16
+            "start": 7.34,
+            "end": 7.42
           },
           {
             "text": "native",
-            "start": 7.16,
-            "end": 7.4
+            "start": 7.42,
+            "end": 7.68
           },
           {
             "text": "GUI",
-            "start": 7.4,
-            "end": 7.64
+            "start": 7.68,
+            "end": 7.94
           },
           {
             "text": "for",
-            "start": 7.64,
-            "end": 7.92
+            "start": 7.94,
+            "end": 8.3
           },
           {
             "text": "Mac,",
-            "start": 7.92,
-            "end": 8.14
+            "start": 8.3,
+            "end": 8.54
           },
           {
             "text": "Windows,",
-            "start": 8.46,
-            "end": 8.56
+            "start": 8.8,
+            "end": 9.02
           },
           {
             "text": "and",
-            "start": 8.82,
-            "end": 8.84
+            "start": 9.42,
+            "end": 9.44
           }
         ]
       },
       {
-        "start": 8.84,
-        "end": 10.72,
+        "start": 9.44,
+        "end": 11.46,
         "text": "Linux, with the same keys and skills",
         "words": [
           {
             "text": "Linux,",
-            "start": 8.84,
-            "end": 8.98
-          },
-          {
-            "text": "with",
-            "start": 9.46,
+            "start": 9.44,
             "end": 9.62
           },
           {
+            "text": "with",
+            "start": 10.2,
+            "end": 10.4
+          },
+          {
             "text": "the",
-            "start": 9.62,
-            "end": 9.74
+            "start": 10.4,
+            "end": 10.56
           },
           {
             "text": "same",
-            "start": 9.74,
-            "end": 9.94
+            "start": 10.56,
+            "end": 10.78
           },
           {
             "text": "keys",
-            "start": 9.94,
-            "end": 10.24
+            "start": 10.78,
+            "end": 11.06
           },
           {
             "text": "and",
-            "start": 10.24,
-            "end": 10.5
+            "start": 11.06,
+            "end": 11.24
           },
           {
             "text": "skills",
-            "start": 10.5,
-            "end": 10.72
+            "start": 11.24,
+            "end": 11.46
           }
         ]
       },
       {
-        "start": 10.72,
-        "end": 12.86,
-        "text": "as the terminal. Streaming tool output is",
+        "start": 11.46,
+        "end": 12.26,
+        "text": "as the terminal.",
         "words": [
           {
             "text": "as",
-            "start": 10.72,
-            "end": 11.0
+            "start": 11.46,
+            "end": 11.84
           },
           {
             "text": "the",
-            "start": 11.0,
-            "end": 11.14
+            "start": 11.84,
+            "end": 12.0
           },
           {
             "text": "terminal.",
-            "start": 11.14,
-            "end": 11.4
-          },
+            "start": 12.0,
+            "end": 12.26
+          }
+        ]
+      },
+      {
+        "start": 12.96,
+        "end": 14.94,
+        "text": "Streaming tool output is good, so use",
+        "words": [
           {
             "text": "Streaming",
-            "start": 11.92,
-            "end": 12.14
+            "start": 12.96,
+            "end": 13.22
           },
           {
             "text": "tool",
-            "start": 12.14,
-            "end": 12.38
+            "start": 13.22,
+            "end": 13.48
           },
           {
             "text": "output",
-            "start": 12.38,
-            "end": 12.64
+            "start": 13.48,
+            "end": 13.76
           },
           {
             "text": "is",
-            "start": 12.64,
-            "end": 12.86
-          }
-        ]
-      },
-      {
-        "start": 12.86,
-        "end": 14.96,
-        "text": "good, so use it. Run Hermes in",
-        "words": [
+            "start": 13.76,
+            "end": 14.08
+          },
           {
             "text": "good,",
-            "start": 12.86,
-            "end": 13.08
+            "start": 14.08,
+            "end": 14.28
           },
           {
             "text": "so",
-            "start": 13.42,
-            "end": 13.58
+            "start": 14.6,
+            "end": 14.72
           },
           {
             "text": "use",
-            "start": 13.58,
-            "end": 13.78
-          },
+            "start": 14.72,
+            "end": 14.94
+          }
+        ]
+      },
+      {
+        "start": 14.94,
+        "end": 17.08,
+        "text": "it. Run Hermes in a sandbox like",
+        "words": [
           {
             "text": "it.",
-            "start": 13.78,
-            "end": 13.92
+            "start": 14.94,
+            "end": 15.12
           },
           {
             "text": "Run",
-            "start": 14.32,
-            "end": 14.4
+            "start": 15.58,
+            "end": 15.74
           },
           {
             "text": "Hermes",
-            "start": 14.4,
-            "end": 14.64
+            "start": 15.74,
+            "end": 15.96
           },
           {
             "text": "in",
-            "start": 14.64,
-            "end": 14.96
-          }
-        ]
-      },
-      {
-        "start": 14.96,
-        "end": 17.0,
-        "text": "a sandbox like Docker, scope its keys,",
-        "words": [
+            "start": 15.96,
+            "end": 16.28
+          },
           {
             "text": "a",
-            "start": 14.96,
-            "end": 15.02
+            "start": 16.28,
+            "end": 16.36
           },
           {
             "text": "sandbox",
-            "start": 15.02,
-            "end": 15.2
+            "start": 16.36,
+            "end": 16.6
           },
           {
             "text": "like",
-            "start": 15.2,
-            "end": 15.7
-          },
-          {
-            "text": "Docker,",
-            "start": 15.7,
-            "end": 15.92
-          },
-          {
-            "text": "scope",
-            "start": 16.44,
-            "end": 16.56
-          },
-          {
-            "text": "its",
-            "start": 16.56,
-            "end": 16.8
-          },
-          {
-            "text": "keys,",
-            "start": 16.8,
-            "end": 17.0
+            "start": 16.6,
+            "end": 17.08
           }
         ]
       },
       {
-        "start": 17.56,
-        "end": 18.9,
-        "text": "and read the tool calls before you",
+        "start": 17.08,
+        "end": 19.34,
+        "text": "Docker, scope its keys, and read the",
         "words": [
           {
-            "text": "and",
-            "start": 17.56,
-            "end": 17.62
+            "text": "Docker,",
+            "start": 17.08,
+            "end": 17.32
           },
           {
-            "text": "read",
-            "start": 17.62,
-            "end": 17.74
-          },
-          {
-            "text": "the",
-            "start": 17.74,
-            "end": 17.9
-          },
-          {
-            "text": "tool",
+            "text": "scope",
             "start": 17.9,
             "end": 18.06
           },
           {
-            "text": "calls",
+            "text": "its",
             "start": 18.06,
             "end": 18.3
           },
           {
-            "text": "before",
+            "text": "keys,",
             "start": 18.3,
-            "end": 18.7
+            "end": 18.5
           },
           {
-            "text": "you",
-            "start": 18.7,
-            "end": 18.9
+            "text": "and",
+            "start": 18.92,
+            "end": 19.0
+          },
+          {
+            "text": "read",
+            "start": 19.0,
+            "end": 19.16
+          },
+          {
+            "text": "the",
+            "start": 19.16,
+            "end": 19.34
           }
         ]
       },
       {
-        "start": 18.9,
-        "end": 20.86,
-        "text": "approve them. Streaming output is not a",
+        "start": 19.34,
+        "end": 21.88,
+        "text": "tool calls before you approve them. Streaming",
         "words": [
           {
+            "text": "tool",
+            "start": 19.34,
+            "end": 19.52
+          },
+          {
+            "text": "calls",
+            "start": 19.52,
+            "end": 19.76
+          },
+          {
+            "text": "before",
+            "start": 19.76,
+            "end": 20.22
+          },
+          {
+            "text": "you",
+            "start": 20.22,
+            "end": 20.44
+          },
+          {
             "text": "approve",
-            "start": 18.9,
-            "end": 19.04
+            "start": 20.44,
+            "end": 20.6
           },
           {
             "text": "them.",
-            "start": 19.04,
-            "end": 19.34
+            "start": 20.6,
+            "end": 20.94
           },
           {
             "text": "Streaming",
-            "start": 19.72,
-            "end": 19.98
-          },
+            "start": 21.5,
+            "end": 21.88
+          }
+        ]
+      },
+      {
+        "start": 21.88,
+        "end": 23.66,
+        "text": "output is not a safety feature by",
+        "words": [
           {
             "text": "output",
-            "start": 19.98,
-            "end": 20.28
+            "start": 21.88,
+            "end": 22.16
           },
           {
             "text": "is",
-            "start": 20.28,
-            "end": 20.58
+            "start": 22.16,
+            "end": 22.52
           },
           {
             "text": "not",
-            "start": 20.58,
-            "end": 20.74
+            "start": 22.52,
+            "end": 22.68
           },
           {
             "text": "a",
-            "start": 20.74,
-            "end": 20.86
-          }
-        ]
-      },
-      {
-        "start": 20.86,
-        "end": 23.16,
-        "text": "safety feature by itself. It becomes one",
-        "words": [
+            "start": 22.68,
+            "end": 22.82
+          },
           {
             "text": "safety",
-            "start": 20.86,
-            "end": 21.04
+            "start": 22.82,
+            "end": 23.04
           },
           {
             "text": "feature",
-            "start": 21.04,
-            "end": 21.5
+            "start": 23.04,
+            "end": 23.48
           },
           {
             "text": "by",
-            "start": 21.5,
-            "end": 21.72
-          },
+            "start": 23.48,
+            "end": 23.66
+          }
+        ]
+      },
+      {
+        "start": 23.66,
+        "end": 25.66,
+        "text": "itself. It becomes one when you gate",
+        "words": [
           {
             "text": "itself.",
-            "start": 21.72,
-            "end": 21.94
+            "start": 23.66,
+            "end": 23.9
           },
           {
             "text": "It",
-            "start": 22.54,
-            "end": 22.58
+            "start": 24.46,
+            "end": 24.56
           },
           {
             "text": "becomes",
-            "start": 22.58,
-            "end": 22.84
+            "start": 24.56,
+            "end": 24.8
           },
           {
             "text": "one",
-            "start": 22.84,
-            "end": 23.16
-          }
-        ]
-      },
-      {
-        "start": 23.16,
-        "end": 24.44,
-        "text": "when you gate what you approve.",
-        "words": [
+            "start": 24.8,
+            "end": 25.12
+          },
           {
             "text": "when",
-            "start": 23.16,
-            "end": 23.6
+            "start": 25.12,
+            "end": 25.36
           },
           {
             "text": "you",
-            "start": 23.6,
-            "end": 23.76
+            "start": 25.36,
+            "end": 25.52
           },
           {
             "text": "gate",
-            "start": 23.76,
-            "end": 23.92
-          },
-          {
-            "text": "what",
-            "start": 23.92,
-            "end": 24.14
-          },
-          {
-            "text": "you",
-            "start": 24.14,
-            "end": 24.28
-          },
-          {
-            "text": "approve.",
-            "start": 24.28,
-            "end": 24.44
+            "start": 25.52,
+            "end": 25.66
           }
         ]
       },
       {
-        "start": 25.1,
-        "end": 26.94,
+        "start": 25.66,
+        "end": 26.22,
+        "text": "what you approve.",
+        "words": [
+          {
+            "text": "what",
+            "start": 25.66,
+            "end": 25.88
+          },
+          {
+            "text": "you",
+            "start": 25.88,
+            "end": 26.02
+          },
+          {
+            "text": "approve.",
+            "start": 26.02,
+            "end": 26.22
+          }
+        ]
+      },
+      {
+        "start": 26.82,
+        "end": 28.84,
         "text": "Scope it, don't fear it. Do you",
         "words": [
           {
             "text": "Scope",
-            "start": 25.1,
-            "end": 25.32
+            "start": 26.82,
+            "end": 27.26
           },
           {
             "text": "it,",
-            "start": 25.32,
-            "end": 25.52
+            "start": 27.26,
+            "end": 27.48
           },
           {
             "text": "don't",
-            "start": 25.76,
-            "end": 26.02
+            "start": 27.74,
+            "end": 28.02
           },
           {
             "text": "fear",
-            "start": 26.02,
-            "end": 26.16
+            "start": 28.02,
+            "end": 28.18
           },
           {
             "text": "it.",
-            "start": 26.16,
-            "end": 26.36
+            "start": 28.18,
+            "end": 28.4
           },
           {
             "text": "Do",
-            "start": 26.36,
-            "end": 26.86
+            "start": 28.72,
+            "end": 28.74
           },
           {
             "text": "you",
-            "start": 26.86,
-            "end": 26.94
+            "start": 28.74,
+            "end": 28.84
           }
         ]
       },
       {
-        "start": 26.94,
-        "end": 28.88,
+        "start": 28.84,
+        "end": 30.8,
         "text": "read your agent's tool calls before approving,",
         "words": [
           {
             "text": "read",
-            "start": 26.94,
-            "end": 27.12
+            "start": 28.84,
+            "end": 29.04
           },
           {
             "text": "your",
-            "start": 27.12,
-            "end": 27.28
+            "start": 29.04,
+            "end": 29.2
           },
           {
             "text": "agent's",
-            "start": 27.28,
-            "end": 27.7
+            "start": 29.2,
+            "end": 29.58
           },
           {
             "text": "tool",
-            "start": 27.7,
-            "end": 27.86
+            "start": 29.58,
+            "end": 29.78
           },
           {
             "text": "calls",
-            "start": 27.86,
-            "end": 28.1
+            "start": 29.78,
+            "end": 30.02
           },
           {
             "text": "before",
-            "start": 28.1,
-            "end": 28.48
+            "start": 30.02,
+            "end": 30.4
           },
           {
             "text": "approving,",
-            "start": 28.48,
-            "end": 28.88
+            "start": 30.4,
+            "end": 30.8
           }
         ]
       },
       {
-        "start": 29.32,
-        "end": 31.06,
-        "text": "or just watch them fly by? Tell",
+        "start": 31.1,
+        "end": 32.24,
+        "text": "or just watch them fly by?",
         "words": [
           {
             "text": "or",
-            "start": 29.32,
-            "end": 29.42
+            "start": 31.1,
+            "end": 31.2
           },
           {
             "text": "just",
-            "start": 29.42,
-            "end": 29.54
+            "start": 31.2,
+            "end": 31.36
           },
           {
             "text": "watch",
-            "start": 29.54,
-            "end": 29.76
+            "start": 31.36,
+            "end": 31.58
           },
           {
             "text": "them",
-            "start": 29.76,
-            "end": 29.98
+            "start": 31.58,
+            "end": 31.82
           },
           {
             "text": "fly",
-            "start": 29.98,
-            "end": 30.18
+            "start": 31.82,
+            "end": 32.02
           },
           {
             "text": "by?",
-            "start": 30.18,
-            "end": 30.38
-          },
-          {
-            "text": "Tell",
-            "start": 30.88,
-            "end": 31.06
+            "start": 32.02,
+            "end": 32.24
           }
         ]
       },
       {
-        "start": 31.06,
-        "end": 31.4,
-        "text": "me below.",
+        "start": 32.88,
+        "end": 33.48,
+        "text": "Tell me below.",
         "words": [
           {
+            "text": "Tell",
+            "start": 32.88,
+            "end": 33.1
+          },
+          {
             "text": "me",
-            "start": 31.06,
-            "end": 31.18
+            "start": 33.1,
+            "end": 33.24
           },
           {
             "text": "below.",
-            "start": 31.18,
-            "end": 31.4
+            "start": 33.24,
+            "end": 33.48
           }
         ]
       }

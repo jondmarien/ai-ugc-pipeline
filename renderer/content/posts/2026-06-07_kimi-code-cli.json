@@ -365,575 +365,549 @@
     "captions": [
       {
         "start": 0.0,
-        "end": 2.04,
+        "end": 2.12,
         "text": "Moonshot just put an AI coding agent",
         "words": [
           {
             "text": "Moonshot",
             "start": 0.0,
-            "end": 0.58
+            "end": 0.68
           },
           {
             "text": "just",
-            "start": 0.58,
-            "end": 0.82
+            "start": 0.68,
+            "end": 0.9
           },
           {
             "text": "put",
-            "start": 0.82,
-            "end": 1.02
+            "start": 0.9,
+            "end": 1.08
           },
           {
             "text": "an",
-            "start": 1.02,
-            "end": 1.16
+            "start": 1.08,
+            "end": 1.22
           },
           {
             "text": "AI",
-            "start": 1.16,
-            "end": 1.36
+            "start": 1.22,
+            "end": 1.44
           },
           {
             "text": "coding",
-            "start": 1.36,
-            "end": 1.64
+            "start": 1.44,
+            "end": 1.76
           },
           {
             "text": "agent",
-            "start": 1.64,
-            "end": 2.04
+            "start": 1.76,
+            "end": 2.12
           }
         ]
       },
       {
-        "start": 2.04,
-        "end": 3.52,
-        "text": "in your terminal, and it can run",
+        "start": 2.12,
+        "end": 3.56,
+        "text": "in your terminal and it can run",
         "words": [
           {
             "text": "in",
-            "start": 2.04,
-            "end": 2.32
+            "start": 2.12,
+            "end": 2.36
           },
           {
             "text": "your",
-            "start": 2.32,
-            "end": 2.42
+            "start": 2.36,
+            "end": 2.44
           },
           {
-            "text": "terminal,",
-            "start": 2.42,
-            "end": 2.74
+            "text": "terminal",
+            "start": 2.44,
+            "end": 2.78
           },
           {
             "text": "and",
-            "start": 3.1,
-            "end": 3.14
+            "start": 2.78,
+            "end": 3.2
           },
           {
             "text": "it",
-            "start": 3.14,
-            "end": 3.24
+            "start": 3.2,
+            "end": 3.3
           },
           {
             "text": "can",
-            "start": 3.24,
-            "end": 3.36
+            "start": 3.3,
+            "end": 3.4
           },
           {
             "text": "run",
-            "start": 3.36,
-            "end": 3.52
+            "start": 3.4,
+            "end": 3.56
           }
         ]
       },
       {
-        "start": 3.52,
-        "end": 3.86,
-        "text": "your shell.",
+        "start": 3.56,
+        "end": 6.54,
+        "text": "your shell. KimiCode CLI reads files, runs",
         "words": [
           {
             "text": "your",
-            "start": 3.52,
-            "end": 3.68
+            "start": 3.56,
+            "end": 3.72
           },
           {
             "text": "shell.",
-            "start": 3.68,
-            "end": 3.86
-          }
-        ]
-      },
-      {
-        "start": 4.62,
-        "end": 6.7,
-        "text": "Kimi code CLI reads files, runs commands,",
-        "words": [
-          {
-            "text": "Kimi",
-            "start": 4.62,
-            "end": 4.74
+            "start": 3.72,
+            "end": 3.92
           },
           {
-            "text": "code",
-            "start": 4.74,
-            "end": 4.92
+            "text": "KimiCode",
+            "start": 4.46,
+            "end": 4.8
           },
           {
             "text": "CLI",
-            "start": 4.92,
-            "end": 5.16
+            "start": 4.8,
+            "end": 5.02
           },
           {
             "text": "reads",
-            "start": 5.16,
-            "end": 5.6
+            "start": 5.02,
+            "end": 5.64
           },
           {
             "text": "files,",
-            "start": 5.6,
-            "end": 5.86
+            "start": 5.64,
+            "end": 5.94
           },
           {
             "text": "runs",
             "start": 6.36,
-            "end": 6.46
-          },
-          {
-            "text": "commands,",
-            "start": 6.46,
-            "end": 6.7
+            "end": 6.54
           }
         ]
       },
       {
-        "start": 7.28,
-        "end": 8.14,
-        "text": "and fetches web pages.",
+        "start": 6.54,
+        "end": 8.16,
+        "text": "commands, and fetches web pages.",
         "words": [
           {
+            "text": "commands,",
+            "start": 6.54,
+            "end": 6.76
+          },
+          {
             "text": "and",
-            "start": 7.28,
-            "end": 7.32
+            "start": 7.26,
+            "end": 7.28
           },
           {
             "text": "fetches",
-            "start": 7.32,
-            "end": 7.62
+            "start": 7.28,
+            "end": 7.6
           },
           {
             "text": "web",
-            "start": 7.62,
-            "end": 7.82
+            "start": 7.6,
+            "end": 7.8
           },
           {
             "text": "pages.",
-            "start": 7.82,
-            "end": 8.14
+            "start": 7.8,
+            "end": 8.16
           }
         ]
       },
       {
-        "start": 8.78,
-        "end": 10.06,
+        "start": 8.84,
+        "end": 10.12,
         "text": "Then it decides the next step on",
         "words": [
           {
             "text": "Then",
-            "start": 8.78,
-            "end": 8.8
+            "start": 8.84,
+            "end": 8.86
           },
           {
             "text": "it",
-            "start": 8.8,
-            "end": 8.94
+            "start": 8.86,
+            "end": 8.96
           },
           {
             "text": "decides",
-            "start": 8.94,
-            "end": 9.18
+            "start": 8.96,
+            "end": 9.2
           },
           {
             "text": "the",
-            "start": 9.18,
-            "end": 9.48
+            "start": 9.2,
+            "end": 9.52
           },
           {
             "text": "next",
-            "start": 9.48,
-            "end": 9.62
+            "start": 9.52,
+            "end": 9.66
           },
           {
             "text": "step",
-            "start": 9.62,
-            "end": 9.88
+            "start": 9.66,
+            "end": 9.94
           },
           {
             "text": "on",
-            "start": 9.88,
-            "end": 10.06
+            "start": 9.94,
+            "end": 10.12
           }
         ]
       },
       {
-        "start": 10.06,
-        "end": 11.82,
-        "text": "its own, so treat it like untrusted",
+        "start": 10.12,
+        "end": 12.0,
+        "text": "its own. So treat it like untrusted",
         "words": [
           {
             "text": "its",
-            "start": 10.06,
-            "end": 10.18
+            "start": 10.12,
+            "end": 10.24
           },
           {
-            "text": "own,",
-            "start": 10.18,
-            "end": 10.36
+            "text": "own.",
+            "start": 10.24,
+            "end": 10.44
           },
           {
-            "text": "so",
-            "start": 10.64,
-            "end": 10.74
+            "text": "So",
+            "start": 10.96,
+            "end": 10.98
           },
           {
             "text": "treat",
-            "start": 10.74,
-            "end": 10.94
+            "start": 10.98,
+            "end": 11.14
           },
           {
             "text": "it",
-            "start": 10.94,
-            "end": 11.1
+            "start": 11.14,
+            "end": 11.32
           },
           {
             "text": "like",
-            "start": 11.1,
-            "end": 11.26
+            "start": 11.32,
+            "end": 11.48
           },
           {
             "text": "untrusted",
-            "start": 11.26,
-            "end": 11.82
+            "start": 11.48,
+            "end": 12.0
           }
         ]
       },
       {
-        "start": 11.82,
-        "end": 12.06,
-        "text": "code.",
+        "start": 12.0,
+        "end": 13.8,
+        "text": "code, run it in a throwaway VM",
         "words": [
           {
-            "text": "code.",
-            "start": 11.82,
-            "end": 12.06
-          }
-        ]
-      },
-      {
-        "start": 12.72,
-        "end": 14.28,
-        "text": "Run it in a throwaway VM with",
-        "words": [
-          {
-            "text": "Run",
-            "start": 12.72,
-            "end": 12.78
-          },
-          {
-            "text": "it",
-            "start": 12.78,
-            "end": 12.9
-          },
-          {
-            "text": "in",
-            "start": 12.9,
-            "end": 13.02
-          },
-          {
-            "text": "a",
-            "start": 13.02,
-            "end": 13.1
-          },
-          {
-            "text": "throwaway",
-            "start": 13.1,
-            "end": 13.56
-          },
-          {
-            "text": "VM",
-            "start": 13.56,
-            "end": 13.78
-          },
-          {
-            "text": "with",
-            "start": 13.78,
-            "end": 14.28
-          }
-        ]
-      },
-      {
-        "start": 14.28,
-        "end": 16.14,
-        "text": "no real keys, and keep the approved",
-        "words": [
-          {
-            "text": "no",
-            "start": 14.28,
-            "end": 14.5
-          },
-          {
-            "text": "real",
-            "start": 14.5,
-            "end": 14.7
-          },
-          {
-            "text": "keys,",
-            "start": 14.7,
-            "end": 15.02
-          },
-          {
-            "text": "and",
-            "start": 15.4,
-            "end": 15.5
-          },
-          {
-            "text": "keep",
-            "start": 15.5,
-            "end": 15.66
-          },
-          {
-            "text": "the",
-            "start": 15.66,
-            "end": 15.82
-          },
-          {
-            "text": "approved",
-            "start": 15.82,
-            "end": 16.14
-          }
-        ]
-      },
-      {
-        "start": 16.14,
-        "end": 17.26,
-        "text": "before run gate on.",
-        "words": [
-          {
-            "text": "before",
-            "start": 16.14,
-            "end": 16.44
+            "text": "code,",
+            "start": 12.0,
+            "end": 12.26
           },
           {
             "text": "run",
-            "start": 16.44,
-            "end": 16.86
+            "start": 12.68,
+            "end": 12.82
           },
           {
-            "text": "gate",
-            "start": 16.86,
-            "end": 17.02
+            "text": "it",
+            "start": 12.82,
+            "end": 12.96
           },
           {
-            "text": "on.",
-            "start": 17.02,
-            "end": 17.26
+            "text": "in",
+            "start": 12.96,
+            "end": 13.08
+          },
+          {
+            "text": "a",
+            "start": 13.08,
+            "end": 13.16
+          },
+          {
+            "text": "throwaway",
+            "start": 13.16,
+            "end": 13.6
+          },
+          {
+            "text": "VM",
+            "start": 13.6,
+            "end": 13.8
           }
         ]
       },
       {
-        "start": 18.62,
-        "end": 20.34,
-        "text": "The risk was never the model. It",
+        "start": 13.8,
+        "end": 15.7,
+        "text": "with no real keys, and keep the",
         "words": [
           {
-            "text": "The",
-            "start": 18.62,
-            "end": 18.8
+            "text": "with",
+            "start": 13.8,
+            "end": 14.22
           },
           {
-            "text": "risk",
-            "start": 18.8,
-            "end": 18.96
+            "text": "no",
+            "start": 14.22,
+            "end": 14.42
           },
           {
-            "text": "was",
-            "start": 18.96,
-            "end": 19.18
+            "text": "real",
+            "start": 14.42,
+            "end": 14.6
           },
           {
-            "text": "never",
-            "start": 19.18,
-            "end": 19.4
-          },
-          {
-            "text": "the",
-            "start": 19.4,
-            "end": 19.6
-          },
-          {
-            "text": "model.",
-            "start": 19.6,
-            "end": 19.8
-          },
-          {
-            "text": "It",
-            "start": 20.28,
-            "end": 20.34
-          }
-        ]
-      },
-      {
-        "start": 20.34,
-        "end": 21.92,
-        "text": "is every command and secret you let",
-        "words": [
-          {
-            "text": "is",
-            "start": 20.34,
-            "end": 20.44
-          },
-          {
-            "text": "every",
-            "start": 20.44,
-            "end": 20.72
-          },
-          {
-            "text": "command",
-            "start": 20.72,
-            "end": 20.96
+            "text": "keys,",
+            "start": 14.6,
+            "end": 14.88
           },
           {
             "text": "and",
-            "start": 20.96,
-            "end": 21.24
+            "start": 15.34,
+            "end": 15.36
+          },
+          {
+            "text": "keep",
+            "start": 15.36,
+            "end": 15.52
+          },
+          {
+            "text": "the",
+            "start": 15.52,
+            "end": 15.7
+          }
+        ]
+      },
+      {
+        "start": 15.7,
+        "end": 17.86,
+        "text": "approved before run gate on. The risk",
+        "words": [
+          {
+            "text": "approved",
+            "start": 15.7,
+            "end": 15.98
+          },
+          {
+            "text": "before",
+            "start": 15.98,
+            "end": 16.3
+          },
+          {
+            "text": "run",
+            "start": 16.3,
+            "end": 16.66
+          },
+          {
+            "text": "gate",
+            "start": 16.66,
+            "end": 16.88
+          },
+          {
+            "text": "on.",
+            "start": 16.88,
+            "end": 17.08
+          },
+          {
+            "text": "The",
+            "start": 17.64,
+            "end": 17.7
+          },
+          {
+            "text": "risk",
+            "start": 17.7,
+            "end": 17.86
+          }
+        ]
+      },
+      {
+        "start": 17.86,
+        "end": 19.56,
+        "text": "was never the model. It is every",
+        "words": [
+          {
+            "text": "was",
+            "start": 17.86,
+            "end": 18.06
+          },
+          {
+            "text": "never",
+            "start": 18.06,
+            "end": 18.3
+          },
+          {
+            "text": "the",
+            "start": 18.3,
+            "end": 18.46
+          },
+          {
+            "text": "model.",
+            "start": 18.46,
+            "end": 18.68
+          },
+          {
+            "text": "It",
+            "start": 19.1,
+            "end": 19.16
+          },
+          {
+            "text": "is",
+            "start": 19.16,
+            "end": 19.26
+          },
+          {
+            "text": "every",
+            "start": 19.26,
+            "end": 19.56
+          }
+        ]
+      },
+      {
+        "start": 19.56,
+        "end": 21.12,
+        "text": "command and secret you let the agent",
+        "words": [
+          {
+            "text": "command",
+            "start": 19.56,
+            "end": 19.82
+          },
+          {
+            "text": "and",
+            "start": 19.82,
+            "end": 20.1
           },
           {
             "text": "secret",
-            "start": 21.24,
-            "end": 21.5
+            "start": 20.1,
+            "end": 20.34
           },
           {
             "text": "you",
-            "start": 21.5,
-            "end": 21.76
+            "start": 20.34,
+            "end": 20.62
           },
           {
             "text": "let",
-            "start": 21.76,
-            "end": 21.92
-          }
-        ]
-      },
-      {
-        "start": 21.92,
-        "end": 22.54,
-        "text": "the agent reach.",
-        "words": [
+            "start": 20.62,
+            "end": 20.78
+          },
           {
             "text": "the",
-            "start": 21.92,
-            "end": 22.06
+            "start": 20.78,
+            "end": 20.92
           },
           {
             "text": "agent",
-            "start": 22.06,
-            "end": 22.28
-          },
-          {
-            "text": "reach.",
-            "start": 22.28,
-            "end": 22.54
+            "start": 20.92,
+            "end": 21.12
           }
         ]
       },
       {
-        "start": 23.26,
-        "end": 24.58,
+        "start": 21.12,
+        "end": 21.36,
+        "text": "reach.",
+        "words": [
+          {
+            "text": "reach.",
+            "start": 21.12,
+            "end": 21.36
+          }
+        ]
+      },
+      {
+        "start": 22.08,
+        "end": 23.54,
         "text": "Would you hand a terminal agent your",
         "words": [
           {
             "text": "Would",
-            "start": 23.26,
-            "end": 23.28
+            "start": 22.08,
+            "end": 22.12
           },
           {
             "text": "you",
-            "start": 23.28,
-            "end": 23.42
+            "start": 22.12,
+            "end": 22.26
           },
           {
             "text": "hand",
-            "start": 23.42,
-            "end": 23.6
+            "start": 22.26,
+            "end": 22.5
           },
           {
             "text": "a",
-            "start": 23.6,
-            "end": 23.72
+            "start": 22.5,
+            "end": 22.62
           },
           {
             "text": "terminal",
-            "start": 23.72,
-            "end": 23.94
+            "start": 22.62,
+            "end": 22.88
           },
           {
             "text": "agent",
-            "start": 23.94,
-            "end": 24.3
+            "start": 22.88,
+            "end": 23.28
           },
           {
             "text": "your",
-            "start": 24.3,
-            "end": 24.58
+            "start": 23.28,
+            "end": 23.54
           }
         ]
       },
       {
-        "start": 24.58,
-        "end": 25.56,
-        "text": "shell without a sandbox?",
+        "start": 23.54,
+        "end": 25.66,
+        "text": "shell without a sandbox? Tell me below.",
         "words": [
           {
             "text": "shell",
-            "start": 24.58,
-            "end": 24.82
+            "start": 23.54,
+            "end": 23.78
           },
           {
             "text": "without",
-            "start": 24.82,
-            "end": 25.14
+            "start": 23.78,
+            "end": 24.02
           },
           {
             "text": "a",
-            "start": 25.14,
-            "end": 25.4
+            "start": 24.02,
+            "end": 24.76
           },
           {
             "text": "sandbox?",
-            "start": 25.4,
-            "end": 25.56
-          }
-        ]
-      },
-      {
-        "start": 26.26,
-        "end": 27.26,
-        "text": "Tell me below.",
-        "words": [
+            "start": 24.76,
+            "end": 24.76
+          },
           {
             "text": "Tell",
-            "start": 26.26,
-            "end": 26.84
+            "start": 24.76,
+            "end": 25.34
           },
           {
             "text": "me",
-            "start": 26.84,
-            "end": 27.02
+            "start": 25.34,
+            "end": 25.46
           },
           {
             "text": "below.",
-            "start": 27.02,
-            "end": 27.26
+            "start": 25.46,
+            "end": 25.66
           }
         ]
       }
