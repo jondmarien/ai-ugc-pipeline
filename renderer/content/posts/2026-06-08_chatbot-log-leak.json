@@ -70,9 +70,9 @@
       "on_slide_copy": "THE LOGS YOU PASTE INTO A CHATBOT LEAVE YOUR CONTROL FOR GOOD",
       "subline": "Samsung learned it the hard way: engineers pasted source code into ChatGPT, and it banned the tools weeks later.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a lone office photocopier in the dark mid-copy, a bright bar of light sweeping under the lid and a single page easing out of the tray, strong empty lower third",
-      "background_asset": "/backgrounds/2026-06-08_chatbot-log-leak_cover.png",
-      "asset_status": "needed",
+      "visual_prompt": "Hard directional light from a single moving scanner bar rakes across a lone office photocopier mid-copy in the dark, the glare sweeping under the lifted lid as one page eases out of the tray, premium dark editorial key art, the machine held in the upper frame with clean unmarked surfaces and generous negative space across the lower third",
+      "background_asset": "/backgrounds/2026-06-08_chatbot-log-leak/01_cover.png",
+      "asset_status": "generated",
       "cta": "SWIPE →",
       "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
     },
@@ -83,9 +83,9 @@
       "on_slide_copy": "The problem is not the AI. It is sensitive data leaving systems you control, one paste at a time.",
       "subline": "A chatbot paste is data movement, not a conversation.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a painted boundary line running across a dark floor with a few loose papers drifting across it from one side to the other, dark editorial, calm empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "Low raking light grazes a painted boundary line running across a dark floor, catching the curled edges of a few loose papers as they drift across it from one side to the other, dark editorial photography, the action set high with a clean unmarked floor and generous negative space below",
+      "background_asset": "/backgrounds/2026-06-08_chatbot-log-leak/02_context.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -96,9 +96,9 @@
       "on_slide_copy": "Logs and code carry the crown jewels: API tokens, customer IDs, stack traces, and internal endpoints.",
       "subline": "Researchers found a real slice of employees had already pasted confidential data into ChatGPT.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a single dark inkwell tipped over on a desk in the gloom, a thin bright rivulet of ink running off the edge toward the floor, tense high contrast, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "A single hard side light catches the wet sheen of a tipped inkwell on a desk in the gloom, a thin rivulet of ink running off the edge toward the floor, tense high-contrast editorial, the spill held in the upper area with a calm uncluttered lower third",
+      "background_asset": "/backgrounds/2026-06-08_chatbot-log-leak/03_risk.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -109,9 +109,9 @@
       "on_slide_copy": "Copy and paste strips the file and its label, so classic data-loss tools never see it leave.",
       "subline": "No file, no scan. The clipboard is the blind spot.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a pair of scissors clipping a small fragment out of a larger printed sheet in the dark, the cut piece lifting free and drifting away, focal in the upper area",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "Tight focused light falls on a pair of scissors clipping a small fragment out of a larger printed sheet in the dark, the cut piece lifting free and drifting away into shadow, dark editorial key art, the cut framed in the upper third over generous empty negative space",
+      "background_asset": "/backgrounds/2026-06-08_chatbot-log-leak/04_mechanism.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -122,9 +122,9 @@
       "on_slide_copy": "Teams ban the tools instead of offering a safe one, so people just switch to personal accounts.",
       "subline": "A ban with no sanctioned path pushes the data further out of view.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a closed metal shutter pulled down over one doorway in the dark while a side door stands quietly open beside it, a few papers slipping through the open one, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "Cool hard light spills only from a side door left quietly open in the dark, a heavy metal shutter sealed tight over the main doorway beside it, a few papers slipping through the open gap, tense editorial composition, the doorways set high with a clean dark lower third",
+      "background_asset": "/backgrounds/2026-06-08_chatbot-log-leak/05_failure-point.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -135,9 +135,9 @@
       "on_slide_copy": "Give people a sanctioned AI tool with redaction, logging, and retention, plus one rule: never paste production data.",
       "subline": "Make the safe path the easy path.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a single document passing through a small inline filter cartridge on a desk in the dark, a cleaner redacted page coming out the other side, calm and orderly, empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "Calm even light from above settles on a single document feeding through a small inline filter cartridge on a desk in the dark, a cleaner page with redacted blocks emerging the other side, orderly premium editorial, the device centered high with generous negative space below",
+      "background_asset": "/backgrounds/2026-06-08_chatbot-log-leak/06_defense.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -148,9 +148,9 @@
       "on_slide_copy": "Once it is pasted, you {{cannot get it back}}. [[Make the safe path easier than the risky one.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a single sheet of paper already half dissolved into drifting particles in deep shadow, the intact half catching a thin rim of light, center kept dark and open",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "A thin rim light traces the edge of a single sheet of paper already half dissolved into drifting particles in deep shadow, the intact half catching the glow while the rest scatters, minimal high-impact key art, the center kept dark and open with elements drawn to the edges",
+      "background_asset": "/backgrounds/2026-06-08_chatbot-log-leak/07_takeaway.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -161,9 +161,9 @@
       "on_slide_copy": "Does your team have a sanctioned way to use AI on real data, or just a rule nobody follows?",
       "subline": "Save this for your next data-handling review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a clean dark end-card scene, a single rubber stamp resting beside an empty ink pad in vast negative space, premium editorial cybersecurity look",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "Soft pooled light isolates a single rubber stamp resting beside a dry empty ink pad on a clean dark end-card surface, premium editorial cybersecurity key art, the objects small in vast negative space with the lower third open",
+      "background_asset": "/backgrounds/2026-06-08_chatbot-log-leak/08_cta.png",
+      "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "notes": ""
     }
@@ -217,7 +217,72 @@
       "claim_tag": "reported_fact"
     }
   ],
-  "asset_licenses": [],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-08_chatbot-log-leak/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_chatbot-log-leak/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_chatbot-log-leak/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_chatbot-log-leak/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_chatbot-log-leak/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_chatbot-log-leak/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_chatbot-log-leak/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-08_chatbot-log-leak/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
   "video": {
     "enabled": true,
     "duration_seconds": 28,
@@ -303,7 +368,601 @@
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
     "sfx": [],
-    "licenses": []
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 1.94,
+        "text": "The logs you paste into a chatbot",
+        "words": [
+          {
+            "text": "The",
+            "start": 0.0,
+            "end": 0.32
+          },
+          {
+            "text": "logs",
+            "start": 0.32,
+            "end": 0.54
+          },
+          {
+            "text": "you",
+            "start": 0.54,
+            "end": 0.78
+          },
+          {
+            "text": "paste",
+            "start": 0.78,
+            "end": 0.98
+          },
+          {
+            "text": "into",
+            "start": 0.98,
+            "end": 1.32
+          },
+          {
+            "text": "a",
+            "start": 1.32,
+            "end": 1.48
+          },
+          {
+            "text": "chatbot",
+            "start": 1.48,
+            "end": 1.94
+          }
+        ]
+      },
+      {
+        "start": 1.94,
+        "end": 4.12,
+        "text": "leave your control, and you cannot pull",
+        "words": [
+          {
+            "text": "leave",
+            "start": 1.94,
+            "end": 2.48
+          },
+          {
+            "text": "your",
+            "start": 2.48,
+            "end": 2.66
+          },
+          {
+            "text": "control,",
+            "start": 2.66,
+            "end": 2.98
+          },
+          {
+            "text": "and",
+            "start": 3.5,
+            "end": 3.54
+          },
+          {
+            "text": "you",
+            "start": 3.54,
+            "end": 3.64
+          },
+          {
+            "text": "cannot",
+            "start": 3.64,
+            "end": 3.8
+          },
+          {
+            "text": "pull",
+            "start": 3.8,
+            "end": 4.12
+          }
+        ]
+      },
+      {
+        "start": 4.12,
+        "end": 4.46,
+        "text": "them back.",
+        "words": [
+          {
+            "text": "them",
+            "start": 4.12,
+            "end": 4.26
+          },
+          {
+            "text": "back.",
+            "start": 4.26,
+            "end": 4.46
+          }
+        ]
+      },
+      {
+        "start": 5.2,
+        "end": 7.76,
+        "text": "Samsung learned this in 2023 when engineers",
+        "words": [
+          {
+            "text": "Samsung",
+            "start": 5.2,
+            "end": 5.48
+          },
+          {
+            "text": "learned",
+            "start": 5.48,
+            "end": 5.88
+          },
+          {
+            "text": "this",
+            "start": 5.88,
+            "end": 6.16
+          },
+          {
+            "text": "in",
+            "start": 6.16,
+            "end": 6.32
+          },
+          {
+            "text": "2023",
+            "start": 6.32,
+            "end": 7.06
+          },
+          {
+            "text": "when",
+            "start": 7.06,
+            "end": 7.48
+          },
+          {
+            "text": "engineers",
+            "start": 7.48,
+            "end": 7.76
+          }
+        ]
+      },
+      {
+        "start": 7.76,
+        "end": 10.42,
+        "text": "pasted source code into ChatGPT, and the",
+        "words": [
+          {
+            "text": "pasted",
+            "start": 7.76,
+            "end": 8.38
+          },
+          {
+            "text": "source",
+            "start": 8.38,
+            "end": 8.56
+          },
+          {
+            "text": "code",
+            "start": 8.56,
+            "end": 8.86
+          },
+          {
+            "text": "into",
+            "start": 8.86,
+            "end": 9.06
+          },
+          {
+            "text": "ChatGPT,",
+            "start": 9.06,
+            "end": 9.72
+          },
+          {
+            "text": "and",
+            "start": 10.28,
+            "end": 10.36
+          },
+          {
+            "text": "the",
+            "start": 10.36,
+            "end": 10.42
+          }
+        ]
+      },
+      {
+        "start": 10.42,
+        "end": 12.08,
+        "text": "company banned the tools within weeks.",
+        "words": [
+          {
+            "text": "company",
+            "start": 10.42,
+            "end": 10.7
+          },
+          {
+            "text": "banned",
+            "start": 10.7,
+            "end": 11.0
+          },
+          {
+            "text": "the",
+            "start": 11.0,
+            "end": 11.28
+          },
+          {
+            "text": "tools",
+            "start": 11.28,
+            "end": 11.48
+          },
+          {
+            "text": "within",
+            "start": 11.48,
+            "end": 11.76
+          },
+          {
+            "text": "weeks.",
+            "start": 11.76,
+            "end": 12.08
+          }
+        ]
+      },
+      {
+        "start": 12.7,
+        "end": 14.7,
+        "text": "Copy and paste slips past file-based data",
+        "words": [
+          {
+            "text": "Copy",
+            "start": 12.7,
+            "end": 12.88
+          },
+          {
+            "text": "and",
+            "start": 12.88,
+            "end": 13.12
+          },
+          {
+            "text": "paste",
+            "start": 13.12,
+            "end": 13.28
+          },
+          {
+            "text": "slips",
+            "start": 13.28,
+            "end": 13.54
+          },
+          {
+            "text": "past",
+            "start": 13.54,
+            "end": 13.88
+          },
+          {
+            "text": "file-based",
+            "start": 13.88,
+            "end": 14.48
+          },
+          {
+            "text": "data",
+            "start": 14.48,
+            "end": 14.7
+          }
+        ]
+      },
+      {
+        "start": 14.7,
+        "end": 16.82,
+        "text": "loss tools, so give people a sanctioned",
+        "words": [
+          {
+            "text": "loss",
+            "start": 14.7,
+            "end": 14.96
+          },
+          {
+            "text": "tools,",
+            "start": 14.96,
+            "end": 15.28
+          },
+          {
+            "text": "so",
+            "start": 15.84,
+            "end": 15.96
+          },
+          {
+            "text": "give",
+            "start": 15.96,
+            "end": 16.1
+          },
+          {
+            "text": "people",
+            "start": 16.1,
+            "end": 16.46
+          },
+          {
+            "text": "a",
+            "start": 16.46,
+            "end": 16.58
+          },
+          {
+            "text": "sanctioned",
+            "start": 16.58,
+            "end": 16.82
+          }
+        ]
+      },
+      {
+        "start": 16.82,
+        "end": 19.04,
+        "text": "tool with redaction and logging, and one",
+        "words": [
+          {
+            "text": "tool",
+            "start": 16.82,
+            "end": 17.2
+          },
+          {
+            "text": "with",
+            "start": 17.2,
+            "end": 17.42
+          },
+          {
+            "text": "redaction",
+            "start": 17.42,
+            "end": 17.84
+          },
+          {
+            "text": "and",
+            "start": 17.84,
+            "end": 18.08
+          },
+          {
+            "text": "logging,",
+            "start": 18.08,
+            "end": 18.32
+          },
+          {
+            "text": "and",
+            "start": 18.7,
+            "end": 18.88
+          },
+          {
+            "text": "one",
+            "start": 18.88,
+            "end": 19.04
+          }
+        ]
+      },
+      {
+        "start": 19.04,
+        "end": 20.76,
+        "text": "rule, never paste production data.",
+        "words": [
+          {
+            "text": "rule,",
+            "start": 19.04,
+            "end": 19.32
+          },
+          {
+            "text": "never",
+            "start": 19.66,
+            "end": 19.76
+          },
+          {
+            "text": "paste",
+            "start": 19.76,
+            "end": 20.06
+          },
+          {
+            "text": "production",
+            "start": 20.06,
+            "end": 20.4
+          },
+          {
+            "text": "data.",
+            "start": 20.4,
+            "end": 20.76
+          }
+        ]
+      },
+      {
+        "start": 21.52,
+        "end": 23.38,
+        "text": "Once it is pasted, you cannot get",
+        "words": [
+          {
+            "text": "Once",
+            "start": 21.52,
+            "end": 21.8
+          },
+          {
+            "text": "it",
+            "start": 21.8,
+            "end": 22.0
+          },
+          {
+            "text": "is",
+            "start": 22.0,
+            "end": 22.08
+          },
+          {
+            "text": "pasted,",
+            "start": 22.08,
+            "end": 22.54
+          },
+          {
+            "text": "you",
+            "start": 22.74,
+            "end": 22.86
+          },
+          {
+            "text": "cannot",
+            "start": 22.86,
+            "end": 23.06
+          },
+          {
+            "text": "get",
+            "start": 23.06,
+            "end": 23.38
+          }
+        ]
+      },
+      {
+        "start": 23.38,
+        "end": 23.7,
+        "text": "it back.",
+        "words": [
+          {
+            "text": "it",
+            "start": 23.38,
+            "end": 23.48
+          },
+          {
+            "text": "back.",
+            "start": 23.48,
+            "end": 23.7
+          }
+        ]
+      },
+      {
+        "start": 24.38,
+        "end": 26.0,
+        "text": "Make the safe path easier than the",
+        "words": [
+          {
+            "text": "Make",
+            "start": 24.38,
+            "end": 24.44
+          },
+          {
+            "text": "the",
+            "start": 24.44,
+            "end": 24.62
+          },
+          {
+            "text": "safe",
+            "start": 24.62,
+            "end": 24.8
+          },
+          {
+            "text": "path",
+            "start": 24.8,
+            "end": 25.1
+          },
+          {
+            "text": "easier",
+            "start": 25.1,
+            "end": 25.48
+          },
+          {
+            "text": "than",
+            "start": 25.48,
+            "end": 25.9
+          },
+          {
+            "text": "the",
+            "start": 25.9,
+            "end": 26.0
+          }
+        ]
+      },
+      {
+        "start": 26.0,
+        "end": 27.86,
+        "text": "risky one. Does your team have a",
+        "words": [
+          {
+            "text": "risky",
+            "start": 26.0,
+            "end": 26.18
+          },
+          {
+            "text": "one.",
+            "start": 26.18,
+            "end": 26.52
+          },
+          {
+            "text": "Does",
+            "start": 26.52,
+            "end": 27.2
+          },
+          {
+            "text": "your",
+            "start": 27.2,
+            "end": 27.34
+          },
+          {
+            "text": "team",
+            "start": 27.34,
+            "end": 27.56
+          },
+          {
+            "text": "have",
+            "start": 27.56,
+            "end": 27.76
+          },
+          {
+            "text": "a",
+            "start": 27.76,
+            "end": 27.86
+          }
+        ]
+      },
+      {
+        "start": 27.86,
+        "end": 29.48,
+        "text": "sanctioned way to use AI on real",
+        "words": [
+          {
+            "text": "sanctioned",
+            "start": 27.86,
+            "end": 28.08
+          },
+          {
+            "text": "way",
+            "start": 28.08,
+            "end": 28.44
+          },
+          {
+            "text": "to",
+            "start": 28.44,
+            "end": 28.62
+          },
+          {
+            "text": "use",
+            "start": 28.62,
+            "end": 28.84
+          },
+          {
+            "text": "AI",
+            "start": 28.84,
+            "end": 29.02
+          },
+          {
+            "text": "on",
+            "start": 29.02,
+            "end": 29.34
+          },
+          {
+            "text": "real",
+            "start": 29.34,
+            "end": 29.48
+          }
+        ]
+      },
+      {
+        "start": 29.48,
+        "end": 30.62,
+        "text": "data? Tell me below.",
+        "words": [
+          {
+            "text": "data?",
+            "start": 29.48,
+            "end": 29.74
+          },
+          {
+            "text": "Tell",
+            "start": 30.24,
+            "end": 30.26
+          },
+          {
+            "text": "me",
+            "start": 30.26,
+            "end": 30.4
+          },
+          {
+            "text": "below.",
+            "start": 30.4,
+            "end": 30.62
+          }
+        ]
+      }
+    ]
   },
   "qa": {
     "fact_checked": true,

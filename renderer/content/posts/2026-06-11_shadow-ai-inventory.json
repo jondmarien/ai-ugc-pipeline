@@ -70,9 +70,9 @@
       "on_slide_copy": "THE AI YOUR TEAM USES MOST IS THE AI YOU NEVER APPROVED",
       "subline": "Microsoft found 78 percent of AI users at work bring their own tools, mostly unsanctioned.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a control-tower radar dish sweeping in the dark, its beam catching dozens of small drifting craft scattered well beyond a single marked ring, hard rim light, strong empty lower third",
-      "background_asset": "/backgrounds/2026-06-11_shadow-ai-inventory_cover.png",
-      "asset_status": "needed",
+      "visual_prompt": "A sweeping radar beam and hard rim light pick a control-tower dish out of the dark, the sweep catching dozens of small drifting craft scattered well beyond a single marked ring, cinematic dark key art, the dish set high with a strong empty lower third",
+      "background_asset": "/backgrounds/2026-06-11_shadow-ai-inventory/01_cover.png",
+      "asset_status": "generated",
       "cta": "SWIPE →",
       "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
     },
@@ -83,9 +83,9 @@
       "on_slide_copy": "People adopt a new AI tool in an afternoon, long before anyone reviews or inventories it.",
       "subline": "Adoption outruns governance, every time.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a vast dark warehouse of stacked crates stretching into the gloom, most of them bare and unlabelled, only a handful near the front carrying a paper tag, calm empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "Shafts of cool overhead light fall through a vast dark warehouse of stacked crates receding into the gloom, most of them bare and unlabelled while only a handful near the front carry a paper tag, dark editorial photography, depth held high over a calm empty lower third",
+      "background_asset": "/backgrounds/2026-06-11_shadow-ai-inventory/02_context.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -96,9 +96,9 @@
       "on_slide_copy": "Each unsanctioned tool is an ungoverned path for company data to leave through.",
       "subline": "IBM reported that one in five breached organizations traced a breach to shadow AI.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a single lit lantern marking one charted path in the dark while several faint unlit trails branch off it into shadow, tense high contrast, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "A single lit lantern throws a warm pool over one charted path in the dark while several faint unlit trails branch off it into shadow, tense high-contrast editorial, the lantern set in the upper area with a clean dark lower third",
+      "background_asset": "/backgrounds/2026-06-11_shadow-ai-inventory/03_risk.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -109,9 +109,9 @@
       "on_slide_copy": "No approval means no logging, no retention rule, and no data-handling review behind the tool.",
       "subline": "The gaps stay invisible until something leaks.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "an open paper manifest on a desk in the dark with most of its lines filled but a run of blank rows in the middle catching a thin rim of light, focal in the upper area",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "A thin rim of light grazes an open paper manifest on a desk in the dark, most of its lines filled but a run of blank rows in the middle left conspicuously empty, dark editorial key art, the manifest framed in the upper third over generous negative space",
+      "background_asset": "/backgrounds/2026-06-11_shadow-ai-inventory/04_mechanism.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -122,9 +122,9 @@
       "on_slide_copy": "Security usually learns a tool exists only after the data has already left through it.",
       "subline": "You cannot review what was never on your list.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a single ship already small on the dark horizon with a fresh wake, seen from an empty watchtower in the foreground, lower third clear",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "Faint backlight from a low horizon silhouettes a single ship already small and far out with a fresh wake, seen past the railing of an empty watchtower in the foreground, tense cinematic editorial, the scene set high with a clean uncluttered lower third",
+      "background_asset": "/backgrounds/2026-06-11_shadow-ai-inventory/05_failure-point.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -135,9 +135,9 @@
       "on_slide_copy": "Start with visibility, not bans. Inventory what is in use, offer a sanctioned option, and run each tool through vendor review.",
       "subline": "A ban with no safe path just drives the tools underground.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a cartographer's hand drawing a fresh boundary onto a dark map, several previously scattered markers now circled and labelled inside it, calm and orderly, empty lower third",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "Calm focused desk light falls on a cartographer's hand drawing a fresh boundary onto a dark map, several previously scattered markers now circled and labelled inside it, orderly premium editorial, the map centered high with generous negative space below",
+      "background_asset": "/backgrounds/2026-06-11_shadow-ai-inventory/06_defense.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -148,9 +148,9 @@
       "on_slide_copy": "You cannot govern {{the AI you cannot see}}. [[Inventory first, then write the policy.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a single bright pin dropped onto a dark unmarked map, a faint grid resolving into focus around it, center kept dark and open",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "A tight beam catches a single bright pin dropped onto a dark unmarked map, a faint grid just resolving into focus around it, minimal high-impact key art, the center kept dark and open with detail drawn to the edges",
+      "background_asset": "/backgrounds/2026-06-11_shadow-ai-inventory/07_takeaway.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -161,9 +161,9 @@
       "on_slide_copy": "Do you have a current list of the AI tools your team actually uses?",
       "subline": "Save this for your next governance review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a clean dark end-card scene, a single clipboard holding a blank checklist resting in vast negative space, premium editorial cybersecurity look",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "visual_prompt": "Soft pooled light isolates a single clipboard holding a blank checklist on a clean dark end-card surface, premium editorial cybersecurity key art, the clipboard small in vast negative space with the lower third open",
+      "background_asset": "/backgrounds/2026-06-11_shadow-ai-inventory/08_cta.png",
+      "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "notes": ""
     }
@@ -210,7 +210,72 @@
       "claim_tag": "reported_fact"
     }
   ],
-  "asset_licenses": [],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-11_shadow-ai-inventory/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_shadow-ai-inventory/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_shadow-ai-inventory/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_shadow-ai-inventory/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_shadow-ai-inventory/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_shadow-ai-inventory/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_shadow-ai-inventory/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_shadow-ai-inventory/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
   "video": {
     "enabled": true,
     "duration_seconds": 28,
@@ -296,7 +361,586 @@
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
     "sfx": [],
-    "licenses": []
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 1.72,
+        "text": "The AI your team uses the most",
+        "words": [
+          {
+            "text": "The",
+            "start": 0.0,
+            "end": 0.38
+          },
+          {
+            "text": "AI",
+            "start": 0.38,
+            "end": 0.58
+          },
+          {
+            "text": "your",
+            "start": 0.58,
+            "end": 0.9
+          },
+          {
+            "text": "team",
+            "start": 0.9,
+            "end": 1.1
+          },
+          {
+            "text": "uses",
+            "start": 1.1,
+            "end": 1.34
+          },
+          {
+            "text": "the",
+            "start": 1.34,
+            "end": 1.54
+          },
+          {
+            "text": "most",
+            "start": 1.54,
+            "end": 1.72
+          }
+        ]
+      },
+      {
+        "start": 1.72,
+        "end": 3.54,
+        "text": "is probably the AI you never approved.",
+        "words": [
+          {
+            "text": "is",
+            "start": 1.72,
+            "end": 1.94
+          },
+          {
+            "text": "probably",
+            "start": 1.94,
+            "end": 2.22
+          },
+          {
+            "text": "the",
+            "start": 2.22,
+            "end": 2.42
+          },
+          {
+            "text": "AI",
+            "start": 2.42,
+            "end": 2.74
+          },
+          {
+            "text": "you",
+            "start": 2.74,
+            "end": 2.94
+          },
+          {
+            "text": "never",
+            "start": 2.94,
+            "end": 3.12
+          },
+          {
+            "text": "approved.",
+            "start": 3.12,
+            "end": 3.54
+          }
+        ]
+      },
+      {
+        "start": 4.22,
+        "end": 6.46,
+        "text": "Microsoft found that 78 % of AI",
+        "words": [
+          {
+            "text": "Microsoft",
+            "start": 4.22,
+            "end": 4.46
+          },
+          {
+            "text": "found",
+            "start": 4.46,
+            "end": 5.0
+          },
+          {
+            "text": "that",
+            "start": 5.0,
+            "end": 5.16
+          },
+          {
+            "text": "78",
+            "start": 5.16,
+            "end": 5.52
+          },
+          {
+            "text": "%",
+            "start": 5.52,
+            "end": 6.0
+          },
+          {
+            "text": "of",
+            "start": 6.0,
+            "end": 6.26
+          },
+          {
+            "text": "AI",
+            "start": 6.26,
+            "end": 6.46
+          }
+        ]
+      },
+      {
+        "start": 6.46,
+        "end": 8.22,
+        "text": "users at work bring their own tools",
+        "words": [
+          {
+            "text": "users",
+            "start": 6.46,
+            "end": 6.84
+          },
+          {
+            "text": "at",
+            "start": 6.84,
+            "end": 7.06
+          },
+          {
+            "text": "work",
+            "start": 7.06,
+            "end": 7.24
+          },
+          {
+            "text": "bring",
+            "start": 7.24,
+            "end": 7.54
+          },
+          {
+            "text": "their",
+            "start": 7.54,
+            "end": 7.76
+          },
+          {
+            "text": "own",
+            "start": 7.76,
+            "end": 7.9
+          },
+          {
+            "text": "tools",
+            "start": 7.9,
+            "end": 8.22
+          }
+        ]
+      },
+      {
+        "start": 8.22,
+        "end": 10.06,
+        "text": "usually before anyone reviews them.",
+        "words": [
+          {
+            "text": "usually",
+            "start": 8.22,
+            "end": 8.6
+          },
+          {
+            "text": "before",
+            "start": 8.6,
+            "end": 9.0
+          },
+          {
+            "text": "anyone",
+            "start": 9.0,
+            "end": 9.38
+          },
+          {
+            "text": "reviews",
+            "start": 9.38,
+            "end": 9.74
+          },
+          {
+            "text": "them.",
+            "start": 9.74,
+            "end": 10.06
+          }
+        ]
+      },
+      {
+        "start": 10.82,
+        "end": 12.54,
+        "text": "So start with visibility, not bands.",
+        "words": [
+          {
+            "text": "So",
+            "start": 10.82,
+            "end": 10.9
+          },
+          {
+            "text": "start",
+            "start": 10.9,
+            "end": 11.1
+          },
+          {
+            "text": "with",
+            "start": 11.1,
+            "end": 11.28
+          },
+          {
+            "text": "visibility,",
+            "start": 11.28,
+            "end": 11.58
+          },
+          {
+            "text": "not",
+            "start": 12.18,
+            "end": 12.32
+          },
+          {
+            "text": "bands.",
+            "start": 12.32,
+            "end": 12.54
+          }
+        ]
+      },
+      {
+        "start": 13.7,
+        "end": 14.74,
+        "text": "Inventory what is actually in use.",
+        "words": [
+          {
+            "text": "Inventory",
+            "start": 13.7,
+            "end": 13.7
+          },
+          {
+            "text": "what",
+            "start": 13.7,
+            "end": 14.0
+          },
+          {
+            "text": "is",
+            "start": 14.0,
+            "end": 14.1
+          },
+          {
+            "text": "actually",
+            "start": 14.1,
+            "end": 14.38
+          },
+          {
+            "text": "in",
+            "start": 14.38,
+            "end": 14.58
+          },
+          {
+            "text": "use.",
+            "start": 14.58,
+            "end": 14.74
+          }
+        ]
+      },
+      {
+        "start": 15.42,
+        "end": 17.02,
+        "text": "Offer a sanctioned option and run each",
+        "words": [
+          {
+            "text": "Offer",
+            "start": 15.42,
+            "end": 15.42
+          },
+          {
+            "text": "a",
+            "start": 15.42,
+            "end": 15.52
+          },
+          {
+            "text": "sanctioned",
+            "start": 15.52,
+            "end": 15.78
+          },
+          {
+            "text": "option",
+            "start": 15.78,
+            "end": 16.14
+          },
+          {
+            "text": "and",
+            "start": 16.14,
+            "end": 16.64
+          },
+          {
+            "text": "run",
+            "start": 16.64,
+            "end": 16.8
+          },
+          {
+            "text": "each",
+            "start": 16.8,
+            "end": 17.02
+          }
+        ]
+      },
+      {
+        "start": 17.02,
+        "end": 18.9,
+        "text": "tool through the same vendor review as",
+        "words": [
+          {
+            "text": "tool",
+            "start": 17.02,
+            "end": 17.32
+          },
+          {
+            "text": "through",
+            "start": 17.32,
+            "end": 17.56
+          },
+          {
+            "text": "the",
+            "start": 17.56,
+            "end": 17.68
+          },
+          {
+            "text": "same",
+            "start": 17.68,
+            "end": 17.86
+          },
+          {
+            "text": "vendor",
+            "start": 17.86,
+            "end": 18.1
+          },
+          {
+            "text": "review",
+            "start": 18.1,
+            "end": 18.44
+          },
+          {
+            "text": "as",
+            "start": 18.44,
+            "end": 18.9
+          }
+        ]
+      },
+      {
+        "start": 18.9,
+        "end": 19.66,
+        "text": "any other software.",
+        "words": [
+          {
+            "text": "any",
+            "start": 18.9,
+            "end": 19.14
+          },
+          {
+            "text": "other",
+            "start": 19.14,
+            "end": 19.38
+          },
+          {
+            "text": "software.",
+            "start": 19.38,
+            "end": 19.66
+          }
+        ]
+      },
+      {
+        "start": 20.44,
+        "end": 21.8,
+        "text": "You cannot govern the AI you cannot",
+        "words": [
+          {
+            "text": "You",
+            "start": 20.44,
+            "end": 20.44
+          },
+          {
+            "text": "cannot",
+            "start": 20.44,
+            "end": 20.6
+          },
+          {
+            "text": "govern",
+            "start": 20.6,
+            "end": 20.92
+          },
+          {
+            "text": "the",
+            "start": 20.92,
+            "end": 21.16
+          },
+          {
+            "text": "AI",
+            "start": 21.16,
+            "end": 21.34
+          },
+          {
+            "text": "you",
+            "start": 21.34,
+            "end": 21.62
+          },
+          {
+            "text": "cannot",
+            "start": 21.62,
+            "end": 21.8
+          }
+        ]
+      },
+      {
+        "start": 21.8,
+        "end": 22.12,
+        "text": "see.",
+        "words": [
+          {
+            "text": "see.",
+            "start": 21.8,
+            "end": 22.12
+          }
+        ]
+      },
+      {
+        "start": 22.92,
+        "end": 24.56,
+        "text": "Inventory first, then write the policy.",
+        "words": [
+          {
+            "text": "Inventory",
+            "start": 22.92,
+            "end": 23.08
+          },
+          {
+            "text": "first,",
+            "start": 23.08,
+            "end": 23.5
+          },
+          {
+            "text": "then",
+            "start": 23.84,
+            "end": 24.04
+          },
+          {
+            "text": "write",
+            "start": 24.04,
+            "end": 24.18
+          },
+          {
+            "text": "the",
+            "start": 24.18,
+            "end": 24.38
+          },
+          {
+            "text": "policy.",
+            "start": 24.38,
+            "end": 24.56
+          }
+        ]
+      },
+      {
+        "start": 25.34,
+        "end": 26.26,
+        "text": "Do you have a current list of",
+        "words": [
+          {
+            "text": "Do",
+            "start": 25.34,
+            "end": 25.38
+          },
+          {
+            "text": "you",
+            "start": 25.38,
+            "end": 25.44
+          },
+          {
+            "text": "have",
+            "start": 25.44,
+            "end": 25.58
+          },
+          {
+            "text": "a",
+            "start": 25.58,
+            "end": 25.64
+          },
+          {
+            "text": "current",
+            "start": 25.64,
+            "end": 25.82
+          },
+          {
+            "text": "list",
+            "start": 25.82,
+            "end": 26.06
+          },
+          {
+            "text": "of",
+            "start": 26.06,
+            "end": 26.26
+          }
+        ]
+      },
+      {
+        "start": 26.26,
+        "end": 27.9,
+        "text": "the AI tools your team actually uses?",
+        "words": [
+          {
+            "text": "the",
+            "start": 26.26,
+            "end": 26.36
+          },
+          {
+            "text": "AI",
+            "start": 26.36,
+            "end": 26.54
+          },
+          {
+            "text": "tools",
+            "start": 26.54,
+            "end": 26.84
+          },
+          {
+            "text": "your",
+            "start": 26.84,
+            "end": 27.08
+          },
+          {
+            "text": "team",
+            "start": 27.08,
+            "end": 27.32
+          },
+          {
+            "text": "actually",
+            "start": 27.32,
+            "end": 27.52
+          },
+          {
+            "text": "uses?",
+            "start": 27.52,
+            "end": 27.9
+          }
+        ]
+      },
+      {
+        "start": 28.34,
+        "end": 28.72,
+        "text": "Tell me below.",
+        "words": [
+          {
+            "text": "Tell",
+            "start": 28.34,
+            "end": 28.42
+          },
+          {
+            "text": "me",
+            "start": 28.42,
+            "end": 28.56
+          },
+          {
+            "text": "below.",
+            "start": 28.56,
+            "end": 28.72
+          }
+        ]
+      }
+    ]
   },
   "qa": {
     "fact_checked": true,
