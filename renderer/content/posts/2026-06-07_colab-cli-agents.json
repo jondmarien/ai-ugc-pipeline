@@ -366,620 +366,647 @@
       {
         "start": 0.0,
         "end": 2.4,
-        "text": "Google's new Colab CLI lets an AI",
+        "text": "Google's new collab CLI lets an AI",
         "words": [
           {
             "text": "Google's",
             "start": 0.0,
-            "end": 0.6
+            "end": 0.68
           },
           {
             "text": "new",
-            "start": 0.6,
-            "end": 0.76
+            "start": 0.68,
+            "end": 0.82
           },
           {
-            "text": "Colab",
-            "start": 0.76,
+            "text": "collab",
+            "start": 0.82,
             "end": 1.22
           },
           {
             "text": "CLI",
             "start": 1.22,
-            "end": 1.46
+            "end": 1.48
           },
           {
             "text": "lets",
-            "start": 1.46,
+            "start": 1.48,
             "end": 2.02
           },
           {
             "text": "an",
             "start": 2.02,
-            "end": 2.2
+            "end": 2.18
           },
           {
             "text": "AI",
-            "start": 2.2,
+            "start": 2.18,
             "end": 2.4
           }
         ]
       },
       {
         "start": 2.4,
-        "end": 4.82,
+        "end": 4.74,
         "text": "agent run Python on remote GPUs and",
         "words": [
           {
             "text": "agent",
             "start": 2.4,
-            "end": 2.84
+            "end": 2.82
           },
           {
             "text": "run",
-            "start": 2.84,
-            "end": 3.06
+            "start": 2.82,
+            "end": 3.02
           },
           {
             "text": "Python",
-            "start": 3.06,
-            "end": 3.3
+            "start": 3.02,
+            "end": 3.28
           },
           {
             "text": "on",
-            "start": 3.3,
+            "start": 3.28,
             "end": 3.76
           },
           {
             "text": "remote",
             "start": 3.76,
-            "end": 4.02
+            "end": 4.0
           },
           {
             "text": "GPUs",
-            "start": 4.02,
+            "start": 4.0,
             "end": 4.34
           },
           {
             "text": "and",
             "start": 4.34,
-            "end": 4.82
+            "end": 4.74
           }
         ]
       },
       {
-        "start": 4.82,
-        "end": 7.82,
-        "text": "TPUs straight from your terminal. It authenticates",
+        "start": 4.74,
+        "end": 7.36,
+        "text": "TPUs, straight from your terminal, it authenticates",
         "words": [
           {
-            "text": "TPUs",
-            "start": 4.82,
-            "end": 5.56
+            "text": "TPUs,",
+            "start": 4.74,
+            "end": 5.34
           },
           {
             "text": "straight",
-            "start": 5.56,
-            "end": 5.9
+            "start": 5.44,
+            "end": 5.64
           },
           {
             "text": "from",
-            "start": 5.9,
-            "end": 6.16
+            "start": 5.64,
+            "end": 5.92
           },
           {
             "text": "your",
-            "start": 6.16,
-            "end": 6.32
+            "start": 5.92,
+            "end": 6.04
           },
           {
-            "text": "terminal.",
-            "start": 6.32,
-            "end": 6.64
+            "text": "terminal,",
+            "start": 6.04,
+            "end": 6.4
           },
           {
-            "text": "It",
-            "start": 7.1,
-            "end": 7.14
+            "text": "it",
+            "start": 6.64,
+            "end": 6.72
           },
           {
             "text": "authenticates",
-            "start": 7.14,
-            "end": 7.82
+            "start": 6.72,
+            "end": 7.36
           }
         ]
       },
       {
-        "start": 7.82,
-        "end": 9.34,
+        "start": 7.36,
+        "end": 8.94,
         "text": "with your Google account, and it is",
         "words": [
           {
             "text": "with",
-            "start": 7.82,
-            "end": 7.94
+            "start": 7.36,
+            "end": 7.48
           },
           {
             "text": "your",
-            "start": 7.94,
-            "end": 8.08
+            "start": 7.48,
+            "end": 7.58
           },
           {
             "text": "Google",
-            "start": 8.08,
-            "end": 8.32
+            "start": 7.58,
+            "end": 7.78
           },
           {
             "text": "account,",
-            "start": 8.32,
-            "end": 8.64
+            "start": 7.78,
+            "end": 8.14
           },
           {
             "text": "and",
-            "start": 9.08,
-            "end": 9.14
+            "start": 8.66,
+            "end": 8.74
           },
           {
             "text": "it",
-            "start": 9.14,
-            "end": 9.26
+            "start": 8.74,
+            "end": 8.84
           },
           {
             "text": "is",
-            "start": 9.26,
-            "end": 9.34
+            "start": 8.84,
+            "end": 8.94
           }
         ]
       },
       {
-        "start": 9.34,
-        "end": 10.86,
-        "text": "built so agents can drive it not",
+        "start": 8.94,
+        "end": 10.7,
+        "text": "built so agents can drive it, not",
         "words": [
           {
             "text": "built",
-            "start": 9.34,
-            "end": 9.54
+            "start": 8.94,
+            "end": 9.12
           },
           {
             "text": "so",
-            "start": 9.54,
-            "end": 9.78
+            "start": 9.12,
+            "end": 9.34
           },
           {
             "text": "agents",
-            "start": 9.78,
-            "end": 10.04
+            "start": 9.34,
+            "end": 9.56
           },
           {
             "text": "can",
-            "start": 10.04,
-            "end": 10.3
+            "start": 9.56,
+            "end": 9.84
           },
           {
             "text": "drive",
-            "start": 10.3,
-            "end": 10.54
+            "start": 9.84,
+            "end": 10.08
           },
           {
-            "text": "it",
-            "start": 10.54,
-            "end": 10.7
+            "text": "it,",
+            "start": 10.08,
+            "end": 10.26
           },
           {
             "text": "not",
-            "start": 10.7,
-            "end": 10.86
+            "start": 10.52,
+            "end": 10.7
           }
         ]
       },
       {
-        "start": 10.86,
-        "end": 12.82,
-        "text": "just people. So don't hand an agent",
+        "start": 10.7,
+        "end": 12.56,
+        "text": "just people, so don't hand an agent",
         "words": [
           {
             "text": "just",
-            "start": 10.86,
-            "end": 11.1
+            "start": 10.7,
+            "end": 10.9
           },
           {
-            "text": "people.",
-            "start": 11.1,
-            "end": 11.28
+            "text": "people,",
+            "start": 10.9,
+            "end": 11.14
           },
           {
-            "text": "So",
-            "start": 11.84,
-            "end": 12.0
+            "text": "so",
+            "start": 11.5,
+            "end": 11.7
           },
           {
             "text": "don't",
-            "start": 12.0,
-            "end": 12.22
+            "start": 11.7,
+            "end": 12.0
           },
           {
             "text": "hand",
-            "start": 12.22,
-            "end": 12.4
+            "start": 12.0,
+            "end": 12.16
           },
           {
             "text": "an",
-            "start": 12.4,
-            "end": 12.58
+            "start": 12.16,
+            "end": 12.3
           },
           {
             "text": "agent",
-            "start": 12.58,
-            "end": 12.82
+            "start": 12.3,
+            "end": 12.56
           }
         ]
       },
       {
-        "start": 12.82,
-        "end": 14.72,
-        "text": "your main login. Give it a dedicated",
+        "start": 12.56,
+        "end": 13.12,
+        "text": "your main login.",
         "words": [
           {
             "text": "your",
-            "start": 12.82,
-            "end": 13.04
+            "start": 12.56,
+            "end": 12.72
           },
           {
             "text": "main",
-            "start": 13.04,
-            "end": 13.22
+            "start": 12.72,
+            "end": 12.84
           },
           {
             "text": "login.",
-            "start": 13.22,
-            "end": 13.52
-          },
+            "start": 12.84,
+            "end": 13.12
+          }
+        ]
+      },
+      {
+        "start": 13.72,
+        "end": 15.06,
+        "text": "Give it a low privilege account with",
+        "words": [
           {
             "text": "Give",
-            "start": 14.08,
-            "end": 14.14
+            "start": 13.72,
+            "end": 13.78
           },
           {
             "text": "it",
-            "start": 14.14,
-            "end": 14.28
+            "start": 13.78,
+            "end": 13.88
           },
           {
             "text": "a",
-            "start": 14.28,
+            "start": 13.88,
+            "end": 13.92
+          },
+          {
+            "text": "low",
+            "start": 13.92,
+            "end": 14.08
+          },
+          {
+            "text": "privilege",
+            "start": 14.08,
             "end": 14.32
           },
           {
-            "text": "dedicated",
-            "start": 14.32,
-            "end": 14.72
-          }
-        ]
-      },
-      {
-        "start": 14.72,
-        "end": 17.14,
-        "text": "low-privilege account with hard budgets, watch what leaves,",
-        "words": [
-          {
-            "text": "low-privilege",
-            "start": 14.72,
-            "end": 15.46
-          },
-          {
             "text": "account",
-            "start": 15.46,
-            "end": 15.74
+            "start": 14.32,
+            "end": 14.74
           },
           {
             "text": "with",
-            "start": 15.74,
-            "end": 15.98
-          },
+            "start": 14.74,
+            "end": 15.06
+          }
+        ]
+      },
+      {
+        "start": 15.06,
+        "end": 17.18,
+        "text": "hard budgets, watch what leaves, and what",
+        "words": [
           {
             "text": "hard",
-            "start": 15.98,
-            "end": 16.2
+            "start": 15.06,
+            "end": 15.24
           },
           {
             "text": "budgets,",
-            "start": 16.2,
-            "end": 16.5
+            "start": 15.24,
+            "end": 15.58
           },
           {
             "text": "watch",
-            "start": 16.5,
-            "end": 16.72
+            "start": 16.0,
+            "end": 16.18
           },
           {
             "text": "what",
-            "start": 16.72,
-            "end": 16.92
+            "start": 16.18,
+            "end": 16.44
           },
           {
             "text": "leaves,",
-            "start": 16.92,
-            "end": 17.14
+            "start": 16.44,
+            "end": 16.6
+          },
+          {
+            "text": "and",
+            "start": 17.0,
+            "end": 17.04
+          },
+          {
+            "text": "what",
+            "start": 17.04,
+            "end": 17.18
           }
         ]
       },
       {
-        "start": 17.14,
-        "end": 18.5,
-        "text": "and keep the session logs.",
+        "start": 17.18,
+        "end": 18.88,
+        "text": "it spends, and keep the session logs.",
         "words": [
           {
+            "text": "it",
+            "start": 17.18,
+            "end": 17.26
+          },
+          {
+            "text": "spends,",
+            "start": 17.26,
+            "end": 17.52
+          },
+          {
             "text": "and",
-            "start": 17.14,
-            "end": 17.62
+            "start": 17.88,
+            "end": 18.04
           },
           {
             "text": "keep",
-            "start": 17.62,
-            "end": 17.78
+            "start": 18.04,
+            "end": 18.22
           },
           {
             "text": "the",
-            "start": 17.78,
-            "end": 17.96
+            "start": 18.22,
+            "end": 18.36
           },
           {
             "text": "session",
-            "start": 17.96,
-            "end": 18.2
+            "start": 18.36,
+            "end": 18.58
           },
           {
             "text": "logs.",
-            "start": 18.2,
-            "end": 18.5
+            "start": 18.58,
+            "end": 18.88
           }
         ]
       },
       {
-        "start": 19.42,
-        "end": 21.1,
+        "start": 20.12,
+        "end": 22.4,
         "text": "Agent code execution is not just compute.",
         "words": [
           {
             "text": "Agent",
-            "start": 19.42,
-            "end": 19.7
+            "start": 20.12,
+            "end": 20.56
           },
           {
             "text": "code",
-            "start": 19.7,
-            "end": 20.0
+            "start": 20.56,
+            "end": 20.82
           },
           {
             "text": "execution",
-            "start": 20.0,
-            "end": 20.5
+            "start": 20.82,
+            "end": 21.08
           },
           {
             "text": "is",
-            "start": 20.5,
-            "end": 20.66
+            "start": 21.08,
+            "end": 21.66
           },
           {
             "text": "not",
-            "start": 20.66,
-            "end": 20.86
+            "start": 21.66,
+            "end": 21.88
           },
           {
             "text": "just",
-            "start": 20.86,
-            "end": 20.98
+            "start": 21.88,
+            "end": 22.12
           },
           {
             "text": "compute.",
-            "start": 20.98,
-            "end": 21.1
+            "start": 22.12,
+            "end": 22.4
           }
         ]
       },
       {
-        "start": 21.9,
-        "end": 23.92,
-        "text": "It is a two-way data pipe and a",
+        "start": 22.9,
+        "end": 24.26,
+        "text": "It is a two-way data pipe and",
         "words": [
           {
             "text": "It",
-            "start": 21.9,
-            "end": 22.0
+            "start": 22.9,
+            "end": 22.96
           },
           {
             "text": "is",
-            "start": 22.0,
-            "end": 22.1
+            "start": 22.96,
+            "end": 23.04
           },
           {
             "text": "a",
-            "start": 22.1,
-            "end": 22.24
+            "start": 23.04,
+            "end": 23.12
           },
           {
             "text": "two-way",
-            "start": 22.24,
-            "end": 22.7
+            "start": 23.12,
+            "end": 23.48
           },
           {
             "text": "data",
-            "start": 22.7,
-            "end": 23.1
+            "start": 23.48,
+            "end": 23.64
           },
           {
             "text": "pipe",
-            "start": 23.1,
-            "end": 23.5
+            "start": 23.64,
+            "end": 23.94
           },
           {
             "text": "and",
-            "start": 23.5,
-            "end": 23.7
-          },
-          {
-            "text": "a",
-            "start": 23.7,
-            "end": 23.92
+            "start": 23.94,
+            "end": 24.26
           }
         ]
       },
       {
-        "start": 23.92,
-        "end": 24.96,
-        "text": "billable account, both signed in as you.",
+        "start": 24.26,
+        "end": 26.0,
+        "text": "a billable account, both signed in as",
         "words": [
           {
+            "text": "a",
+            "start": 24.26,
+            "end": 24.34
+          },
+          {
             "text": "billable",
-            "start": 23.92,
-            "end": 24.24
+            "start": 24.34,
+            "end": 24.62
           },
           {
             "text": "account,",
-            "start": 24.24,
-            "end": 24.5
-          },
-          {
-            "text": "both",
-            "start": 24.5,
-            "end": 24.66
-          },
-          {
-            "text": "signed",
-            "start": 24.66,
-            "end": 24.8
-          },
-          {
-            "text": "in",
-            "start": 24.8,
+            "start": 24.62,
             "end": 24.88
           },
           {
-            "text": "as",
-            "start": 24.88,
-            "end": 24.92
+            "text": "both",
+            "start": 25.14,
+            "end": 25.36
           },
           {
-            "text": "you.",
-            "start": 24.92,
-            "end": 24.96
+            "text": "signed",
+            "start": 25.36,
+            "end": 25.66
+          },
+          {
+            "text": "in",
+            "start": 25.66,
+            "end": 25.84
+          },
+          {
+            "text": "as",
+            "start": 25.84,
+            "end": 26.0
           }
         ]
       },
       {
-        "start": 25.62,
-        "end": 26.96,
-        "text": "Would you let an agent spend your compute",
+        "start": 26.0,
+        "end": 27.66,
+        "text": "you. Would you let an agent spend",
         "words": [
           {
+            "text": "you.",
+            "start": 26.0,
+            "end": 26.14
+          },
+          {
             "text": "Would",
-            "start": 25.62,
-            "end": 25.8
+            "start": 26.54,
+            "end": 26.74
           },
           {
             "text": "you",
-            "start": 25.8,
-            "end": 25.92
+            "start": 26.74,
+            "end": 26.86
           },
           {
             "text": "let",
-            "start": 25.92,
-            "end": 26.06
+            "start": 26.86,
+            "end": 27.0
           },
           {
             "text": "an",
-            "start": 26.06,
-            "end": 26.18
+            "start": 27.0,
+            "end": 27.12
           },
           {
             "text": "agent",
-            "start": 26.18,
-            "end": 26.46
+            "start": 27.12,
+            "end": 27.4
           },
           {
             "text": "spend",
-            "start": 26.46,
-            "end": 26.7
-          },
+            "start": 27.4,
+            "end": 27.66
+          }
+        ]
+      },
+      {
+        "start": 27.66,
+        "end": 29.36,
+        "text": "your compute and move your data on",
+        "words": [
           {
             "text": "your",
-            "start": 26.7,
-            "end": 26.82
+            "start": 27.66,
+            "end": 27.86
           },
           {
             "text": "compute",
-            "start": 26.82,
-            "end": 26.96
-          }
-        ]
-      },
-      {
-        "start": 26.96,
-        "end": 28.98,
-        "text": "and move your data on your Google login?",
-        "words": [
+            "start": 27.86,
+            "end": 28.14
+          },
           {
             "text": "and",
-            "start": 26.96,
-            "end": 27.2
+            "start": 28.14,
+            "end": 28.62
           },
           {
             "text": "move",
-            "start": 27.2,
-            "end": 27.44
+            "start": 28.62,
+            "end": 28.74
           },
           {
             "text": "your",
-            "start": 27.44,
-            "end": 27.6
+            "start": 28.74,
+            "end": 28.9
           },
           {
             "text": "data",
-            "start": 27.6,
-            "end": 27.9
+            "start": 28.9,
+            "end": 29.08
           },
           {
             "text": "on",
-            "start": 27.9,
-            "end": 28.28
-          },
-          {
-            "text": "your",
-            "start": 28.28,
-            "end": 28.42
-          },
-          {
-            "text": "Google",
-            "start": 28.42,
-            "end": 28.6
-          },
-          {
-            "text": "login?",
-            "start": 28.6,
-            "end": 28.98
+            "start": 29.08,
+            "end": 29.36
           }
         ]
       },
       {
-        "start": 28.98,
-        "end": 30.0,
-        "text": "Tell me below.",
+        "start": 29.36,
+        "end": 31.06,
+        "text": "your Google login? Tell me below.",
         "words": [
           {
+            "text": "your",
+            "start": 29.36,
+            "end": 29.46
+          },
+          {
+            "text": "Google",
+            "start": 29.46,
+            "end": 29.62
+          },
+          {
+            "text": "login?",
+            "start": 29.62,
+            "end": 29.94
+          },
+          {
             "text": "Tell",
-            "start": 28.98,
-            "end": 29.66
+            "start": 29.94,
+            "end": 30.74
           },
           {
             "text": "me",
-            "start": 29.66,
-            "end": 29.78
+            "start": 30.74,
+            "end": 30.86
           },
           {
             "text": "below.",
-            "start": 29.78,
-            "end": 30.0
+            "start": 30.86,
+            "end": 31.06
           }
         ]
       }

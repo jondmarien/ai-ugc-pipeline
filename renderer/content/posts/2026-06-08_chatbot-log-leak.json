@@ -372,593 +372,600 @@
     "captions": [
       {
         "start": 0.0,
-        "end": 1.94,
+        "end": 1.8,
         "text": "The logs you paste into a chatbot",
         "words": [
           {
             "text": "The",
             "start": 0.0,
-            "end": 0.32
+            "end": 0.34
           },
           {
             "text": "logs",
-            "start": 0.32,
-            "end": 0.54
+            "start": 0.34,
+            "end": 0.56
           },
           {
             "text": "you",
-            "start": 0.54,
-            "end": 0.78
+            "start": 0.56,
+            "end": 0.8
           },
           {
             "text": "paste",
-            "start": 0.78,
+            "start": 0.8,
             "end": 0.98
           },
           {
             "text": "into",
             "start": 0.98,
-            "end": 1.32
+            "end": 1.24
           },
           {
             "text": "a",
-            "start": 1.32,
-            "end": 1.48
+            "start": 1.24,
+            "end": 1.42
           },
           {
             "text": "chatbot",
-            "start": 1.48,
-            "end": 1.94
+            "start": 1.42,
+            "end": 1.8
           }
         ]
       },
       {
-        "start": 1.94,
-        "end": 4.12,
-        "text": "leave your control, and you cannot pull",
+        "start": 1.8,
+        "end": 3.64,
+        "text": "leave your control and you cannot pull",
         "words": [
           {
             "text": "leave",
-            "start": 1.94,
-            "end": 2.48
+            "start": 1.8,
+            "end": 2.14
           },
           {
             "text": "your",
-            "start": 2.48,
-            "end": 2.66
+            "start": 2.14,
+            "end": 2.34
           },
           {
-            "text": "control,",
-            "start": 2.66,
-            "end": 2.98
+            "text": "control",
+            "start": 2.34,
+            "end": 2.64
           },
           {
             "text": "and",
-            "start": 3.5,
-            "end": 3.54
+            "start": 2.64,
+            "end": 3.02
           },
           {
             "text": "you",
-            "start": 3.54,
-            "end": 3.64
+            "start": 3.02,
+            "end": 3.12
           },
           {
             "text": "cannot",
-            "start": 3.64,
-            "end": 3.8
+            "start": 3.12,
+            "end": 3.3
           },
           {
             "text": "pull",
-            "start": 3.8,
-            "end": 4.12
+            "start": 3.3,
+            "end": 3.64
           }
         ]
       },
       {
-        "start": 4.12,
-        "end": 4.46,
+        "start": 3.64,
+        "end": 4.02,
         "text": "them back.",
         "words": [
           {
             "text": "them",
-            "start": 4.12,
-            "end": 4.26
+            "start": 3.64,
+            "end": 3.8
           },
           {
             "text": "back.",
-            "start": 4.26,
-            "end": 4.46
+            "start": 3.8,
+            "end": 4.02
           }
         ]
       },
       {
-        "start": 5.2,
-        "end": 7.76,
-        "text": "Samsung learned this in 2023 when engineers",
+        "start": 4.64,
+        "end": 7.32,
+        "text": "Samsung learned this in 2023, when engineers",
         "words": [
           {
             "text": "Samsung",
-            "start": 5.2,
-            "end": 5.48
+            "start": 4.64,
+            "end": 4.92
           },
           {
             "text": "learned",
-            "start": 5.48,
-            "end": 5.88
+            "start": 4.92,
+            "end": 5.26
           },
           {
             "text": "this",
-            "start": 5.88,
-            "end": 6.16
+            "start": 5.26,
+            "end": 5.52
           },
           {
             "text": "in",
-            "start": 6.16,
-            "end": 6.32
+            "start": 5.52,
+            "end": 5.64
           },
           {
-            "text": "2023",
-            "start": 6.32,
-            "end": 7.06
+            "text": "2023,",
+            "start": 5.64,
+            "end": 6.42
           },
           {
             "text": "when",
-            "start": 7.06,
-            "end": 7.48
+            "start": 6.82,
+            "end": 7.02
           },
           {
             "text": "engineers",
-            "start": 7.48,
-            "end": 7.76
+            "start": 7.02,
+            "end": 7.32
           }
         ]
       },
       {
-        "start": 7.76,
-        "end": 10.42,
-        "text": "pasted source code into ChatGPT, and the",
+        "start": 7.32,
+        "end": 10.38,
+        "text": "pasted source code into ChatGPT and the",
         "words": [
           {
             "text": "pasted",
-            "start": 7.76,
-            "end": 8.38
+            "start": 7.32,
+            "end": 7.98
           },
           {
             "text": "source",
-            "start": 8.38,
-            "end": 8.56
+            "start": 7.98,
+            "end": 8.18
           },
           {
             "text": "code",
-            "start": 8.56,
-            "end": 8.86
+            "start": 8.18,
+            "end": 8.52
           },
           {
             "text": "into",
-            "start": 8.86,
-            "end": 9.06
+            "start": 8.52,
+            "end": 8.78
           },
           {
-            "text": "ChatGPT,",
-            "start": 9.06,
-            "end": 9.72
+            "text": "ChatGPT",
+            "start": 8.78,
+            "end": 9.6
           },
           {
             "text": "and",
-            "start": 10.28,
-            "end": 10.36
+            "start": 9.6,
+            "end": 10.32
           },
           {
             "text": "the",
-            "start": 10.36,
-            "end": 10.42
+            "start": 10.32,
+            "end": 10.38
           }
         ]
       },
       {
-        "start": 10.42,
-        "end": 12.08,
+        "start": 10.38,
+        "end": 12.06,
         "text": "company banned the tools within weeks.",
         "words": [
           {
             "text": "company",
-            "start": 10.42,
+            "start": 10.38,
             "end": 10.7
           },
           {
             "text": "banned",
             "start": 10.7,
-            "end": 11.0
+            "end": 10.98
           },
           {
             "text": "the",
-            "start": 11.0,
-            "end": 11.28
+            "start": 10.98,
+            "end": 11.24
           },
           {
             "text": "tools",
-            "start": 11.28,
-            "end": 11.48
+            "start": 11.24,
+            "end": 11.44
           },
           {
             "text": "within",
-            "start": 11.48,
-            "end": 11.76
+            "start": 11.44,
+            "end": 11.78
           },
           {
             "text": "weeks.",
-            "start": 11.76,
-            "end": 12.08
+            "start": 11.78,
+            "end": 12.06
           }
         ]
       },
       {
         "start": 12.7,
-        "end": 14.7,
+        "end": 15.2,
         "text": "Copy and paste slips past file-based data",
         "words": [
           {
             "text": "Copy",
             "start": 12.7,
-            "end": 12.88
+            "end": 13.0
           },
           {
             "text": "and",
-            "start": 12.88,
-            "end": 13.12
+            "start": 13.0,
+            "end": 13.22
           },
           {
             "text": "paste",
-            "start": 13.12,
-            "end": 13.28
+            "start": 13.22,
+            "end": 13.42
           },
           {
             "text": "slips",
-            "start": 13.28,
-            "end": 13.54
+            "start": 13.42,
+            "end": 13.82
           },
           {
             "text": "past",
-            "start": 13.54,
-            "end": 13.88
+            "start": 13.82,
+            "end": 14.24
           },
           {
             "text": "file-based",
-            "start": 13.88,
-            "end": 14.48
-          },
-          {
-            "text": "data",
-            "start": 14.48,
-            "end": 14.7
-          }
-        ]
-      },
-      {
-        "start": 14.7,
-        "end": 16.82,
-        "text": "loss tools, so give people a sanctioned",
-        "words": [
-          {
-            "text": "loss",
-            "start": 14.7,
+            "start": 14.24,
             "end": 14.96
           },
           {
-            "text": "tools,",
+            "text": "data",
             "start": 14.96,
-            "end": 15.28
-          },
-          {
-            "text": "so",
-            "start": 15.84,
-            "end": 15.96
-          },
-          {
-            "text": "give",
-            "start": 15.96,
-            "end": 16.1
-          },
-          {
-            "text": "people",
-            "start": 16.1,
-            "end": 16.46
-          },
-          {
-            "text": "a",
-            "start": 16.46,
-            "end": 16.58
-          },
-          {
-            "text": "sanctioned",
-            "start": 16.58,
-            "end": 16.82
+            "end": 15.2
           }
         ]
       },
       {
-        "start": 16.82,
-        "end": 19.04,
-        "text": "tool with redaction and logging, and one",
+        "start": 15.2,
+        "end": 15.7,
+        "text": "loss tools,",
         "words": [
           {
+            "text": "loss",
+            "start": 15.2,
+            "end": 15.44
+          },
+          {
+            "text": "tools,",
+            "start": 15.44,
+            "end": 15.7
+          }
+        ]
+      },
+      {
+        "start": 16.34,
+        "end": 17.88,
+        "text": "so give people a sanctioned tool with",
+        "words": [
+          {
+            "text": "so",
+            "start": 16.34,
+            "end": 16.36
+          },
+          {
+            "text": "give",
+            "start": 16.36,
+            "end": 16.5
+          },
+          {
+            "text": "people",
+            "start": 16.5,
+            "end": 16.8
+          },
+          {
+            "text": "a",
+            "start": 16.8,
+            "end": 16.9
+          },
+          {
+            "text": "sanctioned",
+            "start": 16.9,
+            "end": 17.12
+          },
+          {
             "text": "tool",
-            "start": 16.82,
-            "end": 17.2
+            "start": 17.12,
+            "end": 17.54
           },
           {
             "text": "with",
-            "start": 17.2,
-            "end": 17.42
-          },
+            "start": 17.54,
+            "end": 17.88
+          }
+        ]
+      },
+      {
+        "start": 17.88,
+        "end": 20.2,
+        "text": "redaction and logging and one rule never",
+        "words": [
           {
             "text": "redaction",
-            "start": 17.42,
-            "end": 17.84
+            "start": 17.88,
+            "end": 18.28
           },
           {
             "text": "and",
-            "start": 17.84,
-            "end": 18.08
+            "start": 18.28,
+            "end": 18.5
           },
           {
-            "text": "logging,",
-            "start": 18.08,
-            "end": 18.32
+            "text": "logging",
+            "start": 18.5,
+            "end": 18.7
           },
           {
             "text": "and",
             "start": 18.7,
-            "end": 18.88
+            "end": 19.3
           },
           {
             "text": "one",
-            "start": 18.88,
-            "end": 19.04
-          }
-        ]
-      },
-      {
-        "start": 19.04,
-        "end": 20.76,
-        "text": "rule, never paste production data.",
-        "words": [
-          {
-            "text": "rule,",
-            "start": 19.04,
-            "end": 19.32
+            "start": 19.3,
+            "end": 19.48
           },
           {
-            "text": "never",
-            "start": 19.66,
+            "text": "rule",
+            "start": 19.48,
             "end": 19.76
           },
           {
-            "text": "paste",
+            "text": "never",
             "start": 19.76,
-            "end": 20.06
+            "end": 20.2
+          }
+        ]
+      },
+      {
+        "start": 20.2,
+        "end": 22.7,
+        "text": "paste production data. Once it is pasted,",
+        "words": [
+          {
+            "text": "paste",
+            "start": 20.2,
+            "end": 20.58
           },
           {
             "text": "production",
-            "start": 20.06,
-            "end": 20.4
+            "start": 20.58,
+            "end": 20.94
           },
           {
             "text": "data.",
-            "start": 20.4,
-            "end": 20.76
-          }
-        ]
-      },
-      {
-        "start": 21.52,
-        "end": 23.38,
-        "text": "Once it is pasted, you cannot get",
-        "words": [
+            "start": 20.94,
+            "end": 21.3
+          },
           {
             "text": "Once",
-            "start": 21.52,
-            "end": 21.8
+            "start": 21.84,
+            "end": 21.96
           },
           {
             "text": "it",
-            "start": 21.8,
-            "end": 22.0
+            "start": 21.96,
+            "end": 22.12
           },
           {
             "text": "is",
-            "start": 22.0,
-            "end": 22.08
+            "start": 22.12,
+            "end": 22.2
           },
           {
             "text": "pasted,",
-            "start": 22.08,
-            "end": 22.54
-          },
+            "start": 22.2,
+            "end": 22.7
+          }
+        ]
+      },
+      {
+        "start": 22.92,
+        "end": 23.78,
+        "text": "you cannot get it back.",
+        "words": [
           {
             "text": "you",
-            "start": 22.74,
-            "end": 22.86
+            "start": 22.92,
+            "end": 23.0
           },
           {
             "text": "cannot",
-            "start": 22.86,
-            "end": 23.06
+            "start": 23.0,
+            "end": 23.18
           },
           {
             "text": "get",
-            "start": 23.06,
-            "end": 23.38
-          }
-        ]
-      },
-      {
-        "start": 23.38,
-        "end": 23.7,
-        "text": "it back.",
-        "words": [
-          {
-            "text": "it",
-            "start": 23.38,
+            "start": 23.18,
             "end": 23.48
           },
           {
-            "text": "back.",
+            "text": "it",
             "start": 23.48,
-            "end": 23.7
+            "end": 23.56
+          },
+          {
+            "text": "back.",
+            "start": 23.56,
+            "end": 23.78
           }
         ]
       },
       {
-        "start": 24.38,
-        "end": 26.0,
+        "start": 24.58,
+        "end": 26.44,
         "text": "Make the safe path easier than the",
         "words": [
           {
             "text": "Make",
-            "start": 24.38,
-            "end": 24.44
+            "start": 24.58,
+            "end": 25.02
           },
           {
             "text": "the",
-            "start": 24.44,
-            "end": 24.62
+            "start": 25.02,
+            "end": 25.2
           },
           {
             "text": "safe",
-            "start": 24.62,
-            "end": 24.8
+            "start": 25.2,
+            "end": 25.38
           },
           {
             "text": "path",
-            "start": 24.8,
-            "end": 25.1
+            "start": 25.38,
+            "end": 25.62
           },
           {
             "text": "easier",
-            "start": 25.1,
-            "end": 25.48
+            "start": 25.62,
+            "end": 26.04
           },
           {
             "text": "than",
-            "start": 25.48,
-            "end": 25.9
+            "start": 26.04,
+            "end": 26.36
           },
           {
             "text": "the",
-            "start": 25.9,
-            "end": 26.0
+            "start": 26.36,
+            "end": 26.44
           }
         ]
       },
       {
-        "start": 26.0,
-        "end": 27.86,
+        "start": 26.44,
+        "end": 27.98,
         "text": "risky one. Does your team have a",
         "words": [
           {
             "text": "risky",
-            "start": 26.0,
-            "end": 26.18
+            "start": 26.44,
+            "end": 26.62
           },
           {
             "text": "one.",
-            "start": 26.18,
-            "end": 26.52
+            "start": 26.62,
+            "end": 26.92
           },
           {
             "text": "Does",
-            "start": 26.52,
-            "end": 27.2
+            "start": 27.4,
+            "end": 27.4
           },
           {
             "text": "your",
-            "start": 27.2,
-            "end": 27.34
+            "start": 27.4,
+            "end": 27.54
           },
           {
             "text": "team",
-            "start": 27.34,
-            "end": 27.56
+            "start": 27.54,
+            "end": 27.74
           },
           {
             "text": "have",
-            "start": 27.56,
-            "end": 27.76
+            "start": 27.74,
+            "end": 27.9
           },
           {
             "text": "a",
-            "start": 27.76,
-            "end": 27.86
+            "start": 27.9,
+            "end": 27.98
           }
         ]
       },
       {
-        "start": 27.86,
-        "end": 29.48,
+        "start": 27.98,
+        "end": 29.7,
         "text": "sanctioned way to use AI on real",
         "words": [
           {
             "text": "sanctioned",
-            "start": 27.86,
-            "end": 28.08
+            "start": 27.98,
+            "end": 28.24
           },
           {
             "text": "way",
-            "start": 28.08,
-            "end": 28.44
-          },
-          {
-            "text": "to",
-            "start": 28.44,
+            "start": 28.24,
             "end": 28.62
           },
           {
-            "text": "use",
+            "text": "to",
             "start": 28.62,
-            "end": 28.84
+            "end": 28.76
+          },
+          {
+            "text": "use",
+            "start": 28.76,
+            "end": 28.98
           },
           {
             "text": "AI",
-            "start": 28.84,
-            "end": 29.02
+            "start": 28.98,
+            "end": 29.14
           },
           {
             "text": "on",
-            "start": 29.02,
-            "end": 29.34
+            "start": 29.14,
+            "end": 29.54
           },
           {
             "text": "real",
-            "start": 29.34,
-            "end": 29.48
+            "start": 29.54,
+            "end": 29.7
           }
         ]
       },
       {
-        "start": 29.48,
-        "end": 30.62,
-        "text": "data? Tell me below.",
+        "start": 29.7,
+        "end": 29.98,
+        "text": "data?",
         "words": [
           {
             "text": "data?",
-            "start": 29.48,
-            "end": 29.74
-          },
+            "start": 29.7,
+            "end": 29.98
+          }
+        ]
+      },
+      {
+        "start": 30.66,
+        "end": 31.16,
+        "text": "Tell me below.",
+        "words": [
           {
             "text": "Tell",
-            "start": 30.24,
-            "end": 30.26
+            "start": 30.66,
+            "end": 30.78
           },
           {
             "text": "me",
-            "start": 30.26,
-            "end": 30.4
+            "start": 30.78,
+            "end": 30.92
           },
           {
             "text": "below.",
-            "start": 30.4,
-            "end": 30.62
+            "start": 30.92,
+            "end": 31.16
           }
         ]
       }
