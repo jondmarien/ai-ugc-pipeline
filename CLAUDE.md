@@ -34,7 +34,7 @@ Reel **audio** = `video.audio` — `voice_mode` ∈ `none|voxcpm2|voxcpm2-0.5b|b
 - `pipeline/content/` — workflow, IDEA_BACKLOG, POST_TEMPLATE, CAPTION_BANK, VISUAL_PROMPT_BANK, QA_CHECKLIST, WEEK_1_POSTS, **VOICE_AND_TONE_GUIDE**, **DRAFT_POST_REFERENCE**.
 - `pipeline/media/` — tool stack, voiceover/b-roll/music guides, OPEN_SOURCE_EVALUATION_MATRIX.
 - `renderer/` — React+Playwright carousels + Remotion reels. Docs in `renderer/docs/`; start with `RUN_IT_YOURSELF.md`, then **`PROJECT_ARCHITECTURE.md`** + **`PIPELINE_ARCHITECTURE.md`** for the design.
-- `.claude/skills/` — `ai-cybersecurity-ugc-carousel`, `react-remotion-instagram-renderer`, `humanizer`, `stop-slop`, `professional-proofreader`, `ig-ingest`.
+- `.claude/skills/` — `ai-cybersecurity-ugc-carousel`, `react-remotion-instagram-renderer`, `humanizer`, `stop-slop`, `professional-proofreader`, `ig-ingest`. **Skills vs commands** (both git-tracked, both ship with the repo): `.claude/skills/*/SKILL.md` are capabilities the workflow uses, and each is directly invokable as `/<skill-name>` (e.g. `/humanizer`); `.claude/commands/*.md` are the slash-command workflow entry points (`/draft-post`, `/draft-week`, `/ingest-post`, `/refresh-post`) that orchestrate those skills.
 - `pipeline/renders/` — upload-ready output packages (PNGs, reel.mp4, caption/alt/sources/LICENSES, `voice.meta.json` = reusable voice seed).
 
 ## Renderer commands (run inside `renderer/`)
