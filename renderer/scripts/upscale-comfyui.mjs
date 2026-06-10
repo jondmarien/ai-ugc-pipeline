@@ -26,9 +26,48 @@ const opt = (name, def) => {
   const hit = args.find((a) => a.startsWith(`--${name}=`));
   return hit ? hit.split("=")[1] : def;
 };
-const key = args.find((a) => !a.startsWith("--"));
+const key = args.find((a) => !a.startsWith("--") && a !== "-h");
+
+const HELP = `
+bun run upscale — sharpen a post's EXISTING backgrounds with a tiled GAN upscaler (ComfyUI)
+
+USAGE
+  bun run upscale -- <post-key> [flags]
+
+  For each slide that already has a background on disk: upload it to ComfyUI, run
+  UpscaleModelLoader → ImageUpscaleWithModel (4×) → ImageScale (lanczos, back down to the
+  post canvas × scale) → download, and overwrite the background file in place. Standalone
+  use only — when art is being (re)generated, 'bun run art --upscale' integrates this same
+  chain into the generation graph instead (one pass per slide).
+
+FLAGS
+  --upscale-model=NAME.pth  RealESRGAN_x4plus.pth (default, BSD-3) | 4x-UltraSharp.pth —
+                            both auto-download to COMFYUI_UPSCALE_DIR if missing (ComfyUI
+                            may need a restart to register a freshly-downloaded model)
+  --upscale-scale=N         final size = canvas × N (default 1, i.e. 1080×1350)
+  --only=N[,N]              only those slide numbers
+  --dry-run                 list what would be upscaled, submit nothing
+  --help, -h                this help
+
+ENV  COMFYUI_URL (http://127.0.0.1:8000) · UPSCALE_MODEL · COMFYUI_UPSCALE_DIR
+     (E:\\ComfyUI\\models\\upscale_models)
+
+NOTES
+  Missing/unregistered model → warns, lists what ComfyUI has, and skips (non-fatal; the
+  pipeline continues with the un-upscaled backgrounds). The model used is logged once to
+  LICENSES.md for provenance.
+
+EXAMPLES
+  bun run upscale -- 2026-06-08_chatbot-log-leak
+  bun run upscale -- my-post --upscale-model=4x-UltraSharp.pth --only=1
+`;
+
+if (flags.has("--help") || flags.has("-h") || args.includes("-h")) {
+  console.log(HELP);
+  process.exit(0);
+}
 if (!key) {
-  console.error("Usage: bun run upscale -- <post-key> [--upscale-model=NAME.pth] [--upscale-scale=N] [--only=N[,N]] [--dry-run]");
+  console.error(HELP);
   process.exit(1);
 }
 

@@ -29,9 +29,68 @@ const opt = (name, def) => {
   const hit = args.find((a) => a.startsWith(`--${name}=`));
   return hit ? hit.split("=")[1] : def;
 };
-const key = args.find((a) => !a.startsWith("--"));
+const key = args.find((a) => !a.startsWith("--") && a !== "-h");
+
+const HELP = `
+bun run art — per-slide AI backgrounds via a RUNNING ComfyUI (HTTP API; no local model loading)
+
+USAGE
+  bun run art -- <post-key> [flags]
+
+  For each target slide it builds the FLUX graph with that slide's visual_prompt, POSTs
+  /prompt, polls /history, downloads the PNG into public/backgrounds/<prefix>/NN_role.png,
+  flips the slide to asset_status:"generated", and logs the model licence in the post JSON.
+  Then: bun run export -- <post-key>.
+
+TARGETING
+  (default)                 only slides still MISSING art (cover included); "existing" never touched
+  --all | --force           regenerate every non-"existing" slide
+  --only=N[,N]              regenerate exactly those slide numbers
+
+ENGINE & QUALITY
+  --flux1                   legacy FLUX.1-schnell graph (default is FLUX.2 klein 4B GGUF)
+  --passes=N | --steps=N    sampling steps. klein is step-distilled: recommended 4–8,
+                            hard max 12 (clamped; >8 adds heat, not quality)
+  --width=N --height=N      generation size (snapped to ×16; default 1024×1280 on FLUX.2)
+  --seed=N                  seed base (per-post offset keeps posts distinct; default 42)
+  --cooldown=SEC            pause between generations (default 25; 0 disables) — eases the
+                            sustained CPU/GPU load that can trip an OS watchdog on 8 GB rigs
+
+UPSCALE (integrated into the same graph)
+  --upscale                 after VAE decode: GAN upscale → lanczos downscale to the post
+                            canvas → save (the _with_upscale workflow's node chain)
+  --upscale-model=NAME.pth  RealESRGAN_x4plus.pth (default) | 4x-UltraSharp.pth — both
+                            auto-download to COMFYUI_UPSCALE_DIR if missing
+  --upscale-scale=N         final size = canvas × N (default 1)
+
+WORKFLOW SOURCE
+  (default)                 graph built in code (buildGraphFlux2/appendUpscale)
+  --ui-format               execute the version-controlled ComfyUI workflow FILE from
+                            renderer/comfyui-workflows/ (the _with_upscale variant when
+                            --upscale). The file's steps/CFG/size win; each slide's prompt
+                            + seed (and upscale model/canvas) are patched in. FLUX.2 only.
+
+MISC
+  --dry-run                 print the assembled per-slide prompts (and validate --ui-format
+                            conversion) without submitting anything
+  --compare                 (FLUX.2) write into a separate _flux2/ folder, don't touch the JSON
+  --help, -h                this help
+
+ENV  COMFYUI_URL (http://127.0.0.1:8000) · ART2_MODEL / ART2_CFG (1.2) · ART_STEPS ·
+     ART_COOLDOWN_MS · COMFYUI_UNET_DIR · COMFYUI_UPSCALE_DIR · UPSCALE_MODEL
+
+EXAMPLES
+  bun run art -- 2026-06-08_chatbot-log-leak                 fill in missing backgrounds
+  bun run art -- my-post --all --upscale                     full regen + integrated upscale
+  bun run art -- my-post --only=1 --ui-format --dry-run      check the file-driven graph
+`;
+
+if (flags.has("--help") || flags.has("-h") || args.includes("-h")) {
+  console.log(HELP);
+  process.exit(0);
+}
 if (!key) {
-  console.error("Usage: bun run art -- <post-key> [--all|--force] [--flux1 (legacy FLUX.1; default is FLUX.2)] [--only=N[,N]] [--dry-run] [--passes=N|--steps=N] [--width=N] [--height=N] [--seed=N] [--upscale [--upscale-model=NAME.pth] [--upscale-scale=N]] [--ui-format (execute renderer/comfyui-workflows/*.json instead of the code-built graph)]");
+  console.error(HELP);
   process.exit(1);
 }
 
@@ -435,12 +494,26 @@ if (UPSCALE) {
   if (!DRY) await ensureUpscaleModel(UPSCALE_MODEL);
 }
 
+// One config banner reflecting EVERY active flag, so a pipeline log shows exactly what this
+// run does (model, size, steps, cfg, upscale chain, ui-format source, cooldown). Printed in
+// --dry-run too (without the server version) so the config is verifiable without a GPU job.
+const cfgParts = [
+  `${FLUX2 ? "FLUX.2" : "FLUX.1"} model=${FLUX2 ? F2_MODEL : MODEL}`,
+  `${WIDTH}x${HEIGHT}`,
+  `${STEPS} steps`,
+  ...(FLUX2 ? [`cfg=${F2_CFG}`] : []),
+  ...(UPSCALE ? [`upscale=${UPSCALE_MODEL} → ${UP_W}x${UP_H}${UPSCALE_SCALE !== 1 ? ` (canvas ×${UPSCALE_SCALE})` : ""}`] : []),
+  ...(UI_FORMAT && FLUX2 ? [`ui-format=${WF_FILE()} (file's steps/cfg/size win)`] : []),
+  ...(COOLDOWN_MS ? [`cooldown=${Math.round(COOLDOWN_MS / 1000)}s`] : ["cooldown=off"]),
+];
 // confirm ComfyUI is reachable + the model exists
 if (!DRY) {
   let stats;
   try { stats = await fetch(`${URL_BASE}/system_stats`).then((r) => r.json()); }
   catch { console.error(`✗ Can't reach ComfyUI at ${URL_BASE}. Start ComfyUI, then retry. (override with COMFYUI_URL)`); process.exit(1); }
-  console.log(`ComfyUI ${stats?.system?.comfyui_version ?? "?"} @ ${URL_BASE} · ${FLUX2 ? "FLUX.2" : "FLUX.1"} model=${FLUX2 ? F2_MODEL : MODEL} · ${WIDTH}x${HEIGHT} · ${STEPS} steps`);
+  console.log(`ComfyUI ${stats?.system?.comfyui_version ?? "?"} @ ${URL_BASE} · ${cfgParts.join(" · ")}`);
+} else {
+  console.log(`DRY RUN @ ${URL_BASE} · ${cfgParts.join(" · ")}`);
 }
 
 const onlyArg = opt("only", "");
