@@ -20,6 +20,8 @@ Usage: python scripts/align-whisper.py <post-key>
 import json
 import os
 import sys
+import re
+import difflib
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RENDERER = os.path.dirname(HERE)
@@ -150,6 +152,82 @@ def trim_trailing_hallucination(words, narration, voice_wav):
     return words[:cut + 1]
 
 
+def _norm(s: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", s.lower())
+
+
+def script_anchored_captions(asr_words, narration, corrections, max_words=7, max_dur=3.5):
+    """Caption lines built from the narration SCRIPT, timed by aligning script tokens to Whisper's
+    word timings. The DISPLAYED text is the script (correct spelling + punctuation, with
+    caption_corrections applied), so mis-hears ("Read the fine print too" -> "Read Define Print 2"),
+    run-ons, and dropped words never reach the screen — Whisper supplies timing only. Chunks on the
+    script's own sentence boundaries (no run-ons) and fills any ASR gaps by interpolation. Returns
+    None when there is no usable script, so the caller can fall back to raw-transcript chunking."""
+    script = " ".join((n.get("text") or "").strip() for n in narration).strip()
+    if not script or not asr_words:
+        return None
+
+    def fix_tok(tok):
+        for bad, good in corrections.items():
+            tok = re.sub(rf"(?i)\b{re.escape(bad)}\b", good, tok)
+        return tok
+
+    raw = script.split()
+    tokens = [{"text": fix_tok(t), "end_sent": bool(re.search(r"[.!?][\"')\]]*$", t))} for t in raw]
+    s_norm = [_norm(t["text"]) for t in tokens]
+    a_norm = [_norm(w["text"]) for w in asr_words]
+    n = len(tokens)
+    start = [None] * n
+    end = [None] * n
+    # Borrow timings from the longest-common-subsequence matches between script and transcript.
+    for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(a=s_norm, b=a_norm, autojunk=False).get_opcodes():
+        if tag == "equal":
+            for k in range(i2 - i1):
+                start[i1 + k] = asr_words[j1 + k]["start"]
+                end[i1 + k] = asr_words[j1 + k]["end"]
+    known = [i for i in range(n) if start[i] is not None]
+    if not known:
+        return None
+    total = asr_words[-1]["end"]
+    for a, b in zip(known, known[1:]):                 # interpolate unmatched runs between anchors
+        if b - a > 1:
+            t0, t1, gap = end[a], start[b], b - a
+            for k in range(a + 1, b):
+                start[k] = t0 + (t1 - t0) * (k - a - 1) / gap
+                end[k] = t0 + (t1 - t0) * (k - a) / gap
+    f, l = known[0], known[-1]
+    for k in range(f):                                 # extrapolate before the first match
+        start[k] = start[f] * k / (f + 1)
+        end[k] = start[f] * (k + 1) / (f + 1)
+    for k in range(l + 1, n):                           # and after the last
+        start[k] = end[l] + (total - end[l]) * (k - l - 1) / (n - l)
+        end[k] = end[l] + (total - end[l]) * (k - l) / (n - l)
+    prev = 0.0                                          # enforce monotonic, end > start
+    for i in range(n):
+        start[i] = max(prev, start[i] if start[i] is not None else prev)
+        end[i] = max(start[i] + 0.05, end[i] if end[i] is not None else start[i] + 0.05)
+        prev = start[i]
+
+    captions, cur = [], []
+
+    def flush():
+        if cur:
+            captions.append({
+                "start": round(cur[0]["start"], 3),
+                "end": round(cur[-1]["end"], 3),
+                "text": " ".join(c["text"] for c in cur),
+                "words": [{"text": c["text"], "start": round(c["start"], 3), "end": round(c["end"], 3)} for c in cur],
+            })
+
+    for i, tok in enumerate(tokens):
+        cur.append({"text": tok["text"], "start": start[i], "end": end[i]})
+        too_long = len(cur) >= max_words or (end[i] - cur[0]["start"]) > max_dur
+        if tok["end_sent"] or too_long:
+            flush(); cur = []
+    flush()
+    return captions
+
+
 def main() -> None:
     if len(sys.argv) < 2:
         sys.exit("Usage: python scripts/align-whisper.py <post-key>")
@@ -196,36 +274,41 @@ def main() -> None:
             words.append({"text": w.word.strip(), "start": float(w.start), "end": float(w.end)})
     if not words:
         sys.exit("Whisper returned no words — check the audio.")
-    # Per-post caption_corrections (e.g. {"new": "Nous"}) extend the global map for THIS post only,
-    # so a phonetic narration spelling can be mapped back without risking other posts' captions.
+    # Per-post caption_corrections (e.g. {"mythoss": "Mythos"}) extend the global map for THIS post.
     corrections = {**CORRECTIONS, **{str(k).lower(): str(v) for k, v in (video.get("caption_corrections") or {}).items()}}
-    words = fix_proper_nouns(merge_hyphens(words), corrections)  # un-split compounds/numbers + fix proper nouns
+    words = merge_hyphens(words)  # un-split compounds/numbers; these are TIMING tokens only
     words = trim_trailing_hallucination(words, video.get("narration") or [], voice_wav)
-    print(f"  {len(words)} words, {words[-1]['end']:.1f}s total")
+    print(f"  {len(words)} ASR words, {words[-1]['end']:.1f}s total")
 
-    # Re-chunk the transcript into short caption lines (≤ ~7 words, ≤ ~3.5s, or a
-    # >0.6s pause), each with absolute word timings. The reel renders these EXACTLY
-    # synced to the voice — they ARE the spoken words, not the planned beat text.
     MAX_WORDS, MAX_DUR, GAP = 7, 3.5, 0.6
-    captions, cur = [], []
+    # SCRIPT-ANCHORED captions: display the narration text (correct spelling + punctuation), timed
+    # by aligning it to the Whisper timings. Mis-hears, run-ons, and dropped words never show — we
+    # borrow only the timing. Falls back to raw-transcript chunking if there is no script to anchor.
+    captions = script_anchored_captions(words, video.get("narration") or [], corrections, MAX_WORDS, MAX_DUR)
+    used = "script-anchored"
+    if captions is None:
+        used = "raw transcript (no script to anchor)"
+        words = fix_proper_nouns(words, corrections)
+        captions, cur = [], []
 
-    def flush():
-        if cur:
-            captions.append({
-                "start": round(cur[0]["start"], 3),
-                "end": round(cur[-1]["end"], 3),
-                "text": " ".join(w["text"] for w in cur),
-                "words": [{"text": w["text"], "start": round(w["start"], 3), "end": round(w["end"], 3)} for w in cur],
-            })
+        def flush():
+            if cur:
+                captions.append({
+                    "start": round(cur[0]["start"], 3),
+                    "end": round(cur[-1]["end"], 3),
+                    "text": " ".join(w["text"] for w in cur),
+                    "words": [{"text": w["text"], "start": round(w["start"], 3), "end": round(w["end"], 3)} for w in cur],
+                })
 
-    for i, w in enumerate(words):
-        if cur:
-            too_long = len(cur) >= MAX_WORDS or (w["end"] - cur[0]["start"]) > MAX_DUR
-            big_gap = (w["start"] - cur[-1]["end"]) > GAP
-            if too_long or big_gap:
-                flush(); cur = []
-        cur.append(w)
-    flush()
+        for i, w in enumerate(words):
+            if cur:
+                too_long = len(cur) >= MAX_WORDS or (w["end"] - cur[0]["start"]) > MAX_DUR
+                big_gap = (w["start"] - cur[-1]["end"]) > GAP
+                if too_long or big_gap:
+                    flush(); cur = []
+            cur.append(w)
+        flush()
+    print(f"  captions: {used}")
 
     post.setdefault("video", {})["captions"] = captions
     json.dump(post, open(post_path, "w", encoding="utf-8"), indent=2, ensure_ascii=False)

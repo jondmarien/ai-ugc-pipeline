@@ -1,5 +1,5 @@
 {
-  "seed": 2001460373,
+  "seed": 855669904,
   "seed_source": "auto",
   "model": "openbmb/VoxCPM2",
   "sample_rate": 48000,
@@ -8,6 +8,6 @@
   "clone_mode": "hi-fi",
   "prompt_text_source": "whisper",
   "script_chars": 1031,
-  "generated_at": "2026-06-09T22:55:54",
-  "reuse_command": "bun run pipeline -- 2026-06-09_mythos5-defender-edge --seed=2001460373"
+  "generated_at": "2026-06-09T23:29:22",
+  "reuse_command": "bun run pipeline -- 2026-06-09_mythos5-defender-edge --seed=855669904"
 }
