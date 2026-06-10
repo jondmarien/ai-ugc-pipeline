@@ -55,6 +55,24 @@ export const type = {
 
 export const radius = { panel: 28 } as const;
 
+// Layout no-go zones + the text-block budget, so the overlay copy can never cover the whole
+// frame or collide with the header. headerBand = reserved strip below the safe margin for the
+// handle + pagination (the text column starts below it). textMaxFrac = the tallest the text
+// column may grow, as a fraction of canvas height; the rest of the top is GUARANTEED background.
+export const layout = {
+  headerBand: 64,      // px reserved under the top safe margin for handle + NN/NN
+  textMaxFrac: 0.6,    // text column caps at 60% of canvas height → top ~40% always shows art
+} as const;
+
+// Length-based headline auto-fit: long hooks (the dragged-hook covers especially) shrink to fit
+// the bounded text block instead of overflowing it. Deterministic by character count, no measure
+// pass. `base` is the slide's normal size; the result never exceeds base.
+export function fitHeadline(text: string, base: number): number {
+  const n = (text ?? "").replace(/\[\[|\]\]|\{\{|\}\}/g, "").length; // ignore accent markers
+  const size = n <= 30 ? 104 : n <= 55 ? 84 : n <= 80 ? 68 : n <= 110 ? 58 : 50;
+  return Math.min(base, size);
+}
+
 // Readability scrims layered between the (AI-generated) background and the text.
 // Strategy: light AMBIENT grounding in SlideBackground (edges/vignette) + a strong
 // CONTENT-HUGGING plate behind the actual text block in CarouselSlide. The plate moves

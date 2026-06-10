@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import type { TPostData, TSlideData } from "@/lib/schema";
-import { fonts, overlays, palette, themeAccent, type as typeScale } from "@/design/tokens";
+import { fonts, layout, overlays, palette, themeAccent, type as typeScale } from "@/design/tokens";
 import { SlideBackground } from "./SlideBackground";
 
 // Shared canvas shell: exact pixel size, background, safe area, brand mark,
@@ -19,6 +19,9 @@ export function CarouselSlide({
   const accent = themeAccent(post);
   const { width, height, safe_margin } = post.canvas;
   const justify = align === "center" ? "center" : align === "start" ? "flex-start" : "flex-end";
+  // The text column may never enter the top header band, and never grow above textMaxFrac of the
+  // canvas — so the header row stays clear and the top of the background is always visible.
+  const frameTop = Math.max(safe_margin + layout.headerBand, Math.round(height * (1 - layout.textMaxFrac)));
 
   return (
     <div
@@ -46,10 +49,14 @@ export function CarouselSlide({
       <div
         style={{
           position: "absolute",
-          inset: safe_margin,
+          top: frameTop,
+          left: safe_margin,
+          right: safe_margin,
+          bottom: safe_margin,
           display: "flex",
           flexDirection: "column",
           justifyContent: justify,
+          overflow: "hidden",
         }}
       >
         <div style={{ position: "relative", alignSelf: "stretch" }}>

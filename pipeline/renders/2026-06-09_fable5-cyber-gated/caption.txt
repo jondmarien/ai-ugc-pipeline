@@ -1,0 +1,15 @@
+Anthropic shipped its most capable public model on June 9, then deliberately switched off its best hacking moves.
+
+Fable 5 is state-of-the-art on nearly every benchmark, but a layer of classifiers watches for cybersecurity, biology, and chemistry requests and hands those to the weaker Opus 4.8 instead. Anthropic says the reroute fires in under five percent of sessions, and in testing Fable complied with zero requests to plan attacks or build exploits, with no universal jailbreak found in over a thousand hours.
+
+The interesting part for defenders is the design, not the headline. Capability and permission are separate switches. You can run a very strong model and still refuse to let it take certain actions on its own.
+
+Borrow it: name the high-risk actions your AI tools must never take unassisted, route them to a slower path with a human or a smaller model in the loop, and log every handoff.
+
+Where would you put the classifier in your own stack?
+
+Follow for AI security breakdowns without the fake panic.
+
+[Claude Fable 5, Anthropic, AI model security, capability gating, frontier AI safety, blue team, AI governance]
+
+[Claude Fable 5, Anthropic, AI model security, capability gating, frontier AI safety, blue team, AI governance]
