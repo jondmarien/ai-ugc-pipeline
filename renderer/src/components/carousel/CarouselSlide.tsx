@@ -21,7 +21,11 @@ export function CarouselSlide({
   const justify = align === "center" ? "center" : align === "start" ? "flex-start" : "flex-end";
   // The text column may never enter the top header band, and never grow above textMaxFrac of the
   // canvas — so the header row stays clear and the top of the background is always visible.
-  const frameTop = Math.max(safe_margin + layout.headerBand, Math.round(height * (1 - layout.textMaxFrac)));
+  // Centered slides (the takeaway) get the full region below the header, so the copy lands on the
+  // optical eye-line (~mid-canvas) rather than the lower band the bottom-aligned slides use.
+  const frameTop = align === "center"
+    ? safe_margin + layout.headerBand
+    : Math.max(safe_margin + layout.headerBand, Math.round(height * (1 - layout.textMaxFrac)));
 
   return (
     <div
