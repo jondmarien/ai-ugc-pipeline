@@ -1421,7 +1421,7 @@ git commit -m "feat(dashboard): wire all API routes with {data,error,fetchedAt} 
 
 Design-pass skills apply to Tasks 9–17: follow @impeccable and @design-taste-frontend for hierarchy/interaction; the DS tokens are the override authority when guidance conflicts (per spec).
 
-- [ ] **Step 1: Copy the DS sources**
+- [x] **Step 1: Copy the DS sources**
 
 ```bash
 mkdir -p dashboard/src/design/tokens dashboard/src/design/primitives
@@ -1432,7 +1432,7 @@ cp "Content Dashboard Plan Reference/chron0s_cyb3r_w0rld Design System/component
 
 The DS folder remains upstream source of truth — never edit files under `src/design/tokens/` or `src/design/primitives/`; dashboard-specific styles go in `app.css`. Check `tokens/fonts.css` for `@font-face`/import strategy; if it expects font files, add `@fontsource/archivo`, `@fontsource/inter`, `@fontsource/jetbrains-mono` to `dashboard/package.json` (same packages the renderer uses) and import them in `main.tsx` instead.
 
-- [ ] **Step 2: app.css** — imports tokens, then dashboard layout. Key rules (complete file):
+- [x] **Step 2: app.css** — imports tokens, then dashboard layout. Key rules (complete file):
 
 ```css
 @import "./design/tokens/colors.css";
@@ -1497,7 +1497,7 @@ a { color: var(--accent); }
 
 Flat, shadow-free, glow only on focal numbers, 28px panel radii, 999px chips, the spec's easing — all per the spec's Visual design section.
 
-- [ ] **Step 3: lib/api.ts (TanStack Query layer)**
+- [x] **Step 3: lib/api.ts (TanStack Query layer)**
 
 The QueryClient is a thin dedupe/memory layer over the server's disk cache (see the two-cache
 convention in the header). `useApi` keeps the `{ data, error, fetchedAt, loading, reload }`
@@ -1619,7 +1619,7 @@ createRoot(document.getElementById("root")!).render(
 );
 ```
 
-- [ ] **Step 4: Shared components** (each its own file; complete code)
+- [x] **Step 4: Shared components** (each its own file; complete code)
 
 `components/Panel.tsx`:
 
@@ -1686,7 +1686,7 @@ export function Bars({ values, labels, height = 96 }: { values: number[]; labels
 }
 ```
 
-- [ ] **Step 5: Shell + App with per-module theme scopes**
+- [x] **Step 5: Shell + App with per-module theme scopes**
 
 `components/Shell.tsx`:
 
@@ -1769,9 +1769,9 @@ export default function App() {
 
 Global Refresh works via `refreshAll(queryClient)`: it bypasses the server's disk caches for the three upstream endpoints, then invalidates every `["api", …]` query so mounted hooks refetch. Module mounts hit the in-memory query cache first (30s staleTime), then the server's disk cache, so switching modules never hammers upstream and identical concurrent requests (e.g. Shell + Overview both reading `/api/ig/account`) are deduplicated by TanStack Query. Until Tasks 10–17 land, stub each module file with `export function X() { return <h1 className="page-title">X</h1>; }` so the app compiles.
 
-- [ ] **Step 6: Verify** — `bun run dash`, open `http://localhost:4410`: sidebar with 7 mono-caps items, accents per module, dark chron0s surfaces, module switch works.
+- [x] **Step 6: Verify** — `bun run dash`, open `http://localhost:4410`: sidebar with 7 mono-caps items, accents per module, dark chron0s surfaces, module switch works.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add dashboard/src
@@ -1786,7 +1786,7 @@ git commit -m "feat(dashboard): chron0s design layer, app shell, module scaffold
 - Create: `dashboard/src/lib/analytics.ts`, `dashboard/src/lib/analytics.test.ts`
 - Create: `dashboard/src/lib/schedule.ts`, `dashboard/src/lib/schedule.test.ts`
 
-- [ ] **Step 1: Write the failing analytics tests**
+- [x] **Step 1: Write the failing analytics tests**
 
 `src/lib/analytics.test.ts`:
 
@@ -1852,9 +1852,9 @@ describe("hashtagStats", () => {
 });
 ```
 
-- [ ] **Step 2: Run to verify failure** — `cd dashboard && bun test src/lib/analytics.test.ts` → FAIL.
+- [x] **Step 2: Run to verify failure** — `cd dashboard && bun test src/lib/analytics.test.ts` → FAIL.
 
-- [ ] **Step 3: Implement analytics.ts**
+- [x] **Step 3: Implement analytics.ts**
 
 ```ts
 export type MediaItem = {
@@ -1955,9 +1955,9 @@ export function hashtagStats(items: MediaItem[]): { tag: string; count: number; 
 }
 ```
 
-- [ ] **Step 4: Run analytics tests** — PASS.
+- [x] **Step 4: Run analytics tests** — PASS.
 
-- [ ] **Step 5: Write the failing schedule tests**
+- [x] **Step 5: Write the failing schedule tests**
 
 `src/lib/schedule.test.ts`:
 
@@ -1985,7 +1985,7 @@ describe("schedule transitions", () => {
 });
 ```
 
-- [ ] **Step 6: Implement schedule.ts**
+- [x] **Step 6: Implement schedule.ts**
 
 ```ts
 export type ScheduleStatus = "queued" | "posted" | "skipped";
@@ -2008,9 +2008,9 @@ export function transition(item: ScheduleItem, to: ScheduleStatus): ScheduleItem
 }
 ```
 
-- [ ] **Step 7: Run all lib tests** — `cd dashboard && bun test src/lib` → PASS.
+- [x] **Step 7: Run all lib tests** — `cd dashboard && bun test src/lib` → PASS.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add dashboard/src/lib
@@ -2028,7 +2028,7 @@ Logic is already tested in Tasks 2–10; these tasks are UI assembly. Verificati
 **Files:**
 - Modify: `dashboard/src/modules/overview/Overview.tsx`
 
-- [ ] **Step 1: Implement**
+- [x] **Step 1: Implement**
 
 ```tsx
 import { useApi } from "../../lib/api";
@@ -2087,7 +2087,7 @@ export function Overview() {
 
 Follower delta needs history the API doesn't give; v1 shows the current count (YAGNI — a snapshot history file is a v2 item, do not build it now).
 
-- [ ] **Step 2: Verify in dev server, then commit**
+- [x] **Step 2: Verify in dev server, then commit**
 
 ```bash
 git add dashboard/src/modules/overview
@@ -2101,7 +2101,7 @@ git commit -m "feat(dashboard): overview module"
 **Files:**
 - Modify: `dashboard/src/modules/hooks/HookVault.tsx`
 
-- [ ] **Step 1: Implement.** Behavior: list `/api/repo/hooks` rows; search box filters by substring; chip filters by source and by user tag; tag select per row (swap / build / claim / list / contrarian) persisted to `hooks-meta.json` keyed by `row.id`; "Use this" copies `/draft-post <hook> | <pillar>` to clipboard with a pillar prompt. Persistence goes through `useStateFile` (optimistic mutation), so no local mirror state is needed.
+- [x] **Step 1: Implement.** Behavior: list `/api/repo/hooks` rows; search box filters by substring; chip filters by source and by user tag; tag select per row (swap / build / claim / list / contrarian) persisted to `hooks-meta.json` keyed by `row.id`; "Use this" copies `/draft-post <hook> | <pillar>` to clipboard with a pillar prompt. Persistence goes through `useStateFile` (optimistic mutation), so no local mirror state is needed.
 
 ```tsx
 import { useMemo, useState } from "react";
@@ -2189,7 +2189,7 @@ export function HookVault() {
 
 Add `margin-bottom: 8px` for stacked panels via a `.panel + .panel { margin-top: 8px }` rule in `app.css` if spacing looks cramped.
 
-- [ ] **Step 2: Verify (tag persists across reload; clipboard contains the command), then commit**
+- [x] **Step 2: Verify (tag persists across reload; clipboard contains the command), then commit**
 
 ```bash
 git add dashboard/src/modules/hooks dashboard/src/app.css
@@ -2203,7 +2203,7 @@ git commit -m "feat(dashboard): hook vault with tags, filters, draft-post copy"
 **Files:**
 - Modify: `dashboard/src/modules/analytics/Analytics.tsx`
 
-- [ ] **Step 1: Implement.** All sections from the spec, all computed client-side from `/api/ig/media` via the tested `lib/analytics.ts`:
+- [x] **Step 1: Implement.** All sections from the spec, all computed client-side from `/api/ig/media` via the tested `lib/analytics.ts`:
 
 ```tsx
 import { useMemo, useState } from "react";
@@ -2358,7 +2358,7 @@ function PostRow({ m, full = false }: { m: MediaItem; full?: boolean }) {
 
 Replace the `♥`/`💬` glyphs with mono-caps labels (`L`, `C`) if they fight the type system visually — implementer's call during the design pass.
 
-- [ ] **Step 2: Verify against fixture-cached data, then commit**
+- [x] **Step 2: Verify against fixture-cached data, then commit**
 
 To verify before real IG creds exist: copy `server/fixtures/ig/media.json`-derived items into `dashboard/data/ig-cache/media.json` as `{ "fetchedAt": <now>, "data": [ ...items with insights records...] }` so the cache path renders. All sections must render; reel watch cards appear only because fixture VIDEO has watch-time metrics.
 
@@ -2374,7 +2374,7 @@ git commit -m "feat(dashboard): full analytics module"
 **Files:**
 - Modify: `dashboard/src/modules/competitors/Competitors.tsx`
 
-- [ ] **Step 1: Implement.** Watchlist lives in `hooks-meta.json`? No — it gets its own key in local state. Use `sources.json`? Also no. **Decision: watchlist persists in `schedule.json`? No.** It needs its own file… but the allowlist is fixed by the spec to three files. **Resolution: the watchlist lives in `hooks-meta.json` under a separate top-level key `watchlist: string[]`** — the file is already the "user metadata" store, and the spec's allowlist stays intact. Document this in the file's shape: `{ hooks: {...}, watchlist: ["@growithalex"] }` (store.ts default stays `{ hooks: {} }`; treat a missing `watchlist` as `[]`).
+- [x] **Step 1: Implement.** Watchlist lives in `hooks-meta.json`? No — it gets its own key in local state. Use `sources.json`? Also no. **Decision: watchlist persists in `schedule.json`? No.** It needs its own file… but the allowlist is fixed by the spec to three files. **Resolution: the watchlist lives in `hooks-meta.json` under a separate top-level key `watchlist: string[]`** — the file is already the "user metadata" store, and the spec's allowlist stays intact. Document this in the file's shape: `{ hooks: {...}, watchlist: ["@growithalex"] }` (store.ts default stays `{ hooks: {} }`; treat a missing `watchlist` as `[]`).
 
 Per-creator view: group `/api/repo/ingested` docs by `handle`; "unattributed" group for `handle === null`. New-since-last-visit: persist `lastVisit` epoch in `localStorage` (UI-only concern, not repo state); count docs with `mtimeMs > lastVisit`.
 
@@ -2462,7 +2462,7 @@ export function Competitors() {
 }
 ```
 
-- [ ] **Step 2: Verify (real @growithalex docs group correctly; unattributed bucket appears), then commit**
+- [x] **Step 2: Verify (real @growithalex docs group correctly; unattributed bucket appears), then commit**
 
 ```bash
 git add dashboard/src/modules/competitors
@@ -2476,7 +2476,7 @@ git commit -m "feat(dashboard): competitor tracker over ingested docs"
 **Files:**
 - Modify: `dashboard/src/modules/scheduler/Scheduler.tsx`
 
-- [ ] **Step 1: Implement.** Package picker = all `/api/repo/renders` (including `week 1`); queue rows persist to `schedule.json` via the tested `transition()`. Explicitly never publishes.
+- [x] **Step 1: Implement.** Package picker = all `/api/repo/renders` (including `week 1`); queue rows persist to `schedule.json` via the tested `transition()`. Explicitly never publishes.
 
 ```tsx
 import { useApi, useStateFile } from "../../lib/api";
@@ -2556,7 +2556,7 @@ export function Scheduler() {
 }
 ```
 
-- [ ] **Step 2: Verify (queue → mark posted persists across reload; terminal states hide actions), then commit**
+- [x] **Step 2: Verify (queue → mark posted persists across reload; terminal states hide actions), then commit**
 
 ```bash
 git add dashboard/src/modules/scheduler
@@ -2570,7 +2570,7 @@ git commit -m "feat(dashboard): scheduler planning queue with manual mark-posted
 **Files:**
 - Modify: `dashboard/src/modules/calendar/Calendar.tsx`
 
-- [ ] **Step 1: Implement.** Month grid; slots from `schedule.json` items placed by `date` plus rendered packages placed by parsed folder date; `week 1` (null date) excluded from the grid per spec. Clicking a slot opens a side panel with caption, sources, slide thumbnails served by the Task 8 thumbnail route.
+- [x] **Step 1: Implement.** Month grid; slots from `schedule.json` items placed by `date` plus rendered packages placed by parsed folder date; `week 1` (null date) excluded from the grid per spec. Clicking a slot opens a side panel with caption, sources, slide thumbnails served by the Task 8 thumbnail route.
 
 ```tsx
 import { useMemo, useState } from "react";
@@ -2669,7 +2669,7 @@ export function CalendarView() {
 
 Implementation note: the conditional `useApi` URL trick (pointing at `/api/health` when closed) keeps hook order stable; it's deliberate, not an accident — leave a comment in code.
 
-- [ ] **Step 2: Verify (June 2026 shows the real 2026-06-07 packages; `week 1` absent from grid but present in Scheduler picker; side panel shows real thumbnails + caption), then commit**
+- [x] **Step 2: Verify (June 2026 shows the real 2026-06-07 packages; `week 1` absent from grid but present in Scheduler picker; side panel shows real thumbnails + caption), then commit**
 
 ```bash
 git add dashboard/src/modules/calendar
@@ -2683,7 +2683,7 @@ git commit -m "feat(dashboard): month calendar with package side panel"
 **Files:**
 - Modify: `dashboard/src/modules/trending/Trending.tsx`
 
-- [ ] **Step 1: Implement.** Items from `/api/trends`; per-item tag hook/explainer/skip persisted in `sources.json`? No — tags are item-level, persisted under `hooks-meta.json` key `trendTags: Record<url, "hook" | "explainer" | "skip">` (same rationale as the watchlist; allowlist stays at three files). Dead sources flagged. "Hook this" copies `/draft-post <headline> | <pillar>`.
+- [x] **Step 1: Implement.** Items from `/api/trends`; per-item tag hook/explainer/skip persisted in `sources.json`? No — tags are item-level, persisted under `hooks-meta.json` key `trendTags: Record<url, "hook" | "explainer" | "skip">` (same rationale as the watchlist; allowlist stays at three files). Dead sources flagged. "Hook this" copies `/draft-post <headline> | <pillar>`.
 
 ```tsx
 import { useApi, useStateFile } from "../../lib/api";
@@ -2747,7 +2747,7 @@ export function Trending() {
 
 Auto-tagging is explicitly out of scope (spec); the tag buttons are manual only.
 
-- [ ] **Step 2: Verify with live feeds, then commit**
+- [x] **Step 2: Verify with live feeds, then commit**
 
 ```bash
 git add dashboard/src/modules/trending
@@ -2762,7 +2762,7 @@ git commit -m "feat(dashboard): trending feed reader with manual tagging"
 - Create: `scripts/refresh_token.ts` (repo root `scripts/`, per spec)
 - Create: `scripts/register_token_task.ps1`
 
-- [ ] **Step 1: Write the failing test for the pure part**
+- [x] **Step 1: Write the failing test for the pure part**
 
 Add to `dashboard/server/store.test.ts`? No — this script is standalone. Create `scripts/refresh_token.test.ts` testing only `rewriteEnv` (the pure function):
 
@@ -2783,7 +2783,7 @@ describe("rewriteEnv", () => {
 
 Run `bun test scripts/refresh_token.test.ts` from repo root → FAIL.
 
-- [ ] **Step 2: Implement refresh_token.ts**
+- [x] **Step 2: Implement refresh_token.ts**
 
 ```ts
 import fs from "node:fs";
@@ -2832,9 +2832,9 @@ if (import.meta.main) await main();
 
 If Jon's app uses the newer "Instagram API with Instagram Login" instead, the endpoint is `https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=<token>` — same script shape, swap the URL. Decide based on which setup Step 1 of the walkthrough actually produced; log which one in the commit message.
 
-- [ ] **Step 3: Run the test** — `bun test scripts/refresh_token.test.ts` → PASS.
+- [x] **Step 3: Run the test** — `bun test scripts/refresh_token.test.ts` → PASS.
 
-- [ ] **Step 4: Task Scheduler registration** (`scripts/register_token_task.ps1`):
+- [x] **Step 4: Task Scheduler registration** (`scripts/register_token_task.ps1`):
 
 ```powershell
 $action = New-ScheduledTaskAction -Execute "bun" `
@@ -2848,7 +2848,7 @@ Write-Host "Registered. Verify with: Get-ScheduledTask -TaskName ai-ugc-ig-token
 
 Running the ps1 is a manual, user-approved step (it touches the OS scheduler) — the implementer creates the file and tells Jon to run it; do not execute it from the implementation session.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add scripts/refresh_token.ts scripts/refresh_token.test.ts scripts/register_token_task.ps1
@@ -2862,7 +2862,7 @@ git commit -m "feat(dashboard): token refresh script + Task Scheduler registrati
 **Files:**
 - Create: `dashboard/e2e/screenshots.spec.ts`, `dashboard/playwright.config.ts`
 
-- [ ] **Step 1: Playwright config** (`dashboard/playwright.config.ts`):
+- [x] **Step 1: Playwright config** (`dashboard/playwright.config.ts`):
 
 ```ts
 import { defineConfig } from "@playwright/test";
@@ -2877,7 +2877,7 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 2: Screenshot spec** (`dashboard/e2e/screenshots.spec.ts`):
+- [x] **Step 2: Screenshot spec** (`dashboard/e2e/screenshots.spec.ts`):
 
 ```ts
 import { test, expect } from "@playwright/test";
@@ -2921,15 +2921,15 @@ console.log("seeded", items.length, "media items");
 
 (The cache-first server then renders this without any live call — do NOT press Refresh during the e2e run.) Run: `cd dashboard && bunx playwright install chromium && bun run e2e`. Expected: PASS, 7 PNGs in `e2e/shots/` (already gitignored).
 
-- [ ] **Step 3: Full test suite**
+- [x] **Step 3: Full test suite**
 
 Run: `cd dashboard && bun test server src`, then from REPO ROOT `bun test scripts` (bun test scans from cwd; running it from `dashboard/` would silently match nothing) — Expected: all green.
 
-- [ ] **Step 4: Final gate — verification-before-completion**
+- [x] **Step 4: Final gate — verification-before-completion**
 
 Use @verification-before-completion: with `bun run dash` running, walk every module against REAL repo data; confirm the six spec error-handling behaviors (cache-on-failure banner, token one-line fix, type-split prevention, empty states, dead-RSS flagging, `{data,error}` envelope). Confirm the dashboard wrote nothing outside `dashboard/data/` (`git status` shows no changes under `renderer/` or `pipeline/`).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add dashboard/e2e dashboard/playwright.config.ts dashboard/.gitignore
