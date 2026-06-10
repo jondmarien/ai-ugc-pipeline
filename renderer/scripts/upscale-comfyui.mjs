@@ -6,9 +6,10 @@
 // to 1080×1350 keeps crisp — better than asking the distilled diffusion model for more steps.
 //
 // Default model: RealESRGAN_x4plus.pth (BSD-3, commercial-safe). Override with --upscale-model=4x-UltraSharp.pth
-// (verify that model's licence before shipping). The model file must live in ComfyUI's
-// models/upscale_models/ dir; if it's missing the run warns, lists what IS available, and skips
-// (non-fatal — the pipeline continues with the un-upscaled backgrounds).
+// (verify that model's licence before shipping). The model lives in ComfyUI's models/upscale_models/ dir;
+// if it's missing this auto-downloads the known ones (RealESRGAN_x4plus from the xinntao GitHub release,
+// 4x-UltraSharp from HF lokCX/4x-Ultrasharp) to COMFYUI_UPSCALE_DIR, then re-scans. If it still can't be
+// registered (or is unknown) the run warns and skips (non-fatal — backgrounds stay un-upscaled).
 //
 // Mirrors art-comfyui.mjs: HTTP-only, no diffusers, ComfyUI just has to be running. Config via env:
 //   COMFYUI_URL (default http://127.0.0.1:8000), UPSCALE_MODEL.
@@ -37,6 +38,38 @@ const SCALE = Math.max(0.25, Number(opt("upscale-scale", "1")) || 1); // final s
 const DRY = flags.has("--dry-run");
 const onlyArg = opt("only", "");
 const onlySet = onlyArg ? new Set(onlyArg.split(",").map((x) => Number(x.trim())).filter((n) => !Number.isNaN(n))) : null;
+
+// Where ComfyUI keeps upscale models, and how to auto-fetch the common ones (same idea as the Q6
+// GGUF auto-download in art-comfyui). `.pth` = a PyTorch weights checkpoint. Override the dir with
+// COMFYUI_UPSCALE_DIR. Both sources are direct downloads (no hf CLI needed).
+const COMFY_UPSCALE_DIR = process.env.COMFYUI_UPSCALE_DIR || "E:\\ComfyUI\\models\\upscale_models";
+const MODEL_SOURCES = {
+  "RealESRGAN_x4plus.pth": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth",
+  "4x-UltraSharp.pth": "https://huggingface.co/lokCX/4x-Ultrasharp/resolve/main/4x-UltraSharp.pth?download=true",
+};
+async function ensureUpscaleModel(modelFile) {
+  const url = MODEL_SOURCES[modelFile];
+  if (!url) return false;                          // unknown model — caller warns with manual steps
+  let dirExists = false;
+  try { dirExists = existsSync(COMFY_UPSCALE_DIR); } catch { dirExists = false; }
+  if (!dirExists) {
+    console.warn(`  ⚠ ComfyUI upscale dir not found at ${COMFY_UPSCALE_DIR} (remote ComfyUI?). Put ${modelFile} there, or set COMFYUI_UPSCALE_DIR.`);
+    return false;
+  }
+  const dest = path.join(COMFY_UPSCALE_DIR, modelFile);
+  if (existsSync(dest)) return true;               // already on disk
+  console.log(`  ↓ ${modelFile} not found — downloading (~65 MB) from ${url.split("?")[0]} …`);
+  try {
+    const r = await fetch(url, { redirect: "follow" });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    writeFileSync(dest, Buffer.from(await r.arrayBuffer()));
+    console.log(`  ✓ ${modelFile} downloaded to ${COMFY_UPSCALE_DIR}.`);
+    return true;
+  } catch (e) {
+    console.warn(`  ⚠ auto-download failed (${e.message}). Get it manually:\n     ${url.split("?")[0]}\n     → ${COMFY_UPSCALE_DIR}`);
+    return false;
+  }
+}
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -124,10 +157,20 @@ try {
   process.exit(1);
 }
 if (Array.isArray(available) && available.length && !available.includes(MODEL)) {
-  console.warn(`⚠ upscale model "${MODEL}" not found in ComfyUI/models/upscale_models — skipping upscale.`);
-  console.warn(`  Available: ${available.join(", ") || "(none)"}`);
-  console.warn(`  Drop a model there (e.g. RealESRGAN_x4plus.pth or 4x-UltraSharp.pth) and re-run with --upscale-model=<name>.`);
-  process.exit(0); // non-fatal: the pipeline continues with the un-upscaled backgrounds
+  // Not registered yet — try to auto-download a known model, then re-scan ComfyUI's list.
+  const got = await ensureUpscaleModel(MODEL);
+  if (got) {
+    try {
+      const info2 = await fetch(`${URL_BASE}/object_info/UpscaleModelLoader`).then((r) => r.json());
+      available = info2?.UpscaleModelLoader?.input?.required?.model_name?.[0] ?? available;
+    } catch { /* keep prior list */ }
+  }
+  if (!available.includes(MODEL)) {
+    console.warn(`⚠ upscale model "${MODEL}" not available to ComfyUI${got ? " yet — downloaded to disk, but ComfyUI may need a restart/refresh to register it" : ""} — skipping upscale.`);
+    console.warn(`  Available now: ${available.join(", ") || "(none)"}`);
+    if (!got && !MODEL_SOURCES[MODEL]) console.warn(`  Unknown model; drop the .pth in ${COMFY_UPSCALE_DIR} and re-run with --upscale-model=<name>.`);
+    process.exit(0); // non-fatal: the pipeline continues with the un-upscaled backgrounds
+  }
 }
 
 console.log(`Upscaling ${targets.length} background(s) @ ${URL_BASE} · ${MODEL} → ${targetW}x${targetH} (canvas ×${SCALE})`);
