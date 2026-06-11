@@ -19,9 +19,10 @@
 //   --tail=N       seconds of silence to keep after the voice (reel; default 0.6)
 //   --seed=N       voice seed (consistent speaker) — forwarded to `bun run voice`
 import { spawnSync } from "node:child_process";
-import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { setStatus } from "./lib/post-status.mjs";
 
 const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
 const POSTS = path.join(RENDERER, "content", "posts");
@@ -253,18 +254,13 @@ function runPost(key) {
   return fullKey;
 }
 
-// On a COMPLETE run, flip draft/approved → generated so a status batch never re-renders it.
-// Leaves generated (no-op) and upload_ready (terminal — regenerating a posted item must not
-// un-post it) untouched. Skipped for dry-runs and intentionally-partial renders.
+// On a COMPLETE run, flip draft/approved → generated (via the shared setStatus helper) so a
+// status batch never re-renders it. The onlyFrom guard leaves generated (no-op) and upload_ready
+// (terminal — regenerating a posted item must not un-post it) untouched. Skipped for dry-runs and
+// intentionally-partial renders.
 const COMPLETE_RUN = !DRY && !["--no-reel", "--no-voice", "--no-package"].some((f) => flags.has(f));
 function markGenerated(fullKey) {
-  const f = path.join(POSTS, `${fullKey}.json`);
-  if (!existsSync(f)) return;
-  let s = readFileSync(f, "utf8");
-  const re = /^(\s*)"status": "(?:draft|approved)"/m;
-  if (!re.test(s)) return; // already generated / upload_ready
-  writeFileSync(f, s.replace(re, (_, ind) => `${ind}"status": "generated"`));
-  console.log(`  ↳ status → generated`);
+  if (setStatus(fullKey, "generated", { onlyFrom: ["draft", "approved"] }).changed) console.log(`  ↳ status → generated`);
 }
 
 let ok = 0;
