@@ -14,16 +14,16 @@ export function CarouselSlide({
   post: TPostData;
   slide: TSlideData;
   children: ReactNode;
-  align?: "start" | "center" | "end";
+  align?: "start" | "center" | "end" | "fill";
 }) {
   const accent = themeAccent(post);
   const { width, height, safe_margin } = post.canvas;
-  const justify = align === "center" ? "center" : align === "start" ? "flex-start" : "flex-end";
+  const justify = align === "center" ? "center" : align === "end" ? "flex-end" : "flex-start";
   // The text column may never enter the top header band, and never grow above textMaxFrac of the
   // canvas — so the header row stays clear and the top of the background is always visible.
-  // Centered slides (the takeaway) get the full region below the header, so the copy lands on the
-  // optical eye-line (~mid-canvas) rather than the lower band the bottom-aligned slides use.
-  const frameTop = align === "center"
+  // Centered (takeaway) and fill (chain diagram) slides get the FULL region below the header:
+  // centered lands on the optical eye-line, fill uses the whole height top-down for a diagram.
+  const frameTop = align === "center" || align === "fill"
     ? safe_margin + layout.headerBand
     : Math.max(safe_margin + layout.headerBand, Math.round(height * (1 - layout.textMaxFrac)));
 

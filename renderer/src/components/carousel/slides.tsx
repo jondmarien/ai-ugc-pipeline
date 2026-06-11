@@ -134,9 +134,53 @@ export function CtaSlide({ post, slide }: SlideProps) {
   );
 }
 
+// One step box in a chain diagram. The final step (the outcome) is emphasized with the accent.
+function ChainStep({ step, accent, outcome }: { step: { stage?: string; title: string; detail?: string }; accent: string; outcome?: boolean }) {
+  return (
+    <div
+      style={{
+        border: `1px solid ${outcome ? accent : "rgba(148,163,184,0.26)"}`,
+        background: outcome ? `${accent}22` : "rgba(11,15,26,0.6)",
+        borderLeft: `4px solid ${accent}`,
+        borderRadius: 12,
+        padding: "9px 16px",
+      }}
+    >
+      {step.stage ? (
+        <div style={{ fontFamily: fonts.mono, fontSize: 13, letterSpacing: "0.16em", textTransform: "uppercase", color: accent, marginBottom: 2 }}>{step.stage}</div>
+      ) : null}
+      <div style={{ fontFamily: fonts.headline, fontWeight: 800, fontSize: outcome ? 25 : 22, lineHeight: 1.04, color: palette.fg }}>{step.title}</div>
+      {step.detail ? (
+        <div style={{ fontFamily: fonts.body, fontSize: 15, lineHeight: 1.18, color: palette.muted, marginTop: 3 }}>{step.detail}</div>
+      ) : null}
+    </div>
+  );
+}
+
+// Full-bleed step-flow diagram (role "chain"), rendered from slide.chain[] in the design system —
+// no AI background, so technical posts (exploit/kill chains) get an on-brand, readable diagram slide.
+export function ChainSlide({ post, slide }: SlideProps) {
+  const accent = themeAccent(post);
+  const steps = slide.chain ?? [];
+  return (
+    <CarouselSlide post={post} slide={slide} align="fill">
+      <Kicker text={slide.kicker} accent={accent} />
+      <Headline text={slide.on_slide_copy} size={fitHeadline(slide.on_slide_copy, 34)} accent={accent} />
+      <div style={{ display: "flex", flexDirection: "column", gap: 5, marginTop: 2 }}>
+        {steps.map((s, i) => (
+          <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "stretch", gap: 5 }}>
+            <ChainStep step={s} accent={accent} outcome={i === steps.length - 1} />
+            {i < steps.length - 1 ? <div style={{ alignSelf: "center", width: 2, height: 8, background: accent, opacity: 0.7 }} /> : null}
+          </div>
+        ))}
+      </div>
+    </CarouselSlide>
+  );
+}
+
 // Role → component registry. context/risk/mechanism/failure_point/defense/point share
-// the standard body layout; cover/takeaway/cta are specialized. `point` is the generic
-// body slide used to scale posts beyond the named 8-arc.
+// the standard body layout; cover/takeaway/cta/chain are specialized. `point` is the generic
+// body slide; `chain` is a full-bleed step-flow diagram from slide.chain[].
 export const SLIDE_COMPONENTS: Record<TSlideData["role"], (p: SlideProps) => ReactElement> = {
   cover: CoverSlide,
   context: StandardSlide,
@@ -147,4 +191,5 @@ export const SLIDE_COMPONENTS: Record<TSlideData["role"], (p: SlideProps) => Rea
   takeaway: TakeawaySlide,
   cta: CtaSlide,
   point: StandardSlide,
+  chain: ChainSlide,
 };
