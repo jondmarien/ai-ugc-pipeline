@@ -204,7 +204,10 @@ export const PostData = z
     slug: z.string().min(1),
     platform: z.string().default("instagram"),
     format: z.string().default("carousel"),
-    status: z.enum(["draft", "approved", "upload_ready"]),
+    // Lifecycle: draft (written) → approved (human OK to render) → generated (full pipeline
+    // rendered) → upload_ready (posted). The batch run renders only `approved` and flips to
+    // `generated`; see renderer/scripts/pipeline.mjs.
+    status: z.enum(["draft", "approved", "generated", "upload_ready"]),
     pillar: Pillar,
     // Brand colour theme (drives carousel accent + AI-image colour/mood). Optional —
     // falls back to the pillar→theme map in tokens.ts when omitted.

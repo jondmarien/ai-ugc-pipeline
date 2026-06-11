@@ -19,7 +19,7 @@
 //   --tail=N       seconds of silence to keep after the voice (reel; default 0.6)
 //   --seed=N       voice seed (consistent speaker) — forwarded to `bun run voice`
 import { spawnSync } from "node:child_process";
-import { readFileSync, readdirSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -36,16 +36,26 @@ const customVoiceText = cvtIdx >= 0 ? argv[cvtIdx + 1] : null;
 // Guard with >=0 — otherwise an absent flag (indexOf -1) would exclude argv[0] (the key).
 const consumed = new Set([cvIdx, cvtIdx].filter((i) => i >= 0).map((i) => i + 1));
 const flags = new Set(argv.filter((a) => a.startsWith("--")));
-const keys = argv.filter((a, i) => !a.startsWith("--") && !consumed.has(i));
+let keys = argv.filter((a, i) => !a.startsWith("--") && !consumed.has(i));
 
 const HELP = `
 bun run pipeline — the one-command render pipeline (post JSON → upload-ready package)
 
 USAGE
   bun run pipeline -- <post-key> [<post-key> ...] [flags]
+  bun run pipeline --status=approved [flags]              (render a whole status tier)
 
   <post-key> matches a file in renderer/content/posts/ (e.g. 2026-06-08_chatbot-log-leak,
   or any unique substring). Multiple keys render as a batch.
+
+BATCH SELECTION
+  --status=VALUE   render every post whose JSON status == VALUE (draft|approved|generated|
+                   upload_ready), in date order. Lifecycle: draft → approved → generated →
+                   upload_ready; the normal batch is --status=approved. On a COMPLETE run each
+                   rendered post auto-flips to 'generated', so re-running skips finished work
+                   (no duplicates). Explicit <post-key>s always run regardless of status and
+                   re-flip to generated — that's how you regenerate one finished post.
+                   Pair with --dry-run to preview the matched set without rendering.
 
 STAGES (in order; each auto-skips when not needed)
   1. art           backgrounds via a running ComfyUI (FLUX.2 klein 4B GGUF by default) —
@@ -114,6 +124,24 @@ DOCS  renderer/docs/IMAGE_MODELS.md (quality knobs) · PIPELINE_ARCHITECTURE.md 
 if (flags.has("--help") || flags.has("-h") || argv.includes("-h")) {
   console.log(HELP);
   process.exit(0);
+}
+// --status=VALUE: add every post whose JSON status matches (date order). Explicit keys still run
+// regardless of status; merge + de-dupe by resolved full key so a post named AND matched runs once.
+const statusArg = [...flags].find((f) => f.startsWith("--status="))?.split("=")[1];
+if (statusArg) {
+  const matched = readdirSync(POSTS)
+    .filter((f) => f.endsWith(".json"))
+    .filter((f) => { try { return JSON.parse(readFileSync(path.join(POSTS, f), "utf8")).status === statusArg; } catch { return false; } })
+    .map((f) => f.replace(/\.json$/, ""))
+    .sort();
+  if (!matched.length && !keys.length) {
+    console.log(`No posts with status="${statusArg}". Nothing to do. (lifecycle: draft → approved → generated → upload_ready)`);
+    process.exit(0);
+  }
+  const resolve = (k) => (readdirSync(POSTS).find((f) => f.endsWith(".json") && f.includes(k)) || `${k}.json`).replace(/\.json$/, "");
+  const seen = new Set(keys.map(resolve));
+  for (const k of matched) if (!seen.has(k)) { keys.push(k); seen.add(k); }
+  console.log(`▶ status="${statusArg}" → ${matched.length} post(s); ${keys.length} to run in date order.\n`);
 }
 if (!keys.length) {
   console.error(HELP);
@@ -222,13 +250,29 @@ function runPost(key) {
     step("reel (audio auto-embedded)", reelArgs);
   }
   console.log(`\n✓ ${fullKey} → pipeline/renders/${fullKey}/`);
+  return fullKey;
+}
+
+// On a COMPLETE run, flip draft/approved → generated so a status batch never re-renders it.
+// Leaves generated (no-op) and upload_ready (terminal — regenerating a posted item must not
+// un-post it) untouched. Skipped for dry-runs and intentionally-partial renders.
+const COMPLETE_RUN = !DRY && !["--no-reel", "--no-voice", "--no-package"].some((f) => flags.has(f));
+function markGenerated(fullKey) {
+  const f = path.join(POSTS, `${fullKey}.json`);
+  if (!existsSync(f)) return;
+  let s = readFileSync(f, "utf8");
+  const re = /^(\s*)"status": "(?:draft|approved)"/m;
+  if (!re.test(s)) return; // already generated / upload_ready
+  writeFileSync(f, s.replace(re, (_, ind) => `${ind}"status": "generated"`));
+  console.log(`  ↳ status → generated`);
 }
 
 let ok = 0;
 for (const key of keys) {
   try {
-    runPost(key);
+    const fk = runPost(key);
     ok++;
+    if (COMPLETE_RUN && fk) markGenerated(fk);
   } catch (e) {
     console.error(`\n✗ ${key}: ${e.message}`);
     if (keys.length === 1) process.exit(1);
