@@ -13,6 +13,7 @@
     "draft-week": "bun scripts/draft-week.mjs",
     "draft-context": "bun scripts/draft-reference.mjs",
     "validate": "bun scripts/validate.ts",
+    "status": "bun scripts/set-status.mjs",
     "export": "tsx scripts/export-carousel.ts",
     "package": "bun scripts/build-package.ts",
     "reel": "bun scripts/render-reel.ts",
