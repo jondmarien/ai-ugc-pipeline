@@ -3,8 +3,9 @@
 // produce up to 5 researched, sourced, schema-valid posts with pillar variety and
 // sequential weekday dates, then renders each.
 //
-// Per-idea pillar/captions: append "::pillar" and/or "::captions=word|highlight"
-//   e.g. "RAG data leaks::model_security::captions=highlight"
+// Per-idea pillar/captions/style_fusion: append "::pillar", "::captions=word|highlight",
+// and/or "::style_fusion=ancient marble meets cyberpunk neon"
+//   e.g. "RAG data leaks::model_security::captions=highlight::style_fusion=blueprint etching meets studio photography"
 // Flags: --no-render | --carousel-only | --yolo | --dry-run
 //
 // Requires the `claude` CLI on PATH and logged in.
@@ -32,7 +33,7 @@ const ideas = argv.filter((a) => !a.startsWith("--")).slice(0, 5);
 function die(msg) {
   console.error(`\n✗ ${msg}`);
   console.error(`\nUsage: bun run draft-week -- "idea one" "idea two" ... (up to 5) [--no-render|--carousel-only|--yolo|--dry-run]`);
-  console.error(`  per-idea options: "idea::pillar::captions=word"`);
+  console.error(`  per-idea options: "idea::pillar::captions=word::style_fusion=X meets Y"`);
   console.error(`  pillars: ${PILLARS.join(" | ")}   ·   captions: ${MODES.join(" | ")}`);
   console.error(`  example: bun run draft-week -- "voice clone fraud::offensive_ai" "RAG leaks::model_security::captions=highlight" "shadow AI::governance"\n`);
   process.exit(1);
@@ -47,12 +48,13 @@ if (claudeCheck.status !== 0) die("`claude` CLI not found on PATH. Use the inter
 const parsed = ideas.map((raw) => {
   const parts = raw.split("::").map((s) => s.trim());
   const text = parts[0];
-  let pillar, captions;
+  let pillar, captions, styleFusion;
   for (const p of parts.slice(1)) {
     if (PILLARS.includes(p)) pillar = p;
     else if (p.startsWith("captions=") && MODES.includes(p.split("=")[1])) captions = p.split("=")[1];
+    else if (p.startsWith("style_fusion=")) styleFusion = p.slice("style_fusion=".length).trim();
   }
-  return { text, pillar, captions: captions ?? "block" };
+  return { text, pillar, captions: captions ?? "block", styleFusion: styleFusion ?? "" };
 });
 
 const renderLine = flags.has("--no-render")
@@ -62,7 +64,7 @@ const renderLine = flags.has("--no-render")
     : "Then render each fully (export + package + reel).";
 
 const list = parsed
-  .map((p, i) => `  ${i + 1}. "${p.text}"  [pillar: ${p.pillar ?? "you choose — diversify"}; captions: ${p.captions}]`)
+  .map((p, i) => `  ${i + 1}. "${p.text}"  [pillar: ${p.pillar ?? "you choose — diversify"}; captions: ${p.captions}${p.styleFusion ? `; style_fusion: "${p.styleFusion}"` : ""}]`)
   .join("\n");
 
 const prompt = [
@@ -75,7 +77,7 @@ const prompt = [
   `HARD RULES (from pipeline/content/QA_CHECKLIST.md): no fabricated CVEs/stats/quotes; back every factual claim with a real source via WebSearch/WebFetch, or tag it [Scenario]; each post needs a concrete defender takeaway. Offensive depth is OK on offensive-theme posts (real tools, techniques, tradecraft, educational + authorized-security framing), default high-level and go deep when it fits; never give turnkey instructions whose only purpose is indiscriminate harm. NO em-dashes anywhere (—/–) and NO sentence fragments; complete sentences with plain punctuation on every surface (caption, narration, on_slide_copy, subline, alt_text).`,
   digest ? `\nVARIETY DIGEST (NOT-list, do not reuse these recent hooks, motifs, or angles):\n${digest}\n` : ``,
   ``,
-  `For EACH idea: design the 8-slide post + caption + hashtags + question; research sources; pick a kebab slug; run \`cd renderer && bun run new -- <date> <slug> <pillar> --captions=<mode>\`; EDIT the JSON replacing every TODO with real sourced content (8 slides, slide1=cover, alt_text length 8, score.total = sum, >=1 source, reel beats filled, video.caption_mode set, and a SPECIFIC text-free visual_prompt per slide tied to that post's topic for \`bun run art\`, authored for FLUX.2 [klein] per pipeline/content/VISUAL_PROMPT_BANK.md (prose not tags, Subject+Action+Style+Context with the focal subject first, LEAD with DP-style lighting as klein's highest-impact lever, 30–80 words specific-not-long, NO colour words, type-free zones phrased positively), with fresh motifs per the VARIETY DIGEST); then run the humanizer, stop-slop, and professional-proofreader skills over caption/narration/on_slide_copy/subline/alt_text (house voice, no em-dashes, no fragments, complete sentences, never alter a sourced fact); \`bun run validate -- <date>_<slug>\` until clean. ${renderLine}`,
+  `For EACH idea: design the 8-slide post + caption + hashtags + question; research sources; pick a kebab slug; run \`cd renderer && bun run new -- <date> <slug> <pillar> --captions=<mode>\` (add \`--style-fusion="<fusion>"\` when that idea lists a style_fusion); EDIT the JSON replacing every TODO with real sourced content (8 slides, slide1=cover, alt_text length 8, score.total = sum, >=1 source, reel beats filled, video.caption_mode set, and a SPECIFIC text-free visual_prompt per slide tied to that post's topic for \`bun run art\`, authored for FLUX.2 [klein] per pipeline/content/VISUAL_PROMPT_BANK.md (prose not tags, Subject+Action+Style+Context with the focal subject first, LEAD with DP-style lighting as klein's highest-impact lever, 30–80 words specific-not-long, NO colour words, type-free zones phrased positively), with fresh motifs per the VARIETY DIGEST); then run the humanizer, stop-slop, and professional-proofreader skills over caption/narration/on_slide_copy/subline/alt_text (house voice, no em-dashes, no fragments, complete sentences, never alter a sourced fact); \`bun run validate -- <date>_<slug>\` until clean. ${renderLine}`,
   ``,
   `FINISH by printing one line per post: POST_KEY=<date>_<slug>  — then a summary table (date | slug | pillar | caption_mode | fact/scenario | output folder).`,
 ].join("\n");
