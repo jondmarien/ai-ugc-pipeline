@@ -4,7 +4,7 @@
   "slug": "cohere-north-mini-code",
   "platform": "instagram",
   "format": "carousel",
-  "status": "approved",
+  "status": "generated",
   "pillar": "model_security",
   "theme": "ai",
   "audience": "security_practitioners",
@@ -121,7 +121,7 @@
       "on_slide_copy": "Teams evaluate on intelligence scores and latency. They forget to multiply by the token multiplier across thousands of agent calls per day.",
       "subline": "A model that talks three times as much costs three times as much to run at scale.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Cool light grazes a dark dashboard in the dark, one gauge showing 210 tps in green while a second gauge below it climbs past 75 million total tokens in amber, tense editorial composition, the gauges held high with a clean lower third.",
+      "visual_prompt": "Cool light grazes two stacked translucent rings in the dark, the upper ring glowing calm and steady while the lower ring swells far brighter and wider beneath it, a hidden quantity dwarfing the visible one, tense editorial composition, the rings held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-10_cohere-north-mini-code/05_failure-point.png",
       "asset_status": "generated",
       "cta": "",
@@ -134,7 +134,7 @@
       "on_slide_copy": "Fable 5 costs fifty dollars per million output tokens. North Mini Code costs your H100 time and three times the token budget for the same work.",
       "subline": "Local sovereignty and cost control versus managed convenience. Both paths have hidden line items.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A balanced split composition in the dark: left side a single H100 card glowing amber, right side a cloud abstraction with a fifty-dollar price tag hovering, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
+      "visual_prompt": "A balanced split composition in the dark: on the left a single sleek processor chip glowing warm, on the right a vast diffuse cloud of cold light, a thin luminous divider between them weighing one against the other, premium editorial key art, the divider centered with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_cohere-north-mini-code/06_defense.png",
       "asset_status": "generated",
       "cta": "",
@@ -147,7 +147,7 @@
       "on_slide_copy": "Benchmarks sell you speed. {{They do not bill you for verbosity.}} [[Model your agent pipeline on token volume before you commit to any model, open or closed.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A thin rim light traces a calculator display in the dark showing a token count multiplying across a pipeline diagram, the numbers climbing with each stage, minimal high-impact key art, the display drawn toward the edge with the center kept dark and open.",
+      "visual_prompt": "A thin rim light traces a single bright spark entering a chain of linked glowing chambers in the dark, the glow swelling larger at every link as it travels, minimal high-impact key art, the chain drawn toward the edge with the center kept dark and open.",
       "background_asset": "/backgrounds/2026-06-10_cohere-north-mini-code/07_takeaway.png",
       "asset_status": "generated",
       "cta": "",
@@ -160,7 +160,7 @@
       "on_slide_copy": "Have you measured the token multiplier in your agentic pipeline?",
       "subline": "Save this for your next model evaluation.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Soft pooled light isolates a single(token counter) gauge on a clean dark end-card surface, premium editorial cybersecurity key art, the gauge small in vast negative space with the lower third open.",
+      "visual_prompt": "Soft pooled light isolates a single rising column of stacked light discs on a clean dark end-card surface, premium editorial cybersecurity key art, the column small in vast negative space with the lower third open.",
       "background_asset": "/backgrounds/2026-06-10_cohere-north-mini-code/08_cta.png",
       "asset_status": "generated",
       "cta": "COMMENT + SAVE",
@@ -180,14 +180,14 @@
   ],
   "comment_prompt": "Have you measured the token multiplier in your agentic pipeline?",
   "alt_text": [
-    "Slide 1 (cover): a turbine blade in a dark void with glowing particles trailing three times longer than the blade, empty lower third for headline.",
-    "Slide 2 (context): a stack of twelve dark circuit boards fanning open like cards, each catching edge light differently.",
-    "Slide 3 (risk): three identical glass cylinders in a dark lab, the center one filled to the brim while the outer two sit at one-third.",
-    "Slide 4 (mechanism): a precision gear train in the dark, the first gear spinning fast driving three downstream gears that each rotate three times per input turn.",
-    "Slide 5 (gap): a dark dashboard with one gauge showing 210 tps in green and a second gauge climbing past 75 million tokens in amber.",
-    "Slide 6 (tradeoff): a split composition, left side an H100 card glowing amber, right side a cloud abstraction with a price tag, a thin divider between.",
-    "Slide 7 (takeaway): a calculator display in the dark showing a token count multiplying across a pipeline diagram, numbers climbing at each stage.",
-    "Slide 8 (cta): a token counter gauge on a clean dark end-card with open negative space."
+    "Title card: Cohere's free North Mini Code coding agent hides a three times token tax. It runs on one H100, but the catch is in its output volume. A turbine blade trails glowing particles three times its own length.",
+    "Cohere open-sourced North Mini Code on June 9: thirty billion parameters, three billion active, Apache 2.0, on Hugging Face. A stack of dark circuit boards fans open, each layer catching the edge light.",
+    "Artificial Analysis measured North Mini Code emitting 75 million output tokens on its Intelligence Index run, against a class median of 25 million. Three glass cylinders, the center one full, the outer two a third full.",
+    "Benchmarks rank North Mini Code eighth of 127 for output speed at 210 tokens per second, but they do not surface its verbosity. A gear train where one fast gear drives three that each spin three times faster.",
+    "Teams evaluate on intelligence scores and latency and forget to multiply by the token multiplier across thousands of agent calls a day. Two stacked rings, the lower one swelling far larger than the upper.",
+    "Fable 5 costs fifty dollars per million output tokens, while North Mini Code costs H100 time plus three times the token budget for the same work. A split scene: a warm processor chip against a cold cloud of light.",
+    "Benchmarks sell you speed, but they do not bill you for verbosity. Model your agent pipeline on token volume before committing to any model, open or closed. A spark grows brighter through a chain of linked chambers.",
+    "The call to action asks whether you have measured the token multiplier in your agentic pipeline. A single rising column of stacked light discs on a clean dark end card."
   ],
   "sources": [
     {
@@ -404,6 +404,908 @@
     "music": null,
     "sfx": [],
     "licenses": [],
-    "captions": []
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.58,
+        "text": "Cohere just open-sourced a coding agent that",
+        "words": [
+          {
+            "text": "Cohere",
+            "start": 0.0,
+            "end": 0.35
+          },
+          {
+            "text": "just",
+            "start": 0.7,
+            "end": 0.98
+          },
+          {
+            "text": "open-sourced",
+            "start": 0.98,
+            "end": 1.227
+          },
+          {
+            "text": "a",
+            "start": 1.227,
+            "end": 1.473
+          },
+          {
+            "text": "coding",
+            "start": 1.72,
+            "end": 1.88
+          },
+          {
+            "text": "agent",
+            "start": 1.88,
+            "end": 2.26
+          },
+          {
+            "text": "that",
+            "start": 2.26,
+            "end": 2.58
+          }
+        ]
+      },
+      {
+        "start": 2.58,
+        "end": 3.58,
+        "text": "runs on one H100.",
+        "words": [
+          {
+            "text": "runs",
+            "start": 2.58,
+            "end": 2.74
+          },
+          {
+            "text": "on",
+            "start": 2.74,
+            "end": 2.94
+          },
+          {
+            "text": "one",
+            "start": 2.94,
+            "end": 3.14
+          },
+          {
+            "text": "H100.",
+            "start": 3.14,
+            "end": 3.58
+          }
+        ]
+      },
+      {
+        "start": 3.58,
+        "end": 5.68,
+        "text": "The catch is a three-times token tax.",
+        "words": [
+          {
+            "text": "The",
+            "start": 3.58,
+            "end": 3.795
+          },
+          {
+            "text": "catch",
+            "start": 3.795,
+            "end": 4.01
+          },
+          {
+            "text": "is",
+            "start": 4.01,
+            "end": 4.225
+          },
+          {
+            "text": "a",
+            "start": 4.44,
+            "end": 4.64
+          },
+          {
+            "text": "three-times",
+            "start": 4.64,
+            "end": 4.86
+          },
+          {
+            "text": "token",
+            "start": 5.08,
+            "end": 5.38
+          },
+          {
+            "text": "tax.",
+            "start": 5.38,
+            "end": 5.68
+          }
+        ]
+      },
+      {
+        "start": 6.3,
+        "end": 8.12,
+        "text": "North Mini Code is thirty billion parameters,",
+        "words": [
+          {
+            "text": "North",
+            "start": 6.3,
+            "end": 6.52
+          },
+          {
+            "text": "Mini",
+            "start": 6.52,
+            "end": 6.7
+          },
+          {
+            "text": "Code",
+            "start": 6.7,
+            "end": 6.98
+          },
+          {
+            "text": "is",
+            "start": 6.98,
+            "end": 7.26
+          },
+          {
+            "text": "thirty",
+            "start": 7.26,
+            "end": 7.37
+          },
+          {
+            "text": "billion",
+            "start": 7.48,
+            "end": 7.84
+          },
+          {
+            "text": "parameters,",
+            "start": 7.84,
+            "end": 8.12
+          }
+        ]
+      },
+      {
+        "start": 8.12,
+        "end": 11.38,
+        "text": "three billion active, Apache 2.0, built for",
+        "words": [
+          {
+            "text": "three",
+            "start": 8.12,
+            "end": 8.55
+          },
+          {
+            "text": "billion",
+            "start": 8.98,
+            "end": 9.24
+          },
+          {
+            "text": "active,",
+            "start": 9.24,
+            "end": 9.64
+          },
+          {
+            "text": "Apache",
+            "start": 9.64,
+            "end": 9.92
+          },
+          {
+            "text": "2.0,",
+            "start": 9.92,
+            "end": 10.68
+          },
+          {
+            "text": "built",
+            "start": 10.94,
+            "end": 11.14
+          },
+          {
+            "text": "for",
+            "start": 11.14,
+            "end": 11.38
+          }
+        ]
+      },
+      {
+        "start": 11.38,
+        "end": 12.38,
+        "text": "the full agentic stack.",
+        "words": [
+          {
+            "text": "the",
+            "start": 11.38,
+            "end": 11.48
+          },
+          {
+            "text": "full",
+            "start": 11.48,
+            "end": 11.66
+          },
+          {
+            "text": "agentic",
+            "start": 11.66,
+            "end": 12.12
+          },
+          {
+            "text": "stack.",
+            "start": 12.12,
+            "end": 12.38
+          }
+        ]
+      },
+      {
+        "start": 13.12,
+        "end": 16.0,
+        "text": "Artificial Analysis measured it at 210 tokens",
+        "words": [
+          {
+            "text": "Artificial",
+            "start": 13.12,
+            "end": 13.17
+          },
+          {
+            "text": "Analysis",
+            "start": 13.12,
+            "end": 13.76
+          },
+          {
+            "text": "measured",
+            "start": 13.76,
+            "end": 14.3
+          },
+          {
+            "text": "it",
+            "start": 14.3,
+            "end": 14.56
+          },
+          {
+            "text": "at",
+            "start": 14.56,
+            "end": 14.7
+          },
+          {
+            "text": "210",
+            "start": 14.7,
+            "end": 14.98
+          },
+          {
+            "text": "tokens",
+            "start": 14.98,
+            "end": 16.0
+          }
+        ]
+      },
+      {
+        "start": 16.0,
+        "end": 16.68,
+        "text": "per second.",
+        "words": [
+          {
+            "text": "per",
+            "start": 16.0,
+            "end": 16.36
+          },
+          {
+            "text": "second.",
+            "start": 16.36,
+            "end": 16.68
+          }
+        ]
+      },
+      {
+        "start": 17.42,
+        "end": 17.47,
+        "text": "Fast.",
+        "words": [
+          {
+            "text": "Fast.",
+            "start": 17.42,
+            "end": 17.47
+          }
+        ]
+      },
+      {
+        "start": 18.84,
+        "end": 20.84,
+        "text": "But on the Intelligence Index it burned",
+        "words": [
+          {
+            "text": "But",
+            "start": 18.84,
+            "end": 19.3
+          },
+          {
+            "text": "on",
+            "start": 19.3,
+            "end": 19.42
+          },
+          {
+            "text": "the",
+            "start": 19.42,
+            "end": 19.52
+          },
+          {
+            "text": "Intelligence",
+            "start": 19.52,
+            "end": 19.8
+          },
+          {
+            "text": "Index",
+            "start": 19.8,
+            "end": 20.36
+          },
+          {
+            "text": "it",
+            "start": 20.64,
+            "end": 20.69
+          },
+          {
+            "text": "burned",
+            "start": 20.68,
+            "end": 20.84
+          }
+        ]
+      },
+      {
+        "start": 20.84,
+        "end": 22.08,
+        "text": "75 million tokens.",
+        "words": [
+          {
+            "text": "75",
+            "start": 20.84,
+            "end": 21.34
+          },
+          {
+            "text": "million",
+            "start": 21.34,
+            "end": 21.76
+          },
+          {
+            "text": "tokens.",
+            "start": 21.76,
+            "end": 22.08
+          }
+        ]
+      },
+      {
+        "start": 22.82,
+        "end": 24.48,
+        "text": "The class median was 25 million.",
+        "words": [
+          {
+            "text": "The",
+            "start": 22.82,
+            "end": 22.87
+          },
+          {
+            "text": "class",
+            "start": 22.86,
+            "end": 23.0
+          },
+          {
+            "text": "median",
+            "start": 23.0,
+            "end": 23.36
+          },
+          {
+            "text": "was",
+            "start": 23.36,
+            "end": 23.64
+          },
+          {
+            "text": "25",
+            "start": 23.64,
+            "end": 23.92
+          },
+          {
+            "text": "million.",
+            "start": 23.92,
+            "end": 24.48
+          }
+        ]
+      },
+      {
+        "start": 24.92,
+        "end": 25.82,
+        "text": "Three times the tokens.",
+        "words": [
+          {
+            "text": "Three",
+            "start": 24.92,
+            "end": 25.08
+          },
+          {
+            "text": "times",
+            "start": 25.08,
+            "end": 25.42
+          },
+          {
+            "text": "the",
+            "start": 25.42,
+            "end": 25.58
+          },
+          {
+            "text": "tokens.",
+            "start": 25.58,
+            "end": 25.82
+          }
+        ]
+      },
+      {
+        "start": 26.44,
+        "end": 28.2,
+        "text": "Three times the inference cost in any",
+        "words": [
+          {
+            "text": "Three",
+            "start": 26.44,
+            "end": 26.54
+          },
+          {
+            "text": "times",
+            "start": 26.54,
+            "end": 26.88
+          },
+          {
+            "text": "the",
+            "start": 26.88,
+            "end": 27.06
+          },
+          {
+            "text": "inference",
+            "start": 27.06,
+            "end": 27.32
+          },
+          {
+            "text": "cost",
+            "start": 27.32,
+            "end": 27.64
+          },
+          {
+            "text": "in",
+            "start": 27.64,
+            "end": 28.02
+          },
+          {
+            "text": "any",
+            "start": 28.02,
+            "end": 28.2
+          }
+        ]
+      },
+      {
+        "start": 28.2,
+        "end": 29.02,
+        "text": "high-volume pipeline.",
+        "words": [
+          {
+            "text": "high-volume",
+            "start": 28.2,
+            "end": 28.49
+          },
+          {
+            "text": "pipeline.",
+            "start": 28.78,
+            "end": 29.02
+          }
+        ]
+      },
+      {
+        "start": 29.78,
+        "end": 31.7,
+        "text": "Benchmarks rank on speed and intelligence.",
+        "words": [
+          {
+            "text": "Benchmarks",
+            "start": 29.78,
+            "end": 30.3
+          },
+          {
+            "text": "rank",
+            "start": 30.3,
+            "end": 30.62
+          },
+          {
+            "text": "on",
+            "start": 30.62,
+            "end": 30.88
+          },
+          {
+            "text": "speed",
+            "start": 30.88,
+            "end": 31.16
+          },
+          {
+            "text": "and",
+            "start": 31.16,
+            "end": 31.4
+          },
+          {
+            "text": "intelligence.",
+            "start": 31.4,
+            "end": 31.7
+          }
+        ]
+      },
+      {
+        "start": 32.46,
+        "end": 33.76,
+        "text": "They do not surface verbosity.",
+        "words": [
+          {
+            "text": "They",
+            "start": 32.46,
+            "end": 32.52
+          },
+          {
+            "text": "do",
+            "start": 32.52,
+            "end": 32.64
+          },
+          {
+            "text": "not",
+            "start": 32.64,
+            "end": 32.8
+          },
+          {
+            "text": "surface",
+            "start": 32.8,
+            "end": 33.1
+          },
+          {
+            "text": "verbosity.",
+            "start": 33.1,
+            "end": 33.76
+          }
+        ]
+      },
+      {
+        "start": 34.16,
+        "end": 35.2,
+        "text": "That is the hidden invoice.",
+        "words": [
+          {
+            "text": "That",
+            "start": 34.16,
+            "end": 34.36
+          },
+          {
+            "text": "is",
+            "start": 34.36,
+            "end": 34.48
+          },
+          {
+            "text": "the",
+            "start": 34.48,
+            "end": 34.62
+          },
+          {
+            "text": "hidden",
+            "start": 34.62,
+            "end": 34.84
+          },
+          {
+            "text": "invoice.",
+            "start": 34.84,
+            "end": 35.2
+          }
+        ]
+      },
+      {
+        "start": 35.94,
+        "end": 38.0,
+        "text": "Fable 5 costs fifty dollars per million",
+        "words": [
+          {
+            "text": "Fable",
+            "start": 35.94,
+            "end": 36.2
+          },
+          {
+            "text": "5",
+            "start": 36.2,
+            "end": 36.52
+          },
+          {
+            "text": "costs",
+            "start": 36.52,
+            "end": 36.78
+          },
+          {
+            "text": "fifty",
+            "start": 36.78,
+            "end": 36.96
+          },
+          {
+            "text": "dollars",
+            "start": 36.96,
+            "end": 37.14
+          },
+          {
+            "text": "per",
+            "start": 37.32,
+            "end": 37.76
+          },
+          {
+            "text": "million",
+            "start": 37.76,
+            "end": 38.0
+          }
+        ]
+      },
+      {
+        "start": 38.0,
+        "end": 38.32,
+        "text": "tokens.",
+        "words": [
+          {
+            "text": "tokens.",
+            "start": 38.0,
+            "end": 38.32
+          }
+        ]
+      },
+      {
+        "start": 39.2,
+        "end": 41.02,
+        "text": "North Mini Code costs your H100 hours",
+        "words": [
+          {
+            "text": "North",
+            "start": 39.2,
+            "end": 39.25
+          },
+          {
+            "text": "Mini",
+            "start": 39.2,
+            "end": 39.38
+          },
+          {
+            "text": "Code",
+            "start": 39.38,
+            "end": 39.64
+          },
+          {
+            "text": "costs",
+            "start": 39.64,
+            "end": 39.88
+          },
+          {
+            "text": "your",
+            "start": 39.88,
+            "end": 40.16
+          },
+          {
+            "text": "H100",
+            "start": 40.16,
+            "end": 40.76
+          },
+          {
+            "text": "hours",
+            "start": 40.76,
+            "end": 41.02
+          }
+        ]
+      },
+      {
+        "start": 41.02,
+        "end": 42.56,
+        "text": "and triple the token budget.",
+        "words": [
+          {
+            "text": "and",
+            "start": 41.02,
+            "end": 41.54
+          },
+          {
+            "text": "triple",
+            "start": 41.54,
+            "end": 41.66
+          },
+          {
+            "text": "the",
+            "start": 41.78,
+            "end": 42.04
+          },
+          {
+            "text": "token",
+            "start": 42.04,
+            "end": 42.22
+          },
+          {
+            "text": "budget.",
+            "start": 42.22,
+            "end": 42.56
+          }
+        ]
+      },
+      {
+        "start": 43.28,
+        "end": 45.08,
+        "text": "Model your agent pipeline on token volume",
+        "words": [
+          {
+            "text": "Model",
+            "start": 43.28,
+            "end": 43.4
+          },
+          {
+            "text": "your",
+            "start": 43.4,
+            "end": 43.64
+          },
+          {
+            "text": "agent",
+            "start": 43.64,
+            "end": 43.9
+          },
+          {
+            "text": "pipeline",
+            "start": 43.9,
+            "end": 44.16
+          },
+          {
+            "text": "on",
+            "start": 44.16,
+            "end": 44.54
+          },
+          {
+            "text": "token",
+            "start": 44.54,
+            "end": 44.76
+          },
+          {
+            "text": "volume",
+            "start": 44.76,
+            "end": 45.08
+          }
+        ]
+      },
+      {
+        "start": 45.08,
+        "end": 47.38,
+        "text": "before you commit to any model, open",
+        "words": [
+          {
+            "text": "before",
+            "start": 45.08,
+            "end": 45.76
+          },
+          {
+            "text": "you",
+            "start": 45.76,
+            "end": 46.04
+          },
+          {
+            "text": "commit",
+            "start": 46.04,
+            "end": 46.26
+          },
+          {
+            "text": "to",
+            "start": 46.26,
+            "end": 46.42
+          },
+          {
+            "text": "any",
+            "start": 46.42,
+            "end": 46.58
+          },
+          {
+            "text": "model,",
+            "start": 46.58,
+            "end": 46.88
+          },
+          {
+            "text": "open",
+            "start": 47.24,
+            "end": 47.38
+          }
+        ]
+      },
+      {
+        "start": 47.38,
+        "end": 47.8,
+        "text": "or closed.",
+        "words": [
+          {
+            "text": "or",
+            "start": 47.38,
+            "end": 47.6
+          },
+          {
+            "text": "closed.",
+            "start": 47.6,
+            "end": 47.8
+          }
+        ]
+      },
+      {
+        "start": 49.0,
+        "end": 50.68,
+        "text": "Have you measured the token multiplier in",
+        "words": [
+          {
+            "text": "Have",
+            "start": 49.0,
+            "end": 49.14
+          },
+          {
+            "text": "you",
+            "start": 49.14,
+            "end": 49.24
+          },
+          {
+            "text": "measured",
+            "start": 49.24,
+            "end": 49.46
+          },
+          {
+            "text": "the",
+            "start": 49.46,
+            "end": 49.68
+          },
+          {
+            "text": "token",
+            "start": 49.68,
+            "end": 49.94
+          },
+          {
+            "text": "multiplier",
+            "start": 49.94,
+            "end": 50.16
+          },
+          {
+            "text": "in",
+            "start": 50.16,
+            "end": 50.68
+          }
+        ]
+      },
+      {
+        "start": 50.68,
+        "end": 50.98,
+        "text": "your pipeline?",
+        "words": [
+          {
+            "text": "your",
+            "start": 50.68,
+            "end": 50.78
+          },
+          {
+            "text": "pipeline?",
+            "start": 50.78,
+            "end": 50.98
+          }
+        ]
+      },
+      {
+        "start": 51.76,
+        "end": 52.4,
+        "text": "Tell me in the comments.",
+        "words": [
+          {
+            "text": "Tell",
+            "start": 51.76,
+            "end": 51.86
+          },
+          {
+            "text": "me",
+            "start": 51.86,
+            "end": 52.0
+          },
+          {
+            "text": "in",
+            "start": 52.0,
+            "end": 52.1
+          },
+          {
+            "text": "the",
+            "start": 52.1,
+            "end": 52.18
+          },
+          {
+            "text": "comments.",
+            "start": 52.18,
+            "end": 52.4
+          }
+        ]
+      }
+    ]
   }
 }

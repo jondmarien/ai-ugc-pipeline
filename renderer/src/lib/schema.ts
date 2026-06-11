@@ -89,6 +89,10 @@ export const SlideData = z.object({
   asset_status: z.enum(["existing", "needed", "generated", "stock", "procedural"]).default("procedural"),
   cta: z.string().optional().default(""),
   notes: z.string().optional().default(""),
+  // Per-slide style-fusion override (FLUX.2): a second aesthetic blended with the house style for
+  // THIS slide's background, e.g. "ancient Greek marble statuary rendered in cyberpunk neon".
+  // Overrides the post-level style_fusion. Empty = inherit post / plain house style.
+  style_fusion: z.string().optional().default(""),
   // For role "chain": the ordered steps of the diagram. The last step is rendered as the
   // emphasized outcome. stage = short label (e.g. "STAGE 1"), title = the action, detail = a line.
   chain: z.array(z.object({
@@ -223,6 +227,11 @@ export const PostData = z
     // Brand colour theme (drives carousel accent + AI-image colour/mood). Optional —
     // falls back to the pillar→theme map in tokens.ts when omitted.
     theme: z.enum(["offensive", "defensive", "hacking", "purple-team", "ai"]).optional(),
+    // Optional FLUX.2 style fusion applied to ALL backgrounds of this post: a second named
+    // aesthetic blended with the house style under the theme's unifying palette, e.g.
+    // "ancient Greek marble statuary rendered in cyberpunk neon" or "blueprint schematic etching".
+    // A slide may override via slide.style_fusion. Empty/omitted = plain house style.
+    style_fusion: z.string().optional().default(""),
     audience: z.string().min(1),
     core_claim: z.string().min(1),
     claim_tags: z.array(z.string()).min(1),

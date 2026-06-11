@@ -147,7 +147,7 @@
       "on_slide_copy": "Copy Fail mitigation {{does not cover the xfrm or RxRPC paths.}} [[Dirty Frag proves the bug class is wider than one subsystem. Patch the kernel, not the module.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A thin rim light traces a kernel source tree in the dark, one branch (algif_aead) pruned but two others (xfrm, rxrpc) thriving in red, minimal high-impact key art, the tree drawn toward the edge with the center kept dark and open.",
+      "visual_prompt": "A thin rim light traces a branching tree of light in the dark, one limb withered and dark while two others thrive and glow red, minimal high-impact key art, the tree drawn toward the edge with the center kept dark and open.",
       "background_asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/07_takeaway.png",
       "asset_status": "generated",
       "cta": "",
@@ -182,14 +182,14 @@
   ],
   "comment_prompt": "Have you blocklisted esp4, esp6, and rxrpc on systems that do not need IPsec?",
   "alt_text": [
-    "Slide 1 (cover): two fractured shards in a dark void fusing into a single glowing red blade, empty lower third for headline.",
-    "Slide 2 (context): a dark family tree of kernel bugs, Dirty Pipe at root, Copy Fail branching, Dirty Frag as red node.",
-    "Slide 3 (risk): a precision mechanism clicking into place smoothly every time, zero variance.",
-    "Slide 4 (mechanism): two gears meshing, one marked ESP (needs namespace) one RxRPC (needs module), driving ROOT output.",
-    "Slide 5 (gap): a shield marked ALGIF_AEAD BLOCKED with two red arrows ESP and RxRPC bypassing on either side.",
-    "Slide 6 (defense): split composition, left vulnerable kernel with open module slots, right same kernel with three slots sealed in purple.",
-    "Slide 7 (takeaway): a kernel source tree, one branch pruned but two others thriving in red.",
-    "Slide 8 (cta): a modprobe.d config line on a clean dark end-card with open negative space."
+    "Title card: two primitives, one chain, deterministic root. Dirty Frag bypasses the Copy Fail mitigation with no race condition and hits Ubuntu, RHEL, Fedora, and openSUSE. Two fractured shards fuse into a single glowing red blade in a dark void.",
+    "Dirty Frag extends the Dirty Pipe and Copy Fail bug class, chaining the xfrm-ESP and RxRPC page-cache writes. Reported April 30, embargo broken after a third party published xfrm-ESP details, PoC released. A family tree of kernel bugs with Dirty Frag as the newest red node.",
+    "A deterministic logic bug with no race condition required, the kernel does not panic on failure, and the success rate is very high. It hits Ubuntu 24.04.4, RHEL 10.1, openSUSE Tumbleweed, CentOS Stream 10, AlmaLinux 10, and Fedora 44, with Microsoft seeing limited in-the-wild use. A precision mechanism clicks into place every time.",
+    "xfrm-ESP gives a four-byte store via IPsec but needs a user namespace that Ubuntu AppArmor blocks. RxRPC needs no namespace but rxrpc.ko is absent on most distros, except Ubuntu loads it by default. Chaining covers both blind spots for one-command root. Two gears marked ESP and RxRPC drive a ROOT output shaft.",
+    "The Copy Fail mitigation blacklists algif_aead, but Dirty Frag works regardless because ESP and RxRPC are separate attack surfaces. Blocklisting esp4, esp6, and rxrpc breaks IPsec and RxRPC, so patching is the only real fix. A blocked shield with two red arrows bypassing it.",
+    "Blocklist esp4, esp6, and rxrpc if you do not need IPsec or RxRPC, restrict unprivileged user namespaces, harden containers, and monitor for abnormal escalation. CVE-2026-43284 and CVE-2026-43500 are patched in mainline. A split view of a vulnerable kernel beside one with three module slots sealed in purple.",
+    "The Copy Fail mitigation does not cover the xfrm or RxRPC paths. Dirty Frag proves the bug class is wider than one subsystem, so patch the kernel, not the module. A kernel source tree with one branch pruned but two others thriving in red.",
+    "Closing question: have you blocklisted esp4, esp6, and rxrpc on systems that do not need IPsec? Save this for your next kernel hardening review. A single modprobe.d config line on a clean dark end-card with open negative space."
   ],
   "sources": [
     {

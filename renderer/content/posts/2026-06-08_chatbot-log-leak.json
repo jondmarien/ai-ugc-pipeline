@@ -178,14 +178,14 @@
   ],
   "comment_prompt": "Does your team have a sanctioned way to use AI on real data, or a rule everyone quietly ignores?",
   "alt_text": [
-    "Cover slide: a lone office photocopier in the dark mid-copy, a bright bar of light sweeping under the lid and a page easing out of the tray, with the headline in the lower third.",
-    "Context slide: a painted boundary line across a dark floor with loose papers drifting across it from one side to the other.",
-    "Risk slide: a tipped-over inkwell on a desk in the gloom, a thin bright rivulet of ink running off the edge.",
-    "Mechanism slide: scissors clipping a fragment out of a larger printed sheet, the cut piece lifting free and drifting away.",
-    "Failure point slide: a closed metal shutter pulled down over one doorway while a side door stands open beside it, papers slipping through the open one.",
-    "Defense slide: a document passing through a small inline filter cartridge, a cleaner redacted page coming out the other side.",
-    "Takeaway slide: a sheet of paper half dissolved into drifting particles in deep shadow, the intact half catching a thin rim of light.",
-    "CTA slide: a single rubber stamp resting beside an empty ink pad in vast dark negative space, with the comment question and handle."
+    "Title card: The logs you paste into a chatbot leave your control for good. Samsung learned it the hard way after engineers pasted source code into ChatGPT and it banned the tools weeks later. A lone office photocopier glows mid-copy in the dark.",
+    "The problem is not the AI. It is sensitive data leaving systems you control, one paste at a time. A chatbot paste is data movement, not a conversation. Loose papers drift across a painted boundary line on a dark floor.",
+    "Logs and code carry the crown jewels: API tokens, customer IDs, stack traces, and internal endpoints. Researchers found a real slice of employees had already pasted confidential data into ChatGPT. A tipped inkwell spills a bright rivulet of ink.",
+    "Copy and paste strips the file and its label, so classic data-loss tools never see it leave. No file, no scan, and the clipboard is the blind spot. Scissors clip a fragment out of a printed sheet and it drifts away.",
+    "Teams ban the tools instead of offering a safe one, so people just switch to personal accounts. A ban with no sanctioned path pushes the data further out of view. A side door stands open while a metal shutter seals the main doorway.",
+    "Give people a sanctioned AI tool with redaction, logging, and retention, plus one rule: never paste production data. Make the safe path the easy path. A document feeds through an inline filter cartridge, a redacted page emerging.",
+    "Once it is pasted, you cannot get it back. Make the safe path easier than the risky one. A sheet of paper is half dissolved into drifting particles in deep shadow, the intact half catching a thin rim of light.",
+    "Does your team have a sanctioned way to use AI on real data, or just a rule nobody follows? Save this for your next data-handling review. A single rubber stamp rests beside an empty ink pad in vast dark negative space."
   ],
   "sources": [
     {

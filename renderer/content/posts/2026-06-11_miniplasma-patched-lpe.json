@@ -183,14 +183,14 @@
   ],
   "comment_prompt": "Do you hunt for primitive chains on your patched endpoints?",
   "alt_text": [
-    "Slide 1 (cover): a Windows Update shield in the dark, a green plasma tendril slipping through the checkmark and emerging as a SYSTEM prompt.",
-    "Slide 2 (context): a Windows Update history in the dark, 'June 2026 Cumulative Update' installed with green checkmark, but a red 'Exploit verified' badge overlapping it.",
-    "Slide 3 (risk): a patch shield in the dark, two green plasma tendrils weaving through microscopic gaps in the mesh, converging into a SYSTEM token.",
-    "Slide 4 (mechanism): two chain links in the dark, first link a symlink race glowing green, second link a token API glowing green, fused into a SYSTEM crown.",
-    "Slide 5 (gap): a vulnerability scanner report, '0 critical vulnerabilities' in green, but a red chain diagram overlay showing two mitigated primitives linking.",
-    "Slide 6 (defense): split composition, left side patch shield with two separate green mitigations, right side same mitigations chained into red SYSTEM breach.",
-    "Slide 7 (takeaway): a Windows Update shield, half with green checkmark, half with green plasma chain slipping through forming a SYSTEM crown.",
-    "Slide 8 (cta): a behavioral detection rule for symlink+token chains on a clean dark end-card."
+    "Title card: MiniPlasma escapes the patch, fully patched yet still root. It is an LPE on current Patch Tuesday with no CVE, Nightmare Eclipse exploit six and the wave closer. A green plasma tendril slips through an Update shield checkmark to a SYSTEM prompt.",
+    "Nightmare Eclipse dropped MiniPlasma as the sixth and final exploit, targeting fully patched Windows 10 and 11 with June 2026 Patch Tuesday installed. No CVE assigned, chaining two post-patch primitives, six zero-days in six days. An Update history shows an exploit-verified badge.",
+    "MiniPlasma works on fully patched systems, chaining two primitives that survived June Patch Tuesday into a deterministic SYSTEM shell with no user interaction. The patch closed the front door, the chain enters the window. Two tendrils weave through a patch shield into a SYSTEM token.",
+    "The chain: a symbolic link race in a SYSTEM service that survives the patch gives arbitrary file write as SYSTEM, then a token manipulation via a legitimate Windows API converts it to a token. Both are mitigated alone but not together. Two chain links fuse into a SYSTEM crown.",
+    "Where defenders miss it: Patch Tuesday says protected and scanners say clean, but the chain combines two mitigated primitives, so the whole is not the sum of the parts and no CVE means no signature. A scanner report reads zero critical vulnerabilities under a red chain overlay.",
+    "Mitigation: monitor symbolic link creation in SYSTEM contexts, audit token APIs like DuplicateTokenEx and ImpersonateLoggedOnUser, hunt patch-residue chains, and assume patched systems have new attack surfaces. A split image of two separate mitigations versus the chained SYSTEM breach.",
+    "Patched does not mean immune. It means the attack surface has shifted. A Windows Update shield, half with a green checkmark and half with a green plasma chain slipping through to form a SYSTEM crown.",
+    "Closing question: Do you hunt for primitive chains on your patched endpoints? A behavioral detection rule for symlink and token chains sits on a clean dark end-card."
   ],
   "sources": [
     {

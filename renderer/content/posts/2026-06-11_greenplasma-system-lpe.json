@@ -183,14 +183,14 @@
   ],
   "comment_prompt": "Do you audit scheduled task DLL paths for writability?",
   "alt_text": [
-    "Slide 1 (cover): a Windows system process icon in the dark, a green plasma tendril wrapping around it and turning it into a SYSTEM token.",
-    "Slide 2 (context): a Windows Task Manager in the dark, a single process highlighted in green with 'SYSTEM' privileges, CPU graph spiking.",
-    "Slide 3 (risk): a trusted system process binary in the dark, a green DLL injection path glowing from a user-writable directory into the process memory.",
-    "Slide 4 (mechanism): a scheduled task XML in the dark, a green DLL path redirecting from System32 to a user profile.",
-    "Slide 5 (gap): a DLL load event in the dark, a Microsoft-signed binary loading a DLL from AppData, the path highlighted red while the binary stays green.",
-    "Slide 6 (defense): split composition, left side scheduled task with System32 DLL path and green checkmark, right side with AppData DLL path and red warning.",
-    "Slide 7 (takeaway): a Microsoft-signed binary icon, half with green certificate glow, half with green DLL tendril entering from a user-writable directory.",
-    "Slide 8 (cta): a Task Scheduler DLL path audit report on a clean dark end-card."
+    "Title card: GreenPlasma hijacks a trusted process for full SYSTEM. CVE-2026-45586 is a system-level LPE via trusted process abuse, Nightmare Eclipse exploit five, patched June 2026. A green plasma tendril turns a Windows process into a SYSTEM token.",
+    "Nightmare Eclipse dropped GreenPlasma as the fifth exploit, CVE-2026-45586, gaining full system privilege through a trusted Windows process. It was patched in June 2026 Patch Tuesday but public before the patch. A Task Manager process runs as SYSTEM.",
+    "GreenPlasma exploits a trusted system process running as SYSTEM with no memory corruption: the process legitimately loads attacker-controlled code. It works on fully patched Windows 10 and 11 before June 2026, deterministic, no race. A DLL path glows into process memory.",
+    "The mechanism abuses a DLL search order hijack in a SYSTEM-scheduled task, where a trusted binary loads a DLL from a user-writable path. The attacker plants the DLL, the task triggers, SYSTEM loads it. A scheduled task XML redirects a DLL path to a user profile.",
+    "Where defenders miss it: the task and binary are Microsoft-signed, so the writable DLL path is the only anomaly, EDRs allow signed binaries, and the path is a config issue with no exploit binary on disk. A DLL load event shows a signed binary loading from AppData.",
+    "Mitigation: deploy June 2026 Patch Tuesday, audit scheduled tasks for user-writable DLL paths, enable AppLocker or WDAC DLL blocking, and monitor signed binaries loading from non-system paths. A split image of a System32 DLL path versus an AppData DLL path.",
+    "A Microsoft-signed binary is not a trust boundary if its load path is writable. The signature validates the author, the path validates the runtime. A signed binary icon, half with a green certificate glow and half with a DLL tendril from a writable directory.",
+    "Closing question: Do you audit scheduled task DLL paths for writability? A Task Scheduler DLL path audit report sits on a clean dark end-card."
   ],
   "sources": [
     {

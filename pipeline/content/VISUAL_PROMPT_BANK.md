@@ -14,7 +14,7 @@ klein has **no prompt upsampler** — *what you write is exactly what the model 
 2. **Order: `Subject + Action + Style + Context`.** Word order = priority; put the focal subject first. If FLUX keeps pulling too wide, state the subject before the environment.
 3. **Lighting is the single highest-impact lever.** Describe it like a DP — *source / quality / direction / temperature / interaction* ("a single hard rim light raking from the left through volumetric haze"). Spend words here before anywhere else.
 4. **Specific, not long.** 30–80 words of load-bearing detail. Filler hurts; one or two strong effects and one realism cue, no stacking.
-5. **No negatives, no lettering.** Never write "no text" or quoted strings inside `visual_prompt` (klein renders quotes/letters as garbled type). Keep type-free zones the *positive* way: "clean unmarked surfaces, generous negative space in the lower third."
+5. **Text-free by default; deliberate when you mean it.** These backgrounds sit *behind* the renderer's crisp vector overlay copy, so the default is zero text. The fastest way to summon *garbled* text is to name a text-bearing subject — a terminal, dashboard, console, event log, calendar, ledger, manifest, spreadsheet, source code, a screen or prompt "showing" something, a gauge or tag with a number. Don't render those literally; swap each for an abstract metaphor (see §7). Phrase type-free zones the *positive* way ("clean unmarked surfaces, generous negative space in the lower third"); the runtime negative node mops up incidental lettering. When a slide *genuinely* wants a word or sign, see §7 — quote the exact string, place it, name a font, keep it short. That is the only time letters belong in `visual_prompt`.
 6. **Don't hardcode the accent colour.** The renderer auto-injects the post's **theme** accent glow + hex (see §1) and the house style + mood as a trailing `Style: … Mood:` tag. Describe the subject, its lighting *quality/direction*, and composition — let the pipeline supply the hue. A colour word in `visual_prompt` will fight the theme and is not stripped (only `visual_direction` is).
 
 So a good `visual_prompt` = **focal subject + action + lighting (DP-style) + medium/style + composition with a clean negative-space lower-third.** The renderer appends: `A single {accent} ({hex}) accent glow on a deep navy void #05070d. Style: {house style}. Mood: {theme mood}. {text-safe zone}.`
@@ -111,7 +111,38 @@ held in the upper third with clean empty space and soft shadow filling the lower
 
 ---
 
-## 7. Safety reminders for image generation
+## 7. Text in images — off by default, deliberate when on
+
+The renderer sets every headline, kicker, and label as real vector type for spelling and brand control, so a background almost never needs its own text.
+
+**To AVOID garbled text (the default):** never name a text-bearing object as the subject. The repeat offenders and their abstract, text-free replacements:
+
+| Don't depict (summons garbled text) | Use instead (abstract, text-free) |
+| --- | --- |
+| terminal / console / "code on a screen" | a towering lattice of glyph-like light, one strand flaring |
+| dashboard / gauges / metrics panel | stacked glowing rings or orbs, one swelling larger |
+| event log / audit log / git log | a field of identical dark slabs, one pulsing red |
+| calendar / schedule with dates | an orderly grid of sealed cells, one cracking open |
+| ledger / manifest / spreadsheet / invoice | rows of dark filled bars with one conspicuous gap |
+| recovery-key / login prompt / "screen showing X" | an abstract gate or seal reacting to a key of light |
+| price tag / counter / number readout | a column of stacked light discs, or weighed scale pans |
+| kernel source / a highlighted line of code | a dense vertical weave of light filaments, one flipped |
+
+**To RENDER text on purpose (rare):** follow the FLUX.2 three-step inside the positive `visual_prompt` — (1) exact string in quotes (`"OPEN"`), (2) placement ("on the sign above the door"), (3) a named font style ("bold industrial sans-serif"). Keep it short; long strings garble. Deliberate quoted text outweighs the negative node, so quote *only* what you actually want to appear, and use a hex code for brand-exact lettering colour if needed.
+
+## 8. Style fusion (optional — per post or per slide)
+
+FLUX.2 can blend two named aesthetics under one unifying palette. Set **`style_fusion`** on the post (applies to every background) or on a slide (overrides the post) to a short "X meets Y" phrase; the renderer folds it into the trailing `Style:` tag and the theme accent stays the unifying colour. Keep the fusion an *aesthetic* (medium / finish / era), not a new text-bearing subject — the §0 subject + lighting rules still apply.
+
+Examples:
+- `"ancient Greek marble statuary rendered in cyberpunk neon"`
+- `"blueprint schematic etching meets volumetric studio photography"`
+- `"brutalist concrete sculpture under editorial rim light"`
+- `"risograph print texture over a dark cinematic render"`
+
+Pick a fusion that suits the topic (e.g. classical-statue-meets-neon for an "old idea, new threat" angle). Empty / omitted = the plain house style.
+
+## 9. Safety reminders for image generation
 
 - No real logos, real credentials, real customer data, or readable private info.
 - Synthetic faces only; never imply a real, identifiable person did something they didn't.

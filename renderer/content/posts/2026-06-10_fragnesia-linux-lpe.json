@@ -182,14 +182,14 @@
   ],
   "comment_prompt": "How many page-cache corruption primitives are in your kernel right now?",
   "alt_text": [
-    "Slide 1 (cover): three fragmented shards in a dark void aligning into a single red blade, third shard clicking into place with a pulse, empty lower third for headline.",
-    "Slide 2 (context): a dark kernel map with three red nodes pulsing in XFRM/ESP region: Dirty Frag UDP, Dirty Frag RxRPC, Fragnesia TCP.",
-    "Slide 3 (risk): a scalpel making precise incision into a locked file, file contents rewriting in red without lock triggering.",
-    "Slide 4 (mechanism): a TCP packet being decrypted in-place over shared page-cache pages, plaintext bleeding into read-only file reference.",
-    "Slide 5 (gap): an assembly line producing identical root exploits from three subsystem inputs: ALGIF_AEAD, XFRM_UDP, XFRM_TCP.",
-    "Slide 6 (defense): split composition, three subsystem bugs converging left, single mitigation (three module blocklist) stopping all three right.",
-    "Slide 7 (takeaway): three roots converging into single trunk labeled PAGE-CACHE CORRUPTION, red axe poised, new roots sprouting below.",
-    "Slide 8 (cta): a kernel subsystem map with three red paths highlighted converging on page cache."
+    "Title card: Third page-cache LPE in two weeks, same root, same mitigation. Fragnesia is CVE-2026-46300 in XFRM ESP-in-TCP, no host privileges needed, Dirty Frag mitigation works. Three shards fuse into one red blade.",
+    "Fragnesia targets the XFRM ESP-in-TCP subsystem, found by William Bowling of Zellic and V12 Security. CVE-2026-46300, CVSS 7.8, deterministic page-cache corruption, no race condition. A dark kernel map with three red nodes.",
+    "It modifies read-only file contents in the kernel page cache to gain root via deterministic byte writes. Unlike Dirty Frag, no host privileges are required and AppArmor is only partial mitigation. A scalpel cuts a locked file.",
+    "It abuses a logic bug in XFRM ESP-in-TCP for arbitrary byte writes into the page cache of read-only files, no race condition, root via /usr/bin/su corruption. A TCP packet decrypts in place over shared page-cache pages.",
+    "The pattern: Copy Fail, then Dirty Frag, then Fragnesia. Three subsystems, same page-cache primitive, same root, same mitigation: blocklist esp4, esp6, rxrpc. An assembly line outputs identical root exploits from three inputs.",
+    "Mitigation: blocklist esp4, esp6, rxrpc, restrict unprivileged user namespaces, harden containers, monitor for escalation, and patch the kernel when available. Three converging bugs are stopped by one module blocklist.",
+    "The page-cache corruption bug class now spans three subsystems. One mitigation covers all three, but the kernel keeps finding new paths to the same primitive. Three roots merge into a trunk labeled page-cache corruption.",
+    "Closing question: How many page-cache corruption primitives are in your kernel right now? A kernel subsystem map shows three red paths converging on the page cache."
   ],
   "sources": [
     {

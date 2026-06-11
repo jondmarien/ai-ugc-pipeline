@@ -179,14 +179,14 @@
   ],
   "comment_prompt": "What would you actually build with a private, offline multimodal model on your own box?",
   "alt_text": [
-    "Slide 1 (cover): a sleek laptop on a dark desk with a warm glowing orb hovering above the keyboard; bold headline space below.",
-    "Slide 2 (context): a glowing cube in the dark with three streams (light, a sound wave, and a sheet of paper) flowing into it.",
-    "Slide 3 (risk): a wide funnel swallowing a photo, a sound wave, and a page, with a single thin ribbon of light trickling out the bottom.",
-    "Slide 4 (mechanism): mosaic tiles and sound-wave fragments streaming directly into one glowing core with nothing in between.",
-    "Slide 5 (failure_point): a single trophy on a tall pedestal under one spotlight while the surrounding ground stays dark.",
-    "Slide 6 (defense): a small glowing cube connected to an ordinary laptop by a bright cable of light.",
-    "Slide 7 (takeaway): a warm glowing orb cupped in two open hands above a closed laptop.",
-    "Slide 8 (cta): an open laptop glowing in a dark room with a warm question-mark of light rising from the screen."
+    "Title card: Google just put a multimodal AI on your laptop, and Gemma 4 12B sees, hears, reasons, and runs offline. A sleek laptop sits on a dark desk with a warm glowing orb above the keyboard.",
+    "Gemma 4 12B is a dense, encoder-free model that takes text, image, and audio, runs locally on about 8GB, and is Apache-2.0 with open weights. A glowing cube draws in a ribbon of light, a sound wave, and a sheet of paper.",
+    "The catch: it is input-only, text out, so it understands images and audio but does not make them, and it is not a FLUX or a voice model. A wide funnel swallows a photo, a sound wave, and a page while one thin ribbon trickles out.",
+    "Encoder-free means raw pixels and audio project straight into the model, with no separate vision or audio encoders, so it is leaner and you fine-tune it in one pass. Mosaic tiles and sound-wave fragments stream straight into a glowing core.",
+    "Read the fine print: the near the 26B model claim is Google's own benchmark, so verify it on your task, since vendor numbers are a starting point and not your workload. A trophy stands on a pedestal under one spotlight while the ground stays dark.",
+    "Run it yourself, local and free, with Ollama, LM Studio, llama.cpp, or Unsloth, and fine-tune the open weights on your own data. A glowing cube connects to an ordinary laptop by a bright cable of light.",
+    "Capable multimodal AI now fits on a laptop and never leaves it: open, offline, yours. A warm glowing orb is cupped in two open hands above a closed laptop.",
+    "The closing question: would you run your AI locally if it never touched the cloud? Save this for your next build. An open laptop glows in a dark room with a warm question-mark of light rising from the screen."
   ],
   "sources": [
     {

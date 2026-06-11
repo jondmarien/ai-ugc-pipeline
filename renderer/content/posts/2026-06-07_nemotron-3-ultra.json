@@ -161,7 +161,7 @@
       "on_slide_copy": "How long do you let an agent run before a human checks its goal?",
       "subline": "Save this for your next agent design review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a clean dark end-card scene, a rising tide lapping against a tall marked depth gauge in vast empty negative space, the waterline catching a thin rim of light, premium editorial cybersecurity look",
+      "visual_prompt": "a clean dark end-card scene, a rising tide lapping against a tall smooth luminous column in vast empty negative space, the waterline catching a thin rim of light, premium editorial cybersecurity look",
       "background_asset": "/backgrounds/2026-06-07_nemotron-3-ultra/08_cta.png",
       "asset_status": "generated",
       "cta": "COMMENT + SAVE",
@@ -178,14 +178,14 @@
   ],
   "comment_prompt": "How long would you let an autonomous agent run before a human reviews its goal?",
   "alt_text": [
-    "Slide 1 (cover): a vast reservoir of still dark water reaching to a distant shore, a tiny lone figure on the bank for scale, with the headline in the lower third.",
-    "Slide 2 (context): a long stone aqueduct carrying a thin channel of water away into the far distance, its arches receding endlessly.",
-    "Slide 3 (risk): a huge floodgate wide open releasing a heavy torrent of water, the operator's platform standing empty beside it.",
-    "Slide 4 (mechanism): a single drop falling into a wide still basin, one ring of ripples spreading slowly outward across the whole surface.",
-    "Slide 5 (failure_point): a long row of sluice gates all hauled fully open with water surging through each one, the control wheels left unmanned.",
-    "Slide 6 (defense): a massive concrete dam holding back a swelling river, the water rising calm and level behind its wall while one controlled channel runs through.",
-    "Slide 7 (takeaway): a tall water tower standing alone against the dark sky, holding its load steady on its own legs, a thin rim of light along its tank.",
-    "Slide 8 (cta): a rising tide lapping against a tall marked depth gauge in empty dark space, with the comment question and handle."
+    "Title card: A million tokens of context is a million places to plant an instruction. NVIDIA's open Nemotron 3 Ultra is built for long-running agents, and a longer session gives an attacker more room to hide something. A vast dark reservoir reaches to a distant shore.",
+    "NVIDIA released Nemotron 3 Ultra, an open 550 billion parameter model with 55 billion active per token, built for long-running agents and holding up to a million tokens of context. A long stone aqueduct carries water into the distance.",
+    "This is not theoretical. In its first week, agents pushed tens of billions of tokens a day through it on OpenRouter. Open weights mean no vendor guardrail, moderation, or kill switch. A floodgate stands wide open releasing a torrent.",
+    "Across hundreds of tool-calling turns, one planted instruction in a document or tool output can sit in context and steer the agent later. This is indirect prompt injection and context poisoning over a long session. One drop ripples across a dark basin.",
+    "Teams trust the model's own guardrails and let the agent call high-impact tools without a second check. When the weights are open, those built-in guardrails are optional. A long row of sluice gates stands open with the control wheels unmanned.",
+    "Put the control outside the model. Require approval for irreversible or high-impact tool calls, log the agent's stated goal every turn, and treat the growing context window as untrusted input. A concrete dam holds back a swelling river through one channel.",
+    "Open weights leave no vendor backstop behind the agent. The control that holds is the one you build and own around its tools. A tall water tower stands alone against the dark sky, holding its load on its own legs.",
+    "How long do you let an agent run before a human checks its goal? Save this for your next agent design review. A rising tide laps against a tall marked depth gauge in empty dark space."
   ],
   "sources": [
     {

@@ -4,7 +4,7 @@
   "slug": "rogueplanet-windows-zero-day",
   "platform": "instagram",
   "format": "carousel",
-  "status": "approved",
+  "status": "generated",
   "pillar": "offensive_ai",
   "theme": "offensive",
   "audience": "security_practitioners",
@@ -83,7 +83,7 @@
       "on_slide_copy": "Nightmare Eclipse dropped RoguePlanet on June 10. No CVE, no patch, and Windows 11 Pro is confirmed vulnerable.",
       "subline": "Published on GitHub as MSNightmare after the original account was suspended. Multiple researchers reproduced it.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Low raking light grazes a dark repository list in the dark, one repo name glowing red while others sit dormant, dark editorial photography, the list set high over a calm empty lower third.",
+      "visual_prompt": "Low raking light grazes a field of dark monolithic slabs in the dark, one slab pulsing red while the others stay dormant and unlit, dark editorial photography, the cluster set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/02_context.png",
       "asset_status": "generated",
       "cta": "",
@@ -96,7 +96,7 @@
       "on_slide_copy": "A standard user with no admin rights gets a SYSTEM shell on a fully updated machine, using Defender itself as the lever.",
       "subline": "The Defender signature only flags the compiled sample. Recompiling with minor changes slips the same behavior past it.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A focused side light illuminates a scanner beam in the dark passing over a file, the beam fracturing into red glitches where it touches the target, dark premium editorial, the scanner centered in the upper area with generous negative space below.",
+      "visual_prompt": "A focused side light sweeps a thin scanning plane through the dark across a smooth featureless object, the plane fracturing into red glitches where it meets the surface, dark premium editorial, the object centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/03_risk.png",
       "asset_status": "generated",
       "cta": "",
@@ -123,19 +123,51 @@
       "subline": "",
       "visual_direction": "on-brand step-flow diagram rendered from chain[]; no AI background.",
       "visual_prompt": "",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/05_chain.png",
+      "asset_status": "generated",
       "cta": "",
       "notes": "Rendered by the ChainSlide component from chain[]. Research basis: CYDERES Howler Cell figure 1.",
       "chain": [
-        { "stage": "STAGE 1", "title": "Dual-mode entry", "detail": "A named pipe (RoguePlanet) is created to spawn the final shell." },
-        { "stage": "STAGE 2", "title": "I/O saturation", "detail": "Poseidon threads flood the disk so the oplock race fires reliably." },
-        { "stage": "STAGE 3", "title": "Filesystem prep", "detail": "Mount an embedded ISO and build a fake System32 under a temp UUID." },
-        { "stage": "STAGE 4", "title": "EICAR + oplock", "detail": "An alternate data stream triggers a scan; an oplock freezes Defender mid-operation." },
-        { "stage": "STAGE 5", "title": "Junction swap", "detail": "Defender resumes and quarantines a SYSTEM-owned file into the attacker's folder." },
-        { "stage": "STAGE 6", "title": "Payload injection", "detail": "Overwrite that file, then junction the path to resolve as the real System32 wermgr.exe." },
-        { "stage": "STAGE 7", "title": "WER task", "detail": "Trigger the QueueReporting scheduled task, which a normal user can fire." },
-        { "stage": "OUTCOME", "title": "NT AUTHORITY\\SYSTEM", "detail": "SYSTEM runs the planted binary and spawns conhost.exe in the user session." }
+        {
+          "stage": "STAGE 1",
+          "title": "Dual-mode entry",
+          "detail": "A named pipe (RoguePlanet) is created to spawn the final shell."
+        },
+        {
+          "stage": "STAGE 2",
+          "title": "I/O saturation",
+          "detail": "Poseidon threads flood the disk so the oplock race fires reliably."
+        },
+        {
+          "stage": "STAGE 3",
+          "title": "Filesystem prep",
+          "detail": "Mount an embedded ISO and build a fake System32 under a temp UUID."
+        },
+        {
+          "stage": "STAGE 4",
+          "title": "EICAR + oplock",
+          "detail": "An alternate data stream triggers a scan; an oplock freezes Defender mid-operation."
+        },
+        {
+          "stage": "STAGE 5",
+          "title": "Junction swap",
+          "detail": "Defender resumes and quarantines a SYSTEM-owned file into the attacker's folder."
+        },
+        {
+          "stage": "STAGE 6",
+          "title": "Payload injection",
+          "detail": "Overwrite that file, then junction the path to resolve as the real System32 wermgr.exe."
+        },
+        {
+          "stage": "STAGE 7",
+          "title": "WER task",
+          "detail": "Trigger the QueueReporting scheduled task, which a normal user can fire."
+        },
+        {
+          "stage": "OUTCOME",
+          "title": "NT AUTHORITY\\SYSTEM",
+          "detail": "SYSTEM runs the planted binary and spawns conhost.exe in the user session."
+        }
       ]
     },
     {
@@ -145,8 +177,8 @@
       "on_slide_copy": "There is no patch to apply and no toggle to flip. It is a design-level race between Defender, NTFS junctions, and Volume Shadow Copy.",
       "subline": "Signature detection catches one compiled binary. The behavioral chain survives a recompile with minor source changes.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Cool light grazes a patch calendar in the dark, June dates marked green but a red zero-day marker overlapping the same week, tense editorial composition, the calendar held high with a clean lower third.",
-      "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/05_failure-point.png",
+      "visual_prompt": "Cool light falls across an orderly grid of dark sealed cells in the dark, most resting calm while one cell cracks open and leaks red light, a single overlooked gap in an otherwise closed surface, tense editorial composition, the grid held high with a clean lower third.",
+      "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/06_failure-point.png",
       "asset_status": "generated",
       "cta": "",
       "notes": ""
@@ -158,8 +190,8 @@
       "on_slide_copy": "Hunt the chain, not the binary: a named pipe called RoguePlanet from a non-system process, wermgr.exe running outside System32, and SYSTEM spawning conhost.exe with no command prompt in the tree.",
       "subline": "Also flag Volume Shadow Copy enumeration by non-system processes and the Poseidon burst of writes to temp.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A balanced split composition in the dark: left side a Defender shield scanning a file, right side the same shield cracked with a SYSTEM prompt leaking out, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
-      "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/06_defense.png",
+      "visual_prompt": "A balanced split composition in the dark: on the left an intact protective dome scanning a smooth object, on the right the same dome fractured with red light escaping through the breach, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
+      "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/07_defense.png",
       "asset_status": "generated",
       "cta": "",
       "notes": ""
@@ -172,7 +204,7 @@
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A thin rim light traces a shield icon in the dark, one half intact and glowing, the other half fractured with red particles escaping, minimal high-impact key art, the shield drawn toward the edge with the center kept dark and open.",
-      "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/07_takeaway.png",
+      "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/08_takeaway.png",
       "asset_status": "generated",
       "cta": "",
       "notes": ""
@@ -184,8 +216,8 @@
       "on_slide_copy": "Could your EDR catch a SYSTEM shell that came from Defender's own quarantine?",
       "subline": "Save this for your next endpoint detection review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Soft pooled light isolates a single event log entry on a clean dark end-card surface, premium editorial cybersecurity key art, the log small in vast negative space with the lower third open.",
-      "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/08_cta.png",
+      "visual_prompt": "Soft pooled light isolates a single faint pulse of light on a clean dark end-card surface, premium editorial cybersecurity key art, the pulse small in vast negative space with the lower third open.",
+      "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/09_cta.png",
       "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "notes": ""
@@ -204,15 +236,15 @@
   ],
   "comment_prompt": "Could your EDR catch a SYSTEM shell that came from Defender's own quarantine?",
   "alt_text": [
-    "Slide 1 (cover): a shield icon fracturing in a dark void, red particles leaking from the crack, empty lower third for the headline.",
-    "Slide 2 (context): a dark repository list, one repo name glowing red while the others sit dormant.",
-    "Slide 3 (risk): a scanner beam in the dark passing over a file, the beam fracturing into red glitches.",
-    "Slide 4 (mechanism): two racing threads in the dark, one capturing the resource a microsecond before the other.",
-    "Slide 5 (chain): an on-brand step-flow diagram of the RoguePlanet attack chain, eight boxes from a named pipe down to NT AUTHORITY SYSTEM.",
-    "Slide 6 (failure point): a patch calendar, June dates marked green but a red zero-day marker overlapping the same week.",
-    "Slide 7 (defense): a split composition, left a Defender shield scanning, right the cracked shield with a SYSTEM prompt leaking out.",
-    "Slide 8 (takeaway): a shield icon, one half intact, the other half fractured with red particles escaping.",
-    "Slide 9 (cta): an event log entry on a clean dark end-card with open negative space."
+    "Title card: Microsoft Defender quarantined a file, and that quarantine was the exploit. RoguePlanet turns a standard user into SYSTEM on a fully updated Windows 11, with no CVE and no patch. A red shield fractures in the dark.",
+    "Nightmare Eclipse released RoguePlanet on June 10, with no CVE, no patch, and Windows 11 Pro confirmed vulnerable; multiple researchers reproduced it. A field of dark slabs, one pulsing red while the rest stay dormant.",
+    "A standard user with no admin rights gains a SYSTEM shell on a fully updated machine, using Defender itself as the lever, and the signature only flags the compiled sample. A scanning plane sweeps a smooth object and fractures into red.",
+    "An oplock pauses Defender mid-scan, then a junction swap makes Defender quarantine a SYSTEM-owned file into a folder the user controls. Two threads race in the dark, one seizing the resource a moment before the other.",
+    "Diagram of the RoguePlanet attack chain in eight steps: dual-mode entry by named pipe, I/O saturation, ISO mount and fake System32, EICAR plus oplock, junction swap, payload injection, the WER task, ending at NT AUTHORITY SYSTEM.",
+    "There is no patch to apply and no toggle to flip; it is a design-level race between Defender, NTFS junctions, and Volume Shadow Copy, and the signature only catches one compiled binary. A grid of sealed cells, one cracking open and leaking red.",
+    "Hunt the chain, not the binary: a named pipe called RoguePlanet from a non-system process, wermgr.exe running outside System32, and SYSTEM spawning conhost.exe with no command prompt in its tree. A protective dome intact on one side and fractured on the other.",
+    "Your antivirus is not just a scanner. It is a SYSTEM-level file mover, and its quarantine can be raced. A shield with one half intact and the other half fractured, red particles escaping.",
+    "The call to action asks whether your EDR could catch a SYSTEM shell that came from Defender's own quarantine. A single faint pulse of light on a clean dark end card."
   ],
   "sources": [
     {
@@ -309,6 +341,46 @@
       "commercial_use_allowed": true,
       "disclosure_required": false,
       "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/05_chain.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/06_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/07_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/08_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/09_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
     }
   ],
   "video": {
@@ -326,31 +398,1337 @@
       "music_gain_db": -18
     },
     "narration": [
-      { "start": 0, "end": 6, "text": "Microsoft Defender quarantined a file, and that quarantine was the exploit. Meet RoguePlanet." },
-      { "start": 6, "end": 13, "text": "Nightmare Eclipse dropped it on June 10. No CVE, no patch, and Windows 11 Pro is confirmed vulnerable." },
-      { "start": 13, "end": 20, "text": "A standard user with no admin rights gets a SYSTEM shell on a fully updated machine, using Defender itself." },
-      { "start": 20, "end": 28, "text": "The trick is a race. An oplock freezes Defender mid-scan, then a junction swap makes it quarantine a SYSTEM-owned file into a folder you control." },
-      { "start": 28, "end": 37, "text": "Here is the whole chain. A named pipe, an I/O storm to force the race, an ISO mount, the quarantine swap, and a Windows task that runs the planted file as SYSTEM." },
-      { "start": 37, "end": 44, "text": "There is no toggle to fix it. It is a design race between Defender, NTFS junctions, and Volume Shadow Copy. The signature only catches the compiled sample." },
-      { "start": 44, "end": 52, "text": "So hunt the behavior. A pipe named RoguePlanet, the Windows error binary running outside System32, and SYSTEM spawning a console with no command prompt in the tree." },
-      { "start": 52, "end": 58, "text": "Your antivirus is not just a scanner. It is a SYSTEM-level file mover, and its quarantine can be raced." },
-      { "start": 58, "end": 64, "text": "Could your EDR catch a SYSTEM shell born from Defender's own quarantine? Tell me below." }
+      {
+        "start": 0,
+        "end": 6,
+        "text": "Microsoft Defender quarantined a file, and that quarantine was the exploit. Meet RoguePlanet."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "text": "Nightmare Eclipse dropped it on June 10. No CVE, no patch, and Windows 11 Pro is confirmed vulnerable."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "text": "A standard user with no admin rights gets a SYSTEM shell on a fully updated machine, using Defender itself."
+      },
+      {
+        "start": 20,
+        "end": 28,
+        "text": "The trick is a race. An oplock freezes Defender mid-scan, then a junction swap makes it quarantine a SYSTEM-owned file into a folder you control."
+      },
+      {
+        "start": 28,
+        "end": 37,
+        "text": "Here is the whole chain. A named pipe, an I/O storm to force the race, an ISO mount, the quarantine swap, and a Windows task that runs the planted file as SYSTEM."
+      },
+      {
+        "start": 37,
+        "end": 44,
+        "text": "There is no toggle to fix it. It is a design race between Defender, NTFS junctions, and Volume Shadow Copy. The signature only catches the compiled sample."
+      },
+      {
+        "start": 44,
+        "end": 52,
+        "text": "So hunt the behavior. A pipe named RoguePlanet, the Windows error binary running outside System32, and SYSTEM spawning a console with no command prompt in the tree."
+      },
+      {
+        "start": 52,
+        "end": 58,
+        "text": "Your antivirus is not just a scanner. It is a SYSTEM-level file mover, and its quarantine can be raced."
+      },
+      {
+        "start": 58,
+        "end": 64,
+        "text": "Could your EDR catch a SYSTEM shell born from Defender's own quarantine? Tell me below."
+      }
     ],
     "beats": [
-      { "start": 0, "end": 6, "slide_ref": 1, "purpose": "hook", "motion": "slow push-in over cover", "caption": "The quarantine was the exploit." },
-      { "start": 6, "end": 13, "slide_ref": 2, "purpose": "context", "motion": "parallax", "caption": "June 10 drop. No CVE, no patch. Win 11 Pro." },
-      { "start": 13, "end": 20, "slide_ref": 3, "purpose": "risk", "motion": "slow push-in", "caption": "Standard user to SYSTEM via Defender itself." },
-      { "start": 20, "end": 28, "slide_ref": 4, "purpose": "mechanism", "motion": "parallax", "caption": "Oplock pauses the scan. Junction swaps the quarantine." },
-      { "start": 28, "end": 37, "slide_ref": 5, "purpose": "chain", "motion": "slow pan down the chain", "caption": "Named pipe to SYSTEM, the full chain." },
-      { "start": 37, "end": 44, "slide_ref": 6, "purpose": "failure", "motion": "slow push-in", "caption": "No patch. A design race. Signature beats one binary." },
-      { "start": 44, "end": 52, "slide_ref": 7, "purpose": "defense", "motion": "parallax", "caption": "Hunt the behavior, not the binary." },
-      { "start": 52, "end": 58, "slide_ref": 8, "purpose": "takeaway", "motion": "static high contrast", "caption": "AV is a SYSTEM-level file mover that can be raced." },
-      { "start": 58, "end": 64, "slide_ref": 9, "purpose": "cta", "motion": "end card", "caption": "Could your EDR catch this?" }
+      {
+        "start": 0,
+        "end": 6,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "The quarantine was the exploit."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "June 10 drop. No CVE, no patch. Win 11 Pro."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "slide_ref": 3,
+        "purpose": "risk",
+        "motion": "slow push-in",
+        "caption": "Standard user to SYSTEM via Defender itself."
+      },
+      {
+        "start": 20,
+        "end": 28,
+        "slide_ref": 4,
+        "purpose": "mechanism",
+        "motion": "parallax",
+        "caption": "Oplock pauses the scan. Junction swaps the quarantine."
+      },
+      {
+        "start": 28,
+        "end": 37,
+        "slide_ref": 5,
+        "purpose": "chain",
+        "motion": "slow pan down the chain",
+        "caption": "Named pipe to SYSTEM, the full chain."
+      },
+      {
+        "start": 37,
+        "end": 44,
+        "slide_ref": 6,
+        "purpose": "failure",
+        "motion": "slow push-in",
+        "caption": "No patch. A design race. Signature beats one binary."
+      },
+      {
+        "start": 44,
+        "end": 52,
+        "slide_ref": 7,
+        "purpose": "defense",
+        "motion": "parallax",
+        "caption": "Hunt the behavior, not the binary."
+      },
+      {
+        "start": 52,
+        "end": 58,
+        "slide_ref": 8,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "AV is a SYSTEM-level file mover that can be raced."
+      },
+      {
+        "start": 58,
+        "end": 64,
+        "slide_ref": 9,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Could your EDR catch this?"
+      }
     ],
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
     "sfx": [],
     "licenses": [],
-    "captions": []
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.6,
+        "text": "Microsoft Defender quarantined a file, and that",
+        "words": [
+          {
+            "text": "Microsoft",
+            "start": 0.0,
+            "end": 0.46
+          },
+          {
+            "text": "Defender",
+            "start": 0.46,
+            "end": 0.98
+          },
+          {
+            "text": "quarantined",
+            "start": 0.98,
+            "end": 1.66
+          },
+          {
+            "text": "a",
+            "start": 1.66,
+            "end": 1.76
+          },
+          {
+            "text": "file,",
+            "start": 1.76,
+            "end": 2.0
+          },
+          {
+            "text": "and",
+            "start": 2.44,
+            "end": 2.49
+          },
+          {
+            "text": "that",
+            "start": 2.48,
+            "end": 2.6
+          }
+        ]
+      },
+      {
+        "start": 2.6,
+        "end": 3.8,
+        "text": "quarantine was the exploit.",
+        "words": [
+          {
+            "text": "quarantine",
+            "start": 2.6,
+            "end": 2.94
+          },
+          {
+            "text": "was",
+            "start": 2.94,
+            "end": 3.3
+          },
+          {
+            "text": "the",
+            "start": 3.3,
+            "end": 3.46
+          },
+          {
+            "text": "exploit.",
+            "start": 3.46,
+            "end": 3.8
+          }
+        ]
+      },
+      {
+        "start": 4.22,
+        "end": 4.72,
+        "text": "Meet RoguePlanet.",
+        "words": [
+          {
+            "text": "Meet",
+            "start": 4.22,
+            "end": 4.28
+          },
+          {
+            "text": "RoguePlanet.",
+            "start": 4.28,
+            "end": 4.72
+          }
+        ]
+      },
+      {
+        "start": 5.34,
+        "end": 7.08,
+        "text": "Nightmare Eclipse dropped it on June 10.",
+        "words": [
+          {
+            "text": "Nightmare",
+            "start": 5.34,
+            "end": 5.48
+          },
+          {
+            "text": "Eclipse",
+            "start": 5.48,
+            "end": 5.9
+          },
+          {
+            "text": "dropped",
+            "start": 5.9,
+            "end": 6.26
+          },
+          {
+            "text": "it",
+            "start": 6.26,
+            "end": 6.52
+          },
+          {
+            "text": "on",
+            "start": 6.52,
+            "end": 6.62
+          },
+          {
+            "text": "June",
+            "start": 6.62,
+            "end": 6.8
+          },
+          {
+            "text": "10.",
+            "start": 6.8,
+            "end": 7.08
+          }
+        ]
+      },
+      {
+        "start": 7.52,
+        "end": 10.28,
+        "text": "No CVE, no patch, and Windows 11",
+        "words": [
+          {
+            "text": "No",
+            "start": 7.52,
+            "end": 7.8
+          },
+          {
+            "text": "CVE,",
+            "start": 7.8,
+            "end": 8.06
+          },
+          {
+            "text": "no",
+            "start": 8.7,
+            "end": 8.84
+          },
+          {
+            "text": "patch,",
+            "start": 8.84,
+            "end": 9.12
+          },
+          {
+            "text": "and",
+            "start": 9.48,
+            "end": 9.66
+          },
+          {
+            "text": "Windows",
+            "start": 9.66,
+            "end": 9.8
+          },
+          {
+            "text": "11",
+            "start": 9.8,
+            "end": 10.28
+          }
+        ]
+      },
+      {
+        "start": 10.28,
+        "end": 11.42,
+        "text": "Pro is confirmed vulnerable.",
+        "words": [
+          {
+            "text": "Pro",
+            "start": 10.28,
+            "end": 10.52
+          },
+          {
+            "text": "is",
+            "start": 10.52,
+            "end": 10.7
+          },
+          {
+            "text": "confirmed",
+            "start": 10.7,
+            "end": 10.96
+          },
+          {
+            "text": "vulnerable.",
+            "start": 10.96,
+            "end": 11.42
+          }
+        ]
+      },
+      {
+        "start": 12.2,
+        "end": 14.02,
+        "text": "A standard user with no admin rights",
+        "words": [
+          {
+            "text": "A",
+            "start": 12.2,
+            "end": 12.28
+          },
+          {
+            "text": "standard",
+            "start": 12.28,
+            "end": 12.5
+          },
+          {
+            "text": "user",
+            "start": 12.5,
+            "end": 12.9
+          },
+          {
+            "text": "with",
+            "start": 12.9,
+            "end": 13.2
+          },
+          {
+            "text": "no",
+            "start": 13.2,
+            "end": 13.42
+          },
+          {
+            "text": "admin",
+            "start": 13.42,
+            "end": 13.72
+          },
+          {
+            "text": "rights",
+            "start": 13.72,
+            "end": 14.02
+          }
+        ]
+      },
+      {
+        "start": 14.02,
+        "end": 15.8,
+        "text": "gets a SYSTEM shell on a fully",
+        "words": [
+          {
+            "text": "gets",
+            "start": 14.02,
+            "end": 14.42
+          },
+          {
+            "text": "a",
+            "start": 14.42,
+            "end": 14.6
+          },
+          {
+            "text": "SYSTEM",
+            "start": 14.6,
+            "end": 14.92
+          },
+          {
+            "text": "shell",
+            "start": 14.92,
+            "end": 15.22
+          },
+          {
+            "text": "on",
+            "start": 15.22,
+            "end": 15.52
+          },
+          {
+            "text": "a",
+            "start": 15.52,
+            "end": 15.6
+          },
+          {
+            "text": "fully",
+            "start": 15.6,
+            "end": 15.8
+          }
+        ]
+      },
+      {
+        "start": 15.8,
+        "end": 17.7,
+        "text": "updated machine, using Defender itself.",
+        "words": [
+          {
+            "text": "updated",
+            "start": 15.8,
+            "end": 16.1
+          },
+          {
+            "text": "machine,",
+            "start": 16.1,
+            "end": 16.62
+          },
+          {
+            "text": "using",
+            "start": 16.62,
+            "end": 17.06
+          },
+          {
+            "text": "Defender",
+            "start": 17.06,
+            "end": 17.38
+          },
+          {
+            "text": "itself.",
+            "start": 17.38,
+            "end": 17.7
+          }
+        ]
+      },
+      {
+        "start": 18.26,
+        "end": 18.96,
+        "text": "The trick is a race.",
+        "words": [
+          {
+            "text": "The",
+            "start": 18.26,
+            "end": 18.31
+          },
+          {
+            "text": "trick",
+            "start": 18.3,
+            "end": 18.46
+          },
+          {
+            "text": "is",
+            "start": 18.46,
+            "end": 18.7
+          },
+          {
+            "text": "a",
+            "start": 18.7,
+            "end": 18.76
+          },
+          {
+            "text": "race.",
+            "start": 18.76,
+            "end": 18.96
+          }
+        ]
+      },
+      {
+        "start": 19.7,
+        "end": 22.06,
+        "text": "An oplock freezes Defender mid-scan, then a",
+        "words": [
+          {
+            "text": "An",
+            "start": 19.7,
+            "end": 19.75
+          },
+          {
+            "text": "oplock",
+            "start": 19.74,
+            "end": 20.14
+          },
+          {
+            "text": "freezes",
+            "start": 20.14,
+            "end": 20.44
+          },
+          {
+            "text": "Defender",
+            "start": 20.44,
+            "end": 20.86
+          },
+          {
+            "text": "mid-scan,",
+            "start": 20.86,
+            "end": 21.42
+          },
+          {
+            "text": "then",
+            "start": 21.9,
+            "end": 21.98
+          },
+          {
+            "text": "a",
+            "start": 21.98,
+            "end": 22.06
+          }
+        ]
+      },
+      {
+        "start": 22.06,
+        "end": 24.18,
+        "text": "junction swap makes it quarantine a SYSTEM-owned",
+        "words": [
+          {
+            "text": "junction",
+            "start": 22.06,
+            "end": 22.26
+          },
+          {
+            "text": "swap",
+            "start": 22.26,
+            "end": 22.62
+          },
+          {
+            "text": "makes",
+            "start": 22.62,
+            "end": 22.94
+          },
+          {
+            "text": "it",
+            "start": 22.94,
+            "end": 23.08
+          },
+          {
+            "text": "quarantine",
+            "start": 23.08,
+            "end": 23.34
+          },
+          {
+            "text": "a",
+            "start": 23.34,
+            "end": 23.68
+          },
+          {
+            "text": "SYSTEM-owned",
+            "start": 23.68,
+            "end": 24.18
+          }
+        ]
+      },
+      {
+        "start": 24.18,
+        "end": 25.6,
+        "text": "file into a folder you control.",
+        "words": [
+          {
+            "text": "file",
+            "start": 24.18,
+            "end": 24.48
+          },
+          {
+            "text": "into",
+            "start": 24.48,
+            "end": 24.76
+          },
+          {
+            "text": "a",
+            "start": 24.76,
+            "end": 24.94
+          },
+          {
+            "text": "folder",
+            "start": 24.94,
+            "end": 25.16
+          },
+          {
+            "text": "you",
+            "start": 25.16,
+            "end": 25.4
+          },
+          {
+            "text": "control.",
+            "start": 25.4,
+            "end": 25.6
+          }
+        ]
+      },
+      {
+        "start": 25.6,
+        "end": 27.02,
+        "text": "Here is the whole chain.",
+        "words": [
+          {
+            "text": "Here",
+            "start": 25.6,
+            "end": 26.3
+          },
+          {
+            "text": "is",
+            "start": 26.3,
+            "end": 26.5
+          },
+          {
+            "text": "the",
+            "start": 26.5,
+            "end": 26.58
+          },
+          {
+            "text": "whole",
+            "start": 26.58,
+            "end": 26.72
+          },
+          {
+            "text": "chain.",
+            "start": 26.72,
+            "end": 27.02
+          }
+        ]
+      },
+      {
+        "start": 27.48,
+        "end": 29.4,
+        "text": "A named pipe, an I/O storm to",
+        "words": [
+          {
+            "text": "A",
+            "start": 27.48,
+            "end": 27.56
+          },
+          {
+            "text": "named",
+            "start": 27.56,
+            "end": 27.72
+          },
+          {
+            "text": "pipe,",
+            "start": 27.72,
+            "end": 28.04
+          },
+          {
+            "text": "an",
+            "start": 28.48,
+            "end": 28.53
+          },
+          {
+            "text": "I/O",
+            "start": 28.5,
+            "end": 28.9
+          },
+          {
+            "text": "storm",
+            "start": 28.94,
+            "end": 29.2
+          },
+          {
+            "text": "to",
+            "start": 29.2,
+            "end": 29.4
+          }
+        ]
+      },
+      {
+        "start": 29.4,
+        "end": 31.4,
+        "text": "force the race, an ISO mount, the",
+        "words": [
+          {
+            "text": "force",
+            "start": 29.4,
+            "end": 29.6
+          },
+          {
+            "text": "the",
+            "start": 29.6,
+            "end": 29.78
+          },
+          {
+            "text": "race,",
+            "start": 29.78,
+            "end": 29.96
+          },
+          {
+            "text": "an",
+            "start": 30.38,
+            "end": 30.43
+          },
+          {
+            "text": "ISO",
+            "start": 30.38,
+            "end": 30.58
+          },
+          {
+            "text": "mount,",
+            "start": 30.58,
+            "end": 30.94
+          },
+          {
+            "text": "the",
+            "start": 31.34,
+            "end": 31.4
+          }
+        ]
+      },
+      {
+        "start": 31.4,
+        "end": 33.64,
+        "text": "quarantine swap, and a Windows task that",
+        "words": [
+          {
+            "text": "quarantine",
+            "start": 31.4,
+            "end": 31.68
+          },
+          {
+            "text": "swap,",
+            "start": 31.68,
+            "end": 32.06
+          },
+          {
+            "text": "and",
+            "start": 32.46,
+            "end": 32.68
+          },
+          {
+            "text": "a",
+            "start": 32.68,
+            "end": 32.74
+          },
+          {
+            "text": "Windows",
+            "start": 32.74,
+            "end": 32.94
+          },
+          {
+            "text": "task",
+            "start": 32.94,
+            "end": 33.3
+          },
+          {
+            "text": "that",
+            "start": 33.3,
+            "end": 33.64
+          }
+        ]
+      },
+      {
+        "start": 33.64,
+        "end": 34.92,
+        "text": "runs the planted file as SYSTEM.",
+        "words": [
+          {
+            "text": "runs",
+            "start": 33.64,
+            "end": 33.78
+          },
+          {
+            "text": "the",
+            "start": 33.78,
+            "end": 33.94
+          },
+          {
+            "text": "planted",
+            "start": 33.94,
+            "end": 34.18
+          },
+          {
+            "text": "file",
+            "start": 34.18,
+            "end": 34.46
+          },
+          {
+            "text": "as",
+            "start": 34.46,
+            "end": 34.72
+          },
+          {
+            "text": "SYSTEM.",
+            "start": 34.72,
+            "end": 34.92
+          }
+        ]
+      },
+      {
+        "start": 35.54,
+        "end": 36.86,
+        "text": "There is no toggle to fix it.",
+        "words": [
+          {
+            "text": "There",
+            "start": 35.54,
+            "end": 35.72
+          },
+          {
+            "text": "is",
+            "start": 35.72,
+            "end": 35.84
+          },
+          {
+            "text": "no",
+            "start": 35.84,
+            "end": 36.0
+          },
+          {
+            "text": "toggle",
+            "start": 36.0,
+            "end": 36.22
+          },
+          {
+            "text": "to",
+            "start": 36.22,
+            "end": 36.48
+          },
+          {
+            "text": "fix",
+            "start": 36.48,
+            "end": 36.66
+          },
+          {
+            "text": "it.",
+            "start": 36.66,
+            "end": 36.86
+          }
+        ]
+      },
+      {
+        "start": 37.12,
+        "end": 38.58,
+        "text": "It is a design race between Defender,",
+        "words": [
+          {
+            "text": "It",
+            "start": 37.12,
+            "end": 37.2
+          },
+          {
+            "text": "is",
+            "start": 37.2,
+            "end": 37.28
+          },
+          {
+            "text": "a",
+            "start": 37.28,
+            "end": 37.38
+          },
+          {
+            "text": "design",
+            "start": 37.38,
+            "end": 37.62
+          },
+          {
+            "text": "race",
+            "start": 37.62,
+            "end": 37.94
+          },
+          {
+            "text": "between",
+            "start": 37.94,
+            "end": 38.28
+          },
+          {
+            "text": "Defender,",
+            "start": 38.28,
+            "end": 38.58
+          }
+        ]
+      },
+      {
+        "start": 39.14,
+        "end": 41.18,
+        "text": "NTFS junctions, and Volume Shadow Copy.",
+        "words": [
+          {
+            "text": "NTFS",
+            "start": 39.14,
+            "end": 39.64
+          },
+          {
+            "text": "junctions,",
+            "start": 39.64,
+            "end": 39.96
+          },
+          {
+            "text": "and",
+            "start": 40.36,
+            "end": 40.41
+          },
+          {
+            "text": "Volume",
+            "start": 40.4,
+            "end": 40.66
+          },
+          {
+            "text": "Shadow",
+            "start": 40.66,
+            "end": 40.92
+          },
+          {
+            "text": "Copy.",
+            "start": 40.92,
+            "end": 41.18
+          }
+        ]
+      },
+      {
+        "start": 41.84,
+        "end": 43.8,
+        "text": "The signature only catches the compiled sample.",
+        "words": [
+          {
+            "text": "The",
+            "start": 41.84,
+            "end": 41.94
+          },
+          {
+            "text": "signature",
+            "start": 41.94,
+            "end": 42.28
+          },
+          {
+            "text": "only",
+            "start": 42.28,
+            "end": 42.62
+          },
+          {
+            "text": "catches",
+            "start": 42.62,
+            "end": 42.94
+          },
+          {
+            "text": "the",
+            "start": 42.94,
+            "end": 43.18
+          },
+          {
+            "text": "compiled",
+            "start": 43.18,
+            "end": 43.38
+          },
+          {
+            "text": "sample.",
+            "start": 43.38,
+            "end": 43.8
+          }
+        ]
+      },
+      {
+        "start": 44.32,
+        "end": 44.96,
+        "text": "So hunt the behavior.",
+        "words": [
+          {
+            "text": "So",
+            "start": 44.32,
+            "end": 44.38
+          },
+          {
+            "text": "hunt",
+            "start": 44.38,
+            "end": 44.58
+          },
+          {
+            "text": "the",
+            "start": 44.58,
+            "end": 44.74
+          },
+          {
+            "text": "behavior.",
+            "start": 44.74,
+            "end": 44.96
+          }
+        ]
+      },
+      {
+        "start": 45.56,
+        "end": 47.373,
+        "text": "A pipe named RoguePlanet, the Windows error",
+        "words": [
+          {
+            "text": "A",
+            "start": 45.56,
+            "end": 45.66
+          },
+          {
+            "text": "pipe",
+            "start": 45.66,
+            "end": 45.82
+          },
+          {
+            "text": "named",
+            "start": 45.82,
+            "end": 46.1
+          },
+          {
+            "text": "RoguePlanet,",
+            "start": 46.1,
+            "end": 46.58
+          },
+          {
+            "text": "the",
+            "start": 46.98,
+            "end": 47.08
+          },
+          {
+            "text": "Windows",
+            "start": 47.08,
+            "end": 47.227
+          },
+          {
+            "text": "error",
+            "start": 47.227,
+            "end": 47.373
+          }
+        ]
+      },
+      {
+        "start": 47.52,
+        "end": 50.54,
+        "text": "binary running outside System32, and SYSTEM spawning",
+        "words": [
+          {
+            "text": "binary",
+            "start": 47.52,
+            "end": 47.9
+          },
+          {
+            "text": "running",
+            "start": 47.9,
+            "end": 48.26
+          },
+          {
+            "text": "outside",
+            "start": 48.26,
+            "end": 48.48
+          },
+          {
+            "text": "System32,",
+            "start": 48.48,
+            "end": 49.14
+          },
+          {
+            "text": "and",
+            "start": 49.8,
+            "end": 49.92
+          },
+          {
+            "text": "SYSTEM",
+            "start": 49.92,
+            "end": 50.18
+          },
+          {
+            "text": "spawning",
+            "start": 50.18,
+            "end": 50.54
+          }
+        ]
+      },
+      {
+        "start": 50.54,
+        "end": 52.36,
+        "text": "a console with no command prompt in",
+        "words": [
+          {
+            "text": "a",
+            "start": 50.54,
+            "end": 50.78
+          },
+          {
+            "text": "console",
+            "start": 50.78,
+            "end": 51.08
+          },
+          {
+            "text": "with",
+            "start": 51.08,
+            "end": 51.34
+          },
+          {
+            "text": "no",
+            "start": 51.34,
+            "end": 51.52
+          },
+          {
+            "text": "command",
+            "start": 51.52,
+            "end": 51.74
+          },
+          {
+            "text": "prompt",
+            "start": 51.74,
+            "end": 52.08
+          },
+          {
+            "text": "in",
+            "start": 52.08,
+            "end": 52.36
+          }
+        ]
+      },
+      {
+        "start": 52.36,
+        "end": 52.64,
+        "text": "the tree.",
+        "words": [
+          {
+            "text": "the",
+            "start": 52.36,
+            "end": 52.44
+          },
+          {
+            "text": "tree.",
+            "start": 52.44,
+            "end": 52.64
+          }
+        ]
+      },
+      {
+        "start": 52.64,
+        "end": 54.82,
+        "text": "Your antivirus is not just a scanner.",
+        "words": [
+          {
+            "text": "Your",
+            "start": 52.64,
+            "end": 53.28
+          },
+          {
+            "text": "antivirus",
+            "start": 53.28,
+            "end": 53.88
+          },
+          {
+            "text": "is",
+            "start": 53.88,
+            "end": 54.06
+          },
+          {
+            "text": "not",
+            "start": 54.06,
+            "end": 54.26
+          },
+          {
+            "text": "just",
+            "start": 54.26,
+            "end": 54.44
+          },
+          {
+            "text": "a",
+            "start": 54.44,
+            "end": 54.58
+          },
+          {
+            "text": "scanner.",
+            "start": 54.58,
+            "end": 54.82
+          }
+        ]
+      },
+      {
+        "start": 55.26,
+        "end": 57.29,
+        "text": "It is a SYSTEM-level file mover, and",
+        "words": [
+          {
+            "text": "It",
+            "start": 55.26,
+            "end": 55.32
+          },
+          {
+            "text": "is",
+            "start": 55.32,
+            "end": 55.42
+          },
+          {
+            "text": "a",
+            "start": 55.42,
+            "end": 55.52
+          },
+          {
+            "text": "SYSTEM-level",
+            "start": 55.52,
+            "end": 55.78
+          },
+          {
+            "text": "file",
+            "start": 56.04,
+            "end": 56.44
+          },
+          {
+            "text": "mover,",
+            "start": 56.44,
+            "end": 56.72
+          },
+          {
+            "text": "and",
+            "start": 57.24,
+            "end": 57.29
+          }
+        ]
+      },
+      {
+        "start": 57.26,
+        "end": 58.38,
+        "text": "its quarantine can be raced.",
+        "words": [
+          {
+            "text": "its",
+            "start": 57.26,
+            "end": 57.4
+          },
+          {
+            "text": "quarantine",
+            "start": 57.4,
+            "end": 57.7
+          },
+          {
+            "text": "can",
+            "start": 57.7,
+            "end": 58.08
+          },
+          {
+            "text": "be",
+            "start": 58.08,
+            "end": 58.22
+          },
+          {
+            "text": "raced.",
+            "start": 58.22,
+            "end": 58.38
+          }
+        ]
+      },
+      {
+        "start": 59.1,
+        "end": 60.72,
+        "text": "Could your EDR catch a SYSTEM shell",
+        "words": [
+          {
+            "text": "Could",
+            "start": 59.1,
+            "end": 59.15
+          },
+          {
+            "text": "your",
+            "start": 59.14,
+            "end": 59.26
+          },
+          {
+            "text": "EDR",
+            "start": 59.26,
+            "end": 59.64
+          },
+          {
+            "text": "catch",
+            "start": 59.64,
+            "end": 59.94
+          },
+          {
+            "text": "a",
+            "start": 59.94,
+            "end": 60.16
+          },
+          {
+            "text": "SYSTEM",
+            "start": 60.16,
+            "end": 60.4
+          },
+          {
+            "text": "shell",
+            "start": 60.4,
+            "end": 60.72
+          }
+        ]
+      },
+      {
+        "start": 60.72,
+        "end": 62.16,
+        "text": "born from Defender's own quarantine?",
+        "words": [
+          {
+            "text": "born",
+            "start": 60.72,
+            "end": 61.04
+          },
+          {
+            "text": "from",
+            "start": 61.04,
+            "end": 61.26
+          },
+          {
+            "text": "Defender's",
+            "start": 61.26,
+            "end": 61.78
+          },
+          {
+            "text": "own",
+            "start": 61.78,
+            "end": 61.92
+          },
+          {
+            "text": "quarantine?",
+            "start": 61.92,
+            "end": 62.16
+          }
+        ]
+      },
+      {
+        "start": 62.96,
+        "end": 63.36,
+        "text": "Tell me below.",
+        "words": [
+          {
+            "text": "Tell",
+            "start": 62.96,
+            "end": 63.06
+          },
+          {
+            "text": "me",
+            "start": 63.06,
+            "end": 63.2
+          },
+          {
+            "text": "below.",
+            "start": 63.2,
+            "end": 63.36
+          }
+        ]
+      }
+    ]
   }
 }

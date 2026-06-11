@@ -167,14 +167,14 @@
   ],
   "comment_prompt": "Does your awareness training still lean on “spot the typo”?",
   "alt_text": [
-    "Slide 1: Dark cinematic cover with bold headline 'AI phishing made old training obsolete' over a security operations scene with a cyan glow.",
-    "Slide 2: Context slide stating that old phishing red flags like bad grammar and weird phrasing are fading.",
-    "Slide 3: Risk slide noting the NCSC assessment that AI gives attackers an uplift in reconnaissance and social engineering.",
-    "Slide 4: Mechanism slide explaining the change is cheaper personalization at scale, not magic hacking.",
-    "Slide 5: Failure-point slide saying teams trained people to spot typos instead of verifying requests.",
-    "Slide 6: Defense slide recommending verification by a second channel and locking down resets and payment changes.",
-    "Slide 7: Takeaway slide: if your defense relies on scams looking fake, the game changed.",
-    "Slide 8: Call-to-action slide asking whether your awareness training still teaches 'spot the typo', with a save and comment prompt."
+    "Title card: AI phishing made old training obsolete, because the scam is more personal now. A glowing sealed envelope rests in a dark, quiet security operations room.",
+    "Old red flags like bad grammar and weird phrasing are fading, and the obvious tells were never the real defense. A clean paper letter rises from a cloud of torn scraps.",
+    "The NCSC says AI gives attackers uplift in reconnaissance and social engineering, meaning cleaner lures at scale. Profile fragments drift toward one glowing envelope.",
+    "This is not magic hacking, it is cheaper personalization at scale, since AI lowers the cost and not the skill ceiling. One envelope multiplies into a wide fan of copies.",
+    "We trained people to spot typos, not to verify requests, so vocabulary checks do not stop clean messages. A lone hand reaches for a single glowing envelope in the dark.",
+    "Verify sensitive requests by a second channel and lock down resets and payment changes, making verification mandatory. Two telephone handsets are joined by a thread of light with a padlock between them.",
+    "If your defense relies on scams looking fake, the game changed. A cracked magnifying glass reveals a flawless sealed envelope behind its shattered lens.",
+    "The closing question: does your awareness training still teach spot the typo? Save this for your next awareness review. A magnifying glass hovers over a blank envelope with a glowing question mark."
   ],
   "sources": [
     {

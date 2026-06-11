@@ -160,7 +160,7 @@
       "on_slide_copy": "Do you track silent kernel patches in your distro, or only CVEs?",
       "subline": "Save this for your next vulnerability management review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Soft pooled light isolates a single git log entry on a clean dark end-card surface, a COW guard commit with no CVE reference, premium editorial cybersecurity key art, the log small in vast negative space with the lower third open.",
+      "visual_prompt": "Soft pooled light isolates a single faint commit pulse of light on a clean dark end-card surface, premium editorial cybersecurity key art, the pulse small in vast negative space with the lower third open.",
       "background_asset": "/backgrounds/2026-06-10_dirtydecrypt-linux-lpe/08_cta.png",
       "asset_status": "generated",
       "cta": "COMMENT + SAVE",
@@ -183,14 +183,14 @@
   ],
   "comment_prompt": "Do you track silent kernel patches in your distro, or only CVEs?",
   "alt_text": [
-    "Slide 1 (cover): a patch file in a dark void, diff showing COW guard added but commit message muted in gray, empty lower third for headline.",
-    "Slide 2 (context): an email thread, researcher report on left, maintainer reply DUPLICATE on right, no CVE no advisory.",
-    "Slide 3 (risk): three distro logos (Fedora, Arch, openSUSE) glowing red, others dark.",
-    "Slide 4 (mechanism): a socket buffer being decrypted in-place, missing COW GUARD shield, plaintext bleeding into /etc/shadow page cache.",
-    "Slide 5 (gap): a timeline: silent patch, DUPLICATE reply, independent analysis, forced PoC release.",
-    "Slide 6 (defense): split composition, left vulnerable function executing, right killswitch engaged returning safe value.",
-    "Slide 7 (takeaway): a patch diff, COW guard added in green, commit message faded to invisible gray.",
-    "Slide 8 (cta): a git log entry with COW guard commit, no CVE reference."
+    "Title card: silent patch, no disclosure, researchers told it was a duplicate. DirtyDecrypt, CVE-2026-31635, an rxgk missing copy-on-write guard that only hits Fedora, Arch, and openSUSE, with a PoC released anyway. A patch diff glows in a dark void with the commit message muted in gray.",
+    "Zellic and V12 reported DirtyDecrypt May 9 and maintainers replied it was a duplicate already patched in mainline: no CVE, no advisory, no coordinated disclosure. Researchers went public on realizing the fix was silent, releasing a PoC, and NVD later linked CVE-2026-31635. An email thread shows a DUPLICATE reply.",
+    "Only distros with CONFIG_RXGK enabled are affected: Fedora, Arch Linux, and openSUSE Tumbleweed, and in containers a vulnerable worker node can give a pod escape path. CVSS 7.5: the missing guard in rxgk_decrypt_skb writes to /etc/shadow, /etc/sudoers, and SUID binaries. Three distro logos glow red while others stay dark.",
+    "rxgk_decrypt_skb decrypts an incoming sk_buff whose pages are shared with other processes' page cache, where copy-on-write should protect shared pages but the COW guard was missing. Data lands in privileged memory or files, leading to LPE. A socket buffer is decrypted in place as plaintext bleeds into the /etc/shadow page cache.",
+    "Hyunwoo Kim, the Dirty Frag researcher, was forced public when the embargo broke after the patch merged, and another researcher independently analyzed the public commit and published, a standard n-day weaponization. Silent patches without CVEs leave defenders blind. A timeline runs from silent patch to DUPLICATE reply to forced PoC.",
+    "Kernel developers are reviewing an emergency killswitch that disables a vulnerable function at runtime, returning an operator-supplied value on every CPU until disengage or reboot. Rocky Linux debuted an opt-in security repository for accelerated fixes. A split view of a vulnerable function beside one with the killswitch engaged.",
+    "A silent patch is not a fix for defenders who do not know it exists. The kernel killswitch and security repos are symptoms of a disclosure process that leaves gaps. A patch diff shows the COW guard added in green with the commit message faded to invisible gray.",
+    "Closing question: do you track silent kernel patches in your distro, or only CVEs? Save this for your next vulnerability management review. A single git log entry shows a COW guard commit with no CVE reference on a clean dark end-card."
   ],
   "sources": [
     {

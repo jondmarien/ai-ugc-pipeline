@@ -212,16 +212,16 @@
   ],
   "comment_prompt": "Would you trust an autonomous agent with your terminal if it stayed fully on your machine: yes with a sandbox, or no?",
   "alt_text": [
-    "Slide 1 (cover): a server box in the dark with a glowing orb orbiting it; headline reads that the agent which writes its own skills is eating GitHub.",
-    "Slide 2 (context): a glowing cube on a desk with roots of light spreading out; text says an open-source agent that lives on your server and learns as it works.",
-    "Slide 3 (the surge): a steep arc of light climbing almost vertically; text says launched Feb 25, past 180,000 GitHub stars and about 1,000 contributors.",
-    "Slide 4 (the special sauce): a glowing loop pressing tools into skill tablets onto a growing stack; text says it reads your work, writes a reusable skill, and reuses it next time.",
-    "Slide 5 (security reality): an open glowing doorway with keys and cables spilling out; text says it's an always-on agent with a terminal, web access, and your API keys.",
-    "Slide 6 (scope it): a glowing cube sealed in a reinforced container with one controlled gate; text says run it in a sandbox, give it least-privilege keys, log what it touches.",
-    "Slide 7 (fine print): a magnifying glass over an engraved glowing tablet; text says self-improving means it curates skill files, not rewriting its own brain.",
-    "Slide 8 (the shift): a glowing cube cabled into a home workstation; text says a capable persistent agent now runs on your own box and you can swap any model.",
-    "Slide 9 (takeaway): a calm hand resting on a glowing contained cube; text says the win is an agent you own and can contain.",
-    "Slide 10 (CTA): a glowing arrow and question mark over a dark desk; text asks whether you'd give an autonomous agent your terminal if it never left your machine."
+    "Title card: the agent that writes its own skills is eating GitHub, with Hermes Agent going from launch to most-used agent in the world in about 90 days. A winged metal messenger statue on a plinth draws up a spiral of luminous moths.",
+    "An open-source agent that lives on your server and learns as it works, built by Nous Research, MIT-licensed, your hardware and data with no lock-in. A lone server tower glows with a slow pulse like a heartbeat.",
+    "Launched February 25, it has passed 180,000 GitHub stars and about 1,000 contributors since, reportedly the most-used agent on OpenRouter, so check the live numbers. Thousands of star-points ignite in a steep rising sweep.",
+    "It reads your work, writes a reusable skill, and reuses it next time, with a closed learning loop curating skills from your conversations so it gets sharper the longer it runs. A winged automaton forges glowing tools and hangs them in rows.",
+    "It is an always-on agent with a terminal, web access, and your API keys, a powerful new surface, not a reason to panic but a reason to scope it. A heavy vault door stands wide open with light and cords spilling out.",
+    "Run it in a sandbox, give it least-privilege keys, and log what it touches, treating shared community skills like untrusted code because skills execute. A miniature garden thrives under a sealed glass dome with one small vent.",
+    "Self-improving means it curates skill files, not rewriting its own brain, so the continuous learning is real and useful, just not the sci-fi version. A figure sorts engraved stone tablets by lamplight, keeping some and setting others aside.",
+    "A capable, persistent agent now runs on your own box and you can swap any model, with local data, no cloud lock-in, and every line open to inspect and fork. A warmly lit workshop glows through one window of a dark house at night.",
+    "The win is not AI that thinks, it is an agent you own and can contain: hype with receipts, power with a sandbox. The winged messenger automaton rests calmly inside a sealed glass dome.",
+    "The closing question: would you give an autonomous agent your terminal if it never left your machine? Save this before your team installs it. An empty anvil waits in a dark workshop with a hammer and a faint glow above."
   ],
   "sources": [
     {

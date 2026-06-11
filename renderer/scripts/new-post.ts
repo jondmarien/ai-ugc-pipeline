@@ -23,6 +23,9 @@ const voiceMode = (VOICE_MODES as readonly string[]).includes(voiceFlag) ? voice
 const musicMode = (MUSIC_MODES as readonly string[]).includes(musicFlag) ? musicFlag : "none";
 const THEMES = ["offensive", "defensive", "hacking", "purple-team", "ai"] as const;
 const themeFlag = flagArgs.find((a) => a.startsWith("--theme="))?.split("=")[1] ?? "";
+// Optional FLUX.2 style fusion for every background (a second aesthetic blended with the house
+// style). Decided at creation, like theme/pillar. Free-form "X meets Y" string; empty = none.
+const styleFusionFlag = flagArgs.find((a) => a.startsWith("--style-fusion="))?.split("=").slice(1).join("=").trim() ?? "";
 
 // Dynamic slide count: --slides=N (default 8, range 3–20). Range is enforced here at
 // creation time (not in the zod schema) so hand-authored posts for other platforms
@@ -35,7 +38,7 @@ const PILLARS = Object.keys(pillarAccent) as Pillar[];
 
 function usageAndExit(msg?: string): never {
   if (msg) console.error(`\n✗ ${msg}`);
-  console.error(`\nUsage: bun run new -- <YYYY-MM-DD> <slug> <pillar> [--slides=N (3–20, default 8)] [--theme=offensive|defensive|hacking|purple-team|ai] [--captions=…] [--voice=… (default voxcpm2; use none for a silent reel)] [--music=…]`);
+  console.error(`\nUsage: bun run new -- <YYYY-MM-DD> <slug> <pillar> [--slides=N (3–20, default 8)] [--theme=offensive|defensive|hacking|purple-team|ai] [--style-fusion="ancient marble meets cyberpunk neon"] [--captions=…] [--voice=… (default voxcpm2; use none for a silent reel)] [--music=…]`);
   console.error(`  pillar ∈ ${PILLARS.join(" | ")}`);
   console.error(`  theme  ∈ offensive (red) | defensive (blue) | hacking (green) | purple-team (purple) | ai (generic AI, orange)  — optional; defaults from pillar`);
   console.error(`  example: bun run new -- 2026-06-13 ai-agent-permissions model_security --theme=defensive\n`);
@@ -173,6 +176,7 @@ const post = {
   status: "draft",
   pillar,
   theme,
+  style_fusion: styleFusionFlag,
   audience: "security_practitioners",
   core_claim: "TODO: one-sentence claim this post makes.",
   claim_tags: ["scenario"],
@@ -202,7 +206,11 @@ const post = {
   // Topics (NOT hashtags) — rendered as a bracketed list in caption.txt; no '#', no 5-tag cap.
   hashtags: ["AI security", "cybersecurity", "threat intel"],
   comment_prompt: "TODO: a specific, easy-to-answer question.",
-  alt_text: slides.map((s) => `Slide ${s.slide} (${s.role}): TODO accessible description.`),
+  // Accessibility alt text: ONE entry per slide, in order. Lead with the slide's MESSAGE
+  // (transcribe the on_slide_copy / claim that is rendered as text in the image — invisible to a
+  // screen reader otherwise), then a short visual note. No "Slide N"/role/number prefix, no
+  // "image of", no em-dashes. ~125-220 chars, meaning first. See QA_CHECKLIST alt-text gate.
+  alt_text: slides.map((s) => `TODO ${s.role} alt text: restate this slide's message, then one brief clause of visual scene.`),
   sources: [
     { source: "TODO source name", link: "https://example.com", supports: "Which claim this supports.", confidence: "medium", claim_tag: "scenario" },
   ],
