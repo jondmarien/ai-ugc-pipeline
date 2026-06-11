@@ -1,0 +1,405 @@
+{
+  "post_id": "2026-06-11_miniplasma-patched-lpe",
+  "date": "2026-06-11",
+  "slug": "miniplasma-patched-lpe",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "offensive_ai",
+  "theme": "offensive",
+  "audience": "security_practitioners",
+  "core_claim": "MiniPlasma is an LPE exploit targeting fully patched Windows systems. Released by Nightmare Eclipse as the sixth and final exploit in their June 2026 vulnerability wave. Works on current Patch Tuesday builds.",
+  "claim_tags": [
+    "reported_fact",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 5,
+    "visual_drama": 5,
+    "defender_usefulness": 5,
+    "total": 25
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "red",
+    "pillar_accent": "offensive_ai",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#ef4444",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-11_miniplasma-patched-lpe",
+    "filename_prefix": "2026-06-11_miniplasma-patched-lpe",
+    "expected_files": [
+      "2026-06-11_miniplasma-patched-lpe_01_cover.png",
+      "2026-06-11_miniplasma-patched-lpe_02_context.png",
+      "2026-06-11_miniplasma-patched-lpe_03_risk.png",
+      "2026-06-11_miniplasma-patched-lpe_04_mechanism.png",
+      "2026-06-11_miniplasma-patched-lpe_05_failure-point.png",
+      "2026-06-11_miniplasma-patched-lpe_06_defense.png",
+      "2026-06-11_miniplasma-patched-lpe_07_takeaway.png",
+      "2026-06-11_miniplasma-patched-lpe_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "WINDOWS × ZERO-DAY",
+      "on_slide_copy": "MINIPLASMA ESCAPES THE PATCH. FULLY PATCHED. STILL ROOT.",
+      "subline": "LPE on current Patch Tuesday. No CVE. Nightmare Eclipse exploit six. The wave closer.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A hard rim light catches a Windows Update shield in the dark, a green plasma tendril slipping through the checkmark and emerging as a SYSTEM prompt, premium dark editorial key art, the shield held in the upper third with clean unmarked negative space filling the lower third.",
+      "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/01_cover.png",
+      "asset_status": "generated",
+      "cta": "SWIPE →",
+      "notes": ""
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "THE RELEASE",
+      "on_slide_copy": "Nightmare Eclipse dropped MiniPlasma as the sixth and final exploit. Targets fully patched Windows 10/11. June 2026 Patch Tuesday installed.",
+      "subline": "No CVE assigned. Researcher says it chains two post-patch primitives. The wave closer. Six zero-days in six days.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Low raking light grazes a Windows Update history in the dark, 'June 2026 Cumulative Update' installed with green checkmark, but a red 'Exploit verified' badge overlapping it, dark editorial photography, the history set high over a calm empty lower third.",
+      "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/02_context.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT STINGS",
+      "on_slide_copy": "MiniPlasma works on fully patched systems. Chains two primitives that survived June Patch Tuesday. SYSTEM shell. Deterministic. No user interaction.",
+      "subline": "Researcher demonstrates exploitation on a machine with all June 2026 updates. The patch closed the front door. The chain enters through the window.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A focused side light illuminates a patch shield in the dark, two green plasma tendrils weaving through microscopic gaps in the mesh, converging into a SYSTEM token, dark premium editorial, the shield centered in the upper area with generous negative space below.",
+      "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/03_risk.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "THE CHAIN",
+      "on_slide_copy": "Primitives: (1) A symbolic link race in a SYSTEM service that survives the patch. (2) A token manipulation via a legitimate Windows API. Chained = SYSTEM.",
+      "subline": "First primitive gets arbitrary file write as SYSTEM. Second converts write to token. Both primitives individually mitigated but not in combination. Researcher calls it 'patch residue'.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A hard top-down beam falls on two chain links in the dark, first link a symlink race glowing green, second link a token API glowing green, fused into a SYSTEM crown, dark editorial key art, the chain framed in the upper third over clean dark space.",
+      "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/04_mechanism.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE DEFENDERS MISS IT",
+      "on_slide_copy": "Patch Tuesday says 'protected.' Vulnerability scanners say 'clean.' But the chain uses two mitigated primitives in a novel combination. The whole is not the sum of the parts.",
+      "subline": "No CVE means no scanner signature. No vendor advisory. Defenders assume patched = safe. The researcher proves patched = different attack surface.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Cool light grazes a vulnerability scanner report in the dark, '0 critical vulnerabilities' in green, but a red chain diagram overlay showing the two mitigated primitives linking, tense editorial composition, the report held high with a clean lower third.",
+      "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/05_failure-point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "THE MITIGATION REALITY",
+      "on_slide_copy": "Monitor for symbolic link creation in SYSTEM contexts. Audit token manipulation APIs (DuplicateTokenEx, ImpersonateLoggedOnUser). Hunt for patch-residue chains. Assume patched systems have new attack surfaces.",
+      "subline": "No patch for the combination. Microsoft may not assign CVE. Defenders must detect the behavior chain: symlink + token manipulation = SYSTEM. That pattern persists.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A balanced split composition in the dark: left side a patch shield with two separate green mitigations, right side the same mitigations chained into a red SYSTEM breach, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
+      "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/06_defense.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "Patched {{does not mean immune.}} [[It means the attack surface has shifted.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A thin rim light traces a Windows Update shield in the dark, one half with a green checkmark, the other half with a green plasma chain slipping through and forming a SYSTEM crown, minimal high-impact key art, the shield drawn toward the edge with the center kept dark and open.",
+      "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/07_takeaway.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Do you hunt for primitive chains on your patched endpoints?",
+      "subline": "Save this for your next patch validation review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Soft pooled light isolates a behavioral detection rule for symlink+token chains on a clean dark end-card surface, premium editorial cybersecurity key art, the rule small in vast negative space with the lower third open.",
+      "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/08_cta.png",
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Nightmare Eclipse released MiniPlasma as the sixth and final exploit in their June 2026 wave. An LPE exploit targeting fully patched Windows systems with June 2026 Patch Tuesday installed.\n\nThe exploit chains two primitives that individually survived the patch: (1) A symbolic link race in a SYSTEM service that the patch did not fully close. (2) A token manipulation via a legitimate Windows API. Chained together = SYSTEM shell. Deterministic. No user interaction required.\n\nResearcher demonstrates exploitation on a machine with all June 2026 updates applied. The patch closed the front door. The chain enters through the window. The researcher calls it 'patch residue' — mitigated primitives that combine in novel ways.\n\nPatch Tuesday says 'protected.' Vulnerability scanners say 'clean.' But the chain uses two mitigated primitives in a novel combination. The whole is not the sum of the parts. No CVE means no scanner signature. No vendor advisory. Defenders assume patched = safe. The researcher proves patched = different attack surface.\n\nMonitor for symbolic link creation in SYSTEM contexts. Audit token manipulation APIs (DuplicateTokenEx, ImpersonateLoggedOnUser). Hunt for patch-residue chains. Assume patched systems have new attack surfaces.\n\nNo patch for the combination. Microsoft may not assign CVE. Defenders must detect the behavior chain: symlink + token manipulation = SYSTEM. That pattern persists.\n\nPatched does not mean immune. It means the attack surface has shifted.\n\nDo you hunt for primitive chains on your patched endpoints?\n\nFollow for AI security breakdowns without the fake panic.\n\n[MiniPlasma, Nightmare Eclipse, Windows zero-day, LPE, fully patched, Patch Tuesday, patch residue, symbolic link race, token manipulation, behavioral detection, primitive chain]",
+  "hashtags": [
+    "MiniPlasma",
+    "Nightmare Eclipse",
+    "Windows zero-day",
+    "LPE",
+    "fully patched",
+    "Patch Tuesday",
+    "patch residue",
+    "symbolic link race",
+    "token manipulation",
+    "behavioral detection",
+    "primitive chain"
+  ],
+  "comment_prompt": "Do you hunt for primitive chains on your patched endpoints?",
+  "alt_text": [
+    "Slide 1 (cover): a Windows Update shield in the dark, a green plasma tendril slipping through the checkmark and emerging as a SYSTEM prompt.",
+    "Slide 2 (context): a Windows Update history in the dark, 'June 2026 Cumulative Update' installed with green checkmark, but a red 'Exploit verified' badge overlapping it.",
+    "Slide 3 (risk): a patch shield in the dark, two green plasma tendrils weaving through microscopic gaps in the mesh, converging into a SYSTEM token.",
+    "Slide 4 (mechanism): two chain links in the dark, first link a symlink race glowing green, second link a token API glowing green, fused into a SYSTEM crown.",
+    "Slide 5 (gap): a vulnerability scanner report, '0 critical vulnerabilities' in green, but a red chain diagram overlay showing two mitigated primitives linking.",
+    "Slide 6 (defense): split composition, left side patch shield with two separate green mitigations, right side same mitigations chained into red SYSTEM breach.",
+    "Slide 7 (takeaway): a Windows Update shield, half with green checkmark, half with green plasma chain slipping through forming a SYSTEM crown.",
+    "Slide 8 (cta): a behavioral detection rule for symlink+token chains on a clean dark end-card."
+  ],
+  "sources": [
+    {
+      "source": "Nightmare Eclipse blog: MiniPlasma Technical Details",
+      "link": "https://deadeclipse666.blogspot.com/2026/06/miniplasma-patched-lpe.html",
+      "supports": "Sixth and final exploit in wave; targets fully patched Win 10/11 with June 2026 updates; two-primitive chain (symlink race + token manipulation); 'patch residue' concept; deterministic SYSTEM shell; no user interaction; no CVE assigned; Microsoft may not assign CVE; primitive combination survives individual mitigations.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "SecurityWeek: Nightmare Eclipse Releases Six Windows Zero-Days",
+      "link": "https://www.securityweek.com/nightmare-eclipse-releases-six-windows-zero-days/",
+      "supports": "Context of six-exploit wave; exploit sequence; researcher background; GitHub account suspension; MSNightmare repo; community response; wave closer position.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 58,
+    "fps": 30,
+    "export_name": "2026-06-11_miniplasma-patched-lpe_reel.mp4",
+    "caption_mode": "highlight",
+    "caption_corrections": {},
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-11_miniplasma-patched-lpe/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": "MiniPlasma escapes the patch. Fully patched. Still root. Nightmare Eclipse exploit six. The wave closer."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "text": "Targets fully patched Windows 10 and 11 with June 2026 Patch Tuesday. No CVE. Researcher calls it patch residue."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "text": "Chains two primitives: symlink race in SYSTEM service, and token manipulation via Windows API. Together equals SYSTEM."
+      },
+      {
+        "start": 20,
+        "end": 27,
+        "text": "Both primitives individually mitigated. Not in combination. Demo on fully updated machine. Patch closed front door. Chain enters window."
+      },
+      {
+        "start": 27,
+        "end": 34,
+        "text": "Scanner says clean. Patch says protected. But two mitigated primitives chain. Whole not sum of parts. No CVE. No signature."
+      },
+      {
+        "start": 34,
+        "end": 41,
+        "text": "Monitor symlink in SYSTEM contexts. Audit token APIs. Hunt patch-residue chains. Patched means shifted attack surface."
+      },
+      {
+        "start": 41,
+        "end": 48,
+        "text": "Patched does not mean immune. It means the attack surface has shifted. The pattern persists."
+      },
+      {
+        "start": 48,
+        "end": 54,
+        "text": "Do you hunt for primitive chains on patched endpoints? Tell me in the comments."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 6,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "MiniPlasma escapes patch. Fully patched. Root."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Wave closer. June patch installed. No CVE. Patch residue."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "slide_ref": 3,
+        "purpose": "risk",
+        "motion": "slow push-in",
+        "caption": "Two primitives chain. Symlink race. Token API. SYSTEM."
+      },
+      {
+        "start": 20,
+        "end": 27,
+        "slide_ref": 4,
+        "purpose": "mechanism",
+        "motion": "parallax",
+        "caption": "Individually mitigated. Combined = exploit. Demo on updated."
+      },
+      {
+        "start": 27,
+        "end": 34,
+        "slide_ref": 5,
+        "purpose": "gap",
+        "motion": "slow push-in",
+        "caption": "Scanner clean. Patch protected. Chain enters window."
+      },
+      {
+        "start": 34,
+        "end": 41,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "parallax",
+        "caption": "Monitor symlink. Audit token. Hunt chains. Shifted surface."
+      },
+      {
+        "start": 41,
+        "end": 48,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "Patched not immune. Surface shifted. Pattern persists."
+      },
+      {
+        "start": 48,
+        "end": 54,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Do you hunt primitive chains?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": []
+  }
+}
