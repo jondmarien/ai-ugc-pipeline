@@ -46,8 +46,9 @@ USAGE
   bun run pipeline -- <post-key> [<post-key> ...] [flags]
   bun run pipeline --status=approved [flags]              (render a whole status tier)
 
-  <post-key> matches a file in renderer/content/posts/ (e.g. 2026-06-08_chatbot-log-leak,
-  or any unique substring). Multiple keys render as a batch.
+  <post-key> matches files in renderer/content/posts/ by substring. A unique slug runs one
+  post; a substring matching several runs them ALL — e.g. a date prefix 2026-06-11 runs the
+  whole day. Combine multiple keys. (Use --dry-run to preview the matched set.)
 
 BATCH SELECTION
   --status=VALUE   render every post whose JSON status == VALUE (draft|approved|generated|
@@ -112,6 +113,8 @@ STAGE TOGGLES & MISC
 EXAMPLES
   bun run pipeline -- 2026-06-08_chatbot-log-leak
       full render with all defaults (art only if slides are missing backgrounds)
+  bun run pipeline -- 2026-06-11 --dry-run
+      preview every post from that day (date prefix expands to all matches)
   bun run pipeline -- 2026-06-08_chatbot-log-leak --art --q6 --upscale
       force-regenerate art at Q6 quality with the integrated upscale pass
   bun run pipeline -- my-post --art --ui-format --upscale-model=4x-UltraSharp.pth
@@ -126,28 +129,34 @@ if (flags.has("--help") || flags.has("-h") || argv.includes("-h")) {
   console.log(HELP);
   process.exit(0);
 }
-// --status=VALUE: add every post whose JSON status matches (date order). Explicit keys still run
-// regardless of status; merge + de-dupe by resolved full key so a post named AND matched runs once.
+// Resolve the run set. Each positional key expands to EVERY post it matches as a substring — a
+// unique slug runs one, a date prefix like 2026-06-11 runs the whole day. --status=VALUE adds
+// every post currently at that status. Explicit keys run regardless of status. Merge, de-dupe,
+// sort by filename (date order).
+const ALL_KEYS = readdirSync(POSTS).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));
 const statusArg = [...flags].find((f) => f.startsWith("--status="))?.split("=")[1];
-if (statusArg) {
-  const matched = readdirSync(POSTS)
-    .filter((f) => f.endsWith(".json"))
-    .filter((f) => { try { return JSON.parse(readFileSync(path.join(POSTS, f), "utf8")).status === statusArg; } catch { return false; } })
-    .map((f) => f.replace(/\.json$/, ""))
-    .sort();
-  if (!matched.length && !keys.length) {
-    console.log(`No posts with status="${statusArg}". Nothing to do. (lifecycle: draft → approved → generated → upload_ready)`);
-    process.exit(0);
-  }
-  const resolve = (k) => (readdirSync(POSTS).find((f) => f.endsWith(".json") && f.includes(k)) || `${k}.json`).replace(/\.json$/, "");
-  const seen = new Set(keys.map(resolve));
-  for (const k of matched) if (!seen.has(k)) { keys.push(k); seen.add(k); }
-  console.log(`▶ status="${statusArg}" → ${matched.length} post(s); ${keys.length} to run in date order.\n`);
+const requested = keys.length > 0 || !!statusArg;
+const selected = new Set();
+for (const k of keys) {
+  const m = ALL_KEYS.filter((fk) => fk.includes(k));
+  if (!m.length) console.warn(`⚠ no post matches "${k}"`);
+  m.forEach((fk) => selected.add(fk));
 }
+if (statusArg) {
+  const matched = ALL_KEYS.filter((fk) => { try { return JSON.parse(readFileSync(path.join(POSTS, `${fk}.json`), "utf8")).status === statusArg; } catch { return false; } });
+  matched.forEach((fk) => selected.add(fk));
+  console.log(`▶ status="${statusArg}" → ${matched.length} post(s).`);
+}
+keys = [...selected].sort();
 if (!keys.length) {
+  if (requested) {
+    console.error(`No matching posts for that selection. Check the key / date / status (lifecycle: draft → approved → generated → upload_ready), or run --help.`);
+    process.exit(1);
+  }
   console.error(HELP);
   process.exit(1);
 }
+if (keys.length > 1) console.log(`▶ ${keys.length} post(s) in date order: ${keys.join(", ")}\n`);
 const seedArg = [...flags].find((f) => f.startsWith("--seed="));
 const tailArg = [...flags].find((f) => f.startsWith("--tail="));
 // Captions default to "highlight" for pipeline reels; override with --captions=block|word.
