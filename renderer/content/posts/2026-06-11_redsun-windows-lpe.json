@@ -1,0 +1,404 @@
+{
+  "post_id": "2026-06-11_redsun-windows-lpe",
+  "date": "2026-06-11",
+  "slug": "redsun-windows-lpe",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "offensive_ai",
+  "theme": "offensive",
+  "audience": "security_practitioners",
+  "core_claim": "RedSun is a file write local privilege escalation zero-day that allows attackers to drop a binary in System32 and execute as SYSTEM. Released by Nightmare Eclipse as part of the June 2026 vulnerability wave.",
+  "claim_tags": [
+    "reported_fact",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 5,
+    "visual_drama": 4,
+    "defender_usefulness": 5,
+    "total": 24
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "red",
+    "pillar_accent": "offensive_ai",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#ef4444",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-11_redsun-windows-lpe",
+    "filename_prefix": "2026-06-11_redsun-windows-lpe",
+    "expected_files": [
+      "2026-06-11_redsun-windows-lpe_01_cover.png",
+      "2026-06-11_redsun-windows-lpe_02_context.png",
+      "2026-06-11_redsun-windows-lpe_03_risk.png",
+      "2026-06-11_redsun-windows-lpe_04_mechanism.png",
+      "2026-06-11_redsun-windows-lpe_05_failure-point.png",
+      "2026-06-11_redsun-windows-lpe_06_defense.png",
+      "2026-06-11_redsun-windows-lpe_07_takeaway.png",
+      "2026-06-11_redsun-windows-lpe_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "WINDOWS × ZERO-DAY",
+      "on_slide_copy": "REDSUN WRITES TO SYSTEM32. EXECUTES AS SYSTEM.",
+      "subline": "File write LPE. No CVE assigned yet. Nightmare Eclipse June wave exploit two.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A hard rim light catches a System32 folder icon in the dark, a malicious binary being placed inside with a red glow, SYSTEM token materializing above it like a crown, premium dark editorial key art, the folder held in the upper third with clean unmarked negative space filling the lower third.",
+      "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/01_cover.png",
+      "asset_status": "generated",
+      "cta": "SWIPE →",
+      "notes": ""
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "THE RELEASE",
+      "on_slide_copy": "Nightmare Eclipse released RedSun as the second exploit in their six-day drop. Direct file write to protected System32 directory.",
+      "subline": "No CVE assigned. Researcher says Microsoft was notified. Exploit works on current Patch Tuesday builds.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Low raking light grazes a dark terminal output in the dark, 'copy evil.exe C:\\Windows\\System32\\' succeeding with a red SUCCESS marker, dark editorial photography, the terminal set high over a calm empty lower third.",
+      "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/02_context.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT STINGS",
+      "on_slide_copy": "RedSun bypasses TrustedInstaller ownership. Writes any binary to System32. Triggers execution as SYSTEM via scheduled task or service.",
+      "subline": "No memory corruption. No race condition. Pure file write primitive. Defenders assume System32 is immutable.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A focused side light illuminates a System32 directory in the dark, a single file glowing red among thousands of white system files, dark premium editorial, the directory centered in the upper area with generous negative space below.",
+      "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/03_risk.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "THE PRIMITIVE",
+      "on_slide_copy": "Exploits a junction/parse point abuse in the Windows Installer service. Redirects a trusted write operation to System32.",
+      "subline": "MSI installer runs as SYSTEM. Researcher redirects its file copy to target directory. Binary lands. Execution follows.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A hard top-down beam falls on a Windows Installer service icon in the dark, its file copy arrow bending mid-air toward a System32 folder, dark editorial key art, the redirect framed in the upper third over clean dark space.",
+      "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/04_mechanism.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE DEFENDERS MISS IT",
+      "on_slide_copy": "System32 file creation events (4663) are noisy. Legitimate installers write there daily. RedSun blends in. No patch. No CVE.",
+      "subline": "EDRs ignore MSI service writes. Defenders lack baseline for 'normal' System32 mutations. Patch gap is indefinite.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Cool light grazes an event log in the dark, thousands of 4663 entries from MSI, one malicious write indistinguishable from the noise, tense editorial composition, the log held high with a clean lower third.",
+      "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/05_failure-point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "THE MITIGATION REALITY",
+      "on_slide_copy": "Monitor System32 for non-installer writes. Block unsigned binaries in System32. Use WDAC/AppLocker. Hunt for MSI service spawning unusual children.",
+      "subline": "No vendor fix. Defenders must baseline legitimate System32 writes and alert on anomalies. The primitive is simple, the detection is hard.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A balanced split composition in the dark: left side a System32 folder with a green shield and signed binary checkmark, right side the same folder with a red unsigned binary and broken shield, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
+      "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/06_defense.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "System32 {{is not immutable.}} [[It is a write target when a trusted service is misdirected.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A thin rim light traces a System32 folder icon in the dark, one half intact with a green shield glow, the other half fractured with a red binary and SYSTEM token escaping, minimal high-impact key art, the folder drawn toward the edge with the center kept dark and open.",
+      "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/07_takeaway.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Do you baseline System32 mutations in your environment?",
+      "subline": "Save this for your next endpoint hardening review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Soft pooled light isolates a single event log entry showing a System32 write on a clean dark end-card surface, premium editorial cybersecurity key art, the log small in vast negative space with the lower third open.",
+      "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/08_cta.png",
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Nightmare Eclipse released RedSun as the second exploit in their June 2026 wave. A file write local privilege escalation that drops a binary into System32 and executes it as SYSTEM.\n\nThe primitive abuses a junction/parse point in the Windows Installer service. The MSI installer runs as SYSTEM. The exploit redirects its trusted file copy operation to target System32. The binary lands. Execution follows via scheduled task or service registration.\n\nNo memory corruption. No race condition. Pure file write. Defenders assume System32 is immutable. It is not.\n\nSystem32 file creation events (4663) are noisy. Legitimate installers write there daily. RedSun blends in. No CVE assigned yet. No patch timeline.\n\nDefenders must baseline legitimate System32 writes: monitor for non-installer writes, block unsigned binaries in System32, use WDAC or AppLocker, hunt for MSI service spawning unusual children.\n\nSystem32 is not immutable. It is a write target when a trusted service is misdirected.\n\nDo you baseline System32 mutations in your environment?\n\nFollow for AI security breakdowns without the fake panic.\n\n[RedSun, Nightmare Eclipse, Windows zero-day, file write LPE, System32, Windows Installer, MSI service, WDAC, AppLocker, trusted service abuse]",
+  "hashtags": [
+    "RedSun",
+    "Nightmare Eclipse",
+    "Windows zero-day",
+    "file write LPE",
+    "System32",
+    "Windows Installer",
+    "MSI service",
+    "WDAC",
+    "AppLocker",
+    "trusted service abuse"
+  ],
+  "comment_prompt": "Do you baseline System32 mutations in your environment?",
+  "alt_text": [
+    "Slide 1 (cover): a System32 folder icon in the dark, a malicious binary being placed inside with a red glow, SYSTEM token materializing above it like a crown.",
+    "Slide 2 (context): a dark terminal output, 'copy evil.exe C:\\Windows\\System32\\' succeeding with a red SUCCESS marker.",
+    "Slide 3 (risk): a System32 directory in the dark, a single file glowing red among thousands of white system files.",
+    "Slide 4 (mechanism): a Windows Installer service icon in the dark, its file copy arrow bending mid-air toward a System32 folder.",
+    "Slide 5 (gap): an event log in the dark, thousands of 4663 entries from MSI, one malicious write indistinguishable from the noise.",
+    "Slide 6 (defense): split composition, left side System32 with green shield and signed binary, right side with red unsigned binary and broken shield.",
+    "Slide 7 (takeaway): a System32 folder icon, half intact with green shield glow, half fractured with red binary and SYSTEM token escaping.",
+    "Slide 8 (cta): an event log entry showing a System32 write on a clean dark end-card with open negative space."
+  ],
+  "sources": [
+    {
+      "source": "Nightmare Eclipse blog: RedSun Technical Details",
+      "link": "https://deadeclipse666.blogspot.com/2026/06/redsun-windows-lpe.html",
+      "supports": "File write LPE primitive; System32 targeting; MSI service junction abuse; SYSTEM execution via scheduled task; works on current Patch Tuesday builds; no CVE assigned; Microsoft notification status.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "SecurityWeek: Nightmare Eclipse Releases Six Windows Zero-Days",
+      "link": "https://www.securityweek.com/nightmare-eclipse-releases-six-windows-zero-days/",
+      "supports": "Context of six-exploit wave; exploit sequence; researcher background; GitHub account suspension; MSNightmare repo; community response.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-11_redsun-windows-lpe/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_redsun-windows-lpe/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_redsun-windows-lpe/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_redsun-windows-lpe/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_redsun-windows-lpe/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_redsun-windows-lpe/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_redsun-windows-lpe/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-11_redsun-windows-lpe/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 58,
+    "fps": 30,
+    "export_name": "2026-06-11_redsun-windows-lpe_reel.mp4",
+    "caption_mode": "highlight",
+    "caption_corrections": {},
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-11_redsun-windows-lpe/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": "RedSun writes to System32. Executes as SYSTEM. File write LPE. Nightmare Eclipse exploit two."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "text": "Released in a six-exploit wave. No CVE assigned. Works on current Patch Tuesday builds."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "text": "Abuses a junction in the Windows Installer service. MSI runs as SYSTEM. Redirects its file copy to System32."
+      },
+      {
+        "start": 20,
+        "end": 27,
+        "text": "No memory corruption. No race. Pure file write. Binary lands. Execution follows via task or service."
+      },
+      {
+        "start": 27,
+        "end": 34,
+        "text": "System32 writes are noisy. Legitimate installers write daily. RedSun blends in. No patch. No CVE."
+      },
+      {
+        "start": 34,
+        "end": 41,
+        "text": "Baseline System32 mutations. Block unsigned binaries. WDAC or AppLocker. Hunt MSI service children."
+      },
+      {
+        "start": 41,
+        "end": 48,
+        "text": "System32 is not immutable. It is a write target when a trusted service is misdirected."
+      },
+      {
+        "start": 48,
+        "end": 54,
+        "text": "Do you baseline System32 mutations? Tell me in the comments."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 6,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "RedSun writes System32. Executes SYSTEM."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Six-exploit wave. No CVE. Patched builds hit."
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "slide_ref": 3,
+        "purpose": "risk",
+        "motion": "slow push-in",
+        "caption": "MSI service junction. SYSTEM copy redirected."
+      },
+      {
+        "start": 20,
+        "end": 27,
+        "slide_ref": 4,
+        "purpose": "mechanism",
+        "motion": "parallax",
+        "caption": "No memory corruption. File write. Binary lands."
+      },
+      {
+        "start": 27,
+        "end": 34,
+        "slide_ref": 5,
+        "purpose": "gap",
+        "motion": "slow push-in",
+        "caption": "System32 noise. Legit installers daily. Blends in."
+      },
+      {
+        "start": 34,
+        "end": 41,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "parallax",
+        "caption": "Baseline mutations. Unsigned block. WDAC. Hunt MSI."
+      },
+      {
+        "start": 41,
+        "end": 48,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "System32 not immutable. Trusted service misdirect."
+      },
+      {
+        "start": 48,
+        "end": 54,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Do you baseline System32?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": []
+  }
+}
