@@ -178,14 +178,14 @@
   ],
   "comment_prompt": "Do you read your agent's tool calls before approving them, or just watch them scroll by?",
   "alt_text": [
-    "Slide 1 (cover): a tall one-way observation mirror set into a dark wall, faintly reflecting an empty room on the near face while the far side stays in shadow, with the headline in the lower third.",
-    "Slide 2 (context): a lone watchtower rising over a dark perimeter, its open observation deck lit by a single lamp while the ground below stays in shadow.",
-    "Slide 3 (risk): a single waist-high turnstile standing unlatched and freely rotating in a dark concourse, its arms swung open with nobody manning it.",
-    "Slide 4 (mechanism): a single security camera lens mounted on a dark wall, its glass eye catching a thin rim of light as it watches a quiet empty corridor.",
-    "Slide 5 (failure_point): a checkpoint barrier arm raised wide open over an empty lane in the dark, the control booth beside it unlit and unattended.",
-    "Slide 6 (defense): a small thick viewing window set into a heavy steel door, a warm contained glow spilling through the glass from the locked room behind it.",
-    "Slide 7 (takeaway): a single velvet rope strung between two heavy stanchions blocking a dark entryway, a thin rim of light tracing the polished posts.",
-    "Slide 8 (cta): a single spotlight beam falling on an empty stage floor surrounded by vast black negative space, with the comment question and handle."
+    "Title card: watching your agent work is not the same as controlling what it does. Nous shipped Hermes Desktop, a GUI that streams every tool call, but seeing is not stopping. A one-way observation mirror faintly reflects an empty room.",
+    "Nous Research put Hermes Agent in a native desktop app for macOS, Windows, and Linux, the same agent with the same keys and skills, now one click away with no terminal. A lone watchtower rises over a dark perimeter.",
+    "A GUI puts a local agent with shell, file, and network tools in front of people who never opened a terminal, so the prompt-injection-to-tool-abuse surface just got easier to reach. An unlatched turnstile rotates freely with nobody manning it.",
+    "The app streams tool calls live as the agent works, which is genuinely good for security, but a stream you click straight past is visibility, not control. A security camera lens watches a quiet empty corridor.",
+    "People run it locally, watch the output scroll, and approve actions without reading them, and now people who never used a terminal run the skills too. A checkpoint barrier arm is raised over an empty lane, the booth unattended.",
+    "Run Hermes in a sandbox backend like Docker, give it scoped keys, and read the streamed tool calls before approving anything that touches the shell, files, or network. A thick viewing window in a steel door glows from the locked room behind it.",
+    "Streaming tool output is not a safety feature by itself, it becomes one when you gate what you approve. A velvet rope strung between two heavy stanchions blocks a dark entryway.",
+    "The closing question asks whether you read your agent's tool calls before approving them or just watch them fly by, with a prompt to save it. A spotlight beam falls on an empty stage in vast black space."
   ],
   "sources": [
     {

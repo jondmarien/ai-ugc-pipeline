@@ -178,14 +178,14 @@
   ],
   "comment_prompt": "Would you run a terminal coding agent on your main machine, or only in a sandbox?",
   "alt_text": [
-    "Slide 1 (cover): two heavy industrial gears meshing in deep shadow, grease-slick teeth catching a hard rim light, with the headline in the lower third.",
-    "Slide 2 (context): a long conveyor belt carrying identical machined parts out of darkness toward the camera, rollers catching a low rim light.",
-    "Slide 3 (risk): a punch-card feeder pulling a stack of unmarked cards into a heavy mechanism, one card half-swallowed by the slot in high contrast.",
-    "Slide 4 (mechanism): a pneumatic delivery tube with a sealed canister rushing into a machine intake, a faint glow tracing the tube curve.",
-    "Slide 5 (failure_point): a stamping press driven down hard onto a raw metal blank with no guard rail, sparks frozen at the point of impact.",
-    "Slide 6 (defense): a heavy bench vise clamped firmly on a single machined part, jaws bearing down with controlled pressure.",
-    "Slide 7 (takeaway): a single mechanical lever held mid-throw in deep shadow with a thin rim of light along its shaft.",
-    "Slide 8 (cta): a single drive belt looped around one idle pulley resting in empty dark space, with the comment question and handle."
+    "Title card: your coding agent will run third-party code you never reviewed. Kimi Code CLI loads plugins and servers from any repo into your shell, so the model is fine and what you let it execute is the risk. Two industrial gears mesh in deep shadow.",
+    "Moonshot AI released Kimi Code CLI, a terminal coding agent written in TypeScript that reads files, edits code, runs shell commands, and fetches web pages on its own. A long conveyor belt carries identical machined parts out of darkness.",
+    "An agent that runs plugins and servers from any repo is executing code you never reviewed, and a fetched web page can steer it through indirect prompt injection toward your files, keys, and machine. A feeder pulls unmarked cards into a mechanism.",
+    "MCP servers and plugins it loads run with your full trust, and fetched text becomes instructions, not just data, while a skip-all-approvals mode removes the default confirm gate. A sealed canister rushes through a pneumatic tube into an intake.",
+    "Teams add servers and plugins from any repo, then flip on the no-prompt mode for speed on their main machine, so unreviewed third-party code runs with their real keys and no gate. A stamping press hits a metal blank with no guard rail.",
+    "Pin and read every MCP server and plugin before loading it, keep the approve-before-run gate on, and run it in a throwaway VM with restricted egress and no real credentials. A bench vise clamps down on a single part with controlled pressure.",
+    "The risk was never the model, it is every plugin and command you let the agent execute. A single mechanical lever is held mid-throw in deep shadow with a thin rim of light along its shaft.",
+    "The closing question asks whether you would let a terminal agent run unreviewed plugins on your main machine, with a prompt to save it. A drive belt loops around one idle pulley in empty dark space."
   ],
   "sources": [
     {

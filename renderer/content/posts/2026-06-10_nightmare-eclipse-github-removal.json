@@ -82,7 +82,7 @@
       "on_slide_copy": "Nightmare Eclipse dropped six Windows zero-days in months. BlueHammer. RedSun. UnDefend. YellowKey. GreenPlasma. RoguePlanet.",
       "subline": "Researcher cited discontent with Microsoft's disclosure process. Microsoft called for responsible disclosure. Then threatened legal action.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Low raking light grazes a dark ledger in the dark, six entries listed in purple ink with red strike-through marks on three, dark editorial photography, the ledger set high over a calm empty lower third.",
+      "visual_prompt": "Low raking light grazes a column of six glowing marks in the dark, three of them struck through with red while the others stay intact, dark editorial photography, the column set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/02_context.png",
       "asset_status": "generated",
       "cta": "",
@@ -184,14 +184,14 @@
   ],
   "comment_prompt": "Do you have detection for SAM hive access, System32 writes, and Defender tampering?",
   "alt_text": [
-    "Slide 1 (cover): a GitHub octocat silhouette in a dark void, the right half fading into purple static while the left half remains solid, empty lower third for headline.",
-    "Slide 2 (context): a dark ledger with six entries in purple ink, three with red strike-through marks.",
-    "Slide 3 (risk): a broken chain in the dark, one link glowing purple where it snapped, halves drifting apart.",
-    "Slide 4 (mechanism): six distinct keys in the dark, three glowing purple (patched) and three burning red (active).",
-    "Slide 5 (gap): a cracked negotiation table in the dark, two seats with broken communication lines.",
-    "Slide 6 (defense): split composition, left side vendor shield with crack, right side detection radar picking up techniques in purple.",
-    "Slide 7 (takeaway): a handshake in the dark, one hand purple (vendor) one red (researcher), grip fractured with light leaking.",
-    "Slide 8 (cta): a detection rule snippet on a clean dark end-card with open negative space."
+    "Title card: Microsoft suspended the researcher, and the exploits reappeared. The Nightmare Eclipse account was removed, the zero-days republished under MSNightmare with no warning. A GitHub octocat silhouette half dissolves into purple static.",
+    "Nightmare Eclipse dropped six Windows zero-days in months: BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, RoguePlanet. The researcher cited Microsoft's disclosure process, and Microsoft threatened legal action. A dark ledger of six entries.",
+    "GitHub suspended the account without warning, and the exploits reappeared on MSNightmare within hours, with RoguePlanet validated on fully patched Windows 10 and 11. Microsoft said it would not pursue researchers, yet the suspension stood. A broken chain.",
+    "The wave: BlueHammer dumps NTLM via SAM hive to SYSTEM, RedSun is a System32 write LPE, UnDefend disables Defender, YellowKey bypasses BitLocker via USB, GreenPlasma gets full SYSTEM, RoguePlanet is a Defender race LPE. Six distinct keys, some patched, some active.",
+    "Where the process broke: the researcher disclosed privately first, claims Microsoft ignored or mishandled the reports, then went public after frustration, and Microsoft replied with legal threats and suspension. A cracked negotiation table with broken comm lines.",
+    "The defender lesson: you cannot rely on coordinated disclosure, because when it breaks exploits go public immediately. Monitor SAM access, System32 writes, Defender tampering, and BitLocker bypass attempts. A vendor shield cracks beside a detection radar.",
+    "Coordinated disclosure is a courtesy, not a guarantee. When vendors break trust, researchers go public, so defenders must detect the behaviors regardless. A fractured handshake, one hand purple for vendor and one red for researcher, leaks light.",
+    "Closing question: Do you have detection for SAM hive access, System32 writes, and Defender tampering? A detection rule snippet sits on a clean dark end-card with open negative space."
   ],
   "sources": [
     {

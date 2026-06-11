@@ -121,7 +121,7 @@
       "on_slide_copy": "Defender shows green. 'No threats found.' 'Protection up to date.' But definitions are months old. Cloud protection is offline. Tamper protection is bypassed.",
       "subline": "No alert fires. Event logs show service stops as 'expected.' Defenders trust the green checkmark. The checkmark lies.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Cool light grazes a Windows Security dashboard in the dark, all green checkmarks, but a faint red data stream leaking from the bottom edge unseen, tense editorial composition, the dashboard held high with a clean lower third.",
+      "visual_prompt": "Cool light grazes a calm grid of steady green glyph-lights in the dark, all appearing intact, while a faint red stream leaks unseen from the lower edge, tense editorial composition, the grid held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-11_undefend-defender-dos/05_failure-point.png",
       "asset_status": "generated",
       "cta": "",
@@ -160,7 +160,7 @@
       "on_slide_copy": "How do you verify Defender is actually updating and running?",
       "subline": "Save this for your next endpoint validation review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Soft pooled light isolates a custom monitoring dashboard showing Defender definition age and service status on a clean dark end-card surface, premium editorial cybersecurity key art, the dashboard small in vast negative space with the lower third open.",
+      "visual_prompt": "Soft pooled light isolates a single steady pulse-of-life waveform on a clean dark end-card surface, premium editorial cybersecurity key art, the waveform small in vast negative space with the lower third open.",
       "background_asset": "/backgrounds/2026-06-11_undefend-defender-dos/08_cta.png",
       "asset_status": "generated",
       "cta": "COMMENT + SAVE",
@@ -182,14 +182,14 @@
   ],
   "comment_prompt": "How do you verify Defender is actually updating and running?",
   "alt_text": [
-    "Slide 1 (cover): a Defender shield icon in the dark, its update pulse flatlining into a straight red line, the shield fading from blue to grey.",
-    "Slide 2 (context): a dark Windows Security center, 'Virus & threat protection' showing 'No action needed' but a red 'Definitions: 0 days old' warning.",
-    "Slide 3 (risk): two service icons in the dark — wuauserv and MsMpEng — both with red stop symbols pulsing.",
-    "Slide 4 (mechanism): a network packet in the dark, a WFP callout driver catching it and dissolving it into red dust before it reaches Defender.",
-    "Slide 5 (gap): a Windows Security dashboard, all green checkmarks, but a faint red data stream leaking from the bottom edge unseen.",
-    "Slide 6 (defense): split composition, left side Defender with live pulse and cloud connection, right side flatlined with red kernel driver loaded beneath.",
-    "Slide 7 (takeaway): a Defender shield icon, half glowing blue with live pulse, half faded grey with red kernel driver beneath.",
-    "Slide 8 (cta): a custom monitoring dashboard showing Defender definition age and service status on a clean dark end-card."
+    "Title card: UnDefend silences Microsoft Defender with no update and no alert. A denial-of-service and privilege-escalation tool that blocks definition updates and disables the antivirus silently, the third Nightmare Eclipse exploit. A Defender shield's update pulse flatlines into a red line.",
+    "Nightmare Eclipse dropped UnDefend as the third exploit, with two modes: block definition updates indefinitely, or disable Defender entirely. No CVE, persistent blindness, working on fully patched Windows 10 and 11. A security panel reads fine while definitions sit at zero days old.",
+    "UnDefend targets the Defender update service and the Antimalware Service Executable to stop signatures, cloud protection, and the antivirus, either freezing definitions or stopping the service with no toast or event entry. Two service icons in the dark, both with red stop symbols.",
+    "It exploits a Windows Filtering Platform callout driver flaw to intercept Defender's update traffic in the kernel and drop packets silently, and a second path flips the tamper-protection registry key via a privileged write, with no reboot. A network packet dissolves into red dust before reaching Defender.",
+    "Defender shows green and reports no threats and up to date, but definitions are months old, cloud protection is offline, and tamper protection is bypassed, while no alert fires and logs mark the stops as expected. A green dashboard with a faint red data stream leaking unseen.",
+    "Defend by monitoring Defender service health independently, alerting when definitions are older than 24 hours, validating cloud connectivity, and hunting WFP callout driver loads. A split scene: a live shield with a cloud link versus a flatlined one with a red kernel driver beneath.",
+    "A green checkmark is not proof of protection. It is a UI state that can be decoupled from the engine. A Defender shield half glowing with a live pulse, half faded grey with a red kernel driver beneath.",
+    "The call to action asks how you verify Defender is actually updating and running. A monitoring view of Defender definition age and service status on a clean dark end card."
   ],
   "sources": [
     {

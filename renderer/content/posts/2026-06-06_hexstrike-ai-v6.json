@@ -186,14 +186,14 @@
   ],
   "comment_prompt": "Honestly, what's your real patch SLA for an internet-facing zero-day: hours, days, or weeks?",
   "alt_text": [
-    "Slide 1 (cover): a robotic arm grabbing tools off a huge wall in a blur of motion; headline reads that AI just cut exploit development from weeks to minutes.",
-    "Slide 2 (context): a robotic arm poised before a wall of mechanical tools with one control thread from above; text says an open-source framework lets an AI agent run 150+ security tools.",
-    "Slide 3 (what happened): a crack in a dark wall with a swarm of small drones streaming through; text says hours after a Citrix zero-day dropped, attackers discussed using it to mass-exploit.",
-    "Slide 4 (how it works): a branching river of light splitting into self-correcting channels; text says a decision engine turns a plain-language goal into a recon-to-exploit loop.",
-    "Slide 5 (shrinking window): an hourglass with sand rushing through too fast; text says the gap between disclosure and mass exploitation is now hours, not weeks, with ~28,000 NetScaler boxes exposed to CVE-2025-7775.",
-    "Slide 6 (defense): a figure rapidly bolting a steel plate over a gap in a wall; text says patch internet-facing gear first and fast, and assume n-day exploitation is automated.",
-    "Slide 7 (takeaway): a steep staircase flattening into a gentle ramp; text says AI lowers the skill floor for attackers, so patch velocity matters more, not less.",
-    "Slide 8 (CTA): a stopwatch held up with a finger on the button; text asks how fast your team can patch an internet-facing zero-day."
+    "Title card: AI just cut exploit development from weeks to minutes, as HexStrike AI puts 150+ hacking tools under one AI agent. A robotic arm grabs tools off a huge wall in a blur of motion.",
+    "HexStrike AI is an open-source framework that lets an AI agent run 150+ security tools, built for authorized red teams via MCP with Claude, GPT, or Copilot as the operator. A robotic arm waits before a wall of tools on one control thread.",
+    "Hours after a Citrix zero-day dropped, attackers discussed using it to mass-exploit, reported on dark-web forums by Check Point as chatter, not confirmed forensics. A crack in a dark wall lets a swarm of small drones stream through.",
+    "A decision engine turns a plain-language goal into a recon-to-exploit loop, selecting the tools, chaining them, and retrying failures on its own. A branching river of light splits into self-correcting channels.",
+    "The gap between disclosure and mass exploitation is now hours, not weeks, and about 28,000 NetScaler boxes were exposed to CVE-2025-7775 at CVSS 9.2. An hourglass runs its sand through far too fast.",
+    "Patch internet-facing gear first and fast, and assume n-day exploitation is automated, tracking exposure and tuning detection for the window. A figure rapidly bolts a steel plate over a gap in a wall.",
+    "AI lowers the skill floor for attackers, so patch velocity matters more, not less, with the same fundamentals and far less time to apply them. A steep staircase flattens into a gentle ramp.",
+    "The closing question asks how fast your team can honestly patch an internet-facing zero-day, with a prompt to save it for your next patch-SLA review. A stopwatch is held up with a finger on the button."
   ],
   "sources": [
     {

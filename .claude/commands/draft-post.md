@@ -1,6 +1,6 @@
 ---
 description: Idea → researched, sourced, schema-valid post JSON → rendered carousel + reel
-argument-hint: <idea> | <pillar> [| slides=3-20] [| captions=…] [| theme=offensive|defensive|hacking|purple-team|ai] [| voice=voxcpm2|voxcpm2-0.5b|http|none]   e.g. logs into chatbots | data_leakage | slides=10 | captions=highlight | theme=hacking | voice=voxcpm2
+argument-hint: <idea> | <pillar> [| slides=3-20] [| captions=…] [| theme=offensive|defensive|hacking|purple-team|ai] [| style_fusion="X meets Y"] [| voice=voxcpm2|voxcpm2-0.5b|http|none]   e.g. logs into chatbots | data_leakage | slides=10 | captions=highlight | theme=hacking | voice=voxcpm2
 allowed-tools: Skill, WebSearch, WebFetch, Read, Write, Edit, Glob, Grep, Bash
 ---
 
@@ -14,6 +14,7 @@ You are producing one complete AI-in-cybersecurity post for this repo, end to en
 - pillar ∈ `offensive_ai | model_security | data_leakage | defensive_ai | governance | myth_busting`. If missing or invalid, pick the best-fit pillar and say which you chose.
 - `captions=` (optional) ∈ `block | word | highlight` — reel subtitle animation (default `block`) → `--captions=` + `video.caption_mode`.
 - `theme=` (optional) ∈ `offensive | defensive | hacking | purple-team | ai` — brand colour (red / blue / green / **purple-team purple** / **generic-AI orange**). `purple-team` and `ai` are cross-cutting (no pillar defaults to them — pick explicitly). If omitted, choose from the pillar (see step 3) → `--theme=`.
+- `style_fusion=` (optional) — a short "X meets Y" aesthetic blended into EVERY background via FLUX.2 style fusion (e.g. `ancient marble meets cyberpunk neon`, `blueprint schematic etching meets studio photography`). Chosen at creation like theme; keep it an aesthetic (medium / finish / era), not a text-bearing subject. Omit for the plain house style. → `--style-fusion=` on `bun run new` (sets the post's top-level `style_fusion`). See `pipeline/content/VISUAL_PROMPT_BANK.md` §8.
 - `voice=` (optional) ∈ `none | voxcpm2 | voxcpm2-0.5b | http | file` — reel narration model. **Default is `voxcpm2` (the 2B model) — every post narrates unless the user passes `voice=none`** (or `--no-voice` at render). `voxcpm2-0.5b` = smaller/faster. → `--voice=` + `video.audio.voice_mode`.
 - `slides=` (optional) ∈ integer `3`–`20` (default `8`) — number of carousel slides. → `--slides=` on `bun run new`. The arc keeps `cover` first and `cta` last; the middle is filled from the named roles (context, risk, mechanism, failure_point, defense) then generic `point` body slides for longer posts.
 - `music=` (optional) ∈ `none | free | licensed | generated | file` — music bed (default `none`) → `--music=`.

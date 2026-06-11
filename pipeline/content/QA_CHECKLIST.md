@@ -56,7 +56,8 @@ The Stage 7 gate in [CONTENT_PIPELINE.md](CONTENT_PIPELINE.md). **A post may not
 | --- | --- | --- |
 | 5.1 | Cover legibility | Headline readable as a thumbnail; high contrast; not too many words |
 | 5.2 | On-slide copy | ≤ ~12 words per slide; text inside safe margins (not cropped in grid preview) |
-| 5.3 | Alt text | Every slide has accessible alt text |
+| 5.3 | Alt text | One entry per slide (count matches `slides`), MESSAGE-FIRST: each transcribes/paraphrases that slide's `on_slide_copy` (the text rendered in the image, invisible to a screen reader) before a short visual clause. No "Slide N"/role/number label, no "image of", no em/en-dashes; neutral and complete. `chain` slide starts "Diagram of … in N steps:". |
+| 5.3a | Background is text-free | Generated backgrounds carry NO rendered text by default (they sit behind vector overlay copy). No `visual_prompt` names a text-bearing subject (terminal, dashboard, console, event/audit/git log, calendar, ledger, manifest, spreadsheet, source code, "screen showing X", gauge/tag with a number) — use the abstract substitutes in VISUAL_PROMPT_BANK §7. Intentional text only via the §7 three-step (quoted string + placement + font). |
 | 5.4 | Captions (video) | Burned-in subtitles present, synced, readable on mobile (Reels) |
 | 5.4a | Caption proper nouns | Reel captions render proper nouns correctly; use `video.caption_corrections` when a name is spelled phonetically in narration |
 | 5.5 | Contrast | Text passes a basic contrast check against its band |

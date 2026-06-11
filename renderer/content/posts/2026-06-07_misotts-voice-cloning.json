@@ -178,14 +178,14 @@
   ],
   "comment_prompt": "Does your team's payment approval still trust a familiar voice on the phone, or do you verify out-of-band?",
   "alt_text": [
-    "Slide 1 (cover): a large brass gramophone horn flaring open in the dark with a hard rim of light along its lip, with the headline in the lower third.",
-    "Slide 2 (context): a single rotating wax cylinder on a spindle in the dark, a fine groove spiraling around it and faint vapor lifting off the top.",
-    "Slide 3 (risk): a lone mockingbird on a bare branch in the dark, beak open mid-song, a thin glowing thread of sound trailing into shadow.",
-    "Slide 4 (mechanism): a metal tuning fork standing upright in the dark, its tines blurred and vibrating, fine concentric rings of sound radiating outward.",
-    "Slide 5 (failure_point): a heavy bronze bell hanging in the dark at the moment it is struck, a bright halo of vibration spreading around the rim.",
-    "Slide 6 (defense): a still dark pool of water with two drops falling at once, their concentric ripples spreading toward each other and meeting in the center.",
-    "Slide 7 (takeaway): a single vinyl record cracked clean across its grooves in deep shadow, a thin rim of light along the fracture line.",
-    "Slide 8 (cta): a narrow canyon at night with faint glowing arcs of an echo fading into empty dark space, with the comment question and handle."
+    "Title card: A familiar voice is no longer proof that it is really them. Miso Labs open-sourced an 8B emotive voice model that clones a voice from seconds of audio. A brass gramophone horn flares open in the dark.",
+    "Miso Labs released Miso One, an 8 billion parameter open-weights voice model also known as MisoTTS, an open alternative to closed services like ElevenLabs tuned for warm speech. A wax cylinder rotates on a spindle in the dark.",
+    "Cheaper, more natural synthetic speech weakens the oldest trust signal we have, recognizing a voice. That is the engine behind vishing, fake-relative scams, and wire-transfer fraud. A mockingbird sings on a bare branch in the dark.",
+    "It clones a voice from a few seconds of audio and responds in about 110 milliseconds, fast enough for real-time voice agents. The weights are on Hugging Face, so it runs offline on a laptop. A tuning fork vibrates in the dark.",
+    "Payment approvals and password resets still treat a recognized voice on the phone as identity. Attackers only need one urgent call that sounds like the boss. A bronze bell trembles the moment it is struck.",
+    "Verify any sensitive or financial request on a second channel. Call back a known number or use a pre-agreed code word, and require dual authorization for wire transfers. Two drops fall into a dark pool and their ripples meet.",
+    "A voice you recognize is not identity anymore. Verify the request on a channel the caller cannot fake. A vinyl record is cracked clean across its grooves in deep shadow.",
+    "Does your wire-transfer approval still trust a familiar voice on the phone? Save this for your next fraud-awareness review. A narrow canyon at night holds faint glowing echo arcs fading into dark space."
   ],
   "sources": [
     {

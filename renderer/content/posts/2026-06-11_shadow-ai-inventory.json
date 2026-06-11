@@ -109,7 +109,7 @@
       "on_slide_copy": "No approval means no logging, no retention rule, and no data-handling review behind the tool.",
       "subline": "The gaps stay invisible until something leaks.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A thin rim of light grazes an open paper manifest on a desk in the dark, most of its lines filled but a run of blank rows in the middle left conspicuously empty, dark editorial key art, the manifest framed in the upper third over generous negative space",
+      "visual_prompt": "A thin rim of light grazes a tall dark panel of stacked glowing bars in the dark, most of them lit but a run of them left dark in the middle, dark editorial key art, the panel framed in the upper third over generous negative space",
       "background_asset": "/backgrounds/2026-06-11_shadow-ai-inventory/04_mechanism.png",
       "asset_status": "generated",
       "cta": "",
@@ -161,7 +161,7 @@
       "on_slide_copy": "Do you have a current list of the AI tools your team actually uses?",
       "subline": "Save this for your next governance review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Soft pooled light isolates a single clipboard holding a blank checklist on a clean dark end-card surface, premium editorial cybersecurity key art, the clipboard small in vast negative space with the lower third open",
+      "visual_prompt": "Soft pooled light isolates a single blank dark tablet resting on a clean dark end-card surface, premium editorial cybersecurity key art, the tablet small in vast negative space with the lower third open",
       "background_asset": "/backgrounds/2026-06-11_shadow-ai-inventory/08_cta.png",
       "asset_status": "generated",
       "cta": "COMMENT + SAVE",
@@ -178,14 +178,14 @@
   ],
   "comment_prompt": "Do you have a current, real list of the AI tools your team uses, and how would you even build it?",
   "alt_text": [
-    "Cover slide: a control-tower radar dish sweeping in the dark, its beam catching dozens of small craft scattered beyond a single marked ring, with the headline in the lower third.",
-    "Context slide: a vast dark warehouse of stacked crates, most bare and unlabelled, only a few near the front carrying a paper tag.",
-    "Risk slide: a single lit lantern marking one charted path while several unlit trails branch off into shadow.",
-    "Mechanism slide: an open manifest on a desk with most lines filled but a run of blank rows in the middle catching a thin rim of light.",
-    "Failure point slide: a ship already small on the dark horizon with a fresh wake, seen from an empty watchtower in the foreground.",
-    "Defense slide: a cartographer's hand drawing a fresh boundary onto a dark map, scattered markers now circled and labelled inside it.",
-    "Takeaway slide: a single bright pin dropped onto a dark unmarked map, a faint grid resolving into focus around it.",
-    "CTA slide: a single clipboard holding a blank checklist resting in vast dark negative space, with the comment question and handle."
+    "Title card: the AI your team uses most is the AI you never approved. Microsoft found 78 percent of AI users at work bring their own tools, mostly unsanctioned. A radar dish sweeps and catches many small craft beyond a single marked ring.",
+    "People adopt a new AI tool in an afternoon, long before anyone reviews or inventories it, so adoption outruns governance every time. A vast dark warehouse of stacked crates, most bare, only a few carrying a paper tag.",
+    "Each unsanctioned tool is an ungoverned path for company data to leave through, and IBM reported one in five breached organizations traced a breach to shadow AI. A single lit lantern marks one charted path while unlit trails branch into shadow.",
+    "With no approval there is no logging, no retention rule, and no data-handling review behind the tool, so the gaps stay invisible until something leaks. An open manifest with most lines filled but a run of blank rows in the middle.",
+    "Security usually learns a tool exists only after the data has already left through it, because you cannot review what was never on your list. A ship already small on the horizon with a fresh wake, seen from an empty watchtower.",
+    "Start with visibility, not bans: inventory what is in use, offer a sanctioned option, and run each tool through vendor review, because a ban with no safe path drives the tools underground. A hand draws a fresh boundary on a map and circles the scattered markers.",
+    "You cannot govern the AI you cannot see. Inventory first, then write the policy. A single bright pin dropped onto a dark unmarked map as a faint grid resolves around it.",
+    "The call to action asks whether you have a current list of the AI tools your team actually uses. A blank checklist on a clipboard resting in vast dark negative space."
   ],
   "sources": [
     {

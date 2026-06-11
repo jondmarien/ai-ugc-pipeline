@@ -293,10 +293,16 @@ function loadUiGraph(promptText, seed) {
 }
 
 // Text/UI suppression lives ONLY in the negative node (never the positive — negative phrasing
-// in a FLUX positive prompt can SUMMON the very tokens). Bites only when F2_CFG > 1.
+// in a FLUX positive prompt can SUMMON the very tokens). Bites only when F2_CFG > 1. This targets
+// INCIDENTAL/garbled text (the usual failure: a background that sits behind our crisp overlay copy
+// should be text-free). When a slide INTENTIONALLY wants a word/sign, the author writes it in the
+// positive visual_prompt the FLUX.2 way — exact string in "quotes" + placement + font — and it is
+// NEVER stripped; deliberate quoted text simply outweighs this generic negative.
 const NEG_PROMPT =
-  "text, words, letters, numbers, typography, captions, labels, signage, logo, watermark, " +
-  "user interface, dashboard, control panel, charts, diagrams, icons, gibberish, fake writing";
+  "text, words, letters, numbers, typography, captions, subtitles, labels, signage, logo, watermark, " +
+  "garbled text, random characters, fake words, gibberish, fake writing, handwriting, paragraph of text, " +
+  "document, spreadsheet, calendar grid, source code, terminal window, user interface, dashboard, " +
+  "control panel, charts, graphs, diagrams, icons";
 
 // Role-aware visual motifs (NO on-slide text — FLUX would render garbled words).
 const ROLE_MOTIF = {
@@ -333,7 +339,7 @@ function stripColor(s) {
     .trim();
 }
 
-function buildPrompt(slide, accentHex, accentName, topic, mood) {
+function buildPrompt(slide, accentHex, accentName, topic, mood, styleFusion) {
   // Subject priority — front-load the most POST-SPECIFIC scene available (FLUX anchors on it):
   //   1. slide.visual_prompt (specific, authored)  2. slide.visual_direction (colour-stripped)
   //   3. generic ROLE_MOTIF blended with the post topic (last resort).
@@ -359,7 +365,11 @@ function buildPrompt(slide, accentHex, accentName, topic, mood) {
   // `Style: … Mood:` tag (klein's documented consistency trick). BRAND_STYLE is the constant house
   // look so every post reads as one brand; the theme accent + mood change per category. NO "no text"
   // here — that lives in the negative node.
-  const styleTag = `Style: ${BRAND_STYLE}.${cleanMood ? ` Mood: ${cleanMood}.` : ""}`;
+  // Style fusion (FLUX.2 technique): blend the house look with a second named aesthetic under one
+  // unifying palette (e.g. "ancient Greek marble statuary rendered in cyberpunk neon"). Opt-in per
+  // post (post.style_fusion) or per slide (slide.style_fusion); empty = the plain house style.
+  const fused = styleFusion ? ` fused with ${stripColor(styleFusion).trim() || styleFusion.trim()}` : "";
+  const styleTag = `Style: ${BRAND_STYLE}${fused}.${cleanMood ? ` Mood: ${cleanMood}.` : ""}`;
   return `${subject}. Lit by a single ${cleanAccent} (${accentHex}) accent glow against a deep navy void #05070d. ${zone}. ${styleTag}`;
 }
 
@@ -479,6 +489,8 @@ const T = themes[theme] || themes.defensive;
 const accentHex = T.accent;
 const accentName = T.name;
 const mood = T.mood;
+// Optional style fusion for the whole post (a slide may override with slide.style_fusion).
+const postStyleFusion = String(post.style_fusion || "").trim();
 // Short, text-free theme hint (≤12 words from the post's claim/slug) for fallback prompts,
 // and a per-post seed base so different posts don't collide on identical images.
 const topic = String(post.core_claim || post.slug || "").replace(/["']/g, "").split(/\s+/).filter(Boolean).slice(0, 12).join(" ");
@@ -549,7 +561,7 @@ for (let ti = 0; ti < targets.length; ti++) {
   const role = ROLE_FILE[slide.role] ?? slide.role;
   const nn = String(slide.slide).padStart(2, "0");
   const destName = `${nn}_${role}.png`;
-  const promptText = buildPrompt(slide, accentHex, accentName, topic, mood);
+  const promptText = buildPrompt(slide, accentHex, accentName, topic, mood, String(slide.style_fusion || postStyleFusion || "").trim());
   const seed = postBaseSeed + slide.slide;
   if (DRY) {
     console.log(`\n[slide ${slide.slide} ${slide.role}] seed=${seed}\n  ${promptText}`);

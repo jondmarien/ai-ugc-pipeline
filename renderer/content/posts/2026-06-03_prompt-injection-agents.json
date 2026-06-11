@@ -159,14 +159,14 @@
   ],
   "comment_prompt": "Would your agent trust a webpage it was told to summarize?",
   "alt_text": [
-    "Slide 1: Dark cinematic cover, an AI browser agent reading a page with hidden instruction shadows, headline about the weirdest AI attack hiding where your agent reads.",
-    "Slide 2: Context slide contrasting direct prompt injection (user manipulates the model) with indirect (the content does).",
-    "Slide 3: Risk slide listing where injected instructions can live: web pages, emails, documents, images.",
-    "Slide 4: Mechanism slide noting the risk spikes when the AI can act, like sending email, reading files, or calling APIs.",
-    "Slide 5: Failure-point slide referencing the OWASP pattern: prompt injection, sensitive disclosure, excessive agency.",
-    "Slide 6: Defense slide: isolate untrusted content, limit tools, log actions, confirm sensitive steps.",
-    "Slide 7: Takeaway slide: treat external content like user input wearing a costume.",
-    "Slide 8: Call-to-action slide asking whether your agent should trust a webpage it was told to summarize, with a save and comment prompt."
+    "Title card: the weirdest AI attack hides where your agent reads, because prompt injection is not always typed by the user. A glowing robotic head reads an open book in the dark with light curling off the pages.",
+    "Direct injection is when the user manipulates the model, indirect is when the content does, so the instruction can come from data, not the chat box. A robot head reads a book as wisps of light drift toward it.",
+    "Injected instructions can live in web pages, emails, documents, or images, anywhere the agent reads, turning untrusted content into untrusted instructions. A robot head is encircled by everyday objects each trailing a thread of light.",
+    "The risk spikes when the AI can act, such as send email, read files, or call APIs, because reading is one thing and acting is another. A robotic arm pushes a glowing envelope into a slot.",
+    "OWASP flags the pattern of prompt injection, sensitive information disclosure, and excessive agency, so it is a known risk class, not a surprise. A thread of light slips unnoticed from a closed glowing book.",
+    "Isolate untrusted content, limit tools, log actions, and confirm sensitive steps, applying least privilege to agents and not just users. A glowing document sits sealed inside a glass cube with a padlock on its lid.",
+    "Treat external content like user input wearing a costume. A translucent theatrical mask floats above a flowing river of light in the dark.",
+    "The closing question: would your agent trust a webpage it was told to summarize? Save this for your next agent design review. A folded sheet hides a thread of light, facing a glowing question mark."
   ],
   "sources": [
     {
