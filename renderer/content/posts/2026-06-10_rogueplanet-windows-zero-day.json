@@ -8,7 +8,7 @@
   "pillar": "offensive_ai",
   "theme": "offensive",
   "audience": "security_practitioners",
-  "core_claim": "Nightmare Eclipse released RoguePlanet, a Windows zero-day LPE exploiting a race condition in Microsoft Defender. It works on fully patched Windows 10/11 (June 2026 patches). Defender's own scanner becomes the attack surface.",
+  "core_claim": "RoguePlanet is a Windows LPE that races Microsoft Defender's quarantine pipeline: an oplock pauses a scan, a junction swap makes Defender write a SYSTEM-owned file into a user-controlled folder, and the Windows Error Reporting scheduled task then runs the planted binary as SYSTEM. No CVE, no patch; Windows 11 Pro confirmed.",
   "claim_tags": [
     "reported_fact",
     "practitioner_takeaway"
@@ -18,8 +18,8 @@
     "relevance": 5,
     "novelty": 5,
     "visual_drama": 5,
-    "defender_usefulness": 4,
-    "total": 24
+    "defender_usefulness": 5,
+    "total": 25
   },
   "canvas": {
     "width": 1080,
@@ -47,10 +47,11 @@
       "2026-06-10_rogueplanet-windows-zero-day_02_context.png",
       "2026-06-10_rogueplanet-windows-zero-day_03_risk.png",
       "2026-06-10_rogueplanet-windows-zero-day_04_mechanism.png",
-      "2026-06-10_rogueplanet-windows-zero-day_05_failure-point.png",
-      "2026-06-10_rogueplanet-windows-zero-day_06_defense.png",
-      "2026-06-10_rogueplanet-windows-zero-day_07_takeaway.png",
-      "2026-06-10_rogueplanet-windows-zero-day_08_cta.png",
+      "2026-06-10_rogueplanet-windows-zero-day_05_chain.png",
+      "2026-06-10_rogueplanet-windows-zero-day_06_failure-point.png",
+      "2026-06-10_rogueplanet-windows-zero-day_07_defense.png",
+      "2026-06-10_rogueplanet-windows-zero-day_08_takeaway.png",
+      "2026-06-10_rogueplanet-windows-zero-day_09_cta.png",
       "caption.txt",
       "alt_text.txt",
       "sources.md",
@@ -66,8 +67,8 @@
       "slide": 1,
       "role": "cover",
       "kicker": "WINDOWS × ZERO-DAY",
-      "on_slide_copy": "MICROSOFT DEFENDER'S SCANNER IS THE ATTACK SURFACE",
-      "subline": "RoguePlanet LPE. Race condition in Defender. Works on fully patched Windows 10/11.",
+      "on_slide_copy": "DEFENDER QUARANTINED THE FILE. THE QUARANTINE WAS THE EXPLOIT.",
+      "subline": "RoguePlanet turns a standard user into SYSTEM on a fully updated Windows 11. No CVE. No patch.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A single hard rim light catches a shield icon fracturing in a dark void, red particles leaking from the crack like a breach, premium dark editorial key art, the shield held in the upper third with clean unmarked negative space filling the lower third.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/01_cover.png",
@@ -79,8 +80,8 @@
       "slide": 2,
       "role": "context",
       "kicker": "THE RELEASE",
-      "on_slide_copy": "Nightmare Eclipse dropped RoguePlanet on June 10. Fresh zero-day. Fresh Patch Tuesday. Defender is the vector.",
-      "subline": "Published on GitHub under MSNightmare after original account suspended. Validated by multiple researchers.",
+      "on_slide_copy": "Nightmare Eclipse dropped RoguePlanet on June 10. No CVE, no patch, and Windows 11 Pro is confirmed vulnerable.",
+      "subline": "Published on GitHub as MSNightmare after the original account was suspended. Multiple researchers reproduced it.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Low raking light grazes a dark repository list in the dark, one repo name glowing red while others sit dormant, dark editorial photography, the list set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/02_context.png",
@@ -92,8 +93,8 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT STINGS",
-      "on_slide_copy": "The exploit targets Microsoft Defender's file scanning. Tricking a victim to open a .vhd(x) on remote SMB triggers the race.",
-      "subline": "Tested on Windows 10/11 with June 2026 patches. Does not work on Windows Server yet. Researcher says all Server versions likely vulnerable.",
+      "on_slide_copy": "A standard user with no admin rights gets a SYSTEM shell on a fully updated machine, using Defender itself as the lever.",
+      "subline": "The Defender signature only flags the compiled sample. Recompiling with minor changes slips the same behavior past it.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A focused side light illuminates a scanner beam in the dark passing over a file, the beam fracturing into red glitches where it touches the target, dark premium editorial, the scanner centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/03_risk.png",
@@ -104,9 +105,9 @@
     {
       "slide": 4,
       "role": "mechanism",
-      "kicker": "THE RACE CONDITION",
-      "on_slide_copy": "Defender reads the malicious file. The exploit redirects the cleaned file to a new location mid-scan. BitLocker bypass via specialized device pushing data to NTFS.sys.",
-      "subline": "May mitigations closed the RCE path. Researcher reworked to LPE. Unclear if RCE can be restored.",
+      "kicker": "THE RACE",
+      "on_slide_copy": "An oplock pauses Defender mid-scan. A junction swap then makes Defender quarantine a SYSTEM-owned file into a folder the user controls.",
+      "subline": "Quarantine is a privileged write. The gap is between creating that file and checking where its path actually points.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A hard top-down beam falls on two racing threads in the dark, one capturing the resource a microsecond before the other, dark editorial key art, the race framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/04_mechanism.png",
@@ -116,10 +117,33 @@
     },
     {
       "slide": 5,
+      "role": "chain",
+      "kicker": "THE FULL CHAIN",
+      "on_slide_copy": "ROGUEPLANET: STANDARD USER TO SYSTEM",
+      "subline": "",
+      "visual_direction": "on-brand step-flow diagram rendered from chain[]; no AI background.",
+      "visual_prompt": "",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": "Rendered by the ChainSlide component from chain[]. Research basis: CYDERES Howler Cell figure 1.",
+      "chain": [
+        { "stage": "STAGE 1", "title": "Dual-mode entry", "detail": "A named pipe (RoguePlanet) is created to spawn the final shell." },
+        { "stage": "STAGE 2", "title": "I/O saturation", "detail": "Poseidon threads flood the disk so the oplock race fires reliably." },
+        { "stage": "STAGE 3", "title": "Filesystem prep", "detail": "Mount an embedded ISO and build a fake System32 under a temp UUID." },
+        { "stage": "STAGE 4", "title": "EICAR + oplock", "detail": "An alternate data stream triggers a scan; an oplock freezes Defender mid-operation." },
+        { "stage": "STAGE 5", "title": "Junction swap", "detail": "Defender resumes and quarantines a SYSTEM-owned file into the attacker's folder." },
+        { "stage": "STAGE 6", "title": "Payload injection", "detail": "Overwrite that file, then junction the path to resolve as the real System32 wermgr.exe." },
+        { "stage": "STAGE 7", "title": "WER task", "detail": "Trigger the QueueReporting scheduled task, which a normal user can fire." },
+        { "stage": "OUTCOME", "title": "NT AUTHORITY\\SYSTEM", "detail": "SYSTEM runs the planted binary and spawns conhost.exe in the user session." }
+      ]
+    },
+    {
+      "slide": 6,
       "role": "failure_point",
-      "kicker": "WHERE DEFENDERS MISS IT",
-      "on_slide_copy": "Patch Tuesday fixed GreenPlasma and YellowKey. RoguePlanet dropped the same week. Defender mitigations from May only partially closed the path.",
-      "subline": "Researchers validated SYSTEM shell spawn on patched machines. PoC may not work reliably at all times.",
+      "kicker": "WHY THERE IS NO FIX",
+      "on_slide_copy": "There is no patch to apply and no toggle to flip. It is a design-level race between Defender, NTFS junctions, and Volume Shadow Copy.",
+      "subline": "Signature detection catches one compiled binary. The behavioral chain survives a recompile with minor source changes.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Cool light grazes a patch calendar in the dark, June dates marked green but a red zero-day marker overlapping the same week, tense editorial composition, the calendar held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/05_failure-point.png",
@@ -128,37 +152,37 @@
       "notes": ""
     },
     {
-      "slide": 6,
+      "slide": 7,
       "role": "defense",
-      "kicker": "THE MITIGATION REALITY",
-      "on_slide_copy": "Monitor for unexpected SYSTEM shells. Restrict SMB access to untrusted shares. Defender's own scanning logic is the vulnerability — no simple config toggle.",
-      "subline": "Microsoft says it will not pursue researchers. But the exploit is public and working on patched systems.",
+      "kicker": "HUNT THE BEHAVIOR",
+      "on_slide_copy": "Hunt the chain, not the binary: a named pipe called RoguePlanet from a non-system process, wermgr.exe running outside System32, and SYSTEM spawning conhost.exe with no command prompt in the tree.",
+      "subline": "Also flag Volume Shadow Copy enumeration by non-system processes and the Poseidon burst of writes to temp.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A balanced split composition in the dark: left side a Defender shield scanning a file, right side the same shield cracked with SYSTEM prompt leaking out, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
+      "visual_prompt": "A balanced split composition in the dark: left side a Defender shield scanning a file, right side the same shield cracked with a SYSTEM prompt leaking out, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/06_defense.png",
       "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
     {
-      "slide": 7,
+      "slide": 8,
       "role": "takeaway",
       "kicker": "TAKEAWAY",
-      "on_slide_copy": "Your antivirus scanner {{is not a security boundary.}} [[It is a privileged attack surface that can be raced.]]",
+      "on_slide_copy": "Your antivirus {{is not just a scanner.}} [[It is a SYSTEM-level file mover, and its quarantine can be raced.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A thin rim light traces a shield icon in the dark, one half intact and glowing green, the other half fractured with red particles escaping, minimal high-impact key art, the shield drawn toward the edge with the center kept dark and open.",
+      "visual_prompt": "A thin rim light traces a shield icon in the dark, one half intact and glowing, the other half fractured with red particles escaping, minimal high-impact key art, the shield drawn toward the edge with the center kept dark and open.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/07_takeaway.png",
       "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
     {
-      "slide": 8,
+      "slide": 9,
       "role": "cta",
       "kicker": "YOUR MOVE",
-      "on_slide_copy": "How do you monitor for Defender race-condition exploits in your environment?",
-      "subline": "Save this for your next endpoint review.",
+      "on_slide_copy": "Could your EDR catch a SYSTEM shell that came from Defender's own quarantine?",
+      "subline": "Save this for your next endpoint detection review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Soft pooled light isolates a single event log entry on a clean dark end-card surface, premium editorial cybersecurity key art, the log small in vast negative space with the lower third open.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/08_cta.png",
@@ -167,7 +191,7 @@
       "notes": ""
     }
   ],
-  "caption": "Nightmare Eclipse dropped RoguePlanet on June 10. A Windows zero-day LPE exploiting a race condition in Microsoft Defender. Fresh Patch Tuesday. Fresh exploit.\n\nThe vector is Defender's own file scanning. Trick a victim into opening a .vhd(x) file on a remote SMB share. Defender scans it. The exploit races the scan and redirects the cleaned file mid-operation. Originally this gave RCE. May mitigations closed that path. The researcher reworked it to LPE.\n\nTested on Windows 10 and 11 with June 2026 patches installed. Spawns a SYSTEM command prompt. Does not work on Windows Server yet, but the researcher believes all Server versions are vulnerable too.\n\nMultiple researchers validated it on patched machines. The PoC may not work reliably every time, but the primitive is real.\n\nThis dropped the same week Microsoft patched GreenPlasma (CVE-2026-45586) and YellowKey (CVE-2026-50507). Previous Nightmare Eclipse exploits: RedSun, UnDefend, BlueHammer — some exploited in the wild.\n\nYour antivirus scanner is not a security boundary. It is a privileged attack surface that can be raced.\n\nHow do you monitor for Defender race-condition exploits in your environment?\n\nFollow for AI security breakdowns without the fake panic.\n\n[RoguePlanet, Nightmare Eclipse, Microsoft Defender, Windows zero-day, local privilege escalation, race condition, Patch Tuesday, endpoint security]",
+  "caption": "Microsoft Defender quarantined a malicious file, and that quarantine was the exploit. Meet RoguePlanet.\n\nNightmare Eclipse dropped it on June 10. There is no CVE and no patch, and Windows 11 Pro is confirmed vulnerable. A standard user with no admin rights ends up with a SYSTEM shell on a fully updated machine, using Defender itself as the lever.\n\nThe primitive is a race. The exploit places an opportunistic lock so Defender pauses mid-scan, then swaps an NTFS junction so Defender's quarantine writes a SYSTEM-owned file into a folder the user controls. That file gets overwritten with the payload, the path is junctioned so it resolves as the real System32 wermgr.exe, and the Windows Error Reporting QueueReporting scheduled task (which an unprivileged user can trigger) runs it as SYSTEM. The result is conhost.exe in the user's session, running as NT AUTHORITY\\SYSTEM.\n\nThere is no toggle to fix this. It is a design-level race between Defender's scan-and-quarantine pipeline, NTFS reparse points, and the Volume Shadow Copy service. The signature only catches the compiled sample, and the behavioral chain survives a recompile. It does not work on Windows Server, because standard users there cannot mount ISOs.\n\nSo hunt the behavior: a named pipe called RoguePlanet from a non-system process, wermgr.exe running outside System32, SYSTEM spawning conhost.exe with no cmd.exe in the tree, Volume Shadow Copy enumeration by non-system processes, and a burst of writes to UUID-named temp files.\n\nYour antivirus is not just a scanner. It is a SYSTEM-level file mover, and its quarantine can be raced.\n\nCould your EDR catch a SYSTEM shell born from Defender's own quarantine?\n\nFollow for AI security breakdowns without the fake panic.\n\n[RoguePlanet, Nightmare Eclipse, Microsoft Defender, Windows zero-day, local privilege escalation, race condition, WER, endpoint detection]",
   "hashtags": [
     "RoguePlanet",
     "Nightmare Eclipse",
@@ -175,39 +199,40 @@
     "Windows zero-day",
     "local privilege escalation",
     "race condition",
-    "Patch Tuesday",
-    "endpoint security"
+    "WER",
+    "endpoint detection"
   ],
-  "comment_prompt": "How do you monitor for Defender race-condition exploits in your environment?",
+  "comment_prompt": "Could your EDR catch a SYSTEM shell that came from Defender's own quarantine?",
   "alt_text": [
-    "Slide 1 (cover): a shield icon fracturing in a dark void, red particles leaking from the crack, empty lower third for headline.",
-    "Slide 2 (context): a dark repository list, one repo name glowing red while others sit dormant.",
+    "Slide 1 (cover): a shield icon fracturing in a dark void, red particles leaking from the crack, empty lower third for the headline.",
+    "Slide 2 (context): a dark repository list, one repo name glowing red while the others sit dormant.",
     "Slide 3 (risk): a scanner beam in the dark passing over a file, the beam fracturing into red glitches.",
     "Slide 4 (mechanism): two racing threads in the dark, one capturing the resource a microsecond before the other.",
-    "Slide 5 (gap): a patch calendar, June dates marked green but a red zero-day marker overlapping the same week.",
-    "Slide 6 (defense): split composition, left side Defender shield scanning, right side cracked with SYSTEM prompt leaking.",
-    "Slide 7 (takeaway): a shield icon, half intact glowing green, half fractured with red particles escaping.",
-    "Slide 8 (cta): an event log entry on a clean dark end-card with open negative space."
+    "Slide 5 (chain): an on-brand step-flow diagram of the RoguePlanet attack chain, eight boxes from a named pipe down to NT AUTHORITY SYSTEM.",
+    "Slide 6 (failure point): a patch calendar, June dates marked green but a red zero-day marker overlapping the same week.",
+    "Slide 7 (defense): a split composition, left a Defender shield scanning, right the cracked shield with a SYSTEM prompt leaking out.",
+    "Slide 8 (takeaway): a shield icon, one half intact, the other half fractured with red particles escaping.",
+    "Slide 9 (cta): an event log entry on a clean dark end-card with open negative space."
   ],
   "sources": [
     {
+      "source": "CYDERES Howler Cell: RoguePlanet Windows zero-day (technical analysis + attack-chain figure)",
+      "link": "https://www.cyderes.com/howler-cell/rogueplanet-windows-zero-day",
+      "supports": "Full chain: named pipe RoguePlanet, Poseidon I/O saturation, embedded ISO mount, EICAR + :WDFOO ADS oplock pausing Defender, junction swap so Defender quarantines a SYSTEM-owned file in an attacker dir, overwrite + junction so the path resolves as C:\\Windows\\System32\\wermgr.exe, WER QueueReporting scheduled task triggerable by an unprivileged user runs it as SYSTEM, conhost.exe in user session; root cause is a design race across Defender quarantine, NTFS reparse points, and VSS; no CVE/patch; Windows 11 Pro confirmed and Server unaffected because standard users cannot mount ISOs; signature Exploit:Win32/DfndrRugPlnt.BB catches only the compiled PoC; the listed detections.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
       "source": "SecurityWeek: New Windows Zero-Day Exploit 'RoguePlanet' Released",
       "link": "https://www.securityweek.com/new-windows-zero-day-exploit-rogueplanet-released/",
-      "supports": "RoguePlanet release June 10; Nightmare Eclipse / Chaotic Eclipse; race condition in Microsoft Defender; LPE to SYSTEM; tested on Win 10/11 with June 2026 patches; .vhd(x) SMB vector; BitLocker bypass via NTFS.sys; May mitigations partially closed RCE path; GreenPlasma/YellowKey patched same week; RedSun/UnDefend/BlueHammer history; GitHub account suspended; MSNightmare repo; Microsoft legal threat clarification; researcher validation on patched systems.",
+      "supports": "Release June 10; Nightmare Eclipse / MSNightmare; LPE to SYSTEM on fully patched Windows 11; original GitHub account suspended; dropped the same week Microsoft patched GreenPlasma and YellowKey; prior Nightmare Eclipse exploits RedSun, UnDefend, BlueHammer.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     },
     {
-      "source": "Nightmare Eclipse blog: RoguePlanet Quick History",
-      "link": "https://deadeclipse666.blogspot.com/2026/06/rogueplanet-quick-history.html",
-      "supports": "Researcher's own technical description; RCE to LPE rework; Windows Server limitation; effort to overcome Server issue.",
-      "confidence": "high",
-      "claim_tag": "reported_fact"
-    },
-    {
-      "source": "Microsoft Security Response: Legal threat clarification",
+      "source": "Microsoft Security Response: legal-threat clarification after disclosure backlash",
       "link": "https://www.securityweek.com/microsoft-tries-to-calm-legal-threat-fears-after-zero-day-disclosure-backlash/",
-      "supports": "Microsoft statement on not pursuing security researchers; GitHub account suspension; community backlash.",
+      "supports": "Microsoft statement that it will not pursue security researchers; GitHub account suspension and community backlash context.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     }
@@ -246,6 +271,14 @@
       "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
     },
     {
+      "asset": "slide 5 chain diagram",
+      "source": "Original — rendered by the ChainSlide design-system component from slide.chain[].",
+      "license_or_terms": "Own work (this repo). Attack-chain facts credited to CYDERES Howler Cell research; the diagram is our own recreation, not CYDERES's figure.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "No third-party image used; on-brand recreation."
+    },
+    {
       "asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/05_failure-point.png",
       "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
       "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
@@ -280,7 +313,7 @@
   ],
   "video": {
     "enabled": true,
-    "duration_seconds": 56,
+    "duration_seconds": 64,
     "fps": 30,
     "export_name": "2026-06-10_rogueplanet-windows-zero-day_reel.mp4",
     "caption_mode": "highlight",
@@ -293,112 +326,26 @@
       "music_gain_db": -18
     },
     "narration": [
-      {
-        "start": 0,
-        "end": 6,
-        "text": "Microsoft Defender's scanner is the attack surface. RoguePlanet zero-day LPE. Race condition in Defender."
-      },
-      {
-        "start": 6,
-        "end": 13,
-        "text": "Nightmare Eclipse dropped it June 10. Fresh Patch Tuesday. Fresh exploit. Works on fully patched Windows 10 and 11."
-      },
-      {
-        "start": 13,
-        "end": 20,
-        "text": "Trick a victim to open a malicious VHD on remote SMB. Defender scans it. The exploit races the scan and redirects the cleaned file."
-      },
-      {
-        "start": 20,
-        "end": 27,
-        "text": "Originally RCE. May mitigations closed that path. Researcher reworked to LPE. Unclear if RCE returns."
-      },
-      {
-        "start": 27,
-        "end": 34,
-        "text": "GreenPlasma and YellowKey patched same week. RoguePlanet dropped anyway. Researchers validated SYSTEM shell on patched machines."
-      },
-      {
-        "start": 34,
-        "end": 41,
-        "text": "Monitor for unexpected SYSTEM shells. Restrict SMB to untrusted shares. Defender's scanning logic is the vulnerability."
-      },
-      {
-        "start": 41,
-        "end": 48,
-        "text": "Your antivirus scanner is not a security boundary. It is a privileged attack surface that can be raced."
-      },
-      {
-        "start": 48,
-        "end": 54,
-        "text": "How do you monitor for Defender race-condition exploits? Tell me in the comments."
-      }
+      { "start": 0, "end": 6, "text": "Microsoft Defender quarantined a file, and that quarantine was the exploit. Meet RoguePlanet." },
+      { "start": 6, "end": 13, "text": "Nightmare Eclipse dropped it on June 10. No CVE, no patch, and Windows 11 Pro is confirmed vulnerable." },
+      { "start": 13, "end": 20, "text": "A standard user with no admin rights gets a SYSTEM shell on a fully updated machine, using Defender itself." },
+      { "start": 20, "end": 28, "text": "The trick is a race. An oplock freezes Defender mid-scan, then a junction swap makes it quarantine a SYSTEM-owned file into a folder you control." },
+      { "start": 28, "end": 37, "text": "Here is the whole chain. A named pipe, an I/O storm to force the race, an ISO mount, the quarantine swap, and a Windows task that runs the planted file as SYSTEM." },
+      { "start": 37, "end": 44, "text": "There is no toggle to fix it. It is a design race between Defender, NTFS junctions, and Volume Shadow Copy. The signature only catches the compiled sample." },
+      { "start": 44, "end": 52, "text": "So hunt the behavior. A pipe named RoguePlanet, the Windows error binary running outside System32, and SYSTEM spawning a console with no command prompt in the tree." },
+      { "start": 52, "end": 58, "text": "Your antivirus is not just a scanner. It is a SYSTEM-level file mover, and its quarantine can be raced." },
+      { "start": 58, "end": 64, "text": "Could your EDR catch a SYSTEM shell born from Defender's own quarantine? Tell me below." }
     ],
     "beats": [
-      {
-        "start": 0,
-        "end": 6,
-        "slide_ref": 1,
-        "purpose": "hook",
-        "motion": "slow push-in over cover",
-        "caption": "Defender scanner is the attack surface."
-      },
-      {
-        "start": 6,
-        "end": 13,
-        "slide_ref": 2,
-        "purpose": "context",
-        "motion": "parallax",
-        "caption": "June 10 drop. Patched Win 10/11 exploited."
-      },
-      {
-        "start": 13,
-        "end": 20,
-        "slide_ref": 3,
-        "purpose": "risk",
-        "motion": "slow push-in",
-        "caption": "VHD on SMB. Defender races. File redirected."
-      },
-      {
-        "start": 20,
-        "end": 27,
-        "slide_ref": 4,
-        "purpose": "mechanism",
-        "motion": "parallax",
-        "caption": "RCE closed. Reworked to LPE. BitLocker bypass."
-      },
-      {
-        "start": 27,
-        "end": 34,
-        "slide_ref": 5,
-        "purpose": "gap",
-        "motion": "slow push-in",
-        "caption": "GreenPlasma patched. RoguePlanet dropped anyway."
-      },
-      {
-        "start": 34,
-        "end": 41,
-        "slide_ref": 6,
-        "purpose": "defense",
-        "motion": "parallax",
-        "caption": "Monitor SYSTEM shells. Restrict SMB. No config toggle."
-      },
-      {
-        "start": 41,
-        "end": 48,
-        "slide_ref": 7,
-        "purpose": "takeaway",
-        "motion": "static high contrast",
-        "caption": "AV scanner is not a boundary. It's an attack surface."
-      },
-      {
-        "start": 48,
-        "end": 54,
-        "slide_ref": 8,
-        "purpose": "cta",
-        "motion": "end card",
-        "caption": "How do you monitor for this?"
-      }
+      { "start": 0, "end": 6, "slide_ref": 1, "purpose": "hook", "motion": "slow push-in over cover", "caption": "The quarantine was the exploit." },
+      { "start": 6, "end": 13, "slide_ref": 2, "purpose": "context", "motion": "parallax", "caption": "June 10 drop. No CVE, no patch. Win 11 Pro." },
+      { "start": 13, "end": 20, "slide_ref": 3, "purpose": "risk", "motion": "slow push-in", "caption": "Standard user to SYSTEM via Defender itself." },
+      { "start": 20, "end": 28, "slide_ref": 4, "purpose": "mechanism", "motion": "parallax", "caption": "Oplock pauses the scan. Junction swaps the quarantine." },
+      { "start": 28, "end": 37, "slide_ref": 5, "purpose": "chain", "motion": "slow pan down the chain", "caption": "Named pipe to SYSTEM, the full chain." },
+      { "start": 37, "end": 44, "slide_ref": 6, "purpose": "failure", "motion": "slow push-in", "caption": "No patch. A design race. Signature beats one binary." },
+      { "start": 44, "end": 52, "slide_ref": 7, "purpose": "defense", "motion": "parallax", "caption": "Hunt the behavior, not the binary." },
+      { "start": 52, "end": 58, "slide_ref": 8, "purpose": "takeaway", "motion": "static high contrast", "caption": "AV is a SYSTEM-level file mover that can be raced." },
+      { "start": 58, "end": 64, "slide_ref": 9, "purpose": "cta", "motion": "end card", "caption": "Could your EDR catch this?" }
     ],
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,

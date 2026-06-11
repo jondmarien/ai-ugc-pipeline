@@ -25,6 +25,9 @@ export const SlideRole = z.enum([
   // Generic body slide for posts with more than the named 8-arc (dynamic slide count).
   // Reuses the standard layout/motif; repeatable.
   "point",
+  // Full-bleed attack-chain / step-flow diagram rendered from slide.chain[] in the design
+  // system (no AI background). For technical posts (exploit chains, kill chains).
+  "chain",
 ]);
 
 // Filename role tokens follow the pipeline convention (note hyphen in failure-point).
@@ -38,6 +41,7 @@ export const ROLE_FILENAME: Record<z.infer<typeof SlideRole>, string> = {
   takeaway: "takeaway",
   cta: "cta",
   point: "point",
+  chain: "chain",
 };
 
 export const ScoreSpec = z.object({
@@ -85,6 +89,13 @@ export const SlideData = z.object({
   asset_status: z.enum(["existing", "needed", "generated", "stock", "procedural"]).default("procedural"),
   cta: z.string().optional().default(""),
   notes: z.string().optional().default(""),
+  // For role "chain": the ordered steps of the diagram. The last step is rendered as the
+  // emphasized outcome. stage = short label (e.g. "STAGE 1"), title = the action, detail = a line.
+  chain: z.array(z.object({
+    stage: z.string().optional().default(""),
+    title: z.string().min(1),
+    detail: z.string().optional().default(""),
+  })).optional(),
 });
 
 export const SourceNote = z.object({
