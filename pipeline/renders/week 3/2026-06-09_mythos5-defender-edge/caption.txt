@@ -11,5 +11,3 @@ Does your patch window survive an attacker with a model like this?
 Follow for AI security breakdowns without the fake panic.
 
 [Mythos 5, Claude Fable 5, Anthropic, Project Glasswing, defensive AI, patch velocity, data retention]
-
-[Mythos 5, Claude Fable 5, Anthropic, Project Glasswing, defensive AI, patch velocity, data retention]

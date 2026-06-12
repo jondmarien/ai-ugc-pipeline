@@ -11,5 +11,3 @@ Where would you put the classifier in your own stack?
 Follow for AI security breakdowns without the fake panic.
 
 [Claude Fable 5, Anthropic, AI model security, capability gating, frontier AI safety, blue team, AI governance]
-
-[Claude Fable 5, Anthropic, AI model security, capability gating, frontier AI safety, blue team, AI governance]
