@@ -1,0 +1,17 @@
+Microsoft suspended Nightmare Eclipse's GitHub account after they released multiple Windows zero-days. The exploits reappeared under MSNightmare within hours.
+
+Nightmare Eclipse dropped six zero-days in months: BlueHammer (SAM hive, NTLM dump to SYSTEM), RedSun (System32 file write LPE), UnDefend (blocks Defender updates or disables AV silently), YellowKey (BitLocker bypass via USB), GreenPlasma (full SYSTEM via trusted process), RoguePlanet (Defender race condition LPE on patched Win 10/11). Multiple exploited in the wild.
+
+The researcher cited discontent with Microsoft's disclosure process. Microsoft called for responsible disclosure, then threatened legal action. Community backlash forced a clarification that it would not pursue researchers. But the GitHub account stayed suspended.
+
+You cannot rely on coordinated disclosure to protect you. When the process breaks, exploits go public immediately.
+
+Build detection for the behaviors, not just the CVEs: SAM hive access, System32 writes, Defender tampering, BitLocker bypass attempts. The researcher's frustration became your adversary's toolkit.
+
+Do you have detection for SAM hive access, System32 writes, and Defender tampering?
+
+Follow for AI security breakdowns without the fake panic.
+
+[Nightmare Eclipse, Microsoft, GitHub, responsible disclosure, zero-day, BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, RoguePlanet, detection engineering]
+
+[Nightmare Eclipse, Microsoft, GitHub, responsible disclosure, zero-day, BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, RoguePlanet, detection engineering]

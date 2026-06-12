@@ -1,0 +1,21 @@
+DirtyDecrypt (CVE-2026-31635) is an LPE in rxgk_decrypt_skb missing a copy-on-write guard. Only hits distros with CONFIG_RXGK enabled: Fedora, Arch Linux, openSUSE Tumbleweed.
+
+Zellic and V12 reported it May 9. Maintainers said: duplicate, already patched in mainline. No CVE. No advisory. No coordinated disclosure. Researchers forced public when they realized the fix was silent.
+
+The bug: rxgk_decrypt_skb decrypts incoming socket buffer on receive. Memory pages shared with page cache of other processes. Copy-on-write should protect shared pages. The guard was missing. Data writes to privileged process memory or page cache of /etc/shadow, /etc/sudoers, SUID binaries.
+
+This mirrors the Dirty Frag pattern: Hyunwoo Kim forced into public disclosure when embargo broke after merged patch. Independent researcher analyzed public commit and published. Standard n-day weaponization.
+
+Silent patches without CVEs leave defenders blind. Researchers who report responsibly get duplicate responses.
+
+Kernel developers now reviewing emergency killswitch: disable vulnerable function at runtime until real patch arrives. Rocky Linux debuted opt-in security repository for accelerated fixes.
+
+A silent patch is not a fix for defenders who do not know it exists. The killswitch and security repos are symptoms of a disclosure process that leaves gaps.
+
+Do you track silent kernel patches in your distro, or only CVEs?
+
+Follow for AI security breakdowns without the fake panic.
+
+[DirtyDecrypt, CVE-2026-31635, Linux kernel, rxgk, copy-on-write, silent patch, coordinated disclosure, Zellic, V12, kernel killswitch, Rocky Linux security repo]
+
+[DirtyDecrypt, CVE-2026-31635, Linux kernel, rxgk, copy-on-write, silent patch, coordinated disclosure, Zellic, V12, kernel killswitch, Rocky Linux security repo]

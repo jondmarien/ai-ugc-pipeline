@@ -4,7 +4,7 @@
   "slug": "dirty-frag-linux-lpe",
   "platform": "instagram",
   "format": "carousel",
-  "status": "approved",
+  "status": "generated",
   "pillar": "offensive_ai",
   "theme": "offensive",
   "audience": "security_practitioners",
@@ -406,6 +406,906 @@
     "music": null,
     "sfx": [],
     "licenses": [],
-    "captions": []
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 0.76,
+        "text": "Two primitives.",
+        "words": [
+          {
+            "text": "Two",
+            "start": 0.0,
+            "end": 0.26
+          },
+          {
+            "text": "primitives.",
+            "start": 0.26,
+            "end": 0.76
+          }
+        ]
+      },
+      {
+        "start": 1.12,
+        "end": 1.58,
+        "text": "One chain.",
+        "words": [
+          {
+            "text": "One",
+            "start": 1.12,
+            "end": 1.32
+          },
+          {
+            "text": "chain.",
+            "start": 1.32,
+            "end": 1.58
+          }
+        ]
+      },
+      {
+        "start": 1.58,
+        "end": 2.615,
+        "text": "Deterministic root.",
+        "words": [
+          {
+            "text": "Deterministic",
+            "start": 1.58,
+            "end": 2.12
+          },
+          {
+            "text": "root.",
+            "start": 2.12,
+            "end": 2.615
+          }
+        ]
+      },
+      {
+        "start": 2.615,
+        "end": 5.5,
+        "text": "Dirty Frag bypasses Copy Fail mitigation.",
+        "words": [
+          {
+            "text": "Dirty",
+            "start": 2.615,
+            "end": 3.11
+          },
+          {
+            "text": "Frag",
+            "start": 3.11,
+            "end": 3.605
+          },
+          {
+            "text": "bypasses",
+            "start": 4.1,
+            "end": 4.72
+          },
+          {
+            "text": "Copy",
+            "start": 4.72,
+            "end": 4.88
+          },
+          {
+            "text": "Fail",
+            "start": 4.88,
+            "end": 5.04
+          },
+          {
+            "text": "mitigation.",
+            "start": 5.2,
+            "end": 5.5
+          }
+        ]
+      },
+      {
+        "start": 6.06,
+        "end": 9.52,
+        "text": "Chains xfrm-ESP and RxRPC page-cache writes.",
+        "words": [
+          {
+            "text": "Chains",
+            "start": 6.06,
+            "end": 6.34
+          },
+          {
+            "text": "xfrm-ESP",
+            "start": 6.34,
+            "end": 6.95
+          },
+          {
+            "text": "and",
+            "start": 7.56,
+            "end": 7.92
+          },
+          {
+            "text": "RxRPC",
+            "start": 7.92,
+            "end": 8.64
+          },
+          {
+            "text": "page-cache",
+            "start": 8.64,
+            "end": 9.08
+          },
+          {
+            "text": "writes.",
+            "start": 9.08,
+            "end": 9.52
+          }
+        ]
+      },
+      {
+        "start": 9.96,
+        "end": 10.58,
+        "text": "No race condition.",
+        "words": [
+          {
+            "text": "No",
+            "start": 9.96,
+            "end": 10.08
+          },
+          {
+            "text": "race",
+            "start": 10.08,
+            "end": 10.3
+          },
+          {
+            "text": "condition.",
+            "start": 10.3,
+            "end": 10.58
+          }
+        ]
+      },
+      {
+        "start": 11.14,
+        "end": 12.58,
+        "text": "Kernel does not panic on failure.",
+        "words": [
+          {
+            "text": "Kernel",
+            "start": 11.14,
+            "end": 11.34
+          },
+          {
+            "text": "does",
+            "start": 11.34,
+            "end": 11.62
+          },
+          {
+            "text": "not",
+            "start": 11.62,
+            "end": 11.84
+          },
+          {
+            "text": "panic",
+            "start": 11.84,
+            "end": 12.14
+          },
+          {
+            "text": "on",
+            "start": 12.14,
+            "end": 12.34
+          },
+          {
+            "text": "failure.",
+            "start": 12.34,
+            "end": 12.58
+          }
+        ]
+      },
+      {
+        "start": 13.2,
+        "end": 13.84,
+        "text": "High success rate.",
+        "words": [
+          {
+            "text": "High",
+            "start": 13.2,
+            "end": 13.25
+          },
+          {
+            "text": "success",
+            "start": 13.2,
+            "end": 13.44
+          },
+          {
+            "text": "rate.",
+            "start": 13.44,
+            "end": 13.84
+          }
+        ]
+      },
+      {
+        "start": 13.84,
+        "end": 17.68,
+        "text": "Hits Ubuntu, RHEL, Fedora, openSUSE, AlmaLinux,",
+        "words": [
+          {
+            "text": "Hits",
+            "start": 13.84,
+            "end": 14.287
+          },
+          {
+            "text": "Ubuntu,",
+            "start": 14.287,
+            "end": 14.733
+          },
+          {
+            "text": "RHEL,",
+            "start": 15.18,
+            "end": 15.3
+          },
+          {
+            "text": "Fedora,",
+            "start": 15.76,
+            "end": 15.9
+          },
+          {
+            "text": "openSUSE,",
+            "start": 16.46,
+            "end": 16.7
+          },
+          {
+            "text": "AlmaLinux,",
+            "start": 17.42,
+            "end": 17.68
+          }
+        ]
+      },
+      {
+        "start": 18.48,
+        "end": 18.86,
+        "text": "CentOS Stream.",
+        "words": [
+          {
+            "text": "CentOS",
+            "start": 18.48,
+            "end": 18.53
+          },
+          {
+            "text": "Stream.",
+            "start": 18.48,
+            "end": 18.86
+          }
+        ]
+      },
+      {
+        "start": 19.62,
+        "end": 21.14,
+        "text": "Microsoft saw in-the-wild exploitation.",
+        "words": [
+          {
+            "text": "Microsoft",
+            "start": 19.62,
+            "end": 19.67
+          },
+          {
+            "text": "saw",
+            "start": 19.62,
+            "end": 20.08
+          },
+          {
+            "text": "in-the-wild",
+            "start": 20.08,
+            "end": 20.31
+          },
+          {
+            "text": "exploitation.",
+            "start": 20.54,
+            "end": 21.14
+          }
+        ]
+      },
+      {
+        "start": 21.7,
+        "end": 26.236,
+        "text": "xfrm-ESP needs namespace (blocked by",
+        "words": [
+          {
+            "text": "xfrm-ESP",
+            "start": 21.7,
+            "end": 23.02
+          },
+          {
+            "text": "needs",
+            "start": 23.02,
+            "end": 23.3
+          },
+          {
+            "text": "namespace",
+            "start": 23.3,
+            "end": 23.7
+          },
+          {
+            "text": "(blocked",
+            "start": 23.7,
+            "end": 24.968
+          },
+          {
+            "text": "by",
+            "start": 24.968,
+            "end": 26.236
+          }
+        ]
+      },
+      {
+        "start": 26.236,
+        "end": 28.772,
+        "text": "Ubuntu AppArmor).",
+        "words": [
+          {
+            "text": "Ubuntu",
+            "start": 26.236,
+            "end": 27.504
+          },
+          {
+            "text": "AppArmor).",
+            "start": 27.504,
+            "end": 28.772
+          }
+        ]
+      },
+      {
+        "start": 30.04,
+        "end": 31.851,
+        "text": "RxRPC needs no namespace but module not",
+        "words": [
+          {
+            "text": "RxRPC",
+            "start": 30.04,
+            "end": 30.82
+          },
+          {
+            "text": "needs",
+            "start": 30.82,
+            "end": 30.992
+          },
+          {
+            "text": "no",
+            "start": 30.992,
+            "end": 31.164
+          },
+          {
+            "text": "namespace",
+            "start": 31.164,
+            "end": 31.335
+          },
+          {
+            "text": "but",
+            "start": 31.335,
+            "end": 31.507
+          },
+          {
+            "text": "module",
+            "start": 31.507,
+            "end": 31.679
+          },
+          {
+            "text": "not",
+            "start": 31.679,
+            "end": 31.851
+          }
+        ]
+      },
+      {
+        "start": 31.851,
+        "end": 32.366,
+        "text": "in most distros.",
+        "words": [
+          {
+            "text": "in",
+            "start": 31.851,
+            "end": 32.022
+          },
+          {
+            "text": "most",
+            "start": 32.022,
+            "end": 32.194
+          },
+          {
+            "text": "distros.",
+            "start": 32.194,
+            "end": 32.366
+          }
+        ]
+      },
+      {
+        "start": 32.366,
+        "end": 32.881,
+        "text": "Ubuntu loads it.",
+        "words": [
+          {
+            "text": "Ubuntu",
+            "start": 32.366,
+            "end": 32.538
+          },
+          {
+            "text": "loads",
+            "start": 32.538,
+            "end": 32.709
+          },
+          {
+            "text": "it.",
+            "start": 32.709,
+            "end": 32.881
+          }
+        ]
+      },
+      {
+        "start": 32.881,
+        "end": 33.568,
+        "text": "Chain covers blind spots.",
+        "words": [
+          {
+            "text": "Chain",
+            "start": 32.881,
+            "end": 33.053
+          },
+          {
+            "text": "covers",
+            "start": 33.053,
+            "end": 33.225
+          },
+          {
+            "text": "blind",
+            "start": 33.225,
+            "end": 33.396
+          },
+          {
+            "text": "spots.",
+            "start": 33.396,
+            "end": 33.568
+          }
+        ]
+      },
+      {
+        "start": 33.74,
+        "end": 34.48,
+        "text": "One command root.",
+        "words": [
+          {
+            "text": "One",
+            "start": 33.74,
+            "end": 33.9
+          },
+          {
+            "text": "command",
+            "start": 33.9,
+            "end": 34.19
+          },
+          {
+            "text": "root.",
+            "start": 34.19,
+            "end": 34.48
+          }
+        ]
+      },
+      {
+        "start": 34.48,
+        "end": 35.93,
+        "text": "Copy Fail mitigation blacklists algif_aead.",
+        "words": [
+          {
+            "text": "Copy",
+            "start": 34.48,
+            "end": 34.77
+          },
+          {
+            "text": "Fail",
+            "start": 34.77,
+            "end": 35.06
+          },
+          {
+            "text": "mitigation",
+            "start": 35.06,
+            "end": 35.35
+          },
+          {
+            "text": "blacklists",
+            "start": 35.35,
+            "end": 35.64
+          },
+          {
+            "text": "algif_aead.",
+            "start": 35.64,
+            "end": 35.93
+          }
+        ]
+      },
+      {
+        "start": 35.93,
+        "end": 37.09,
+        "text": "Dirty Frag works regardless.",
+        "words": [
+          {
+            "text": "Dirty",
+            "start": 35.93,
+            "end": 36.22
+          },
+          {
+            "text": "Frag",
+            "start": 36.22,
+            "end": 36.51
+          },
+          {
+            "text": "works",
+            "start": 36.51,
+            "end": 36.8
+          },
+          {
+            "text": "regardless.",
+            "start": 36.8,
+            "end": 37.09
+          }
+        ]
+      },
+      {
+        "start": 37.09,
+        "end": 39.26,
+        "text": "Blocklist esp4, esp6, rxrpc if you do",
+        "words": [
+          {
+            "text": "Blocklist",
+            "start": 37.09,
+            "end": 37.38
+          },
+          {
+            "text": "esp4,",
+            "start": 37.38,
+            "end": 37.67
+          },
+          {
+            "text": "esp6,",
+            "start": 37.67,
+            "end": 37.96
+          },
+          {
+            "text": "rxrpc",
+            "start": 37.96,
+            "end": 38.25
+          },
+          {
+            "text": "if",
+            "start": 38.54,
+            "end": 39.0
+          },
+          {
+            "text": "you",
+            "start": 39.0,
+            "end": 39.14
+          },
+          {
+            "text": "do",
+            "start": 39.14,
+            "end": 39.26
+          }
+        ]
+      },
+      {
+        "start": 39.26,
+        "end": 40.2,
+        "text": "not need IPsec.",
+        "words": [
+          {
+            "text": "not",
+            "start": 39.26,
+            "end": 39.44
+          },
+          {
+            "text": "need",
+            "start": 39.44,
+            "end": 39.66
+          },
+          {
+            "text": "IPsec.",
+            "start": 39.66,
+            "end": 40.2
+          }
+        ]
+      },
+      {
+        "start": 40.76,
+        "end": 41.72,
+        "text": "Restrict namespaces.",
+        "words": [
+          {
+            "text": "Restrict",
+            "start": 40.76,
+            "end": 41.06
+          },
+          {
+            "text": "namespaces.",
+            "start": 41.06,
+            "end": 41.72
+          }
+        ]
+      },
+      {
+        "start": 42.34,
+        "end": 42.92,
+        "text": "Harden containers.",
+        "words": [
+          {
+            "text": "Harden",
+            "start": 42.34,
+            "end": 42.66
+          },
+          {
+            "text": "containers.",
+            "start": 42.66,
+            "end": 42.92
+          }
+        ]
+      },
+      {
+        "start": 43.52,
+        "end": 44.52,
+        "text": "Patch kernel and reboot.",
+        "words": [
+          {
+            "text": "Patch",
+            "start": 43.52,
+            "end": 43.66
+          },
+          {
+            "text": "kernel",
+            "start": 43.66,
+            "end": 43.9
+          },
+          {
+            "text": "and",
+            "start": 43.9,
+            "end": 44.28
+          },
+          {
+            "text": "reboot.",
+            "start": 44.28,
+            "end": 44.52
+          }
+        ]
+      },
+      {
+        "start": 44.52,
+        "end": 47.86,
+        "text": "Copy Fail mitigation does not cover xfrm",
+        "words": [
+          {
+            "text": "Copy",
+            "start": 44.52,
+            "end": 44.887
+          },
+          {
+            "text": "Fail",
+            "start": 44.887,
+            "end": 45.253
+          },
+          {
+            "text": "mitigation",
+            "start": 45.62,
+            "end": 45.98
+          },
+          {
+            "text": "does",
+            "start": 45.98,
+            "end": 46.5
+          },
+          {
+            "text": "not",
+            "start": 46.5,
+            "end": 46.7
+          },
+          {
+            "text": "cover",
+            "start": 46.7,
+            "end": 47.06
+          },
+          {
+            "text": "xfrm",
+            "start": 47.06,
+            "end": 47.86
+          }
+        ]
+      },
+      {
+        "start": 47.86,
+        "end": 49.28,
+        "text": "or RxRPC paths.",
+        "words": [
+          {
+            "text": "or",
+            "start": 47.86,
+            "end": 48.1
+          },
+          {
+            "text": "RxRPC",
+            "start": 48.1,
+            "end": 48.86
+          },
+          {
+            "text": "paths.",
+            "start": 48.86,
+            "end": 49.28
+          }
+        ]
+      },
+      {
+        "start": 49.28,
+        "end": 51.58,
+        "text": "Dirty Frag proves bug class is wider",
+        "words": [
+          {
+            "text": "Dirty",
+            "start": 49.28,
+            "end": 49.64
+          },
+          {
+            "text": "Frag",
+            "start": 49.64,
+            "end": 50.0
+          },
+          {
+            "text": "proves",
+            "start": 50.36,
+            "end": 50.6
+          },
+          {
+            "text": "bug",
+            "start": 50.6,
+            "end": 50.755
+          },
+          {
+            "text": "class",
+            "start": 50.755,
+            "end": 50.91
+          },
+          {
+            "text": "is",
+            "start": 50.91,
+            "end": 51.065
+          },
+          {
+            "text": "wider",
+            "start": 51.22,
+            "end": 51.58
+          }
+        ]
+      },
+      {
+        "start": 51.58,
+        "end": 52.34,
+        "text": "than one subsystem.",
+        "words": [
+          {
+            "text": "than",
+            "start": 51.58,
+            "end": 51.88
+          },
+          {
+            "text": "one",
+            "start": 51.88,
+            "end": 52.04
+          },
+          {
+            "text": "subsystem.",
+            "start": 52.04,
+            "end": 52.34
+          }
+        ]
+      },
+      {
+        "start": 52.34,
+        "end": 56.02,
+        "text": "Have you blocklisted esp4, esp6, and rxrpc",
+        "words": [
+          {
+            "text": "Have",
+            "start": 52.34,
+            "end": 53.12
+          },
+          {
+            "text": "you",
+            "start": 53.12,
+            "end": 53.28
+          },
+          {
+            "text": "blocklisted",
+            "start": 53.28,
+            "end": 53.86
+          },
+          {
+            "text": "esp4,",
+            "start": 53.86,
+            "end": 54.347
+          },
+          {
+            "text": "esp6,",
+            "start": 54.347,
+            "end": 54.833
+          },
+          {
+            "text": "and",
+            "start": 55.32,
+            "end": 55.66
+          },
+          {
+            "text": "rxrpc",
+            "start": 55.66,
+            "end": 56.02
+          }
+        ]
+      },
+      {
+        "start": 56.38,
+        "end": 58.42,
+        "text": "on systems that do not need IPsec?",
+        "words": [
+          {
+            "text": "on",
+            "start": 56.38,
+            "end": 56.8
+          },
+          {
+            "text": "systems",
+            "start": 56.8,
+            "end": 57.0
+          },
+          {
+            "text": "that",
+            "start": 57.0,
+            "end": 57.36
+          },
+          {
+            "text": "do",
+            "start": 57.36,
+            "end": 57.48
+          },
+          {
+            "text": "not",
+            "start": 57.48,
+            "end": 57.68
+          },
+          {
+            "text": "need",
+            "start": 57.68,
+            "end": 57.92
+          },
+          {
+            "text": "IPsec?",
+            "start": 57.92,
+            "end": 58.42
+          }
+        ]
+      },
+      {
+        "start": 58.86,
+        "end": 59.8,
+        "text": "Tell me in the comments.",
+        "words": [
+          {
+            "text": "Tell",
+            "start": 58.86,
+            "end": 59.16
+          },
+          {
+            "text": "me",
+            "start": 59.16,
+            "end": 59.3
+          },
+          {
+            "text": "in",
+            "start": 59.3,
+            "end": 59.4
+          },
+          {
+            "text": "the",
+            "start": 59.4,
+            "end": 59.5
+          },
+          {
+            "text": "comments.",
+            "start": 59.5,
+            "end": 59.8
+          }
+        ]
+      }
+    ]
   }
 }

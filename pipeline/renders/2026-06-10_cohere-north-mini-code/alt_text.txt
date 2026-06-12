@@ -1,8 +1,0 @@
-01. Slide 1 (cover): a turbine blade in a dark void with glowing particles trailing three times longer than the blade, empty lower third for headline.
-02. Slide 2 (context): a stack of twelve dark circuit boards fanning open like cards, each catching edge light differently.
-03. Slide 3 (risk): three identical glass cylinders in a dark lab, the center one filled to the brim while the outer two sit at one-third.
-04. Slide 4 (mechanism): a precision gear train in the dark, the first gear spinning fast driving three downstream gears that each rotate three times per input turn.
-05. Slide 5 (gap): a dark dashboard with one gauge showing 210 tps in green and a second gauge climbing past 75 million tokens in amber.
-06. Slide 6 (tradeoff): a split composition, left side an H100 card glowing amber, right side a cloud abstraction with a price tag, a thin divider between.
-07. Slide 7 (takeaway): a calculator display in the dark showing a token count multiplying across a pipeline diagram, numbers climbing at each stage.
-08. Slide 8 (cta): a token counter gauge on a clean dark end-card with open negative space.

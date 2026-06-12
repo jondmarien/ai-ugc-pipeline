@@ -4,7 +4,7 @@
   "slug": "dirtydecrypt-linux-lpe",
   "platform": "instagram",
   "format": "carousel",
-  "status": "approved",
+  "status": "generated",
   "pillar": "offensive_ai",
   "theme": "offensive",
   "audience": "security_practitioners",
@@ -407,6 +407,825 @@
     "music": null,
     "sfx": [],
     "licenses": [],
-    "captions": []
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 0.8,
+        "text": "Silent patch.",
+        "words": [
+          {
+            "text": "Silent",
+            "start": 0.0,
+            "end": 0.56
+          },
+          {
+            "text": "patch.",
+            "start": 0.56,
+            "end": 0.8
+          }
+        ]
+      },
+      {
+        "start": 1.26,
+        "end": 1.66,
+        "text": "No disclosure.",
+        "words": [
+          {
+            "text": "No",
+            "start": 1.26,
+            "end": 1.34
+          },
+          {
+            "text": "disclosure.",
+            "start": 1.34,
+            "end": 1.66
+          }
+        ]
+      },
+      {
+        "start": 2.34,
+        "end": 3.76,
+        "text": "Researchers told it was a duplicate.",
+        "words": [
+          {
+            "text": "Researchers",
+            "start": 2.34,
+            "end": 2.56
+          },
+          {
+            "text": "told",
+            "start": 2.56,
+            "end": 3.02
+          },
+          {
+            "text": "it",
+            "start": 3.02,
+            "end": 3.16
+          },
+          {
+            "text": "was",
+            "start": 3.16,
+            "end": 3.26
+          },
+          {
+            "text": "a",
+            "start": 3.26,
+            "end": 3.34
+          },
+          {
+            "text": "duplicate.",
+            "start": 3.34,
+            "end": 3.76
+          }
+        ]
+      },
+      {
+        "start": 4.08,
+        "end": 6.053,
+        "text": "DirtyDecrypt CVE-2026-31635.",
+        "words": [
+          {
+            "text": "DirtyDecrypt",
+            "start": 4.08,
+            "end": 4.62
+          },
+          {
+            "text": "CVE-2026-31635.",
+            "start": 4.62,
+            "end": 6.053
+          }
+        ]
+      },
+      {
+        "start": 6.053,
+        "end": 9.68,
+        "text": "Zellic V12 reported",
+        "words": [
+          {
+            "text": "Zellic",
+            "start": 6.053,
+            "end": 7.487
+          },
+          {
+            "text": "V12",
+            "start": 8.92,
+            "end": 9.3
+          },
+          {
+            "text": "reported",
+            "start": 9.3,
+            "end": 9.68
+          }
+        ]
+      },
+      {
+        "start": 10.26,
+        "end": 10.54,
+        "text": "May 9.",
+        "words": [
+          {
+            "text": "May",
+            "start": 10.26,
+            "end": 10.31
+          },
+          {
+            "text": "9.",
+            "start": 10.3,
+            "end": 10.54
+          }
+        ]
+      },
+      {
+        "start": 10.54,
+        "end": 13.0,
+        "text": "Maintainers said duplicate, already patched.",
+        "words": [
+          {
+            "text": "Maintainers",
+            "start": 10.54,
+            "end": 11.02
+          },
+          {
+            "text": "said",
+            "start": 11.5,
+            "end": 11.68
+          },
+          {
+            "text": "duplicate,",
+            "start": 11.68,
+            "end": 12.0
+          },
+          {
+            "text": "already",
+            "start": 12.6,
+            "end": 12.7
+          },
+          {
+            "text": "patched.",
+            "start": 12.7,
+            "end": 13.0
+          }
+        ]
+      },
+      {
+        "start": 13.54,
+        "end": 13.9,
+        "text": "No CVE.",
+        "words": [
+          {
+            "text": "No",
+            "start": 13.54,
+            "end": 13.64
+          },
+          {
+            "text": "CVE.",
+            "start": 13.64,
+            "end": 13.9
+          }
+        ]
+      },
+      {
+        "start": 14.52,
+        "end": 14.9,
+        "text": "No advisory.",
+        "words": [
+          {
+            "text": "No",
+            "start": 14.52,
+            "end": 14.64
+          },
+          {
+            "text": "advisory.",
+            "start": 14.64,
+            "end": 14.9
+          }
+        ]
+      },
+      {
+        "start": 15.46,
+        "end": 15.84,
+        "text": "No coordination.",
+        "words": [
+          {
+            "text": "No",
+            "start": 15.46,
+            "end": 15.54
+          },
+          {
+            "text": "coordination.",
+            "start": 15.54,
+            "end": 15.84
+          }
+        ]
+      },
+      {
+        "start": 16.78,
+        "end": 20.515,
+        "text": "Only hits Fedora, Arch, openSUSE with CONFIG_RXGK.",
+        "words": [
+          {
+            "text": "Only",
+            "start": 16.78,
+            "end": 16.83
+          },
+          {
+            "text": "hits",
+            "start": 16.78,
+            "end": 17.0
+          },
+          {
+            "text": "Fedora,",
+            "start": 17.0,
+            "end": 17.46
+          },
+          {
+            "text": "Arch,",
+            "start": 17.92,
+            "end": 17.97
+          },
+          {
+            "text": "openSUSE",
+            "start": 18.48,
+            "end": 18.74
+          },
+          {
+            "text": "with",
+            "start": 19.26,
+            "end": 19.31
+          },
+          {
+            "text": "CONFIG_RXGK.",
+            "start": 19.26,
+            "end": 20.515
+          }
+        ]
+      },
+      {
+        "start": 21.77,
+        "end": 24.34,
+        "text": "Missing COW guard in rxgk_decrypt_skb.",
+        "words": [
+          {
+            "text": "Missing",
+            "start": 21.77,
+            "end": 22.12
+          },
+          {
+            "text": "COW",
+            "start": 22.12,
+            "end": 22.46
+          },
+          {
+            "text": "guard",
+            "start": 22.68,
+            "end": 22.9
+          },
+          {
+            "text": "in",
+            "start": 22.9,
+            "end": 23.06
+          },
+          {
+            "text": "rxgk_decrypt_skb.",
+            "start": 23.06,
+            "end": 24.34
+          }
+        ]
+      },
+      {
+        "start": 25.62,
+        "end": 27.58,
+        "text": "Writes to shadow, sudoers, SUID.",
+        "words": [
+          {
+            "text": "Writes",
+            "start": 25.62,
+            "end": 25.67
+          },
+          {
+            "text": "to",
+            "start": 25.66,
+            "end": 25.88
+          },
+          {
+            "text": "shadow,",
+            "start": 25.88,
+            "end": 26.1
+          },
+          {
+            "text": "sudoers,",
+            "start": 26.1,
+            "end": 26.84
+          },
+          {
+            "text": "SUID.",
+            "start": 26.84,
+            "end": 27.58
+          }
+        ]
+      },
+      {
+        "start": 28.32,
+        "end": 29.64,
+        "text": "Mirrors Dirty Frag pattern.",
+        "words": [
+          {
+            "text": "Mirrors",
+            "start": 28.32,
+            "end": 28.52
+          },
+          {
+            "text": "Dirty",
+            "start": 28.86,
+            "end": 28.91
+          },
+          {
+            "text": "Frag",
+            "start": 28.86,
+            "end": 29.16
+          },
+          {
+            "text": "pattern.",
+            "start": 29.16,
+            "end": 29.64
+          }
+        ]
+      },
+      {
+        "start": 30.02,
+        "end": 31.72,
+        "text": "Kim forced public when embargo broke.",
+        "words": [
+          {
+            "text": "Kim",
+            "start": 30.02,
+            "end": 30.18
+          },
+          {
+            "text": "forced",
+            "start": 30.18,
+            "end": 30.46
+          },
+          {
+            "text": "public",
+            "start": 30.46,
+            "end": 30.78
+          },
+          {
+            "text": "when",
+            "start": 30.78,
+            "end": 31.04
+          },
+          {
+            "text": "embargo",
+            "start": 31.04,
+            "end": 31.22
+          },
+          {
+            "text": "broke.",
+            "start": 31.22,
+            "end": 31.72
+          }
+        ]
+      },
+      {
+        "start": 32.26,
+        "end": 34.08,
+        "text": "Independent researcher analyzed public commit.",
+        "words": [
+          {
+            "text": "Independent",
+            "start": 32.26,
+            "end": 32.31
+          },
+          {
+            "text": "researcher",
+            "start": 32.26,
+            "end": 32.88
+          },
+          {
+            "text": "analyzed",
+            "start": 32.88,
+            "end": 33.32
+          },
+          {
+            "text": "public",
+            "start": 33.32,
+            "end": 33.76
+          },
+          {
+            "text": "commit.",
+            "start": 33.76,
+            "end": 34.08
+          }
+        ]
+      },
+      {
+        "start": 34.8,
+        "end": 36.22,
+        "text": "Silent patches leave defenders blind.",
+        "words": [
+          {
+            "text": "Silent",
+            "start": 34.8,
+            "end": 34.85
+          },
+          {
+            "text": "patches",
+            "start": 34.8,
+            "end": 35.08
+          },
+          {
+            "text": "leave",
+            "start": 35.08,
+            "end": 35.46
+          },
+          {
+            "text": "defenders",
+            "start": 35.46,
+            "end": 35.84
+          },
+          {
+            "text": "blind.",
+            "start": 35.84,
+            "end": 36.22
+          }
+        ]
+      },
+      {
+        "start": 36.58,
+        "end": 38.48,
+        "text": "Responsible reporters get duplicate responses.",
+        "words": [
+          {
+            "text": "Responsible",
+            "start": 36.58,
+            "end": 36.78
+          },
+          {
+            "text": "reporters",
+            "start": 36.78,
+            "end": 37.38
+          },
+          {
+            "text": "get",
+            "start": 37.38,
+            "end": 37.72
+          },
+          {
+            "text": "duplicate",
+            "start": 37.72,
+            "end": 37.9
+          },
+          {
+            "text": "responses.",
+            "start": 37.9,
+            "end": 38.48
+          }
+        ]
+      },
+      {
+        "start": 39.24,
+        "end": 40.64,
+        "text": "Fix exists but nobody knows.",
+        "words": [
+          {
+            "text": "Fix",
+            "start": 39.24,
+            "end": 39.29
+          },
+          {
+            "text": "exists",
+            "start": 39.24,
+            "end": 39.54
+          },
+          {
+            "text": "but",
+            "start": 39.54,
+            "end": 40.06
+          },
+          {
+            "text": "nobody",
+            "start": 40.06,
+            "end": 40.28
+          },
+          {
+            "text": "knows.",
+            "start": 40.28,
+            "end": 40.64
+          }
+        ]
+      },
+      {
+        "start": 41.28,
+        "end": 43.88,
+        "text": "Kernel killswitch proposal: disable vulnerable function at",
+        "words": [
+          {
+            "text": "Kernel",
+            "start": 41.28,
+            "end": 41.33
+          },
+          {
+            "text": "killswitch",
+            "start": 41.28,
+            "end": 41.47
+          },
+          {
+            "text": "proposal:",
+            "start": 41.66,
+            "end": 42.06
+          },
+          {
+            "text": "disable",
+            "start": 42.54,
+            "end": 42.72
+          },
+          {
+            "text": "vulnerable",
+            "start": 42.72,
+            "end": 43.16
+          },
+          {
+            "text": "function",
+            "start": 43.16,
+            "end": 43.6
+          },
+          {
+            "text": "at",
+            "start": 43.6,
+            "end": 43.88
+          }
+        ]
+      },
+      {
+        "start": 43.88,
+        "end": 44.04,
+        "text": "runtime.",
+        "words": [
+          {
+            "text": "runtime.",
+            "start": 43.88,
+            "end": 44.04
+          }
+        ]
+      },
+      {
+        "start": 44.8,
+        "end": 47.28,
+        "text": "Rocky Linux security repo for accelerated fixes.",
+        "words": [
+          {
+            "text": "Rocky",
+            "start": 44.8,
+            "end": 44.85
+          },
+          {
+            "text": "Linux",
+            "start": 44.8,
+            "end": 45.06
+          },
+          {
+            "text": "security",
+            "start": 45.06,
+            "end": 45.48
+          },
+          {
+            "text": "repo",
+            "start": 45.48,
+            "end": 45.82
+          },
+          {
+            "text": "for",
+            "start": 45.82,
+            "end": 46.4
+          },
+          {
+            "text": "accelerated",
+            "start": 46.4,
+            "end": 46.74
+          },
+          {
+            "text": "fixes.",
+            "start": 46.74,
+            "end": 47.28
+          }
+        ]
+      },
+      {
+        "start": 47.28,
+        "end": 48.96,
+        "text": "A silent patch is not a fix",
+        "words": [
+          {
+            "text": "A",
+            "start": 47.28,
+            "end": 47.33
+          },
+          {
+            "text": "silent",
+            "start": 47.28,
+            "end": 48.06
+          },
+          {
+            "text": "patch",
+            "start": 48.06,
+            "end": 48.147
+          },
+          {
+            "text": "is",
+            "start": 48.147,
+            "end": 48.233
+          },
+          {
+            "text": "not",
+            "start": 48.32,
+            "end": 48.64
+          },
+          {
+            "text": "a",
+            "start": 48.64,
+            "end": 48.78
+          },
+          {
+            "text": "fix",
+            "start": 48.78,
+            "end": 48.96
+          }
+        ]
+      },
+      {
+        "start": 48.96,
+        "end": 50.44,
+        "text": "for defenders who do not know it",
+        "words": [
+          {
+            "text": "for",
+            "start": 48.96,
+            "end": 49.22
+          },
+          {
+            "text": "defenders",
+            "start": 49.22,
+            "end": 49.52
+          },
+          {
+            "text": "who",
+            "start": 49.52,
+            "end": 49.82
+          },
+          {
+            "text": "do",
+            "start": 49.82,
+            "end": 49.92
+          },
+          {
+            "text": "not",
+            "start": 49.92,
+            "end": 50.12
+          },
+          {
+            "text": "know",
+            "start": 50.12,
+            "end": 50.34
+          },
+          {
+            "text": "it",
+            "start": 50.34,
+            "end": 50.44
+          }
+        ]
+      },
+      {
+        "start": 50.44,
+        "end": 50.7,
+        "text": "exists.",
+        "words": [
+          {
+            "text": "exists.",
+            "start": 50.44,
+            "end": 50.7
+          }
+        ]
+      },
+      {
+        "start": 51.3,
+        "end": 52.72,
+        "text": "Disclosure process leaves gaps.",
+        "words": [
+          {
+            "text": "Disclosure",
+            "start": 51.3,
+            "end": 51.54
+          },
+          {
+            "text": "process",
+            "start": 51.54,
+            "end": 52.1
+          },
+          {
+            "text": "leaves",
+            "start": 52.1,
+            "end": 52.4
+          },
+          {
+            "text": "gaps.",
+            "start": 52.4,
+            "end": 52.72
+          }
+        ]
+      },
+      {
+        "start": 53.26,
+        "end": 54.96,
+        "text": "Do you track silent kernel patches or",
+        "words": [
+          {
+            "text": "Do",
+            "start": 53.26,
+            "end": 53.38
+          },
+          {
+            "text": "you",
+            "start": 53.38,
+            "end": 53.44
+          },
+          {
+            "text": "track",
+            "start": 53.44,
+            "end": 53.66
+          },
+          {
+            "text": "silent",
+            "start": 53.66,
+            "end": 54.0
+          },
+          {
+            "text": "kernel",
+            "start": 54.0,
+            "end": 54.24
+          },
+          {
+            "text": "patches",
+            "start": 54.24,
+            "end": 54.58
+          },
+          {
+            "text": "or",
+            "start": 54.58,
+            "end": 54.96
+          }
+        ]
+      },
+      {
+        "start": 54.96,
+        "end": 56.02,
+        "text": "only CVEs?",
+        "words": [
+          {
+            "text": "only",
+            "start": 54.96,
+            "end": 55.26
+          },
+          {
+            "text": "CVEs?",
+            "start": 55.26,
+            "end": 56.02
+          }
+        ]
+      },
+      {
+        "start": 56.18,
+        "end": 56.86,
+        "text": "Tell me in the comments.",
+        "words": [
+          {
+            "text": "Tell",
+            "start": 56.18,
+            "end": 56.32
+          },
+          {
+            "text": "me",
+            "start": 56.32,
+            "end": 56.46
+          },
+          {
+            "text": "in",
+            "start": 56.46,
+            "end": 56.56
+          },
+          {
+            "text": "the",
+            "start": 56.56,
+            "end": 56.61
+          },
+          {
+            "text": "comments.",
+            "start": 56.6,
+            "end": 56.86
+          }
+        ]
+      }
+    ]
   }
 }

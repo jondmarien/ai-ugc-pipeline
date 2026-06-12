@@ -407,902 +407,902 @@
     "captions": [
       {
         "start": 0.0,
-        "end": 2.58,
+        "end": 2.04,
         "text": "Cohere just open-sourced a coding agent that",
         "words": [
           {
             "text": "Cohere",
             "start": 0.0,
-            "end": 0.35
+            "end": 0.32
           },
           {
             "text": "just",
-            "start": 0.7,
-            "end": 0.98
+            "start": 0.32,
+            "end": 0.56
           },
           {
             "text": "open-sourced",
-            "start": 0.98,
-            "end": 1.227
+            "start": 0.56,
+            "end": 0.8
           },
           {
             "text": "a",
-            "start": 1.227,
-            "end": 1.473
+            "start": 0.8,
+            "end": 1.04
           },
           {
             "text": "coding",
-            "start": 1.72,
-            "end": 1.88
+            "start": 1.28,
+            "end": 1.4
           },
           {
             "text": "agent",
-            "start": 1.88,
-            "end": 2.26
+            "start": 1.4,
+            "end": 1.78
           },
           {
             "text": "that",
-            "start": 2.26,
-            "end": 2.58
+            "start": 1.78,
+            "end": 2.04
           }
         ]
       },
       {
-        "start": 2.58,
-        "end": 3.58,
+        "start": 2.04,
+        "end": 3.12,
         "text": "runs on one H100.",
         "words": [
           {
             "text": "runs",
-            "start": 2.58,
-            "end": 2.74
+            "start": 2.04,
+            "end": 2.26
           },
           {
             "text": "on",
-            "start": 2.74,
-            "end": 2.94
+            "start": 2.26,
+            "end": 2.48
           },
           {
             "text": "one",
-            "start": 2.94,
-            "end": 3.14
+            "start": 2.48,
+            "end": 2.7
           },
           {
             "text": "H100.",
-            "start": 3.14,
-            "end": 3.58
+            "start": 2.7,
+            "end": 3.12
           }
         ]
       },
       {
-        "start": 3.58,
-        "end": 5.68,
+        "start": 3.76,
+        "end": 5.3,
         "text": "The catch is a three-times token tax.",
         "words": [
           {
             "text": "The",
-            "start": 3.58,
-            "end": 3.795
+            "start": 3.76,
+            "end": 3.84
           },
           {
             "text": "catch",
-            "start": 3.795,
-            "end": 4.01
+            "start": 3.84,
+            "end": 4.02
           },
           {
             "text": "is",
-            "start": 4.01,
-            "end": 4.225
+            "start": 4.02,
+            "end": 4.24
           },
           {
             "text": "a",
-            "start": 4.44,
-            "end": 4.64
+            "start": 4.24,
+            "end": 4.3
           },
           {
             "text": "three-times",
-            "start": 4.64,
-            "end": 4.86
+            "start": 4.3,
+            "end": 4.51
           },
           {
             "text": "token",
-            "start": 5.08,
-            "end": 5.38
+            "start": 4.72,
+            "end": 4.98
           },
           {
             "text": "tax.",
-            "start": 5.38,
-            "end": 5.68
+            "start": 4.98,
+            "end": 5.3
           }
         ]
       },
       {
-        "start": 6.3,
-        "end": 8.12,
+        "start": 5.82,
+        "end": 7.46,
         "text": "North Mini Code is thirty billion parameters,",
         "words": [
           {
             "text": "North",
-            "start": 6.3,
-            "end": 6.52
+            "start": 5.82,
+            "end": 6.02
           },
           {
             "text": "Mini",
-            "start": 6.52,
-            "end": 6.7
+            "start": 6.02,
+            "end": 6.2
           },
           {
             "text": "Code",
-            "start": 6.7,
-            "end": 6.98
+            "start": 6.2,
+            "end": 6.46
           },
           {
             "text": "is",
-            "start": 6.98,
-            "end": 7.26
+            "start": 6.46,
+            "end": 6.62
           },
           {
             "text": "thirty",
-            "start": 7.26,
-            "end": 7.37
+            "start": 6.62,
+            "end": 6.73
           },
           {
             "text": "billion",
-            "start": 7.48,
-            "end": 7.84
+            "start": 6.84,
+            "end": 7.14
           },
           {
             "text": "parameters,",
-            "start": 7.84,
-            "end": 8.12
+            "start": 7.14,
+            "end": 7.46
           }
         ]
       },
       {
-        "start": 8.12,
-        "end": 11.38,
+        "start": 7.46,
+        "end": 10.66,
         "text": "three billion active, Apache 2.0, built for",
         "words": [
           {
             "text": "three",
-            "start": 8.12,
-            "end": 8.55
+            "start": 7.46,
+            "end": 7.85
           },
           {
             "text": "billion",
-            "start": 8.98,
-            "end": 9.24
+            "start": 8.24,
+            "end": 8.52
           },
           {
             "text": "active,",
-            "start": 9.24,
-            "end": 9.64
+            "start": 8.52,
+            "end": 8.94
           },
           {
             "text": "Apache",
-            "start": 9.64,
-            "end": 9.92
+            "start": 9.34,
+            "end": 9.5
           },
           {
             "text": "2.0,",
-            "start": 9.92,
-            "end": 10.68
+            "start": 9.5,
+            "end": 10.22
           },
           {
             "text": "built",
-            "start": 10.94,
-            "end": 11.14
+            "start": 10.22,
+            "end": 10.42
           },
           {
             "text": "for",
-            "start": 11.14,
-            "end": 11.38
+            "start": 10.42,
+            "end": 10.66
           }
         ]
       },
       {
-        "start": 11.38,
-        "end": 12.38,
+        "start": 10.66,
+        "end": 11.66,
         "text": "the full agentic stack.",
         "words": [
           {
             "text": "the",
-            "start": 11.38,
-            "end": 11.48
+            "start": 10.66,
+            "end": 10.74
           },
           {
             "text": "full",
-            "start": 11.48,
-            "end": 11.66
+            "start": 10.74,
+            "end": 10.9
           },
           {
             "text": "agentic",
-            "start": 11.66,
-            "end": 12.12
+            "start": 10.9,
+            "end": 11.4
           },
           {
             "text": "stack.",
-            "start": 12.12,
-            "end": 12.38
+            "start": 11.4,
+            "end": 11.66
           }
         ]
       },
       {
-        "start": 13.12,
-        "end": 16.0,
+        "start": 12.12,
+        "end": 14.8,
         "text": "Artificial Analysis measured it at 210 tokens",
         "words": [
           {
             "text": "Artificial",
-            "start": 13.12,
-            "end": 13.17
+            "start": 12.12,
+            "end": 12.32
           },
           {
             "text": "Analysis",
-            "start": 13.12,
-            "end": 13.76
+            "start": 12.32,
+            "end": 12.96
           },
           {
             "text": "measured",
-            "start": 13.76,
-            "end": 14.3
+            "start": 12.96,
+            "end": 13.34
           },
           {
             "text": "it",
-            "start": 14.3,
-            "end": 14.56
+            "start": 13.34,
+            "end": 13.58
           },
           {
             "text": "at",
-            "start": 14.56,
-            "end": 14.7
+            "start": 13.58,
+            "end": 13.7
           },
           {
             "text": "210",
-            "start": 14.7,
-            "end": 14.98
+            "start": 13.7,
+            "end": 13.94
           },
           {
             "text": "tokens",
-            "start": 14.98,
-            "end": 16.0
+            "start": 13.94,
+            "end": 14.8
           }
         ]
       },
       {
-        "start": 16.0,
-        "end": 16.68,
+        "start": 14.8,
+        "end": 15.36,
         "text": "per second.",
         "words": [
           {
             "text": "per",
-            "start": 16.0,
-            "end": 16.36
+            "start": 14.8,
+            "end": 15.04
           },
           {
             "text": "second.",
-            "start": 16.36,
-            "end": 16.68
+            "start": 15.04,
+            "end": 15.36
           }
         ]
       },
       {
-        "start": 17.42,
-        "end": 17.47,
+        "start": 15.82,
+        "end": 15.98,
         "text": "Fast.",
         "words": [
           {
             "text": "Fast.",
-            "start": 17.42,
-            "end": 17.47
+            "start": 15.82,
+            "end": 15.98
           }
         ]
       },
       {
-        "start": 18.84,
-        "end": 20.84,
+        "start": 16.52,
+        "end": 18.3,
         "text": "But on the Intelligence Index it burned",
         "words": [
           {
             "text": "But",
-            "start": 18.84,
-            "end": 19.3
+            "start": 16.52,
+            "end": 16.7
           },
           {
             "text": "on",
-            "start": 19.3,
-            "end": 19.42
+            "start": 16.7,
+            "end": 16.82
           },
           {
             "text": "the",
-            "start": 19.42,
-            "end": 19.52
+            "start": 16.82,
+            "end": 16.94
           },
           {
             "text": "Intelligence",
-            "start": 19.52,
-            "end": 19.8
+            "start": 16.94,
+            "end": 17.2
           },
           {
             "text": "Index",
-            "start": 19.8,
-            "end": 20.36
+            "start": 17.2,
+            "end": 17.76
           },
           {
             "text": "it",
-            "start": 20.64,
-            "end": 20.69
+            "start": 18.04,
+            "end": 18.12
           },
           {
             "text": "burned",
-            "start": 20.68,
-            "end": 20.84
+            "start": 18.12,
+            "end": 18.3
           }
         ]
       },
       {
-        "start": 20.84,
-        "end": 22.08,
+        "start": 18.3,
+        "end": 19.68,
         "text": "75 million tokens.",
         "words": [
           {
             "text": "75",
-            "start": 20.84,
-            "end": 21.34
+            "start": 18.3,
+            "end": 18.76
           },
           {
             "text": "million",
-            "start": 21.34,
-            "end": 21.76
+            "start": 18.76,
+            "end": 19.3
           },
           {
             "text": "tokens.",
-            "start": 21.76,
-            "end": 22.08
+            "start": 19.3,
+            "end": 19.68
           }
         ]
       },
       {
-        "start": 22.82,
-        "end": 24.48,
+        "start": 20.24,
+        "end": 22.06,
         "text": "The class median was 25 million.",
         "words": [
           {
             "text": "The",
-            "start": 22.82,
-            "end": 22.87
+            "start": 20.24,
+            "end": 20.29
           },
           {
             "text": "class",
-            "start": 22.86,
-            "end": 23.0
+            "start": 20.26,
+            "end": 20.38
           },
           {
             "text": "median",
-            "start": 23.0,
-            "end": 23.36
+            "start": 20.38,
+            "end": 20.74
           },
           {
             "text": "was",
-            "start": 23.36,
-            "end": 23.64
+            "start": 20.74,
+            "end": 21.02
           },
           {
             "text": "25",
-            "start": 23.64,
-            "end": 23.92
+            "start": 21.02,
+            "end": 21.36
           },
           {
             "text": "million.",
-            "start": 23.92,
-            "end": 24.48
+            "start": 21.36,
+            "end": 22.06
           }
         ]
       },
       {
-        "start": 24.92,
-        "end": 25.82,
+        "start": 22.38,
+        "end": 23.16,
         "text": "Three times the tokens.",
         "words": [
           {
             "text": "Three",
-            "start": 24.92,
-            "end": 25.08
+            "start": 22.38,
+            "end": 22.46
           },
           {
             "text": "times",
-            "start": 25.08,
-            "end": 25.42
+            "start": 22.46,
+            "end": 22.78
           },
           {
             "text": "the",
-            "start": 25.42,
-            "end": 25.58
+            "start": 22.78,
+            "end": 22.94
           },
           {
             "text": "tokens.",
-            "start": 25.58,
-            "end": 25.82
+            "start": 22.94,
+            "end": 23.16
           }
         ]
       },
       {
-        "start": 26.44,
-        "end": 28.2,
+        "start": 23.8,
+        "end": 25.38,
         "text": "Three times the inference cost in any",
         "words": [
           {
             "text": "Three",
-            "start": 26.44,
-            "end": 26.54
+            "start": 23.8,
+            "end": 23.9
           },
           {
             "text": "times",
-            "start": 26.54,
-            "end": 26.88
+            "start": 23.9,
+            "end": 24.18
           },
           {
             "text": "the",
-            "start": 26.88,
-            "end": 27.06
+            "start": 24.18,
+            "end": 24.36
           },
           {
             "text": "inference",
-            "start": 27.06,
-            "end": 27.32
+            "start": 24.36,
+            "end": 24.62
           },
           {
             "text": "cost",
-            "start": 27.32,
-            "end": 27.64
+            "start": 24.62,
+            "end": 24.94
           },
           {
             "text": "in",
-            "start": 27.64,
-            "end": 28.02
+            "start": 24.94,
+            "end": 25.2
           },
           {
             "text": "any",
-            "start": 28.02,
-            "end": 28.2
+            "start": 25.2,
+            "end": 25.38
           }
         ]
       },
       {
-        "start": 28.2,
-        "end": 29.02,
+        "start": 25.38,
+        "end": 26.2,
         "text": "high-volume pipeline.",
         "words": [
           {
             "text": "high-volume",
-            "start": 28.2,
-            "end": 28.49
+            "start": 25.38,
+            "end": 25.66
           },
           {
             "text": "pipeline.",
-            "start": 28.78,
-            "end": 29.02
+            "start": 25.94,
+            "end": 26.2
           }
         ]
       },
       {
-        "start": 29.78,
-        "end": 31.7,
+        "start": 27.0,
+        "end": 28.38,
         "text": "Benchmarks rank on speed and intelligence.",
         "words": [
           {
             "text": "Benchmarks",
-            "start": 29.78,
-            "end": 30.3
+            "start": 27.0,
+            "end": 27.16
           },
           {
             "text": "rank",
-            "start": 30.3,
-            "end": 30.62
+            "start": 27.16,
+            "end": 27.48
           },
           {
             "text": "on",
-            "start": 30.62,
-            "end": 30.88
+            "start": 27.48,
+            "end": 27.64
           },
           {
             "text": "speed",
-            "start": 30.88,
-            "end": 31.16
+            "start": 27.64,
+            "end": 27.88
           },
           {
             "text": "and",
-            "start": 31.16,
-            "end": 31.4
+            "start": 27.88,
+            "end": 28.06
           },
           {
             "text": "intelligence.",
-            "start": 31.4,
-            "end": 31.7
+            "start": 28.06,
+            "end": 28.38
           }
         ]
       },
       {
-        "start": 32.46,
-        "end": 33.76,
+        "start": 28.92,
+        "end": 30.22,
         "text": "They do not surface verbosity.",
         "words": [
           {
             "text": "They",
-            "start": 32.46,
-            "end": 32.52
+            "start": 28.92,
+            "end": 29.1
           },
           {
             "text": "do",
-            "start": 32.52,
-            "end": 32.64
+            "start": 29.1,
+            "end": 29.18
           },
           {
             "text": "not",
-            "start": 32.64,
-            "end": 32.8
+            "start": 29.18,
+            "end": 29.36
           },
           {
             "text": "surface",
-            "start": 32.8,
-            "end": 33.1
+            "start": 29.36,
+            "end": 29.72
           },
           {
             "text": "verbosity.",
-            "start": 33.1,
-            "end": 33.76
+            "start": 29.72,
+            "end": 30.22
           }
         ]
       },
       {
-        "start": 34.16,
-        "end": 35.2,
+        "start": 30.72,
+        "end": 31.42,
         "text": "That is the hidden invoice.",
         "words": [
           {
             "text": "That",
-            "start": 34.16,
-            "end": 34.36
+            "start": 30.72,
+            "end": 30.77
           },
           {
             "text": "is",
-            "start": 34.36,
-            "end": 34.48
+            "start": 30.74,
+            "end": 30.84
           },
           {
             "text": "the",
-            "start": 34.48,
-            "end": 34.62
+            "start": 30.84,
+            "end": 30.96
           },
           {
             "text": "hidden",
-            "start": 34.62,
-            "end": 34.84
+            "start": 30.96,
+            "end": 31.14
           },
           {
             "text": "invoice.",
-            "start": 34.84,
-            "end": 35.2
+            "start": 31.14,
+            "end": 31.42
           }
         ]
       },
       {
-        "start": 35.94,
-        "end": 38.0,
+        "start": 32.02,
+        "end": 34.04,
         "text": "Fable 5 costs fifty dollars per million",
         "words": [
           {
             "text": "Fable",
-            "start": 35.94,
-            "end": 36.2
+            "start": 32.02,
+            "end": 32.2
           },
           {
             "text": "5",
-            "start": 36.2,
-            "end": 36.52
+            "start": 32.2,
+            "end": 32.52
           },
           {
             "text": "costs",
-            "start": 36.52,
-            "end": 36.78
+            "start": 32.52,
+            "end": 32.74
           },
           {
             "text": "fifty",
-            "start": 36.78,
-            "end": 36.96
+            "start": 32.74,
+            "end": 32.92
           },
           {
             "text": "dollars",
-            "start": 36.96,
-            "end": 37.14
+            "start": 32.92,
+            "end": 33.1
           },
           {
             "text": "per",
-            "start": 37.32,
-            "end": 37.76
+            "start": 33.28,
+            "end": 33.74
           },
           {
             "text": "million",
-            "start": 37.76,
-            "end": 38.0
+            "start": 33.74,
+            "end": 34.04
           }
         ]
       },
       {
-        "start": 38.0,
-        "end": 38.32,
+        "start": 34.04,
+        "end": 34.3,
         "text": "tokens.",
         "words": [
           {
             "text": "tokens.",
-            "start": 38.0,
-            "end": 38.32
+            "start": 34.04,
+            "end": 34.3
           }
         ]
       },
       {
-        "start": 39.2,
-        "end": 41.02,
+        "start": 35.02,
+        "end": 36.86,
         "text": "North Mini Code costs your H100 hours",
         "words": [
           {
             "text": "North",
-            "start": 39.2,
-            "end": 39.25
+            "start": 35.02,
+            "end": 35.08
           },
           {
             "text": "Mini",
-            "start": 39.2,
-            "end": 39.38
+            "start": 35.08,
+            "end": 35.24
           },
           {
             "text": "Code",
-            "start": 39.38,
-            "end": 39.64
+            "start": 35.24,
+            "end": 35.5
           },
           {
             "text": "costs",
-            "start": 39.64,
-            "end": 39.88
+            "start": 35.5,
+            "end": 35.74
           },
           {
             "text": "your",
-            "start": 39.88,
-            "end": 40.16
+            "start": 35.74,
+            "end": 36.08
           },
           {
             "text": "H100",
-            "start": 40.16,
-            "end": 40.76
+            "start": 36.08,
+            "end": 36.44
           },
           {
             "text": "hours",
-            "start": 40.76,
-            "end": 41.02
+            "start": 36.44,
+            "end": 36.86
           }
         ]
       },
       {
-        "start": 41.02,
-        "end": 42.56,
+        "start": 36.86,
+        "end": 38.12,
         "text": "and triple the token budget.",
         "words": [
           {
             "text": "and",
-            "start": 41.02,
-            "end": 41.54
+            "start": 36.86,
+            "end": 37.2
           },
           {
             "text": "triple",
-            "start": 41.54,
-            "end": 41.66
+            "start": 37.2,
+            "end": 37.38
           },
           {
             "text": "the",
-            "start": 41.78,
-            "end": 42.04
+            "start": 37.38,
+            "end": 37.64
           },
           {
             "text": "token",
-            "start": 42.04,
-            "end": 42.22
+            "start": 37.64,
+            "end": 37.82
           },
           {
             "text": "budget.",
-            "start": 42.22,
-            "end": 42.56
+            "start": 37.82,
+            "end": 38.12
           }
         ]
       },
       {
-        "start": 43.28,
-        "end": 45.08,
+        "start": 38.78,
+        "end": 40.5,
         "text": "Model your agent pipeline on token volume",
         "words": [
           {
             "text": "Model",
-            "start": 43.28,
-            "end": 43.4
+            "start": 38.78,
+            "end": 38.86
           },
           {
             "text": "your",
-            "start": 43.4,
-            "end": 43.64
+            "start": 38.86,
+            "end": 39.1
           },
           {
             "text": "agent",
-            "start": 43.64,
-            "end": 43.9
+            "start": 39.1,
+            "end": 39.36
           },
           {
             "text": "pipeline",
-            "start": 43.9,
-            "end": 44.16
+            "start": 39.36,
+            "end": 39.62
           },
           {
             "text": "on",
-            "start": 44.16,
-            "end": 44.54
+            "start": 39.62,
+            "end": 40.0
           },
           {
             "text": "token",
-            "start": 44.54,
-            "end": 44.76
+            "start": 40.0,
+            "end": 40.24
           },
           {
             "text": "volume",
-            "start": 44.76,
-            "end": 45.08
+            "start": 40.24,
+            "end": 40.5
           }
         ]
       },
       {
-        "start": 45.08,
-        "end": 47.38,
+        "start": 40.5,
+        "end": 42.48,
         "text": "before you commit to any model, open",
         "words": [
           {
             "text": "before",
-            "start": 45.08,
-            "end": 45.76
+            "start": 40.5,
+            "end": 40.9
           },
           {
             "text": "you",
-            "start": 45.76,
-            "end": 46.04
+            "start": 40.9,
+            "end": 41.12
           },
           {
             "text": "commit",
-            "start": 46.04,
-            "end": 46.26
+            "start": 41.12,
+            "end": 41.34
           },
           {
             "text": "to",
-            "start": 46.26,
-            "end": 46.42
+            "start": 41.34,
+            "end": 41.52
           },
           {
             "text": "any",
-            "start": 46.42,
-            "end": 46.58
+            "start": 41.52,
+            "end": 41.68
           },
           {
             "text": "model,",
-            "start": 46.58,
-            "end": 46.88
+            "start": 41.68,
+            "end": 41.96
           },
           {
             "text": "open",
-            "start": 47.24,
-            "end": 47.38
+            "start": 42.32,
+            "end": 42.48
           }
         ]
       },
       {
-        "start": 47.38,
-        "end": 47.8,
+        "start": 42.48,
+        "end": 42.92,
         "text": "or closed.",
         "words": [
           {
             "text": "or",
-            "start": 47.38,
-            "end": 47.6
+            "start": 42.48,
+            "end": 42.72
           },
           {
             "text": "closed.",
-            "start": 47.6,
-            "end": 47.8
+            "start": 42.72,
+            "end": 42.92
           }
         ]
       },
       {
-        "start": 49.0,
-        "end": 50.68,
+        "start": 43.66,
+        "end": 45.28,
         "text": "Have you measured the token multiplier in",
         "words": [
           {
             "text": "Have",
-            "start": 49.0,
-            "end": 49.14
+            "start": 43.66,
+            "end": 43.74
           },
           {
             "text": "you",
-            "start": 49.14,
-            "end": 49.24
+            "start": 43.74,
+            "end": 43.84
           },
           {
             "text": "measured",
-            "start": 49.24,
-            "end": 49.46
+            "start": 43.84,
+            "end": 44.06
           },
           {
             "text": "the",
-            "start": 49.46,
-            "end": 49.68
+            "start": 44.06,
+            "end": 44.28
           },
           {
             "text": "token",
-            "start": 49.68,
-            "end": 49.94
+            "start": 44.28,
+            "end": 44.52
           },
           {
             "text": "multiplier",
-            "start": 49.94,
-            "end": 50.16
+            "start": 44.52,
+            "end": 44.74
           },
           {
             "text": "in",
-            "start": 50.16,
-            "end": 50.68
+            "start": 44.74,
+            "end": 45.28
           }
         ]
       },
       {
-        "start": 50.68,
-        "end": 50.98,
+        "start": 45.28,
+        "end": 45.56,
         "text": "your pipeline?",
         "words": [
           {
             "text": "your",
-            "start": 50.68,
-            "end": 50.78
+            "start": 45.28,
+            "end": 45.36
           },
           {
             "text": "pipeline?",
-            "start": 50.78,
-            "end": 50.98
+            "start": 45.36,
+            "end": 45.56
           }
         ]
       },
       {
-        "start": 51.76,
-        "end": 52.4,
+        "start": 46.08,
+        "end": 46.68,
         "text": "Tell me in the comments.",
         "words": [
           {
             "text": "Tell",
-            "start": 51.76,
-            "end": 51.86
+            "start": 46.08,
+            "end": 46.16
           },
           {
             "text": "me",
-            "start": 51.86,
-            "end": 52.0
+            "start": 46.16,
+            "end": 46.28
           },
           {
             "text": "in",
-            "start": 52.0,
-            "end": 52.1
+            "start": 46.28,
+            "end": 46.4
           },
           {
             "text": "the",
-            "start": 52.1,
-            "end": 52.18
+            "start": 46.4,
+            "end": 46.46
           },
           {
             "text": "comments.",
-            "start": 52.18,
-            "end": 52.4
+            "start": 46.46,
+            "end": 46.68
           }
         ]
       }

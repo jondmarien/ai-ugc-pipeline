@@ -1,0 +1,15 @@
+Title card: 732 bytes, portable, stealthy, cross-container root. Copy Fail, CVE-2026-31431, a four-byte page-cache write that works on every Linux distro since 2017. A tiny Python script glows red in a dark void as it rewrites a setuid binary.
+
+An unprivileged local user writes four controlled bytes into the page cache of any readable file, edits a setuid binary, and gains root. Disclosed April 30 by Xint.io and Theori, CVSS 7.8. A dark terminal runs four Python lines as a lock shatters.
+
+Portable, tiny, stealthy, cross-container: four properties that almost never appear together. Works across all Linux versions since 2017 because the page cache is shared across processes and containers. Four labeled keys turn the same lock.
+
+Four steps: open an AF_ALG socket bound to authencesn(hmac(sha256),cbc(aes)), build the payload, trigger a write to the kernel's cached copy of /usr/bin/su, then execve it to run injected shellcode as root. Four stepping stones glow red in sequence.
+
+The exploit is reliable with no race condition and no kernel offsets, and the same code works across distros. Blocklisting algif_aead breaks crypto, and Dirty Frag plus Fragnesia bypass it via xfrm and RxRPC. A blocked shield with two paths routing around it.
+
+Blocklist algif_aead if unneeded, but the real fix is patching the kernel. Every major distro shipped advisories: Ubuntu, Debian, RHEL, SUSE, Amazon, Arch, Gentoo, AlmaLinux, CloudLinux. A split view of a vulnerable kernel beside a patched one.
+
+The 2017 optimization broke the page-cache isolation guarantee. Nine years later a 732-byte script exploits it on every distro, and the bug class persists. A 2017 commit hash with a red crack spreading through the years to a waiting 2026 script.
+
+Closing question: have you verified your kernel package includes the CVE-2026-31431 fix? Save this for your next patch cycle. A single kernel version string on a clean dark end-card with open negative space.

@@ -1,9 +1,0 @@
-01. Slide 1 (cover): a shield icon fracturing in a dark void, red particles leaking from the crack, empty lower third for the headline.
-02. Slide 2 (context): a dark repository list, one repo name glowing red while the others sit dormant.
-03. Slide 3 (risk): a scanner beam in the dark passing over a file, the beam fracturing into red glitches.
-04. Slide 4 (mechanism): two racing threads in the dark, one capturing the resource a microsecond before the other.
-05. Slide 5 (chain): an on-brand step-flow diagram of the RoguePlanet attack chain, eight boxes from a named pipe down to NT AUTHORITY SYSTEM.
-06. Slide 6 (failure point): a patch calendar, June dates marked green but a red zero-day marker overlapping the same week.
-07. Slide 7 (defense): a split composition, left a Defender shield scanning, right the cracked shield with a SYSTEM prompt leaking out.
-08. Slide 8 (takeaway): a shield icon, one half intact, the other half fractured with red particles escaping.
-09. Slide 9 (cta): an event log entry on a clean dark end-card with open negative space.
