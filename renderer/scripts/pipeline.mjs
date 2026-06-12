@@ -18,6 +18,7 @@
 //   --no-fit-voice don't trim/realign the reel to the voice length
 //   --tail=N       seconds of silence to keep after the voice (reel; default 0.6)
 //   --seed=N       voice seed (consistent speaker) — forwarded to `bun run voice`
+//   --skip=A,B     after selection, drop matched posts whose key fuzzily contains A or B
 import { spawnSync } from "node:child_process";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import path from "node:path";
@@ -64,6 +65,10 @@ BATCH SELECTION
                    --force to bypass the gate and render non-approved posts anyway (a
                    generated/upload_ready post keeps its status, it is not demoted). Pair any
                    selection with --dry-run to preview the matched set without rendering.
+  --skip=A,B,…     after selection, drop any matched post whose key contains one of these
+                   (case-insensitive, substring/"fuzzy") terms. Comma-separated. Pairs with a
+                   date-prefix or --status batch to render the whole set EXCEPT a few — e.g.
+                   already-rendered posts. A term that matches nothing just warns.
 
 STAGES (in order; each auto-skips when not needed)
   1. art           backgrounds via a running ComfyUI (FLUX.2 klein 4B GGUF by default) —
@@ -121,6 +126,8 @@ EXAMPLES
       full render with all defaults (art only if slides are missing backgrounds)
   bun run pipeline -- 2026-06-11 --dry-run
       preview every post from that day (date prefix expands to all matches)
+  bun run pipeline -- 2026-06-10 --skip=cohere,rogueplanet
+      render the whole day EXCEPT the cohere and rogueplanet posts (already done)
   bun run pipeline -- 2026-06-08_chatbot-log-leak --art --q6 --upscale
       force-regenerate art at Q6 quality with the integrated upscale pass
   bun run pipeline -- my-post --art --ui-format --upscale-model=4x-UltraSharp.pth
@@ -152,6 +159,20 @@ if (statusArg) {
   const matched = ALL_KEYS.filter((fk) => { try { return JSON.parse(readFileSync(path.join(POSTS, `${fk}.json`), "utf8")).status === statusArg; } catch { return false; } });
   matched.forEach((fk) => selected.add(fk));
   console.log(`▶ status="${statusArg}" → ${matched.length} post(s).`);
+}
+// --skip=a,b,c removes any matched post whose key contains one of the (case-insensitive,
+// substring/"fuzzy") terms — handy for "render the whole day EXCEPT the ones already done".
+// Applied AFTER selection so it can prune a date-prefix/status expansion. Warns on no-op terms.
+const skipArg = [...flags].find((f) => f.startsWith("--skip="))?.split("=").slice(1).join("=");
+const skipTerms = (skipArg ?? "").split(",").map((t) => t.trim().toLowerCase()).filter(Boolean);
+if (skipTerms.length) {
+  const before = [...selected];
+  for (const term of skipTerms) {
+    const hit = before.filter((fk) => fk.toLowerCase().includes(term));
+    if (!hit.length) { console.warn(`⚠ --skip "${term}" matched no selected post`); continue; }
+    hit.forEach((fk) => selected.delete(fk));
+    console.log(`⤬ skip "${term}" → ${hit.length} post(s): ${hit.join(", ")}`);
+  }
 }
 keys = [...selected].sort();
 if (!keys.length) {
