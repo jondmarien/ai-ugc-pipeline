@@ -4,7 +4,7 @@
   "slug": "copy-fail-linux-lpe",
   "platform": "instagram",
   "format": "carousel",
-  "status": "approved",
+  "status": "generated",
   "pillar": "offensive_ai",
   "theme": "offensive",
   "audience": "security_practitioners",
@@ -405,6 +405,880 @@
     "music": null,
     "sfx": [],
     "licenses": [],
-    "captions": []
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 1.02,
+        "text": "732 bytes.",
+        "words": [
+          {
+            "text": "732",
+            "start": 0.0,
+            "end": 0.74
+          },
+          {
+            "text": "bytes.",
+            "start": 0.74,
+            "end": 1.02
+          }
+        ]
+      },
+      {
+        "start": 1.48,
+        "end": 1.74,
+        "text": "Portable.",
+        "words": [
+          {
+            "text": "Portable.",
+            "start": 1.48,
+            "end": 1.74
+          }
+        ]
+      },
+      {
+        "start": 2.18,
+        "end": 2.7,
+        "text": "Stealthy.",
+        "words": [
+          {
+            "text": "Stealthy.",
+            "start": 2.18,
+            "end": 2.7
+          }
+        ]
+      },
+      {
+        "start": 2.96,
+        "end": 3.96,
+        "text": "Cross-container root.",
+        "words": [
+          {
+            "text": "Cross-container",
+            "start": 2.96,
+            "end": 3.48
+          },
+          {
+            "text": "root.",
+            "start": 3.48,
+            "end": 3.96
+          }
+        ]
+      },
+      {
+        "start": 3.96,
+        "end": 7.545,
+        "text": "Copy Fail CVE-2026-31431.",
+        "words": [
+          {
+            "text": "Copy",
+            "start": 3.96,
+            "end": 5.155
+          },
+          {
+            "text": "Fail",
+            "start": 5.155,
+            "end": 6.35
+          },
+          {
+            "text": "CVE-2026-31431.",
+            "start": 6.35,
+            "end": 7.545
+          }
+        ]
+      },
+      {
+        "start": 8.74,
+        "end": 11.2,
+        "text": "Unprivileged user writes four bytes into any",
+        "words": [
+          {
+            "text": "Unprivileged",
+            "start": 8.74,
+            "end": 9.52
+          },
+          {
+            "text": "user",
+            "start": 9.52,
+            "end": 9.72
+          },
+          {
+            "text": "writes",
+            "start": 9.72,
+            "end": 10.06
+          },
+          {
+            "text": "four",
+            "start": 10.06,
+            "end": 10.2
+          },
+          {
+            "text": "bytes",
+            "start": 10.34,
+            "end": 10.58
+          },
+          {
+            "text": "into",
+            "start": 10.58,
+            "end": 10.9
+          },
+          {
+            "text": "any",
+            "start": 10.9,
+            "end": 11.2
+          }
+        ]
+      },
+      {
+        "start": 11.2,
+        "end": 12.06,
+        "text": "file page cache.",
+        "words": [
+          {
+            "text": "file",
+            "start": 11.2,
+            "end": 11.48
+          },
+          {
+            "text": "page",
+            "start": 11.48,
+            "end": 11.82
+          },
+          {
+            "text": "cache.",
+            "start": 11.82,
+            "end": 12.06
+          }
+        ]
+      },
+      {
+        "start": 12.64,
+        "end": 14.04,
+        "text": "Edits setuid binary.",
+        "words": [
+          {
+            "text": "Edits",
+            "start": 12.64,
+            "end": 13.04
+          },
+          {
+            "text": "setuid",
+            "start": 13.04,
+            "end": 13.38
+          },
+          {
+            "text": "binary.",
+            "start": 13.72,
+            "end": 14.04
+          }
+        ]
+      },
+      {
+        "start": 14.58,
+        "end": 15.04,
+        "text": "Gains root.",
+        "words": [
+          {
+            "text": "Gains",
+            "start": 14.58,
+            "end": 14.7
+          },
+          {
+            "text": "root.",
+            "start": 14.7,
+            "end": 15.04
+          }
+        ]
+      },
+      {
+        "start": 15.72,
+        "end": 17.34,
+        "text": "Every distro since 2017.",
+        "words": [
+          {
+            "text": "Every",
+            "start": 15.72,
+            "end": 15.78
+          },
+          {
+            "text": "distro",
+            "start": 15.78,
+            "end": 16.28
+          },
+          {
+            "text": "since",
+            "start": 16.28,
+            "end": 16.48
+          },
+          {
+            "text": "2017.",
+            "start": 16.48,
+            "end": 17.34
+          }
+        ]
+      },
+      {
+        "start": 17.34,
+        "end": 21.44,
+        "text": "Four properties never together: portable, tiny, stealthy,",
+        "words": [
+          {
+            "text": "Four",
+            "start": 17.34,
+            "end": 17.77
+          },
+          {
+            "text": "properties",
+            "start": 18.2,
+            "end": 18.62
+          },
+          {
+            "text": "never",
+            "start": 18.62,
+            "end": 18.9
+          },
+          {
+            "text": "together:",
+            "start": 18.9,
+            "end": 19.28
+          },
+          {
+            "text": "portable,",
+            "start": 19.8,
+            "end": 19.96
+          },
+          {
+            "text": "tiny,",
+            "start": 20.46,
+            "end": 20.6
+          },
+          {
+            "text": "stealthy,",
+            "start": 21.06,
+            "end": 21.44
+          }
+        ]
+      },
+      {
+        "start": 21.72,
+        "end": 22.14,
+        "text": "cross-container.",
+        "words": [
+          {
+            "text": "cross-container.",
+            "start": 21.72,
+            "end": 22.14
+          }
+        ]
+      },
+      {
+        "start": 22.78,
+        "end": 24.86,
+        "text": "Page cache shared across all processes and",
+        "words": [
+          {
+            "text": "Page",
+            "start": 22.78,
+            "end": 22.94
+          },
+          {
+            "text": "cache",
+            "start": 22.94,
+            "end": 23.2
+          },
+          {
+            "text": "shared",
+            "start": 23.2,
+            "end": 23.62
+          },
+          {
+            "text": "across",
+            "start": 23.62,
+            "end": 23.8
+          },
+          {
+            "text": "all",
+            "start": 23.8,
+            "end": 24.1
+          },
+          {
+            "text": "processes",
+            "start": 24.1,
+            "end": 24.56
+          },
+          {
+            "text": "and",
+            "start": 24.56,
+            "end": 24.86
+          }
+        ]
+      },
+      {
+        "start": 24.86,
+        "end": 25.18,
+        "text": "containers.",
+        "words": [
+          {
+            "text": "containers.",
+            "start": 24.86,
+            "end": 25.18
+          }
+        ]
+      },
+      {
+        "start": 25.18,
+        "end": 28.78,
+        "text": "Four steps: AF_ALG socket,",
+        "words": [
+          {
+            "text": "Four",
+            "start": 25.18,
+            "end": 25.74
+          },
+          {
+            "text": "steps:",
+            "start": 26.3,
+            "end": 26.62
+          },
+          {
+            "text": "AF_ALG",
+            "start": 26.62,
+            "end": 27.56
+          },
+          {
+            "text": "socket,",
+            "start": 28.5,
+            "end": 28.78
+          }
+        ]
+      },
+      {
+        "start": 29.3,
+        "end": 32.767,
+        "text": "shellcode payload, write cached su, execve poisoned",
+        "words": [
+          {
+            "text": "shellcode",
+            "start": 29.3,
+            "end": 29.64
+          },
+          {
+            "text": "payload,",
+            "start": 29.64,
+            "end": 29.92
+          },
+          {
+            "text": "write",
+            "start": 30.52,
+            "end": 30.6
+          },
+          {
+            "text": "cached",
+            "start": 30.6,
+            "end": 30.92
+          },
+          {
+            "text": "su,",
+            "start": 30.92,
+            "end": 31.38
+          },
+          {
+            "text": "execve",
+            "start": 31.84,
+            "end": 32.26
+          },
+          {
+            "text": "poisoned",
+            "start": 32.26,
+            "end": 32.767
+          }
+        ]
+      },
+      {
+        "start": 32.767,
+        "end": 33.273,
+        "text": "su.",
+        "words": [
+          {
+            "text": "su.",
+            "start": 32.767,
+            "end": 33.273
+          }
+        ]
+      },
+      {
+        "start": 33.78,
+        "end": 34.04,
+        "text": "No race.",
+        "words": [
+          {
+            "text": "No",
+            "start": 33.78,
+            "end": 33.84
+          },
+          {
+            "text": "race.",
+            "start": 33.84,
+            "end": 34.04
+          }
+        ]
+      },
+      {
+        "start": 34.48,
+        "end": 34.96,
+        "text": "No offsets.",
+        "words": [
+          {
+            "text": "No",
+            "start": 34.48,
+            "end": 34.62
+          },
+          {
+            "text": "offsets.",
+            "start": 34.62,
+            "end": 34.96
+          }
+        ]
+      },
+      {
+        "start": 35.62,
+        "end": 36.42,
+        "text": "Same exploit everywhere.",
+        "words": [
+          {
+            "text": "Same",
+            "start": 35.62,
+            "end": 35.67
+          },
+          {
+            "text": "exploit",
+            "start": 35.62,
+            "end": 35.94
+          },
+          {
+            "text": "everywhere.",
+            "start": 35.94,
+            "end": 36.42
+          }
+        ]
+      },
+      {
+        "start": 37.34,
+        "end": 39.48,
+        "text": "Mitigation blocklists algif_aead.",
+        "words": [
+          {
+            "text": "Mitigation",
+            "start": 37.34,
+            "end": 37.66
+          },
+          {
+            "text": "blocklists",
+            "start": 37.66,
+            "end": 38.18
+          },
+          {
+            "text": "algif_aead.",
+            "start": 38.18,
+            "end": 39.48
+          }
+        ]
+      },
+      {
+        "start": 40.78,
+        "end": 43.04,
+        "text": "But Dirty Frag and Fragnesia bypass via",
+        "words": [
+          {
+            "text": "But",
+            "start": 40.78,
+            "end": 40.83
+          },
+          {
+            "text": "Dirty",
+            "start": 40.82,
+            "end": 40.98
+          },
+          {
+            "text": "Frag",
+            "start": 40.98,
+            "end": 41.32
+          },
+          {
+            "text": "and",
+            "start": 41.32,
+            "end": 41.62
+          },
+          {
+            "text": "Fragnesia",
+            "start": 41.62,
+            "end": 42.14
+          },
+          {
+            "text": "bypass",
+            "start": 42.14,
+            "end": 42.4
+          },
+          {
+            "text": "via",
+            "start": 42.4,
+            "end": 43.04
+          }
+        ]
+      },
+      {
+        "start": 43.04,
+        "end": 44.88,
+        "text": "xfrm and RxRPC.",
+        "words": [
+          {
+            "text": "xfrm",
+            "start": 43.04,
+            "end": 43.86
+          },
+          {
+            "text": "and",
+            "start": 43.86,
+            "end": 44.14
+          },
+          {
+            "text": "RxRPC.",
+            "start": 44.14,
+            "end": 44.88
+          }
+        ]
+      },
+      {
+        "start": 45.72,
+        "end": 46.94,
+        "text": "Bug class wider than one module.",
+        "words": [
+          {
+            "text": "Bug",
+            "start": 45.72,
+            "end": 45.77
+          },
+          {
+            "text": "class",
+            "start": 45.72,
+            "end": 45.94
+          },
+          {
+            "text": "wider",
+            "start": 45.94,
+            "end": 46.24
+          },
+          {
+            "text": "than",
+            "start": 46.24,
+            "end": 46.52
+          },
+          {
+            "text": "one",
+            "start": 46.52,
+            "end": 46.68
+          },
+          {
+            "text": "module.",
+            "start": 46.68,
+            "end": 46.94
+          }
+        ]
+      },
+      {
+        "start": 47.36,
+        "end": 49.12,
+        "text": "Every major distro released advisories.",
+        "words": [
+          {
+            "text": "Every",
+            "start": 47.36,
+            "end": 47.52
+          },
+          {
+            "text": "major",
+            "start": 47.52,
+            "end": 47.82
+          },
+          {
+            "text": "distro",
+            "start": 47.82,
+            "end": 48.26
+          },
+          {
+            "text": "released",
+            "start": 48.26,
+            "end": 48.56
+          },
+          {
+            "text": "advisories.",
+            "start": 48.56,
+            "end": 49.12
+          }
+        ]
+      },
+      {
+        "start": 49.12,
+        "end": 50.28,
+        "text": "Patched in mainline.",
+        "words": [
+          {
+            "text": "Patched",
+            "start": 49.12,
+            "end": 49.55
+          },
+          {
+            "text": "in",
+            "start": 49.98,
+            "end": 50.12
+          },
+          {
+            "text": "mainline.",
+            "start": 50.12,
+            "end": 50.28
+          }
+        ]
+      },
+      {
+        "start": 50.98,
+        "end": 54.0,
+        "text": "Dirty Pipe 2022 was same class different",
+        "words": [
+          {
+            "text": "Dirty",
+            "start": 50.98,
+            "end": 51.12
+          },
+          {
+            "text": "Pipe",
+            "start": 51.12,
+            "end": 51.42
+          },
+          {
+            "text": "2022",
+            "start": 51.42,
+            "end": 52.32
+          },
+          {
+            "text": "was",
+            "start": 52.32,
+            "end": 53.2
+          },
+          {
+            "text": "same",
+            "start": 53.2,
+            "end": 53.4
+          },
+          {
+            "text": "class",
+            "start": 53.4,
+            "end": 53.7
+          },
+          {
+            "text": "different",
+            "start": 53.7,
+            "end": 54.0
+          }
+        ]
+      },
+      {
+        "start": 54.0,
+        "end": 54.36,
+        "text": "subsystem.",
+        "words": [
+          {
+            "text": "subsystem.",
+            "start": 54.0,
+            "end": 54.36
+          }
+        ]
+      },
+      {
+        "start": 55.88,
+        "end": 58.8,
+        "text": "2017 optimization broke page-cache isolation.",
+        "words": [
+          {
+            "text": "2017",
+            "start": 55.88,
+            "end": 56.58
+          },
+          {
+            "text": "optimization",
+            "start": 56.58,
+            "end": 57.28
+          },
+          {
+            "text": "broke",
+            "start": 57.28,
+            "end": 57.76
+          },
+          {
+            "text": "page-cache",
+            "start": 57.76,
+            "end": 58.03
+          },
+          {
+            "text": "isolation.",
+            "start": 58.3,
+            "end": 58.8
+          }
+        ]
+      },
+      {
+        "start": 58.8,
+        "end": 62.68,
+        "text": "Nine years later, 732-byte script exploits",
+        "words": [
+          {
+            "text": "Nine",
+            "start": 58.8,
+            "end": 59.23
+          },
+          {
+            "text": "years",
+            "start": 59.66,
+            "end": 59.82
+          },
+          {
+            "text": "later,",
+            "start": 59.82,
+            "end": 60.1
+          },
+          {
+            "text": "732-byte",
+            "start": 60.1,
+            "end": 60.93
+          },
+          {
+            "text": "script",
+            "start": 61.76,
+            "end": 62.14
+          },
+          {
+            "text": "exploits",
+            "start": 62.14,
+            "end": 62.68
+          }
+        ]
+      },
+      {
+        "start": 62.68,
+        "end": 63.84,
+        "text": "it on every distro.",
+        "words": [
+          {
+            "text": "it",
+            "start": 62.68,
+            "end": 63.04
+          },
+          {
+            "text": "on",
+            "start": 63.04,
+            "end": 63.16
+          },
+          {
+            "text": "every",
+            "start": 63.16,
+            "end": 63.38
+          },
+          {
+            "text": "distro.",
+            "start": 63.38,
+            "end": 63.84
+          }
+        ]
+      },
+      {
+        "start": 64.42,
+        "end": 66.14,
+        "text": "Have you verified your kernel includes the",
+        "words": [
+          {
+            "text": "Have",
+            "start": 64.42,
+            "end": 64.56
+          },
+          {
+            "text": "you",
+            "start": 64.56,
+            "end": 64.66
+          },
+          {
+            "text": "verified",
+            "start": 64.66,
+            "end": 64.86
+          },
+          {
+            "text": "your",
+            "start": 64.86,
+            "end": 65.2
+          },
+          {
+            "text": "kernel",
+            "start": 65.2,
+            "end": 65.44
+          },
+          {
+            "text": "includes",
+            "start": 65.44,
+            "end": 65.96
+          },
+          {
+            "text": "the",
+            "start": 65.96,
+            "end": 66.14
+          }
+        ]
+      },
+      {
+        "start": 66.14,
+        "end": 69.32,
+        "text": "CVE-2026-31431 fix?",
+        "words": [
+          {
+            "text": "CVE-2026-31431",
+            "start": 66.14,
+            "end": 68.94
+          },
+          {
+            "text": "fix?",
+            "start": 68.94,
+            "end": 69.32
+          }
+        ]
+      },
+      {
+        "start": 69.84,
+        "end": 70.44,
+        "text": "Tell me in the comments.",
+        "words": [
+          {
+            "text": "Tell",
+            "start": 69.84,
+            "end": 69.92
+          },
+          {
+            "text": "me",
+            "start": 69.92,
+            "end": 70.06
+          },
+          {
+            "text": "in",
+            "start": 70.06,
+            "end": 70.14
+          },
+          {
+            "text": "the",
+            "start": 70.14,
+            "end": 70.22
+          },
+          {
+            "text": "comments.",
+            "start": 70.22,
+            "end": 70.44
+          }
+        ]
+      }
+    ]
   }
 }
