@@ -67,8 +67,8 @@
       "slide": 1,
       "role": "cover",
       "kicker": "AI × GOVERNANCE",
-      "on_slide_copy": "A FRONTIER MODEL GOT PULLED OVER A 'JAILBREAK.' THE DEMO WAS ASKING IT TO READ CODE AND FIX BUGS.",
-      "subline": "On June 12 a US export directive suspended Fable 5 and Mythos 5. Anthropic complied, disagreed, and says it found no real-world abuse.",
+      "on_slide_copy": "PULLED FOR READING CODE AND FIXING BUGS.",
+      "subline": "On June 12 a US export directive suspended Fable 5 and Mythos 5. Anthropic complied, disputed the finding, and says it found no real-world abuse.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A single towering monolith of light stands in a dark void, its steady glow abruptly cut to a thin dying filament by an unseen hand, premium dark editorial key art, the monolith held in the upper third with clean unmarked negative space filling the lower third.",
       "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/01_cover.png",
@@ -80,8 +80,8 @@
       "slide": 2,
       "role": "context",
       "kicker": "WHAT HAPPENED",
-      "on_slide_copy": "Anthropic launched Claude Fable 5 on June 9 as its first publicly available frontier model. Three days later, a US export-control directive ordered all access suspended for any foreign national, so Anthropic disabled both Fable 5 and Mythos 5 to comply.",
-      "subline": "The order arrived at 5:21pm ET on June 12 and gave no technical detail. Every other Anthropic model stayed online.",
+      "on_slide_copy": "Fable 5 launched June 9. Three days later a US directive suspended it.",
+      "subline": "The order arrived at 5:21pm ET on June 12 with no technical detail. Every other Anthropic model stayed online.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Low raking light runs along a short horizontal sequence of light in the dark: a bright launch flare, then two faint marks, then a hard severing line that cuts the glow short, while a separate row of small lamps nearby stays calmly lit, dark editorial photography, the sequence set high over an empty lower third.",
       "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/02_context.png",
@@ -93,8 +93,8 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT MATTERS",
-      "on_slide_copy": "The trigger was a reported jailbreak, not a real-world attack. Pulling a deployed model used by hundreds of millions over one disputed bypass sets a precedent: a frontier launch can be reversed on a verbal claim.",
-      "subline": "Anthropic argues the same standard, applied across the industry, would stall new model releases at every lab.",
+      "on_slide_copy": "One disputed bypass reversed a model used by hundreds of millions.",
+      "subline": "Anthropic argues the same standard applied across the industry would stall new model releases at every lab. The trigger was a reported bypass, not a confirmed real-world attack.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A focused side light catches a single tipped block of light in the dark beginning to lean toward a long receding row of identical dormant blocks, the threat of a chain reaction implied but not yet fallen, tense dark editorial, the row centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/03_risk.png",
@@ -106,10 +106,10 @@
       "slide": 4,
       "role": "mechanism",
       "kicker": "WHAT THE BYPASS WAS",
-      "on_slide_copy": "By Anthropic's account, the government's demo was asking the model to read a codebase and fix its flaws, which is daily work for defenders. A researcher separately chained unicode tricks, long context, and narrative framing to coax answers past the model's spoken refusals.",
-      "subline": "Anthropic says its strongest safeguards run as independent classifiers outside the model, so talking past a refusal is not the same as defeating them.",
+      "on_slide_copy": "The researcher talked past refusals. The real safeguards sit outside the model.",
+      "subline": "A researcher chained unicode tricks, long context, and narrative framing to slip past spoken refusals, not the independent classifier layer that enforces hard limits.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A hard top-down beam falls on a soft inner core of light wrapped by a separate firm outer lattice in the dark, a thin probing thread slipping past the yielding inner core but stopping dead at the rigid outer lattice, abstract premium dark key art, the core framed in the upper third over clean dark space.",
+      "visual_prompt": "A hard top-down beam falls on a soft inner core of light wrapped by a separate firm outer lattice in the dark, a fine probing filament slipping past the yielding inner core but stopping dead at the rigid outer lattice, abstract premium dark key art, the core framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/04_mechanism.png",
       "asset_status": "generated",
       "cta": "",
@@ -119,8 +119,8 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "WHERE THE PANIC BREAKS",
-      "on_slide_copy": "Anthropic says some of the shared outputs were not even from Fable 5, and the rest repeated information already public, with no real uplift. A wider usage review found no evidence the safeguards were circumvented to produce genuinely dangerous content.",
-      "subline": "The company notes the same capability is available in other models, including GPT-5.5, and is used by defenders every day.",
+      "on_slide_copy": "Some shared outputs weren't from Fable 5. None showed real-world uplift.",
+      "subline": "Anthropic's usage review found no evidence the safeguards were beaten to produce dangerous content. The same capability is available in GPT-5.5 and used by defenders daily.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Cool light grazes two facing fragments of light in the dark that refuse to align, one fragment clearly mismatched and fading out, a thin measuring line between them exposing the gap, tense editorial composition, the fragments held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/05_failure-point.png",
@@ -132,8 +132,8 @@
       "slide": 6,
       "role": "defense",
       "kicker": "HOW TO READ THE CLAIM",
-      "on_slide_copy": "Before you panic or escalate, ask four things. Is it a refusal bypass or a real safeguard bypass? Does the output beat what is already public? Is there evidence of real-world harm? Was the demo reproduced independently?",
-      "subline": "Treat a screenshot as a claim, not a finding. Demand uplift over public knowledge before you call it a breach.",
+      "on_slide_copy": "Before you escalate, ask four questions about any jailbreak claim.",
+      "subline": "Is it a refusal bypass or a safeguard bypass? Does the output exceed public knowledge? Is there real-world harm? Was the demo independently reproduced?",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A balanced composition in the dark: a noisy stream of raw sparks of light passes through four successive fine sieves, and only a single verified mote emerges clear at the far end, calm and orderly premium editorial key art, the sieves centered with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/06_defense.png",
@@ -312,42 +312,42 @@
       {
         "start": 0,
         "end": 7,
-        "text": "A frontier model just got pulled over a jailbreak. By Anthropic's own account, the demo was asking the model to read code and fix bugs."
+        "text": "The US government pulled a frontier model over a jailbreak this week, and when Anthropic looked at the demonstration, it was someone asking the model to read a codebase and fix software flaws."
       },
       {
         "start": 7,
         "end": 15,
-        "text": "Anthropic launched Claude Fable 5 on June ninth. Three days later a US export directive ordered all access suspended for any foreign national, so the company disabled Fable 5 and Mythos 5."
+        "text": "Anthropic launched Claude Fable 5 on June ninth as its first publicly available frontier model, and three days later a US export-control directive ordered access suspended for any foreign national."
       },
       {
         "start": 15,
         "end": 23,
-        "text": "The trigger was a reported jailbreak, not a real attack. Pulling a model used by hundreds of millions over one disputed bypass sets a precedent that any launch can be reversed on a verbal claim."
+        "text": "The trigger was a claimed bypass, not a confirmed attack, and suspending a model used by hundreds of millions over a single disputed technique sets a precedent the whole industry should watch."
       },
       {
         "start": 23,
         "end": 31,
-        "text": "Here is what the bypass actually was. A researcher chained unicode tricks, long context, and narrative framing to talk past the model's refusals."
+        "text": "A researcher separately chained unicode tricks, long context, and narrative framing to talk past the model's spoken refusals, but Anthropic's strongest safeguards run as independent classifiers that sit outside the model entirely."
       },
       {
         "start": 31,
         "end": 39,
-        "text": "But Anthropic says its real safeguards run as independent classifiers outside the model. Talking past a refusal is not the same as defeating them."
+        "text": "Getting a model to skip a polite refusal is not the same as defeating those external classifiers, and Anthropic says its usage review found no evidence of real-world circumvention."
       },
       {
         "start": 39,
         "end": 46,
-        "text": "It also says some outputs were not even from Fable 5, the rest was already public, and a usage review found no real-world abuse."
+        "text": "Anthropic also disputes the evidence itself: some of the shared outputs were not from Fable 5 at all, and the rest repeated information already available in public sources with no meaningful uplift."
       },
       {
         "start": 46,
         "end": 53,
-        "text": "So before you panic, ask four things. Is it a refusal bypass or a safeguard bypass. Does it beat public knowledge. Is there real-world harm. Was it reproduced."
+        "text": "Before you escalate any jailbreak claim, ask four questions: is it a refusal bypass or a real safeguard bypass, does the output beat what is already public, is there evidence of actual harm, and was the demo independently reproduced?"
       },
       {
         "start": 53,
         "end": 58,
-        "text": "A refusal bypass is not a safeguard bypass. A headline is a claim until the evidence shows real uplift. What do you check first?"
+        "text": "A refusal bypass is not a safeguard bypass, and a jailbreak headline stays a claim until the evidence shows genuine real-world uplift."
       }
     ],
     "beats": [
