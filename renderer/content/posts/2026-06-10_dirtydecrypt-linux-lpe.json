@@ -409,820 +409,1342 @@
     "licenses": [],
     "captions": [
       {
-        "start": 0,
-        "end": 0.8,
-        "text": "Silent patch.",
+        "start": 0.0,
+        "end": 1.52,
+        "text": "Here is how a Linux kernel bug",
         "words": [
           {
-            "text": "Silent",
-            "start": 0,
-            "end": 0.56
-          },
-          {
-            "text": "patch.",
-            "start": 0.56,
-            "end": 0.8
-          }
-        ]
-      },
-      {
-        "start": 1.26,
-        "end": 1.66,
-        "text": "No disclosure.",
-        "words": [
-          {
-            "text": "No",
-            "start": 1.26,
-            "end": 1.34
-          },
-          {
-            "text": "disclosure.",
-            "start": 1.34,
-            "end": 1.66
-          }
-        ]
-      },
-      {
-        "start": 2.34,
-        "end": 3.76,
-        "text": "Researchers told it was a duplicate.",
-        "words": [
-          {
-            "text": "Researchers",
-            "start": 2.34,
-            "end": 2.56
-          },
-          {
-            "text": "told",
-            "start": 2.56,
-            "end": 3.02
-          },
-          {
-            "text": "it",
-            "start": 3.02,
-            "end": 3.16
-          },
-          {
-            "text": "was",
-            "start": 3.16,
-            "end": 3.26
-          },
-          {
-            "text": "a",
-            "start": 3.26,
-            "end": 3.34
-          },
-          {
-            "text": "duplicate.",
-            "start": 3.34,
-            "end": 3.76
-          }
-        ]
-      },
-      {
-        "start": 4.08,
-        "end": 6.053,
-        "text": "DirtyDecrypt CVE-2026-31635.",
-        "words": [
-          {
-            "text": "DirtyDecrypt",
-            "start": 4.08,
-            "end": 4.62
-          },
-          {
-            "text": "CVE-2026-31635.",
-            "start": 4.62,
-            "end": 6.053
-          }
-        ]
-      },
-      {
-        "start": 6.053,
-        "end": 9.68,
-        "text": "Zellic V12 reported",
-        "words": [
-          {
-            "text": "Zellic",
-            "start": 6.053,
-            "end": 7.487
-          },
-          {
-            "text": "V12",
-            "start": 8.92,
-            "end": 9.3
-          },
-          {
-            "text": "reported",
-            "start": 9.3,
-            "end": 9.68
-          }
-        ]
-      },
-      {
-        "start": 10.26,
-        "end": 10.54,
-        "text": "May 9.",
-        "words": [
-          {
-            "text": "May",
-            "start": 10.26,
-            "end": 10.31
-          },
-          {
-            "text": "9.",
-            "start": 10.3,
-            "end": 10.54
-          }
-        ]
-      },
-      {
-        "start": 10.54,
-        "end": 13,
-        "text": "Maintainers said duplicate, already patched.",
-        "words": [
-          {
-            "text": "Maintainers",
-            "start": 10.54,
-            "end": 11.02
-          },
-          {
-            "text": "said",
-            "start": 11.5,
-            "end": 11.68
-          },
-          {
-            "text": "duplicate,",
-            "start": 11.68,
-            "end": 12
-          },
-          {
-            "text": "already",
-            "start": 12.6,
-            "end": 12.7
-          },
-          {
-            "text": "patched.",
-            "start": 12.7,
-            "end": 13
-          }
-        ]
-      },
-      {
-        "start": 13.54,
-        "end": 13.9,
-        "text": "No CVE.",
-        "words": [
-          {
-            "text": "No",
-            "start": 13.54,
-            "end": 13.64
-          },
-          {
-            "text": "CVE.",
-            "start": 13.64,
-            "end": 13.9
-          }
-        ]
-      },
-      {
-        "start": 14.52,
-        "end": 14.9,
-        "text": "No advisory.",
-        "words": [
-          {
-            "text": "No",
-            "start": 14.52,
-            "end": 14.64
-          },
-          {
-            "text": "advisory.",
-            "start": 14.64,
-            "end": 14.9
-          }
-        ]
-      },
-      {
-        "start": 15.46,
-        "end": 15.84,
-        "text": "No coordination.",
-        "words": [
-          {
-            "text": "No",
-            "start": 15.46,
-            "end": 15.54
-          },
-          {
-            "text": "coordination.",
-            "start": 15.54,
-            "end": 15.84
-          }
-        ]
-      },
-      {
-        "start": 16.78,
-        "end": 20.515,
-        "text": "Only hits Fedora, Arch, openSUSE with CONFIG_RXGK.",
-        "words": [
-          {
-            "text": "Only",
-            "start": 16.78,
-            "end": 16.83
-          },
-          {
-            "text": "hits",
-            "start": 16.78,
-            "end": 17
-          },
-          {
-            "text": "Fedora,",
-            "start": 17,
-            "end": 17.46
-          },
-          {
-            "text": "Arch,",
-            "start": 17.92,
-            "end": 17.97
-          },
-          {
-            "text": "openSUSE",
-            "start": 18.48,
-            "end": 18.74
-          },
-          {
-            "text": "with",
-            "start": 19.26,
-            "end": 19.31
-          },
-          {
-            "text": "CONFIG_RXGK.",
-            "start": 19.26,
-            "end": 20.515
-          }
-        ]
-      },
-      {
-        "start": 21.77,
-        "end": 24.34,
-        "text": "Missing COW guard in rxgk_decrypt_skb.",
-        "words": [
-          {
-            "text": "Missing",
-            "start": 21.77,
-            "end": 22.12
-          },
-          {
-            "text": "COW",
-            "start": 22.12,
-            "end": 22.46
-          },
-          {
-            "text": "guard",
-            "start": 22.68,
-            "end": 22.9
-          },
-          {
-            "text": "in",
-            "start": 22.9,
-            "end": 23.06
-          },
-          {
-            "text": "rxgk_decrypt_skb.",
-            "start": 23.06,
-            "end": 24.34
-          }
-        ]
-      },
-      {
-        "start": 25.62,
-        "end": 27.58,
-        "text": "Writes to shadow, sudoers, SUID.",
-        "words": [
-          {
-            "text": "Writes",
-            "start": 25.62,
-            "end": 25.67
-          },
-          {
-            "text": "to",
-            "start": 25.66,
-            "end": 25.88
-          },
-          {
-            "text": "shadow,",
-            "start": 25.88,
-            "end": 26.1
-          },
-          {
-            "text": "sudoers,",
-            "start": 26.1,
-            "end": 26.84
-          },
-          {
-            "text": "SUID.",
-            "start": 26.84,
-            "end": 27.58
-          }
-        ]
-      },
-      {
-        "start": 28.32,
-        "end": 29.64,
-        "text": "Mirrors Dirty Frag pattern.",
-        "words": [
-          {
-            "text": "Mirrors",
-            "start": 28.32,
-            "end": 28.52
-          },
-          {
-            "text": "Dirty",
-            "start": 28.86,
-            "end": 28.91
-          },
-          {
-            "text": "Frag",
-            "start": 28.86,
-            "end": 29.16
-          },
-          {
-            "text": "pattern.",
-            "start": 29.16,
-            "end": 29.64
-          }
-        ]
-      },
-      {
-        "start": 30.02,
-        "end": 31.72,
-        "text": "Kim forced public when embargo broke.",
-        "words": [
-          {
-            "text": "Kim",
-            "start": 30.02,
-            "end": 30.18
-          },
-          {
-            "text": "forced",
-            "start": 30.18,
-            "end": 30.46
-          },
-          {
-            "text": "public",
-            "start": 30.46,
-            "end": 30.78
-          },
-          {
-            "text": "when",
-            "start": 30.78,
-            "end": 31.04
-          },
-          {
-            "text": "embargo",
-            "start": 31.04,
-            "end": 31.22
-          },
-          {
-            "text": "broke.",
-            "start": 31.22,
-            "end": 31.72
-          }
-        ]
-      },
-      {
-        "start": 32.26,
-        "end": 34.08,
-        "text": "Independent researcher analyzed public commit.",
-        "words": [
-          {
-            "text": "Independent",
-            "start": 32.26,
-            "end": 32.31
-          },
-          {
-            "text": "researcher",
-            "start": 32.26,
-            "end": 32.88
-          },
-          {
-            "text": "analyzed",
-            "start": 32.88,
-            "end": 33.32
-          },
-          {
-            "text": "public",
-            "start": 33.32,
-            "end": 33.76
-          },
-          {
-            "text": "commit.",
-            "start": 33.76,
-            "end": 34.08
-          }
-        ]
-      },
-      {
-        "start": 34.8,
-        "end": 36.22,
-        "text": "Silent patches leave defenders blind.",
-        "words": [
-          {
-            "text": "Silent",
-            "start": 34.8,
-            "end": 34.85
-          },
-          {
-            "text": "patches",
-            "start": 34.8,
-            "end": 35.08
-          },
-          {
-            "text": "leave",
-            "start": 35.08,
-            "end": 35.46
-          },
-          {
-            "text": "defenders",
-            "start": 35.46,
-            "end": 35.84
-          },
-          {
-            "text": "blind.",
-            "start": 35.84,
-            "end": 36.22
-          }
-        ]
-      },
-      {
-        "start": 36.58,
-        "end": 38.48,
-        "text": "Responsible reporters get duplicate responses.",
-        "words": [
-          {
-            "text": "Responsible",
-            "start": 36.58,
-            "end": 36.78
-          },
-          {
-            "text": "reporters",
-            "start": 36.78,
-            "end": 37.38
-          },
-          {
-            "text": "get",
-            "start": 37.38,
-            "end": 37.72
-          },
-          {
-            "text": "duplicate",
-            "start": 37.72,
-            "end": 37.9
-          },
-          {
-            "text": "responses.",
-            "start": 37.9,
-            "end": 38.48
-          }
-        ]
-      },
-      {
-        "start": 39.24,
-        "end": 40.64,
-        "text": "Fix exists but nobody knows.",
-        "words": [
-          {
-            "text": "Fix",
-            "start": 39.24,
-            "end": 39.29
-          },
-          {
-            "text": "exists",
-            "start": 39.24,
-            "end": 39.54
-          },
-          {
-            "text": "but",
-            "start": 39.54,
-            "end": 40.06
-          },
-          {
-            "text": "nobody",
-            "start": 40.06,
-            "end": 40.28
-          },
-          {
-            "text": "knows.",
-            "start": 40.28,
-            "end": 40.64
-          }
-        ]
-      },
-      {
-        "start": 41.28,
-        "end": 43.88,
-        "text": "Kernel killswitch proposal: disable vulnerable function at",
-        "words": [
-          {
-            "text": "Kernel",
-            "start": 41.28,
-            "end": 41.33
-          },
-          {
-            "text": "killswitch",
-            "start": 41.28,
-            "end": 41.47
-          },
-          {
-            "text": "proposal:",
-            "start": 41.66,
-            "end": 42.06
-          },
-          {
-            "text": "disable",
-            "start": 42.54,
-            "end": 42.72
-          },
-          {
-            "text": "vulnerable",
-            "start": 42.72,
-            "end": 43.16
-          },
-          {
-            "text": "function",
-            "start": 43.16,
-            "end": 43.6
-          },
-          {
-            "text": "at",
-            "start": 43.6,
-            "end": 43.88
-          }
-        ]
-      },
-      {
-        "start": 43.88,
-        "end": 44.04,
-        "text": "runtime.",
-        "words": [
-          {
-            "text": "runtime.",
-            "start": 43.88,
-            "end": 44.04
-          }
-        ]
-      },
-      {
-        "start": 44.8,
-        "end": 47.28,
-        "text": "Rocky Linux security repo for accelerated fixes.",
-        "words": [
-          {
-            "text": "Rocky",
-            "start": 44.8,
-            "end": 44.85
-          },
-          {
-            "text": "Linux",
-            "start": 44.8,
-            "end": 45.06
-          },
-          {
-            "text": "security",
-            "start": 45.06,
-            "end": 45.48
-          },
-          {
-            "text": "repo",
-            "start": 45.48,
-            "end": 45.82
-          },
-          {
-            "text": "for",
-            "start": 45.82,
-            "end": 46.4
-          },
-          {
-            "text": "accelerated",
-            "start": 46.4,
-            "end": 46.74
-          },
-          {
-            "text": "fixes.",
-            "start": 46.74,
-            "end": 47.28
-          }
-        ]
-      },
-      {
-        "start": 47.28,
-        "end": 48.96,
-        "text": "A silent patch is not a fix",
-        "words": [
-          {
-            "text": "A",
-            "start": 47.28,
-            "end": 47.33
-          },
-          {
-            "text": "silent",
-            "start": 47.28,
-            "end": 48.06
-          },
-          {
-            "text": "patch",
-            "start": 48.06,
-            "end": 48.147
+            "text": "Here",
+            "start": 0.0,
+            "end": 0.24
           },
           {
             "text": "is",
-            "start": 48.147,
-            "end": 48.233
+            "start": 0.24,
+            "end": 0.4
           },
           {
-            "text": "not",
-            "start": 48.32,
-            "end": 48.64
+            "text": "how",
+            "start": 0.4,
+            "end": 0.56
           },
           {
             "text": "a",
-            "start": 48.64,
-            "end": 48.78
+            "start": 0.56,
+            "end": 0.7
           },
           {
-            "text": "fix",
-            "start": 48.78,
-            "end": 48.96
-          }
-        ]
-      },
-      {
-        "start": 48.96,
-        "end": 50.44,
-        "text": "for defenders who do not know it",
-        "words": [
-          {
-            "text": "for",
-            "start": 48.96,
-            "end": 49.22
-          },
-          {
-            "text": "defenders",
-            "start": 49.22,
-            "end": 49.52
-          },
-          {
-            "text": "who",
-            "start": 49.52,
-            "end": 49.82
-          },
-          {
-            "text": "do",
-            "start": 49.82,
-            "end": 49.92
-          },
-          {
-            "text": "not",
-            "start": 49.92,
-            "end": 50.12
-          },
-          {
-            "text": "know",
-            "start": 50.12,
-            "end": 50.34
-          },
-          {
-            "text": "it",
-            "start": 50.34,
-            "end": 50.44
-          }
-        ]
-      },
-      {
-        "start": 50.44,
-        "end": 50.7,
-        "text": "exists.",
-        "words": [
-          {
-            "text": "exists.",
-            "start": 50.44,
-            "end": 50.7
-          }
-        ]
-      },
-      {
-        "start": 51.3,
-        "end": 52.72,
-        "text": "Disclosure process leaves gaps.",
-        "words": [
-          {
-            "text": "Disclosure",
-            "start": 51.3,
-            "end": 51.54
-          },
-          {
-            "text": "process",
-            "start": 51.54,
-            "end": 52.1
-          },
-          {
-            "text": "leaves",
-            "start": 52.1,
-            "end": 52.4
-          },
-          {
-            "text": "gaps.",
-            "start": 52.4,
-            "end": 52.72
-          }
-        ]
-      },
-      {
-        "start": 53.26,
-        "end": 54.96,
-        "text": "Do you track silent kernel patches or",
-        "words": [
-          {
-            "text": "Do",
-            "start": 53.26,
-            "end": 53.38
-          },
-          {
-            "text": "you",
-            "start": 53.38,
-            "end": 53.44
-          },
-          {
-            "text": "track",
-            "start": 53.44,
-            "end": 53.66
-          },
-          {
-            "text": "silent",
-            "start": 53.66,
-            "end": 54
+            "text": "Linux",
+            "start": 0.7,
+            "end": 0.88
           },
           {
             "text": "kernel",
-            "start": 54,
-            "end": 54.24
+            "start": 0.88,
+            "end": 1.18
           },
           {
-            "text": "patches",
-            "start": 54.24,
-            "end": 54.58
-          },
-          {
-            "text": "or",
-            "start": 54.58,
-            "end": 54.96
+            "text": "bug",
+            "start": 1.18,
+            "end": 1.52
           }
         ]
       },
       {
-        "start": 54.96,
-        "end": 56.02,
-        "text": "only CVEs?",
+        "start": 1.52,
+        "end": 4.44,
+        "text": "got patched without anyone outside the maintainers",
         "words": [
           {
-            "text": "only",
-            "start": 54.96,
-            "end": 55.26
+            "text": "got",
+            "start": 1.52,
+            "end": 1.88
           },
           {
-            "text": "CVEs?",
-            "start": 55.26,
-            "end": 56.02
-          }
-        ]
-      },
-      {
-        "start": 56.18,
-        "end": 56.86,
-        "text": "Tell me in the comments.",
-        "words": [
-          {
-            "text": "Tell",
-            "start": 56.18,
-            "end": 56.32
+            "text": "patched",
+            "start": 1.88,
+            "end": 2.22
           },
           {
-            "text": "me",
-            "start": 56.32,
-            "end": 56.46
+            "text": "without",
+            "start": 2.22,
+            "end": 2.68
           },
           {
-            "text": "in",
-            "start": 56.46,
-            "end": 56.56
+            "text": "anyone",
+            "start": 2.68,
+            "end": 3.24
+          },
+          {
+            "text": "outside",
+            "start": 3.24,
+            "end": 3.6
           },
           {
             "text": "the",
-            "start": 56.56,
-            "end": 56.61
+            "start": 3.6,
+            "end": 3.86
           },
           {
-            "text": "comments.",
-            "start": 56.6,
-            "end": 56.86
+            "text": "maintainers",
+            "start": 3.86,
+            "end": 4.44
+          }
+        ]
+      },
+      {
+        "start": 4.44,
+        "end": 5.24,
+        "text": "knowing it was serious.",
+        "words": [
+          {
+            "text": "knowing",
+            "start": 4.44,
+            "end": 4.64
+          },
+          {
+            "text": "it",
+            "start": 4.64,
+            "end": 4.9
+          },
+          {
+            "text": "was",
+            "start": 4.9,
+            "end": 5.0
+          },
+          {
+            "text": "serious.",
+            "start": 5.0,
+            "end": 5.24
+          }
+        ]
+      },
+      {
+        "start": 6.16,
+        "end": 8.08,
+        "text": "When Zellic and V12 reported it on",
+        "words": [
+          {
+            "text": "When",
+            "start": 6.16,
+            "end": 6.3
+          },
+          {
+            "text": "Zellic",
+            "start": 6.3,
+            "end": 6.64
+          },
+          {
+            "text": "and",
+            "start": 6.64,
+            "end": 6.78
+          },
+          {
+            "text": "V12",
+            "start": 6.78,
+            "end": 7.08
+          },
+          {
+            "text": "reported",
+            "start": 7.08,
+            "end": 7.6
+          },
+          {
+            "text": "it",
+            "start": 7.6,
+            "end": 7.86
+          },
+          {
+            "text": "on",
+            "start": 7.86,
+            "end": 8.08
+          }
+        ]
+      },
+      {
+        "start": 8.08,
+        "end": 10.06,
+        "text": "May ninth, the maintainers said it was",
+        "words": [
+          {
+            "text": "May",
+            "start": 8.08,
+            "end": 8.24
+          },
+          {
+            "text": "ninth,",
+            "start": 8.24,
+            "end": 8.67
+          },
+          {
+            "text": "the",
+            "start": 9.1,
+            "end": 9.15
+          },
+          {
+            "text": "maintainers",
+            "start": 9.12,
+            "end": 9.36
+          },
+          {
+            "text": "said",
+            "start": 9.6,
+            "end": 9.82
+          },
+          {
+            "text": "it",
+            "start": 9.82,
+            "end": 9.96
+          },
+          {
+            "text": "was",
+            "start": 9.96,
+            "end": 10.06
+          }
+        ]
+      },
+      {
+        "start": 10.06,
+        "end": 11.96,
+        "text": "a duplicate that was already fixed in",
+        "words": [
+          {
+            "text": "a",
+            "start": 10.06,
+            "end": 10.14
+          },
+          {
+            "text": "duplicate",
+            "start": 10.14,
+            "end": 10.48
+          },
+          {
+            "text": "that",
+            "start": 10.48,
+            "end": 11.04
+          },
+          {
+            "text": "was",
+            "start": 11.04,
+            "end": 11.16
+          },
+          {
+            "text": "already",
+            "start": 11.16,
+            "end": 11.4
+          },
+          {
+            "text": "fixed",
+            "start": 11.4,
+            "end": 11.76
+          },
+          {
+            "text": "in",
+            "start": 11.76,
+            "end": 11.96
+          }
+        ]
+      },
+      {
+        "start": 11.96,
+        "end": 14.64,
+        "text": "mainline, so no CVE and no advisory",
+        "words": [
+          {
+            "text": "mainline,",
+            "start": 11.96,
+            "end": 12.1
+          },
+          {
+            "text": "so",
+            "start": 12.92,
+            "end": 13.0
+          },
+          {
+            "text": "no",
+            "start": 13.0,
+            "end": 13.2
+          },
+          {
+            "text": "CVE",
+            "start": 13.2,
+            "end": 13.54
+          },
+          {
+            "text": "and",
+            "start": 13.54,
+            "end": 14.12
+          },
+          {
+            "text": "no",
+            "start": 14.12,
+            "end": 14.3
+          },
+          {
+            "text": "advisory",
+            "start": 14.3,
+            "end": 14.64
+          }
+        ]
+      },
+      {
+        "start": 14.64,
+        "end": 15.44,
+        "text": "ever went out.",
+        "words": [
+          {
+            "text": "ever",
+            "start": 14.64,
+            "end": 15.06
+          },
+          {
+            "text": "went",
+            "start": 15.06,
+            "end": 15.22
+          },
+          {
+            "text": "out.",
+            "start": 15.22,
+            "end": 15.44
+          }
+        ]
+      },
+      {
+        "start": 16.5,
+        "end": 18.82,
+        "text": "The flaw lives in the kernel's rxgk",
+        "words": [
+          {
+            "text": "The",
+            "start": 16.5,
+            "end": 16.62
+          },
+          {
+            "text": "flaw",
+            "start": 16.62,
+            "end": 16.82
+          },
+          {
+            "text": "lives",
+            "start": 16.82,
+            "end": 17.14
+          },
+          {
+            "text": "in",
+            "start": 17.14,
+            "end": 17.42
+          },
+          {
+            "text": "the",
+            "start": 17.42,
+            "end": 17.5
+          },
+          {
+            "text": "kernel's",
+            "start": 17.5,
+            "end": 18.04
+          },
+          {
+            "text": "rxgk",
+            "start": 18.04,
+            "end": 18.82
+          }
+        ]
+      },
+      {
+        "start": 18.82,
+        "end": 20.98,
+        "text": "crypto layer, and it only affects kernels",
+        "words": [
+          {
+            "text": "crypto",
+            "start": 18.82,
+            "end": 19.02
+          },
+          {
+            "text": "layer,",
+            "start": 19.02,
+            "end": 19.4
+          },
+          {
+            "text": "and",
+            "start": 19.88,
+            "end": 19.94
+          },
+          {
+            "text": "it",
+            "start": 19.94,
+            "end": 20.02
+          },
+          {
+            "text": "only",
+            "start": 20.02,
+            "end": 20.18
+          },
+          {
+            "text": "affects",
+            "start": 20.18,
+            "end": 20.58
+          },
+          {
+            "text": "kernels",
+            "start": 20.58,
+            "end": 20.98
+          }
+        ]
+      },
+      {
+        "start": 20.98,
+        "end": 23.0,
+        "text": "that build with that feature turned on,",
+        "words": [
+          {
+            "text": "that",
+            "start": 20.98,
+            "end": 21.44
+          },
+          {
+            "text": "build",
+            "start": 21.44,
+            "end": 21.64
+          },
+          {
+            "text": "with",
+            "start": 21.64,
+            "end": 21.88
+          },
+          {
+            "text": "that",
+            "start": 21.88,
+            "end": 22.04
+          },
+          {
+            "text": "feature",
+            "start": 22.04,
+            "end": 22.44
+          },
+          {
+            "text": "turned",
+            "start": 22.44,
+            "end": 22.72
+          },
+          {
+            "text": "on,",
+            "start": 22.72,
+            "end": 23.0
+          }
+        ]
+      },
+      {
+        "start": 23.44,
+        "end": 25.8,
+        "text": "which means Fedora, Arch, and openSUSE.",
+        "words": [
+          {
+            "text": "which",
+            "start": 23.44,
+            "end": 23.52
+          },
+          {
+            "text": "means",
+            "start": 23.52,
+            "end": 23.74
+          },
+          {
+            "text": "Fedora,",
+            "start": 23.74,
+            "end": 24.04
+          },
+          {
+            "text": "Arch,",
+            "start": 24.74,
+            "end": 24.82
+          },
+          {
+            "text": "and",
+            "start": 25.26,
+            "end": 25.34
+          },
+          {
+            "text": "openSUSE.",
+            "start": 25.34,
+            "end": 25.8
+          }
+        ]
+      },
+      {
+        "start": 25.8,
+        "end": 29.18,
+        "text": "The decrypt path wrote straight into memory",
+        "words": [
+          {
+            "text": "The",
+            "start": 25.8,
+            "end": 26.78
+          },
+          {
+            "text": "decrypt",
+            "start": 26.78,
+            "end": 27.46
+          },
+          {
+            "text": "path",
+            "start": 27.46,
+            "end": 27.88
+          },
+          {
+            "text": "wrote",
+            "start": 27.88,
+            "end": 28.26
+          },
+          {
+            "text": "straight",
+            "start": 28.26,
+            "end": 28.58
+          },
+          {
+            "text": "into",
+            "start": 28.58,
+            "end": 28.96
+          },
+          {
+            "text": "memory",
+            "start": 28.96,
+            "end": 29.18
+          }
+        ]
+      },
+      {
+        "start": 29.18,
+        "end": 31.82,
+        "text": "pages that other processes share, because the",
+        "words": [
+          {
+            "text": "pages",
+            "start": 29.18,
+            "end": 29.64
+          },
+          {
+            "text": "that",
+            "start": 29.64,
+            "end": 29.92
+          },
+          {
+            "text": "other",
+            "start": 29.92,
+            "end": 30.12
+          },
+          {
+            "text": "processes",
+            "start": 30.12,
+            "end": 30.62
+          },
+          {
+            "text": "share,",
+            "start": 30.62,
+            "end": 31.0
+          },
+          {
+            "text": "because",
+            "start": 31.0,
+            "end": 31.64
+          },
+          {
+            "text": "the",
+            "start": 31.64,
+            "end": 31.82
+          }
+        ]
+      },
+      {
+        "start": 31.82,
+        "end": 33.8,
+        "text": "copy-on-write step that should clone a page",
+        "words": [
+          {
+            "text": "copy-on-write",
+            "start": 31.82,
+            "end": 31.96
+          },
+          {
+            "text": "step",
+            "start": 32.1,
+            "end": 32.72
+          },
+          {
+            "text": "that",
+            "start": 32.72,
+            "end": 32.96
+          },
+          {
+            "text": "should",
+            "start": 32.96,
+            "end": 33.16
+          },
+          {
+            "text": "clone",
+            "start": 33.16,
+            "end": 33.44
+          },
+          {
+            "text": "a",
+            "start": 33.44,
+            "end": 33.58
+          },
+          {
+            "text": "page",
+            "start": 33.58,
+            "end": 33.8
+          }
+        ]
+      },
+      {
+        "start": 33.8,
+        "end": 35.36,
+        "text": "before writing was missing.",
+        "words": [
+          {
+            "text": "before",
+            "start": 33.8,
+            "end": 34.24
+          },
+          {
+            "text": "writing",
+            "start": 34.24,
+            "end": 34.64
+          },
+          {
+            "text": "was",
+            "start": 34.64,
+            "end": 35.06
+          },
+          {
+            "text": "missing.",
+            "start": 35.06,
+            "end": 35.36
+          }
+        ]
+      },
+      {
+        "start": 36.32,
+        "end": 38.46,
+        "text": "That let an attacker corrupt privileged files",
+        "words": [
+          {
+            "text": "That",
+            "start": 36.32,
+            "end": 36.54
+          },
+          {
+            "text": "let",
+            "start": 36.54,
+            "end": 36.72
+          },
+          {
+            "text": "an",
+            "start": 36.72,
+            "end": 36.9
+          },
+          {
+            "text": "attacker",
+            "start": 36.9,
+            "end": 37.16
+          },
+          {
+            "text": "corrupt",
+            "start": 37.16,
+            "end": 37.66
+          },
+          {
+            "text": "privileged",
+            "start": 37.66,
+            "end": 38.08
+          },
+          {
+            "text": "files",
+            "start": 38.08,
+            "end": 38.46
+          }
+        ]
+      },
+      {
+        "start": 38.46,
+        "end": 41.26,
+        "text": "like the password and sudo configuration, and",
+        "words": [
+          {
+            "text": "like",
+            "start": 38.46,
+            "end": 38.82
+          },
+          {
+            "text": "the",
+            "start": 38.82,
+            "end": 38.96
+          },
+          {
+            "text": "password",
+            "start": 38.96,
+            "end": 39.38
+          },
+          {
+            "text": "and",
+            "start": 39.38,
+            "end": 39.68
+          },
+          {
+            "text": "sudo",
+            "start": 39.68,
+            "end": 39.9
+          },
+          {
+            "text": "configuration,",
+            "start": 39.9,
+            "end": 40.36
+          },
+          {
+            "text": "and",
+            "start": 41.2,
+            "end": 41.26
+          }
+        ]
+      },
+      {
+        "start": 41.26,
+        "end": 43.9,
+        "text": "because the fix shipped quietly, someone read",
+        "words": [
+          {
+            "text": "because",
+            "start": 41.26,
+            "end": 41.5
+          },
+          {
+            "text": "the",
+            "start": 41.5,
+            "end": 41.74
+          },
+          {
+            "text": "fix",
+            "start": 41.74,
+            "end": 41.94
+          },
+          {
+            "text": "shipped",
+            "start": 41.94,
+            "end": 42.44
+          },
+          {
+            "text": "quietly,",
+            "start": 42.44,
+            "end": 42.84
+          },
+          {
+            "text": "someone",
+            "start": 43.46,
+            "end": 43.62
+          },
+          {
+            "text": "read",
+            "start": 43.62,
+            "end": 43.9
+          }
+        ]
+      },
+      {
+        "start": 43.9,
+        "end": 45.68,
+        "text": "it and built a working exploit before",
+        "words": [
+          {
+            "text": "it",
+            "start": 43.9,
+            "end": 44.06
+          },
+          {
+            "text": "and",
+            "start": 44.06,
+            "end": 44.26
+          },
+          {
+            "text": "built",
+            "start": 44.26,
+            "end": 44.44
+          },
+          {
+            "text": "a",
+            "start": 44.44,
+            "end": 44.6
+          },
+          {
+            "text": "working",
+            "start": 44.6,
+            "end": 44.8
+          },
+          {
+            "text": "exploit",
+            "start": 44.8,
+            "end": 45.26
+          },
+          {
+            "text": "before",
+            "start": 45.26,
+            "end": 45.68
+          }
+        ]
+      },
+      {
+        "start": 45.68,
+        "end": 47.2,
+        "text": "defenders even knew to patch.",
+        "words": [
+          {
+            "text": "defenders",
+            "start": 45.68,
+            "end": 46.1
+          },
+          {
+            "text": "even",
+            "start": 46.1,
+            "end": 46.52
+          },
+          {
+            "text": "knew",
+            "start": 46.52,
+            "end": 46.78
+          },
+          {
+            "text": "to",
+            "start": 46.78,
+            "end": 47.0
+          },
+          {
+            "text": "patch.",
+            "start": 47.0,
+            "end": 47.2
+          }
+        ]
+      },
+      {
+        "start": 48.08,
+        "end": 50.02,
+        "text": "Now the kernel team is debating a",
+        "words": [
+          {
+            "text": "Now",
+            "start": 48.08,
+            "end": 48.6
+          },
+          {
+            "text": "the",
+            "start": 48.6,
+            "end": 48.78
+          },
+          {
+            "text": "kernel",
+            "start": 48.78,
+            "end": 48.92
+          },
+          {
+            "text": "team",
+            "start": 48.92,
+            "end": 49.26
+          },
+          {
+            "text": "is",
+            "start": 49.26,
+            "end": 49.46
+          },
+          {
+            "text": "debating",
+            "start": 49.46,
+            "end": 49.74
+          },
+          {
+            "text": "a",
+            "start": 49.74,
+            "end": 50.02
+          }
+        ]
+      },
+      {
+        "start": 50.02,
+        "end": 52.42,
+        "text": "runtime killswitch that disables a bad function",
+        "words": [
+          {
+            "text": "runtime",
+            "start": 50.02,
+            "end": 50.22
+          },
+          {
+            "text": "killswitch",
+            "start": 50.22,
+            "end": 50.56
+          },
+          {
+            "text": "that",
+            "start": 50.9,
+            "end": 51.22
+          },
+          {
+            "text": "disables",
+            "start": 51.22,
+            "end": 51.68
+          },
+          {
+            "text": "a",
+            "start": 51.68,
+            "end": 51.82
+          },
+          {
+            "text": "bad",
+            "start": 51.82,
+            "end": 52.04
+          },
+          {
+            "text": "function",
+            "start": 52.04,
+            "end": 52.42
+          }
+        ]
+      },
+      {
+        "start": 52.42,
+        "end": 54.28,
+        "text": "on the fly, and Rocky Linux has",
+        "words": [
+          {
+            "text": "on",
+            "start": 52.42,
+            "end": 52.6
+          },
+          {
+            "text": "the",
+            "start": 52.6,
+            "end": 52.7
+          },
+          {
+            "text": "fly,",
+            "start": 52.7,
+            "end": 52.92
+          },
+          {
+            "text": "and",
+            "start": 53.4,
+            "end": 53.48
+          },
+          {
+            "text": "Rocky",
+            "start": 53.48,
+            "end": 53.68
+          },
+          {
+            "text": "Linux",
+            "start": 53.68,
+            "end": 53.98
+          },
+          {
+            "text": "has",
+            "start": 53.98,
+            "end": 54.28
+          }
+        ]
+      },
+      {
+        "start": 54.28,
+        "end": 57.04,
+        "text": "opened a security repository so fixes can",
+        "words": [
+          {
+            "text": "opened",
+            "start": 54.28,
+            "end": 54.62
+          },
+          {
+            "text": "a",
+            "start": 54.62,
+            "end": 54.78
+          },
+          {
+            "text": "security",
+            "start": 54.78,
+            "end": 55.04
+          },
+          {
+            "text": "repository",
+            "start": 55.04,
+            "end": 55.58
+          },
+          {
+            "text": "so",
+            "start": 56.34,
+            "end": 56.48
+          },
+          {
+            "text": "fixes",
+            "start": 56.48,
+            "end": 56.78
+          },
+          {
+            "text": "can",
+            "start": 56.78,
+            "end": 57.04
+          }
+        ]
+      },
+      {
+        "start": 57.04,
+        "end": 57.88,
+        "text": "reach people faster.",
+        "words": [
+          {
+            "text": "reach",
+            "start": 57.04,
+            "end": 57.24
+          },
+          {
+            "text": "people",
+            "start": 57.24,
+            "end": 57.52
+          },
+          {
+            "text": "faster.",
+            "start": 57.52,
+            "end": 57.88
+          }
+        ]
+      },
+      {
+        "start": 59.28,
+        "end": 60.1,
+        "text": "The lesson is blunt.",
+        "words": [
+          {
+            "text": "The",
+            "start": 59.28,
+            "end": 59.52
+          },
+          {
+            "text": "lesson",
+            "start": 59.52,
+            "end": 59.7
+          },
+          {
+            "text": "is",
+            "start": 59.7,
+            "end": 59.92
+          },
+          {
+            "text": "blunt.",
+            "start": 59.92,
+            "end": 60.1
+          }
+        ]
+      },
+      {
+        "start": 60.74,
+        "end": 62.52,
+        "text": "A patch that nobody announces does not",
+        "words": [
+          {
+            "text": "A",
+            "start": 60.74,
+            "end": 60.79
+          },
+          {
+            "text": "patch",
+            "start": 60.76,
+            "end": 60.98
+          },
+          {
+            "text": "that",
+            "start": 60.98,
+            "end": 61.24
+          },
+          {
+            "text": "nobody",
+            "start": 61.24,
+            "end": 61.52
+          },
+          {
+            "text": "announces",
+            "start": 61.52,
+            "end": 62.0
+          },
+          {
+            "text": "does",
+            "start": 62.0,
+            "end": 62.34
+          },
+          {
+            "text": "not",
+            "start": 62.34,
+            "end": 62.52
+          }
+        ]
+      },
+      {
+        "start": 62.52,
+        "end": 64.3,
+        "text": "protect the people who never hear about",
+        "words": [
+          {
+            "text": "protect",
+            "start": 62.52,
+            "end": 62.82
+          },
+          {
+            "text": "the",
+            "start": 62.82,
+            "end": 63.04
+          },
+          {
+            "text": "people",
+            "start": 63.04,
+            "end": 63.32
+          },
+          {
+            "text": "who",
+            "start": 63.32,
+            "end": 63.54
+          },
+          {
+            "text": "never",
+            "start": 63.54,
+            "end": 63.72
+          },
+          {
+            "text": "hear",
+            "start": 63.72,
+            "end": 64.02
+          },
+          {
+            "text": "about",
+            "start": 64.02,
+            "end": 64.3
+          }
+        ]
+      },
+      {
+        "start": 64.3,
+        "end": 66.68,
+        "text": "it, and these emergency tools exist because",
+        "words": [
+          {
+            "text": "it,",
+            "start": 64.3,
+            "end": 64.44
+          },
+          {
+            "text": "and",
+            "start": 64.72,
+            "end": 64.84
+          },
+          {
+            "text": "these",
+            "start": 64.84,
+            "end": 64.96
+          },
+          {
+            "text": "emergency",
+            "start": 64.96,
+            "end": 65.2
+          },
+          {
+            "text": "tools",
+            "start": 65.2,
+            "end": 65.78
+          },
+          {
+            "text": "exist",
+            "start": 65.78,
+            "end": 66.14
+          },
+          {
+            "text": "because",
+            "start": 66.14,
+            "end": 66.68
+          }
+        ]
+      },
+      {
+        "start": 66.68,
+        "end": 67.64,
+        "text": "that gap is real.",
+        "words": [
+          {
+            "text": "that",
+            "start": 66.68,
+            "end": 66.94
+          },
+          {
+            "text": "gap",
+            "start": 66.94,
+            "end": 67.16
+          },
+          {
+            "text": "is",
+            "start": 67.16,
+            "end": 67.42
+          },
+          {
+            "text": "real.",
+            "start": 67.42,
+            "end": 67.64
+          }
+        ]
+      },
+      {
+        "start": 68.92,
+        "end": 70.48,
+        "text": "So here is my question for you.",
+        "words": [
+          {
+            "text": "So",
+            "start": 68.92,
+            "end": 69.12
+          },
+          {
+            "text": "here",
+            "start": 69.12,
+            "end": 69.38
+          },
+          {
+            "text": "is",
+            "start": 69.38,
+            "end": 69.54
+          },
+          {
+            "text": "my",
+            "start": 69.54,
+            "end": 69.68
+          },
+          {
+            "text": "question",
+            "start": 69.68,
+            "end": 70.04
+          },
+          {
+            "text": "for",
+            "start": 70.04,
+            "end": 70.3
+          },
+          {
+            "text": "you.",
+            "start": 70.3,
+            "end": 70.48
+          }
+        ]
+      },
+      {
+        "start": 71.18,
+        "end": 73.22,
+        "text": "Do you actually track quiet kernel patches",
+        "words": [
+          {
+            "text": "Do",
+            "start": 71.18,
+            "end": 71.32
+          },
+          {
+            "text": "you",
+            "start": 71.32,
+            "end": 71.44
+          },
+          {
+            "text": "actually",
+            "start": 71.44,
+            "end": 71.82
+          },
+          {
+            "text": "track",
+            "start": 71.82,
+            "end": 72.22
+          },
+          {
+            "text": "quiet",
+            "start": 72.22,
+            "end": 72.62
+          },
+          {
+            "text": "kernel",
+            "start": 72.62,
+            "end": 72.94
+          },
+          {
+            "text": "patches",
+            "start": 72.94,
+            "end": 73.22
+          }
+        ]
+      },
+      {
+        "start": 73.22,
+        "end": 75.12,
+        "text": "in your distro, or do you only",
+        "words": [
+          {
+            "text": "in",
+            "start": 73.22,
+            "end": 73.6
+          },
+          {
+            "text": "your",
+            "start": 73.6,
+            "end": 73.7
+          },
+          {
+            "text": "distro,",
+            "start": 73.7,
+            "end": 74.12
+          },
+          {
+            "text": "or",
+            "start": 74.34,
+            "end": 74.64
+          },
+          {
+            "text": "do",
+            "start": 74.64,
+            "end": 74.8
+          },
+          {
+            "text": "you",
+            "start": 74.8,
+            "end": 74.88
+          },
+          {
+            "text": "only",
+            "start": 74.88,
+            "end": 75.12
+          }
+        ]
+      },
+      {
+        "start": 75.12,
+        "end": 76.22,
+        "text": "watch the CVE feed?",
+        "words": [
+          {
+            "text": "watch",
+            "start": 75.12,
+            "end": 75.36
+          },
+          {
+            "text": "the",
+            "start": 75.36,
+            "end": 75.6
+          },
+          {
+            "text": "CVE",
+            "start": 75.6,
+            "end": 75.88
+          },
+          {
+            "text": "feed?",
+            "start": 75.88,
+            "end": 76.22
           }
         ]
       }
