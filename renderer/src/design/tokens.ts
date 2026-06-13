@@ -64,16 +64,13 @@ export const layout = {
   textMaxFrac: 0.6,    // text column caps at 60% of canvas height → top ~40% always shows art
 } as const;
 
-// Length-based headline auto-fit: long hooks (the dragged-hook covers especially) shrink to fit
-// the bounded text block instead of overflowing it. Deterministic by character count, no measure
-// pass. `base` is the slide's normal size; the result never exceeds base.
-export function fitHeadline(text: string, base: number, bump = 0): number {
-  const n = (text ?? "").replace(/\[\[|\]\]|\{\{|\}\}/g, "").length; // ignore accent markers
-  const size = n <= 30 ? 104 : n <= 55 ? 84 : n <= 80 ? 68 : n <= 110 ? 58 : 50;
-  // `bump` lifts every length tier (used by the takeaway so it reads a step larger than body
-  // slides at the same length); still never exceeds `base`.
-  return Math.min(base, size + bump);
-}
+// Legibility floors (px) for the measured shrink-to-fit. The text block scales DOWN from its
+// per-role base size until it fits the bounded frame, but never below these — so the smallest
+// text stays readable even when copy is very long (overflow:hidden is the hard backstop).
+export const fitFloors = { headline: 44, subline: 30 } as const;
+// Per-role base headline size (replaces the old char-count fitHeadline tiers). The whole text
+// block (headline + subline + plate) renders at this size, is measured, then scaled to fit.
+export const headlineBase = { cover: 104, takeaway: 92, body: 72, chain: 34 } as const;
 
 // Readability scrims layered between the (AI-generated) background and the text.
 // Strategy: light AMBIENT grounding in SlideBackground (edges/vignette) + a strong
