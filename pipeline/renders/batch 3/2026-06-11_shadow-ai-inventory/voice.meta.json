@@ -1,0 +1,13 @@
+{
+  "seed": 766550872,
+  "seed_source": "auto",
+  "model": "openbmb/VoxCPM2",
+  "sample_rate": 48000,
+  "inference_timesteps": 10,
+  "voice_ref": "E:\\ai-ugc\\_voiceref\\jon_48k.wav",
+  "clone_mode": "hi-fi",
+  "prompt_text_source": "whisper",
+  "script_chars": 514,
+  "generated_at": "2026-06-09T21:59:49",
+  "reuse_command": "bun run pipeline -- 2026-06-11_shadow-ai-inventory --seed=766550872"
+}

@@ -1,0 +1,21 @@
+Fragnesia (CVE-2026-46300) is the third Linux kernel LPE in two weeks using page-cache corruption. Targets XFRM ESP-in-TCP subsystem. Discovered by William Bowling of V12 Security.
+
+Separate bug from Dirty Frag but same surface and same mitigation. Deterministic page-cache corruption. No race condition. Immediate root on all major distros by corrupting /usr/bin/su page cache.
+
+Unlike Dirty Frag, no host-level privileges required. AppArmor namespace restrictions are only partial mitigation, and additional bypasses are needed.
+
+The pattern: Copy Fail (algif_aead) -> Dirty Frag (xfrm-ESP + RxRPC) -> Fragnesia (xfrm ESP-in-TCP). Three distinct subsystems. Same page-cache corruption primitive. Same root via /usr/bin/su. Same mitigation: blocklist esp4, esp6, rxrpc.
+
+CloudLinux: Customers with Dirty Frag mitigation need no further action until patched kernels. Red Hat assessing if mitigation extends. Microsoft urges same mitigations. No in-the-wild exploitation observed yet.
+
+Threat actor 'berz0k' advertising Linux LPE zero-day for $170,000 on cybercrime forums. Claims TOCTOU-based, stable, no crashes, .so payload in /tmp.
+
+The page-cache corruption bug class spans three subsystems now. One mitigation covers all three. But the kernel keeps finding new paths to the same primitive.
+
+How many page-cache corruption primitives are in your kernel right now?
+
+Follow for AI security breakdowns without the fake panic.
+
+[Fragnesia, CVE-2026-46300, Linux kernel, local privilege escalation, page cache, XFRM ESP-in-TCP, Dirty Frag, Copy Fail, kernel hardening, V12 Security]
+
+[Fragnesia, CVE-2026-46300, Linux kernel, local privilege escalation, page cache, XFRM ESP-in-TCP, Dirty Frag, Copy Fail, kernel hardening, V12 Security]

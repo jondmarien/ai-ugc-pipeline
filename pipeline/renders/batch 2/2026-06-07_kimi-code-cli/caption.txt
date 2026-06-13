@@ -1,0 +1,13 @@
+Moonshot shipped Kimi Code CLI, a terminal AI coding agent written in TypeScript. It reads your code, runs shell commands, and fetches web pages, then it picks the next step on its own. It is MIT licensed and genuinely useful.
+
+Here is the part the launch posts skip. An agent that reads the open web and then runs your shell can be steered by the content it reads. A poisoned page or README turns into instructions, and the payoff is your files, your keys, and your machine. The default build asks before it edits or runs. The skip-all-approvals mode throws that gate away.
+
+Treat it like untrusted code, because that is what it executes. Run it in a throwaway VM with restricted network egress and no real credentials. Keep the approve-before-run gate on outside of disposable boxes. Only load MCP servers and plugins you have pinned and actually read.
+
+The risk was never the model. It is every command and secret you let the agent reach.
+
+Would you give a terminal agent your shell without a sandbox?
+
+Follow for AI security breakdowns without the fake panic.
+
+[AI agents, prompt injection, AppSec, coding assistants, least privilege]

@@ -1,0 +1,21 @@
+Chaotic Eclipse (Nightmare-Eclipse, MSNightmare) released GreatXML on June 11, 2026. It is a Windows BitLocker bypass that exploits the recovery partition via XML files. The researcher found it by accident and had a working exploit in four hours.
+
+Important framing: GreatXML is a post-compromise, second-stage tool. Writing the exploit files to the recovery partition requires administrator rights (diskpart elevation). A standard user or someone with only physical access cannot plant them. An attacker who already has admin plants the files once, then every subsequent Shift+Restart from the lock screen yields an unrestricted shell with full BitLocker volume access, no recovery key needed, surviving credential rotation and OS reinstall.
+
+The exploit chain: use diskpart (admin) to mount the recovery partition, copy unattend.xml and Recovery/WindowsRE/ReAgent.xml to its root, then reboot into Windows Recovery Environment (WinRE) via Shift+Restart. WinRE loads the malicious XML config, bypasses BitLocker authentication, and spawns an unrestricted shell with full volume access.
+
+If Defender Offline Scan was ever run on the machine, that reboot path is already primed. No TPM extraction, no cold boot.
+
+BitLocker reports the drive as encrypted. TPM reports healthy. But the recovery partition XML parser accepts unattend.xml and ReAgent.xml without verifying they are signed. YellowKey (CVE-2026-45585) was patched this week, but GreatXML is a separate path. The recovery partition is rarely audited and WinRE boot leaves no standard event log trail.
+
+No vendor patch exists yet. Defenders should treat GreatXML as a persistence indicator: monitor for unattend.xml writes to the recovery partition outside Windows Update context. Also disable Defender Offline Scan if not in active use, audit the recovery partition for unauthorized XML files, and lock BIOS/UEFI to prevent unauthorized WinRE boot.
+
+The recovery partition is not a rescue zone when its XML parser trusts unsigned config. BitLocker encryption is only as strong as the WinRE boot path sitting next to it.
+
+Do you audit recovery partition XML files or restrict WinRE boot?
+
+Follow for AI security breakdowns without the fake panic.
+
+[GreatXML, Chaotic Eclipse, Nightmare-Eclipse, BitLocker, recovery partition, XML bypass, WinRE, Windows Recovery Environment, Defender Offline Scan, unattend.xml, ReAgent.xml, YellowKey, CVE-2026-45585]
+
+[GreatXML, Chaotic Eclipse, Nightmare-Eclipse, BitLocker, recovery partition, XML bypass, WinRE, Windows Recovery Environment, Defender Offline Scan, unattend.xml, ReAgent.xml, YellowKey, CVE-2026-45585]

@@ -1,8 +1,0 @@
-01. Slide 1 (cover): a tall one-way observation mirror set into a dark wall, faintly reflecting an empty room on the near face while the far side stays in shadow, with the headline in the lower third.
-02. Slide 2 (context): a lone watchtower rising over a dark perimeter, its open observation deck lit by a single lamp while the ground below stays in shadow.
-03. Slide 3 (risk): a single waist-high turnstile standing unlatched and freely rotating in a dark concourse, its arms swung open with nobody manning it.
-04. Slide 4 (mechanism): a single security camera lens mounted on a dark wall, its glass eye catching a thin rim of light as it watches a quiet empty corridor.
-05. Slide 5 (failure_point): a checkpoint barrier arm raised wide open over an empty lane in the dark, the control booth beside it unlit and unattended.
-06. Slide 6 (defense): a small thick viewing window set into a heavy steel door, a warm contained glow spilling through the glass from the locked room behind it.
-07. Slide 7 (takeaway): a single velvet rope strung between two heavy stanchions blocking a dark entryway, a thin rim of light tracing the polished posts.
-08. Slide 8 (cta): a single spotlight beam falling on an empty stage floor surrounded by vast black negative space, with the comment question and handle.

@@ -1,0 +1,19 @@
+Cohere dropped North Mini Code on June 9. Thirty billion parameters, three billion active, Apache 2.0, runs on a single H100. The open-source coding agent everyone asked for.
+
+Artificial Analysis clocked it at 210 tokens per second. Eighth fastest of 127 models. Time to first token at 0.25 seconds against a 1.95-second median. The speed numbers look great.
+
+Then you check the Intelligence Index run. North Mini Code burned 75 million output tokens. The class median was 25 million. Three times the tokens for the same evaluation.
+
+In a high-volume agentic pipeline, that verbosity is not a footnote. It is the invoice. Three times the inference cost. Three times the latency pressure. Three times the context window pressure.
+
+Benchmarks rank on intelligence and speed. They do not surface the token multiplier. Fable 5 at fifty dollars per million output tokens makes the tradeoff explicit. North Mini Code makes you pay in H100 hours and token volume instead.
+
+Model your agent pipeline on token volume before you commit to any model, open or closed.
+
+Have you measured the token multiplier in your agentic pipeline?
+
+Follow for AI security breakdowns without the fake panic.
+
+[Cohere North Mini Code, open-source AI, agentic coding, model evaluation, inference cost, verbosity, H100, AI pipeline economics]
+
+[Cohere North Mini Code, open-source AI, agentic coding, model evaluation, inference cost, verbosity, H100, AI pipeline economics]

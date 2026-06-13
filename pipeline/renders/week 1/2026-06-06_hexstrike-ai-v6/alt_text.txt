@@ -1,8 +1,0 @@
-01. Slide 1 (cover): a robotic arm grabbing tools off a huge wall in a blur of motion; headline reads that AI just cut exploit development from weeks to minutes.
-02. Slide 2 (context): a robotic arm poised before a wall of mechanical tools with one control thread from above; text says an open-source framework lets an AI agent run 150+ security tools.
-03. Slide 3 (what happened): a crack in a dark wall with a swarm of small drones streaming through; text says hours after a Citrix zero-day dropped, attackers discussed using it to mass-exploit.
-04. Slide 4 (how it works): a branching river of light splitting into self-correcting channels; text says a decision engine turns a plain-language goal into a recon-to-exploit loop.
-05. Slide 5 (shrinking window): an hourglass with sand rushing through too fast; text says the gap between disclosure and mass exploitation is now hours, not weeks, with ~28,000 NetScaler boxes exposed to CVE-2025-7775.
-06. Slide 6 (defense): a figure rapidly bolting a steel plate over a gap in a wall; text says patch internet-facing gear first and fast, and assume n-day exploitation is automated.
-07. Slide 7 (takeaway): a steep staircase flattening into a gentle ramp; text says AI lowers the skill floor for attackers, so patch velocity matters more, not less.
-08. Slide 8 (CTA): a stopwatch held up with a finger on the button; text asks how fast your team can patch an internet-facing zero-day.

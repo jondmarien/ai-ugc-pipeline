@@ -1,0 +1,15 @@
+Title card: Third page-cache root exploit in two weeks. Fragnesia is CVE-2026-46300 targeting XFRM ESP-in-TCP, no host privileges required, Dirty Frag mitigation covers it. Three shards fuse into one red blade.
+
+Fragnesia is a separate bug from Dirty Frag but shares the same attack surface. CVE-2026-46300, CVSS 7.8, discovered by William Bowling of V12 Security, deterministic corruption with no race condition. A cluster of three red nodes glows against a dark field.
+
+The exploit grants root without any host-level privileges by corrupting the /usr/bin/su page cache. AppArmor namespace restrictions are only partial mitigation. A scalpel makes a precise cut into a sealed locked block.
+
+A logic bug in the ESP-in-TCP subsystem allows arbitrary writes into read-only page cache, no race condition required, root via /usr/bin/su corruption. A TCP packet unseals in place over glowing shared page-cache pages.
+
+Three different subsystems, one identical page-cache corruption primitive. Copy Fail hit algif-aead, Dirty Frag hit xfrm-ESP and RxRPC, Fragnesia hits xfrm ESP-in-TCP. An assembly line produces the identical root exploit from three distinct inputs.
+
+One blocklist covers all three exploits: esp4, esp6, rxrpc. Restrict user namespaces, harden containers, monitor for privilege escalation, patch when available. A single barrier of light seals three converging red breach paths.
+
+Page-cache corruption now spans three subsystems. One mitigation covers all three, but the kernel keeps finding new paths to the same primitive. Three roots of light converge into a single dark trunk with fresh roots quietly sprouting below.
+
+Closing question: How many page-cache corruption primitives are in your kernel right now? Three thin red threads converge into a single bright node on a clean dark end-card.

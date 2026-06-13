@@ -1,0 +1,13 @@
+We covered the Hermes agent surge a few days ago. Now Nous Research has given it a face. Hermes Desktop is a native GUI for the same autonomous agent, on macOS, Windows, and Linux, sharing the same keys, skills, and sessions as the terminal. It was announced around v0.15.2 and ships in the v0.16.0 line, and it is MIT licensed.
+
+The headline feature is streaming tool output, and here is the honest read. Watching every tool call in real time is genuinely good for security, better than the opaque cloud agents people already trust. But seeing what the agent does is not the same as controlling what it does. The same local agent with shell, file, and network access is now one click away for people who never opened a terminal, so the prompt-injection-to-tool-abuse surface did not shrink. It got easier to reach.
+
+So do not just watch the stream, gate it. Run Hermes in one of its sandbox backends like Docker or Modal, give it scoped, least-privilege keys, and actually read the streamed tool calls before you approve anything that touches the shell, the filesystem, or the network. Last post we said skills execute. That is still true, and now the people running them may never have used a terminal.
+
+Streaming tool output is not a safety feature by itself. It becomes one when you gate what you approve. Scope it, do not fear it.
+
+Do you read your agent's tool calls before approving, or just watch them fly by?
+
+Follow for AI security breakdowns without the fake panic.
+
+[AI agents, Hermes, prompt injection, sandboxing, least privilege]

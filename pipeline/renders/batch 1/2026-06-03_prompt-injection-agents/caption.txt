@@ -1,0 +1,11 @@
+The weirdest AI attack doesn't get typed into the chat box. It hides in the content your AI agent reads.
+
+That's indirect prompt injection: instructions tucked into a web page, email, document, or image that the model treats as commands. OWASP's Top 10 for LLM Applications lists prompt injection, sensitive-information disclosure, and excessive agency as core risks. The danger spikes the moment your agent can act on what it just read, whether that's sending mail, reading files, or calling APIs.
+
+Defender move: isolate untrusted content from privileged tools, scope agent permissions to the minimum, log every action, and require human confirmation for sensitive steps.
+
+If your agent summarizes a random webpage, should it also be allowed to email your team? Where would you draw that line?
+
+Follow for AI security breakdowns without the fake panic.
+
+[Cybersecurity, AISecurity, PromptInjection, LLMSecurity, AIagents, AppSec, OWASP]

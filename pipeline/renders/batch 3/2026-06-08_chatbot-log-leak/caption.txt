@@ -1,0 +1,15 @@
+Pasting production logs into a chatbot feels like a shortcut. It is actually data leaving the systems you control, and you cannot pull it back.
+
+This is not hypothetical. In 2023, Samsung engineers pasted internal source code and a recorded meeting into ChatGPT, and within weeks the company banned generative AI on its devices. Cyberhaven's analysis of around 1.6 million workers found that, as of mid-2023, 8.6 percent had pasted company data into ChatGPT and 4.7 percent had pasted confidential data. OWASP lists sensitive information disclosure as a top risk for LLM apps.
+
+The reason it slips through is mechanical. A copy and paste strips the file and its classification, so file-based data-loss tools never see it move. Logs and code are the worst offenders, because they carry API tokens, customer IDs, stack traces, and internal endpoints.
+
+The fix is not a ban. A ban with no safe path just pushes people to personal accounts, where you have even less visibility. Give people a sanctioned AI tool with redaction, logging, and a clear retention policy, plus one rule everyone understands: never paste production data.
+
+Once it is pasted, you cannot get it back. Make the safe path easier than the risky one.
+
+Does your team have a sanctioned way to use AI on real data, or just a rule nobody follows?
+
+Follow for AI security breakdowns without the fake panic.
+
+[data leakage, shadow AI, DLP, secrets management, AppSec]

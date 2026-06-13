@@ -1,0 +1,21 @@
+Dirty Frag is the successor to Copy Fail. It chains two page-cache write primitives in the Linux kernel: xfrm-ESP (IPSec subsystem) and RxRPC. Together they give deterministic local root on most distributions.
+
+Unlike race-condition exploits, Dirty Frag is a deterministic logic bug. No timing window. Kernel does not panic on failure. Very high success rate. One command root.
+
+The chain covers blind spots: xfrm-ESP needs user namespaces (blocked by Ubuntu AppArmor). RxRPC needs no namespace but rxrpc.ko is not in most distros — except Ubuntu loads it by default. One works where the other fails.
+
+The Copy Fail mitigation (blacklisting algif_aead) does not stop Dirty Frag. It works regardless of that module. CloudLinux advises blocklisting esp4, esp6, and rxrpc. But that breaks IPsec/RxRPC functionality.
+
+Microsoft observed limited in-the-wild exploitation: SSH access, then ELF binary triggers privilege escalation via su, modifies GLPI LDAP auth, accesses sensitive data, wipes PHP sessions.
+
+CVE-2026-43284 (xfrm-ESP) and CVE-2026-43500 (RxRPC) patched in mainline. Ubuntu, Debian, RHEL, Fedora, SUSE, Amazon, AlmaLinux, Rocky, CloudLinux all have advisories.
+
+Dirty Frag proves the bug class is wider than one subsystem. Patch the kernel, not the module.
+
+Have you blocklisted esp4, esp6, and rxrpc on systems that do not need IPsec?
+
+Follow for AI security breakdowns without the fake panic.
+
+[Dirty Frag, Linux kernel, local privilege escalation, Copy Fail, xfrm-ESP, RxRPC, page cache, CVE-2026-43284, CVE-2026-43500, kernel hardening]
+
+[Dirty Frag, Linux kernel, local privilege escalation, Copy Fail, xfrm-ESP, RxRPC, page cache, CVE-2026-43284, CVE-2026-43500, kernel hardening]

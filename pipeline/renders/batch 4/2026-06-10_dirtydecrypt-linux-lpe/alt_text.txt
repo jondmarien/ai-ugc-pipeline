@@ -1,0 +1,15 @@
+Title card: silent patch, no disclosure, researchers told it was a duplicate. DirtyDecrypt, CVE-2026-31635, an rxgk missing copy-on-write guard that only hits Fedora, Arch, and openSUSE, with a PoC released anyway. A small sealed packet of light in a dark void, one freshly added clasp glowing faint green while a faint marking beside it dissolves into gray.
+
+Zellic and V12 reported DirtyDecrypt May 9 and maintainers replied it was a duplicate already patched in mainline: no CVE, no advisory, no coordinated disclosure. Researchers went public on realizing the fix was silent, releasing a PoC, and NVD later linked CVE-2026-31635. Two opposing shapes of light face off in the dark, one reaching out while the other stays cold and turned away.
+
+Only distros with CONFIG_RXGK enabled are affected: Fedora, Arch Linux, and openSUSE Tumbleweed, and in containers a vulnerable worker node can give a pod escape path. CVSS 7.5: the missing guard in rxgk_decrypt_skb writes to /etc/shadow, /etc/sudoers, and SUID binaries. Three identical emblems of light glow hot red while three others nearby stay dark and dormant.
+
+rxgk_decrypt_skb decrypts an incoming sk_buff whose pages are shared with other processes' page cache, where copy-on-write should protect shared pages but the COW guard was missing. Data lands in privileged memory or files, leading to LPE. A translucent buffer of light is unsealed in place, a missing protective shell where a duplicate should have formed, its freed glow bleeding into a nearby locked vault.
+
+No embargo broke and no third party weaponized a commit. V12 voluntarily released the PoC once they confirmed the fix was already in mainline, with no coordinated advisory ever issued. Silent patches without CVEs leave defenders blind. A dark horizontal track runs from a quiet sealed mark, to a dismissed report fading out, to a voluntary release, to a burst of red light representing the disclosure gap.
+
+Kernel developers are reviewing an emergency killswitch that disables a vulnerable function at runtime, returning an operator-supplied value on every CPU until disengage or reboot. Rocky Linux debuted an opt-in security repository for accelerated fixes. A split view of a mechanism running unchecked and overheating red beside the same mechanism with a kill lever thrown and held safe.
+
+A silent patch is not a fix for defenders who do not know it exists. The kernel killswitch and security repos are symptoms of a disclosure process that leaves gaps. A single freshly sealed clasp glows green while the faint marking that should explain it fades to invisible gray.
+
+Closing question: do you track silent kernel patches in your distro, or only CVEs? Save this for your next vulnerability management review. A single faint pulse of light on a clean dark end-card with open negative space.

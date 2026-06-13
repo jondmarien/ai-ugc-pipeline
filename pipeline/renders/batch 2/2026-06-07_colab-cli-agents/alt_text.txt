@@ -1,0 +1,8 @@
+01. Slide 1 (cover): a single steel shipping container suspended on a thick cable high above a dark loading yard at night, lowering toward an unseen dock, with the headline in the lower third.
+02. Slide 2 (context): a towering automated cargo crane reaching into a dark port at night, swinging a container out over open water with no operator in the cab.
+03. Slide 3 (risk): a long freight conveyor belt spanning a deep dark chasm with crates riding it in both directions at once, some sliding out toward the void and others returning.
+04. Slide 4 (mechanism): an industrial fuel pipeline running through the dark into a spinning utility meter whose dial is racing as fluid surges through the pipe.
+05. Slide 5 (failure_point): an empty night loading dock with a single forklift pallet abandoned mid-aisle and a roll-up door left fully open onto darkness.
+06. Slide 6 (defense): a single calibrated utility gauge mounted on a freight pipeline in the dark, its needle resting steady at a marked limit line.
+07. Slide 7 (takeaway): a single weathered cargo manifest tag wired to a freight crate in deep shadow, swinging slightly under a hard shaft of light.
+08. Slide 8 (cta): a single closed industrial pump valve standing in empty dark space, with the comment question and handle.

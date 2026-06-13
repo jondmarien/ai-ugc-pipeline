@@ -1,8 +1,0 @@
-01. Cover slide: a control-tower radar dish sweeping in the dark, its beam catching dozens of small craft scattered beyond a single marked ring, with the headline in the lower third.
-02. Context slide: a vast dark warehouse of stacked crates, most bare and unlabelled, only a few near the front carrying a paper tag.
-03. Risk slide: a single lit lantern marking one charted path while several unlit trails branch off into shadow.
-04. Mechanism slide: an open manifest on a desk with most lines filled but a run of blank rows in the middle catching a thin rim of light.
-05. Failure point slide: a ship already small on the dark horizon with a fresh wake, seen from an empty watchtower in the foreground.
-06. Defense slide: a cartographer's hand drawing a fresh boundary onto a dark map, scattered markers now circled and labelled inside it.
-07. Takeaway slide: a single bright pin dropped onto a dark unmarked map, a faint grid resolving into focus around it.
-08. CTA slide: a single clipboard holding a blank checklist resting in vast dark negative space, with the comment question and handle.
