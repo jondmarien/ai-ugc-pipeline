@@ -66,10 +66,10 @@
       "slide": 1,
       "role": "cover",
       "kicker": "WINDOWS × ZERO-DAY",
-      "on_slide_copy": "UNDEFEND SILENCES DEFENDER. NO UPDATE. NO ALERT.",
-      "subline": "DoS + LPE tool. Blocks definition updates. Disables AV silently. Nightmare Eclipse exploit three.",
+      "on_slide_copy": "UNDEFEND KILLS DEFENDER AND LEAVES NO TRACE.",
+      "subline": "A dual-mode denial-of-service and privilege-escalation tool blocks definition updates and disables the antivirus silently. It is the third Nightmare Eclipse exploit.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A hard rim light catches a Defender shield icon in the dark, its update pulse flatlining into a straight red line, the shield fading from blue to grey, premium dark editorial key art, the shield held in the upper third with clean unmarked negative space filling the lower third.",
+      "visual_prompt": "A hard rim light catches a geometric protective crest in the dark, its energy pulse flatlining into a straight red line, the form fading from deep blue to cold grey, premium dark editorial key art, the crest held in the upper third with clean unmarked negative space filling the lower third.",
       "background_asset": "/backgrounds/2026-06-11_undefend-defender-dos/01_cover.png",
       "asset_status": "generated",
       "cta": "SWIPE →",
@@ -79,10 +79,10 @@
       "slide": 2,
       "role": "context",
       "kicker": "THE RELEASE",
-      "on_slide_copy": "Nightmare Eclipse dropped UnDefend as the third exploit. Dual-mode: blocks definition updates indefinitely or disables Defender entirely.",
-      "subline": "No CVE. Researcher demonstrates persistent Defender blindness. Works on fully patched Windows 10/11.",
+      "on_slide_copy": "UnDefend is a dual-mode tool that can kill Defender on fully patched Windows.",
+      "subline": "No CVE assigned. The researcher proved persistent Defender blindness on Windows 10 and 11. This is exploit three of six from Nightmare Eclipse.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Low raking light grazes a dark Windows Security center in the dark, 'Virus & threat protection' showing 'No action needed' but a red 'Definitions: 0 days old' warning beneath, dark editorial photography, the UI set high over a calm empty lower third.",
+      "visual_prompt": "Low raking amber light skims a dark abstract security orb in the dark, its outer ring split into two glowing arcs of different intensities, one dimming toward grey, premium editorial key art, the orb centered high over a calm clean lower third.",
       "background_asset": "/backgrounds/2026-06-11_undefend-defender-dos/02_context.png",
       "asset_status": "generated",
       "cta": "",
@@ -92,10 +92,10 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT STINGS",
-      "on_slide_copy": "UnDefend targets the Defender update service (wuauserv) and the Antimalware Service Executable. Stops signatures. Stops cloud protection. Stops the AV.",
-      "subline": "Two modes: (1) Update blockade — definitions freeze, cloud lookups fail. (2) Silent disable — service stops, no toast, no event log entry.",
+      "on_slide_copy": "It kills two specific services and leaves the antivirus completely blind.",
+      "subline": "Mode one freezes definition updates and cuts cloud lookups. Mode two stops the antimalware process with no notification and no event log entry.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A focused side light illuminates two service icons in the dark — wuauserv and MsMpEng — both with red stop symbols pulsing, dark premium editorial, the services centered in the upper area with generous negative space below.",
+      "visual_prompt": "A focused side light catches two abstract geometric forms in the dark, both fading from bright to deep crimson as if losing power, premium editorial depth, the forms placed in the upper half with generous unmarked negative space below.",
       "background_asset": "/backgrounds/2026-06-11_undefend-defender-dos/03_risk.png",
       "asset_status": "generated",
       "cta": "",
@@ -105,10 +105,10 @@
       "slide": 4,
       "role": "mechanism",
       "kicker": "THE MECHANISM",
-      "on_slide_copy": "Exploits a WFP (Windows Filtering Platform) callout driver flaw. Intercepts Defender's update traffic at kernel level. Drops packets silently.",
-      "subline": "Second path: manipulates the Defender tamper protection registry key via a privileged file write. Disables self-protection. No reboot needed.",
+      "on_slide_copy": "A kernel driver intercepts update traffic and silently drops every packet.",
+      "subline": "A second path writes a privileged registry key that disables tamper protection without a reboot, exploiting a Windows Filtering Platform callout driver flaw.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A hard top-down beam falls on a network packet in the dark, a WFP callout driver catching it and dissolving it into red dust before it reaches Defender, dark editorial key art, the interception framed in the upper third over clean dark space.",
+      "visual_prompt": "A hard top-down beam falls on a glowing data orb in the dark, an angular kernel-layer form intercepting it and dissolving it into red particulate before it can pass, dark editorial key art, the interception framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-11_undefend-defender-dos/04_mechanism.png",
       "asset_status": "generated",
       "cta": "",
@@ -118,8 +118,8 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "WHERE DEFENDERS MISS IT",
-      "on_slide_copy": "Defender shows green. 'No threats found.' 'Protection up to date.' But definitions are months old. Cloud protection is offline. Tamper protection is bypassed.",
-      "subline": "No alert fires. Event logs show service stops as 'expected.' Defenders trust the green checkmark. The checkmark lies.",
+      "on_slide_copy": "Defender reports clean while its definitions are months out of date.",
+      "subline": "No alert fires. Event logs mark the service stop as expected. Cloud protection is already offline, and tamper protection is already gone.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Cool light grazes a calm grid of steady green glyph-lights in the dark, all appearing intact, while a faint red stream leaks unseen from the lower edge, tense editorial composition, the grid held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-11_undefend-defender-dos/05_failure-point.png",
@@ -131,10 +131,10 @@
       "slide": 6,
       "role": "defense",
       "kicker": "THE MITIGATION REALITY",
-      "on_slide_copy": "Monitor Defender service health independently (MsMpEng.exe, wuauserv). Alert on definition age > 24h. Validate cloud connectivity. Hunt for WFP callout driver loads.",
-      "subline": "No vendor patch. Tamper protection can be bypassed. Defenders must verify Defender is actually working, not just reporting green.",
+      "on_slide_copy": "You have to verify Defender yourself because the status UI cannot be trusted.",
+      "subline": "There is no vendor patch yet. Alert when definitions exceed 24 hours old, confirm cloud connectivity is live, and watch for unexpected kernel driver loads.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A balanced split composition in the dark: left side a Defender shield with live update pulse and cloud connection, right side the same shield flatlined with a red kernel driver loaded beneath, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
+      "visual_prompt": "Balanced soft split light in the dark: one side with a steady pulsing glow and a faint upward arc, the other side with a flatlined trace and a dim angular form resting below it, premium editorial key art, a thin divider between them and generous open space in the lower third.",
       "background_asset": "/backgrounds/2026-06-11_undefend-defender-dos/06_defense.png",
       "asset_status": "generated",
       "cta": "",
@@ -147,7 +147,7 @@
       "on_slide_copy": "A green checkmark {{is not proof of protection.}} [[It is a UI state that can be decoupled from the engine.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A thin rim light traces a Defender shield icon in the dark, one half glowing blue with live pulse, the other half faded grey with a red kernel driver icon beneath, minimal high-impact key art, the shield drawn toward the edge with the center kept dark and open.",
+      "visual_prompt": "A thin rim light traces a geometric protective crest in the dark, one half glowing with a live pulse, the other half faded to cold grey, minimal high-impact editorial key art, the crest drawn toward the upper edge with the center kept dark and open.",
       "background_asset": "/backgrounds/2026-06-11_undefend-defender-dos/07_takeaway.png",
       "asset_status": "generated",
       "cta": "",
@@ -291,42 +291,42 @@
       {
         "start": 0,
         "end": 6,
-        "text": "UnDefend silences Defender. No update. No alert. DoS plus LPE. Nightmare Eclipse exploit three."
+        "text": "A researcher named Nightmare Eclipse just dropped a tool called UnDefend, and it can kill Microsoft Defender without triggering a single alert."
       },
       {
         "start": 6,
         "end": 13,
-        "text": "Dual mode: blocks definition updates indefinitely or disables AV silently. Works on patched Windows 10 and 11."
+        "text": "It comes in two modes: one freezes definition updates indefinitely, and the other stops the antimalware process entirely, both working on fully patched Windows 10 and 11."
       },
       {
         "start": 13,
         "end": 20,
-        "text": "Targets wuauserv and MsMpEng. Update blockade freezes definitions. Silent disable stops the service. No toast. No event log."
+        "text": "The first mode targets the Windows Update service and cuts off cloud lookups so signatures never arrive. The second mode writes a privileged registry key that disables tamper protection with no reboot required."
       },
       {
         "start": 20,
         "end": 27,
-        "text": "WFP callout driver drops update packets at kernel level. Registry manipulation bypasses tamper protection. No reboot."
+        "text": "The underlying trick is a flaw in the Windows Filtering Platform callout driver, which lets the tool intercept Defender's update traffic at the kernel level and drop every packet before it lands."
       },
       {
         "start": 27,
         "end": 34,
-        "text": "Defender shows green. Definitions months old. Cloud offline. Tamper protection bypassed. Checkmark lies."
+        "text": "Here is what makes this dangerous: Defender's interface still shows green, reports no threats, and claims protection is up to date, even while its definitions are months old and cloud protection is completely offline."
       },
       {
         "start": 34,
         "end": 41,
-        "text": "No patch. Monitor service health. Alert on definition age. Validate cloud. Hunt WFP drivers."
+        "text": "There is no vendor patch yet, so the practical fix is to verify Defender's health from outside its own status UI: alert when definitions exceed 24 hours old, confirm cloud connectivity directly, and watch for unexpected kernel driver loads."
       },
       {
         "start": 41,
         "end": 48,
-        "text": "A green checkmark is not proof of protection. It is a UI state decoupled from the engine."
+        "text": "A green checkmark is a UI state, not proof that the engine is actually running. Those two things can be completely decoupled from each other."
       },
       {
         "start": 48,
         "end": 54,
-        "text": "How do you verify Defender is actually running? Tell me in the comments."
+        "text": "How do you verify that Defender is actually updating and running on your endpoints? Drop it in the comments."
       }
     ],
     "beats": [
