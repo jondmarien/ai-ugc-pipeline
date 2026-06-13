@@ -79,8 +79,8 @@
       "slide": 2,
       "role": "context",
       "kicker": "THE PRIMITIVE",
-      "on_slide_copy": "An unprivileged local user writes four controlled bytes into the page cache of any readable file. Uses that to edit a setuid binary and gain root.",
-      "subline": "Disclosed April 30 by Xint.io and Theori. CVSS 7.8. The exploit is a 732-byte Python script. Four steps to root.",
+      "on_slide_copy": "Four bytes into any file's page cache gives you root.",
+      "subline": "Disclosed April 30 by Xint.io and Theori. CVSS 7.8. The exploit is a 732-byte Python script that takes four steps to reach root.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Low raking light grazes a dense vertical weave of glowing filaments in the dark, four strands flaring as they run while a lock icon below shatters, dark editorial photography, the weave set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-10_copy-fail-linux-lpe/02_context.png",
@@ -92,8 +92,8 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT MATTERS",
-      "on_slide_copy": "Portable, tiny, stealthy, cross-container. Four properties that almost never appear together. Works across all Linux versions and distributions since 2017.",
-      "subline": "Not remotely exploitable alone. But any local foothold becomes root. Page cache is shared across all processes and containers.",
+      "on_slide_copy": "These four properties almost never combine in a single exploit.",
+      "subline": "Works across every Linux distribution shipped since 2017. The page cache is shared across all processes and containers, so any local foothold can reach root.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A focused side light illuminates four identical keys of light in the dark, all turning the same lock in perfect unison, dark premium editorial, the keys centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_copy-fail-linux-lpe/03_risk.png",
@@ -105,8 +105,8 @@
       "slide": 4,
       "role": "mechanism",
       "kicker": "THE FOUR STEPS",
-      "on_slide_copy": "Open AF_ALG socket bound to authencesn(hmac(sha256),cbc(aes)). Construct shellcode payload. Trigger write to kernel cached copy of /usr/bin/su. Call execve(/usr/bin/su) to load injected shellcode as root.",
-      "subline": "Logic flaw in algif_aead introduced August 2017. In-place optimization lets page-cache page end up in kernel writable scatterlist for AEAD operation.",
+      "on_slide_copy": "Four steps turn a crypto socket into a root shell.",
+      "subline": "Open an AF_ALG socket, build a shellcode payload, write it into the kernel's cached copy of su, then execute that poisoned binary as root. No race condition, no kernel offsets.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A hard top-down beam falls on four stepping stones in the dark, each flaring red in turn as an unseen step lands on it, leading toward a single sealed door, dark editorial key art, the stones framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-10_copy-fail-linux-lpe/04_mechanism.png",
@@ -118,8 +118,8 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "WHERE DEFENDERS MISS IT",
-      "on_slide_copy": "The exploit is reliable. No race condition. No kernel offsets needed. Same exploit works across distributions. Mitigation is blocklisting algif_aead module — but that breaks crypto functionality.",
-      "subline": "Dirty Frag and Fragnesia bypass this mitigation entirely by using xfrm and RxRPC paths. The bug class is wider than one module.",
+      "on_slide_copy": "Blocklisting the module breaks crypto, and two related bugs bypass it anyway.",
+      "subline": "No race condition, no offsets, same code on every distro. Dirty Frag and Fragnesia bypass the algif_aead blocklist using xfrm and RxRPC.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Cool light grazes a lone defensive shield in the dark while two thin red ribbons of light curve around its edges untouched, slipping past on either side, tense editorial composition, the shield held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-10_copy-fail-linux-lpe/05_failure-point.png",
@@ -131,8 +131,8 @@
       "slide": 6,
       "role": "defense",
       "kicker": "THE RESPONSE",
-      "on_slide_copy": "Blocklist algif_aead module if not needed. But the real fix is patching the kernel. Every major distro released advisories: Ubuntu, Debian, RHEL, SUSE, Amazon, Arch, Gentoo, AlmaLinux, CloudLinux.",
-      "subline": "CVE-2026-31431 patched in mainline. The 2017 in-place optimization commit was the root cause. Dirty Pipe (2022) was same class, different subsystem.",
+      "on_slide_copy": "Patch the kernel. Every major distro has shipped an advisory.",
+      "subline": "CVE-2026-31431 is patched in mainline. Ubuntu, Debian, RHEL, SUSE, Amazon, Arch, Gentoo, AlmaLinux, and CloudLinux all shipped advisories. The blocklist is a stopgap only.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A balanced split composition in the dark: on the left a fractured metallic seal with a glowing open gap, on the right the same seal fused whole and intact, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_copy-fail-linux-lpe/06_defense.png",
@@ -144,7 +144,7 @@
       "slide": 7,
       "role": "takeaway",
       "kicker": "TAKEAWAY",
-      "on_slide_copy": "The 2017 optimization {{broke the page-cache isolation guarantee.}} [[Nine years later, a 732-byte script exploits it on every distro. The bug class persists.]]",
+      "on_slide_copy": "The 2017 optimization {{broke page-cache isolation.}} [[Nine years later, a 732-byte script exploits it on every distro. The bug class persists.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A thin rim light traces a single hairline crack in the dark spreading slowly across a dark pane from one far corner toward the present, a faint red glow waiting at its tip, minimal high-impact key art, the crack drawn toward the edge with the center kept dark and open.",
@@ -297,42 +297,42 @@
       {
         "start": 0,
         "end": 6,
-        "text": "732 bytes. Portable. Stealthy. Cross-container root. Copy Fail CVE-2026-31431."
+        "text": "Copy Fail, tracked as CVE-2026-31431, is a Linux kernel vulnerability that lets an unprivileged user get root with a 732-byte Python script."
       },
       {
         "start": 6,
         "end": 13,
-        "text": "Unprivileged user writes four bytes into any file page cache. Edits setuid binary. Gains root. Every distro since 2017."
+        "text": "The attack works by writing four controlled bytes into the kernel's page cache for any readable file, then executing that poisoned binary as root."
       },
       {
         "start": 13,
         "end": 20,
-        "text": "Four properties never together: portable, tiny, stealthy, cross-container. Page cache shared across all processes and containers."
+        "text": "What makes it unusual is that it is portable, tiny, stealthy, and cross-container, which are four properties that almost never appear in the same exploit."
       },
       {
         "start": 20,
         "end": 27,
-        "text": "Four steps: AF_ALG socket, shellcode payload, write cached su, execve poisoned su. No race. No offsets. Same exploit everywhere."
+        "text": "The attack runs in four steps: open a crypto socket, build a payload, write it into the kernel's cached copy of su, and execute that poisoned binary."
       },
       {
         "start": 27,
         "end": 34,
-        "text": "Mitigation blocklists algif_aead. But Dirty Frag and Fragnesia bypass via xfrm and RxRPC. Bug class wider than one module."
+        "text": "The recommended mitigation is to blocklist the algif_aead module, but that breaks legitimate crypto functionality, and related vulnerabilities called Dirty Frag and Fragnesia bypass it entirely."
       },
       {
         "start": 34,
         "end": 41,
-        "text": "Every major distro released advisories. Patched in mainline. Dirty Pipe 2022 was same class different subsystem."
+        "text": "CVE-2026-31431 is patched in mainline, and every major Linux distribution has shipped an advisory, including Ubuntu, Debian, RHEL, SUSE, and Amazon Linux."
       },
       {
         "start": 41,
         "end": 48,
-        "text": "2017 optimization broke page-cache isolation. Nine years later, 732-byte script exploits it on every distro."
+        "text": "A performance optimization added in 2017 broke the page-cache isolation guarantee, and nine years later a 732-byte script exploits that mistake on every distribution."
       },
       {
         "start": 48,
         "end": 54,
-        "text": "Have you verified your kernel includes the CVE-2026-31431 fix? Tell me in the comments."
+        "text": "Check that your kernel package includes the CVE-2026-31431 fix, and drop a comment if you have questions."
       }
     ],
     "beats": [
