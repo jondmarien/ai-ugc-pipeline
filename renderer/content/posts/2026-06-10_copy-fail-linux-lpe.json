@@ -80,7 +80,7 @@
       "role": "context",
       "kicker": "THE PRIMITIVE",
       "on_slide_copy": "Four bytes into any file's page cache gives you root.",
-      "subline": "Disclosed April 30 by Xint.io and Theori. CVSS 7.8. The exploit is a 732-byte Python script that takes four steps to reach root.",
+      "subline": "Disclosed April 29 by Xint.io and Theori. CVSS 7.8. The exploit is a 732-byte Python script that takes four steps to reach root.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Low raking light grazes a dense vertical weave of glowing filaments in the dark, four strands flaring as they run while a lock icon below shatters, dark editorial photography, the weave set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-10_copy-fail-linux-lpe/02_context.png",
@@ -167,7 +167,7 @@
       "notes": ""
     }
   ],
-  "caption": "Copy Fail (CVE-2026-31431) lets an unprivileged user write four controlled bytes into the page cache of any readable file. A 732-byte Python script edits a setuid binary and gains root.\n\nDisclosed April 30 by Xint.io and Theori. CVSS 7.8. The exploit is portable, tiny, stealthy, and cross-container — four properties that almost never appear together. Works on every Linux distribution shipped since 2017.\n\nThe flaw is in the algif_aead crypto module. An in-place optimization from August 2017 let a page-cache page end up in the kernel writable scatterlist for an AEAD operation over AF_ALG socket. Unprivileged process drives splice() into that socket and completes a targeted write into the page cache.\n\nFour steps: open AF_ALG socket, construct payload, trigger write to cached /usr/bin/su, execve the poisoned su as root. No race condition. No kernel offsets. Same exploit across distros.\n\nMitigation: blocklist algif_aead module. But Dirty Frag and Fragnesia bypass this entirely using xfrm and RxRPC paths. The bug class is wider than one module.\n\nEvery major distro released advisories. CVE-2026-31431 patched in mainline. Dirty Pipe (2022) was the same class in a different subsystem.\n\nThe 2017 optimization broke the page-cache isolation guarantee. Nine years later, a 732-byte script exploits it on every distro.\n\nHave you verified your kernel package includes the CVE-2026-31431 fix?\n\nFollow for AI security breakdowns without the fake panic.\n\n[Copy Fail, CVE-2026-31431, Linux kernel, local privilege escalation, page cache, algif_aead, Dirty Pipe, kernel hardening, exploit development]",
+  "caption": "Copy Fail (CVE-2026-31431) lets an unprivileged user write four controlled bytes into the page cache of any readable file. A 732-byte Python script edits a setuid binary and gains root.\n\nDisclosed April 29 by Xint.io and Theori. CVSS 7.8. The exploit is portable, tiny, stealthy, and cross-container — four properties that almost never appear together. Works on every Linux distribution shipped since 2017.\n\nThe flaw is in the algif_aead crypto module. An in-place optimization from August 2017 let a page-cache page end up in the kernel writable scatterlist for an AEAD operation over AF_ALG socket. Unprivileged process drives splice() into that socket and completes a targeted write into the page cache.\n\nFour steps: open AF_ALG socket, construct payload, trigger write to cached /usr/bin/su, execve the poisoned su as root. No race condition. No kernel offsets. Same exploit across distros.\n\nMitigation: blocklist algif_aead module. But Dirty Frag and Fragnesia bypass this entirely using xfrm and RxRPC paths. The bug class is wider than one module.\n\nEvery major distro released advisories. CVE-2026-31431 patched in mainline. Dirty Pipe (2022) was the same class in a different subsystem.\n\nThe 2017 optimization broke the page-cache isolation guarantee. Nine years later, a 732-byte script exploits it on every distro.\n\nHave you verified your kernel package includes the CVE-2026-31431 fix?\n\nFollow for AI security breakdowns without the fake panic.\n\n[Copy Fail, CVE-2026-31431, Linux kernel, local privilege escalation, page cache, algif_aead, Dirty Pipe, kernel hardening, exploit development]",
   "hashtags": [
     "Copy Fail",
     "CVE-2026-31431",
@@ -182,7 +182,7 @@
   "comment_prompt": "Have you verified your kernel package includes the CVE-2026-31431 fix?",
   "alt_text": [
     "Title card: 732 bytes, portable, stealthy, cross-container root. Copy Fail, CVE-2026-31431, a four-byte page-cache write that works on every Linux distro since 2017. A tiny red sliver of light glows in a dark void, bending down to reshape a small metallic key-shaped emblem below it.",
-    "An unprivileged local user writes four controlled bytes into the page cache of any readable file, edits a setuid binary, and gains root. Disclosed April 30 by Xint.io and Theori, CVSS 7.8. A dense vertical weave of glowing filaments rises in the dark, four strands flaring as a lock below shatters.",
+    "An unprivileged local user writes four controlled bytes into the page cache of any readable file, edits a setuid binary, and gains root. Disclosed April 29 by Xint.io and Theori, CVSS 7.8. A dense vertical weave of glowing filaments rises in the dark, four strands flaring as a lock below shatters.",
     "Portable, tiny, stealthy, cross-container: four properties that almost never appear together. Works across all Linux versions since 2017 because the page cache is shared across processes and containers. Four identical keys of light turn the same lock in perfect unison.",
     "Four steps: open an AF_ALG socket bound to authencesn(hmac(sha256),cbc(aes)), build the payload, trigger a write to the kernel's cached copy of /usr/bin/su, then execve it to run injected shellcode as root. Four stepping stones glow red in sequence.",
     "The exploit is reliable with no race condition and no kernel offsets, and the same code works across distros. Blocklisting algif_aead breaks crypto, and Dirty Frag plus Fragnesia bypass it via xfrm and RxRPC. A blocked shield with two paths routing around it.",
@@ -194,7 +194,7 @@
     {
       "source": "The Hacker News: New Linux 'Copy Fail' Vulnerability Enables Root Access",
       "link": "https://thehackernews.com/2026/04/new-linux-copy-fail-vulnerability.html",
-      "supports": "Copy Fail (CVE-2026-31431) CVSS 7.8; 732-byte Python exploit; four steps to root; algif_aead flaw from August 2017 commit; portable across all distros since 2017; cross-container impact; no race condition; same class as Dirty Pipe; distro advisories; Bugcrowd David Brumley analysis.",
+      "supports": "Copy Fail (CVE-2026-31431) CVSS 7.8; 732-byte Python exploit; four steps to root; algif_aead flaw from August 2017 commit; portable across all distros since 2017; cross-container impact; no race condition; same class as Dirty Pipe; distro advisories.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     },
