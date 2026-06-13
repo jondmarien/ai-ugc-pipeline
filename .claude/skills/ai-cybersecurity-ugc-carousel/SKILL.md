@@ -53,16 +53,18 @@ Do not invent statistics, timelines, company names, breach details, CVEs, tool c
 
 Use this default 8-slide structure unless another structure fits better. The slide count is configurable (`slides=N`, 3–20, default 8): **`cover` is always slide 1 and `cta` is always the last**, with `takeaway` at slide N−1; the middle is filled from the named roles below, then **generic `point` body slides** when a post needs more than the five named middle slides (or trimmed from the end of the named list when N < 8).
 
-| Slide | Purpose | Copy pattern |
-| --- | --- | --- |
-| 1 | Cover hook | 8 words max, concrete and countable (a number, a named object, a verb). Its only job is stopping the scroll; the subline carries any qualifier. e.g. “AI PHISHING JUST CROSSED A LINE” |
-| 2 | What happened | Prove the cover wasn’t bait: state the event/pattern AND the stakes in the reader’s terms. Pass/fail: a skeptic who swiped thinks “worth my time” from this slide alone, or the funnel leaks here. |
-| 3 | Why it matters | Explain the security impact, not the hype |
-| 4 | How it works | Describe the mechanism at a safe, high level |
-| 5 | Where teams fail | Identify the gap in people, process, or tooling |
-| 6 | Defensive move | Give practical controls or review steps |
-| 7 | Takeaway | The **save-object**: a named checklist, decision rule, query/detection snippet, or fill-in-the-blank framework a defender would screenshot (fallback: one sharp quotable rule — see CAPTION_BANK §3). Compress the lesson into one memorable line. **Accent-mark it:** wrap the affirmative point in `[[…]]` (renders in the theme accent colour) and any negation/"what it's NOT" in `{{…}}` (renders red). e.g. `The win {{isn't 'AI that thinks.'}} [[It's an agent you own and can contain.]]` |
-| 8 | CTA | Ask a specific question and invite following/saving |
+| Slide | Purpose | Copy pattern | Length budget |
+| --- | --- | --- | --- |
+| 1 | Cover hook | 8 words max, concrete and countable (a number, a named object, a verb). Its only job is stopping the scroll; the subline carries any qualifier. e.g. “AI PHISHING JUST CROSSED A LINE” | **≤8 words** on the body line; subline **≤30 words** |
+| 2 | What happened | Prove the cover wasn’t bait: state the event/pattern AND the stakes in the reader’s terms. Pass/fail: a skeptic who swiped thinks “worth my time” from this slide alone, or the funnel leaks here. | Body **≤14 words** (one short plain sentence); subline **≤30 words** |
+| 3 | Why it matters | Explain the security impact, not the hype | Body **≤14 words**; subline **≤30 words** |
+| 4 | How it works | Describe the mechanism at a safe, high level | Body **≤14 words**; subline **≤30 words** |
+| 5 | Where teams fail | Identify the gap in people, process, or tooling | Body **≤14 words**; subline **≤30 words** |
+| 6 | Defensive move | Give practical controls or review steps | Body **≤14 words**; subline **≤30 words** |
+| 7 | Takeaway | The **save-object**: a named checklist, decision rule, query/detection snippet, or fill-in-the-blank framework a defender would screenshot (fallback: one sharp quotable rule — see CAPTION_BANK §3). Compress the lesson into one memorable line. **Accent-mark it:** wrap the affirmative point in `[[…]]` (renders in the theme accent colour) and any negation/”what it’s NOT” in `{{…}}` (renders red). e.g. `The win {{isn’t ‘AI that thinks.’}} [[It’s an agent you own and can contain.]]` | Body **≤22 words**; subline **≤30 words** |
+| 8 | CTA | Ask a specific question and invite following/saving | Body **≤14 words**; subline **≤30 words** |
+
+**One idea per slide, plain language.** Each body slide states ONE claim in one short sentence. Expand each acronym in plain words on its **subline**, not the body line (e.g. body: ‘Attackers rewrite a trusted system file.’ subline: ‘The bug is in algif_aead, the kernel’s crypto socket API.’). If a slide carries more than one idea, split it into another `point` slide rather than cramming. Tech-heavy posts may run 10-14 slides; for multi-step mechanisms prefer the `chain` role (it renders a clean on-brand step diagram with no AI background). These budgets are enforced as advisories by `bun run validate` (copy over budget warns); resolve them before rendering.
 
 **Slide-count guidance (2026-06-07, sourced):** plan the content first, then set the count. Industry data (Hootsuite/Later/Socialinsider, 2025–2026) puts peak engagement at 8–10 slides, but completion rate beats slide count: a tight 5 with zero filler outperforms a padded 10, and low completion reads to the ranking system as a broken promise. Never pad to hit a number. **Every slide must pass the standalone test** (one complete idea with zero context) because Instagram re-serves carousels to non-interactors starting from slide 2: any slide can be someone’s first impression.
 
