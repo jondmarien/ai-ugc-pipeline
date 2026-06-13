@@ -433,158 +433,158 @@
     "captions": [
       {
         "start": 0.0,
-        "end": 2.82,
+        "end": 2.68,
         "text": "A security researcher called Nightmare Eclipse released",
         "words": [
           {
             "text": "A",
             "start": 0.0,
-            "end": 0.54
+            "end": 0.18
           },
           {
             "text": "security",
-            "start": 0.54,
-            "end": 0.86
+            "start": 0.18,
+            "end": 0.44
           },
           {
             "text": "researcher",
-            "start": 0.86,
-            "end": 1.4
+            "start": 0.44,
+            "end": 0.96
           },
           {
             "text": "called",
-            "start": 1.4,
-            "end": 1.76
+            "start": 0.96,
+            "end": 1.32
           },
           {
             "text": "Nightmare",
-            "start": 1.76,
-            "end": 1.98
+            "start": 1.32,
+            "end": 1.56
           },
           {
             "text": "Eclipse",
-            "start": 1.98,
-            "end": 2.4
+            "start": 1.56,
+            "end": 1.98
           },
           {
             "text": "released",
-            "start": 2.4,
-            "end": 2.82
+            "start": 1.98,
+            "end": 2.68
           }
         ]
       },
       {
-        "start": 2.82,
-        "end": 4.82,
+        "start": 2.68,
+        "end": 4.56,
         "text": "six Windows zero-days in the space of",
         "words": [
           {
             "text": "six",
-            "start": 2.82,
-            "end": 3.28
+            "start": 2.68,
+            "end": 3.06
           },
           {
             "text": "Windows",
-            "start": 3.28,
-            "end": 3.5
+            "start": 3.06,
+            "end": 3.28
           },
           {
             "text": "zero-days",
-            "start": 3.5,
-            "end": 3.82
+            "start": 3.28,
+            "end": 3.59
           },
           {
             "text": "in",
-            "start": 4.14,
-            "end": 4.34
+            "start": 3.9,
+            "end": 4.08
           },
           {
             "text": "the",
-            "start": 4.34,
-            "end": 4.42
+            "start": 4.08,
+            "end": 4.16
           },
           {
             "text": "space",
-            "start": 4.42,
-            "end": 4.62
+            "start": 4.16,
+            "end": 4.36
           },
           {
             "text": "of",
-            "start": 4.62,
-            "end": 4.82
+            "start": 4.36,
+            "end": 4.56
           }
         ]
       },
       {
-        "start": 4.82,
-        "end": 6.72,
+        "start": 4.56,
+        "end": 6.58,
         "text": "a few months, and GitHub suspended the",
         "words": [
           {
             "text": "a",
-            "start": 4.82,
-            "end": 4.9
+            "start": 4.56,
+            "end": 4.64
           },
           {
             "text": "few",
-            "start": 4.9,
-            "end": 5.06
+            "start": 4.64,
+            "end": 4.8
           },
           {
             "text": "months,",
-            "start": 5.06,
-            "end": 5.26
+            "start": 4.8,
+            "end": 5.02
           },
           {
             "text": "and",
-            "start": 5.56,
-            "end": 5.72
+            "start": 5.46,
+            "end": 5.64
           },
           {
             "text": "GitHub",
-            "start": 5.72,
-            "end": 5.94
+            "start": 5.64,
+            "end": 5.82
           },
           {
             "text": "suspended",
-            "start": 5.94,
-            "end": 6.38
+            "start": 5.82,
+            "end": 6.24
           },
           {
             "text": "the",
-            "start": 6.38,
-            "end": 6.72
+            "start": 6.24,
+            "end": 6.58
           }
         ]
       },
       {
-        "start": 6.72,
-        "end": 9.06,
+        "start": 6.58,
+        "end": 9.28,
         "text": "account on May 23 without warning, wiping",
         "words": [
           {
             "text": "account",
-            "start": 6.72,
-            "end": 6.92
+            "start": 6.58,
+            "end": 6.8
           },
           {
             "text": "on",
-            "start": 6.92,
-            "end": 7.2
+            "start": 6.8,
+            "end": 7.06
           },
           {
             "text": "May",
-            "start": 7.2,
-            "end": 7.34
+            "start": 7.06,
+            "end": 7.18
           },
           {
             "text": "23",
-            "start": 7.34,
-            "end": 7.68
+            "start": 7.18,
+            "end": 7.54
           },
           {
             "text": "without",
-            "start": 7.68,
+            "start": 7.54,
             "end": 8.2
           },
           {
@@ -594,1239 +594,1202 @@
           },
           {
             "text": "wiping",
-            "start": 8.88,
-            "end": 9.06
+            "start": 8.98,
+            "end": 9.28
           }
         ]
       },
       {
-        "start": 9.06,
+        "start": 9.28,
         "end": 9.96,
         "text": "all six repositories.",
         "words": [
           {
             "text": "all",
-            "start": 9.06,
-            "end": 9.36
+            "start": 9.28,
+            "end": 9.52
           },
           {
             "text": "six",
-            "start": 9.36,
-            "end": 9.68
+            "start": 9.52,
+            "end": 9.78
           },
           {
             "text": "repositories.",
-            "start": 9.68,
+            "start": 9.78,
             "end": 9.96
           }
         ]
       },
       {
-        "start": 11.12,
-        "end": 13.18,
+        "start": 11.14,
+        "end": 13.02,
         "text": "The exploits covered different layers of Windows:",
         "words": [
           {
             "text": "The",
-            "start": 11.12,
-            "end": 11.26
+            "start": 11.14,
+            "end": 11.24
           },
           {
             "text": "exploits",
-            "start": 11.26,
-            "end": 11.5
+            "start": 11.24,
+            "end": 11.46
           },
           {
             "text": "covered",
-            "start": 11.5,
-            "end": 12.12
+            "start": 11.46,
+            "end": 11.68
           },
           {
             "text": "different",
-            "start": 12.12,
-            "end": 12.46
+            "start": 11.9,
+            "end": 12.26
           },
           {
             "text": "layers",
-            "start": 12.46,
-            "end": 12.84
+            "start": 12.26,
+            "end": 12.58
           },
           {
             "text": "of",
-            "start": 12.84,
-            "end": 13.0
+            "start": 12.58,
+            "end": 12.8
           },
           {
             "text": "Windows:",
-            "start": 13.0,
-            "end": 13.18
+            "start": 12.8,
+            "end": 13.02
           }
         ]
       },
       {
-        "start": 13.92,
-        "end": 15.74,
-        "text": "one dumped password hashes via the Security",
+        "start": 13.76,
+        "end": 16.64,
+        "text": "one abused Defender's signature-update process to gain",
         "words": [
           {
             "text": "one",
-            "start": 13.92,
-            "end": 13.97
+            "start": 13.76,
+            "end": 13.81
           },
           {
-            "text": "dumped",
-            "start": 13.94,
-            "end": 14.14
+            "text": "abused",
+            "start": 13.76,
+            "end": 14.02
           },
           {
-            "text": "password",
-            "start": 14.14,
-            "end": 14.58
+            "text": "Defender's",
+            "start": 14.02,
+            "end": 14.7
           },
           {
-            "text": "hashes",
-            "start": 14.58,
-            "end": 14.82
+            "text": "signature-update",
+            "start": 14.7,
+            "end": 15.03
           },
           {
-            "text": "via",
-            "start": 14.82,
-            "end": 15.26
+            "text": "process",
+            "start": 15.36,
+            "end": 15.92
           },
           {
-            "text": "the",
-            "start": 15.26,
-            "end": 15.44
+            "text": "to",
+            "start": 15.92,
+            "end": 16.48
           },
           {
-            "text": "Security",
-            "start": 15.44,
-            "end": 15.74
+            "text": "gain",
+            "start": 16.48,
+            "end": 16.64
           }
         ]
       },
       {
-        "start": 15.74,
-        "end": 17.84,
-        "text": "Account Manager, another wrote to the System32",
+        "start": 16.64,
+        "end": 19.46,
+        "text": "SYSTEM, another redirected Defender's own write into",
         "words": [
           {
-            "text": "Account",
-            "start": 15.74,
-            "end": 16.04
-          },
-          {
-            "text": "Manager,",
-            "start": 16.04,
-            "end": 16.46
+            "text": "SYSTEM,",
+            "start": 16.64,
+            "end": 16.92
           },
           {
             "text": "another",
-            "start": 16.88,
-            "end": 17.08
+            "start": 17.42,
+            "end": 17.72
           },
           {
-            "text": "wrote",
-            "start": 17.08,
-            "end": 17.34
+            "text": "redirected",
+            "start": 17.72,
+            "end": 18.0
           },
           {
-            "text": "to",
-            "start": 17.34,
-            "end": 17.5
+            "text": "Defender's",
+            "start": 18.0,
+            "end": 18.84
           },
           {
-            "text": "the",
-            "start": 17.5,
-            "end": 17.58
+            "text": "own",
+            "start": 18.84,
+            "end": 19.0
           },
           {
-            "text": "System32",
-            "start": 17.58,
-            "end": 17.84
+            "text": "write",
+            "start": 19.0,
+            "end": 19.11
+          },
+          {
+            "text": "into",
+            "start": 19.22,
+            "end": 19.46
           }
         ]
       },
       {
-        "start": 18.1,
-        "end": 21.1,
-        "text": "directory to elevate privileges, a third silently",
+        "start": 19.46,
+        "end": 22.93,
+        "text": "System32, a third silently disabled Defender, and",
         "words": [
           {
-            "text": "directory",
-            "start": 18.1,
-            "end": 18.62
-          },
-          {
-            "text": "to",
-            "start": 18.62,
-            "end": 19.14
-          },
-          {
-            "text": "elevate",
-            "start": 19.14,
-            "end": 19.32
-          },
-          {
-            "text": "privileges,",
-            "start": 19.32,
-            "end": 19.7
+            "text": "System32,",
+            "start": 19.46,
+            "end": 20.1
           },
           {
             "text": "a",
-            "start": 20.48,
-            "end": 20.53
+            "start": 20.74,
+            "end": 20.98
           },
           {
             "text": "third",
-            "start": 20.5,
-            "end": 20.7
+            "start": 20.98,
+            "end": 21.16
           },
           {
             "text": "silently",
-            "start": 20.7,
-            "end": 21.1
-          }
-        ]
-      },
-      {
-        "start": 21.1,
-        "end": 23.86,
-        "text": "disabled Windows Defender, and one bypassed BitLocker",
-        "words": [
-          {
-            "text": "disabled",
-            "start": 21.1,
-            "end": 21.5
+            "start": 21.16,
+            "end": 21.56
           },
           {
-            "text": "Windows",
-            "start": 21.5,
-            "end": 21.98
+            "text": "disabled",
+            "start": 21.56,
+            "end": 21.92
           },
           {
             "text": "Defender,",
-            "start": 21.98,
-            "end": 22.28
+            "start": 21.92,
+            "end": 22.38
           },
           {
             "text": "and",
-            "start": 22.28,
-            "end": 22.76
-          },
+            "start": 22.88,
+            "end": 22.93
+          }
+        ]
+      },
+      {
+        "start": 22.92,
+        "end": 24.6,
+        "text": "one bypassed BitLocker over USB.",
+        "words": [
           {
             "text": "one",
-            "start": 22.76,
-            "end": 22.92
+            "start": 22.92,
+            "end": 23.08
           },
           {
             "text": "bypassed",
-            "start": 22.92,
-            "end": 23.05
+            "start": 23.08,
+            "end": 23.24
           },
           {
             "text": "BitLocker",
-            "start": 23.18,
-            "end": 23.86
-          }
-        ]
-      },
-      {
-        "start": 23.86,
-        "end": 24.5,
-        "text": "over USB.",
-        "words": [
+            "start": 23.4,
+            "end": 24.02
+          },
           {
             "text": "over",
-            "start": 23.86,
-            "end": 24.22
+            "start": 24.02,
+            "end": 24.38
           },
           {
             "text": "USB.",
-            "start": 24.22,
-            "end": 24.5
+            "start": 24.38,
+            "end": 24.6
           }
         ]
       },
       {
-        "start": 25.26,
-        "end": 27.5,
-        "text": "The researcher says private disclosure came first,",
+        "start": 24.6,
+        "end": 28.52,
+        "text": "The researcher says private disclosure came",
         "words": [
           {
             "text": "The",
-            "start": 25.26,
-            "end": 25.36
+            "start": 24.6,
+            "end": 25.7
           },
           {
             "text": "researcher",
-            "start": 25.36,
-            "end": 25.64
+            "start": 25.7,
+            "end": 26.94
           },
           {
             "text": "says",
-            "start": 25.64,
-            "end": 26.08
+            "start": 26.94,
+            "end": 27.36
           },
           {
             "text": "private",
-            "start": 26.08,
-            "end": 26.42
+            "start": 27.36,
+            "end": 27.64
           },
           {
             "text": "disclosure",
-            "start": 26.42,
-            "end": 26.8
+            "start": 27.64,
+            "end": 28.08
           },
           {
             "text": "came",
-            "start": 26.8,
-            "end": 27.22
-          },
-          {
-            "text": "first,",
-            "start": 27.22,
-            "end": 27.5
+            "start": 28.08,
+            "end": 28.52
           }
         ]
       },
       {
-        "start": 27.8,
-        "end": 29.76,
-        "text": "but that Microsoft ignored or mishandled the",
+        "start": 28.52,
+        "end": 31.14,
+        "text": "first, but that Microsoft ignored or mishandled",
         "words": [
           {
+            "text": "first,",
+            "start": 28.52,
+            "end": 28.78
+          },
+          {
             "text": "but",
-            "start": 27.8,
-            "end": 27.94
+            "start": 29.2,
+            "end": 29.3
           },
           {
             "text": "that",
-            "start": 27.94,
-            "end": 28.06
+            "start": 29.3,
+            "end": 29.44
           },
           {
             "text": "Microsoft",
-            "start": 28.06,
-            "end": 28.4
+            "start": 29.44,
+            "end": 29.76
           },
           {
             "text": "ignored",
-            "start": 28.4,
-            "end": 28.88
+            "start": 29.76,
+            "end": 30.3
           },
           {
             "text": "or",
-            "start": 28.88,
-            "end": 29.14
+            "start": 30.3,
+            "end": 30.58
           },
           {
             "text": "mishandled",
-            "start": 29.14,
-            "end": 29.7
-          },
-          {
-            "text": "the",
-            "start": 29.7,
-            "end": 29.76
+            "start": 30.58,
+            "end": 31.14
           }
         ]
       },
       {
-        "start": 29.76,
-        "end": 31.84,
-        "text": "reports, so they eventually went public out",
+        "start": 31.14,
+        "end": 33.08,
+        "text": "the reports, so they eventually went public",
         "words": [
           {
+            "text": "the",
+            "start": 31.14,
+            "end": 31.22
+          },
+          {
             "text": "reports,",
-            "start": 29.76,
-            "end": 29.84
+            "start": 31.22,
+            "end": 31.48
           },
           {
             "text": "so",
-            "start": 29.92,
-            "end": 30.46
+            "start": 31.96,
+            "end": 32.14
           },
           {
             "text": "they",
-            "start": 30.46,
-            "end": 30.74
+            "start": 32.14,
+            "end": 32.24
           },
           {
             "text": "eventually",
-            "start": 30.74,
-            "end": 31.02
+            "start": 32.24,
+            "end": 32.46
           },
           {
             "text": "went",
-            "start": 31.02,
-            "end": 31.28
+            "start": 32.46,
+            "end": 32.8
           },
           {
             "text": "public",
-            "start": 31.28,
-            "end": 31.56
-          },
-          {
-            "text": "out",
-            "start": 31.56,
-            "end": 31.84
+            "start": 32.8,
+            "end": 33.08
           }
         ]
       },
       {
-        "start": 31.84,
-        "end": 32.22,
-        "text": "of frustration.",
+        "start": 33.08,
+        "end": 33.7,
+        "text": "out of frustration.",
         "words": [
           {
+            "text": "out",
+            "start": 33.08,
+            "end": 33.3
+          },
+          {
             "text": "of",
-            "start": 31.84,
-            "end": 31.94
+            "start": 33.3,
+            "end": 33.4
           },
           {
             "text": "frustration.",
-            "start": 31.94,
-            "end": 32.22
+            "start": 33.4,
+            "end": 33.7
           }
         ]
       },
       {
-        "start": 33.18,
-        "end": 35.7,
+        "start": 34.78,
+        "end": 37.34,
         "text": "After the suspension, the researcher resurfaced as",
         "words": [
           {
             "text": "After",
-            "start": 33.18,
-            "end": 33.44
+            "start": 34.78,
+            "end": 35.12
           },
           {
             "text": "the",
-            "start": 33.44,
-            "end": 33.58
+            "start": 35.12,
+            "end": 35.32
           },
           {
             "text": "suspension,",
-            "start": 33.58,
-            "end": 33.9
+            "start": 35.32,
+            "end": 35.6
           },
           {
             "text": "the",
-            "start": 34.44,
-            "end": 34.5
+            "start": 36.1,
+            "end": 36.16
           },
           {
             "text": "researcher",
-            "start": 34.5,
-            "end": 34.82
+            "start": 36.16,
+            "end": 36.44
           },
           {
             "text": "resurfaced",
-            "start": 34.82,
-            "end": 35.54
+            "start": 36.44,
+            "end": 37.14
           },
           {
             "text": "as",
-            "start": 35.54,
-            "end": 35.7
+            "start": 37.14,
+            "end": 37.34
           }
         ]
       },
       {
-        "start": 35.7,
-        "end": 38.68,
+        "start": 37.34,
+        "end": 40.34,
         "text": "MSNightmare and dropped two more exploits: RoguePlanet,",
         "words": [
           {
             "text": "MSNightmare",
-            "start": 35.7,
-            "end": 35.99
+            "start": 37.34,
+            "end": 37.63
           },
           {
             "text": "and",
-            "start": 36.28,
-            "end": 36.74
+            "start": 37.92,
+            "end": 38.44
           },
           {
             "text": "dropped",
-            "start": 36.74,
-            "end": 36.9
+            "start": 38.44,
+            "end": 38.6
           },
           {
             "text": "two",
-            "start": 36.9,
-            "end": 37.16
+            "start": 38.6,
+            "end": 38.88
           },
           {
             "text": "more",
-            "start": 37.16,
-            "end": 37.36
+            "start": 38.88,
+            "end": 39.08
           },
           {
             "text": "exploits:",
-            "start": 37.36,
-            "end": 37.6
+            "start": 39.08,
+            "end": 39.28
           },
           {
             "text": "RoguePlanet,",
-            "start": 38.24,
-            "end": 38.68
+            "start": 40.06,
+            "end": 40.34
           }
         ]
       },
       {
-        "start": 38.68,
-        "end": 40.98,
+        "start": 40.7,
+        "end": 42.88,
         "text": "the seventh, confirmed working on fully patched",
         "words": [
           {
             "text": "the",
-            "start": 38.68,
-            "end": 38.86
+            "start": 40.7,
+            "end": 40.78
           },
           {
             "text": "seventh,",
-            "start": 38.86,
-            "end": 39.04
+            "start": 40.78,
+            "end": 41.0
           },
           {
             "text": "confirmed",
-            "start": 39.22,
-            "end": 39.68
+            "start": 41.46,
+            "end": 41.58
           },
           {
             "text": "working",
-            "start": 39.68,
-            "end": 40.22
+            "start": 41.58,
+            "end": 42.02
           },
           {
             "text": "on",
-            "start": 40.22,
-            "end": 40.42
+            "start": 42.02,
+            "end": 42.24
           },
           {
             "text": "fully",
-            "start": 40.42,
-            "end": 40.62
+            "start": 42.24,
+            "end": 42.48
           },
           {
             "text": "patched",
-            "start": 40.62,
-            "end": 40.98
+            "start": 42.48,
+            "end": 42.88
           }
         ]
       },
       {
-        "start": 40.98,
-        "end": 43.54,
+        "start": 42.88,
+        "end": 45.49,
         "text": "Windows 10 and 11, and GreatXML, an",
         "words": [
           {
             "text": "Windows",
-            "start": 40.98,
-            "end": 41.2
+            "start": 42.88,
+            "end": 43.08
           },
           {
             "text": "10",
-            "start": 41.2,
-            "end": 41.54
+            "start": 43.08,
+            "end": 43.5
           },
           {
             "text": "and",
-            "start": 41.54,
-            "end": 41.66
+            "start": 43.5,
+            "end": 43.66
           },
           {
             "text": "11,",
-            "start": 41.66,
-            "end": 41.9
+            "start": 43.66,
+            "end": 43.9
           },
           {
             "text": "and",
-            "start": 41.9,
-            "end": 42.34
+            "start": 44.34,
+            "end": 44.44
           },
           {
             "text": "GreatXML,",
-            "start": 42.34,
-            "end": 42.9
+            "start": 44.44,
+            "end": 45.02
           },
           {
             "text": "an",
-            "start": 43.48,
-            "end": 43.54
+            "start": 45.44,
+            "end": 45.49
           }
         ]
       },
       {
-        "start": 43.54,
-        "end": 45.14,
+        "start": 45.48,
+        "end": 46.84,
         "text": "eighth that bypassed BitLocker.",
         "words": [
           {
             "text": "eighth",
-            "start": 43.54,
-            "end": 43.86
+            "start": 45.48,
+            "end": 45.72
           },
           {
             "text": "that",
-            "start": 43.86,
-            "end": 44.18
+            "start": 45.72,
+            "end": 45.9
           },
           {
             "text": "bypassed",
-            "start": 44.18,
-            "end": 44.29
+            "start": 45.9,
+            "end": 46.44
           },
           {
             "text": "BitLocker.",
-            "start": 44.4,
-            "end": 45.14
+            "start": 46.44,
+            "end": 46.84
           }
         ]
       },
       {
-        "start": 45.6,
-        "end": 48.34,
+        "start": 47.84,
+        "end": 50.78,
         "text": "Microsoft initially threatened legal action, which triggered",
         "words": [
           {
             "text": "Microsoft",
-            "start": 45.6,
-            "end": 45.96
+            "start": 47.84,
+            "end": 48.36
           },
           {
             "text": "initially",
-            "start": 45.96,
-            "end": 46.36
+            "start": 48.36,
+            "end": 48.86
           },
           {
             "text": "threatened",
-            "start": 46.36,
-            "end": 46.86
+            "start": 48.86,
+            "end": 49.34
           },
           {
             "text": "legal",
-            "start": 46.86,
-            "end": 47.12
+            "start": 49.34,
+            "end": 49.6
           },
           {
             "text": "action,",
-            "start": 47.12,
-            "end": 47.54
+            "start": 49.6,
+            "end": 50.0
           },
           {
             "text": "which",
-            "start": 47.96,
-            "end": 48.06
+            "start": 50.38,
+            "end": 50.52
           },
           {
             "text": "triggered",
-            "start": 48.06,
-            "end": 48.34
+            "start": 50.52,
+            "end": 50.78
           }
         ]
       },
       {
-        "start": 48.34,
-        "end": 50.64,
+        "start": 50.78,
+        "end": 53.42,
         "text": "heavy community backlash, then walked back the",
         "words": [
           {
             "text": "heavy",
-            "start": 48.34,
-            "end": 48.58
+            "start": 50.78,
+            "end": 51.08
           },
           {
             "text": "community",
-            "start": 48.58,
-            "end": 48.92
+            "start": 51.08,
+            "end": 51.5
           },
           {
             "text": "backlash,",
-            "start": 48.92,
-            "end": 49.34
+            "start": 51.5,
+            "end": 51.94
           },
           {
             "text": "then",
-            "start": 49.94,
-            "end": 50.08
+            "start": 52.52,
+            "end": 52.74
           },
           {
             "text": "walked",
-            "start": 50.08,
-            "end": 50.24
+            "start": 52.74,
+            "end": 52.94
           },
           {
             "text": "back",
-            "start": 50.24,
-            "end": 50.48
+            "start": 52.94,
+            "end": 53.2
           },
           {
             "text": "the",
-            "start": 50.48,
-            "end": 50.64
+            "start": 53.2,
+            "end": 53.42
           }
         ]
       },
       {
-        "start": 50.64,
-        "end": 51.92,
+        "start": 53.42,
+        "end": 54.66,
         "text": "threat and said it would not pursue",
         "words": [
           {
             "text": "threat",
-            "start": 50.64,
-            "end": 50.86
+            "start": 53.42,
+            "end": 53.64
           },
           {
             "text": "and",
-            "start": 50.86,
-            "end": 51.14
+            "start": 53.64,
+            "end": 53.88
           },
           {
             "text": "said",
-            "start": 51.14,
-            "end": 51.3
+            "start": 53.88,
+            "end": 54.06
           },
           {
             "text": "it",
-            "start": 51.3,
-            "end": 51.42
+            "start": 54.06,
+            "end": 54.18
           },
           {
             "text": "would",
-            "start": 51.42,
-            "end": 51.5
+            "start": 54.18,
+            "end": 54.28
           },
           {
             "text": "not",
-            "start": 51.5,
-            "end": 51.68
+            "start": 54.28,
+            "end": 54.44
           },
           {
             "text": "pursue",
-            "start": 51.68,
-            "end": 51.92
+            "start": 54.44,
+            "end": 54.66
           }
         ]
       },
       {
-        "start": 51.92,
-        "end": 54.56,
+        "start": 54.66,
+        "end": 57.62,
         "text": "researchers, but the account remained suspended and",
         "words": [
           {
             "text": "researchers,",
-            "start": 51.92,
-            "end": 52.24
+            "start": 54.66,
+            "end": 55.06
           },
           {
             "text": "but",
-            "start": 52.88,
-            "end": 52.96
+            "start": 55.76,
+            "end": 55.88
           },
           {
             "text": "the",
-            "start": 52.96,
-            "end": 53.1
+            "start": 55.88,
+            "end": 55.98
           },
           {
             "text": "account",
-            "start": 53.1,
-            "end": 53.3
+            "start": 55.98,
+            "end": 56.2
           },
           {
             "text": "remained",
-            "start": 53.3,
-            "end": 53.64
+            "start": 56.2,
+            "end": 56.5
           },
           {
             "text": "suspended",
-            "start": 53.64,
-            "end": 54.08
+            "start": 56.5,
+            "end": 56.98
           },
           {
             "text": "and",
-            "start": 54.5,
-            "end": 54.56
+            "start": 57.54,
+            "end": 57.62
           }
         ]
       },
       {
-        "start": 54.56,
-        "end": 55.7,
+        "start": 57.62,
+        "end": 58.76,
         "text": "the exploits remained public.",
         "words": [
           {
             "text": "the",
-            "start": 54.56,
-            "end": 54.66
+            "start": 57.62,
+            "end": 57.72
           },
           {
             "text": "exploits",
-            "start": 54.66,
-            "end": 54.9
+            "start": 57.72,
+            "end": 57.94
           },
           {
             "text": "remained",
-            "start": 54.9,
-            "end": 55.36
+            "start": 57.94,
+            "end": 58.16
           },
           {
             "text": "public.",
-            "start": 55.36,
-            "end": 55.7
+            "start": 58.38,
+            "end": 58.76
           }
         ]
       },
       {
-        "start": 56.3,
-        "end": 57.7,
+        "start": 60.12,
+        "end": 61.76,
         "text": "This is the real lesson for defenders:",
         "words": [
           {
             "text": "This",
-            "start": 56.3,
-            "end": 56.62
+            "start": 60.12,
+            "end": 60.64
           },
           {
             "text": "is",
-            "start": 56.62,
-            "end": 56.74
+            "start": 60.64,
+            "end": 60.76
           },
           {
             "text": "the",
-            "start": 56.74,
-            "end": 56.88
+            "start": 60.76,
+            "end": 60.9
           },
           {
             "text": "real",
-            "start": 56.88,
-            "end": 57.0
+            "start": 60.9,
+            "end": 61.04
           },
           {
             "text": "lesson",
-            "start": 57.0,
-            "end": 57.32
+            "start": 61.04,
+            "end": 61.38
           },
           {
             "text": "for",
-            "start": 57.32,
-            "end": 57.54
+            "start": 61.38,
+            "end": 61.62
           },
           {
             "text": "defenders:",
-            "start": 57.54,
-            "end": 57.7
+            "start": 61.62,
+            "end": 61.76
           }
         ]
       },
       {
-        "start": 58.46,
-        "end": 60.54,
+        "start": 62.44,
+        "end": 64.54,
         "text": "coordinated disclosure is not a protection you",
         "words": [
           {
             "text": "coordinated",
-            "start": 58.46,
-            "end": 58.86
+            "start": 62.44,
+            "end": 62.84
           },
           {
             "text": "disclosure",
-            "start": 58.86,
-            "end": 59.16
+            "start": 62.84,
+            "end": 63.2
           },
           {
             "text": "is",
-            "start": 59.16,
-            "end": 59.62
+            "start": 63.2,
+            "end": 63.64
           },
           {
             "text": "not",
-            "start": 59.62,
-            "end": 59.82
+            "start": 63.64,
+            "end": 63.82
           },
           {
             "text": "a",
-            "start": 59.82,
-            "end": 59.88
+            "start": 63.82,
+            "end": 63.92
           },
           {
             "text": "protection",
-            "start": 59.88,
-            "end": 60.24
+            "start": 63.92,
+            "end": 64.24
           },
           {
             "text": "you",
-            "start": 60.24,
-            "end": 60.54
+            "start": 64.24,
+            "end": 64.54
           }
         ]
       },
       {
-        "start": 60.54,
-        "end": 62.24,
+        "start": 64.54,
+        "end": 66.34,
         "text": "can rely on, so you need detection",
         "words": [
           {
             "text": "can",
-            "start": 60.54,
-            "end": 60.66
+            "start": 64.54,
+            "end": 64.66
           },
           {
             "text": "rely",
-            "start": 60.66,
-            "end": 60.9
+            "start": 64.66,
+            "end": 64.9
           },
           {
             "text": "on,",
-            "start": 60.9,
-            "end": 61.2
+            "start": 64.9,
+            "end": 65.22
           },
           {
             "text": "so",
-            "start": 61.44,
-            "end": 61.66
+            "start": 65.44,
+            "end": 65.68
           },
           {
             "text": "you",
-            "start": 61.66,
-            "end": 61.78
+            "start": 65.68,
+            "end": 65.82
           },
           {
             "text": "need",
-            "start": 61.78,
-            "end": 61.92
+            "start": 65.82,
+            "end": 65.98
           },
           {
             "text": "detection",
-            "start": 61.92,
-            "end": 62.24
+            "start": 65.98,
+            "end": 66.34
           }
         ]
       },
       {
-        "start": 62.24,
-        "end": 65.04,
+        "start": 66.34,
+        "end": 69.12,
         "text": "that catches the underlying behaviors regardless of",
         "words": [
           {
             "text": "that",
-            "start": 62.24,
-            "end": 62.54
+            "start": 66.34,
+            "end": 66.64
           },
           {
             "text": "catches",
-            "start": 62.54,
-            "end": 62.84
+            "start": 66.64,
+            "end": 66.92
           },
           {
             "text": "the",
-            "start": 62.84,
-            "end": 63.08
+            "start": 66.92,
+            "end": 67.12
           },
           {
             "text": "underlying",
-            "start": 63.08,
-            "end": 63.48
+            "start": 67.12,
+            "end": 67.48
           },
           {
             "text": "behaviors",
-            "start": 63.48,
-            "end": 63.92
+            "start": 67.48,
+            "end": 67.94
           },
           {
             "text": "regardless",
-            "start": 64.44,
-            "end": 64.7
+            "start": 67.94,
+            "end": 68.72
           },
           {
             "text": "of",
-            "start": 64.7,
-            "end": 65.04
+            "start": 68.72,
+            "end": 69.12
           }
         ]
       },
       {
-        "start": 65.04,
-        "end": 65.98,
+        "start": 69.12,
+        "end": 70.1,
         "text": "whether a patch exists.",
         "words": [
           {
             "text": "whether",
-            "start": 65.04,
-            "end": 65.26
+            "start": 69.12,
+            "end": 69.36
           },
           {
             "text": "a",
-            "start": 65.26,
-            "end": 65.38
+            "start": 69.36,
+            "end": 69.46
           },
           {
             "text": "patch",
-            "start": 65.38,
-            "end": 65.58
+            "start": 69.46,
+            "end": 69.66
           },
           {
             "text": "exists.",
-            "start": 65.58,
-            "end": 65.98
+            "start": 69.66,
+            "end": 70.1
           }
         ]
       },
       {
-        "start": 66.52,
-        "end": 68.46,
-        "text": "That means alerting on Security Account Manager",
+        "start": 70.1,
+        "end": 73.01,
+        "text": "That means alerting on Defender tampering or",
         "words": [
           {
             "text": "That",
-            "start": 66.52,
-            "end": 66.57
+            "start": 70.1,
+            "end": 70.94
           },
           {
             "text": "means",
-            "start": 66.56,
-            "end": 66.76
+            "start": 70.94,
+            "end": 71.12
           },
           {
             "text": "alerting",
-            "start": 66.76,
-            "end": 67.28
+            "start": 71.12,
+            "end": 71.6
           },
           {
             "text": "on",
-            "start": 67.28,
-            "end": 67.38
-          },
-          {
-            "text": "Security",
-            "start": 67.38,
-            "end": 67.66
-          },
-          {
-            "text": "Account",
-            "start": 67.66,
-            "end": 68.06
-          },
-          {
-            "text": "Manager",
-            "start": 68.06,
-            "end": 68.46
-          }
-        ]
-      },
-      {
-        "start": 68.46,
-        "end": 72.0,
-        "text": "hive access, unexpected writes into System32, Defender",
-        "words": [
-          {
-            "text": "hive",
-            "start": 68.46,
-            "end": 68.72
-          },
-          {
-            "text": "access,",
-            "start": 68.72,
-            "end": 69.1
-          },
-          {
-            "text": "unexpected",
-            "start": 69.48,
-            "end": 69.74
-          },
-          {
-            "text": "writes",
-            "start": 69.74,
-            "end": 70.0
-          },
-          {
-            "text": "into",
-            "start": 70.26,
-            "end": 70.54
-          },
-          {
-            "text": "System32,",
-            "start": 70.54,
-            "end": 71.17
+            "start": 71.6,
+            "end": 71.7
           },
           {
             "text": "Defender",
-            "start": 71.8,
-            "end": 72.0
-          }
-        ]
-      },
-      {
-        "start": 72.0,
-        "end": 74.7,
-        "text": "tampering or disablement, and BitLocker bypass attempts",
-        "words": [
+            "start": 71.7,
+            "end": 71.96
+          },
           {
             "text": "tampering",
-            "start": 72.0,
-            "end": 72.4
+            "start": 72.5,
+            "end": 72.62
           },
           {
             "text": "or",
-            "start": 72.4,
-            "end": 72.76
-          },
+            "start": 72.96,
+            "end": 73.01
+          }
+        ]
+      },
+      {
+        "start": 72.96,
+        "end": 76.5,
+        "text": "disablement, stalled signature updates, unexpected writes into",
+        "words": [
           {
             "text": "disablement,",
-            "start": 72.76,
-            "end": 73.36
+            "start": 72.96,
+            "end": 73.54
+          },
+          {
+            "text": "stalled",
+            "start": 74.04,
+            "end": 74.32
+          },
+          {
+            "text": "signature",
+            "start": 74.32,
+            "end": 74.72
+          },
+          {
+            "text": "updates,",
+            "start": 74.72,
+            "end": 75.14
+          },
+          {
+            "text": "unexpected",
+            "start": 75.62,
+            "end": 75.76
+          },
+          {
+            "text": "writes",
+            "start": 75.76,
+            "end": 76.01
+          },
+          {
+            "text": "into",
+            "start": 76.26,
+            "end": 76.5
+          }
+        ]
+      },
+      {
+        "start": 76.5,
+        "end": 79.46,
+        "text": "System32, and BitLocker bypass attempts from removable",
+        "words": [
+          {
+            "text": "System32,",
+            "start": 76.5,
+            "end": 77.18
           },
           {
             "text": "and",
-            "start": 73.6,
-            "end": 73.66
+            "start": 77.74,
+            "end": 77.8
           },
           {
             "text": "BitLocker",
-            "start": 73.66,
-            "end": 74.08
+            "start": 77.8,
+            "end": 78.26
           },
           {
             "text": "bypass",
-            "start": 74.08,
-            "end": 74.36
+            "start": 78.26,
+            "end": 78.52
           },
           {
             "text": "attempts",
-            "start": 74.36,
-            "end": 74.7
-          }
-        ]
-      },
-      {
-        "start": 74.7,
-        "end": 75.86,
-        "text": "from removable media.",
-        "words": [
+            "start": 78.52,
+            "end": 78.92
+          },
           {
             "text": "from",
-            "start": 74.7,
-            "end": 75.08
+            "start": 78.92,
+            "end": 79.28
           },
           {
             "text": "removable",
-            "start": 75.08,
-            "end": 75.28
-          },
-          {
-            "text": "media.",
-            "start": 75.28,
-            "end": 75.86
+            "start": 79.28,
+            "end": 79.46
           }
         ]
       },
       {
-        "start": 76.42,
-        "end": 77.78,
+        "start": 79.46,
+        "end": 80.02,
+        "text": "media.",
+        "words": [
+          {
+            "text": "media.",
+            "start": 79.46,
+            "end": 80.02
+          }
+        ]
+      },
+      {
+        "start": 80.8,
+        "end": 82.18,
         "text": "Do you already have coverage for these",
         "words": [
           {
             "text": "Do",
-            "start": 76.42,
-            "end": 76.48
+            "start": 80.8,
+            "end": 80.86
           },
           {
             "text": "you",
-            "start": 76.48,
-            "end": 76.54
+            "start": 80.86,
+            "end": 80.94
           },
           {
             "text": "already",
-            "start": 76.54,
-            "end": 76.76
+            "start": 80.94,
+            "end": 81.18
           },
           {
             "text": "have",
-            "start": 76.76,
-            "end": 77.06
+            "start": 81.18,
+            "end": 81.48
           },
           {
             "text": "coverage",
-            "start": 77.06,
-            "end": 77.38
+            "start": 81.48,
+            "end": 81.82
           },
           {
             "text": "for",
-            "start": 77.38,
-            "end": 77.64
+            "start": 81.82,
+            "end": 82.06
           },
           {
             "text": "these",
-            "start": 77.64,
-            "end": 77.78
+            "start": 82.06,
+            "end": 82.18
           }
         ]
       },
       {
-        "start": 77.78,
-        "end": 78.96,
+        "start": 82.18,
+        "end": 83.3,
         "text": "behaviors in your environment?",
         "words": [
           {
             "text": "behaviors",
-            "start": 77.78,
-            "end": 78.06
+            "start": 82.18,
+            "end": 82.46
           },
           {
             "text": "in",
-            "start": 78.06,
-            "end": 78.46
+            "start": 82.46,
+            "end": 82.82
           },
           {
             "text": "your",
-            "start": 78.46,
-            "end": 78.58
+            "start": 82.82,
+            "end": 82.92
           },
           {
             "text": "environment?",
-            "start": 78.58,
-            "end": 78.96
+            "start": 82.92,
+            "end": 83.3
           }
         ]
       },
       {
-        "start": 79.38,
-        "end": 80.4,
+        "start": 83.96,
+        "end": 84.94,
         "text": "Drop your answer in the comments.",
         "words": [
           {
             "text": "Drop",
-            "start": 79.38,
-            "end": 79.44
+            "start": 83.96,
+            "end": 84.01
           },
           {
             "text": "your",
-            "start": 79.44,
-            "end": 79.64
+            "start": 84.0,
+            "end": 84.2
           },
           {
             "text": "answer",
-            "start": 79.64,
-            "end": 79.88
+            "start": 84.2,
+            "end": 84.4
           },
           {
             "text": "in",
-            "start": 79.88,
-            "end": 80.06
+            "start": 84.4,
+            "end": 84.6
           },
           {
             "text": "the",
-            "start": 80.06,
-            "end": 80.14
+            "start": 84.6,
+            "end": 84.68
           },
           {
             "text": "comments.",
-            "start": 80.14,
-            "end": 80.4
+            "start": 84.68,
+            "end": 84.94
           }
         ]
       }
