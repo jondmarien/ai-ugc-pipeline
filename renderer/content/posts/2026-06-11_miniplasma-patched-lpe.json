@@ -79,10 +79,10 @@
       "slide": 2,
       "role": "context",
       "kicker": "THE RELEASE",
-      "on_slide_copy": "Nightmare Eclipse dropped MiniPlasma as the sixth and final exploit. Targets fully patched Windows 10/11. June 2026 Patch Tuesday installed.",
-      "subline": "No CVE assigned. Researcher says it chains two post-patch primitives. The wave closer. Six zero-days in six days.",
+      "on_slide_copy": "Nightmare Eclipse dropped exploit six. Targets fully patched Windows 10 and 11.",
+      "subline": "No CVE assigned. Two post-patch primitives chained together. Six zero-days in six consecutive days, this one last.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Low raking light grazes a Windows Update history in the dark, 'June 2026 Cumulative Update' installed with green checkmark, but a red 'Exploit verified' badge overlapping it, dark editorial photography, the history set high over a calm empty lower third.",
+      "visual_prompt": "Low raking light grazes a glowing update shield in the dark, a thin red fracture line cutting across its surface, dark editorial photography, the shield set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/02_context.png",
       "asset_status": "generated",
       "cta": "",
@@ -92,8 +92,8 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT STINGS",
-      "on_slide_copy": "MiniPlasma works on fully patched systems. Chains two primitives that survived June Patch Tuesday. SYSTEM shell. Deterministic. No user interaction.",
-      "subline": "Researcher demonstrates exploitation on a machine with all June 2026 updates. The patch closed the front door. The chain enters through the window.",
+      "on_slide_copy": "Two primitives survived June Patch Tuesday and chain to a SYSTEM shell.",
+      "subline": "Researcher demonstrates exploitation on a machine with all June 2026 updates applied. The patch closed the front door. The chain enters through the window.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A focused side light illuminates a patch shield in the dark, two green plasma tendrils weaving through microscopic gaps in the mesh, converging into a SYSTEM token, dark premium editorial, the shield centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/03_risk.png",
@@ -105,8 +105,8 @@
       "slide": 4,
       "role": "mechanism",
       "kicker": "THE CHAIN",
-      "on_slide_copy": "Primitives: (1) A symbolic link race in a SYSTEM service that survives the patch. (2) A token manipulation via a legitimate Windows API. Chained = SYSTEM.",
-      "subline": "First primitive gets arbitrary file write as SYSTEM. Second converts write to token. Both primitives individually mitigated but not in combination. Researcher calls it 'patch residue'.",
+      "on_slide_copy": "A symbolic link race chains with a token manipulation API to reach SYSTEM.",
+      "subline": "The first primitive gets arbitrary file write as SYSTEM. The second converts that write into a token. Both are individually mitigated but not when chained together.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A hard top-down beam falls on two chain links in the dark, first link a symlink race glowing green, second link a token API glowing green, fused into a SYSTEM crown, dark editorial key art, the chain framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/04_mechanism.png",
@@ -118,10 +118,10 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "WHERE DEFENDERS MISS IT",
-      "on_slide_copy": "Patch Tuesday says 'protected.' Vulnerability scanners say 'clean.' But the chain uses two mitigated primitives in a novel combination. The whole is not the sum of the parts.",
-      "subline": "No CVE means no scanner signature. No vendor advisory. Defenders assume patched = safe. The researcher proves patched = different attack surface.",
+      "on_slide_copy": "Scanners say clean, patch says protected, but two mitigated primitives still chain.",
+      "subline": "No CVE means no scanner signature and no vendor advisory. Defenders assume patched systems are safe. The researcher proves patched means a different attack surface.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Cool light grazes a vulnerability scanner report in the dark, '0 critical vulnerabilities' in green, but a red chain diagram overlay showing the two mitigated primitives linking, tense editorial composition, the report held high with a clean lower third.",
+      "visual_prompt": "Cool side light traces two separate glowing nodes in the dark, each dimmed and contained, then a thin red arc connecting them to form a circuit that bypasses both barriers, tense editorial composition, the circuit held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/05_failure-point.png",
       "asset_status": "generated",
       "cta": "",
@@ -131,8 +131,8 @@
       "slide": 6,
       "role": "defense",
       "kicker": "THE MITIGATION REALITY",
-      "on_slide_copy": "Monitor for symbolic link creation in SYSTEM contexts. Audit token manipulation APIs (DuplicateTokenEx, ImpersonateLoggedOnUser). Hunt for patch-residue chains. Assume patched systems have new attack surfaces.",
-      "subline": "No patch for the combination. Microsoft may not assign CVE. Defenders must detect the behavior chain: symlink + token manipulation = SYSTEM. That pattern persists.",
+      "on_slide_copy": "Monitor symbolic link creation in SYSTEM contexts and audit token manipulation APIs.",
+      "subline": "No patch exists for the combination yet, and Microsoft may not assign a CVE. Defenders must detect the behavior chain of symbolic link races followed by token manipulation.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A balanced split composition in the dark: left side a patch shield with two separate green mitigations, right side the same mitigations chained into a red SYSTEM breach, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/06_defense.png",
@@ -160,7 +160,7 @@
       "on_slide_copy": "Do you hunt for primitive chains on your patched endpoints?",
       "subline": "Save this for your next patch validation review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Soft pooled light isolates a behavioral detection rule for symlink+token chains on a clean dark end-card surface, premium editorial cybersecurity key art, the rule small in vast negative space with the lower third open.",
+      "visual_prompt": "Soft pooled light isolates a glowing chain of two linked nodes on a clean dark end-card surface, premium editorial cybersecurity key art, the chain small in vast negative space with the lower third open.",
       "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/08_cta.png",
       "asset_status": "generated",
       "cta": "COMMENT + SAVE",
@@ -292,42 +292,42 @@
       {
         "start": 0,
         "end": 6,
-        "text": "MiniPlasma escapes the patch. Fully patched. Still root. Nightmare Eclipse exploit six. The wave closer."
+        "text": "MiniPlasma is a local privilege escalation exploit that fully patched Windows 10 and 11 systems cannot stop."
       },
       {
         "start": 6,
         "end": 13,
-        "text": "Targets fully patched Windows 10 and 11 with June 2026 Patch Tuesday. No CVE. Researcher calls it patch residue."
+        "text": "Nightmare Eclipse released it as exploit six of six in a June 2026 wave, with no CVE assigned to the combination."
       },
       {
         "start": 13,
         "end": 20,
-        "text": "Chains two primitives: symlink race in SYSTEM service, and token manipulation via Windows API. Together equals SYSTEM."
+        "text": "The exploit chains two primitives that each survived the patch: a symbolic link race in a SYSTEM service, and a token manipulation through a legitimate Windows API."
       },
       {
         "start": 20,
         "end": 27,
-        "text": "Both primitives individually mitigated. Not in combination. Demo on fully updated machine. Patch closed front door. Chain enters window."
+        "text": "The first step lands arbitrary file write as SYSTEM; the second converts that write into a privileged token, producing a deterministic shell with no user interaction required."
       },
       {
         "start": 27,
         "end": 34,
-        "text": "Scanner says clean. Patch says protected. But two mitigated primitives chain. Whole not sum of parts. No CVE. No signature."
+        "text": "Scanners return clean because the combination carries no CVE and no signature, leaving defenders who trust patch status alone with a genuine blind spot."
       },
       {
         "start": 34,
         "end": 41,
-        "text": "Monitor symlink in SYSTEM contexts. Audit token APIs. Hunt patch-residue chains. Patched means shifted attack surface."
+        "text": "The defensive response is to monitor symbolic link creation in SYSTEM contexts, audit calls to DuplicateTokenEx and ImpersonateLoggedOnUser, and hunt for primitive chains rather than individual CVEs."
       },
       {
         "start": 41,
         "end": 48,
-        "text": "Patched does not mean immune. It means the attack surface has shifted. The pattern persists."
+        "text": "Patching closes the doors that Microsoft knows about, but this researcher showed that two separately mitigated primitives can open a new one."
       },
       {
         "start": 48,
         "end": 54,
-        "text": "Do you hunt for primitive chains on patched endpoints? Tell me in the comments."
+        "text": "If your team hunts primitive chains on patched endpoints, share your detection approach in the comments."
       }
     ],
     "beats": [
