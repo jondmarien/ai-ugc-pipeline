@@ -67,8 +67,8 @@
       "slide": 1,
       "role": "cover",
       "kicker": "WINDOWS × ZERO-DAY",
-      "on_slide_copy": "DEFENDER QUARANTINED THE FILE. THE QUARANTINE WAS THE EXPLOIT.",
-      "subline": "RoguePlanet turns a standard user into SYSTEM on a fully updated Windows 11. No CVE. No patch.",
+      "on_slide_copy": "The quarantine itself was the exploit.",
+      "subline": "RoguePlanet turns a standard user into SYSTEM on a fully updated Windows 11. No CVE, no patch.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A single hard rim light catches a shield icon fracturing in a dark void, red particles leaking from the crack like a breach, premium dark editorial key art, the shield held in the upper third with clean unmarked negative space filling the lower third.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/01_cover.png",
@@ -80,8 +80,8 @@
       "slide": 2,
       "role": "context",
       "kicker": "THE RELEASE",
-      "on_slide_copy": "Nightmare Eclipse dropped RoguePlanet on June 10. No CVE, no patch, and Windows 11 Pro is confirmed vulnerable.",
-      "subline": "Published on GitHub as MSNightmare after the original account was suspended. Multiple researchers reproduced it.",
+      "on_slide_copy": "Nightmare Eclipse dropped this exploit on June 10 with no patch.",
+      "subline": "No CVE, Windows 11 Pro confirmed vulnerable. Republished on GitHub as MSNightmare after the original account was suspended.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Low raking light grazes a field of dark monolithic slabs in the dark, one slab pulsing red while the others stay dormant and unlit, dark editorial photography, the cluster set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/02_context.png",
@@ -93,8 +93,8 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT STINGS",
-      "on_slide_copy": "A standard user with no admin rights gets a SYSTEM shell on a fully updated machine, using Defender itself as the lever.",
-      "subline": "The Defender signature only flags the compiled sample. Recompiling with minor changes slips the same behavior past it.",
+      "on_slide_copy": "A standard user becomes SYSTEM on a fully patched machine.",
+      "subline": "Defender itself is the lever. The signature only flags the compiled sample, so a minor recompile slips the same behavior past it.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A focused side light sweeps a thin scanning plane through the dark across a smooth featureless object, the plane fracturing into red glitches where it meets the surface, dark premium editorial, the object centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/03_risk.png",
@@ -106,8 +106,8 @@
       "slide": 4,
       "role": "mechanism",
       "kicker": "THE RACE",
-      "on_slide_copy": "An oplock pauses Defender mid-scan. A junction swap then makes Defender quarantine a SYSTEM-owned file into a folder the user controls.",
-      "subline": "Quarantine is a privileged write. The gap is between creating that file and checking where its path actually points.",
+      "on_slide_copy": "An opportunistic lock pauses the scan, then a path swap redirects the quarantine write.",
+      "subline": "Quarantine is a privileged file move. The gap sits between creating the file and resolving where its path actually points.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A hard top-down beam falls on two racing threads in the dark, one capturing the resource a microsecond before the other, dark editorial key art, the race framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/04_mechanism.png",
@@ -174,8 +174,8 @@
       "slide": 6,
       "role": "failure_point",
       "kicker": "WHY THERE IS NO FIX",
-      "on_slide_copy": "There is no patch to apply and no toggle to flip. It is a design-level race between Defender, NTFS junctions, and Volume Shadow Copy.",
-      "subline": "Signature detection catches one compiled binary. The behavioral chain survives a recompile with minor source changes.",
+      "on_slide_copy": "This is a design race, not a code bug, so there is no patch.",
+      "subline": "The race runs across Defender's quarantine pipeline, NTFS reparse points, and Volume Shadow Copy. Signature detection covers one compiled binary only.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Cool light falls across an orderly grid of dark sealed cells in the dark, most resting calm while one cell cracks open and leaks red light, a single overlooked gap in an otherwise closed surface, tense editorial composition, the grid held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/06_failure-point.png",
@@ -187,8 +187,8 @@
       "slide": 7,
       "role": "defense",
       "kicker": "HUNT THE BEHAVIOR",
-      "on_slide_copy": "Hunt the chain, not the binary: a named pipe called RoguePlanet from a non-system process, wermgr.exe running outside System32, and SYSTEM spawning conhost.exe with no command prompt in the tree.",
-      "subline": "Also flag Volume Shadow Copy enumeration by non-system processes and the Poseidon burst of writes to temp.",
+      "on_slide_copy": "Hunt the behavior chain, not the compiled binary.",
+      "subline": "Flag a named pipe called RoguePlanet from a non-system process, wermgr.exe outside System32, SYSTEM spawning conhost.exe with no cmd.exe parent, and non-system VSS queries.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A balanced split composition in the dark: on the left an intact protective dome scanning a smooth object, on the right the same dome fractured with red light escaping through the breach, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_rogueplanet-windows-zero-day/07_defense.png",
@@ -236,13 +236,13 @@
   ],
   "comment_prompt": "Could your EDR catch a SYSTEM shell that came from Defender's own quarantine?",
   "alt_text": [
-    "Title card: Microsoft Defender quarantined a file, and that quarantine was the exploit. RoguePlanet turns a standard user into SYSTEM on a fully updated Windows 11, with no CVE and no patch. A red shield fractures in the dark.",
-    "Nightmare Eclipse released RoguePlanet on June 10, with no CVE, no patch, and Windows 11 Pro confirmed vulnerable; multiple researchers reproduced it. A field of dark slabs, one pulsing red while the rest stay dormant.",
-    "A standard user with no admin rights gains a SYSTEM shell on a fully updated machine, using Defender itself as the lever, and the signature only flags the compiled sample. A scanning plane sweeps a smooth object and fractures into red.",
-    "An oplock pauses Defender mid-scan, then a junction swap makes Defender quarantine a SYSTEM-owned file into a folder the user controls. Two threads race in the dark, one seizing the resource a moment before the other.",
+    "Title card: the quarantine itself was the exploit. RoguePlanet turns a standard user into SYSTEM on a fully updated Windows 11 with no CVE and no patch. A red shield fractures in the dark.",
+    "Nightmare Eclipse dropped RoguePlanet on June 10 with no patch available and Windows 11 Pro confirmed vulnerable. Republished as MSNightmare after the original account was suspended. A field of dark slabs, one pulsing red while the rest stay dormant.",
+    "A standard user with no admin rights becomes SYSTEM on a fully patched machine, using Defender itself as the lever. The signature only flags the compiled sample, so a minor recompile slips the same behavior past it. A scanning plane sweeps a smooth object and fractures into red.",
+    "An opportunistic lock pauses Defender's scan, then a path swap redirects the quarantine write so a SYSTEM-owned file lands in a folder the attacker controls. The gap sits between creating the file and resolving where its path actually points. Two threads race in the dark.",
     "Diagram of the RoguePlanet attack chain in eight steps: dual-mode entry by named pipe, I/O saturation, ISO mount and fake System32, EICAR plus oplock, junction swap, payload injection, the WER task, ending at NT AUTHORITY SYSTEM.",
-    "There is no patch to apply and no toggle to flip; it is a design-level race between Defender, NTFS junctions, and Volume Shadow Copy, and the signature only catches one compiled binary. A grid of sealed cells, one cracking open and leaking red.",
-    "Hunt the chain, not the binary: a named pipe called RoguePlanet from a non-system process, wermgr.exe running outside System32, and SYSTEM spawning conhost.exe with no command prompt in its tree. A protective dome intact on one side and fractured on the other.",
+    "This is a design race, not a code bug, so there is no patch to apply. The race runs across Defender's quarantine pipeline, NTFS reparse points, and Volume Shadow Copy. A grid of sealed cells, one cracking open and leaking red.",
+    "Hunt the behavior chain, not the compiled binary: flag a named pipe called RoguePlanet from a non-system process, wermgr.exe outside System32, SYSTEM spawning conhost.exe with no cmd.exe parent, and non-system VSS queries. A protective dome intact on one side and fractured on the other.",
     "Your antivirus is not just a scanner. It is a SYSTEM-level file mover, and its quarantine can be raced. A shield with one half intact and the other half fractured, red particles escaping.",
     "The call to action asks whether your EDR could catch a SYSTEM shell that came from Defender's own quarantine. A single faint pulse of light on a clean dark end card."
   ],
@@ -400,48 +400,38 @@
     "narration": [
       {
         "start": 0,
-        "end": 6,
-        "text": "Microsoft Defender quarantined a file, and that quarantine was the exploit. Meet RoguePlanet."
+        "end": 8,
+        "text": "Nightmare Eclipse released RoguePlanet on June 10, and it does something unusual: it turns Microsoft Defender's own quarantine routine into the privilege escalation."
       },
       {
-        "start": 6,
-        "end": 13,
-        "text": "Nightmare Eclipse dropped it on June 10. No CVE, no patch, and Windows 11 Pro is confirmed vulnerable."
+        "start": 8,
+        "end": 18,
+        "text": "A standard user with no admin rights ends up with a SYSTEM shell on a fully patched Windows 11 Pro machine, and there is no CVE and no patch available."
       },
       {
-        "start": 13,
-        "end": 20,
-        "text": "A standard user with no admin rights gets a SYSTEM shell on a fully updated machine, using Defender itself."
+        "start": 18,
+        "end": 30,
+        "text": "The technique is a race condition: an opportunistic lock pauses Defender mid-scan while a filesystem junction swap redirects the quarantine write so Defender deposits a SYSTEM-owned file directly into a folder the attacker controls."
       },
       {
-        "start": 20,
-        "end": 28,
-        "text": "The trick is a race. An oplock freezes Defender mid-scan, then a junction swap makes it quarantine a SYSTEM-owned file into a folder you control."
+        "start": 30,
+        "end": 40,
+        "text": "From there the chain runs through an ISO mount, a payload overwrite, another junction so the path resolves as the real System32 wermgr.exe, and finally the Windows Error Reporting scheduled task, which an unprivileged user can trigger, runs the planted binary as SYSTEM."
       },
       {
-        "start": 28,
-        "end": 37,
-        "text": "Here is the whole chain. A named pipe, an I/O storm to force the race, an ISO mount, the quarantine swap, and a Windows task that runs the planted file as SYSTEM."
+        "start": 40,
+        "end": 48,
+        "text": "There is no setting to disable this, because the root cause is a design race across Defender's quarantine pipeline, NTFS reparse points, and Volume Shadow Copy, and the only signature coverage catches one specific compiled sample."
       },
       {
-        "start": 37,
-        "end": 44,
-        "text": "There is no toggle to fix it. It is a design race between Defender, NTFS junctions, and Volume Shadow Copy. The signature only catches the compiled sample."
+        "start": 48,
+        "end": 57,
+        "text": "Hunt the behavior instead: look for a named pipe called RoguePlanet from a non-system process, wermgr.exe running outside System32, and SYSTEM spawning conhost.exe with no cmd.exe anywhere in the process tree."
       },
       {
-        "start": 44,
-        "end": 52,
-        "text": "So hunt the behavior. A pipe named RoguePlanet, the Windows error binary running outside System32, and SYSTEM spawning a console with no command prompt in the tree."
-      },
-      {
-        "start": 52,
-        "end": 58,
-        "text": "Your antivirus is not just a scanner. It is a SYSTEM-level file mover, and its quarantine can be raced."
-      },
-      {
-        "start": 58,
+        "start": 57,
         "end": 64,
-        "text": "Could your EDR catch a SYSTEM shell born from Defender's own quarantine? Tell me below."
+        "text": "Your antivirus is not just a scanner. It is a SYSTEM-level file mover, and its quarantine pipeline can be raced."
       }
     ],
     "beats": [
