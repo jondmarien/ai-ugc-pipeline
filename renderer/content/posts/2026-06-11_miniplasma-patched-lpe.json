@@ -8,7 +8,7 @@
   "pillar": "offensive_ai",
   "theme": "offensive",
   "audience": "security_practitioners",
-  "core_claim": "MiniPlasma is an LPE exploit targeting fully patched Windows systems. Released by Nightmare Eclipse as the sixth and final exploit in their June 2026 vulnerability wave. Works on current Patch Tuesday builds.",
+  "core_claim": "MiniPlasma is an LPE exploit that re-exploits a race condition in the Windows Cloud Files filter driver (cldflt.sys), effectively a return of CVE-2020-17103 that was believed patched in 2020. Released by Nightmare Eclipse as the sixth and final exploit in their wave. Silently addressed in the June 9, 2026 Patch Tuesday with no new CVE assigned.",
   "claim_tags": [
     "reported_fact",
     "practitioner_takeaway"
@@ -80,7 +80,7 @@
       "role": "context",
       "kicker": "THE RELEASE",
       "on_slide_copy": "Nightmare Eclipse dropped exploit six. Targets fully patched Windows 10 and 11.",
-      "subline": "No CVE assigned. Two post-patch primitives chained together. Six zero-days in six consecutive days, this one last.",
+      "subline": "No new CVE assigned. A regression of CVE-2020-17103, believed patched in 2020. Sixth and final release before account ban.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Low raking light grazes a glowing update shield in the dark, a thin red fracture line cutting across its surface, dark editorial photography, the shield set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/02_context.png",
@@ -92,8 +92,8 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT STINGS",
-      "on_slide_copy": "Two primitives survived June Patch Tuesday and chain to a SYSTEM shell.",
-      "subline": "Researcher demonstrates exploitation on a machine with all June 2026 updates applied. The patch closed the front door. The chain enters through the window.",
+      "on_slide_copy": "A six-year-old race condition survived every update and still reaches SYSTEM.",
+      "subline": "Researcher demonstrates exploitation on a machine with all June 2026 updates applied. A patch that was never fully enforced, or silently regressed, left the door open.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A focused side light illuminates a patch shield in the dark, two green plasma tendrils weaving through microscopic gaps in the mesh, converging into a SYSTEM token, dark premium editorial, the shield centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/03_risk.png",
@@ -104,9 +104,9 @@
     {
       "slide": 4,
       "role": "mechanism",
-      "kicker": "THE CHAIN",
-      "on_slide_copy": "A symbolic link race chains with a token manipulation API to reach SYSTEM.",
-      "subline": "The first primitive gets arbitrary file write as SYSTEM. The second converts that write into a token. Both are individually mitigated but not when chained together.",
+      "kicker": "THE MECHANISM",
+      "on_slide_copy": "A race condition in cldflt.sys redirects registry writes to reach SYSTEM.",
+      "subline": "The Cloud Files filter driver (cldflt.sys) mishandles a placeholder access routine. A race condition exploits that path to escalate from a standard user to SYSTEM.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A hard top-down beam falls on two chain links in the dark, first link a symlink race glowing green, second link a token API glowing green, fused into a SYSTEM crown, dark editorial key art, the chain framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/04_mechanism.png",
@@ -118,8 +118,8 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "WHERE DEFENDERS MISS IT",
-      "on_slide_copy": "Scanners say clean, patch says protected, but two mitigated primitives still chain.",
-      "subline": "No CVE means no scanner signature and no vendor advisory. Defenders assume patched systems are safe. The researcher proves patched means a different attack surface.",
+      "on_slide_copy": "Scanners say clean because this maps to a 2020 CVE.",
+      "subline": "No new CVE means no new scanner signature and no vendor advisory. Defenders assume the 2020 patch held. Scanners focused on current patches miss regressions entirely.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Cool side light traces two separate glowing nodes in the dark, each dimmed and contained, then a thin red arc connecting them to form a circuit that bypasses both barriers, tense editorial composition, the circuit held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/05_failure-point.png",
@@ -131,8 +131,8 @@
       "slide": 6,
       "role": "defense",
       "kicker": "THE MITIGATION REALITY",
-      "on_slide_copy": "Monitor symbolic link creation in SYSTEM contexts and audit token manipulation APIs.",
-      "subline": "No patch exists for the combination yet, and Microsoft may not assign a CVE. Defenders must detect the behavior chain of symbolic link races followed by token manipulation.",
+      "on_slide_copy": "Monitor CloudFiles registry key changes and wermgr.exe outside system paths.",
+      "subline": "Microsoft silently fixed this in June 2026 Patch Tuesday with no new CVE. Behavioral detection of CloudFiles registry symlinks and out-of-place WER execution is the main control.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A balanced split composition in the dark: left side a patch shield with two separate green mitigations, right side the same mitigations chained into a red SYSTEM breach, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_miniplasma-patched-lpe/06_defense.png",
@@ -167,7 +167,7 @@
       "notes": ""
     }
   ],
-  "caption": "Nightmare Eclipse released MiniPlasma as the sixth and final exploit in their June 2026 wave. An LPE exploit targeting fully patched Windows systems with June 2026 Patch Tuesday installed.\n\nThe exploit chains two primitives that individually survived the patch: (1) A symbolic link race in a SYSTEM service that the patch did not fully close. (2) A token manipulation via a legitimate Windows API. Chained together = SYSTEM shell. Deterministic. No user interaction required.\n\nResearcher demonstrates exploitation on a machine with all June 2026 updates applied. The patch closed the front door. The chain enters through the window. The researcher calls it 'patch residue' — mitigated primitives that combine in novel ways.\n\nPatch Tuesday says 'protected.' Vulnerability scanners say 'clean.' But the chain uses two mitigated primitives in a novel combination. The whole is not the sum of the parts. No CVE means no scanner signature. No vendor advisory. Defenders assume patched = safe. The researcher proves patched = different attack surface.\n\nMonitor for symbolic link creation in SYSTEM contexts. Audit token manipulation APIs (DuplicateTokenEx, ImpersonateLoggedOnUser). Hunt for patch-residue chains. Assume patched systems have new attack surfaces.\n\nNo patch for the combination. Microsoft may not assign CVE. Defenders must detect the behavior chain: symlink + token manipulation = SYSTEM. That pattern persists.\n\nPatched does not mean immune. It means the attack surface has shifted.\n\nDo you hunt for primitive chains on your patched endpoints?\n\nFollow for AI security breakdowns without the fake panic.\n\n[MiniPlasma, Nightmare Eclipse, Windows zero-day, LPE, fully patched, Patch Tuesday, patch residue, symbolic link race, token manipulation, behavioral detection, primitive chain]",
+  "caption": "Nightmare Eclipse released MiniPlasma as the sixth and final exploit in their wave. A local privilege escalation exploit targeting fully patched Windows 10 and 11 systems, silently addressed in the June 9, 2026 Patch Tuesday.\n\nThe flaw is not new. It maps to CVE-2020-17103, a race condition in the Windows Cloud Files filter driver (cldflt.sys) that was supposedly patched in December 2020. MiniPlasma proves the patch regressed or was never fully enforced. The original Google Project Zero proof-of-concept reportedly worked without modification on modern builds.\n\nResearcher demonstrates exploitation on a machine with every June 2026 update installed. No new CVE was assigned. Vulnerability scanners that track current patch status have no signature for this. The 2020 record says patched. The system says otherwise.\n\nPatch Tuesday says 'protected.' Scanners say 'clean.' But a six-year-old race condition in cldflt.sys is still reachable from a standard user account. No new CVE means no new scanner alert and no new vendor advisory. Defenders who rely on patch status alone have a real blind spot here.\n\nThe behavioral signal to watch: registry symbolic links being created in CloudFiles policy paths, and wermgr.exe executing outside standard system directories. Microsoft silently included a fix in June 9 Patch Tuesday. If you have not applied those updates, the exposure is active.\n\nA fix without a new CVE is a scanner blind spot. Patched is not safe when an old bug quietly returns. Track silent fixes and lean on behavioral detection.\n\nPatched does not mean immune. It means the attack surface has shifted.\n\nDo you track regression vulnerabilities separately from new CVEs in your patch program?\n\nFollow for AI security breakdowns without the fake panic.\n\n[MiniPlasma, Nightmare Eclipse, Windows zero-day, LPE, fully patched, Patch Tuesday, CVE-2020-17103, cldflt.sys, Cloud Files, regression vulnerability, behavioral detection]",
   "hashtags": [
     "MiniPlasma",
     "Nightmare Eclipse",
@@ -175,35 +175,56 @@
     "LPE",
     "fully patched",
     "Patch Tuesday",
-    "patch residue",
-    "symbolic link race",
-    "token manipulation",
+    "CVE-2020-17103",
+    "cldflt",
+    "regression vulnerability",
     "behavioral detection",
-    "primitive chain"
+    "silent patch"
   ],
-  "comment_prompt": "Do you hunt for primitive chains on your patched endpoints?",
+  "comment_prompt": "Do you track regression vulnerabilities separately from new CVEs in your patch program?",
   "alt_text": [
-    "Title card: MiniPlasma escapes the patch, fully patched yet still root. It is an LPE on current Patch Tuesday with no CVE, Nightmare Eclipse exploit six and the wave closer. A green plasma tendril slips through an Update shield checkmark to a SYSTEM prompt.",
-    "Nightmare Eclipse dropped MiniPlasma as the sixth and final exploit, targeting fully patched Windows 10 and 11 with June 2026 Patch Tuesday installed. No CVE assigned, chaining two post-patch primitives, six zero-days in six days. An Update history shows an exploit-verified badge.",
-    "MiniPlasma works on fully patched systems, chaining two primitives that survived June Patch Tuesday into a deterministic SYSTEM shell with no user interaction. The patch closed the front door, the chain enters the window. Two tendrils weave through a patch shield into a SYSTEM token.",
-    "The chain: a symbolic link race in a SYSTEM service that survives the patch gives arbitrary file write as SYSTEM, then a token manipulation via a legitimate Windows API converts it to a token. Both are mitigated alone but not together. Two chain links fuse into a SYSTEM crown.",
-    "Where defenders miss it: Patch Tuesday says protected and scanners say clean, but the chain combines two mitigated primitives, so the whole is not the sum of the parts and no CVE means no signature. A scanner report reads zero critical vulnerabilities under a red chain overlay.",
-    "Mitigation: monitor symbolic link creation in SYSTEM contexts, audit token APIs like DuplicateTokenEx and ImpersonateLoggedOnUser, hunt patch-residue chains, and assume patched systems have new attack surfaces. A split image of two separate mitigations versus the chained SYSTEM breach.",
-    "Patched does not mean immune. It means the attack surface has shifted. A Windows Update shield, half with a green checkmark and half with a green plasma chain slipping through to form a SYSTEM crown.",
-    "Closing question: Do you hunt for primitive chains on your patched endpoints? A behavioral detection rule for symlink and token chains sits on a clean dark end-card."
+    "Title card: MiniPlasma escapes the patch, fully patched yet still root. It is an LPE on current Patch Tuesday with no new CVE, Nightmare Eclipse exploit six and the wave closer. A green plasma tendril slips through an Update shield checkmark to a SYSTEM prompt.",
+    "Nightmare Eclipse dropped MiniPlasma as the sixth and final exploit, targeting fully patched Windows 10 and 11 with June 2026 Patch Tuesday installed. No new CVE assigned. It maps to CVE-2020-17103, a regression in the Cloud Files filter driver believed patched in 2020.",
+    "MiniPlasma works on fully patched systems. A six-year-old race condition in cldflt.sys survived every update and still reaches SYSTEM. The 2020 patch either regressed or was never fully enforced. The researcher found the original Google Project Zero exploit worked without changes.",
+    "The mechanism: a race condition in the Cloud Files filter driver, cldflt.sys, exploits the HsmOsBlockPlaceholderAccess routine to escalate from a standard user account to SYSTEM. No secondary step required. A race condition arrow points from a standard user icon to a SYSTEM crown.",
+    "Where defenders miss it: Patch Tuesday says protected and scanners say clean, but no new CVE was assigned so there is no new scanner signature. Scanners that only check current patch status miss regression vulnerabilities entirely. A scanner report shows clean under a red regression arrow.",
+    "Mitigation: monitor CloudFiles registry symbolic links in the BlockedApps policy key, watch for wermgr.exe running outside standard system directories, and apply the silent June 9, 2026 Patch Tuesday fix. A behavioral detection rule flags the CloudFiles registry key alongside wermgr.",
+    "Patched does not mean immune. It means the attack surface has shifted. A Windows Update shield, half with a green checkmark and half with a green plasma tendril slipping through to form a SYSTEM crown.",
+    "Closing question: Do you track regression vulnerabilities separately from new CVEs in your patch program? A behavioral detection rule for CloudFiles registry changes sits on a clean dark end-card."
   ],
   "sources": [
     {
-      "source": "Nightmare Eclipse blog: MiniPlasma Technical Details",
-      "link": "https://deadeclipse666.blogspot.com/2026/06/miniplasma-patched-lpe.html",
-      "supports": "Sixth and final exploit in wave; targets fully patched Win 10/11 with June 2026 updates; two-primitive chain (symlink race + token manipulation); 'patch residue' concept; deterministic SYSTEM shell; no user interaction; no CVE assigned; Microsoft may not assign CVE; primitive combination survives individual mitigations.",
+      "source": "Nightmare-Eclipse/MiniPlasma GitHub repository (README)",
+      "link": "https://github.com/Nightmare-Eclipse/MiniPlasma",
+      "supports": "Sixth and final exploit in wave; targets fully patched Windows 10/11; single race condition in cldflt.sys (HsmOsBlockPlaceholderAccess routine); maps to CVE-2020-17103; original Google Project Zero PoC worked without changes; researcher unsure if patch never applied or silently rolled back; no new CVE assigned.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     },
     {
-      "source": "SecurityWeek: Nightmare Eclipse Releases Six Windows Zero-Days",
-      "link": "https://www.securityweek.com/nightmare-eclipse-releases-six-windows-zero-days/",
-      "supports": "Context of six-exploit wave; exploit sequence; researcher background; GitHub account suspension; MSNightmare repo; community response; wave closer position.",
+      "source": "Kaspersky Securelist: MiniPlasma detecting exploitation",
+      "link": "https://securelist.com/tr/mini-plasma-vulner/120099/",
+      "supports": "Sixth of six publicly released Windows exploits by Nightmare Eclipse without prior Microsoft coordination; CVE-2020-17103 regression in Cloud Files filter driver; fully updated Windows 11, Server 2022, and Server 2025 vulnerable; Microsoft scheduled patch for June 9, 2026; behavioral detection indicators including CloudFiles BlockedApps registry symbolic link and wermgr.exe outside system paths.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "CSO Online: Patched Windows bug resurfaces 6 years later as working SYSTEM-level exploit",
+      "link": "https://www.csoonline.com/article/4172320/patched-windows-bug-resurfaces-6-years-later-as-working-system-level-exploit.html",
+      "supports": "Race condition in cldflt.sys HsmOsBlockPlaceholderAccess routine; originally reported by Google Project Zero James Forshaw; patched December 2020; confirmed still exploitable on fully patched systems with May 2026 updates; Will Dormann confirmed buggy behavior; MiniPlasma is sixth in a wave beginning with BlueHammer.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "NVD: CVE-2020-17103 Detail",
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2020-17103",
+      "supports": "Windows Cloud Files Mini Filter Driver Elevation of Privilege Vulnerability; originally published December 2020; CISA-ADP added MiniPlasma GitHub PoC reference in May 2026 confirming the regression; CVSS 7.8 HIGH.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Tenable: Windows Cloud Files Mini Filter Driver EoP (MiniPlasma) (CVE-2020-17103)",
+      "link": "https://www.tenable.com/plugins/nessus/316497",
+      "supports": "Microsoft originally addressed CVE-2020-17103 in December 2020; fix has since regressed; publicly available PoC demonstrates vulnerability again exploitable on currently patched hosts as of May 2026; Nessus plugin 316497 published May 22, 2026.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     }
@@ -292,42 +313,42 @@
       {
         "start": 0,
         "end": 6,
-        "text": "MiniPlasma is a local privilege escalation exploit that fully patched Windows 10 and 11 systems cannot stop."
+        "text": "MiniPlasma is a local privilege escalation exploit that works on fully patched Windows 10 and 11, even with every June 2026 update applied."
       },
       {
         "start": 6,
         "end": 13,
-        "text": "Nightmare Eclipse released it as exploit six of six in a June 2026 wave, with no CVE assigned to the combination."
+        "text": "Nightmare Eclipse released it as the sixth and final exploit in their wave, and Microsoft silently addressed it in the June 9, 2026 Patch Tuesday with no new CVE."
       },
       {
         "start": 13,
         "end": 20,
-        "text": "The exploit chains two primitives that each survived the patch: a symbolic link race in a SYSTEM service, and a token manipulation through a legitimate Windows API."
+        "text": "The flaw maps to CVE-2020-17103, a race condition in the Windows Cloud Files filter driver, cldflt.sys, that was supposed to have been fixed back in December 2020."
       },
       {
         "start": 20,
         "end": 27,
-        "text": "The first step lands arbitrary file write as SYSTEM; the second converts that write into a privileged token, producing a deterministic shell with no user interaction required."
+        "text": "The researcher found that the original Google Project Zero proof-of-concept worked without any changes on modern Windows builds, meaning the patch either regressed or was never fully enforced."
       },
       {
         "start": 27,
         "end": 34,
-        "text": "Scanners return clean because the combination carries no CVE and no signature, leaving defenders who trust patch status alone with a genuine blind spot."
+        "text": "Because no new CVE was assigned, vulnerability scanners that check patch status have no new signature to fire, leaving defenders with a genuine blind spot on otherwise current systems."
       },
       {
         "start": 34,
         "end": 41,
-        "text": "The defensive response is to monitor symbolic link creation in SYSTEM contexts, audit calls to DuplicateTokenEx and ImpersonateLoggedOnUser, and hunt for primitive chains rather than individual CVEs."
+        "text": "The behavioral signals to watch are registry symbolic links created in CloudFiles policy paths, and wermgr.exe executing from outside its standard system directories."
       },
       {
         "start": 41,
         "end": 48,
-        "text": "Patching closes the doors that Microsoft knows about, but this researcher showed that two separately mitigated primitives can open a new one."
+        "text": "A fix without a new CVE is a scanner blind spot, and this is exactly the kind of silent regression that patch-status dashboards miss entirely."
       },
       {
         "start": 48,
         "end": 54,
-        "text": "If your team hunts primitive chains on patched endpoints, share your detection approach in the comments."
+        "text": "If your team tracks regression vulnerabilities separately from new CVEs, share your approach in the comments."
       }
     ],
     "beats": [
@@ -345,7 +366,7 @@
         "slide_ref": 2,
         "purpose": "context",
         "motion": "parallax",
-        "caption": "Wave closer. June patch installed. No CVE. Patch residue."
+        "caption": "Wave closer. June patch installed. No new CVE. Maps to CVE-2020-17103."
       },
       {
         "start": 13,
@@ -353,7 +374,7 @@
         "slide_ref": 3,
         "purpose": "risk",
         "motion": "slow push-in",
-        "caption": "Two primitives chain. Symlink race. Token API. SYSTEM."
+        "caption": "Six-year-old race condition. cldflt.sys. Survived every patch."
       },
       {
         "start": 20,
@@ -361,7 +382,7 @@
         "slide_ref": 4,
         "purpose": "mechanism",
         "motion": "parallax",
-        "caption": "Individually mitigated. Combined = exploit. Demo on updated."
+        "caption": "Original 2020 PoC still works. Patch regressed. SYSTEM."
       },
       {
         "start": 27,
@@ -369,7 +390,7 @@
         "slide_ref": 5,
         "purpose": "gap",
         "motion": "slow push-in",
-        "caption": "Scanner clean. Patch protected. Chain enters window."
+        "caption": "No new CVE. Scanner clean. 2020 record says patched."
       },
       {
         "start": 34,
@@ -377,7 +398,7 @@
         "slide_ref": 6,
         "purpose": "defense",
         "motion": "parallax",
-        "caption": "Monitor symlink. Audit token. Hunt chains. Shifted surface."
+        "caption": "CloudFiles registry symlink. wermgr.exe out of path. Silent June fix."
       },
       {
         "start": 41,
