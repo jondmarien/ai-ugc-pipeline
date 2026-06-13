@@ -35,7 +35,7 @@ Concrete evidence (2026-06-10 renders):
 2. Copy **never clips** — measured shrink-to-fit with a legible floor.
 3. Reels get an **independent full-sentence spoken script** (not the slide lines).
 4. Both baked into the **draft pipeline** for all future posts.
-5. **Retrofit 14 tech-heavy posts** on 2026-06-10 / 2026-06-11.
+5. **Retrofit 15 tech-heavy posts** on 2026-06-10 / 2026-06-11 / 2026-06-12.
 6. Finish the **garbled-background** fixes.
 
 Non-goals: redesigning the brand/visual system; changing TTS engines; retrofitting
@@ -59,6 +59,10 @@ non-CVE posts (e.g. `shadow-ai-inventory`, `cohere-north-mini-code`).
 - Export runs in a real browser (Playwright), so measurement is reliable. Add a
   **"fit settled" signal** (e.g. a data attribute / window flag) that `export-carousel`
   waits on, alongside the existing font-ready wait.
+- **Concrete floors** (the no-clip guarantee asserts against these): headline floor
+  **44px**, subline floor **30px**. The fit routine scales the block down to fit; if the
+  block still overflows at the floor, the renderer holds the floor (never clips) and the
+  validator copy-budget warning (B) is what prevents copy that dense from shipping.
 - If the floor still overflows, that is a **validator failure upstream**, not a silent
   clip. The renderer guarantees: no clipping, ever.
 - Keep the cover/takeaway accent behavior intact.
@@ -88,8 +92,10 @@ non-CVE posts (e.g. `shadow-ai-inventory`, `cohere-north-mini-code`).
 `.claude/skills/ai-cybersecurity-ugc-carousel/SKILL.md` + `.claude/commands/draft-post.md`
 - "One idea per slide, plain language": every body slide states one claim in ≤1 short
   sentence within the budget; **expand each acronym in plain words on first use**
-  (e.g. "an AF_ALG socket, the kernel's crypto interface"); push supporting detail to
-  the `subline`; if a slide needs >1 idea, **split into another `point` slide**.
+  (e.g. "an AF_ALG socket, the kernel's crypto interface"). **Acronym expansion lives on
+  the `subline`** (≤30 words), not the body line, so it never fights the ≤14-word body
+  budget — the body line stays a short plain claim, the subline carries the expansion and
+  detail. If a slide needs >1 idea, **split into another `point` slide**.
 - Tech-heavy posts may run **10–14 slides**; prefer the existing **`chain` role** for
   multi-step mechanisms (renders a clean on-brand step diagram, no AI background).
 - Encode the budgets from (B) into the copy-pattern table.
@@ -109,13 +115,16 @@ non-CVE posts (e.g. `shadow-ai-inventory`, `cohere-north-mini-code`).
   "blocklist"/"page cache" nouns. Update matching `alt_text`.
 - Regenerated in the user's later batch.
 
-### G. Retrofit 14 posts
+### G. Retrofit 15 posts
 06-10 (7): `copy-fail-linux-lpe`, `cve-2026-23111-one-char`, `dirty-frag-linux-lpe`,
 `dirtydecrypt-linux-lpe`, `fragnesia-linux-lpe`, `nightmare-eclipse-github-removal`,
 `rogueplanet-windows-zero-day`.
 06-11 (7): `bluehammer-cve-2026-33825`, `greatxml-bitlocker-bypass`,
 `greenplasma-system-lpe`, `miniplasma-patched-lpe`, `redsun-windows-lpe`,
 `undefend-defender-dos`, `yellowkey-cve-2026-50507`.
+06-12 (1): `fable5-jailbreak-panic` — **copy + reel only** (cover/body copy overlong and
+clipping; cover 97c, body slides 212–273c). It has **no** garbled-background issue, so
+section F does not apply; its backgrounds are not regenerated unless a slide is split.
 
 Per post:
 1. Rewrite `on_slide_copy` to one-idea plain-language lines within budget; split into
