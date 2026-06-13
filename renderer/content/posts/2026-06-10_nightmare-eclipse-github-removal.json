@@ -79,8 +79,8 @@
       "slide": 2,
       "role": "context",
       "kicker": "THE STANDOFF",
-      "on_slide_copy": "Nightmare Eclipse dropped six Windows zero-days in months. BlueHammer. RedSun. UnDefend. YellowKey. GreenPlasma. RoguePlanet.",
-      "subline": "Researcher cited discontent with Microsoft's disclosure process. Microsoft called for responsible disclosure. Then threatened legal action.",
+      "on_slide_copy": "One researcher dropped six Windows zero-days in a matter of months.",
+      "subline": "The exploits were named BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, and RoguePlanet. Multiple were confirmed exploited in the wild.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Low raking light grazes a column of six glowing marks in the dark, three of them struck through with red while the others stay intact, dark editorial photography, the column set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/02_context.png",
@@ -92,8 +92,8 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT MATTERS",
-      "on_slide_copy": "GitHub suspended the account without warning. The exploits reappeared on MSNightmare within hours. RoguePlanet validated on fully patched Windows 10/11.",
-      "subline": "Microsoft clarified it would not pursue researchers. But the account suspension happened anyway. The exploits are public and working.",
+      "on_slide_copy": "GitHub suspended the account with no warning, and the exploits reappeared within hours.",
+      "subline": "The RoguePlanet exploit was confirmed working on fully patched Windows 10 and 11. Microsoft later said it would not pursue researchers, yet the account stayed suspended.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A focused side light illuminates a broken chain in the dark, one link glowing purple where it snapped, the two halves drifting apart, dark premium editorial, the chain centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/03_risk.png",
@@ -105,8 +105,8 @@
       "slide": 4,
       "role": "mechanism",
       "kicker": "THE ZERO-DAY WAVE",
-      "on_slide_copy": "BlueHammer: SAM hive access, NTLM dump, SYSTEM. RedSun: System32 file write LPE. UnDefend: Blocks Defender updates or silently disables AV. YellowKey: BitLocker bypass via USB. GreenPlasma: Full SYSTEM via trusted process. RoguePlanet: Defender race condition LPE.",
-      "subline": "Multiple exploited in the wild. Patch Tuesday fixed some. New ones dropped the same week.",
+      "on_slide_copy": "Each exploit targeted a different layer of Windows privilege and protection.",
+      "subline": "BlueHammer dumped credentials via the SAM hive, RedSun escalated to SYSTEM, UnDefend killed Defender, YellowKey bypassed BitLocker, and RoguePlanet hit a Defender race condition.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A hard top-down beam falls on six distinct keys in the dark, each cut differently, three glowing purple (patched) and three burning red (active), dark editorial key art, the keys framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/04_mechanism.png",
@@ -118,8 +118,8 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "WHERE THE PROCESS BROKE",
-      "on_slide_copy": "Researcher disclosed privately first. Claims Microsoft ignored or mishandled reports. Went public after frustration. Microsoft responded with legal threats and platform suspension.",
-      "subline": "Community backlash forced Microsoft to clarify. But the GitHub account stayed suspended. The exploits stayed public.",
+      "on_slide_copy": "The researcher tried private disclosure first, but says Microsoft ignored the reports.",
+      "subline": "Microsoft responded with legal threats and a GitHub suspension. Community backlash forced a clarification, but the account stayed down and the exploits stayed live.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Cool light grazes a cracked negotiation table in the dark, two seats with broken communication lines between them, tense editorial composition, the table held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/05_failure-point.png",
@@ -131,8 +131,8 @@
       "slide": 6,
       "role": "defense",
       "kicker": "THE DEFENDER LESSON",
-      "on_slide_copy": "You cannot rely on coordinated disclosure to protect you. When the process breaks, exploits go public immediately. Monitor for these specific techniques: SAM access, System32 writes, Defender tampering, BitLocker bypass attempts.",
-      "subline": "Build detection for the behaviors, not just the CVEs. The researcher's frustration became your adversary's toolkit.",
+      "on_slide_copy": "When coordinated disclosure breaks down, exploits reach the wild before any patch exists.",
+      "subline": "Build detection for the behaviors, not just the CVEs. Alert on SAM hive access, unexpected System32 writes, Defender tampering, and BitLocker bypass attempts.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A balanced split composition in the dark: left side a vendor shield with a crack, right side a detection radar picking up the same techniques in purple, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/06_defense.png",
@@ -300,42 +300,42 @@
       {
         "start": 0,
         "end": 6,
-        "text": "Microsoft suspended the researcher. The exploits reappeared. Nightmare Eclipse account gone. MSNightmare up in hours."
+        "text": "A security researcher called Nightmare Eclipse released six Windows zero-days in the space of a few months, and Microsoft responded by suspending the account on GitHub without warning."
       },
       {
         "start": 6,
         "end": 13,
-        "text": "Six zero-days in months. BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, RoguePlanet. Multiple exploited in the wild."
+        "text": "The exploits covered different layers of Windows: one dumped password hashes via the Security Account Manager, another wrote to the System32 directory to elevate privileges, a third silently disabled Windows Defender, and one bypassed BitLocker over USB."
       },
       {
         "start": 13,
         "end": 20,
-        "text": "Researcher disclosed privately first. Claims Microsoft ignored reports. Went public. Microsoft threatened legal action."
+        "text": "The researcher says private disclosure came first, but that Microsoft ignored or mishandled the reports, so they eventually went public out of frustration."
       },
       {
         "start": 20,
         "end": 27,
-        "text": "GitHub suspended the account without warning. Exploits reappeared on MSNightmare. RoguePlanet works on fully patched systems."
+        "text": "After the suspension, the exploits reappeared under a new account called MSNightmare within hours, and RoguePlanet was confirmed working against fully patched Windows 10 and 11 systems."
       },
       {
         "start": 27,
         "end": 34,
-        "text": "Community backlash forced Microsoft to clarify. But account stayed suspended. Exploits stayed public."
+        "text": "Microsoft initially threatened legal action, which triggered heavy community backlash, then walked back the threat and said it would not pursue researchers, but the account remained suspended and the exploits remained public."
       },
       {
         "start": 34,
         "end": 41,
-        "text": "You cannot rely on coordinated disclosure. Build detection for behaviors: SAM access, System32 writes, Defender tampering, BitLocker bypass."
+        "text": "This is the real lesson for defenders: coordinated disclosure is not a protection you can rely on, so you need detection that catches the underlying behaviors regardless of whether a patch exists."
       },
       {
         "start": 41,
         "end": 48,
-        "text": "Coordinated disclosure is a courtesy, not a guarantee. When vendors break trust, researchers go public."
+        "text": "That means alerting on Security Account Manager hive access, unexpected writes into System32, Defender tampering or disablement, and BitLocker bypass attempts from removable media."
       },
       {
         "start": 48,
         "end": 54,
-        "text": "Do you have detection for SAM hive access, System32 writes, and Defender tampering? Tell me in the comments."
+        "text": "Do you already have coverage for these behaviors in your environment? Drop your answer in the comments."
       }
     ],
     "beats": [
