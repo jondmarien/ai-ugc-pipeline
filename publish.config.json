@@ -1,0 +1,5 @@
+{
+  "youtube": { "enabled": true, "privacy": "private", "categoryId": "28" },
+  "tiktok":  { "enabled": true, "privacy": "SELF_ONLY", "disableComment": false, "disableDuet": false, "disableStitch": false },
+  "instagram": { "enabled": true, "mode": "manual" }
+}
