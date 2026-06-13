@@ -80,7 +80,7 @@
       "role": "context",
       "kicker": "THE SUCCESSOR",
       "on_slide_copy": "Dirty Frag extends the Dirty Pipe bug class with two new attack paths.",
-      "subline": "It chains the xfrm-ESP and RxRPC page-cache writes. Reported April 30; embargo broke when a third party published the xfrm-ESP details first. PoC released.",
+      "subline": "It chains the xfrm-ESP and RxRPC page-cache writes. Patch submitted April 30; public disclosure and PoC followed May 7-8 when a third party broke the embargo.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Low raking light grazes a dark branching structure of glowing nodes in the dark, a single root splitting into limbs with the newest node at the tip pulsing red, dark editorial photography, the structure set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-10_dirty-frag-linux-lpe/02_context.png",
@@ -183,7 +183,7 @@
   "comment_prompt": "Have you blocklisted esp4, esp6, and rxrpc on systems that do not need IPsec?",
   "alt_text": [
     "Title card: two primitives, one chain, deterministic root. Dirty Frag bypasses the Copy Fail mitigation with no race condition and hits Ubuntu, RHEL, Fedora, and openSUSE. Two fractured shards fuse into a single glowing red blade in a dark void.",
-    "Dirty Frag extends the Dirty Pipe and Copy Fail bug class, chaining the xfrm-ESP and RxRPC page-cache writes. Reported April 30, embargo broken after a third party published xfrm-ESP details, PoC released. A dark branching structure of glowing nodes, the newest node at the tip pulsing red.",
+    "Dirty Frag extends the Dirty Pipe and Copy Fail bug class, chaining the xfrm-ESP and RxRPC page-cache writes. Patch submitted April 30; public disclosure and PoC followed May 7-8 when a third party broke the embargo. A dark branching structure of glowing nodes, the newest node at the tip pulsing red.",
     "A deterministic logic bug with no race condition required, the kernel does not panic on failure, and the success rate is very high. It hits Ubuntu 24.04.4, RHEL 10.1, openSUSE Tumbleweed, CentOS Stream 10, AlmaLinux 10, and Fedora 44, with Microsoft seeing limited in-the-wild use. A precision mechanism clicks into place every time.",
     "xfrm-ESP gives a four-byte store via IPsec but needs a user namespace that Ubuntu AppArmor blocks. RxRPC needs no namespace but rxrpc.ko is absent on most distros, except Ubuntu loads it by default. Chaining covers both blind spots for one-command root. Two interlocking gears mesh and drive a single output shaft that glows red at its end.",
     "The Copy Fail mitigation blacklists algif_aead, but Dirty Frag works regardless because ESP and RxRPC are separate attack surfaces. Blocklisting esp4, esp6, and rxrpc breaks IPsec and RxRPC, so patching is the only real fix. A blocked shield with two red arrows bypassing it.",
