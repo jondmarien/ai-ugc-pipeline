@@ -118,8 +118,8 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "THE DISCLOSURE GAP",
-      "on_slide_copy": "The silent fix shipped first, so attackers got a head start.",
-      "subline": "Hyunwoo Kim went public after the embargo broke on the merged patch. Another researcher read the public fix and built an exploit from it, the usual n-day weaponization.",
+      "on_slide_copy": "No embargo. No CVE. V12 chose to release once the patch landed.",
+      "subline": "Maintainers called it a duplicate and closed the report. V12 released the PoC voluntarily once they confirmed the fix was in mainline, with no coordinated advisory ever issued.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Cool light grazes a dark horizontal track in the dark: a quiet sealed mark, then a dismissed report fading out, then an independent spark reigniting it, then a forced burst of red light, tense editorial composition, the track held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-10_dirtydecrypt-linux-lpe/05_failure-point.png",
@@ -167,7 +167,7 @@
       "notes": ""
     }
   ],
-  "caption": "DirtyDecrypt (CVE-2026-31635) is an LPE in rxgk_decrypt_skb missing a copy-on-write guard. Only hits distros with CONFIG_RXGK enabled: Fedora, Arch Linux, openSUSE Tumbleweed.\n\nZellic and V12 reported it May 9. Maintainers said: duplicate, already patched in mainline. No CVE. No advisory. No coordinated disclosure. Researchers forced public when they realized the fix was silent.\n\nThe bug: rxgk_decrypt_skb decrypts incoming socket buffer on receive. Memory pages shared with page cache of other processes. Copy-on-write should protect shared pages. The guard was missing. Data writes to privileged process memory or page cache of /etc/shadow, /etc/sudoers, SUID binaries.\n\nThis mirrors the Dirty Frag pattern: Hyunwoo Kim forced into public disclosure when embargo broke after merged patch. Independent researcher analyzed public commit and published. Standard n-day weaponization.\n\nSilent patches without CVEs leave defenders blind. Researchers who report responsibly get duplicate responses.\n\nKernel developers now reviewing emergency killswitch: disable vulnerable function at runtime until real patch arrives. Rocky Linux debuted opt-in security repository for accelerated fixes.\n\nA silent patch is not a fix for defenders who do not know it exists. The killswitch and security repos are symptoms of a disclosure process that leaves gaps.\n\nDo you track silent kernel patches in your distro, or only CVEs?\n\nFollow for AI security breakdowns without the fake panic.\n\n[DirtyDecrypt, CVE-2026-31635, Linux kernel, rxgk, copy-on-write, silent patch, coordinated disclosure, Zellic, V12, kernel killswitch, Rocky Linux security repo]",
+  "caption": "DirtyDecrypt (CVE-2026-31635) is an LPE in rxgk_decrypt_skb missing a copy-on-write guard. Only hits distros with CONFIG_RXGK enabled: Fedora, Arch Linux, openSUSE Tumbleweed.\n\nZellic and V12 reported it May 9. Maintainers said: duplicate, already patched in mainline. No CVE. No advisory. No coordinated disclosure. Researchers forced public when they realized the fix was silent.\n\nThe bug: rxgk_decrypt_skb decrypts incoming socket buffer on receive. Memory pages shared with page cache of other processes. Copy-on-write should protect shared pages. The guard was missing. Data writes to privileged process memory or page cache of /etc/shadow, /etc/sudoers, SUID binaries.\n\nNo embargo broke. No third party weaponized a commit. V12 chose to release the PoC voluntarily once they confirmed the fix was already in mainline, with the explicit note: We're releasing it now since it's patched. That choice is what made the gap visible.\n\nSilent patches without CVEs leave defenders blind. Researchers who report responsibly get duplicate responses.\n\nKernel developers now reviewing emergency killswitch: disable vulnerable function at runtime until real patch arrives. Rocky Linux debuted opt-in security repository for accelerated fixes.\n\nA silent patch is not a fix for defenders who do not know it exists. The killswitch and security repos are symptoms of a disclosure process that leaves gaps.\n\nDo you track silent kernel patches in your distro, or only CVEs?\n\nFollow for AI security breakdowns without the fake panic.\n\n[DirtyDecrypt, CVE-2026-31635, Linux kernel, rxgk, copy-on-write, silent patch, coordinated disclosure, Zellic, V12, kernel killswitch, Rocky Linux security repo]",
   "hashtags": [
     "DirtyDecrypt",
     "CVE-2026-31635",
@@ -187,7 +187,7 @@
     "Zellic and V12 reported DirtyDecrypt May 9 and maintainers replied it was a duplicate already patched in mainline: no CVE, no advisory, no coordinated disclosure. Researchers went public on realizing the fix was silent, releasing a PoC, and NVD later linked CVE-2026-31635. Two opposing shapes of light face off in the dark, one reaching out while the other stays cold and turned away.",
     "Only distros with CONFIG_RXGK enabled are affected: Fedora, Arch Linux, and openSUSE Tumbleweed, and in containers a vulnerable worker node can give a pod escape path. CVSS 7.5: the missing guard in rxgk_decrypt_skb writes to /etc/shadow, /etc/sudoers, and SUID binaries. Three identical emblems of light glow hot red while three others nearby stay dark and dormant.",
     "rxgk_decrypt_skb decrypts an incoming sk_buff whose pages are shared with other processes' page cache, where copy-on-write should protect shared pages but the COW guard was missing. Data lands in privileged memory or files, leading to LPE. A translucent buffer of light is unsealed in place, a missing protective shell where a duplicate should have formed, its freed glow bleeding into a nearby locked vault.",
-    "Hyunwoo Kim, the Dirty Frag researcher, was forced public when the embargo broke after the patch merged, and another researcher independently analyzed the public commit and published, a standard n-day weaponization. Silent patches without CVEs leave defenders blind. A dark horizontal track runs from a quiet sealed mark, to a dismissed report fading out, to an independent spark, to a forced burst of red light.",
+    "No embargo broke and no third party weaponized a commit. V12 voluntarily released the PoC once they confirmed the fix was already in mainline, with no coordinated advisory ever issued. Silent patches without CVEs leave defenders blind. A dark horizontal track runs from a quiet sealed mark, to a dismissed report fading out, to a voluntary release, to a burst of red light representing the disclosure gap.",
     "Kernel developers are reviewing an emergency killswitch that disables a vulnerable function at runtime, returning an operator-supplied value on every CPU until disengage or reboot. Rocky Linux debuted an opt-in security repository for accelerated fixes. A split view of a mechanism running unchecked and overheating red beside the same mechanism with a kill lever thrown and held safe.",
     "A silent patch is not a fix for defenders who do not know it exists. The kernel killswitch and security repos are symptoms of a disclosure process that leaves gaps. A single freshly sealed clasp glows green while the faint marking that should explain it fades to invisible gray.",
     "Closing question: do you track silent kernel patches in your distro, or only CVEs? Save this for your next vulnerability management review. A single faint pulse of light on a clean dark end-card with open negative space."
@@ -196,7 +196,7 @@
     {
       "source": "The Hacker News: DirtyDecrypt PoC Released for Linux Kernel CVE-2026-31635 LPE",
       "link": "https://thehackernews.com/2026/05/dirtydecrypt-poc-released-for-linux.html",
-      "supports": "DirtyDecrypt CVE-2026-31635 CVSS 7.5; rxgk_decrypt_skb missing COW guard; Zellic/V12 reported May 9, told duplicate; CONFIG_RXGK distros (Fedora, Arch, openSUSE); writes to /etc/shadow, /etc/sudoers, SUID binaries; container worker node escape path; Hyunwoo Kim forced disclosure after embargo break; independent researcher analyzed public commit; kernel killswitch proposal (Sasha Levin); Rocky Linux security repository.",
+      "supports": "DirtyDecrypt CVE-2026-31635 CVSS 7.5; rxgk_decrypt_skb missing COW guard; Zellic/V12 reported May 9, told duplicate already patched in mainline; no CVE, no advisory, no coordinated disclosure; V12 voluntarily released PoC once fix confirmed in mainline; CONFIG_RXGK distros (Fedora, Arch, openSUSE); writes to /etc/shadow, /etc/sudoers, SUID binaries; container worker node escape path; kernel killswitch proposal (Sasha Levin); Rocky Linux security repository.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     },
@@ -210,7 +210,14 @@
     {
       "source": "V12 Security: DirtyDecrypt PoC",
       "link": "https://github.com/v12-security/pocs/tree/main/dirtydecrypt",
-      "supports": "PoC release; Luna Tong (cts/gf_256) description; rxgk pagecache write due to missing COW guard.",
+      "supports": "PoC release; Luna Tong (cts/gf_256) description; rxgk pagecache write due to missing COW guard; voluntary disclosure rationale: 'We're releasing it now since it's patched on mainline.'",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "SecurityAffairs: DirtyDecrypt PoC Released for yet another Linux flaw",
+      "link": "https://securityaffairs.com/192436/uncategorized/dirtydecrypt-poc-released-for-yet-another-linux-flaw.html",
+      "supports": "Zellic/V12 reported May 9, told duplicate already fixed upstream; no CVE assigned directly; V12 voluntary disclosure confirmed; V12 quote: 'We found and reported this on May 9, 2026, but was informed it was a duplicate by the maintainers. We're releasing it now since it's patched on mainline.'",
       "confidence": "high",
       "claim_tag": "reported_fact"
     }
@@ -319,7 +326,7 @@
       {
         "start": 27,
         "end": 34,
-        "text": "That let an attacker corrupt privileged files like the password and sudo configuration, and because the fix shipped quietly, someone read it and built a working exploit before defenders even knew to patch."
+        "text": "That let an attacker corrupt privileged files like the password and sudo configuration, and because no advisory went out, V12 released the PoC themselves once they saw the fix had already landed in mainline."
       },
       {
         "start": 34,
@@ -376,7 +383,7 @@
         "slide_ref": 5,
         "purpose": "gap",
         "motion": "slow push-in",
-        "caption": "Dirty Frag pattern. Silent patch. Independent analysis. Forced public."
+        "caption": "Told duplicate. No advisory. V12 released voluntarily."
       },
       {
         "start": 34,
