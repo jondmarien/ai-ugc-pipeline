@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import { Home } from "./pages/Home";
 import { Legal } from "./pages/Legal";
 
@@ -21,6 +22,7 @@ export function App() {
         <Route path="/privacy" element={<Legal doc="privacy" />} />
         <Route path="*" element={<Home />} />
       </Routes>
+      <Analytics />
     </div>
   );
 }
