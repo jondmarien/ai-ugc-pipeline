@@ -8,7 +8,7 @@
   "pillar": "offensive_ai",
   "theme": "offensive",
   "audience": "security_practitioners",
-  "core_claim": "RedSun is a file write local privilege escalation zero-day that allows attackers to drop a binary in System32 and execute as SYSTEM. Released by Nightmare Eclipse as part of the June 2026 vulnerability wave.",
+  "core_claim": "RedSun (CVE-2026-41091) is a link-following flaw in Microsoft Defender's own file-remediation workflow. Defender runs as SYSTEM and can be redirected via an NTFS junction so its privileged write lands in a protected system directory. Released by Nightmare Eclipse as the second exploit in an April 2026 series; Microsoft patched it out-of-band on May 19–21, 2026 and CISA added it to KEV.",
   "claim_tags": [
     "reported_fact",
     "practitioner_takeaway"
@@ -66,8 +66,8 @@
       "slide": 1,
       "role": "cover",
       "kicker": "WINDOWS × ZERO-DAY",
-      "on_slide_copy": "REDSUN WRITES TO SYSTEM32. EXECUTES AS SYSTEM.",
-      "subline": "File write LPE. No CVE assigned yet. Nightmare Eclipse June wave exploit two.",
+      "on_slide_copy": "REDSUN TURNS DEFENDER INTO THE ATTACKER.",
+      "subline": "CVE-2026-41091. Link-following flaw in Microsoft Defender. CISA KEV. Patched May 21, 2026.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A hard rim light catches a System32 folder icon in the dark, a malicious binary being placed inside with a red glow, SYSTEM token materializing above it like a crown, premium dark editorial key art, the folder held in the upper third with clean unmarked negative space filling the lower third.",
       "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/01_cover.png",
@@ -79,8 +79,8 @@
       "slide": 2,
       "role": "context",
       "kicker": "THE RELEASE",
-      "on_slide_copy": "RedSun is the second exploit in Nightmare Eclipse's June drop.",
-      "subline": "No CVE assigned. Microsoft was notified. The exploit works on current Patch Tuesday builds.",
+      "on_slide_copy": "RedSun is the second exploit in Nightmare Eclipse's April drop.",
+      "subline": "Released April 15-16, 2026. CVE-2026-41091 assigned. Microsoft patched out-of-band May 19-21. CISA KEV added May 20.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Low raking light grazes a dense lattice of light in the dark, one bright strand driving into a guarded core and lighting it from within, dark editorial photography, the lattice set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/02_context.png",
@@ -92,8 +92,8 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT STINGS",
-      "on_slide_copy": "It bypasses TrustedInstaller to write any binary into a protected system folder.",
-      "subline": "No memory corruption and no race condition. Just a file write. Defenders assume that folder is off-limits.",
+      "on_slide_copy": "Defender's own remediation writes the attacker's binary as SYSTEM.",
+      "subline": "CWE-59: link following. Defender resolves NTFS junctions during cleanup without verifying the destination. Protected directories become reachable.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A focused side light illuminates a System32 directory in the dark, a single file glowing red among thousands of white system files, dark premium editorial, the directory centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/03_risk.png",
@@ -105,8 +105,8 @@
       "slide": 4,
       "role": "mechanism",
       "kicker": "THE PRIMITIVE",
-      "on_slide_copy": "It abuses a junction point in the Windows Installer service.",
-      "subline": "The installer runs as SYSTEM. The exploit redirects its file copy to the protected folder, and the binary lands.",
+      "on_slide_copy": "Defender's file-remediation runs as SYSTEM and follows attacker-placed links.",
+      "subline": "A race-condition class flaw: timing windows let the attacker swap a directory for a junction before Defender completes its write-back.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A hard top-down beam falls on a Windows Installer service icon in the dark, its file copy arrow bending mid-air toward a System32 folder, dark editorial key art, the redirect framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/04_mechanism.png",
@@ -118,8 +118,8 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "WHERE DEFENDERS MISS IT",
-      "on_slide_copy": "RedSun blends into normal installer activity because System32 writes are noisy.",
-      "subline": "Legitimate installers write there every day. Most endpoint tools ignore writes from the installer service, so detection baselines do not exist.",
+      "on_slide_copy": "Defenders trust Defender. Privileged writes from it rarely get a second look.",
+      "subline": "File operations from the Antimalware Service Executable (MsMpEng.exe) are treated as trusted. Detections targeting that process are rare in most endpoint baselines.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Cool light grazes a vast field of identical dark slabs in the dark, one pulsing red and otherwise indistinguishable from the rest, tense editorial composition, the field held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/05_failure-point.png",
@@ -130,9 +130,9 @@
     {
       "slide": 6,
       "role": "defense",
-      "kicker": "THE MITIGATION REALITY",
-      "on_slide_copy": "No vendor patch exists, so defenders must catch this themselves.",
-      "subline": "Monitor for non-installer writes, block unsigned binaries, enforce Windows Defender Application Control or AppLocker, and hunt for unusual installer service children.",
+      "kicker": "THE MITIGATION",
+      "on_slide_copy": "Apply the May 21 Defender engine update. Version 1.1.26040.8 or later.",
+      "subline": "Automatic updates push it silently. Verify engine version in Windows Security settings. Treat MsMpEng.exe file writes to protected directories as an alerting condition.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A balanced split composition in the dark: left side a System32 folder with a green shield and signed binary checkmark, right side the same folder with a red unsigned binary and broken shield, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/06_defense.png",
@@ -144,7 +144,7 @@
       "slide": 7,
       "role": "takeaway",
       "kicker": "TAKEAWAY",
-      "on_slide_copy": "System32 {{is not immutable.}} [[It is a write target when a trusted service is misdirected.]]",
+      "on_slide_copy": "Your security tool {{is not immune.}} [[When Defender's own file operations can be redirected, the protector becomes the primitive.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A thin rim light traces a System32 folder icon in the dark, one half intact with a green shield glow, the other half fractured with a red binary and SYSTEM token escaping, minimal high-impact key art, the folder drawn toward the edge with the center kept dark and open.",
@@ -167,42 +167,56 @@
       "notes": ""
     }
   ],
-  "caption": "Nightmare Eclipse released RedSun as the second exploit in their June 2026 wave. A file write local privilege escalation that drops a binary into System32 and executes it as SYSTEM.\n\nThe primitive abuses a junction/parse point in the Windows Installer service. The MSI installer runs as SYSTEM. The exploit redirects its trusted file copy operation to target System32. The binary lands. Execution follows via scheduled task or service registration.\n\nNo memory corruption. No race condition. Pure file write. Defenders assume System32 is immutable. It is not.\n\nSystem32 file creation events (4663) are noisy. Legitimate installers write there daily. RedSun blends in. No CVE assigned yet. No patch timeline.\n\nDefenders must baseline legitimate System32 writes: monitor for non-installer writes, block unsigned binaries in System32, use WDAC or AppLocker, hunt for MSI service spawning unusual children.\n\nSystem32 is not immutable. It is a write target when a trusted service is misdirected.\n\nDo you baseline System32 mutations in your environment?\n\nFollow for AI security breakdowns without the fake panic.\n\n[RedSun, Nightmare Eclipse, Windows zero-day, file write LPE, System32, Windows Installer, MSI service, WDAC, AppLocker, trusted service abuse]",
+  "caption": "Nightmare Eclipse released RedSun as the second exploit in their April 2026 series. CVE-2026-41091. A local privilege escalation that turns Microsoft Defender's own remediation into an attacker-controlled write primitive.\n\nThe flaw is CWE-59: improper link resolution before file access. Defender's Antimalware Service Executable (MsMpEng.exe) runs as SYSTEM. During file remediation it performs privileged writes to paths it does not fully validate. An attacker with local access can place an NTFS junction so that write resolves into a protected system directory.\n\nIt is a race-condition class issue. Timing windows during Defender's cleanup workflow give the attacker the window to swap in the junction before the write completes.\n\nMost endpoint tooling treats MsMpEng.exe file operations as inherently trustworthy. That blind spot is where this exploit lives.\n\nMicrosoft patched it out-of-band on May 19-21, 2026 in Malware Protection Engine v1.1.26040.8. CISA added it to the Known Exploited Vulnerabilities catalog on May 20, requiring US federal agencies to remediate by June 3. Huntress confirmed active exploitation in the wild.\n\nVerify your Defender engine version. Check Windows Security, then Settings, then About. If it shows below 1.1.26040.8, trigger a manual update. For defenders: treat MsMpEng.exe file writes to protected directories as an alerting condition, not background noise.\n\nDo you treat security tool file operations as trusted by default in your detections?\n\nFollow for AI security breakdowns without the fake panic.\n\n[RedSun, CVE-2026-41091, Nightmare Eclipse, Microsoft Defender, link following, CWE-59, Windows LPE, CISA KEV, MsMpEng, Defender remediation]",
   "hashtags": [
     "RedSun",
+    "CVE-2026-41091",
     "Nightmare Eclipse",
-    "Windows zero-day",
-    "file write LPE",
-    "System32",
-    "Windows Installer",
-    "MSI service",
-    "WDAC",
-    "AppLocker",
-    "trusted service abuse"
+    "Microsoft Defender",
+    "Windows LPE",
+    "link following",
+    "CWE-59",
+    "CISA KEV",
+    "MsMpEng",
+    "Defender remediation"
   ],
-  "comment_prompt": "Do you baseline System32 mutations in your environment?",
+  "comment_prompt": "Do you treat security tool file operations as trusted by default in your detections?",
   "alt_text": [
-    "Title card: RedSun writes to System32 and executes as SYSTEM. A file-write local privilege escalation with no CVE yet, the second exploit in Nightmare Eclipse's June wave. A System32 folder with a red binary slid inside and a SYSTEM token rising above it.",
-    "RedSun is the second exploit Nightmare Eclipse released in their June 2026 wave, targeting Windows with a direct file write into a protected system folder. No CVE is assigned and the exploit works on current Patch Tuesday builds.",
-    "RedSun bypasses TrustedInstaller ownership to place any binary into a protected system folder and run it as SYSTEM, with no memory corruption and no race condition involved. One file glows red among thousands of identical white system files in the dark.",
-    "The exploit abuses a junction point in the Windows Installer service: because that service runs as SYSTEM, it redirects its trusted file copy into the protected folder and the binary lands. A light arrow bends mid-air toward a guarded core.",
-    "RedSun blends into normal installer activity because writes to that folder happen every day from legitimate software. Endpoint tools ignore installer service file operations, leaving no detection baseline. A field of identical slabs with one pulsing red and otherwise indistinguishable.",
-    "No vendor patch exists yet, so defenders must baseline installer write patterns, block unsigned binaries in protected folders, enforce Windows Defender Application Control or AppLocker, and hunt the installer service for unusual child processes. A split scene: a signed binary behind a shield on one side, an unsigned one breaking it on the other.",
-    "System32 is not immutable. It is a write target when a trusted service is misdirected. A System32 folder icon, one half shielded and intact, the other fractured with a SYSTEM token escaping.",
-    "The call to action asks whether you baseline System32 mutations in your environment. A single pulse of light on a clean dark end card."
+    "Title card: RedSun turns Defender into the attacker. CVE-2026-41091, a link-following flaw in Microsoft Defender, patched May 21, 2026 and listed in CISA's Known Exploited Vulnerabilities catalog. A Defender shield icon with a red glow bending outward toward a protected system directory.",
+    "RedSun is the second exploit Nightmare Eclipse released in their April 2026 series, targeting the Antimalware Service Executable. CVE-2026-41091 was assigned and Microsoft patched it out-of-band on May 19-21, 2026.",
+    "Defender's own file-remediation runs as SYSTEM and resolves NTFS junctions without verifying the destination. CWE-59, improper link resolution before file access, allows a standard user to reach a protected system directory through a redirected Defender write. One red file glows among white system files in the dark.",
+    "A race-condition class flaw: timing windows in Defender's cleanup workflow give an attacker the window to replace a directory with a junction before the SYSTEM-privileged write-back completes. A light arrow bends mid-air toward a protected core.",
+    "Most endpoint tooling treats MsMpEng.exe file operations as trusted background noise, not alertable events. That assumption is the gap RedSun exploits. A field of identical dark slabs with one pulsing red and otherwise indistinguishable.",
+    "Verify Defender engine version 1.1.26040.8 or later in Windows Security settings. Automatic updates push it silently but confirmation is needed on managed endpoints. Treat MsMpEng.exe writes to protected directories as an alerting condition, not background noise. A split scene: a patched Defender engine behind a green shield on one side, an unpatched version with a broken shield on the other.",
+    "Your security tool is not immune. When Defender's own file operations can be redirected, the protector becomes the write primitive. A Defender shield icon, one half intact and glowing green, the other fractured with a SYSTEM token escaping.",
+    "The call to action asks whether you treat security tool file operations as trusted by default in your detections. A single pulse of light on a clean dark end card."
   ],
   "sources": [
     {
-      "source": "Nightmare Eclipse blog: RedSun Technical Details",
-      "link": "https://deadeclipse666.blogspot.com/2026/06/redsun-windows-lpe.html",
-      "supports": "File write LPE primitive; System32 targeting; MSI service junction abuse; SYSTEM execution via scheduled task; works on current Patch Tuesday builds; no CVE assigned; Microsoft notification status.",
+      "source": "NVD: CVE-2026-41091 Detail",
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-41091",
+      "supports": "CVE identifier; CWE-59 classification (improper link resolution before file access); CVSS 7.8 HIGH; affected engine versions up to 1.1.26030.3008; fixed in 1.1.26040.8; CISA KEV date added May 20, 2026; due date June 3, 2026.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     },
     {
-      "source": "SecurityWeek: Nightmare Eclipse Releases Six Windows Zero-Days",
-      "link": "https://www.securityweek.com/nightmare-eclipse-releases-six-windows-zero-days/",
-      "supports": "Context of six-exploit wave; exploit sequence; researcher background; GitHub account suspension; MSNightmare repo; community response.",
+      "source": "BleepingComputer: New Microsoft Defender RedSun zero-day PoC grants SYSTEM privileges",
+      "link": "https://www.bleepingcomputer.com/news/microsoft/new-microsoft-defender-redsun-zero-day-poc-grants-system-privileges/",
+      "supports": "RedSun released April 16, 2026 as second exploit by Nightmare Eclipse; LPE flaw in Microsoft Defender; link-following via NTFS junction in Defender's remediation workflow; confirmed exploitation on fully-patched Windows 10 and 11; no CVE at time of release.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "BleepingComputer: Microsoft warns of new Defender zero-days exploited in attacks",
+      "link": "https://www.bleepingcomputer.com/news/security/microsoft-warns-of-new-defender-zero-days-exploited-in-attacks/",
+      "supports": "CVE-2026-41091 assigned to RedSun; out-of-band patch released May 21, 2026; CISA KEV addition confirmed; Huntress observed active exploitation of RedSun in the wild.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Help Net Security: Microsoft Defender vulnerabilities exploited in the wild (CVE-2026-41091, CVE-2026-45498)",
+      "link": "https://www.helpnetsecurity.com/2026/05/21/microsoft-defender-vulnerabilities-cve-2026-41091-cve-2026-45498/",
+      "supports": "April 3 and 15 release dates for Nightmare Eclipse exploits; RedSun confirmed as second release (April 15); BlueHammer first; CISA KEV June 3 deadline; Huntress incident responder confirmation of exploitation; race-condition class mechanism described.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     }
@@ -291,37 +305,37 @@
       {
         "start": 0,
         "end": 7,
-        "text": "A researcher called Nightmare Eclipse just dropped a privilege escalation exploit for Windows that writes a binary straight into the System32 folder and runs it as SYSTEM."
+        "text": "Nightmare Eclipse released RedSun in April 2026 as the second in a series of Microsoft Defender zero-days, and it does something counterintuitive: it turns Defender itself into the attacker's write primitive."
       },
       {
         "start": 7,
         "end": 15,
-        "text": "This is the second in a six-exploit wave released in June 2026, with no CVE assigned and no patch from Microsoft at time of release."
+        "text": "This became CVE-2026-41091, a link-following flaw in the Malware Protection Engine, patched out-of-band by Microsoft on May 21, 2026, and added to CISA's Known Exploited Vulnerabilities catalog the day before."
       },
       {
         "start": 15,
         "end": 24,
-        "text": "The technique abuses a junction point in the Windows Installer service: because that service runs as SYSTEM, redirecting its file copy operation drops an attacker-controlled binary into a protected folder without any memory corruption or race condition."
+        "text": "The category is CWE-59, improper link resolution before file access. Defender's remediation process runs as SYSTEM, and it resolves NTFS junctions without verifying whether the destination is still within a directory the attacker controls."
       },
       {
         "start": 24,
         "end": 32,
-        "text": "What makes this hard to catch is that legitimate installers write to System32 every single day, so the malicious write is noise inside noise, and most endpoint tools do not alert on installer service file operations."
+        "text": "It is a race-condition class issue: timing windows during Defender's cleanup workflow give an attacker the opportunity to swap a directory for a junction before the SYSTEM-privileged write-back completes, landing the binary exactly where they need it."
       },
       {
         "start": 32,
         "end": 41,
-        "text": "Until a patch ships, defenders need to baseline what normal installer writes look like, block unsigned binaries from landing in that folder, enforce application control policies, and monitor the installer service for unusual child processes."
+        "text": "Most endpoint tooling treats file operations from MsMpEng.exe as inherently trusted background noise, which means the write goes undetected in environments that have not explicitly built detections for privileged Defender process file activity."
       },
       {
         "start": 41,
         "end": 48,
-        "text": "The assumption that System32 is off-limits to unprivileged attackers is exactly the gap this exploit lives in."
+        "text": "The patch is an engine update, not a Windows update: verify that Defender engine version 1.1.26040.8 or later is deployed, especially on managed endpoints where automatic updates may be delayed."
       },
       {
         "start": 48,
         "end": 54,
-        "text": "Have you ever basellined installer writes in your environment? Drop your answer in the comments."
+        "text": "Do you treat file operations from your security tool as trusted by default, or do you alert on them? Drop your answer in the comments."
       }
     ],
     "beats": [
@@ -331,7 +345,7 @@
         "slide_ref": 1,
         "purpose": "hook",
         "motion": "slow push-in over cover",
-        "caption": "RedSun writes System32. Executes SYSTEM."
+        "caption": "RedSun turns Defender into the attacker's write primitive."
       },
       {
         "start": 6,
@@ -339,7 +353,7 @@
         "slide_ref": 2,
         "purpose": "context",
         "motion": "parallax",
-        "caption": "Six-exploit wave. No CVE. Patched builds hit."
+        "caption": "CVE-2026-41091. April 2026. Patched May 21. CISA KEV."
       },
       {
         "start": 13,
@@ -347,7 +361,7 @@
         "slide_ref": 3,
         "purpose": "risk",
         "motion": "slow push-in",
-        "caption": "MSI service junction. SYSTEM copy redirected."
+        "caption": "CWE-59. Defender resolves junctions. Write hits protected dir."
       },
       {
         "start": 20,
@@ -355,7 +369,7 @@
         "slide_ref": 4,
         "purpose": "mechanism",
         "motion": "parallax",
-        "caption": "No memory corruption. File write. Binary lands."
+        "caption": "Race-condition class. Junction swap. SYSTEM write lands."
       },
       {
         "start": 27,
@@ -363,7 +377,7 @@
         "slide_ref": 5,
         "purpose": "gap",
         "motion": "slow push-in",
-        "caption": "System32 noise. Legit installers daily. Blends in."
+        "caption": "MsMpEng.exe trusted. File ops invisible in most baselines."
       },
       {
         "start": 34,
@@ -371,7 +385,7 @@
         "slide_ref": 6,
         "purpose": "defense",
         "motion": "parallax",
-        "caption": "Baseline mutations. Unsigned block. WDAC. Hunt MSI."
+        "caption": "Engine 1.1.26040.8. Verify. Alert on MsMpEng writes."
       },
       {
         "start": 41,
@@ -379,7 +393,7 @@
         "slide_ref": 7,
         "purpose": "takeaway",
         "motion": "static high contrast",
-        "caption": "System32 not immutable. Trusted service misdirect."
+        "caption": "Security tool not immune. Protector becomes the primitive."
       },
       {
         "start": 48,
@@ -387,7 +401,7 @@
         "slide_ref": 8,
         "purpose": "cta",
         "motion": "end card",
-        "caption": "Do you baseline System32?"
+        "caption": "Do you alert on security tool file ops?"
       }
     ],
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
