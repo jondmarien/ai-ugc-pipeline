@@ -8,7 +8,7 @@
   "pillar": "governance",
   "theme": "purple-team",
   "audience": "security_practitioners",
-  "core_claim": "Microsoft suspended Nightmare Eclipse's GitHub account after they released multiple Windows zero-days. The exploits were republished under MSNightmare. Microsoft threatened legal action, then clarified it would not pursue researchers. The disclosure standoff highlights broken vendor-researcher dynamics.",
+  "core_claim": "Microsoft suspended Nightmare Eclipse's GitHub account after they released six Windows zero-days (BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, MiniPlasma). GitHub terminated the account on May 23, 2026; GitLab on May 26. The researcher resurfaced as MSNightmare and dropped two more: RoguePlanet (7th, June 9-10) and GreatXML (8th, June 11). Microsoft threatened legal action via its Digital Crimes Unit around May 28, then walked it back after community backlash. The disclosure standoff highlights broken vendor-researcher dynamics.",
   "claim_tags": [
     "reported_fact",
     "practitioner_takeaway"
@@ -80,7 +80,7 @@
       "role": "context",
       "kicker": "THE STANDOFF",
       "on_slide_copy": "One researcher dropped six Windows zero-days in a matter of months.",
-      "subline": "The exploits were named BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, and RoguePlanet. Multiple were confirmed exploited in the wild.",
+      "subline": "The six: BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, and MiniPlasma. After GitHub banned the account on May 23, two more followed: RoguePlanet and GreatXML.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Low raking light grazes a column of six glowing marks in the dark, three of them struck through with red while the others stay intact, dark editorial photography, the column set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/02_context.png",
@@ -93,7 +93,7 @@
       "role": "risk",
       "kicker": "WHY IT MATTERS",
       "on_slide_copy": "GitHub suspended the account with no warning, and the exploits reappeared within hours.",
-      "subline": "The RoguePlanet exploit was confirmed working on fully patched Windows 10 and 11. Microsoft later said it would not pursue researchers, yet the account stayed suspended.",
+      "subline": "RoguePlanet, the 7th (post-ban), worked on fully patched Windows 10 and 11. Microsoft threatened prosecution around May 28, then walked it back after community backlash.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A focused side light illuminates a broken chain in the dark, one link glowing purple where it snapped, the two halves drifting apart, dark premium editorial, the chain centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/03_risk.png",
@@ -106,7 +106,7 @@
       "role": "mechanism",
       "kicker": "THE ZERO-DAY WAVE",
       "on_slide_copy": "Each exploit targeted a different layer of Windows privilege and protection.",
-      "subline": "BlueHammer dumped credentials via the SAM hive, RedSun escalated to SYSTEM, UnDefend killed Defender, YellowKey bypassed BitLocker, and RoguePlanet hit a Defender race condition.",
+      "subline": "BlueHammer hit the SAM hive, RedSun wrote to System32, UnDefend killed Defender, YellowKey bypassed BitLocker, GreenPlasma abused CTFMON, MiniPlasma reopened an old patched bug.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A hard top-down beam falls on six distinct keys in the dark, each cut differently, three glowing purple (patched) and three burning red (active), dark editorial key art, the keys framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-10_nightmare-eclipse-github-removal/04_mechanism.png",
@@ -167,7 +167,7 @@
       "notes": ""
     }
   ],
-  "caption": "Microsoft suspended Nightmare Eclipse's GitHub account after they released multiple Windows zero-days. The exploits reappeared under MSNightmare within hours.\n\nNightmare Eclipse dropped six zero-days in months: BlueHammer (SAM hive, NTLM dump to SYSTEM), RedSun (System32 file write LPE), UnDefend (blocks Defender updates or disables AV silently), YellowKey (BitLocker bypass via USB), GreenPlasma (full SYSTEM via trusted process), RoguePlanet (Defender race condition LPE on patched Win 10/11). Multiple exploited in the wild.\n\nThe researcher cited discontent with Microsoft's disclosure process. Microsoft called for responsible disclosure, then threatened legal action. Community backlash forced a clarification that it would not pursue researchers. But the GitHub account stayed suspended.\n\nYou cannot rely on coordinated disclosure to protect you. When the process breaks, exploits go public immediately.\n\nBuild detection for the behaviors, not just the CVEs: SAM hive access, System32 writes, Defender tampering, BitLocker bypass attempts. The researcher's frustration became your adversary's toolkit.\n\nDo you have detection for SAM hive access, System32 writes, and Defender tampering?\n\nFollow for AI security breakdowns without the fake panic.\n\n[Nightmare Eclipse, Microsoft, GitHub, responsible disclosure, zero-day, BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, RoguePlanet, detection engineering]",
+  "caption": "Microsoft suspended Nightmare Eclipse's GitHub account after they released six Windows zero-days. The researcher resurfaced as MSNightmare and kept going.\n\nThe original six (pre-ban, April through May 2026): BlueHammer (SAM hive NTLM dump to SYSTEM), RedSun (System32 file write LPE), UnDefend (disables Defender silently), YellowKey (BitLocker bypass via USB), GreenPlasma (SYSTEM via CTFMON), MiniPlasma (incomplete-fix regression). All patched as of June 2026 Patch Tuesday. Multiple exploited in the wild before patches shipped.\n\nGitHub terminated the account on May 23, 2026 and wiped six repos. GitLab suspended the mirror on May 26. Microsoft's Digital Crimes Unit threatened criminal prosecution around May 28. Community backlash forced a clarification that it would not pursue researchers. The account stayed suspended.\n\nThe researcher resurfaced as MSNightmare. RoguePlanet (7th, June 9-10) and GreatXML (8th, June 11) followed the ban, both confirmed working on fully patched systems.\n\nYou cannot rely on coordinated disclosure to protect you. When the process breaks, exploits go public immediately.\n\nBuild detection for the behaviors, not just the CVEs: SAM hive access, System32 writes, Defender tampering, BitLocker bypass attempts. The researcher's frustration became your adversary's toolkit.\n\nDo you have detection for SAM hive access, System32 writes, and Defender tampering?\n\nFollow for AI security breakdowns without the fake panic.\n\n[Nightmare Eclipse, Microsoft, GitHub, responsible disclosure, zero-day, BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, MiniPlasma, RoguePlanet, detection engineering]",
   "hashtags": [
     "Nightmare Eclipse",
     "Microsoft",
@@ -179,15 +179,16 @@
     "UnDefend",
     "YellowKey",
     "GreenPlasma",
+    "MiniPlasma",
     "RoguePlanet",
     "detection engineering"
   ],
   "comment_prompt": "Do you have detection for SAM hive access, System32 writes, and Defender tampering?",
   "alt_text": [
     "Title card: Microsoft suspended the researcher, and the exploits reappeared. The Nightmare Eclipse account was removed, the zero-days republished under MSNightmare with no warning. A single dark silhouetted figure half dissolves into drifting purple static, its left half solid and whole.",
-    "Nightmare Eclipse dropped six Windows zero-days in months: BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, RoguePlanet. The researcher cited Microsoft's disclosure process, and Microsoft threatened legal action. A dark ledger of six entries.",
+    "Nightmare Eclipse dropped six Windows zero-days before the ban: BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, MiniPlasma. GitHub terminated the account May 23. Two more followed post-ban: RoguePlanet and GreatXML. A dark ledger of six entries.",
     "GitHub suspended the account without warning, and the exploits reappeared on MSNightmare within hours, with RoguePlanet validated on fully patched Windows 10 and 11. Microsoft said it would not pursue researchers, yet the suspension stood. A broken chain.",
-    "The wave: BlueHammer dumps NTLM via SAM hive to SYSTEM, RedSun is a System32 write LPE, UnDefend disables Defender, YellowKey bypasses BitLocker via USB, GreenPlasma gets full SYSTEM, RoguePlanet is a Defender race LPE. Six distinct keys, some patched, some active.",
+    "The original six: BlueHammer dumps NTLM via SAM hive to SYSTEM, RedSun is a System32 write LPE, UnDefend disables Defender, YellowKey bypasses BitLocker via USB, GreenPlasma gets full SYSTEM via CTFMON, MiniPlasma exploits an incomplete 2020 fix. Six distinct keys, all now patched.",
     "Where the process broke: the researcher disclosed privately first, claims Microsoft ignored or mishandled the reports, then went public after frustration, and Microsoft replied with legal threats and suspension. A cracked negotiation table with broken comm lines.",
     "The defender lesson: you cannot rely on coordinated disclosure, because when it breaks exploits go public immediately. Monitor SAM access, System32 writes, Defender tampering, and BitLocker bypass attempts. A vendor shield cracks beside a detection radar.",
     "Coordinated disclosure is a courtesy, not a guarantee. When vendors break trust, researchers go public, so defenders must detect the behaviors regardless. A fractured handshake, one hand purple for vendor and one red for researcher, leaks light.",
@@ -197,7 +198,7 @@
     {
       "source": "SecurityWeek: New Windows Zero-Day Exploit 'RoguePlanet' Released",
       "link": "https://www.securityweek.com/new-windows-zero-day-exploit-rogueplanet-released/",
-      "supports": "RoguePlanet release; Nightmare Eclipse/Chaotic Eclipse; six zero-days dropped; GitHub account suspended; MSNightmare repo; Microsoft legal threat and clarification; GreenPlasma/YellowKey patched same week; RedSun/UnDefend/BlueHammer history.",
+      "supports": "RoguePlanet release as 7th exploit (post-ban); Nightmare Eclipse/Chaotic Eclipse alias history; MSNightmare repo; Microsoft legal threat and clarification; GreenPlasma/YellowKey/MiniPlasma patched same week; RedSun/UnDefend/BlueHammer history.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     },
@@ -211,7 +212,28 @@
     {
       "source": "SecurityWeek: Researcher Drops YellowKey GreenPlasma Windows Zero-Days",
       "link": "https://www.securityweek.com/researcher-drops-yellowkey-greenplasma-windows-zero-days/",
-      "supports": "YellowKey (CVE-2026-50507) BitLocker bypass; GreenPlasma (CVE-2026-45586) CTFMON elevation; Patch Tuesday fixes.",
+      "supports": "YellowKey (CVE-2026-45585) BitLocker bypass; GreenPlasma (CVE-2026-45586) CTFMON elevation; Patch Tuesday fixes.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "The Register: Nightmare Eclipse drops claimed BitLocker bypass for Microsoft Windows",
+      "link": "https://www.theregister.com/security/2026/06/11/nightmare-eclipse-drops-claimed-bitlocker-bypass-for-microsoft-windows/",
+      "supports": "Confirms GreatXML as 8th exploit (June 11). Explicitly names the pre-ban six as RedSun, UnDefend, BlueHammer, YellowKey, GreenPlasma, and MiniPlasma (not RoguePlanet): 'The earlier six - RedSun, UnDefend, BlueHammer, YellowKey, GreenPlasma, and MiniPlasma - all have patches as of this week's Patch Tuesday event.'",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Cyderes Howler Cell: RoguePlanet - Windows Zero-Day That Weaponizes Defender's Own Quarantine Pipeline",
+      "link": "https://www.cyderes.com/howler-cell/rogueplanet-windows-zero-day",
+      "supports": "GitHub terminated Nightmare-Eclipse account May 23 wiping all six repos; GitLab suspended May 26; RoguePlanet is the 7th exploit released June 10 under MSNightmare handle; patch status for all six pre-ban exploits (BlueHammer CVE-2026-33825, RedSun CVE-2026-41091, UnDefend CVE-2026-45498, YellowKey CVE-2026-45585, GreenPlasma CVE-2026-45586, MiniPlasma patched June 9 Patch Tuesday); RoguePlanet confirmed on fully patched Windows 11.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Dark Reading: Nightmare-Eclipse Drops Yet Another Microsoft Exploit, RoguePlanet",
+      "link": "https://www.darkreading.com/vulnerabilities-threats/nightmare-eclipse-microsoft-exploit-rogueplanet",
+      "supports": "Confirms pre-ban six as BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, and MiniPlasma; Microsoft MSRC blog post May 27 threatening criminal charges via Digital Crimes Unit; community backlash; Microsoft walk-back of legal threats; ongoing researcher feud context.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     }
@@ -300,7 +322,7 @@
       {
         "start": 0,
         "end": 6,
-        "text": "A security researcher called Nightmare Eclipse released six Windows zero-days in the space of a few months, and Microsoft responded by suspending the account on GitHub without warning."
+        "text": "A security researcher called Nightmare Eclipse released six Windows zero-days in the space of a few months, and GitHub suspended the account on May 23 without warning, wiping all six repositories."
       },
       {
         "start": 6,
@@ -315,7 +337,7 @@
       {
         "start": 20,
         "end": 27,
-        "text": "After the suspension, the exploits reappeared under a new account called MSNightmare within hours, and RoguePlanet was confirmed working against fully patched Windows 10 and 11 systems."
+        "text": "After the suspension, the researcher resurfaced as MSNightmare and dropped two more exploits: RoguePlanet, the seventh, confirmed working on fully patched Windows 10 and 11, and GreatXML, an eighth that bypassed BitLocker."
       },
       {
         "start": 27,
@@ -542,7 +564,7 @@
       {
         "start": 10.26,
         "end": 14.38,
-        "text": "BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, RoguePlanet.",
+        "text": "BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, MiniPlasma.",
         "words": [
           {
             "text": "BlueHammer,",
@@ -570,7 +592,7 @@
             "end": 13.64
           },
           {
-            "text": "RoguePlanet.",
+            "text": "MiniPlasma.",
             "start": 14.14,
             "end": 14.38
           }
