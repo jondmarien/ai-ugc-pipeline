@@ -79,10 +79,10 @@
       "slide": 2,
       "role": "context",
       "kicker": "THE RELEASE",
-      "on_slide_copy": "Nightmare Eclipse dropped GreenPlasma as the fifth exploit. CVE-2026-45586. Full system privilege via a trusted Windows process.",
-      "subline": "Patched in June 2026 Patch Tuesday. But the exploit was public before the patch. Researcher says it targets a core system component.",
+      "on_slide_copy": "GreenPlasma was the fifth exploit Nightmare Eclipse released.",
+      "subline": "CVE-2026-45586 gained full SYSTEM access through a trusted Windows process. Patched June 2026 Patch Tuesday, but it was public before the fix.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Low raking light grazes a Windows Task Manager in the dark, a single process highlighted in green with 'SYSTEM' privileges, the CPU graph spiking, dark editorial photography, the UI set high over a calm empty lower third.",
+      "visual_prompt": "Low raking light grazes a glowing process sphere in the dark, a green tendril threading through it and lifting it toward a crown of light, dark editorial photography, the sphere high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-11_greenplasma-system-lpe/02_context.png",
       "asset_status": "generated",
       "cta": "",
@@ -92,10 +92,10 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT STINGS",
-      "on_slide_copy": "GreenPlasma exploits a trusted system process that runs as SYSTEM. No memory corruption in the target. The process legitimately loads attacker-controlled code.",
-      "subline": "Works on fully patched Windows 10/11 before June 2026. Researcher demonstrates deterministic SYSTEM shell. No race. No brute force.",
+      "on_slide_copy": "The target process loads attacker code with no memory corruption.",
+      "subline": "A trusted Windows system process running as SYSTEM legitimately loads attacker code from a user-writable path. Fully deterministic on Windows 10 and 11 before June 2026.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A focused side light illuminates a trusted system process binary in the dark, a green DLL injection path glowing from a user-writable directory into the process memory, dark premium editorial, the binary centered in the upper area with generous negative space below.",
+      "visual_prompt": "A focused side light catches a glowing binary orb in the dark, a green tendril entering from outside the frame and threading into the orb's core without breaking its surface, dark premium editorial, the orb centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_greenplasma-system-lpe/03_risk.png",
       "asset_status": "generated",
       "cta": "",
@@ -105,10 +105,10 @@
       "slide": 4,
       "role": "mechanism",
       "kicker": "THE MECHANISM",
-      "on_slide_copy": "Abuses a DLL search order hijack in a SYSTEM-scheduled task. The task runs a trusted binary that loads a DLL from a user-writable path.",
-      "subline": "Researcher places malicious DLL. Task triggers. SYSTEM loads it. Full system compromise. The binary is signed by Microsoft. The path is writable.",
+      "on_slide_copy": "A SYSTEM-scheduled task loads a library from a user-writable path.",
+      "subline": "A Microsoft-signed binary runs as part of that task and loads from a location any local user can write to. The attacker plants a crafted file there and waits.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A hard top-down beam falls on a scheduled task XML in the dark, a green DLL path redirecting from System32 to a user profile, dark editorial key art, the hijack framed in the upper third over clean dark space.",
+      "visual_prompt": "A hard top-down beam falls on a glowing process orb in the dark, a green tendril curving away from a bright core toward an outer ring of dim open space, dark editorial key art, the orb framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-11_greenplasma-system-lpe/04_mechanism.png",
       "asset_status": "generated",
       "cta": "",
@@ -118,10 +118,10 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "WHERE DEFENDERS MISS IT",
-      "on_slide_copy": "The scheduled task is Microsoft-signed. The binary is Microsoft-signed. The DLL path is the only anomaly. EDRs allow signed binaries. The writable path is a configuration issue.",
-      "subline": "Patch kills the writable path. But pre-patch machines are defenseless against a signed binary loading a malicious DLL. No exploit binary on disk.",
+      "on_slide_copy": "Both the task and the binary carry Microsoft signatures.",
+      "subline": "The only anomaly is the library load path. Endpoint detection allows signed binaries through, so the writable location goes undetected. There is no exploit binary on disk at all.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Cool light grazes a DLL load event in the dark, a Microsoft-signed binary loading a DLL from AppData, the path highlighted red while the binary stays green, tense editorial composition, the event held high with a clean lower third.",
+      "visual_prompt": "Cool light grazes two glowing orbs side by side in the dark, both ringed in a soft green verification halo, a thin red line rising from the ground between them into the space above, tense editorial composition, the orbs held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-11_greenplasma-system-lpe/05_failure-point.png",
       "asset_status": "generated",
       "cta": "",
@@ -131,10 +131,10 @@
       "slide": 6,
       "role": "defense",
       "kicker": "THE MITIGATION REALITY",
-      "on_slide_copy": "Deploy June 2026 Patch Tuesday. Audit scheduled tasks for user-writable DLL paths. Enable DLL blocking rules (AppLocker/WDAC). Monitor for signed binaries loading from non-system paths.",
-      "subline": "The patch fixes the path. But the pattern — signed binary, writable path, SYSTEM context — recurs. Defenders must hunt the pattern, not just the CVE.",
+      "on_slide_copy": "The patch fixes this path, but the underlying pattern keeps recurring.",
+      "subline": "Audit scheduled tasks for user-writable library load paths, enable AppLocker or WDAC blocking rules, and flag signed binaries loading from outside the system directory.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A balanced split composition in the dark: left side a scheduled task with System32 DLL path and green checkmark, right side the same task with AppData DLL path and red warning, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
+      "visual_prompt": "A balanced composition in the dark: two glowing process orbs, left with a cool white shield ring, right with a faint red gap in its ring, a thin beam of light dividing them, premium editorial key art, the orbs centered with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_greenplasma-system-lpe/06_defense.png",
       "asset_status": "generated",
       "cta": "",
@@ -144,7 +144,7 @@
       "slide": 7,
       "role": "takeaway",
       "kicker": "TAKEAWAY",
-      "on_slide_copy": "A Microsoft-signed binary {{is not a trust boundary if its load path is writable.}} [[The signature validates the author. The path validates the runtime.]]",
+      "on_slide_copy": "A signed binary {{is not a trust boundary when its load path is writable.}} [[Signature proves authorship. Path proves runtime.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A thin rim light traces a Microsoft-signed binary icon in the dark, one half with a green certificate glow, the other half with a green DLL tendril entering from a user-writable directory, minimal high-impact key art, the binary drawn toward the edge with the center kept dark and open.",
@@ -160,7 +160,7 @@
       "on_slide_copy": "Do you audit scheduled task DLL paths for writability?",
       "subline": "Save this for your next system hardening review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Soft pooled light isolates a Task Scheduler DLL path audit report on a clean dark end-card surface, premium editorial cybersecurity key art, the report small in vast negative space with the lower third open.",
+      "visual_prompt": "Soft pooled light isolates a single glowing process orb on a clean dark end-card surface, a faint question-mark shimmer in the space above it, premium editorial cybersecurity key art, the orb small in vast negative space with the lower third open.",
       "background_asset": "/backgrounds/2026-06-11_greenplasma-system-lpe/08_cta.png",
       "asset_status": "generated",
       "cta": "COMMENT + SAVE",
@@ -183,14 +183,14 @@
   ],
   "comment_prompt": "Do you audit scheduled task DLL paths for writability?",
   "alt_text": [
-    "Title card: GreenPlasma hijacks a trusted process for full SYSTEM. CVE-2026-45586 is a system-level LPE via trusted process abuse, Nightmare Eclipse exploit five, patched June 2026. A green plasma tendril turns a Windows process into a SYSTEM token.",
-    "Nightmare Eclipse dropped GreenPlasma as the fifth exploit, CVE-2026-45586, gaining full system privilege through a trusted Windows process. It was patched in June 2026 Patch Tuesday but public before the patch. A Task Manager process runs as SYSTEM.",
-    "GreenPlasma exploits a trusted system process running as SYSTEM with no memory corruption: the process legitimately loads attacker-controlled code. It works on fully patched Windows 10 and 11 before June 2026, deterministic, no race. A DLL path glows into process memory.",
-    "The mechanism abuses a DLL search order hijack in a SYSTEM-scheduled task, where a trusted binary loads a DLL from a user-writable path. The attacker plants the DLL, the task triggers, SYSTEM loads it. A scheduled task XML redirects a DLL path to a user profile.",
-    "Where defenders miss it: the task and binary are Microsoft-signed, so the writable DLL path is the only anomaly, EDRs allow signed binaries, and the path is a config issue with no exploit binary on disk. A DLL load event shows a signed binary loading from AppData.",
-    "Mitigation: deploy June 2026 Patch Tuesday, audit scheduled tasks for user-writable DLL paths, enable AppLocker or WDAC DLL blocking, and monitor signed binaries loading from non-system paths. A split image of a System32 DLL path versus an AppData DLL path.",
-    "A Microsoft-signed binary is not a trust boundary if its load path is writable. The signature validates the author, the path validates the runtime. A signed binary icon, half with a green certificate glow and half with a DLL tendril from a writable directory.",
-    "Closing question: Do you audit scheduled task DLL paths for writability? A Task Scheduler DLL path audit report sits on a clean dark end-card."
+    "Title card: GreenPlasma hijacks a trusted Windows process for full SYSTEM access. CVE-2026-45586 is a system-level privilege escalation via trusted process abuse, Nightmare Eclipse exploit five, patched June 2026. A green plasma tendril wraps around a process icon and turns it into a SYSTEM token.",
+    "GreenPlasma was the fifth exploit Nightmare Eclipse released. CVE-2026-45586 gained full SYSTEM access through a trusted Windows process. Patched June 2026 Patch Tuesday, but it was already public before the fix. A glowing process sphere lifts toward a crown of light.",
+    "The target process loads attacker code with no memory corruption. A trusted Windows system process running as SYSTEM legitimately invokes a library from a user-writable path, giving attackers a clean, deterministic escalation on Windows 10 and 11 before June 2026. A green tendril threads into a glowing binary orb without breaking its surface.",
+    "A SYSTEM-scheduled task loads a library from a user-writable path. A Microsoft-signed binary runs as part of that task and Windows resolves the library from a location any local user can write to. A green tendril curves from a bright core toward an outer ring of dim open space.",
+    "Both the task and the binary carry Microsoft signatures. The only anomaly is the library load path. Endpoint detection allows signed binaries through, so the writable location goes undetected. Two glowing orbs with green verification halos and a thin red thread rising between them.",
+    "The patch fixes this path, but the underlying pattern keeps recurring. Audit scheduled tasks for user-writable library load paths, enable AppLocker or WDAC blocking rules, and monitor signed binaries loading from outside the system directory. Two process orbs, one with a full shield ring and one with a gap in its ring.",
+    "A signed binary is not a trust boundary when its load path is writable. The signature proves authorship. The path proves runtime integrity. A signed binary icon split between a green certificate glow and a green library tendril entering from a writable directory.",
+    "Closing question: Do you audit your scheduled task library load paths for writability? A single glowing process orb sits on a clean dark end-card with a question-mark shimmer above it."
   ],
   "sources": [
     {
@@ -299,42 +299,42 @@
       {
         "start": 0,
         "end": 6,
-        "text": "GreenPlasma hijacks a trusted process. Full SYSTEM. CVE-2026-45586. Nightmare Eclipse exploit five."
+        "text": "GreenPlasma is a privilege escalation exploit that turns a trusted Windows process into a full SYSTEM shell."
       },
       {
         "start": 6,
         "end": 13,
-        "text": "Patched June 2026 Patch Tuesday. But public before patch. Targets a core system component running SYSTEM."
+        "text": "It was the fifth vulnerability Nightmare Eclipse released in June 2026, tracked as CVE-2026-45586, and it was already public when Microsoft patched it on Patch Tuesday."
       },
       {
         "start": 13,
         "end": 20,
-        "text": "DLL search order hijack in a SYSTEM task. Microsoft-signed binary loads from user-writable path. Deterministic SYSTEM shell."
+        "text": "The trick is a library search-order hijack inside a SYSTEM-scheduled task, where a Microsoft-signed binary loads a file from a path any local user can write to."
       },
       {
         "start": 20,
         "end": 27,
-        "text": "No race. No brute force. Signed binary. Writable path. No exploit binary on disk. Just a DLL in a user profile."
+        "text": "The attacker drops a crafted library into that path, the task fires on schedule, and Windows hands over a SYSTEM shell with no race condition, no brute force, and nothing on disk except one file in a user profile."
       },
       {
         "start": 27,
         "end": 34,
-        "text": "Task and binary both Microsoft-signed. DLL path is the anomaly. EDRs allow signed. Pre-patch machines defenseless."
+        "text": "Defenders miss it because both the task and the binary carry Microsoft signatures, so endpoint tools wave them through, and only the writable path reveals the anomaly."
       },
       {
         "start": 34,
         "end": 41,
-        "text": "Deploy patch. Audit task DLL paths. AppLocker or WDAC DLL rules. Monitor signed binaries loading from non-system paths."
+        "text": "The fix is the June 2026 Patch Tuesday update, but you should also audit every scheduled task for user-writable library load paths and enable AppLocker or WDAC blocking rules."
       },
       {
         "start": 41,
         "end": 48,
-        "text": "Signed binary is not a trust boundary if its load path is writable. Signature validates author. Path validates runtime."
+        "text": "The key lesson is that a code signature tells you who wrote the binary, not whether its runtime environment is safe to run in."
       },
       {
         "start": 48,
         "end": 54,
-        "text": "Do you audit scheduled task DLL paths? Tell me in the comments."
+        "text": "Do you audit your scheduled task library load paths? Drop a yes or no in the comments."
       }
     ],
     "beats": [
