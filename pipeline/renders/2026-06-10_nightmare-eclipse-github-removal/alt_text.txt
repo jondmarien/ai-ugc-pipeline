@@ -1,15 +1,15 @@
 Title card: Microsoft suspended the researcher, and the exploits reappeared. The Nightmare Eclipse account was removed, the zero-days republished under MSNightmare with no warning. A single dark silhouetted figure half dissolves into drifting purple static, its left half solid and whole.
 
-Nightmare Eclipse dropped six Windows zero-days in months: BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, RoguePlanet. The researcher cited Microsoft's disclosure process, and Microsoft threatened legal action. A dark ledger of six entries.
+Nightmare Eclipse dropped six Windows zero-days before the ban: BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, MiniPlasma. GitHub terminated the account May 23. Two more followed post-ban: RoguePlanet and GreatXML. A dark ledger of six entries.
 
 GitHub suspended the account without warning, and the exploits reappeared on MSNightmare within hours, with RoguePlanet validated on fully patched Windows 10 and 11. Microsoft said it would not pursue researchers, yet the suspension stood. A broken chain.
 
-The wave: BlueHammer dumps NTLM via SAM hive to SYSTEM, RedSun is a System32 write LPE, UnDefend disables Defender, YellowKey bypasses BitLocker via USB, GreenPlasma gets full SYSTEM, RoguePlanet is a Defender race LPE. Six distinct keys, some patched, some active.
+The original six: BlueHammer abused Defender's update flow to SYSTEM, RedSun redirected Defender's write into System32, UnDefend disables Defender, YellowKey bypasses BitLocker via USB, GreenPlasma gets full SYSTEM via CTFMON, MiniPlasma exploits an incomplete 2020 fix. Six distinct keys, all now patched.
 
 Where the process broke: the researcher disclosed privately first, claims Microsoft ignored or mishandled the reports, then went public after frustration, and Microsoft replied with legal threats and suspension. A cracked negotiation table with broken comm lines.
 
-The defender lesson: you cannot rely on coordinated disclosure, because when it breaks exploits go public immediately. Monitor SAM access, System32 writes, Defender tampering, and BitLocker bypass attempts. A vendor shield cracks beside a detection radar.
+The defender lesson: you cannot rely on coordinated disclosure, because when it breaks exploits go public immediately. Monitor Defender tampering, stalled updates, System32 writes, and BitLocker bypass attempts. A vendor shield cracks beside a detection radar.
 
 Coordinated disclosure is a courtesy, not a guarantee. When vendors break trust, researchers go public, so defenders must detect the behaviors regardless. A fractured handshake, one hand purple for vendor and one red for researcher, leaks light.
 
-Closing question: Do you have detection for SAM hive access, System32 writes, and Defender tampering? A single small glowing purple emblem sits on a clean dark end-card with open negative space.
+Closing question: Do you have detection for Defender tampering, stalled updates, and System32 writes? A single small glowing purple emblem sits on a clean dark end-card with open negative space.

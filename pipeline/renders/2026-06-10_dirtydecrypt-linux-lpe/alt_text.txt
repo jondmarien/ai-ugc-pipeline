@@ -6,7 +6,7 @@ Only distros with CONFIG_RXGK enabled are affected: Fedora, Arch Linux, and open
 
 rxgk_decrypt_skb decrypts an incoming sk_buff whose pages are shared with other processes' page cache, where copy-on-write should protect shared pages but the COW guard was missing. Data lands in privileged memory or files, leading to LPE. A translucent buffer of light is unsealed in place, a missing protective shell where a duplicate should have formed, its freed glow bleeding into a nearby locked vault.
 
-Hyunwoo Kim, the Dirty Frag researcher, was forced public when the embargo broke after the patch merged, and another researcher independently analyzed the public commit and published, a standard n-day weaponization. Silent patches without CVEs leave defenders blind. A dark horizontal track runs from a quiet sealed mark, to a dismissed report fading out, to an independent spark, to a forced burst of red light.
+No embargo broke and no third party weaponized a commit. V12 voluntarily released the PoC once they confirmed the fix was already in mainline, with no coordinated advisory ever issued. Silent patches without CVEs leave defenders blind. A dark horizontal track runs from a quiet sealed mark, to a dismissed report fading out, to a voluntary release, to a burst of red light representing the disclosure gap.
 
 Kernel developers are reviewing an emergency killswitch that disables a vulnerable function at runtime, returning an operator-supplied value on every CPU until disengage or reboot. Rocky Linux debuted an opt-in security repository for accelerated fixes. A split view of a mechanism running unchecked and overheating red beside the same mechanism with a kill lever thrown and held safe.
 

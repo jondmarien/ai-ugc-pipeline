@@ -4,7 +4,7 @@ Zellic and V12 reported it May 9. Maintainers said: duplicate, already patched i
 
 The bug: rxgk_decrypt_skb decrypts incoming socket buffer on receive. Memory pages shared with page cache of other processes. Copy-on-write should protect shared pages. The guard was missing. Data writes to privileged process memory or page cache of /etc/shadow, /etc/sudoers, SUID binaries.
 
-This mirrors the Dirty Frag pattern: Hyunwoo Kim forced into public disclosure when embargo broke after merged patch. Independent researcher analyzed public commit and published. Standard n-day weaponization.
+No embargo broke. No third party weaponized a commit. V12 chose to release the PoC voluntarily once they confirmed the fix was already in mainline, with the explicit note: We're releasing it now since it's patched. That choice is what made the gap visible.
 
 Silent patches without CVEs leave defenders blind. Researchers who report responsibly get duplicate responses.
 

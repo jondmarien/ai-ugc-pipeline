@@ -1,6 +1,6 @@
 Title card: two primitives, one chain, deterministic root. Dirty Frag bypasses the Copy Fail mitigation with no race condition and hits Ubuntu, RHEL, Fedora, and openSUSE. Two fractured shards fuse into a single glowing red blade in a dark void.
 
-Dirty Frag extends the Dirty Pipe and Copy Fail bug class, chaining the xfrm-ESP and RxRPC page-cache writes. Reported April 30, embargo broken after a third party published xfrm-ESP details, PoC released. A dark branching structure of glowing nodes, the newest node at the tip pulsing red.
+Dirty Frag extends the Dirty Pipe and Copy Fail bug class, chaining the xfrm-ESP and RxRPC page-cache writes. Patch submitted April 30; public disclosure and PoC followed May 7-8 when a third party broke the embargo. A dark branching structure of glowing nodes, the newest node at the tip pulsing red.
 
 A deterministic logic bug with no race condition required, the kernel does not panic on failure, and the success rate is very high. It hits Ubuntu 24.04.4, RHEL 10.1, openSUSE Tumbleweed, CentOS Stream 10, AlmaLinux 10, and Fedora 44, with Microsoft seeing limited in-the-wild use. A precision mechanism clicks into place every time.
 

@@ -1,8 +1,8 @@
-Fragnesia (CVE-2026-46300) is the third Linux kernel LPE in two weeks using page-cache corruption. Targets XFRM ESP-in-TCP subsystem. Discovered by William Bowling of Zellic and V12 Security.
+Fragnesia (CVE-2026-46300) is the third Linux kernel LPE in two weeks using page-cache corruption. Targets XFRM ESP-in-TCP subsystem. Discovered by William Bowling of V12 Security.
 
 Separate bug from Dirty Frag but same surface and same mitigation. Deterministic page-cache corruption. No race condition. Immediate root on all major distros by corrupting /usr/bin/su page cache.
 
-Unlike Dirty Frag, no host-level privileges required. AppArmor namespace restrictions only partial mitigation — additional bypasses needed.
+Unlike Dirty Frag, no host-level privileges required. AppArmor namespace restrictions are only partial mitigation, and additional bypasses are needed.
 
 The pattern: Copy Fail (algif_aead) -> Dirty Frag (xfrm-ESP + RxRPC) -> Fragnesia (xfrm ESP-in-TCP). Three distinct subsystems. Same page-cache corruption primitive. Same root via /usr/bin/su. Same mitigation: blocklist esp4, esp6, rxrpc.
 

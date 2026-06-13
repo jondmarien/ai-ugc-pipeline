@@ -1,5 +1,5 @@
 {
-  "seed": 417899354,
+  "seed": 1869365113,
   "seed_source": "auto",
   "model": "openbmb/VoxCPM2",
   "sample_rate": 48000,
@@ -7,7 +7,7 @@
   "voice_ref": "E:\\ai-ugc\\_voiceref\\jon_48k.wav",
   "clone_mode": "hi-fi",
   "prompt_text_source": "whisper",
-  "script_chars": 1230,
-  "generated_at": "2026-06-12T22:26:48",
-  "reuse_command": "bun run pipeline -- 2026-06-12_fable5-jailbreak-panic --seed=417899354"
+  "script_chars": 1563,
+  "generated_at": "2026-06-13T04:07:21",
+  "reuse_command": "bun run pipeline -- 2026-06-12_fable5-jailbreak-panic --seed=1869365113"
 }
