@@ -80,7 +80,7 @@
       "role": "context",
       "kicker": "THE VARIANT",
       "on_slide_copy": "Fragnesia is a separate bug from Dirty Frag with the same surface.",
-      "subline": "CVE-2026-46300, CVSS 7.8. Discovered by William Bowling of Zellic and V12 Security. Deterministic page-cache corruption. No race condition. PoC released.",
+      "subline": "CVE-2026-46300, CVSS 7.8. Discovered by William Bowling of V12 Security. Deterministic page-cache corruption. No race condition. PoC released.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Low raking light grazes a dark field of scattered glowing points in the dark, three red nodes pulsing close together in one dense cluster while the rest of the field stays dim, dark editorial photography, the cluster set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-10_fragnesia-linux-lpe/02_context.png",
@@ -167,7 +167,7 @@
       "notes": ""
     }
   ],
-  "caption": "Fragnesia (CVE-2026-46300) is the third Linux kernel LPE in two weeks using page-cache corruption. Targets XFRM ESP-in-TCP subsystem. Discovered by William Bowling of Zellic and V12 Security.\n\nSeparate bug from Dirty Frag but same surface and same mitigation. Deterministic page-cache corruption. No race condition. Immediate root on all major distros by corrupting /usr/bin/su page cache.\n\nUnlike Dirty Frag, no host-level privileges required. AppArmor namespace restrictions are only partial mitigation, and additional bypasses are needed.\n\nThe pattern: Copy Fail (algif_aead) -> Dirty Frag (xfrm-ESP + RxRPC) -> Fragnesia (xfrm ESP-in-TCP). Three distinct subsystems. Same page-cache corruption primitive. Same root via /usr/bin/su. Same mitigation: blocklist esp4, esp6, rxrpc.\n\nCloudLinux: Customers with Dirty Frag mitigation need no further action until patched kernels. Red Hat assessing if mitigation extends. Microsoft urges same mitigations. No in-the-wild exploitation observed yet.\n\nThreat actor 'berz0k' advertising Linux LPE zero-day for $170,000 on cybercrime forums. Claims TOCTOU-based, stable, no crashes, .so payload in /tmp.\n\nThe page-cache corruption bug class spans three subsystems now. One mitigation covers all three. But the kernel keeps finding new paths to the same primitive.\n\nHow many page-cache corruption primitives are in your kernel right now?\n\nFollow for AI security breakdowns without the fake panic.\n\n[Fragnesia, CVE-2026-46300, Linux kernel, local privilege escalation, page cache, XFRM ESP-in-TCP, Dirty Frag, Copy Fail, kernel hardening, V12 Security]",
+  "caption": "Fragnesia (CVE-2026-46300) is the third Linux kernel LPE in two weeks using page-cache corruption. Targets XFRM ESP-in-TCP subsystem. Discovered by William Bowling of V12 Security.\n\nSeparate bug from Dirty Frag but same surface and same mitigation. Deterministic page-cache corruption. No race condition. Immediate root on all major distros by corrupting /usr/bin/su page cache.\n\nUnlike Dirty Frag, no host-level privileges required. AppArmor namespace restrictions are only partial mitigation, and additional bypasses are needed.\n\nThe pattern: Copy Fail (algif_aead) -> Dirty Frag (xfrm-ESP + RxRPC) -> Fragnesia (xfrm ESP-in-TCP). Three distinct subsystems. Same page-cache corruption primitive. Same root via /usr/bin/su. Same mitigation: blocklist esp4, esp6, rxrpc.\n\nCloudLinux: Customers with Dirty Frag mitigation need no further action until patched kernels. Red Hat assessing if mitigation extends. Microsoft urges same mitigations. No in-the-wild exploitation observed yet.\n\nThreat actor 'berz0k' advertising Linux LPE zero-day for $170,000 on cybercrime forums. Claims TOCTOU-based, stable, no crashes, .so payload in /tmp.\n\nThe page-cache corruption bug class spans three subsystems now. One mitigation covers all three. But the kernel keeps finding new paths to the same primitive.\n\nHow many page-cache corruption primitives are in your kernel right now?\n\nFollow for AI security breakdowns without the fake panic.\n\n[Fragnesia, CVE-2026-46300, Linux kernel, local privilege escalation, page cache, XFRM ESP-in-TCP, Dirty Frag, Copy Fail, kernel hardening, V12 Security]",
   "hashtags": [
     "Fragnesia",
     "CVE-2026-46300",
@@ -183,7 +183,7 @@
   "comment_prompt": "How many page-cache corruption primitives are in your kernel right now?",
   "alt_text": [
     "Title card: Third page-cache root exploit in two weeks. Fragnesia is CVE-2026-46300 targeting XFRM ESP-in-TCP, no host privileges required, Dirty Frag mitigation covers it. Three shards fuse into one red blade.",
-    "Fragnesia is a separate bug from Dirty Frag but shares the same attack surface. CVE-2026-46300, CVSS 7.8, discovered by William Bowling of Zellic and V12 Security, deterministic corruption with no race condition. A cluster of three red nodes glows against a dark field.",
+    "Fragnesia is a separate bug from Dirty Frag but shares the same attack surface. CVE-2026-46300, CVSS 7.8, discovered by William Bowling of V12 Security, deterministic corruption with no race condition. A cluster of three red nodes glows against a dark field.",
     "The exploit grants root without any host-level privileges by corrupting the /usr/bin/su page cache. AppArmor namespace restrictions are only partial mitigation. A scalpel makes a precise cut into a sealed locked block.",
     "A logic bug in the ESP-in-TCP subsystem allows arbitrary writes into read-only page cache, no race condition required, root via /usr/bin/su corruption. A TCP packet unseals in place over glowing shared page-cache pages.",
     "Three different subsystems, one identical page-cache corruption primitive. Copy Fail hit algif-aead, Dirty Frag hit xfrm-ESP and RxRPC, Fragnesia hits xfrm ESP-in-TCP. An assembly line produces the identical root exploit from three distinct inputs.",
@@ -195,7 +195,7 @@
     {
       "source": "The Hacker News: New Fragnesia Linux Kernel LPE Grants Root Access",
       "link": "https://thehackernews.com/2026/05/new-fragnesia-linux-kernel-lpe-grants.html",
-      "supports": "Fragnesia CVE-2026-46300 CVSS 7.8; XFRM ESP-in-TCP; William Bowling/Zellic/V12; separate from Dirty Frag but same surface/mitigation; deterministic page-cache corruption; no host privileges needed; AppArmor partial mitigation; Customers with Dirty Frag mitigation need no further action; Red Hat assessing; Microsoft urges Dirty Frag mitigations; berz0k advertising LPE for $170k; distro advisories.",
+      "supports": "Fragnesia CVE-2026-46300 CVSS 7.8; XFRM ESP-in-TCP; William Bowling/V12 Security; separate from Dirty Frag but same surface/mitigation; deterministic page-cache corruption; no host privileges needed; AppArmor partial mitigation; Customers with Dirty Frag mitigation need no further action; Red Hat assessing; Microsoft urges Dirty Frag mitigations; berz0k advertising LPE for $170k; distro advisories.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     },
@@ -303,7 +303,7 @@
       {
         "start": 6,
         "end": 13,
-        "text": "Discovered by William Bowling of Zellic and V12 Security, it targets the XFRM ESP-in-TCP subsystem and is a separate bug from Dirty Frag, though it shares the same attack surface."
+        "text": "Discovered by William Bowling of V12 Security, it targets the XFRM ESP-in-TCP subsystem and is a separate bug from Dirty Frag, though it shares the same attack surface."
       },
       {
         "start": 13,
@@ -351,7 +351,7 @@
         "slide_ref": 2,
         "purpose": "context",
         "motion": "parallax",
-        "caption": "Zellic/V12 discovery. Separate bug. Same surface."
+        "caption": "V12 Security discovery. Separate bug. Same surface."
       },
       {
         "start": 13,
@@ -408,851 +408,1243 @@
     "licenses": [],
     "captions": [
       {
-        "start": 0,
-        "end": 2.32,
-        "text": "Third page-cache LPE in two weeks.",
-        "words": [
-          {
-            "text": "Third",
-            "start": 0,
-            "end": 0.32
-          },
-          {
-            "text": "page-cache",
-            "start": 0.32,
-            "end": 0.64
-          },
-          {
-            "text": "LPE",
-            "start": 0.96,
-            "end": 1.46
-          },
-          {
-            "text": "in",
-            "start": 1.46,
-            "end": 1.92
-          },
-          {
-            "text": "two",
-            "start": 1.92,
-            "end": 2.1
-          },
-          {
-            "text": "weeks.",
-            "start": 2.1,
-            "end": 2.32
-          }
-        ]
-      },
-      {
-        "start": 2.8,
-        "end": 3.24,
-        "text": "Fragnesia.",
-        "words": [
-          {
-            "text": "Fragnesia.",
-            "start": 2.8,
-            "end": 3.24
-          }
-        ]
-      },
-      {
-        "start": 3.64,
-        "end": 5.49,
-        "text": "XFRM ESP-in-TCP.",
-        "words": [
-          {
-            "text": "XFRM",
-            "start": 3.64,
-            "end": 4.42
-          },
-          {
-            "text": "ESP-in-TCP.",
-            "start": 4.42,
-            "end": 5.49
-          }
-        ]
-      },
-      {
-        "start": 6.56,
-        "end": 7.08,
-        "text": "Same root.",
-        "words": [
-          {
-            "text": "Same",
-            "start": 6.56,
-            "end": 6.84
-          },
-          {
-            "text": "root.",
-            "start": 6.84,
-            "end": 7.08
-          }
-        ]
-      },
-      {
-        "start": 7.4,
-        "end": 7.92,
-        "text": "Same mitigation.",
-        "words": [
-          {
-            "text": "Same",
-            "start": 7.4,
-            "end": 7.62
-          },
-          {
-            "text": "mitigation.",
-            "start": 7.62,
-            "end": 7.92
-          }
-        ]
-      },
-      {
-        "start": 8.66,
-        "end": 10.08,
-        "text": "Discovered by Zellic and V12.",
-        "words": [
-          {
-            "text": "Discovered",
-            "start": 8.66,
-            "end": 9.04
-          },
-          {
-            "text": "by",
-            "start": 9.04,
-            "end": 9.22
-          },
-          {
-            "text": "Zellic",
-            "start": 9.22,
-            "end": 9.56
-          },
-          {
-            "text": "and",
-            "start": 9.56,
-            "end": 9.7
-          },
-          {
-            "text": "V12.",
-            "start": 9.7,
-            "end": 10.08
-          }
-        ]
-      },
-      {
-        "start": 10.54,
-        "end": 12.4,
-        "text": "Separate from Dirty Frag but same surface.",
-        "words": [
-          {
-            "text": "Separate",
-            "start": 10.54,
-            "end": 10.82
-          },
-          {
-            "text": "from",
-            "start": 10.82,
-            "end": 10.98
-          },
-          {
-            "text": "Dirty",
-            "start": 10.98,
-            "end": 11.14
-          },
-          {
-            "text": "Frag",
-            "start": 11.14,
-            "end": 11.46
-          },
-          {
-            "text": "but",
-            "start": 11.8,
-            "end": 11.86
-          },
-          {
-            "text": "same",
-            "start": 11.86,
-            "end": 12.04
-          },
-          {
-            "text": "surface.",
-            "start": 12.04,
-            "end": 12.4
-          }
-        ]
-      },
-      {
-        "start": 12.96,
-        "end": 13.5,
-        "text": "Deterministic.",
-        "words": [
-          {
-            "text": "Deterministic.",
-            "start": 12.96,
-            "end": 13.5
-          }
-        ]
-      },
-      {
-        "start": 14.04,
-        "end": 14.48,
-        "text": "No race condition.",
-        "words": [
-          {
-            "text": "No",
-            "start": 14.04,
-            "end": 14.09
-          },
-          {
-            "text": "race",
-            "start": 14.06,
-            "end": 14.24
-          },
-          {
-            "text": "condition.",
-            "start": 14.24,
-            "end": 14.48
-          }
-        ]
-      },
-      {
-        "start": 15.3,
-        "end": 17.24,
-        "text": "Modifies read-only file page cache.",
-        "words": [
-          {
-            "text": "Modifies",
-            "start": 15.3,
-            "end": 15.66
-          },
-          {
-            "text": "read-only",
-            "start": 15.66,
-            "end": 16.34
-          },
-          {
-            "text": "file",
-            "start": 16.34,
-            "end": 16.58
-          },
-          {
-            "text": "page",
-            "start": 16.58,
-            "end": 16.96
-          },
-          {
-            "text": "cache.",
-            "start": 16.96,
-            "end": 17.24
-          }
-        ]
-      },
-      {
-        "start": 17.84,
-        "end": 18.68,
-        "text": "Root via su corruption.",
-        "words": [
-          {
-            "text": "Root",
-            "start": 17.84,
-            "end": 17.94
-          },
-          {
-            "text": "via",
-            "start": 17.94,
-            "end": 18.16
-          },
-          {
-            "text": "su",
-            "start": 18.16,
-            "end": 18.29
-          },
-          {
-            "text": "corruption.",
-            "start": 18.42,
-            "end": 18.68
-          }
-        ]
-      },
-      {
-        "start": 19.34,
-        "end": 21.42,
-        "text": "Unlike Dirty Frag, no host privileges needed.",
-        "words": [
-          {
-            "text": "Unlike",
-            "start": 19.34,
-            "end": 19.42
-          },
-          {
-            "text": "Dirty",
-            "start": 19.42,
-            "end": 19.68
-          },
-          {
-            "text": "Frag,",
-            "start": 19.68,
-            "end": 19.94
-          },
-          {
-            "text": "no",
-            "start": 20.46,
-            "end": 20.51
-          },
-          {
-            "text": "host",
-            "start": 20.5,
-            "end": 20.68
-          },
-          {
-            "text": "privileges",
-            "start": 20.68,
-            "end": 20.98
-          },
-          {
-            "text": "needed.",
-            "start": 20.98,
-            "end": 21.42
-          }
-        ]
-      },
-      {
-        "start": 21.96,
-        "end": 24.01,
-        "text": "Pattern: Copy Fail algif_aead.",
-        "words": [
-          {
-            "text": "Pattern:",
-            "start": 21.96,
-            "end": 22.08
-          },
-          {
-            "text": "Copy",
-            "start": 22.68,
-            "end": 22.73
-          },
-          {
-            "text": "Fail",
-            "start": 22.68,
-            "end": 22.84
-          },
-          {
-            "text": "algif_aead.",
-            "start": 22.84,
-            "end": 24.01
-          }
-        ]
-      },
-      {
-        "start": 25.18,
-        "end": 28.3,
-        "text": "Dirty Frag xfrm-ESP and RxRPC.",
-        "words": [
-          {
-            "text": "Dirty",
-            "start": 25.18,
-            "end": 25.23
-          },
-          {
-            "text": "Frag",
-            "start": 25.18,
-            "end": 25.44
-          },
-          {
-            "text": "xfrm-ESP",
-            "start": 25.44,
-            "end": 26.54
-          },
-          {
-            "text": "and",
-            "start": 27.64,
-            "end": 27.69
-          },
-          {
-            "text": "RxRPC.",
-            "start": 27.68,
-            "end": 28.3
-          }
-        ]
-      },
-      {
-        "start": 29,
-        "end": 31.07,
-        "text": "Fragnesia xfrm ESP-in-TCP.",
+        "start": 0.0,
+        "end": 2.38,
+        "text": "Fragnesia is the third Linux kernel local",
         "words": [
           {
             "text": "Fragnesia",
-            "start": 29,
-            "end": 29.34
+            "start": 0.0,
+            "end": 0.39
           },
           {
-            "text": "xfrm",
-            "start": 29.76,
-            "end": 29.98
-          },
-          {
-            "text": "ESP-in-TCP.",
-            "start": 29.98,
-            "end": 31.07
-          }
-        ]
-      },
-      {
-        "start": 32.16,
-        "end": 33.22,
-        "text": "Three subsystems.",
-        "words": [
-          {
-            "text": "Three",
-            "start": 32.16,
-            "end": 32.42
-          },
-          {
-            "text": "subsystems.",
-            "start": 32.42,
-            "end": 33.22
-          }
-        ]
-      },
-      {
-        "start": 33.46,
-        "end": 33.8,
-        "text": "Same primitive.",
-        "words": [
-          {
-            "text": "Same",
-            "start": 33.46,
-            "end": 33.56
-          },
-          {
-            "text": "primitive.",
-            "start": 33.56,
-            "end": 33.8
-          }
-        ]
-      },
-      {
-        "start": 34.34,
-        "end": 38.06,
-        "text": "Same mitigation: blocklist esp4, esp6, rxrpc.",
-        "words": [
-          {
-            "text": "Same",
-            "start": 34.34,
-            "end": 34.44
-          },
-          {
-            "text": "mitigation:",
-            "start": 34.44,
-            "end": 34.7
-          },
-          {
-            "text": "blocklist",
-            "start": 34.7,
-            "end": 35.54
-          },
-          {
-            "text": "esp4,",
-            "start": 35.54,
-            "end": 36.38
-          },
-          {
-            "text": "esp6,",
-            "start": 36.38,
-            "end": 37.22
-          },
-          {
-            "text": "rxrpc.",
-            "start": 37.22,
-            "end": 38.06
-          }
-        ]
-      },
-      {
-        "start": 38.9,
-        "end": 42.06,
-        "text": "CloudLinux says Dirty Frag mitigation covers Fragnesia.",
-        "words": [
-          {
-            "text": "CloudLinux",
-            "start": 38.9,
-            "end": 39.36
-          },
-          {
-            "text": "says",
-            "start": 39.36,
-            "end": 39.7
-          },
-          {
-            "text": "Dirty",
-            "start": 40.14,
-            "end": 40.24
-          },
-          {
-            "text": "Frag",
-            "start": 40.24,
-            "end": 40.48
-          },
-          {
-            "text": "mitigation",
-            "start": 40.48,
-            "end": 40.96
-          },
-          {
-            "text": "covers",
-            "start": 41.42,
-            "end": 41.66
-          },
-          {
-            "text": "Fragnesia.",
-            "start": 41.66,
-            "end": 42.06
-          }
-        ]
-      },
-      {
-        "start": 42.62,
-        "end": 43.38,
-        "text": "Red Hat assessing.",
-        "words": [
-          {
-            "text": "Red",
-            "start": 42.62,
-            "end": 42.76
-          },
-          {
-            "text": "Hat",
-            "start": 42.76,
-            "end": 42.96
-          },
-          {
-            "text": "assessing.",
-            "start": 42.96,
-            "end": 43.38
-          }
-        ]
-      },
-      {
-        "start": 43.84,
-        "end": 46.86,
-        "text": "Threat actor berz0k selling Linux LPE for",
-        "words": [
-          {
-            "text": "Threat",
-            "start": 43.84,
-            "end": 44.02
-          },
-          {
-            "text": "actor",
-            "start": 44.02,
-            "end": 44.38
-          },
-          {
-            "text": "berz0k",
-            "start": 44.38,
-            "end": 44.96
-          },
-          {
-            "text": "selling",
-            "start": 45.54,
-            "end": 45.72
-          },
-          {
-            "text": "Linux",
-            "start": 45.72,
-            "end": 45.92
-          },
-          {
-            "text": "LPE",
-            "start": 45.92,
-            "end": 46.4
-          },
-          {
-            "text": "for",
-            "start": 46.8,
-            "end": 46.86
-          }
-        ]
-      },
-      {
-        "start": 46.86,
-        "end": 47.92,
-        "text": "$170k.",
-        "words": [
-          {
-            "text": "$170k.",
-            "start": 46.86,
-            "end": 47.92
-          }
-        ]
-      },
-      {
-        "start": 47.92,
-        "end": 48.66,
-        "text": "TOCTOU-based.",
-        "words": [
-          {
-            "text": "TOCTOU-based.",
-            "start": 47.92,
-            "end": 48.66
-          }
-        ]
-      },
-      {
-        "start": 49.4,
-        "end": 49.64,
-        "text": "Stable.",
-        "words": [
-          {
-            "text": "Stable.",
-            "start": 49.4,
-            "end": 49.64
-          }
-        ]
-      },
-      {
-        "start": 50.14,
-        "end": 51.82,
-        "text": ".so payload in /tmp.",
-        "words": [
-          {
-            "text": ".so",
-            "start": 50.14,
-            "end": 50.42
-          },
-          {
-            "text": "payload",
-            "start": 50.42,
-            "end": 50.84
-          },
-          {
-            "text": "in",
-            "start": 50.84,
-            "end": 51.14
-          },
-          {
-            "text": "/tmp.",
-            "start": 51.38,
-            "end": 51.82
-          }
-        ]
-      },
-      {
-        "start": 52.36,
-        "end": 53.84,
-        "text": "Microsoft urges mitigations.",
-        "words": [
-          {
-            "text": "Microsoft",
-            "start": 52.36,
-            "end": 52.72
-          },
-          {
-            "text": "urges",
-            "start": 52.72,
-            "end": 53.2
-          },
-          {
-            "text": "mitigations.",
-            "start": 53.2,
-            "end": 53.84
-          }
-        ]
-      },
-      {
-        "start": 53.84,
-        "end": 57.36,
-        "text": "Page-cache corruption bug class spans three subsystems.",
-        "words": [
-          {
-            "text": "Page-cache",
-            "start": 53.84,
-            "end": 54.27
-          },
-          {
-            "text": "corruption",
-            "start": 54.7,
-            "end": 55.14
-          },
-          {
-            "text": "bug",
-            "start": 55.38,
-            "end": 55.44
-          },
-          {
-            "text": "class",
-            "start": 55.44,
-            "end": 55.68
-          },
-          {
-            "text": "spans",
-            "start": 56.24,
-            "end": 56.38
-          },
-          {
-            "text": "three",
-            "start": 56.38,
-            "end": 56.64
-          },
-          {
-            "text": "subsystems.",
-            "start": 56.64,
-            "end": 57.36
-          }
-        ]
-      },
-      {
-        "start": 57.58,
-        "end": 58.84,
-        "text": "One mitigation covers all.",
-        "words": [
-          {
-            "text": "One",
-            "start": 57.58,
-            "end": 57.82
-          },
-          {
-            "text": "mitigation",
-            "start": 57.82,
-            "end": 58.08
-          },
-          {
-            "text": "covers",
-            "start": 58.52,
-            "end": 58.68
-          },
-          {
-            "text": "all.",
-            "start": 58.68,
-            "end": 58.84
-          }
-        ]
-      },
-      {
-        "start": 59.14,
-        "end": 60.44,
-        "text": "Kernel keeps finding new paths.",
-        "words": [
-          {
-            "text": "Kernel",
-            "start": 59.14,
-            "end": 59.32
-          },
-          {
-            "text": "keeps",
-            "start": 59.62,
-            "end": 59.78
-          },
-          {
-            "text": "finding",
-            "start": 59.98,
-            "end": 60.12
-          },
-          {
-            "text": "new",
-            "start": 60.12,
-            "end": 60.22
-          },
-          {
-            "text": "paths.",
-            "start": 60.22,
-            "end": 60.44
-          }
-        ]
-      },
-      {
-        "start": 61.34,
-        "end": 63.3,
-        "text": "How many page-cache corruption primitives in your",
-        "words": [
-          {
-            "text": "How",
-            "start": 61.34,
-            "end": 61.42
-          },
-          {
-            "text": "many",
-            "start": 61.42,
-            "end": 61.58
-          },
-          {
-            "text": "page-cache",
-            "start": 61.58,
-            "end": 61.85
-          },
-          {
-            "text": "corruption",
-            "start": 62.12,
-            "end": 62.42
-          },
-          {
-            "text": "primitives",
-            "start": 62.42,
-            "end": 63.02
-          },
-          {
-            "text": "in",
-            "start": 63.02,
-            "end": 63.2
-          },
-          {
-            "text": "your",
-            "start": 63.2,
-            "end": 63.3
-          }
-        ]
-      },
-      {
-        "start": 63.3,
-        "end": 64.08,
-        "text": "kernel right now?",
-        "words": [
-          {
-            "text": "kernel",
-            "start": 63.3,
-            "end": 63.5
-          },
-          {
-            "text": "right",
-            "start": 63.5,
-            "end": 63.8
-          },
-          {
-            "text": "now?",
-            "start": 63.8,
-            "end": 64.08
-          }
-        ]
-      },
-      {
-        "start": 64.48,
-        "end": 65.2,
-        "text": "Tell me in the comments.",
-        "words": [
-          {
-            "text": "Tell",
-            "start": 64.48,
-            "end": 64.58
-          },
-          {
-            "text": "me",
-            "start": 64.58,
-            "end": 64.76
-          },
-          {
-            "text": "in",
-            "start": 64.76,
-            "end": 64.88
+            "text": "is",
+            "start": 0.78,
+            "end": 0.98
           },
           {
             "text": "the",
-            "start": 64.88,
-            "end": 64.96
+            "start": 0.98,
+            "end": 1.12
+          },
+          {
+            "text": "third",
+            "start": 1.12,
+            "end": 1.34
+          },
+          {
+            "text": "Linux",
+            "start": 1.34,
+            "end": 1.52
+          },
+          {
+            "text": "kernel",
+            "start": 1.52,
+            "end": 1.84
+          },
+          {
+            "text": "local",
+            "start": 2.26,
+            "end": 2.38
+          }
+        ]
+      },
+      {
+        "start": 2.38,
+        "end": 4.64,
+        "text": "privilege escalation in two weeks using the",
+        "words": [
+          {
+            "text": "privilege",
+            "start": 2.38,
+            "end": 2.76
+          },
+          {
+            "text": "escalation",
+            "start": 2.76,
+            "end": 3.06
+          },
+          {
+            "text": "in",
+            "start": 3.06,
+            "end": 3.6
+          },
+          {
+            "text": "two",
+            "start": 3.6,
+            "end": 3.8
+          },
+          {
+            "text": "weeks",
+            "start": 3.8,
+            "end": 4.04
+          },
+          {
+            "text": "using",
+            "start": 4.04,
+            "end": 4.42
+          },
+          {
+            "text": "the",
+            "start": 4.42,
+            "end": 4.64
+          }
+        ]
+      },
+      {
+        "start": 4.64,
+        "end": 6.34,
+        "text": "same page-cache corruption technique.",
+        "words": [
+          {
+            "text": "same",
+            "start": 4.64,
+            "end": 4.86
+          },
+          {
+            "text": "page-cache",
+            "start": 4.86,
+            "end": 5.12
+          },
+          {
+            "text": "corruption",
+            "start": 5.38,
+            "end": 5.72
+          },
+          {
+            "text": "technique.",
+            "start": 5.72,
+            "end": 6.34
+          }
+        ]
+      },
+      {
+        "start": 6.68,
+        "end": 8.62,
+        "text": "Discovered by William Bowling of V12 Security,",
+        "words": [
+          {
+            "text": "Discovered",
+            "start": 6.68,
+            "end": 7.06
+          },
+          {
+            "text": "by",
+            "start": 7.06,
+            "end": 7.26
+          },
+          {
+            "text": "William",
+            "start": 7.26,
+            "end": 7.56
+          },
+          {
+            "text": "Bowling",
+            "start": 7.56,
+            "end": 7.84
+          },
+          {
+            "text": "of",
+            "start": 7.84,
+            "end": 8.1
+          },
+          {
+            "text": "V12",
+            "start": 8.1,
+            "end": 8.44
+          },
+          {
+            "text": "Security,",
+            "start": 8.44,
+            "end": 8.62
+          }
+        ]
+      },
+      {
+        "start": 9.8,
+        "end": 11.57,
+        "text": "it targets the XFRM ESP-in-TCP",
+        "words": [
+          {
+            "text": "it",
+            "start": 9.8,
+            "end": 9.94
+          },
+          {
+            "text": "targets",
+            "start": 9.94,
+            "end": 10.22
+          },
+          {
+            "text": "the",
+            "start": 10.22,
+            "end": 10.44
+          },
+          {
+            "text": "XFRM",
+            "start": 10.44,
+            "end": 11.08
+          },
+          {
+            "text": "ESP-in-TCP",
+            "start": 11.08,
+            "end": 11.57
+          }
+        ]
+      },
+      {
+        "start": 12.06,
+        "end": 14.22,
+        "text": "subsystem and is a separate bug from",
+        "words": [
+          {
+            "text": "subsystem",
+            "start": 12.06,
+            "end": 12.58
+          },
+          {
+            "text": "and",
+            "start": 13.22,
+            "end": 13.28
+          },
+          {
+            "text": "is",
+            "start": 13.28,
+            "end": 13.38
+          },
+          {
+            "text": "a",
+            "start": 13.38,
+            "end": 13.48
+          },
+          {
+            "text": "separate",
+            "start": 13.48,
+            "end": 13.7
+          },
+          {
+            "text": "bug",
+            "start": 13.7,
+            "end": 13.98
+          },
+          {
+            "text": "from",
+            "start": 13.98,
+            "end": 14.22
+          }
+        ]
+      },
+      {
+        "start": 14.22,
+        "end": 15.92,
+        "text": "Dirty Frag, though it shares the same",
+        "words": [
+          {
+            "text": "Dirty",
+            "start": 14.22,
+            "end": 14.42
+          },
+          {
+            "text": "Frag,",
+            "start": 14.42,
+            "end": 14.72
+          },
+          {
+            "text": "though",
+            "start": 15.14,
+            "end": 15.2
+          },
+          {
+            "text": "it",
+            "start": 15.2,
+            "end": 15.3
+          },
+          {
+            "text": "shares",
+            "start": 15.3,
+            "end": 15.48
+          },
+          {
+            "text": "the",
+            "start": 15.48,
+            "end": 15.72
+          },
+          {
+            "text": "same",
+            "start": 15.72,
+            "end": 15.92
+          }
+        ]
+      },
+      {
+        "start": 15.92,
+        "end": 16.56,
+        "text": "attack surface.",
+        "words": [
+          {
+            "text": "attack",
+            "start": 15.92,
+            "end": 16.16
+          },
+          {
+            "text": "surface.",
+            "start": 16.16,
+            "end": 16.56
+          }
+        ]
+      },
+      {
+        "start": 17.18,
+        "end": 19.02,
+        "text": "The exploit writes arbitrary bytes into the",
+        "words": [
+          {
+            "text": "The",
+            "start": 17.18,
+            "end": 17.24
+          },
+          {
+            "text": "exploit",
+            "start": 17.24,
+            "end": 17.38
+          },
+          {
+            "text": "writes",
+            "start": 17.38,
+            "end": 17.8
+          },
+          {
+            "text": "arbitrary",
+            "start": 17.8,
+            "end": 18.06
+          },
+          {
+            "text": "bytes",
+            "start": 18.06,
+            "end": 18.56
+          },
+          {
+            "text": "into",
+            "start": 18.56,
+            "end": 18.84
+          },
+          {
+            "text": "the",
+            "start": 18.84,
+            "end": 19.02
+          }
+        ]
+      },
+      {
+        "start": 19.02,
+        "end": 21.6,
+        "text": "kernel page cache of read-only files, corrupting",
+        "words": [
+          {
+            "text": "kernel",
+            "start": 19.02,
+            "end": 19.22
+          },
+          {
+            "text": "page",
+            "start": 19.22,
+            "end": 19.46
+          },
+          {
+            "text": "cache",
+            "start": 19.46,
+            "end": 19.82
+          },
+          {
+            "text": "of",
+            "start": 19.82,
+            "end": 20.12
+          },
+          {
+            "text": "read-only",
+            "start": 20.12,
+            "end": 20.5
+          },
+          {
+            "text": "files,",
+            "start": 20.5,
+            "end": 20.86
+          },
+          {
+            "text": "corrupting",
+            "start": 21.26,
+            "end": 21.6
+          }
+        ]
+      },
+      {
+        "start": 21.6,
+        "end": 25.74,
+        "text": "/usr/bin/su to",
+        "words": [
+          {
+            "text": "/usr/bin/su",
+            "start": 21.6,
+            "end": 23.58
+          },
+          {
+            "text": "to",
+            "start": 25.56,
+            "end": 25.74
+          }
+        ]
+      },
+      {
+        "start": 25.74,
+        "end": 28.06,
+        "text": "get root with no host-level privileges required.",
+        "words": [
+          {
+            "text": "get",
+            "start": 25.74,
+            "end": 25.88
+          },
+          {
+            "text": "root",
+            "start": 25.88,
+            "end": 26.08
+          },
+          {
+            "text": "with",
+            "start": 26.08,
+            "end": 26.36
+          },
+          {
+            "text": "no",
+            "start": 26.36,
+            "end": 26.62
+          },
+          {
+            "text": "host-level",
+            "start": 26.62,
+            "end": 27.16
+          },
+          {
+            "text": "privileges",
+            "start": 27.16,
+            "end": 27.46
+          },
+          {
+            "text": "required.",
+            "start": 27.46,
+            "end": 28.06
+          }
+        ]
+      },
+      {
+        "start": 28.52,
+        "end": 30.527,
+        "text": "The pattern is now clear: Copy Fail",
+        "words": [
+          {
+            "text": "The",
+            "start": 28.52,
+            "end": 28.84
+          },
+          {
+            "text": "pattern",
+            "start": 28.84,
+            "end": 29.1
+          },
+          {
+            "text": "is",
+            "start": 29.1,
+            "end": 29.3
+          },
+          {
+            "text": "now",
+            "start": 29.3,
+            "end": 29.48
+          },
+          {
+            "text": "clear:",
+            "start": 29.48,
+            "end": 29.7
+          },
+          {
+            "text": "Copy",
+            "start": 29.7,
+            "end": 30.113
+          },
+          {
+            "text": "Fail",
+            "start": 30.113,
+            "end": 30.527
+          }
+        ]
+      },
+      {
+        "start": 30.94,
+        "end": 34.1,
+        "text": "hit the algif-aead subsystem, Dirty Frag hit",
+        "words": [
+          {
+            "text": "hit",
+            "start": 30.94,
+            "end": 31.02
+          },
+          {
+            "text": "the",
+            "start": 31.02,
+            "end": 31.2
+          },
+          {
+            "text": "algif-aead",
+            "start": 31.2,
+            "end": 31.69
+          },
+          {
+            "text": "subsystem,",
+            "start": 32.18,
+            "end": 32.48
+          },
+          {
+            "text": "Dirty",
+            "start": 33.34,
+            "end": 33.48
+          },
+          {
+            "text": "Frag",
+            "start": 33.48,
+            "end": 33.76
+          },
+          {
+            "text": "hit",
+            "start": 33.76,
+            "end": 34.1
+          }
+        ]
+      },
+      {
+        "start": 34.1,
+        "end": 37.87,
+        "text": "xfrm-ESP and RxRPC, and Fragnesia",
+        "words": [
+          {
+            "text": "xfrm-ESP",
+            "start": 34.1,
+            "end": 35.86
+          },
+          {
+            "text": "and",
+            "start": 35.86,
+            "end": 36.28
+          },
+          {
+            "text": "RxRPC,",
+            "start": 36.28,
+            "end": 37.04
+          },
+          {
+            "text": "and",
+            "start": 37.04,
+            "end": 37.58
+          },
+          {
+            "text": "Fragnesia",
+            "start": 37.58,
+            "end": 37.87
+          }
+        ]
+      },
+      {
+        "start": 38.16,
+        "end": 41.68,
+        "text": "hits xfrm ESP-in-TCP, three distinct paths",
+        "words": [
+          {
+            "text": "hits",
+            "start": 38.16,
+            "end": 38.38
+          },
+          {
+            "text": "xfrm",
+            "start": 38.38,
+            "end": 39.193
+          },
+          {
+            "text": "ESP-in-TCP,",
+            "start": 39.193,
+            "end": 40.007
+          },
+          {
+            "text": "three",
+            "start": 40.82,
+            "end": 41.02
+          },
+          {
+            "text": "distinct",
+            "start": 41.02,
+            "end": 41.36
+          },
+          {
+            "text": "paths",
+            "start": 41.36,
+            "end": 41.68
+          }
+        ]
+      },
+      {
+        "start": 41.68,
+        "end": 42.98,
+        "text": "to the exact same primitive.",
+        "words": [
+          {
+            "text": "to",
+            "start": 41.68,
+            "end": 41.98
+          },
+          {
+            "text": "the",
+            "start": 41.98,
+            "end": 42.1
+          },
+          {
+            "text": "exact",
+            "start": 42.1,
+            "end": 42.26
+          },
+          {
+            "text": "same",
+            "start": 42.26,
+            "end": 42.66
+          },
+          {
+            "text": "primitive.",
+            "start": 42.66,
+            "end": 42.98
+          }
+        ]
+      },
+      {
+        "start": 42.98,
+        "end": 46.94,
+        "text": "Blocklisting esp4, esp6, and rxrpc kernel",
+        "words": [
+          {
+            "text": "Blocklisting",
+            "start": 42.98,
+            "end": 43.7
+          },
+          {
+            "text": "esp4,",
+            "start": 43.7,
+            "end": 44.42
+          },
+          {
+            "text": "esp6,",
+            "start": 44.42,
+            "end": 45.14
+          },
+          {
+            "text": "and",
+            "start": 45.86,
+            "end": 45.91
+          },
+          {
+            "text": "rxrpc",
+            "start": 45.9,
+            "end": 46.27
+          },
+          {
+            "text": "kernel",
+            "start": 46.64,
+            "end": 46.94
+          }
+        ]
+      },
+      {
+        "start": 46.94,
+        "end": 49.44,
+        "text": "modules shuts down all three exploits, and",
+        "words": [
+          {
+            "text": "modules",
+            "start": 46.94,
+            "end": 47.28
+          },
+          {
+            "text": "shuts",
+            "start": 47.28,
+            "end": 47.64
+          },
+          {
+            "text": "down",
+            "start": 47.64,
+            "end": 48.0
+          },
+          {
+            "text": "all",
+            "start": 48.0,
+            "end": 48.26
+          },
+          {
+            "text": "three",
+            "start": 48.26,
+            "end": 48.52
+          },
+          {
+            "text": "exploits,",
+            "start": 48.52,
+            "end": 48.8
+          },
+          {
+            "text": "and",
+            "start": 48.8,
+            "end": 49.44
+          }
+        ]
+      },
+      {
+        "start": 49.44,
+        "end": 51.76,
+        "text": "CloudLinux confirms that customers who applied the",
+        "words": [
+          {
+            "text": "CloudLinux",
+            "start": 49.44,
+            "end": 49.86
+          },
+          {
+            "text": "confirms",
+            "start": 49.86,
+            "end": 50.3
+          },
+          {
+            "text": "that",
+            "start": 50.3,
+            "end": 50.64
+          },
+          {
+            "text": "customers",
+            "start": 50.64,
+            "end": 50.94
+          },
+          {
+            "text": "who",
+            "start": 50.94,
+            "end": 51.3
+          },
+          {
+            "text": "applied",
+            "start": 51.3,
+            "end": 51.54
+          },
+          {
+            "text": "the",
+            "start": 51.54,
+            "end": 51.76
+          }
+        ]
+      },
+      {
+        "start": 51.76,
+        "end": 53.92,
+        "text": "Dirty Frag mitigation are already covered.",
+        "words": [
+          {
+            "text": "Dirty",
+            "start": 51.76,
+            "end": 51.94
+          },
+          {
+            "text": "Frag",
+            "start": 51.94,
+            "end": 52.2
+          },
+          {
+            "text": "mitigation",
+            "start": 52.2,
+            "end": 52.5
+          },
+          {
+            "text": "are",
+            "start": 52.5,
+            "end": 53.26
+          },
+          {
+            "text": "already",
+            "start": 53.26,
+            "end": 53.52
+          },
+          {
+            "text": "covered.",
+            "start": 53.52,
+            "end": 53.92
+          }
+        ]
+      },
+      {
+        "start": 53.92,
+        "end": 57.12,
+        "text": "Separately, a threat actor going by berz0k",
+        "words": [
+          {
+            "text": "Separately,",
+            "start": 53.92,
+            "end": 54.96
+          },
+          {
+            "text": "a",
+            "start": 55.16,
+            "end": 55.3
+          },
+          {
+            "text": "threat",
+            "start": 55.3,
+            "end": 55.46
+          },
+          {
+            "text": "actor",
+            "start": 55.46,
+            "end": 55.84
+          },
+          {
+            "text": "going",
+            "start": 56.18,
+            "end": 56.34
+          },
+          {
+            "text": "by",
+            "start": 56.34,
+            "end": 56.56
+          },
+          {
+            "text": "berz0k",
+            "start": 56.56,
+            "end": 57.12
+          }
+        ]
+      },
+      {
+        "start": 57.68,
+        "end": 59.94,
+        "text": "is advertising an unrelated Linux local privilege",
+        "words": [
+          {
+            "text": "is",
+            "start": 57.68,
+            "end": 57.78
+          },
+          {
+            "text": "advertising",
+            "start": 57.78,
+            "end": 58.06
+          },
+          {
+            "text": "an",
+            "start": 58.06,
+            "end": 58.46
+          },
+          {
+            "text": "unrelated",
+            "start": 58.46,
+            "end": 58.88
+          },
+          {
+            "text": "Linux",
+            "start": 58.88,
+            "end": 59.18
+          },
+          {
+            "text": "local",
+            "start": 59.18,
+            "end": 59.6
+          },
+          {
+            "text": "privilege",
+            "start": 59.6,
+            "end": 59.94
+          }
+        ]
+      },
+      {
+        "start": 59.94,
+        "end": 63.96,
+        "text": "escalation zero-day for $170,000 on cybercrime",
+        "words": [
+          {
+            "text": "escalation",
+            "start": 59.94,
+            "end": 60.32
+          },
+          {
+            "text": "zero-day",
+            "start": 60.32,
+            "end": 61.18
+          },
+          {
+            "text": "for",
+            "start": 61.18,
+            "end": 61.52
+          },
+          {
+            "text": "$170,000",
+            "start": 61.52,
+            "end": 62.96
+          },
+          {
+            "text": "on",
+            "start": 62.96,
+            "end": 63.44
+          },
+          {
+            "text": "cybercrime",
+            "start": 63.44,
+            "end": 63.96
+          }
+        ]
+      },
+      {
+        "start": 63.96,
+        "end": 66.56,
+        "text": "forums, claiming it is TOCTOU-based and stable.",
+        "words": [
+          {
+            "text": "forums,",
+            "start": 63.96,
+            "end": 64.22
+          },
+          {
+            "text": "claiming",
+            "start": 64.72,
+            "end": 64.92
+          },
+          {
+            "text": "it",
+            "start": 64.92,
+            "end": 65.2
+          },
+          {
+            "text": "is",
+            "start": 65.2,
+            "end": 65.3
+          },
+          {
+            "text": "TOCTOU-based",
+            "start": 65.3,
+            "end": 65.98
+          },
+          {
+            "text": "and",
+            "start": 65.98,
+            "end": 66.32
+          },
+          {
+            "text": "stable.",
+            "start": 66.32,
+            "end": 66.56
+          }
+        ]
+      },
+      {
+        "start": 67.32,
+        "end": 68.78,
+        "text": "The broader lesson is that the page-cache",
+        "words": [
+          {
+            "text": "The",
+            "start": 67.32,
+            "end": 67.4
+          },
+          {
+            "text": "broader",
+            "start": 67.4,
+            "end": 67.6
+          },
+          {
+            "text": "lesson",
+            "start": 67.6,
+            "end": 68.08
+          },
+          {
+            "text": "is",
+            "start": 68.08,
+            "end": 68.28
+          },
+          {
+            "text": "that",
+            "start": 68.28,
+            "end": 68.42
+          },
+          {
+            "text": "the",
+            "start": 68.42,
+            "end": 68.54
+          },
+          {
+            "text": "page-cache",
+            "start": 68.54,
+            "end": 68.78
+          }
+        ]
+      },
+      {
+        "start": 69.02,
+        "end": 72.06,
+        "text": "corruption bug class now spans three subsystems,",
+        "words": [
+          {
+            "text": "corruption",
+            "start": 69.02,
+            "end": 69.48
+          },
+          {
+            "text": "bug",
+            "start": 69.48,
+            "end": 69.86
+          },
+          {
+            "text": "class",
+            "start": 69.86,
+            "end": 70.12
+          },
+          {
+            "text": "now",
+            "start": 70.12,
+            "end": 70.48
+          },
+          {
+            "text": "spans",
+            "start": 70.48,
+            "end": 70.78
+          },
+          {
+            "text": "three",
+            "start": 70.78,
+            "end": 71.2
+          },
+          {
+            "text": "subsystems,",
+            "start": 71.2,
+            "end": 72.06
+          }
+        ]
+      },
+      {
+        "start": 72.14,
+        "end": 73.98,
+        "text": "and one mitigation covers all of them,",
+        "words": [
+          {
+            "text": "and",
+            "start": 72.14,
+            "end": 72.28
+          },
+          {
+            "text": "one",
+            "start": 72.28,
+            "end": 72.46
+          },
+          {
+            "text": "mitigation",
+            "start": 72.46,
+            "end": 72.74
+          },
+          {
+            "text": "covers",
+            "start": 72.74,
+            "end": 73.38
+          },
+          {
+            "text": "all",
+            "start": 73.38,
+            "end": 73.68
+          },
+          {
+            "text": "of",
+            "start": 73.68,
+            "end": 73.8
+          },
+          {
+            "text": "them,",
+            "start": 73.8,
+            "end": 73.98
+          }
+        ]
+      },
+      {
+        "start": 74.26,
+        "end": 76.0,
+        "text": "but the kernel keeps surfacing new paths",
+        "words": [
+          {
+            "text": "but",
+            "start": 74.26,
+            "end": 74.42
+          },
+          {
+            "text": "the",
+            "start": 74.42,
+            "end": 74.52
+          },
+          {
+            "text": "kernel",
+            "start": 74.52,
+            "end": 74.72
+          },
+          {
+            "text": "keeps",
+            "start": 74.72,
+            "end": 75.02
+          },
+          {
+            "text": "surfacing",
+            "start": 75.02,
+            "end": 75.58
+          },
+          {
+            "text": "new",
+            "start": 75.58,
+            "end": 75.76
+          },
+          {
+            "text": "paths",
+            "start": 75.76,
+            "end": 76.0
+          }
+        ]
+      },
+      {
+        "start": 76.0,
+        "end": 76.94,
+        "text": "to the same outcome.",
+        "words": [
+          {
+            "text": "to",
+            "start": 76.0,
+            "end": 76.3
+          },
+          {
+            "text": "the",
+            "start": 76.3,
+            "end": 76.4
+          },
+          {
+            "text": "same",
+            "start": 76.4,
+            "end": 76.6
+          },
+          {
+            "text": "outcome.",
+            "start": 76.6,
+            "end": 76.94
+          }
+        ]
+      },
+      {
+        "start": 78.64,
+        "end": 81.26,
+        "text": "How many page-cache corruption primitives are sitting",
+        "words": [
+          {
+            "text": "How",
+            "start": 78.64,
+            "end": 79.16
+          },
+          {
+            "text": "many",
+            "start": 79.16,
+            "end": 79.32
+          },
+          {
+            "text": "page-cache",
+            "start": 79.32,
+            "end": 79.59
+          },
+          {
+            "text": "corruption",
+            "start": 79.86,
+            "end": 80.22
+          },
+          {
+            "text": "primitives",
+            "start": 80.22,
+            "end": 80.86
+          },
+          {
+            "text": "are",
+            "start": 80.86,
+            "end": 81.06
+          },
+          {
+            "text": "sitting",
+            "start": 81.06,
+            "end": 81.26
+          }
+        ]
+      },
+      {
+        "start": 81.26,
+        "end": 82.34,
+        "text": "in your kernel right now?",
+        "words": [
+          {
+            "text": "in",
+            "start": 81.26,
+            "end": 81.48
+          },
+          {
+            "text": "your",
+            "start": 81.48,
+            "end": 81.58
+          },
+          {
+            "text": "kernel",
+            "start": 81.58,
+            "end": 81.78
+          },
+          {
+            "text": "right",
+            "start": 81.78,
+            "end": 82.08
+          },
+          {
+            "text": "now?",
+            "start": 82.08,
+            "end": 82.34
+          }
+        ]
+      },
+      {
+        "start": 82.78,
+        "end": 83.92,
+        "text": "Drop your answer in the comments.",
+        "words": [
+          {
+            "text": "Drop",
+            "start": 82.78,
+            "end": 82.88
+          },
+          {
+            "text": "your",
+            "start": 82.88,
+            "end": 83.08
+          },
+          {
+            "text": "answer",
+            "start": 83.08,
+            "end": 83.34
+          },
+          {
+            "text": "in",
+            "start": 83.34,
+            "end": 83.56
+          },
+          {
+            "text": "the",
+            "start": 83.56,
+            "end": 83.64
           },
           {
             "text": "comments.",
-            "start": 64.96,
-            "end": 65.2
+            "start": 83.64,
+            "end": 83.92
           }
         ]
       }
