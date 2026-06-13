@@ -26,3 +26,21 @@ export function checkCopyBudget(post: AnyPost): string[] {
   }
   return out;
 }
+
+const DENY = ["diff","commit","log","terminal","console","dashboard","panel","label","labeled",
+  "marked","logo","snippet","email","thread","code","script","plaintext","version","map"];
+const DENY_RE = new RegExp(`\\b(${DENY.join("|")})\\b`, "i");
+const CAPS_RUN_RE = /\b[A-Z0-9_]{2,}\b(\s+\b[A-Z0-9_]{2,}\b)+/;
+
+export function lintVisualPrompts(post: AnyPost): string[] {
+  const out: string[] = [];
+  for (const s of post.slides ?? []) {
+    const p = s.visual_prompt ?? "";
+    const where = `slide ${s.slide} [${s.role}] visual_prompt`;
+    const deny = p.match(DENY_RE);
+    if (deny) out.push(`${where}: text-summoning noun "${deny[1]}"`);
+    const caps = p.match(CAPS_RUN_RE);
+    if (caps) out.push(`${where}: ALL-CAPS run "${caps[0]}"`);
+  }
+  return out;
+}
