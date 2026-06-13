@@ -1,5 +1,5 @@
 import { test, expect } from "bun:test";
-import { checkCopyBudget } from "./content-checks";
+import { checkCopyBudget, lintVisualPrompts } from "./content-checks";
 
 const slide = (over: Record<string, unknown>) => ({
   slide: 1, role: "mechanism", kicker: "", subline: "", visual_prompt: "x",
@@ -36,4 +36,24 @@ test("long subline warns", () => {
   const long = Array(31).fill("word").join(" ");
   const w = checkCopyBudget(post([slide({ on_slide_copy: "Short claim here.", subline: long })]));
   expect(w.some((m) => m.includes("subline"))).toBe(true);
+});
+
+test("labeled + ALL-CAPS run trips lint", () => {
+  const w = lintVisualPrompts(post([slide({
+    visual_prompt: "a shield marked ALGIF_AEAD BLOCKED with two paths labeled around it",
+  })]));
+  expect(w.length).toBeGreaterThan(0);
+  expect(w.join(" ")).toContain("ALGIF_AEAD");
+});
+
+test("clean abstract prose passes", () => {
+  const w = lintVisualPrompts(post([slide({
+    visual_prompt: "A single hard rim light catches a glowing red sliver of light in a dark void, premium dark editorial key art.",
+  })]));
+  expect(w.length).toBe(0);
+});
+
+test("denylist noun trips lint", () => {
+  const w = lintVisualPrompts(post([slide({ visual_prompt: "a patch diff glows in a dark void" })]));
+  expect(w.join(" ")).toContain("diff");
 });
