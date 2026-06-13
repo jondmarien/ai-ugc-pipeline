@@ -79,8 +79,8 @@
       "slide": 2,
       "role": "context",
       "kicker": "THE RELEASE",
-      "on_slide_copy": "Nightmare Eclipse released RedSun as the second exploit in their six-day drop. Direct file write to protected System32 directory.",
-      "subline": "No CVE assigned. Researcher says Microsoft was notified. Exploit works on current Patch Tuesday builds.",
+      "on_slide_copy": "RedSun is the second exploit in Nightmare Eclipse's June drop.",
+      "subline": "No CVE assigned. Microsoft was notified. The exploit works on current Patch Tuesday builds.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Low raking light grazes a dense lattice of light in the dark, one bright strand driving into a guarded core and lighting it from within, dark editorial photography, the lattice set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/02_context.png",
@@ -92,8 +92,8 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT STINGS",
-      "on_slide_copy": "RedSun bypasses TrustedInstaller ownership. Writes any binary to System32. Triggers execution as SYSTEM via scheduled task or service.",
-      "subline": "No memory corruption. No race condition. Pure file write primitive. Defenders assume System32 is immutable.",
+      "on_slide_copy": "It bypasses TrustedInstaller to write any binary into a protected system folder.",
+      "subline": "No memory corruption and no race condition. Just a file write. Defenders assume that folder is off-limits.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A focused side light illuminates a System32 directory in the dark, a single file glowing red among thousands of white system files, dark premium editorial, the directory centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/03_risk.png",
@@ -105,8 +105,8 @@
       "slide": 4,
       "role": "mechanism",
       "kicker": "THE PRIMITIVE",
-      "on_slide_copy": "Exploits a junction/parse point abuse in the Windows Installer service. Redirects a trusted write operation to System32.",
-      "subline": "MSI installer runs as SYSTEM. Researcher redirects its file copy to target directory. Binary lands. Execution follows.",
+      "on_slide_copy": "It abuses a junction point in the Windows Installer service.",
+      "subline": "The installer runs as SYSTEM. The exploit redirects its file copy to the protected folder, and the binary lands.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A hard top-down beam falls on a Windows Installer service icon in the dark, its file copy arrow bending mid-air toward a System32 folder, dark editorial key art, the redirect framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/04_mechanism.png",
@@ -118,8 +118,8 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "WHERE DEFENDERS MISS IT",
-      "on_slide_copy": "System32 file creation events (4663) are noisy. Legitimate installers write there daily. RedSun blends in. No patch. No CVE.",
-      "subline": "EDRs ignore MSI service writes. Defenders lack baseline for 'normal' System32 mutations. Patch gap is indefinite.",
+      "on_slide_copy": "RedSun blends into normal installer activity because System32 writes are noisy.",
+      "subline": "Legitimate installers write there every day. Most endpoint tools ignore writes from the installer service, so detection baselines do not exist.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Cool light grazes a vast field of identical dark slabs in the dark, one pulsing red and otherwise indistinguishable from the rest, tense editorial composition, the field held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/05_failure-point.png",
@@ -131,8 +131,8 @@
       "slide": 6,
       "role": "defense",
       "kicker": "THE MITIGATION REALITY",
-      "on_slide_copy": "Monitor System32 for non-installer writes. Block unsigned binaries in System32. Use WDAC/AppLocker. Hunt for MSI service spawning unusual children.",
-      "subline": "No vendor fix. Defenders must baseline legitimate System32 writes and alert on anomalies. The primitive is simple, the detection is hard.",
+      "on_slide_copy": "No vendor patch exists, so defenders must catch this themselves.",
+      "subline": "Monitor for non-installer writes, block unsigned binaries, enforce Windows Defender Application Control or AppLocker, and hunt for unusual installer service children.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A balanced split composition in the dark: left side a System32 folder with a green shield and signed binary checkmark, right side the same folder with a red unsigned binary and broken shield, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_redsun-windows-lpe/06_defense.png",
@@ -183,13 +183,13 @@
   "comment_prompt": "Do you baseline System32 mutations in your environment?",
   "alt_text": [
     "Title card: RedSun writes to System32 and executes as SYSTEM. A file-write local privilege escalation with no CVE yet, the second exploit in Nightmare Eclipse's June wave. A System32 folder with a red binary slid inside and a SYSTEM token rising above it.",
-    "Nightmare Eclipse released RedSun as the second exploit in a six-day drop: a direct file write into the protected System32 directory, no CVE, working on current Patch Tuesday builds. A terminal showing a copy into System32 succeeding.",
-    "RedSun bypasses TrustedInstaller ownership to write any binary into System32, then runs it as SYSTEM through a scheduled task or service, with no memory corruption and no race, just a file-write primitive. One file glows red among thousands of white system files.",
-    "It abuses a junction or reparse point in the Windows Installer service to redirect a trusted write into System32; the installer runs as SYSTEM, the binary lands, and execution follows. An installer's copy arrow bends mid-air toward a System32 folder.",
-    "System32 file-creation events are noisy because legitimate installers write there daily, so RedSun blends into the baseline, with no patch and no CVE. A field of identical log entries with one malicious write indistinguishable from the rest.",
-    "Defend by monitoring System32 for non-installer writes, blocking unsigned binaries there, enforcing WDAC or AppLocker, and hunting the installer service spawning unusual children. A split scene: a signed binary behind a shield, an unsigned one breaking it.",
+    "RedSun is the second exploit Nightmare Eclipse released in their June 2026 wave, targeting Windows with a direct file write into a protected system folder. No CVE is assigned and the exploit works on current Patch Tuesday builds.",
+    "RedSun bypasses TrustedInstaller ownership to place any binary into a protected system folder and run it as SYSTEM, with no memory corruption and no race condition involved. One file glows red among thousands of identical white system files in the dark.",
+    "The exploit abuses a junction point in the Windows Installer service: because that service runs as SYSTEM, it redirects its trusted file copy into the protected folder and the binary lands. A light arrow bends mid-air toward a guarded core.",
+    "RedSun blends into normal installer activity because writes to that folder happen every day from legitimate software. Endpoint tools ignore installer service file operations, leaving no detection baseline. A field of identical slabs with one pulsing red and otherwise indistinguishable.",
+    "No vendor patch exists yet, so defenders must baseline installer write patterns, block unsigned binaries in protected folders, enforce Windows Defender Application Control or AppLocker, and hunt the installer service for unusual child processes. A split scene: a signed binary behind a shield on one side, an unsigned one breaking it on the other.",
     "System32 is not immutable. It is a write target when a trusted service is misdirected. A System32 folder icon, one half shielded and intact, the other fractured with a SYSTEM token escaping.",
-    "The call to action asks whether you baseline System32 mutations in your environment. A single System32 write event on a clean dark end card."
+    "The call to action asks whether you baseline System32 mutations in your environment. A single pulse of light on a clean dark end card."
   ],
   "sources": [
     {
@@ -290,43 +290,38 @@
     "narration": [
       {
         "start": 0,
-        "end": 6,
-        "text": "RedSun writes to System32. Executes as SYSTEM. File write LPE. Nightmare Eclipse exploit two."
+        "end": 7,
+        "text": "A researcher called Nightmare Eclipse just dropped a privilege escalation exploit for Windows that writes a binary straight into the System32 folder and runs it as SYSTEM."
       },
       {
-        "start": 6,
-        "end": 13,
-        "text": "Released in a six-exploit wave. No CVE assigned. Works on current Patch Tuesday builds."
+        "start": 7,
+        "end": 15,
+        "text": "This is the second in a six-exploit wave released in June 2026, with no CVE assigned and no patch from Microsoft at time of release."
       },
       {
-        "start": 13,
-        "end": 20,
-        "text": "Abuses a junction in the Windows Installer service. MSI runs as SYSTEM. Redirects its file copy to System32."
+        "start": 15,
+        "end": 24,
+        "text": "The technique abuses a junction point in the Windows Installer service: because that service runs as SYSTEM, redirecting its file copy operation drops an attacker-controlled binary into a protected folder without any memory corruption or race condition."
       },
       {
-        "start": 20,
-        "end": 27,
-        "text": "No memory corruption. No race. Pure file write. Binary lands. Execution follows via task or service."
+        "start": 24,
+        "end": 32,
+        "text": "What makes this hard to catch is that legitimate installers write to System32 every single day, so the malicious write is noise inside noise, and most endpoint tools do not alert on installer service file operations."
       },
       {
-        "start": 27,
-        "end": 34,
-        "text": "System32 writes are noisy. Legitimate installers write daily. RedSun blends in. No patch. No CVE."
-      },
-      {
-        "start": 34,
+        "start": 32,
         "end": 41,
-        "text": "Baseline System32 mutations. Block unsigned binaries. WDAC or AppLocker. Hunt MSI service children."
+        "text": "Until a patch ships, defenders need to baseline what normal installer writes look like, block unsigned binaries from landing in that folder, enforce application control policies, and monitor the installer service for unusual child processes."
       },
       {
         "start": 41,
         "end": 48,
-        "text": "System32 is not immutable. It is a write target when a trusted service is misdirected."
+        "text": "The assumption that System32 is off-limits to unprivileged attackers is exactly the gap this exploit lives in."
       },
       {
         "start": 48,
         "end": 54,
-        "text": "Do you baseline System32 mutations? Tell me in the comments."
+        "text": "Have you ever basellined installer writes in your environment? Drop your answer in the comments."
       }
     ],
     "beats": [
