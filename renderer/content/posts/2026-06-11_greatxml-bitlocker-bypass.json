@@ -66,10 +66,10 @@
       "slide": 1,
       "role": "cover",
       "kicker": "WINDOWS × ZERO-DAY",
-      "on_slide_copy": "GREATXML BYPASSES BITLOCKER. RECOVERY PARTITION. XML FILES.",
-      "subline": "Defender Offline Scan triggers the flaw. Unattend.xml + ReAgent.xml = unrestricted volume access. Chaotic Eclipse strike two.",
+      "on_slide_copy": "GreatXML unlocks BitLocker via the recovery partition.",
+      "subline": "Two XML files and a reboot bypass full-disk encryption. Chaotic Eclipse's second BitLocker bypass this month.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A hard rim light catches a BitLocker lock icon in the dark, two XML file icons (unattend.xml and ReAgent.xml) sliding into a recovery partition slot, the lock shackle snapping open with a red flash, premium dark editorial key art, the lock held in the upper third with clean unmarked negative space filling the lower third.",
+      "visual_prompt": "A hard rim light catches a padlock shape in the dark, two flat document shapes sliding into a partition slot beneath it, the shackle snapping open with a red flash, premium dark editorial key art, the padlock held in the upper third with clean negative space filling the lower third.",
       "background_asset": "/backgrounds/2026-06-11_greatxml-bitlocker-bypass/01_cover.png",
       "asset_status": "generated",
       "cta": "SWIPE →",
@@ -79,10 +79,10 @@
       "slide": 2,
       "role": "context",
       "kicker": "THE RELEASE",
-      "on_slide_copy": "Chaotic Eclipse (Nightmare-Eclipse, MSNightmare) dropped GreatXML on June 11. Accidental discovery. Four hours to find. Published on GitHub under MSNightmare.",
-      "subline": "Second BitLocker bypass from this researcher after YellowKey (CVE-2026-45585). Comes one day after RoguePlanet Defender LPE.",
+      "on_slide_copy": "Chaotic Eclipse found GreatXML by accident in four hours.",
+      "subline": "Released June 11 on GitHub under MSNightmare. This is the researcher's second BitLocker bypass after YellowKey (CVE-2026-45585), one day after RoguePlanet Defender LPE.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Low raking light grazes a dark GitHub repo page in the dark, 'GreatXML' repo name glowing red, a commit timestamp from June 11, dark editorial photography, the repo card set high over a calm empty lower third.",
+      "visual_prompt": "Low raking light grazes a dark floating card in the dark, the card surface glowing red at one edge, a glowing timestamp marker in the upper corner, dark editorial photography, the card set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-11_greatxml-bitlocker-bypass/02_context.png",
       "asset_status": "generated",
       "cta": "",
@@ -92,10 +92,10 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT STINGS",
-      "on_slide_copy": "If Defender Offline Scan was ever run, the machine is vulnerable. Recovery partition holds the keys. No TPM extraction. No cold boot. Just XML files and a reboot to WinRE.",
-      "subline": "Researcher says even without Offline Scan, booting into WinRE in offline scan state may be possible without login. Full volume access. Unrestricted shell.",
+      "on_slide_copy": "One prior Defender Offline Scan run leaves the machine exposed.",
+      "subline": "The recovery partition exposes decryption keys via WinRE. Triggering the offline scan state without login may also work, granting shell access without TPM extraction.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A focused side light illuminates a recovery partition icon in the dark, two XML files glowing red on its surface, a WinRE reboot arrow looping back to an unlocked BitLocker volume, dark premium editorial, the partition centered in the upper area with generous negative space below.",
+      "visual_prompt": "A focused side light illuminates a recovery partition shape in the dark, two red document shapes resting on its surface, a circular reboot arrow looping back to an open padlock shape, dark premium editorial, the partition centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_greatxml-bitlocker-bypass/03_risk.png",
       "asset_status": "generated",
       "cta": "",
@@ -105,10 +105,10 @@
       "slide": 4,
       "role": "mechanism",
       "kicker": "THE CHAIN",
-      "on_slide_copy": "Step 1: Copy unattend.xml and Recovery/WindowsRE/ReAgent.xml to recovery partition root. Step 2: Reboot to WinRE (Shift+Restart). Step 3: Shell spawns with unrestricted BitLocker volume access.",
-      "subline": "WinRE loads the malicious XML config. Bypasses BitLocker authentication. Recovery partition becomes the attack vector. No authentication required at boot.",
+      "on_slide_copy": "Two XML files on the recovery partition, then Shift+Restart.",
+      "subline": "Copy unattend.xml and ReAgent.xml to the recovery partition root. WinRE boots, loads the XML config, bypasses BitLocker auth, and spawns an unrestricted shell.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A hard top-down beam falls on a three-step chain in the dark: XML files copying to partition, Shift+Restart reboot arrow, WinRE screen spawning a SYSTEM shell — each step linked by red tendrils, dark editorial key art, the chain framed in the upper third over clean dark space.",
+      "visual_prompt": "A hard top-down beam falls on a three-step chain in the dark, each node linked by red tendrils: a stack of document shapes moving toward a partition icon, a circular reboot arrow, and a red pulsing glow at the end of the chain, dark editorial key art, the chain framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-11_greatxml-bitlocker-bypass/04_mechanism.png",
       "asset_status": "generated",
       "cta": "",
@@ -118,10 +118,10 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "WHERE DEFENDERS MISS IT",
-      "on_slide_copy": "BitLocker shows 'encrypted.' TPM shows 'healthy.' But the recovery partition XML parser trusts unattend.xml and ReAgent.xml. Defender Offline Scan writes the vulnerable state.",
-      "subline": "YellowKey patched this week (CVE-2026-45585). GreatXML is a new path. Recovery partition is rarely audited. WinRE boot leaves no standard event log trail.",
+      "on_slide_copy": "The disk shows encrypted but the XML parser trusts everything.",
+      "subline": "BitLocker and TPM both report healthy. The XML parser accepts unsigned config files. YellowKey was patched, but GreatXML is a separate path with no event log trace.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Cool light grazes a BitLocker management console in the dark, 'Protection On' in green, but a red warning on the recovery partition XML parser subsystem, tense editorial composition, the console held high with a clean lower third.",
+      "visual_prompt": "Cool light grazes a dark floating status surface in the dark, a green indicator glowing on one side and a red warning glow on the opposite edge, tense editorial composition, the surface held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-11_greatxml-bitlocker-bypass/05_failure-point.png",
       "asset_status": "generated",
       "cta": "",
@@ -131,10 +131,10 @@
       "slide": 6,
       "role": "defense",
       "kicker": "THE MITIGATION REALITY",
-      "on_slide_copy": "Disable Defender Offline Scan if unused. Audit recovery partition for unauthorized XML files. Lock BIOS/UEFI to prevent WinRE boot. Monitor for unexpected WinRE entries. Physical security matters.",
-      "subline": "No vendor patch yet. Microsoft may not assign CVE. Defenders must harden the recovery partition and restrict WinRE access. The XML parser trust assumption is the root cause.",
+      "on_slide_copy": "Harden the recovery partition and restrict Windows Recovery Environment boot.",
+      "subline": "Disable Offline Scan if unused, audit recovery partition XML, lock BIOS/UEFI against WinRE boot, and watch for unexpected recovery entries. No patch exists yet.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A balanced split composition in the dark: left side a recovery partition with locked BIOS and XML audit checkmark, right side the same partition with unattend.xml and ReAgent.xml glowing red and WinRE boot arrow, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
+      "visual_prompt": "A balanced split composition in the dark, a thin divider between two sides: the left side shows a recovery partition with a locked padlock and a green checkmark, the right side shows the same partition with two red document shapes and a reboot arrow, premium editorial key art, generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_greatxml-bitlocker-bypass/06_defense.png",
       "asset_status": "generated",
       "cta": "",
@@ -144,10 +144,10 @@
       "slide": 7,
       "role": "takeaway",
       "kicker": "TAKEAWAY",
-      "on_slide_copy": "Your recovery partition {{is not a rescue zone if its XML parser trusts unsigned config.}} [[BitLocker encryption is only as strong as the WinRE boot path.]]",
-      "subline": "",
+      "on_slide_copy": "{{A recovery partition that trusts unsigned XML is an attack surface.}} [[BitLocker is only as strong as its recovery path.]]",
+      "subline": "Audit the recovery partition the same way you audit the OS volume.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A thin rim light traces a recovery partition icon in the dark, one half with a green rescue cross, the other half with two red XML files and a WinRE boot arrow slipping through, minimal high-impact key art, the partition drawn toward the edge with the center kept dark and open.",
+      "visual_prompt": "A thin rim light traces a recovery partition shape in the dark, one half with a green rescue cross, the other half with two red document shapes and a reboot arrow slipping through, minimal high-impact key art, the partition drawn toward the edge with the center kept dark and open.",
       "background_asset": "/backgrounds/2026-06-11_greatxml-bitlocker-bypass/07_takeaway.png",
       "asset_status": "generated",
       "cta": "",
@@ -160,14 +160,14 @@
       "on_slide_copy": "Do you audit recovery partition XML files or restrict WinRE boot?",
       "subline": "Save this for your next encryption hardening review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Soft pooled light isolates a recovery partition audit policy screen on a clean dark end-card surface, premium editorial cybersecurity key art, the screen small in vast negative space with the lower third open.",
+      "visual_prompt": "Soft pooled light isolates a recovery partition shape with a checkmark glow on a clean dark end-card surface, premium editorial cybersecurity key art, the shape small in vast negative space with the lower third open.",
       "background_asset": "/backgrounds/2026-06-11_greatxml-bitlocker-bypass/08_cta.png",
       "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "notes": ""
     }
   ],
-  "caption": "Chaotic Eclipse (Nightmare-Eclipse, MSNightmare) released GreatXML on June 11, 2026. A Windows BitLocker bypass that exploits the recovery partition via XML files. Accidental discovery — four hours to find.\n\nThe exploit chain: Copy unattend.xml and Recovery/WindowsRE/ReAgent.xml to the recovery partition root. Reboot to Windows Recovery Environment (WinRE) via Shift+Restart. WinRE loads the malicious XML config. Bypasses BitLocker authentication. Shell spawns with unrestricted volume access.\n\nIf Defender Offline Scan was ever run, the machine is vulnerable. The researcher notes even without Offline Scan, booting into WinRE in offline scan state may be possible without login. Full volume access. No TPM extraction. No cold boot. Just XML files and a reboot.\n\nBitLocker shows 'encrypted.' TPM shows 'healthy.' But the recovery partition XML parser trusts unattend.xml and ReAgent.xml. YellowKey (CVE-2026-45585) was patched this week. GreatXML is a new path. Recovery partition is rarely audited. WinRE boot leaves no standard event log trail.\n\nNo vendor patch yet. Defenders must: disable Defender Offline Scan if unused, audit recovery partition for unauthorized XML files, lock BIOS/UEFI to prevent WinRE boot, monitor for unexpected WinRE entries.\n\nYour recovery partition is not a rescue zone if its XML parser trusts unsigned config. BitLocker encryption is only as strong as the WinRE boot path.\n\nDo you audit recovery partition XML files or restrict WinRE boot?\n\nFollow for AI security breakdowns without the fake panic.\n\n[GreatXML, Chaotic Eclipse, Nightmare-Eclipse, BitLocker, recovery partition, XML bypass, WinRE, Windows Recovery Environment, Defender Offline Scan, unattend.xml, ReAgent.xml, YellowKey, CVE-2026-45585]",
+  "caption": "Chaotic Eclipse (Nightmare-Eclipse, MSNightmare) released GreatXML on June 11, 2026. It is a Windows BitLocker bypass that exploits the recovery partition via XML files. The researcher found it by accident and had a working exploit in four hours.\n\nThe exploit chain: copy unattend.xml and Recovery/WindowsRE/ReAgent.xml to the recovery partition root, then reboot into Windows Recovery Environment (WinRE) via Shift+Restart. WinRE loads the malicious XML config, bypasses BitLocker authentication, and spawns an unrestricted shell with full volume access.\n\nIf Defender Offline Scan was ever run on the machine, the machine is vulnerable. The researcher notes that even without a prior Offline Scan run, triggering the WinRE offline scan state without login may also be possible. No TPM extraction, no cold boot.\n\nBitLocker reports the drive as encrypted. TPM reports healthy. But the recovery partition XML parser accepts unattend.xml and ReAgent.xml without verifying they are signed. YellowKey (CVE-2026-45585) was patched this week, but GreatXML is a separate path. The recovery partition is rarely audited and WinRE boot leaves no standard event log trail.\n\nNo vendor patch exists yet. Defenders should disable Defender Offline Scan if it is not in active use, audit the recovery partition for unauthorized XML files, lock BIOS/UEFI to prevent unauthorized WinRE boot, and monitor for unexpected WinRE entries.\n\nThe recovery partition is not a rescue zone when its XML parser trusts unsigned config. BitLocker encryption is only as strong as the WinRE boot path sitting next to it.\n\nDo you audit recovery partition XML files or restrict WinRE boot?\n\nFollow for AI security breakdowns without the fake panic.\n\n[GreatXML, Chaotic Eclipse, Nightmare-Eclipse, BitLocker, recovery partition, XML bypass, WinRE, Windows Recovery Environment, Defender Offline Scan, unattend.xml, ReAgent.xml, YellowKey, CVE-2026-45585]",
   "hashtags": [
     "GreatXML",
     "Chaotic Eclipse",
@@ -186,10 +186,10 @@
   "comment_prompt": "Do you audit recovery partition XML files or restrict WinRE boot?",
   "alt_text": [
     "Slide 1 (cover): a BitLocker lock icon in the dark, two XML file icons (unattend.xml and ReAgent.xml) sliding into a recovery partition slot, the lock shackle snapping open with a red flash.",
-    "Slide 2 (context): a dark GitHub repo page, 'GreatXML' repo name glowing red, a commit timestamp from June 11.",
+    "Slide 2 (context): a dark floating card with one edge glowing red and a glowing timestamp marker in the upper corner, representing the June 11 GreatXML release.",
     "Slide 3 (risk): a recovery partition icon in the dark, two XML files glowing red on its surface, a WinRE reboot arrow looping back to an unlocked BitLocker volume.",
     "Slide 4 (mechanism): a three-step chain in the dark: XML files copying to partition, Shift+Restart reboot arrow, WinRE screen spawning a SYSTEM shell, linked by red tendrils.",
-    "Slide 5 (gap): a BitLocker management console, 'Protection On' in green, but a red warning on the recovery partition XML parser subsystem.",
+    "Slide 5 (gap): a dark floating status surface with a green healthy indicator on one side and a red warning glow on the other, representing how standard monitoring misses the recovery partition exposure.",
     "Slide 6 (defense): split composition, left side recovery partition with locked BIOS and XML audit checkmark, right side with red XML files and WinRE boot arrow.",
     "Slide 7 (takeaway): a recovery partition icon, half with green rescue cross, half with two red XML files and WinRE boot arrow slipping through.",
     "Slide 8 (cta): a recovery partition audit policy screen on a clean dark end-card."
@@ -300,43 +300,33 @@
     "narration": [
       {
         "start": 0,
-        "end": 6,
-        "text": "GreatXML bypasses BitLocker. Recovery partition. XML files. Chaotic Eclipse strike two."
+        "end": 8,
+        "text": "A researcher known as Chaotic Eclipse stumbled across a BitLocker bypass while testing Defender Offline Scan, and it took them four hours from discovery to a working exploit."
       },
       {
-        "start": 6,
-        "end": 13,
-        "text": "Released June 11. Accidental find. Four hours. GitHub MSNightmare. One day after RoguePlanet."
+        "start": 8,
+        "end": 18,
+        "text": "The attack is straightforward: you copy two XML files, unattend.xml and ReAgent.xml, into the recovery partition, then reboot into the Windows Recovery Environment using Shift and Restart."
       },
       {
-        "start": 13,
-        "end": 20,
-        "text": "If Defender Offline Scan ever ran, you're vulnerable. Unattend.xml plus ReAgent.xml on recovery partition. Shift+Restart to WinRE."
+        "start": 18,
+        "end": 28,
+        "text": "Windows Recovery Environment loads those files without verifying they are signed, which bypasses BitLocker authentication entirely and drops you into an unrestricted shell with full volume access."
       },
       {
-        "start": 20,
-        "end": 27,
-        "text": "WinRE loads malicious XML. Bypasses BitLocker auth. Shell spawns. Unrestricted volume access. No TPM extraction. No cold boot."
+        "start": 28,
+        "end": 38,
+        "text": "The gap that makes this sting is that BitLocker reports the drive as encrypted and TPM reports healthy, so standard monitoring gives you no warning that the recovery partition is the actual exposure."
       },
       {
-        "start": 27,
-        "end": 34,
-        "text": "BitLocker shows encrypted. TPM healthy. But recovery partition XML parser trusts unsigned config. YellowKey patched. GreatXML is new path."
-      },
-      {
-        "start": 34,
-        "end": 41,
-        "text": "No patch yet. Disable Offline Scan if unused. Audit recovery partition XML. Lock BIOS. Restrict WinRE boot."
-      },
-      {
-        "start": 41,
+        "start": 38,
         "end": 48,
-        "text": "Recovery partition not a rescue zone if XML parser trusts unsigned config. BitLocker equals WinRE boot path strength."
+        "text": "There is no vendor patch yet, so defenders need to disable Defender Offline Scan when it is not actively used, audit the recovery partition for unauthorized XML files, and lock the BIOS to prevent unauthorized Windows Recovery Environment boots."
       },
       {
         "start": 48,
         "end": 54,
-        "text": "Do you audit recovery partition XML or restrict WinRE boot? Tell me in the comments."
+        "text": "The takeaway here is that full-disk encryption is only as trustworthy as the recovery path sitting next to it on the same drive."
       }
     ],
     "beats": [
