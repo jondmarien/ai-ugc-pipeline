@@ -82,7 +82,7 @@
       "on_slide_copy": "Fragnesia targets XFRM ESP-in-TCP subsystem. Discovered by William Bowling of Zellic and V12 Security. Separate bug from Dirty Frag but same surface and mitigation.",
       "subline": "CVE-2026-46300. CVSS 7.8. Deterministic page-cache corruption. No race condition. PoC released by V12.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Low raking light grazes a dark kernel map in the dark, three red nodes pulsing in the XFRM/ESP region: Dirty Frag (ESP-in-UDP), Dirty Frag (RxRPC), Fragnesia (ESP-in-TCP), dark editorial photography, the map set high over a calm empty lower third.",
+      "visual_prompt": "Low raking light grazes a dark constellation map in the dark, three red nodes pulsing close together in one dense region while the rest of the field stays dim, dark editorial photography, the map set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-10_fragnesia-linux-lpe/02_context.png",
       "asset_status": "generated",
       "cta": "",
@@ -95,7 +95,7 @@
       "on_slide_copy": "Modifies read-only file contents in kernel page cache. Achieves root via deterministic byte writes. Unlike Dirty Frag, no host-level privileges required. AppArmor namespace restrictions only partial mitigation.",
       "subline": "Immediate root on all major distros by corrupting /usr/bin/su page cache. Third such bug in two weeks after Copy Fail and Dirty Frag.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A focused side light illuminates a scalpel in the dark making a precise incision into a locked file, the file contents rewriting in red without the lock triggering, dark premium editorial, the scalpel centered in the upper area with generous negative space below.",
+      "visual_prompt": "A focused side light illuminates a fine scalpel of light in the dark making a precise incision into a sealed locked block, the inside quietly glowing red as it is altered while the lock stays shut, dark premium editorial, the scalpel centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_fragnesia-linux-lpe/03_risk.png",
       "asset_status": "generated",
       "cta": "",
@@ -108,7 +108,7 @@
       "on_slide_copy": "Abuses logic bug in XFRM ESP-in-TCP subsystem. Achieves arbitrary byte writes into kernel page cache of read-only files. No race condition. Same outcome as Copy Fail and Dirty Frag: root via /usr/bin/su corruption.",
       "subline": "CloudLinux: Customers with Dirty Frag mitigation need no further action until patched kernels. Red Hat assessing if mitigation extends.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A hard top-down beam falls on a TCP packet in the dark being decrypted in-place over shared page-cache pages, the plaintext bleeding into a read-only file reference, dark editorial key art, the packet framed in the upper third over clean dark space.",
+      "visual_prompt": "A hard top-down beam falls on a translucent packet of light in the dark being unsealed in place over a stack of shared glowing pages, its freed glow bleeding into a nearby locked page, dark editorial key art, the packet framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-10_fragnesia-linux-lpe/04_mechanism.png",
       "asset_status": "generated",
       "cta": "",
@@ -121,7 +121,7 @@
       "on_slide_copy": "Copy Fail (algif_aead) -> Dirty Frag (xfrm-ESP + RxRPC) -> Fragnesia (xfrm ESP-in-TCP). Three distinct subsystems. Same page-cache corruption primitive. Same root via /usr/bin/su. Same mitigation: blocklist esp4, esp6, rxrpc.",
       "subline": "Threat actor 'berz0k' advertising Linux LPE zero-day for $170,000 on cybercrime forums. Claims TOCTOU-based, stable, no crashes, .so payload in /tmp.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Cool light grazes an assembly line in the dark producing identical root exploits from three different subsystem inputs: ALGIF_AEAD, XFRM_UDP, XFRM_TCP, all outputting the same ROOT product, tense editorial composition, the line held high with a clean lower third.",
+      "visual_prompt": "Cool light grazes an assembly line in the dark fed by three different glowing inputs, each one producing the identical red product at the end of the belt, tense editorial composition, the line held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-10_fragnesia-linux-lpe/05_failure-point.png",
       "asset_status": "generated",
       "cta": "",
@@ -147,7 +147,7 @@
       "on_slide_copy": "The page-cache corruption bug class {{spans three subsystems now.}} [[One mitigation covers all three. But the kernel keeps finding new paths to the same primitive.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A thin rim light traces three roots in the dark converging into a single trunk labeled PAGE-CACHE CORRUPTION, a red axe poised at the trunk but new roots sprouting below, minimal high-impact key art, the tree drawn toward the edge with the center kept dark and open.",
+      "visual_prompt": "A thin rim light traces three roots of light in the dark converging into a single dark trunk, a red axe poised at its base while fresh new roots quietly sprout below it, minimal high-impact key art, the tree drawn toward the edge with the center kept dark and open.",
       "background_asset": "/backgrounds/2026-06-10_fragnesia-linux-lpe/07_takeaway.png",
       "asset_status": "generated",
       "cta": "",
@@ -188,7 +188,7 @@
     "It abuses a logic bug in XFRM ESP-in-TCP for arbitrary byte writes into the page cache of read-only files, no race condition, root via /usr/bin/su corruption. A TCP packet decrypts in place over shared page-cache pages.",
     "The pattern: Copy Fail, then Dirty Frag, then Fragnesia. Three subsystems, same page-cache primitive, same root, same mitigation: blocklist esp4, esp6, rxrpc. An assembly line outputs identical root exploits from three inputs.",
     "Mitigation: blocklist esp4, esp6, rxrpc, restrict unprivileged user namespaces, harden containers, monitor for escalation, and patch the kernel when available. Three converging bugs are stopped by one module blocklist.",
-    "The page-cache corruption bug class now spans three subsystems. One mitigation covers all three, but the kernel keeps finding new paths to the same primitive. Three roots merge into a trunk labeled page-cache corruption.",
+    "The page-cache corruption bug class now spans three subsystems. One mitigation covers all three, but the kernel keeps finding new paths to the same primitive. Three roots of light merge into a single dark trunk, a red axe poised at its base while fresh roots sprout below.",
     "Closing question: How many page-cache corruption primitives are in your kernel right now? A kernel subsystem map shows three red paths converging on the page cache."
   ],
   "sources": [
@@ -408,13 +408,13 @@
     "licenses": [],
     "captions": [
       {
-        "start": 0.0,
+        "start": 0,
         "end": 2.32,
         "text": "Third page-cache LPE in two weeks.",
         "words": [
           {
             "text": "Third",
-            "start": 0.0,
+            "start": 0,
             "end": 0.32
           },
           {
@@ -776,13 +776,13 @@
         ]
       },
       {
-        "start": 29.0,
+        "start": 29,
         "end": 31.07,
         "text": "Fragnesia xfrm ESP-in-TCP.",
         "words": [
           {
             "text": "Fragnesia",
-            "start": 29.0,
+            "start": 29,
             "end": 29.34
           },
           {
