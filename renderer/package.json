@@ -28,7 +28,9 @@
     "test": "bun test",
     "test:smoke": "bun scripts/fit-smoke.mjs",
     "typecheck": "tsc --noEmit && tsc --noEmit -p remotion/tsconfig.json",
-    "remotion:studio": "bunx remotion studio remotion/index.ts"
+    "remotion:studio": "bunx remotion studio remotion/index.ts",
+    "publish": "bun scripts/publish.mjs",
+    "publish:auth": "bun scripts/publish/auth/cli.mjs"
   },
   "dependencies": {
     "@fontsource/archivo": "^5.2.5",
@@ -38,7 +40,8 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "remotion": "^4.0.400",
-    "zod": "4.3.6"
+    "zod": "4.3.6",
+    "google-auth-library": "^9.0.0"
   },
   "devDependencies": {
     "@types/node": "^24.5.2",
