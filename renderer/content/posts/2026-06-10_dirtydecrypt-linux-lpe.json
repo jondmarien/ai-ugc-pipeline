@@ -69,7 +69,7 @@
       "on_slide_copy": "SILENT PATCH. NO DISCLOSURE. RESEARCHERS TOLD IT WAS A DUPLICATE.",
       "subline": "DirtyDecrypt (CVE-2026-31635). rxgk missing COW guard. Only hits Fedora, Arch, openSUSE. PoC released anyway.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A single hard rim light catches a patch file in a dark void, the diff showing a single COW guard added, but the commit message muted in gray, premium dark editorial key art, the patch held in the upper third with clean unmarked negative space filling the lower third.",
+      "visual_prompt": "A single hard rim light catches a small sealed packet of light in a dark void, one freshly added clasp glowing faint green while a faint marking beside it dissolves into muted gray shadow, premium dark editorial key art, the packet held in the upper third with clean unmarked negative space filling the lower third.",
       "background_asset": "/backgrounds/2026-06-10_dirtydecrypt-linux-lpe/01_cover.png",
       "asset_status": "generated",
       "cta": "SWIPE to continue",
@@ -82,7 +82,7 @@
       "on_slide_copy": "Zellic/V12 reported DirtyDecrypt May 9. Maintainers replied: duplicate, already patched in mainline. No CVE assigned. No advisory. No coordinated disclosure.",
       "subline": "Researchers forced to go public when they realized the fix was silent. PoC released on GitHub. NVD later linked it to CVE-2026-31635.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Low raking light grazes an email thread in the dark, researcher report on left, maintainer reply DUPLICATE on right, no CVE, no advisory, no coordination, dark editorial photography, the thread set high over a calm empty lower third.",
+      "visual_prompt": "Low raking light grazes two facing panels of light in the dark, a message rising from the left panel and a single flat dismissive pulse answering from the right, the exchange cut short with nothing following, dark editorial photography, the panels set high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-10_dirtydecrypt-linux-lpe/02_context.png",
       "asset_status": "generated",
       "cta": "",
@@ -95,7 +95,7 @@
       "on_slide_copy": "Only affects distros with CONFIG_RXGK enabled: Fedora, Arch Linux, openSUSE Tumbleweed. In containerized environments, worker nodes on vulnerable Linux could provide pod escape path.",
       "subline": "CVSS 7.5. Missing COW guard in rxgk_decrypt_skb writes to page cache of privileged files: /etc/shadow, /etc/sudoers, SUID binaries.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A focused side light illuminates three distro logos in the dark (Fedora, Arch, openSUSE) glowing red, while Ubuntu, Debian, RHEL remain dark, dark premium editorial, the logos centered in the upper area with generous negative space below.",
+      "visual_prompt": "A focused side light illuminates three identical emblems of light in the dark glowing hot red while three other identical emblems nearby remain dark and dormant, dark premium editorial, the emblems centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_dirtydecrypt-linux-lpe/03_risk.png",
       "asset_status": "generated",
       "cta": "",
@@ -108,7 +108,7 @@
       "on_slide_copy": "rxgk_decrypt_skb decrypts incoming sk_buff on receive side. Memory pages shared with page cache of other processes. Normal Linux optimization: copy-on-write protects shared pages. The COW guard was missing.",
       "subline": "Data written to privileged process memory or page cache of privileged files. Leads to LPE via /etc/shadow, /etc/sudoers, or SUID binary corruption.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A hard top-down beam falls on a socket buffer in the dark being decrypted in-place, a missing shield icon labeled COW GUARD where a copy should have happened, plaintext bleeding into /etc/shadow page cache, dark editorial key art, the buffer framed in the upper third over clean dark space.",
+      "visual_prompt": "A hard top-down beam falls on a translucent buffer of light in the dark being unsealed in place, a conspicuously missing protective shell where a duplicate should have formed, the freed glow bleeding into a nearby locked vault, dark editorial key art, the buffer framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-10_dirtydecrypt-linux-lpe/04_mechanism.png",
       "asset_status": "generated",
       "cta": "",
@@ -121,7 +121,7 @@
       "on_slide_copy": "Hyunwoo Kim (Dirty Frag researcher) forced into public disclosure when embargo broke after merged patch. Another researcher independently analyzed the public commit and published. Standard n-day weaponization practice.",
       "subline": "Silent patches without CVEs or advisories leave defenders blind. Researchers who report responsibly get duplicate responses. The fix exists but nobody knows to apply it.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "Cool light grazes a timeline in the dark: silent patch commit, then researcher report marked DUPLICATE, then independent public analysis, then forced PoC release, tense editorial composition, the timeline held high with a clean lower third.",
+      "visual_prompt": "Cool light grazes a dark horizontal track in the dark: a quiet sealed mark, then a dismissed report fading out, then an independent spark reigniting it, then a forced burst of red light, tense editorial composition, the track held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-10_dirtydecrypt-linux-lpe/05_failure-point.png",
       "asset_status": "generated",
       "cta": "",
@@ -134,7 +134,7 @@
       "on_slide_copy": "Linux kernel developers reviewing emergency killswitch proposal: disable vulnerable function at runtime until real patch arrives. Function returns operator-supplied value, nothing else runs. Engages on every CPU until disengage or reboot.",
       "subline": "Rocky Linux debuted security repository for accelerated fixes. Opt-in, disabled by default. Trade-off: upstream may not accept fix, next kernel release supersedes.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A balanced split composition in the dark: left side vulnerable function executing, right side same function with killswitch engaged returning safe value, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
+      "visual_prompt": "A balanced split composition in the dark: on the left a mechanism running unchecked and overheating red, on the right the same mechanism with a kill lever thrown, cooled and held safe, a thin divider between them, premium editorial key art, the divider centered with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-10_dirtydecrypt-linux-lpe/06_defense.png",
       "asset_status": "generated",
       "cta": "",
@@ -147,7 +147,7 @@
       "on_slide_copy": "A silent patch {{is not a fix for defenders who do not know it exists.}} [[The kernel killswitch and security repos are symptoms of a disclosure process that leaves gaps.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A thin rim light traces a patch diff in the dark, the COW guard added in green but the commit message faded to invisible gray, minimal high-impact key art, the diff drawn toward the edge with the center kept dark and open.",
+      "visual_prompt": "A thin rim light traces a single freshly sealed clasp in the dark glowing green while the faint marking that should explain it fades to invisible gray, minimal high-impact key art, the detail drawn toward the edge with the center kept dark and open.",
       "background_asset": "/backgrounds/2026-06-10_dirtydecrypt-linux-lpe/07_takeaway.png",
       "asset_status": "generated",
       "cta": "",
@@ -183,14 +183,14 @@
   ],
   "comment_prompt": "Do you track silent kernel patches in your distro, or only CVEs?",
   "alt_text": [
-    "Title card: silent patch, no disclosure, researchers told it was a duplicate. DirtyDecrypt, CVE-2026-31635, an rxgk missing copy-on-write guard that only hits Fedora, Arch, and openSUSE, with a PoC released anyway. A patch diff glows in a dark void with the commit message muted in gray.",
-    "Zellic and V12 reported DirtyDecrypt May 9 and maintainers replied it was a duplicate already patched in mainline: no CVE, no advisory, no coordinated disclosure. Researchers went public on realizing the fix was silent, releasing a PoC, and NVD later linked CVE-2026-31635. An email thread shows a DUPLICATE reply.",
-    "Only distros with CONFIG_RXGK enabled are affected: Fedora, Arch Linux, and openSUSE Tumbleweed, and in containers a vulnerable worker node can give a pod escape path. CVSS 7.5: the missing guard in rxgk_decrypt_skb writes to /etc/shadow, /etc/sudoers, and SUID binaries. Three distro logos glow red while others stay dark.",
-    "rxgk_decrypt_skb decrypts an incoming sk_buff whose pages are shared with other processes' page cache, where copy-on-write should protect shared pages but the COW guard was missing. Data lands in privileged memory or files, leading to LPE. A socket buffer is decrypted in place as plaintext bleeds into the /etc/shadow page cache.",
-    "Hyunwoo Kim, the Dirty Frag researcher, was forced public when the embargo broke after the patch merged, and another researcher independently analyzed the public commit and published, a standard n-day weaponization. Silent patches without CVEs leave defenders blind. A timeline runs from silent patch to DUPLICATE reply to forced PoC.",
-    "Kernel developers are reviewing an emergency killswitch that disables a vulnerable function at runtime, returning an operator-supplied value on every CPU until disengage or reboot. Rocky Linux debuted an opt-in security repository for accelerated fixes. A split view of a vulnerable function beside one with the killswitch engaged.",
-    "A silent patch is not a fix for defenders who do not know it exists. The kernel killswitch and security repos are symptoms of a disclosure process that leaves gaps. A patch diff shows the COW guard added in green with the commit message faded to invisible gray.",
-    "Closing question: do you track silent kernel patches in your distro, or only CVEs? Save this for your next vulnerability management review. A single git log entry shows a COW guard commit with no CVE reference on a clean dark end-card."
+    "Title card: silent patch, no disclosure, researchers told it was a duplicate. DirtyDecrypt, CVE-2026-31635, an rxgk missing copy-on-write guard that only hits Fedora, Arch, and openSUSE, with a PoC released anyway. A small sealed packet of light in a dark void, one freshly added clasp glowing faint green while a faint marking beside it dissolves into gray.",
+    "Zellic and V12 reported DirtyDecrypt May 9 and maintainers replied it was a duplicate already patched in mainline: no CVE, no advisory, no coordinated disclosure. Researchers went public on realizing the fix was silent, releasing a PoC, and NVD later linked CVE-2026-31635. Two facing panels of light, a message rising from the left and a single flat dismissive pulse answering from the right.",
+    "Only distros with CONFIG_RXGK enabled are affected: Fedora, Arch Linux, and openSUSE Tumbleweed, and in containers a vulnerable worker node can give a pod escape path. CVSS 7.5: the missing guard in rxgk_decrypt_skb writes to /etc/shadow, /etc/sudoers, and SUID binaries. Three identical emblems of light glow hot red while three others nearby stay dark and dormant.",
+    "rxgk_decrypt_skb decrypts an incoming sk_buff whose pages are shared with other processes' page cache, where copy-on-write should protect shared pages but the COW guard was missing. Data lands in privileged memory or files, leading to LPE. A translucent buffer of light is unsealed in place, a missing protective shell where a duplicate should have formed, its freed glow bleeding into a nearby locked vault.",
+    "Hyunwoo Kim, the Dirty Frag researcher, was forced public when the embargo broke after the patch merged, and another researcher independently analyzed the public commit and published, a standard n-day weaponization. Silent patches without CVEs leave defenders blind. A dark horizontal track runs from a quiet sealed mark, to a dismissed report fading out, to an independent spark, to a forced burst of red light.",
+    "Kernel developers are reviewing an emergency killswitch that disables a vulnerable function at runtime, returning an operator-supplied value on every CPU until disengage or reboot. Rocky Linux debuted an opt-in security repository for accelerated fixes. A split view of a mechanism running unchecked and overheating red beside the same mechanism with a kill lever thrown and held safe.",
+    "A silent patch is not a fix for defenders who do not know it exists. The kernel killswitch and security repos are symptoms of a disclosure process that leaves gaps. A single freshly sealed clasp glows green while the faint marking that should explain it fades to invisible gray.",
+    "Closing question: do you track silent kernel patches in your distro, or only CVEs? Save this for your next vulnerability management review. A single faint pulse of light on a clean dark end-card with open negative space."
   ],
   "sources": [
     {
@@ -409,13 +409,13 @@
     "licenses": [],
     "captions": [
       {
-        "start": 0.0,
+        "start": 0,
         "end": 0.8,
         "text": "Silent patch.",
         "words": [
           {
             "text": "Silent",
-            "start": 0.0,
+            "start": 0,
             "end": 0.56
           },
           {
@@ -537,7 +537,7 @@
       },
       {
         "start": 10.54,
-        "end": 13.0,
+        "end": 13,
         "text": "Maintainers said duplicate, already patched.",
         "words": [
           {
@@ -553,7 +553,7 @@
           {
             "text": "duplicate,",
             "start": 11.68,
-            "end": 12.0
+            "end": 12
           },
           {
             "text": "already",
@@ -563,7 +563,7 @@
           {
             "text": "patched.",
             "start": 12.7,
-            "end": 13.0
+            "end": 13
           }
         ]
       },
@@ -631,11 +631,11 @@
           {
             "text": "hits",
             "start": 16.78,
-            "end": 17.0
+            "end": 17
           },
           {
             "text": "Fedora,",
-            "start": 17.0,
+            "start": 17,
             "end": 17.46
           },
           {
@@ -1158,11 +1158,11 @@
           {
             "text": "silent",
             "start": 53.66,
-            "end": 54.0
+            "end": 54
           },
           {
             "text": "kernel",
-            "start": 54.0,
+            "start": 54,
             "end": 54.24
           },
           {
