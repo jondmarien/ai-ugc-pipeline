@@ -499,7 +499,9 @@ git commit -m "fix(art): fully abstract the 3 still-garbling backgrounds (dirtyd
 06-11: `bluehammer-cve-2026-33825`, `greatxml-bitlocker-bypass`, `greenplasma-system-lpe`, `miniplasma-patched-lpe`, `redsun-windows-lpe`, `undefend-defender-dos`, `yellowkey-cve-2026-50507`
 06-12: `fable5-jailbreak-panic`
 
-**Per-post procedure (repeat; one commit per post):**
+**Use the `/refresh-post` command** (the retrofit is now baked into its `copy`+`prompts` scope): for each post run `/refresh-post <key> | scope=copy,prompts | no-render`, which performs Steps B–F below and validates to zero advisories. dirtydecrypt-linux-lpe is already DONE (the style template). Remaining 14: cve-2026-23111-one-char, dirty-frag-linux-lpe, fragnesia-linux-lpe, nightmare-eclipse-github-removal, rogueplanet-windows-zero-day, bluehammer-cve-2026-33825, greatxml-bitlocker-bypass, greenplasma-system-lpe, miniplasma-patched-lpe, redsun-windows-lpe, undefend-defender-dos, yellowkey-cve-2026-50507, fable5-jailbreak-panic. (Note: fragnesia slide 2 "map" and any other lingering `visual_prompt` advisory get cleared by the `prompts` scope.)
+
+**Per-post procedure (what `/refresh-post … scope=copy,prompts` does; repeat; one commit per post):**
 
 - [ ] **Step A: Read the post + its sources.** Note the verified facts (never alter a sourced claim or `claim_tag`). Run `bun run validate -- <key>` and record the copy advisories (which slides are over budget).
 
