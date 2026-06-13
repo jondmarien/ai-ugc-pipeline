@@ -423,1526 +423,1526 @@
     "captions": [
       {
         "start": 0.0,
-        "end": 2.02,
+        "end": 1.72,
         "text": "The US government pulled a frontier model",
         "words": [
           {
             "text": "The",
             "start": 0.0,
-            "end": 0.34
+            "end": 0.16
           },
           {
             "text": "US",
-            "start": 0.34,
-            "end": 0.52
+            "start": 0.16,
+            "end": 0.34
           },
           {
             "text": "government",
-            "start": 0.52,
-            "end": 0.92
+            "start": 0.34,
+            "end": 0.68
           },
           {
             "text": "pulled",
-            "start": 0.92,
-            "end": 1.3
+            "start": 0.68,
+            "end": 1.04
           },
           {
             "text": "a",
-            "start": 1.3,
-            "end": 1.44
+            "start": 1.04,
+            "end": 1.18
           },
           {
             "text": "frontier",
-            "start": 1.44,
-            "end": 1.68
+            "start": 1.18,
+            "end": 1.42
           },
           {
             "text": "model",
-            "start": 1.68,
-            "end": 2.02
+            "start": 1.42,
+            "end": 1.72
           }
         ]
       },
       {
-        "start": 2.02,
-        "end": 3.98,
+        "start": 1.72,
+        "end": 3.6,
         "text": "over a jailbreak this week, and when",
         "words": [
           {
             "text": "over",
-            "start": 2.02,
-            "end": 2.46
+            "start": 1.72,
+            "end": 2.16
           },
           {
             "text": "a",
-            "start": 2.46,
-            "end": 2.54
+            "start": 2.16,
+            "end": 2.28
           },
           {
             "text": "jailbreak",
-            "start": 2.54,
-            "end": 2.96
+            "start": 2.28,
+            "end": 2.64
           },
           {
             "text": "this",
-            "start": 2.96,
-            "end": 3.2
+            "start": 2.64,
+            "end": 2.86
           },
           {
             "text": "week,",
-            "start": 3.2,
-            "end": 3.4
+            "start": 2.86,
+            "end": 3.06
           },
           {
             "text": "and",
-            "start": 3.78,
-            "end": 3.83
+            "start": 3.44,
+            "end": 3.5
           },
           {
             "text": "when",
-            "start": 3.82,
-            "end": 3.98
+            "start": 3.5,
+            "end": 3.6
           }
         ]
       },
       {
-        "start": 3.98,
-        "end": 6.14,
+        "start": 3.6,
+        "end": 5.56,
         "text": "Anthropic looked at the demonstration, it was",
         "words": [
           {
             "text": "Anthropic",
-            "start": 3.98,
-            "end": 4.52
+            "start": 3.6,
+            "end": 4.12
           },
           {
             "text": "looked",
-            "start": 4.52,
-            "end": 4.72
+            "start": 4.12,
+            "end": 4.28
           },
           {
             "text": "at",
-            "start": 4.72,
-            "end": 4.9
+            "start": 4.28,
+            "end": 4.46
           },
           {
             "text": "the",
-            "start": 4.9,
-            "end": 4.98
+            "start": 4.46,
+            "end": 4.52
           },
           {
             "text": "demonstration,",
-            "start": 4.98,
-            "end": 5.3
+            "start": 4.52,
+            "end": 4.88
           },
           {
             "text": "it",
-            "start": 5.98,
-            "end": 6.04
+            "start": 5.46,
+            "end": 5.51
           },
           {
             "text": "was",
-            "start": 6.04,
-            "end": 6.14
+            "start": 5.46,
+            "end": 5.56
           }
         ]
       },
       {
-        "start": 6.14,
-        "end": 7.64,
+        "start": 5.56,
+        "end": 7.1,
         "text": "someone asking the model to read a",
         "words": [
           {
             "text": "someone",
-            "start": 6.14,
-            "end": 6.36
+            "start": 5.56,
+            "end": 5.78
           },
           {
             "text": "asking",
-            "start": 6.36,
-            "end": 6.76
+            "start": 5.78,
+            "end": 6.18
           },
           {
             "text": "the",
-            "start": 6.76,
-            "end": 6.96
+            "start": 6.18,
+            "end": 6.4
           },
           {
             "text": "model",
-            "start": 6.96,
-            "end": 7.16
+            "start": 6.4,
+            "end": 6.58
           },
           {
             "text": "to",
-            "start": 7.16,
-            "end": 7.36
+            "start": 6.58,
+            "end": 6.84
           },
           {
             "text": "read",
-            "start": 7.36,
-            "end": 7.54
+            "start": 6.84,
+            "end": 7.0
           },
           {
             "text": "a",
-            "start": 7.54,
-            "end": 7.64
+            "start": 7.0,
+            "end": 7.1
           }
         ]
       },
       {
-        "start": 7.64,
-        "end": 9.24,
+        "start": 7.1,
+        "end": 8.72,
         "text": "codebase and fix software flaws.",
         "words": [
           {
             "text": "codebase",
-            "start": 7.64,
-            "end": 8.08
+            "start": 7.1,
+            "end": 7.56
           },
           {
             "text": "and",
-            "start": 8.08,
-            "end": 8.32
+            "start": 7.56,
+            "end": 7.82
           },
           {
             "text": "fix",
-            "start": 8.32,
-            "end": 8.54
+            "start": 7.82,
+            "end": 8.02
           },
           {
             "text": "software",
-            "start": 8.54,
-            "end": 8.88
+            "start": 8.02,
+            "end": 8.32
           },
           {
             "text": "flaws.",
-            "start": 8.88,
-            "end": 9.24
+            "start": 8.32,
+            "end": 8.72
           }
         ]
       },
       {
-        "start": 10.26,
-        "end": 12.56,
+        "start": 9.42,
+        "end": 11.48,
         "text": "Anthropic launched Claude Fable 5 on June",
         "words": [
           {
             "text": "Anthropic",
-            "start": 10.26,
-            "end": 10.86
+            "start": 9.42,
+            "end": 9.84
           },
           {
             "text": "launched",
-            "start": 10.86,
-            "end": 11.12
+            "start": 9.84,
+            "end": 10.06
           },
           {
             "text": "Claude",
-            "start": 11.12,
-            "end": 11.31
+            "start": 10.06,
+            "end": 10.38
           },
           {
             "text": "Fable",
-            "start": 11.5,
-            "end": 11.8
+            "start": 10.38,
+            "end": 10.72
           },
           {
             "text": "5",
-            "start": 11.8,
-            "end": 12.2
+            "start": 10.72,
+            "end": 11.08
           },
           {
             "text": "on",
-            "start": 12.2,
-            "end": 12.38
+            "start": 11.08,
+            "end": 11.3
           },
           {
             "text": "June",
-            "start": 12.38,
-            "end": 12.56
+            "start": 11.3,
+            "end": 11.48
           }
         ]
       },
       {
-        "start": 12.56,
-        "end": 14.94,
+        "start": 11.48,
+        "end": 13.66,
         "text": "ninth as its first publicly available frontier",
         "words": [
           {
             "text": "ninth",
-            "start": 12.56,
-            "end": 12.84
+            "start": 11.48,
+            "end": 11.73
           },
           {
             "text": "as",
-            "start": 13.12,
-            "end": 13.24
+            "start": 11.98,
+            "end": 12.1
           },
           {
             "text": "its",
-            "start": 13.24,
-            "end": 13.34
+            "start": 12.1,
+            "end": 12.24
           },
           {
             "text": "first",
-            "start": 13.34,
-            "end": 13.7
+            "start": 12.24,
+            "end": 12.48
           },
           {
             "text": "publicly",
-            "start": 13.7,
-            "end": 14.02
+            "start": 12.48,
+            "end": 12.76
           },
           {
             "text": "available",
-            "start": 14.02,
-            "end": 14.54
+            "start": 12.76,
+            "end": 13.26
           },
           {
             "text": "frontier",
-            "start": 14.54,
-            "end": 14.94
+            "start": 13.26,
+            "end": 13.66
           }
         ]
       },
       {
-        "start": 14.94,
-        "end": 17.2,
+        "start": 13.66,
+        "end": 15.96,
         "text": "model, and three days later a US",
         "words": [
           {
             "text": "model,",
-            "start": 14.94,
-            "end": 15.48
+            "start": 13.66,
+            "end": 14.18
           },
           {
             "text": "and",
-            "start": 15.78,
-            "end": 15.9
+            "start": 14.5,
+            "end": 14.72
           },
           {
             "text": "three",
-            "start": 15.9,
-            "end": 16.12
+            "start": 14.72,
+            "end": 14.9
           },
           {
             "text": "days",
-            "start": 16.12,
-            "end": 16.32
+            "start": 14.9,
+            "end": 15.08
           },
           {
             "text": "later",
-            "start": 16.32,
-            "end": 16.68
+            "start": 15.08,
+            "end": 15.42
           },
           {
             "text": "a",
-            "start": 16.94,
-            "end": 16.99
+            "start": 15.68,
+            "end": 15.73
           },
           {
             "text": "US",
-            "start": 16.96,
-            "end": 17.2
+            "start": 15.7,
+            "end": 15.96
           }
         ]
       },
       {
-        "start": 17.2,
-        "end": 20.36,
+        "start": 15.96,
+        "end": 19.1,
         "text": "export-control directive ordered access suspended for any",
         "words": [
           {
             "text": "export-control",
-            "start": 17.2,
-            "end": 17.59
+            "start": 15.96,
+            "end": 16.32
           },
           {
             "text": "directive",
-            "start": 17.98,
-            "end": 18.42
+            "start": 16.68,
+            "end": 17.14
           },
           {
             "text": "ordered",
-            "start": 18.42,
-            "end": 18.9
+            "start": 17.14,
+            "end": 17.68
           },
           {
             "text": "access",
-            "start": 18.9,
-            "end": 19.32
+            "start": 17.68,
+            "end": 18.12
           },
           {
             "text": "suspended",
-            "start": 19.32,
-            "end": 19.76
+            "start": 18.12,
+            "end": 18.54
           },
           {
             "text": "for",
-            "start": 19.76,
-            "end": 20.1
+            "start": 18.54,
+            "end": 18.9
           },
           {
             "text": "any",
-            "start": 20.1,
-            "end": 20.36
+            "start": 18.9,
+            "end": 19.1
           }
         ]
       },
       {
-        "start": 20.36,
-        "end": 21.06,
+        "start": 19.1,
+        "end": 19.72,
         "text": "foreign national.",
         "words": [
           {
             "text": "foreign",
-            "start": 20.36,
-            "end": 20.64
+            "start": 19.1,
+            "end": 19.34
           },
           {
             "text": "national.",
-            "start": 20.64,
-            "end": 21.06
+            "start": 19.34,
+            "end": 19.72
           }
         ]
       },
       {
-        "start": 21.06,
-        "end": 23.7,
+        "start": 19.72,
+        "end": 22.18,
         "text": "The trigger was a claimed bypass, not",
         "words": [
           {
             "text": "The",
-            "start": 21.06,
-            "end": 21.92
+            "start": 19.72,
+            "end": 20.38
           },
           {
             "text": "trigger",
-            "start": 21.92,
-            "end": 22.2
+            "start": 20.38,
+            "end": 20.62
           },
           {
             "text": "was",
-            "start": 22.2,
-            "end": 22.38
+            "start": 20.62,
+            "end": 20.82
           },
           {
             "text": "a",
-            "start": 22.38,
-            "end": 22.467
+            "start": 20.82,
+            "end": 20.913
           },
           {
             "text": "claimed",
-            "start": 22.467,
-            "end": 22.553
+            "start": 20.913,
+            "end": 21.007
           },
           {
             "text": "bypass,",
-            "start": 22.64,
-            "end": 22.98
+            "start": 21.1,
+            "end": 21.46
           },
           {
             "text": "not",
-            "start": 23.5,
-            "end": 23.7
+            "start": 22.0,
+            "end": 22.18
           }
         ]
       },
       {
-        "start": 23.7,
-        "end": 25.74,
+        "start": 22.18,
+        "end": 24.12,
         "text": "a confirmed attack, and suspending a model",
         "words": [
           {
             "text": "a",
-            "start": 23.7,
-            "end": 23.8
+            "start": 22.18,
+            "end": 22.26
           },
           {
             "text": "confirmed",
-            "start": 23.8,
-            "end": 24.08
+            "start": 22.26,
+            "end": 22.56
           },
           {
             "text": "attack,",
-            "start": 24.08,
-            "end": 24.36
+            "start": 22.56,
+            "end": 22.82
           },
           {
             "text": "and",
-            "start": 24.82,
-            "end": 24.92
+            "start": 23.34,
+            "end": 23.42
           },
           {
             "text": "suspending",
-            "start": 24.92,
-            "end": 25.2
+            "start": 23.42,
+            "end": 23.6
           },
           {
             "text": "a",
-            "start": 25.2,
-            "end": 25.54
+            "start": 23.6,
+            "end": 23.94
           },
           {
             "text": "model",
-            "start": 25.54,
-            "end": 25.74
+            "start": 23.94,
+            "end": 24.12
           }
         ]
       },
       {
-        "start": 25.74,
-        "end": 27.7,
+        "start": 24.12,
+        "end": 25.96,
         "text": "used by hundreds of millions over a",
         "words": [
           {
             "text": "used",
-            "start": 25.74,
-            "end": 26.04
+            "start": 24.12,
+            "end": 24.46
           },
           {
             "text": "by",
-            "start": 26.04,
-            "end": 26.28
+            "start": 24.46,
+            "end": 24.66
           },
           {
             "text": "hundreds",
-            "start": 26.28,
-            "end": 26.58
+            "start": 24.66,
+            "end": 24.92
           },
           {
             "text": "of",
-            "start": 26.58,
-            "end": 26.82
+            "start": 24.92,
+            "end": 25.12
           },
           {
             "text": "millions",
-            "start": 26.82,
-            "end": 27.12
+            "start": 25.12,
+            "end": 25.38
           },
           {
             "text": "over",
-            "start": 27.12,
-            "end": 27.56
+            "start": 25.38,
+            "end": 25.84
           },
           {
             "text": "a",
-            "start": 27.56,
-            "end": 27.7
+            "start": 25.84,
+            "end": 25.96
           }
         ]
       },
       {
-        "start": 27.7,
-        "end": 30.28,
+        "start": 25.96,
+        "end": 28.26,
         "text": "single disputed technique sets a precedent the",
         "words": [
           {
             "text": "single",
-            "start": 27.7,
-            "end": 27.92
+            "start": 25.96,
+            "end": 26.24
           },
           {
             "text": "disputed",
-            "start": 27.92,
-            "end": 28.4
+            "start": 26.24,
+            "end": 26.72
           },
           {
             "text": "technique",
-            "start": 28.4,
-            "end": 28.84
+            "start": 26.72,
+            "end": 27.1
           },
           {
             "text": "sets",
-            "start": 28.84,
-            "end": 29.32
+            "start": 27.1,
+            "end": 27.54
           },
           {
             "text": "a",
-            "start": 29.32,
-            "end": 29.5
+            "start": 27.54,
+            "end": 27.68
           },
           {
             "text": "precedent",
-            "start": 29.5,
-            "end": 29.84
+            "start": 27.68,
+            "end": 28.0
           },
           {
             "text": "the",
-            "start": 29.84,
-            "end": 30.28
+            "start": 28.0,
+            "end": 28.26
           }
         ]
       },
       {
-        "start": 30.28,
-        "end": 31.46,
+        "start": 28.26,
+        "end": 29.32,
         "text": "whole industry should watch.",
         "words": [
           {
             "text": "whole",
-            "start": 30.28,
-            "end": 30.44
+            "start": 28.26,
+            "end": 28.4
           },
           {
             "text": "industry",
-            "start": 30.44,
-            "end": 30.82
+            "start": 28.4,
+            "end": 28.74
           },
           {
             "text": "should",
-            "start": 30.82,
-            "end": 31.14
+            "start": 28.74,
+            "end": 29.04
           },
           {
             "text": "watch.",
-            "start": 31.14,
-            "end": 31.46
+            "start": 29.04,
+            "end": 29.32
           }
         ]
       },
       {
-        "start": 32.68,
-        "end": 35.54,
+        "start": 30.0,
+        "end": 32.38,
         "text": "A researcher separately chained unicode tricks, long",
         "words": [
           {
             "text": "A",
-            "start": 32.68,
-            "end": 32.98
+            "start": 30.0,
+            "end": 30.08
           },
           {
             "text": "researcher",
-            "start": 32.98,
-            "end": 33.3
+            "start": 30.08,
+            "end": 30.38
           },
           {
             "text": "separately",
-            "start": 33.3,
-            "end": 33.86
+            "start": 30.38,
+            "end": 30.82
           },
           {
             "text": "chained",
-            "start": 33.86,
-            "end": 34.26
+            "start": 30.82,
+            "end": 31.2
           },
           {
             "text": "unicode",
-            "start": 34.26,
-            "end": 34.52
+            "start": 31.2,
+            "end": 31.44
           },
           {
             "text": "tricks,",
-            "start": 34.52,
-            "end": 34.98
+            "start": 31.44,
+            "end": 31.86
           },
           {
             "text": "long",
-            "start": 35.46,
-            "end": 35.54
+            "start": 32.3,
+            "end": 32.38
           }
         ]
       },
       {
-        "start": 35.54,
-        "end": 37.74,
+        "start": 32.38,
+        "end": 34.42,
         "text": "context, and narrative framing to talk past",
         "words": [
           {
             "text": "context,",
-            "start": 35.54,
-            "end": 36.0
+            "start": 32.38,
+            "end": 32.82
           },
           {
             "text": "and",
-            "start": 36.38,
-            "end": 36.43
+            "start": 33.14,
+            "end": 33.19
           },
           {
             "text": "narrative",
-            "start": 36.4,
-            "end": 36.62
+            "start": 33.16,
+            "end": 33.4
           },
           {
             "text": "framing",
-            "start": 36.62,
-            "end": 36.94
+            "start": 33.4,
+            "end": 33.72
           },
           {
             "text": "to",
-            "start": 36.94,
-            "end": 37.22
+            "start": 33.72,
+            "end": 34.0
           },
           {
             "text": "talk",
-            "start": 37.22,
-            "end": 37.42
+            "start": 34.0,
+            "end": 34.16
           },
           {
             "text": "past",
-            "start": 37.42,
-            "end": 37.74
+            "start": 34.16,
+            "end": 34.42
           }
         ]
       },
       {
-        "start": 37.74,
-        "end": 40.54,
+        "start": 34.42,
+        "end": 37.08,
         "text": "the model's spoken refusals, but Anthropic's strongest",
         "words": [
           {
             "text": "the",
-            "start": 37.74,
-            "end": 37.96
+            "start": 34.42,
+            "end": 34.62
           },
           {
             "text": "model's",
-            "start": 37.96,
-            "end": 38.3
+            "start": 34.62,
+            "end": 34.94
           },
           {
             "text": "spoken",
-            "start": 38.3,
-            "end": 38.5
+            "start": 34.94,
+            "end": 35.14
           },
           {
             "text": "refusals,",
-            "start": 38.5,
-            "end": 39.12
+            "start": 35.14,
+            "end": 35.74
           },
           {
             "text": "but",
-            "start": 39.5,
-            "end": 39.66
+            "start": 36.1,
+            "end": 36.32
           },
           {
             "text": "Anthropic's",
-            "start": 39.66,
-            "end": 40.28
+            "start": 36.32,
+            "end": 36.86
           },
           {
             "text": "strongest",
-            "start": 40.28,
-            "end": 40.54
+            "start": 36.86,
+            "end": 37.08
           }
         ]
       },
       {
-        "start": 40.54,
-        "end": 43.18,
+        "start": 37.08,
+        "end": 39.6,
         "text": "safeguards run as independent classifiers that sit",
         "words": [
           {
             "text": "safeguards",
-            "start": 40.54,
-            "end": 41.1
+            "start": 37.08,
+            "end": 37.62
           },
           {
             "text": "run",
-            "start": 41.1,
-            "end": 41.44
+            "start": 37.62,
+            "end": 37.92
           },
           {
             "text": "as",
-            "start": 41.44,
-            "end": 41.66
+            "start": 37.92,
+            "end": 38.06
           },
           {
             "text": "independent",
-            "start": 41.66,
-            "end": 41.92
+            "start": 38.06,
+            "end": 38.3
           },
           {
             "text": "classifiers",
-            "start": 41.92,
-            "end": 42.72
+            "start": 38.3,
+            "end": 39.1
           },
           {
             "text": "that",
-            "start": 42.72,
-            "end": 43.0
+            "start": 39.1,
+            "end": 39.44
           },
           {
             "text": "sit",
-            "start": 43.0,
-            "end": 43.18
+            "start": 39.44,
+            "end": 39.6
           }
         ]
       },
       {
-        "start": 43.18,
-        "end": 44.38,
+        "start": 39.6,
+        "end": 40.68,
         "text": "outside the model entirely.",
         "words": [
           {
             "text": "outside",
-            "start": 43.18,
-            "end": 43.36
+            "start": 39.6,
+            "end": 39.78
           },
           {
             "text": "the",
-            "start": 43.36,
-            "end": 43.7
+            "start": 39.78,
+            "end": 40.08
           },
           {
             "text": "model",
-            "start": 43.7,
-            "end": 43.9
+            "start": 40.08,
+            "end": 40.26
           },
           {
             "text": "entirely.",
-            "start": 43.9,
-            "end": 44.38
+            "start": 40.26,
+            "end": 40.68
           }
         ]
       },
       {
-        "start": 44.38,
-        "end": 46.54,
+        "start": 40.68,
+        "end": 42.66,
         "text": "Getting a model to skip a polite",
         "words": [
           {
             "text": "Getting",
-            "start": 44.38,
-            "end": 45.32
+            "start": 40.68,
+            "end": 41.48
           },
           {
             "text": "a",
-            "start": 45.32,
-            "end": 45.54
+            "start": 41.48,
+            "end": 41.66
           },
           {
             "text": "model",
-            "start": 45.54,
-            "end": 45.68
+            "start": 41.66,
+            "end": 41.8
           },
           {
             "text": "to",
-            "start": 45.68,
-            "end": 45.94
+            "start": 41.8,
+            "end": 42.06
           },
           {
             "text": "skip",
-            "start": 45.94,
-            "end": 46.14
+            "start": 42.06,
+            "end": 42.26
           },
           {
             "text": "a",
-            "start": 46.14,
-            "end": 46.32
+            "start": 42.26,
+            "end": 42.42
           },
           {
             "text": "polite",
-            "start": 46.32,
-            "end": 46.54
+            "start": 42.42,
+            "end": 42.66
           }
         ]
       },
       {
-        "start": 46.54,
-        "end": 48.32,
+        "start": 42.66,
+        "end": 44.26,
         "text": "refusal is not the same as defeating",
         "words": [
           {
             "text": "refusal",
-            "start": 46.54,
-            "end": 46.88
+            "start": 42.66,
+            "end": 42.94
           },
           {
             "text": "is",
-            "start": 46.88,
-            "end": 47.34
+            "start": 42.94,
+            "end": 43.34
           },
           {
             "text": "not",
-            "start": 47.34,
-            "end": 47.54
+            "start": 43.34,
+            "end": 43.5
           },
           {
             "text": "the",
-            "start": 47.54,
-            "end": 47.7
+            "start": 43.5,
+            "end": 43.66
           },
           {
             "text": "same",
-            "start": 47.7,
-            "end": 47.88
+            "start": 43.66,
+            "end": 43.84
           },
           {
             "text": "as",
-            "start": 47.88,
-            "end": 48.02
+            "start": 43.84,
+            "end": 44.0
           },
           {
             "text": "defeating",
-            "start": 48.02,
-            "end": 48.32
+            "start": 44.0,
+            "end": 44.26
           }
         ]
       },
       {
-        "start": 48.32,
-        "end": 51.26,
+        "start": 44.26,
+        "end": 46.98,
         "text": "those external classifiers, and Anthropic says its",
         "words": [
           {
             "text": "those",
-            "start": 48.32,
-            "end": 48.6
+            "start": 44.26,
+            "end": 44.54
           },
           {
             "text": "external",
-            "start": 48.6,
-            "end": 48.94
+            "start": 44.54,
+            "end": 44.9
           },
           {
             "text": "classifiers,",
-            "start": 48.94,
-            "end": 49.68
+            "start": 44.9,
+            "end": 45.56
           },
           {
             "text": "and",
-            "start": 50.18,
-            "end": 50.32
+            "start": 46.04,
+            "end": 46.09
           },
           {
             "text": "Anthropic",
-            "start": 50.32,
-            "end": 50.86
+            "start": 46.08,
+            "end": 46.52
           },
           {
             "text": "says",
-            "start": 50.86,
-            "end": 51.06
+            "start": 46.52,
+            "end": 46.76
           },
           {
             "text": "its",
-            "start": 51.06,
-            "end": 51.26
+            "start": 46.76,
+            "end": 46.98
           }
         ]
       },
       {
-        "start": 51.26,
-        "end": 53.52,
+        "start": 46.98,
+        "end": 49.24,
         "text": "usage review found no evidence of real-world",
         "words": [
           {
             "text": "usage",
-            "start": 51.26,
-            "end": 51.48
+            "start": 46.98,
+            "end": 47.22
           },
           {
             "text": "review",
-            "start": 51.48,
-            "end": 51.86
+            "start": 47.22,
+            "end": 47.56
           },
           {
             "text": "found",
-            "start": 51.86,
-            "end": 52.2
+            "start": 47.56,
+            "end": 47.9
           },
           {
             "text": "no",
-            "start": 52.2,
-            "end": 52.46
+            "start": 47.9,
+            "end": 48.16
           },
           {
             "text": "evidence",
-            "start": 52.46,
-            "end": 52.68
+            "start": 48.16,
+            "end": 48.38
           },
           {
             "text": "of",
-            "start": 52.68,
-            "end": 53.04
+            "start": 48.38,
+            "end": 48.7
           },
           {
             "text": "real-world",
-            "start": 53.04,
-            "end": 53.52
+            "start": 48.7,
+            "end": 49.24
           }
         ]
       },
       {
-        "start": 53.52,
-        "end": 54.14,
+        "start": 49.24,
+        "end": 49.86,
         "text": "circumvention.",
         "words": [
           {
             "text": "circumvention.",
-            "start": 53.52,
-            "end": 54.14
+            "start": 49.24,
+            "end": 49.86
           }
         ]
       },
       {
-        "start": 54.92,
-        "end": 57.66,
+        "start": 50.82,
+        "end": 53.32,
         "text": "Anthropic also disputes the evidence itself: some",
         "words": [
           {
             "text": "Anthropic",
-            "start": 54.92,
-            "end": 55.48
+            "start": 50.82,
+            "end": 51.34
           },
           {
             "text": "also",
-            "start": 55.48,
-            "end": 55.76
+            "start": 51.34,
+            "end": 51.62
           },
           {
             "text": "disputes",
-            "start": 55.76,
-            "end": 56.1
+            "start": 51.62,
+            "end": 51.92
           },
           {
             "text": "the",
-            "start": 56.1,
-            "end": 56.4
+            "start": 51.92,
+            "end": 52.2
           },
           {
             "text": "evidence",
-            "start": 56.4,
-            "end": 56.6
+            "start": 52.2,
+            "end": 52.4
           },
           {
             "text": "itself:",
-            "start": 56.6,
-            "end": 56.96
+            "start": 52.4,
+            "end": 52.82
           },
           {
             "text": "some",
-            "start": 57.52,
-            "end": 57.66
+            "start": 53.22,
+            "end": 53.32
           }
         ]
       },
       {
-        "start": 57.66,
-        "end": 59.14,
+        "start": 53.32,
+        "end": 54.74,
         "text": "of the shared outputs were not from",
         "words": [
           {
             "text": "of",
-            "start": 57.66,
-            "end": 57.8
+            "start": 53.32,
+            "end": 53.44
           },
           {
             "text": "the",
-            "start": 57.8,
-            "end": 57.9
+            "start": 53.44,
+            "end": 53.52
           },
           {
             "text": "shared",
-            "start": 57.9,
-            "end": 58.12
+            "start": 53.52,
+            "end": 53.72
           },
           {
             "text": "outputs",
-            "start": 58.12,
-            "end": 58.46
+            "start": 53.72,
+            "end": 54.08
           },
           {
             "text": "were",
-            "start": 58.46,
-            "end": 58.74
+            "start": 54.08,
+            "end": 54.36
           },
           {
             "text": "not",
-            "start": 58.74,
-            "end": 58.9
+            "start": 54.36,
+            "end": 54.54
           },
           {
             "text": "from",
-            "start": 58.9,
-            "end": 59.14
+            "start": 54.54,
+            "end": 54.74
           }
         ]
       },
       {
-        "start": 59.14,
-        "end": 60.72,
+        "start": 54.74,
+        "end": 56.2,
         "text": "Fable 5 at all, and the rest",
         "words": [
           {
             "text": "Fable",
-            "start": 59.14,
-            "end": 59.36
+            "start": 54.74,
+            "end": 54.96
           },
           {
             "text": "5",
-            "start": 59.36,
-            "end": 59.66
+            "start": 54.96,
+            "end": 55.24
           },
           {
             "text": "at",
-            "start": 59.66,
-            "end": 59.84
+            "start": 55.24,
+            "end": 55.44
           },
           {
             "text": "all,",
-            "start": 59.84,
-            "end": 60.0
+            "start": 55.44,
+            "end": 55.56
           },
           {
             "text": "and",
-            "start": 60.4,
-            "end": 60.45
+            "start": 55.92,
+            "end": 55.97
           },
           {
             "text": "the",
-            "start": 60.44,
-            "end": 60.56
+            "start": 55.96,
+            "end": 56.08
           },
           {
             "text": "rest",
-            "start": 60.56,
-            "end": 60.72
+            "start": 56.08,
+            "end": 56.2
           }
         ]
       },
       {
-        "start": 60.72,
-        "end": 63.18,
+        "start": 56.2,
+        "end": 58.64,
         "text": "repeated information already available in public sources",
         "words": [
           {
             "text": "repeated",
-            "start": 60.72,
-            "end": 61.1
+            "start": 56.2,
+            "end": 56.54
           },
           {
             "text": "information",
-            "start": 61.1,
-            "end": 61.48
+            "start": 56.54,
+            "end": 57.0
           },
           {
             "text": "already",
-            "start": 61.48,
-            "end": 62.02
+            "start": 57.0,
+            "end": 57.42
           },
           {
             "text": "available",
-            "start": 62.02,
-            "end": 62.36
+            "start": 57.42,
+            "end": 57.82
           },
           {
             "text": "in",
-            "start": 62.36,
-            "end": 62.7
+            "start": 57.82,
+            "end": 58.12
           },
           {
             "text": "public",
-            "start": 62.7,
-            "end": 62.86
+            "start": 58.12,
+            "end": 58.28
           },
           {
             "text": "sources",
-            "start": 62.86,
-            "end": 63.18
+            "start": 58.28,
+            "end": 58.64
           }
         ]
       },
       {
-        "start": 63.18,
-        "end": 64.82,
+        "start": 58.64,
+        "end": 60.04,
         "text": "with no meaningful uplift.",
         "words": [
           {
             "text": "with",
-            "start": 63.18,
-            "end": 63.76
+            "start": 58.64,
+            "end": 59.0
           },
           {
             "text": "no",
-            "start": 63.76,
-            "end": 64.0
+            "start": 59.0,
+            "end": 59.24
           },
           {
             "text": "meaningful",
-            "start": 64.0,
-            "end": 64.3
+            "start": 59.24,
+            "end": 59.5
           },
           {
             "text": "uplift.",
-            "start": 64.3,
-            "end": 64.82
+            "start": 59.5,
+            "end": 60.04
           }
         ]
       },
       {
-        "start": 64.82,
-        "end": 68.02,
+        "start": 60.04,
+        "end": 62.56,
         "text": "Before you escalate any jailbreak claim, ask",
         "words": [
           {
             "text": "Before",
-            "start": 64.82,
-            "end": 65.78
+            "start": 60.04,
+            "end": 60.7
           },
           {
             "text": "you",
-            "start": 65.78,
-            "end": 66.1
+            "start": 60.7,
+            "end": 60.98
           },
           {
             "text": "escalate",
-            "start": 66.1,
-            "end": 66.34
+            "start": 60.98,
+            "end": 61.22
           },
           {
             "text": "any",
-            "start": 66.34,
-            "end": 66.74
+            "start": 61.22,
+            "end": 61.56
           },
           {
             "text": "jailbreak",
-            "start": 66.74,
-            "end": 67.18
+            "start": 61.56,
+            "end": 61.96
           },
           {
             "text": "claim,",
-            "start": 67.18,
-            "end": 67.42
+            "start": 61.96,
+            "end": 62.2
           },
           {
             "text": "ask",
-            "start": 67.84,
-            "end": 68.02
+            "start": 62.44,
+            "end": 62.56
           }
         ]
       },
       {
-        "start": 68.02,
-        "end": 70.1,
+        "start": 62.56,
+        "end": 64.64,
         "text": "four questions: is it a refusal bypass",
         "words": [
           {
             "text": "four",
-            "start": 68.02,
-            "end": 68.26
+            "start": 62.56,
+            "end": 62.69
           },
           {
             "text": "questions:",
-            "start": 68.26,
-            "end": 68.66
+            "start": 62.82,
+            "end": 63.12
           },
           {
             "text": "is",
-            "start": 69.26,
-            "end": 69.31
+            "start": 63.84,
+            "end": 63.89
           },
           {
             "text": "it",
-            "start": 69.3,
-            "end": 69.42
+            "start": 63.88,
+            "end": 63.98
           },
           {
             "text": "a",
-            "start": 69.42,
-            "end": 69.5
+            "start": 63.98,
+            "end": 64.06
           },
           {
             "text": "refusal",
-            "start": 69.5,
-            "end": 69.78
+            "start": 64.06,
+            "end": 64.32
           },
           {
             "text": "bypass",
-            "start": 69.78,
-            "end": 70.1
+            "start": 64.32,
+            "end": 64.64
           }
         ]
       },
       {
-        "start": 70.66,
-        "end": 72.46,
+        "start": 65.16,
+        "end": 67.02,
         "text": "or a real safeguard bypass, does the",
         "words": [
           {
             "text": "or",
-            "start": 70.66,
-            "end": 70.71
+            "start": 65.16,
+            "end": 65.21
           },
           {
             "text": "a",
-            "start": 70.7,
-            "end": 70.78
+            "start": 65.2,
+            "end": 65.3
           },
           {
             "text": "real",
-            "start": 70.78,
-            "end": 70.9
+            "start": 65.3,
+            "end": 65.42
           },
           {
             "text": "safeguard",
-            "start": 70.9,
-            "end": 71.24
+            "start": 65.42,
+            "end": 65.78
           },
           {
             "text": "bypass,",
-            "start": 71.24,
-            "end": 71.76
+            "start": 65.78,
+            "end": 66.24
           },
           {
             "text": "does",
-            "start": 72.24,
-            "end": 72.32
+            "start": 66.74,
+            "end": 66.88
           },
           {
             "text": "the",
-            "start": 72.32,
-            "end": 72.46
+            "start": 66.88,
+            "end": 67.02
           }
         ]
       },
       {
-        "start": 72.46,
-        "end": 74.38,
+        "start": 67.02,
+        "end": 69.1,
         "text": "output beat what is already public, is",
         "words": [
           {
             "text": "output",
-            "start": 72.46,
-            "end": 72.68
+            "start": 67.02,
+            "end": 67.24
           },
           {
             "text": "beat",
-            "start": 72.68,
-            "end": 73.02
+            "start": 67.24,
+            "end": 67.56
           },
           {
             "text": "what",
-            "start": 73.02,
-            "end": 73.2
+            "start": 67.56,
+            "end": 67.76
           },
           {
             "text": "is",
-            "start": 73.2,
-            "end": 73.32
+            "start": 67.76,
+            "end": 67.86
           },
           {
             "text": "already",
-            "start": 73.32,
-            "end": 73.54
+            "start": 67.86,
+            "end": 68.1
           },
           {
             "text": "public,",
-            "start": 73.54,
-            "end": 73.82
+            "start": 68.1,
+            "end": 68.44
           },
           {
             "text": "is",
-            "start": 74.3,
-            "end": 74.38
+            "start": 68.98,
+            "end": 69.1
           }
         ]
       },
       {
-        "start": 74.38,
-        "end": 76.24,
+        "start": 69.1,
+        "end": 70.9,
         "text": "there evidence of actual harm, and was",
         "words": [
           {
             "text": "there",
-            "start": 74.38,
-            "end": 74.48
+            "start": 69.1,
+            "end": 69.22
           },
           {
             "text": "evidence",
-            "start": 74.48,
-            "end": 74.72
+            "start": 69.22,
+            "end": 69.44
           },
           {
             "text": "of",
-            "start": 74.72,
-            "end": 74.98
+            "start": 69.44,
+            "end": 69.74
           },
           {
             "text": "actual",
-            "start": 74.98,
-            "end": 75.22
+            "start": 69.74,
+            "end": 69.98
           },
           {
             "text": "harm,",
-            "start": 75.22,
-            "end": 75.6
+            "start": 69.98,
+            "end": 70.32
           },
           {
             "text": "and",
-            "start": 75.94,
-            "end": 76.1
+            "start": 70.6,
+            "end": 70.74
           },
           {
             "text": "was",
-            "start": 76.1,
-            "end": 76.24
+            "start": 70.74,
+            "end": 70.9
           }
         ]
       },
       {
-        "start": 76.24,
-        "end": 77.66,
+        "start": 70.9,
+        "end": 72.32,
         "text": "the demo independently reproduced?",
         "words": [
           {
             "text": "the",
-            "start": 76.24,
-            "end": 76.38
+            "start": 70.9,
+            "end": 71.04
           },
           {
             "text": "demo",
-            "start": 76.38,
-            "end": 76.62
+            "start": 71.04,
+            "end": 71.28
           },
           {
             "text": "independently",
-            "start": 76.62,
-            "end": 77.14
+            "start": 71.28,
+            "end": 71.74
           },
           {
             "text": "reproduced?",
-            "start": 77.14,
-            "end": 77.66
+            "start": 71.74,
+            "end": 72.32
           }
         ]
       },
       {
-        "start": 79.16,
-        "end": 80.84,
+        "start": 73.78,
+        "end": 75.32,
         "text": "A refusal bypass is not a safeguard",
         "words": [
           {
             "text": "A",
-            "start": 79.16,
-            "end": 79.26
+            "start": 73.78,
+            "end": 73.88
           },
           {
             "text": "refusal",
-            "start": 79.26,
-            "end": 79.54
+            "start": 73.88,
+            "end": 74.1
           },
           {
             "text": "bypass",
-            "start": 79.54,
-            "end": 79.88
+            "start": 74.1,
+            "end": 74.42
           },
           {
             "text": "is",
-            "start": 79.88,
-            "end": 80.26
+            "start": 74.42,
+            "end": 74.78
           },
           {
             "text": "not",
-            "start": 80.26,
-            "end": 80.48
+            "start": 74.78,
+            "end": 74.96
           },
           {
             "text": "a",
-            "start": 80.48,
-            "end": 80.58
+            "start": 74.96,
+            "end": 75.06
           },
           {
             "text": "safeguard",
-            "start": 80.58,
-            "end": 80.84
+            "start": 75.06,
+            "end": 75.32
           }
         ]
       },
       {
-        "start": 80.84,
-        "end": 83.12,
+        "start": 75.32,
+        "end": 77.62,
         "text": "bypass, and a jailbreak headline stays a",
         "words": [
           {
             "text": "bypass,",
-            "start": 80.84,
-            "end": 81.2
+            "start": 75.32,
+            "end": 75.7
           },
           {
             "text": "and",
-            "start": 81.62,
-            "end": 81.72
+            "start": 76.16,
+            "end": 76.34
           },
           {
             "text": "a",
-            "start": 81.72,
-            "end": 81.82
+            "start": 76.34,
+            "end": 76.42
           },
           {
             "text": "jailbreak",
-            "start": 81.82,
-            "end": 82.2
+            "start": 76.42,
+            "end": 76.78
           },
           {
             "text": "headline",
-            "start": 82.2,
-            "end": 82.46
+            "start": 76.78,
+            "end": 77.04
           },
           {
             "text": "stays",
-            "start": 82.46,
-            "end": 82.94
+            "start": 77.04,
+            "end": 77.48
           },
           {
             "text": "a",
-            "start": 82.94,
-            "end": 83.12
+            "start": 77.48,
+            "end": 77.62
           }
         ]
       },
       {
-        "start": 83.12,
-        "end": 85.5,
+        "start": 77.62,
+        "end": 79.84,
         "text": "claim until the evidence shows genuine real-world",
         "words": [
           {
             "text": "claim",
-            "start": 83.12,
-            "end": 83.32
+            "start": 77.62,
+            "end": 77.82
           },
           {
             "text": "until",
-            "start": 83.32,
-            "end": 83.62
+            "start": 77.82,
+            "end": 78.12
           },
           {
             "text": "the",
-            "start": 83.62,
-            "end": 83.8
+            "start": 78.12,
+            "end": 78.28
           },
           {
             "text": "evidence",
-            "start": 83.8,
-            "end": 84.06
+            "start": 78.28,
+            "end": 78.52
           },
           {
             "text": "shows",
-            "start": 84.06,
-            "end": 84.44
+            "start": 78.52,
+            "end": 78.86
           },
           {
             "text": "genuine",
-            "start": 84.44,
-            "end": 84.86
+            "start": 78.86,
+            "end": 79.24
           },
           {
             "text": "real-world",
-            "start": 84.86,
-            "end": 85.5
+            "start": 79.24,
+            "end": 79.84
           }
         ]
       },
       {
-        "start": 85.5,
-        "end": 85.86,
+        "start": 79.84,
+        "end": 80.18,
         "text": "uplift.",
         "words": [
           {
             "text": "uplift.",
-            "start": 85.5,
-            "end": 85.86
+            "start": 79.84,
+            "end": 80.18
           }
         ]
       }
