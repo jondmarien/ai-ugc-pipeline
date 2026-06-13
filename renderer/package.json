@@ -25,6 +25,7 @@
     "import-bg": "bun scripts/import-bg.mjs",
     "free-comfyui": "bun scripts/free-comfyui.mjs",
     "pipeline": "bun scripts/pipeline.mjs",
+    "test": "bun test",
     "typecheck": "tsc --noEmit && tsc --noEmit -p remotion/tsconfig.json",
     "remotion:studio": "bunx remotion studio remotion/index.ts"
   },
