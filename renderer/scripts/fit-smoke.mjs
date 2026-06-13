@@ -27,6 +27,10 @@ const SLIDE = 5; // worst offender — long copy on the failure_point slide
 // Resolve tsx binary from local node_modules (not a globally-installed tsx).
 const TSX_BIN = path.join(ROOT, "node_modules", ".bin", "tsx");
 
+// Sentinel prefix written by fit-smoke-playwright.ts to stdout.
+// Every other output from that script goes to stderr.
+const SENTINEL = "__FITDEBUG__";
+
 // Spawn a subprocess asynchronously and collect stdout/stderr/exit.
 // We MUST use async spawn (not spawnSync) to keep the Bun event loop alive
 // so the vite preview HTTP server can accept connections while the subprocess runs.
@@ -45,7 +49,11 @@ async function spawnAsync(cmd, args, timeoutMs) {
       proc.exited,
     ]),
     new Promise((_, reject) =>
-      setTimeout(() => reject(new Error(`subprocess timeout after ${timeoutMs}ms`)), timeoutMs),
+      setTimeout(() => {
+        // Kill the child so a hung Chromium isn't orphaned.
+        try { proc.kill(); } catch (_) {}
+        reject(new Error(`subprocess timeout after ${timeoutMs}ms`));
+      }, timeoutMs),
     ),
   ]);
 
@@ -80,8 +88,15 @@ async function spawnAsync(cmd, args, timeoutMs) {
       );
     }
 
-    // Parse the JSON __fitDebug written to stdout.
-    const dbg = JSON.parse(stdout.trim());
+    // Extract the sentinel line from stdout — any other lines may be tsx/Node
+    // warnings or version banners and are intentionally ignored here.
+    const sentinelLine = stdout.split("\n").find((l) => l.startsWith(SENTINEL));
+    if (!sentinelLine) {
+      throw new Error(
+        `No sentinel line (${SENTINEL}…) found in subprocess stdout.\nstdout: ${stdout}\nstderr: ${stderr}`,
+      );
+    }
+    const dbg = JSON.parse(sentinelLine.slice(SENTINEL.length));
 
     console.log("  [fit-smoke] __fitDebug =", JSON.stringify(dbg));
 
