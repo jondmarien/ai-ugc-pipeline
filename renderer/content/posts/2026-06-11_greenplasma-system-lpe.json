@@ -8,7 +8,7 @@
   "pillar": "offensive_ai",
   "theme": "offensive",
   "audience": "security_practitioners",
-  "core_claim": "GreenPlasma is a full system-level privilege escalation that exploits a trusted Windows process. Released by Nightmare Eclipse as part of the June 2026 vulnerability wave. Patched in June 2026 Patch Tuesday.",
+  "core_claim": "GreenPlasma is a Windows privilege escalation that abuses link following in the Collaborative Translation Framework. The attacker plants an Object Manager symbolic link on a CTF session object and a registry link to redirect a SYSTEM operation. Released by Nightmare Eclipse as their fifth exploit, patched on June 2026 Patch Tuesday.",
   "claim_tags": [
     "reported_fact",
     "practitioner_takeaway"
@@ -66,8 +66,8 @@
       "slide": 1,
       "role": "cover",
       "kicker": "WINDOWS × ZERO-DAY",
-      "on_slide_copy": "GREENPLASMA HIJACKS A TRUSTED PROCESS. FULL SYSTEM.",
-      "subline": "System-level LPE. CVE-2026-45586. Trusted process abuse. Nightmare Eclipse exploit five. Patched June 2026.",
+      "on_slide_copy": "GREENPLASMA REDIRECTS A SYSTEM PROCESS WITH A SYMLINK.",
+      "subline": "Local privilege escalation. CVE-2026-45586. Link following in the Collaborative Translation Framework. Nightmare Eclipse exploit five. Patched June 2026.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A hard rim light catches a Windows system process icon in the dark, a green plasma tendril wrapping around it and turning it into a SYSTEM token, premium dark editorial key art, the process held in the upper third with clean unmarked negative space filling the lower third.",
       "background_asset": "/backgrounds/2026-06-11_greenplasma-system-lpe/01_cover.png",
@@ -80,7 +80,7 @@
       "role": "context",
       "kicker": "THE RELEASE",
       "on_slide_copy": "GreenPlasma was the fifth exploit Nightmare Eclipse released.",
-      "subline": "CVE-2026-45586 gained full SYSTEM access through a trusted Windows process. Patched June 2026 Patch Tuesday, but it was public before the fix.",
+      "subline": "CVE-2026-45586 elevates a local user to SYSTEM by abusing the Windows Collaborative Translation Framework. Patched June 2026 Patch Tuesday, but it was public before the fix.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Low raking light grazes a glowing process sphere in the dark, a green tendril threading through it and lifting it toward a crown of light, dark editorial photography, the sphere high over a calm empty lower third.",
       "background_asset": "/backgrounds/2026-06-11_greenplasma-system-lpe/02_context.png",
@@ -92,8 +92,8 @@
       "slide": 3,
       "role": "risk",
       "kicker": "WHY IT STINGS",
-      "on_slide_copy": "The target process loads attacker code with no memory corruption.",
-      "subline": "A trusted Windows system process running as SYSTEM legitimately loads attacker code from a user-writable path. Fully deterministic on Windows 10 and 11 before June 2026.",
+      "on_slide_copy": "A SYSTEM process follows a symlink the attacker planted.",
+      "subline": "A Winlogon process running as SYSTEM resolves a Collaborative Translation Framework object the local user redirected with a symbolic link. No memory corruption is needed.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A focused side light catches a glowing binary orb in the dark, a green tendril entering from outside the frame and threading into the orb's core without breaking its surface, dark premium editorial, the orb centered in the upper area with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_greenplasma-system-lpe/03_risk.png",
@@ -105,8 +105,8 @@
       "slide": 4,
       "role": "mechanism",
       "kicker": "THE MECHANISM",
-      "on_slide_copy": "A SYSTEM-scheduled task loads a library from a user-writable path.",
-      "subline": "A Microsoft-signed binary runs as part of that task and loads from a location any local user can write to. The attacker plants a crafted file there and waits.",
+      "on_slide_copy": "Two planted links redirect a privileged SYSTEM file operation.",
+      "subline": "The attacker plants an Object Manager symbolic link on a CTF session object plus a volatile registry link under CloudFiles. A prompt wakes the SYSTEM process to follow them.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A hard top-down beam falls on a glowing process orb in the dark, a green tendril curving away from a bright core toward an outer ring of dim open space, dark editorial key art, the orb framed in the upper third over clean dark space.",
       "background_asset": "/backgrounds/2026-06-11_greenplasma-system-lpe/04_mechanism.png",
@@ -118,8 +118,8 @@
       "slide": 5,
       "role": "failure_point",
       "kicker": "WHERE DEFENDERS MISS IT",
-      "on_slide_copy": "Both the task and the binary carry Microsoft signatures.",
-      "subline": "The only anomaly is the library load path. Endpoint detection allows signed binaries through, so the writable location goes undetected. There is no exploit binary on disk at all.",
+      "on_slide_copy": "The SYSTEM process behaves normally while following the links.",
+      "subline": "Endpoint detection sees a trusted Windows process doing its job, so the redirect slips by. The clearest signal is a volatile registry symbolic link under CloudFiles BlockedApps.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Cool light grazes two glowing orbs side by side in the dark, both ringed in a soft green verification halo, a thin red line rising from the ground between them into the space above, tense editorial composition, the orbs held high with a clean lower third.",
       "background_asset": "/backgrounds/2026-06-11_greenplasma-system-lpe/05_failure-point.png",
@@ -131,8 +131,8 @@
       "slide": 6,
       "role": "defense",
       "kicker": "THE MITIGATION REALITY",
-      "on_slide_copy": "The patch fixes this path, but the underlying pattern keeps recurring.",
-      "subline": "Audit scheduled tasks for user-writable library load paths, enable AppLocker or WDAC blocking rules, and flag signed binaries loading from outside the system directory.",
+      "on_slide_copy": "Apply the patch, then hunt the symbolic link artifacts.",
+      "subline": "Deploy the June 2026 update, alert on a volatile registry link under CloudFiles BlockedApps, and watch for Object Manager symlinks placed on CTF session objects.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A balanced composition in the dark: two glowing process orbs, left with a cool white shield ring, right with a faint red gap in its ring, a thin beam of light dividing them, premium editorial key art, the orbs centered with generous negative space below.",
       "background_asset": "/backgrounds/2026-06-11_greenplasma-system-lpe/06_defense.png",
@@ -144,10 +144,10 @@
       "slide": 7,
       "role": "takeaway",
       "kicker": "TAKEAWAY",
-      "on_slide_copy": "A signed binary {{is not a trust boundary when its load path is writable.}} [[Signature proves authorship. Path proves runtime.]]",
+      "on_slide_copy": "A SYSTEM process {{is only as safe as the names it resolves.}} [[An attacker-controlled symbolic link turns that trust into a weapon.]]",
       "subline": "",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "A thin rim light traces a Microsoft-signed binary icon in the dark, one half with a green certificate glow, the other half with a green DLL tendril entering from a user-writable directory, minimal high-impact key art, the binary drawn toward the edge with the center kept dark and open.",
+      "visual_prompt": "A thin rim light traces a glowing trusted process orb in the dark, a green symbolic-link arrow bending its path toward an attacker-controlled target node, minimal high-impact key art, the orb drawn toward the edge with the center kept dark and open.",
       "background_asset": "/backgrounds/2026-06-11_greenplasma-system-lpe/07_takeaway.png",
       "asset_status": "generated",
       "cta": "",
@@ -157,7 +157,7 @@
       "slide": 8,
       "role": "cta",
       "kicker": "YOUR MOVE",
-      "on_slide_copy": "Do you audit scheduled task DLL paths for writability?",
+      "on_slide_copy": "Do you alert on registry and Object Manager symlink creation?",
       "subline": "Save this for your next system hardening review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "Soft pooled light isolates a single glowing process orb on a clean dark end-card surface, a faint question-mark shimmer in the space above it, premium editorial cybersecurity key art, the orb small in vast negative space with the lower third open.",
@@ -167,50 +167,56 @@
       "notes": ""
     }
   ],
-  "caption": "Nightmare Eclipse released GreenPlasma (CVE-2026-45586) as the fifth exploit in their June 2026 wave. A full system-level privilege escalation that exploits a trusted Windows process running as SYSTEM.\n\nThe mechanism abuses a DLL search order hijack in a SYSTEM-scheduled task. The task runs a trusted Microsoft-signed binary that loads a DLL from a user-writable path. The researcher places a malicious DLL. The task triggers. SYSTEM loads it. Full system compromise.\n\nWorks on fully patched Windows 10 and 11 before June 2026 Patch Tuesday. Deterministic SYSTEM shell. No race. No brute force. The binary is signed by Microsoft. The path is writable.\n\nThe scheduled task is Microsoft-signed. The binary is Microsoft-signed. The DLL path is the only anomaly. EDRs allow signed binaries. The writable path is a configuration issue. No exploit binary on disk — just a DLL in a user profile.\n\nDeploy June 2026 Patch Tuesday. Audit scheduled tasks for user-writable DLL paths. Enable DLL blocking rules (AppLocker/WDAC). Monitor for signed binaries loading from non-system paths.\n\nThe patch fixes the path. But the pattern — signed binary, writable path, SYSTEM context — recurs. Defenders must hunt the pattern, not just the CVE.\n\nA Microsoft-signed binary is not a trust boundary if its load path is writable. The signature validates the author. The path validates the runtime.\n\nDo you audit scheduled task DLL paths for writability?\n\nFollow for AI security breakdowns without the fake panic.\n\n[GreenPlasma, CVE-2026-45586, Nightmare Eclipse, Windows zero-day, system LPE, DLL hijack, scheduled task, SYSTEM process, AppLocker, WDAC, signed binary abuse]",
+  "caption": "Nightmare Eclipse released GreenPlasma (CVE-2026-45586) as their fifth exploit. It is a local privilege escalation that elevates an unprivileged user to SYSTEM by abusing the Windows Collaborative Translation Framework, the input subsystem behind ctfmon.\n\nThe class is link following (CWE-59). The attacker places an Object Manager symbolic link on a CTF session object, then abuses a volatile registry link under the CloudFiles BlockedApps key to redirect a privileged write. A forced UAC prompt wakes a Winlogon process running as SYSTEM, and that process follows the planted links instead of the real targets.\n\nNo memory corruption. No exploit binary on disk. The released proof of concept is deliberately incomplete and stops short of the final SYSTEM shell. The primitive is confirmed on Windows 11, Server 2022, and Server 2026 before the June 2026 fix.\n\nDefenders miss it because the SYSTEM process is doing exactly what it normally does. The strongest signal is the registry artifact itself: a volatile symbolic link created under HKCU CloudFiles BlockedApps, pointing into the Policies System key.\n\nDeploy the June 2026 Patch Tuesday update. Alert on that registry symlink creation. Watch for Object Manager symlinks placed on Collaborative Translation Framework session objects, and treat an unusual Winlogon desktop switch from an unprivileged process as worth a look.\n\nThe patch closes this path. The pattern of redirecting a trusted process through a link it blindly resolves keeps coming back. Hunt the technique, not just the CVE.\n\nA trusted SYSTEM process is only as safe as the names it resolves. A symbolic link the attacker controls turns that trust into a weapon.\n\nDo you alert on registry and Object Manager symlink creation?\n\nFollow for AI security breakdowns without the fake panic.\n\n[GreenPlasma, CVE-2026-45586, Nightmare Eclipse, Windows zero-day, SYSTEM LPE, link following, CTFMON, symbolic link, registry link, defender takeaway]",
   "hashtags": [
     "GreenPlasma",
     "CVE-2026-45586",
     "Nightmare Eclipse",
     "Windows zero-day",
-    "system LPE",
-    "DLL hijack",
-    "scheduled task",
-    "SYSTEM process",
-    "AppLocker",
-    "WDAC",
-    "signed binary abuse"
+    "SYSTEM LPE",
+    "link following",
+    "CTFMON",
+    "symbolic link",
+    "registry link",
+    "defender takeaway"
   ],
-  "comment_prompt": "Do you audit scheduled task DLL paths for writability?",
+  "comment_prompt": "Do you alert on registry and Object Manager symlink creation?",
   "alt_text": [
-    "Title card: GreenPlasma hijacks a trusted Windows process for full SYSTEM access. CVE-2026-45586 is a system-level privilege escalation via trusted process abuse, Nightmare Eclipse exploit five, patched June 2026. A green plasma tendril wraps around a process icon and turns it into a SYSTEM token.",
-    "GreenPlasma was the fifth exploit Nightmare Eclipse released. CVE-2026-45586 gained full SYSTEM access through a trusted Windows process. Patched June 2026 Patch Tuesday, but it was already public before the fix. A glowing process sphere lifts toward a crown of light.",
-    "The target process loads attacker code with no memory corruption. A trusted Windows system process running as SYSTEM legitimately invokes a library from a user-writable path, giving attackers a clean, deterministic escalation on Windows 10 and 11 before June 2026. A green tendril threads into a glowing binary orb without breaking its surface.",
-    "A SYSTEM-scheduled task loads a library from a user-writable path. A Microsoft-signed binary runs as part of that task and Windows resolves the library from a location any local user can write to. A green tendril curves from a bright core toward an outer ring of dim open space.",
-    "Both the task and the binary carry Microsoft signatures. The only anomaly is the library load path. Endpoint detection allows signed binaries through, so the writable location goes undetected. Two glowing orbs with green verification halos and a thin red thread rising between them.",
-    "The patch fixes this path, but the underlying pattern keeps recurring. Audit scheduled tasks for user-writable library load paths, enable AppLocker or WDAC blocking rules, and monitor signed binaries loading from outside the system directory. Two process orbs, one with a full shield ring and one with a gap in its ring.",
-    "A signed binary is not a trust boundary when its load path is writable. The signature proves authorship. The path proves runtime integrity. A signed binary icon split between a green certificate glow and a green library tendril entering from a writable directory.",
-    "Closing question: Do you audit your scheduled task library load paths for writability? A single glowing process orb sits on a clean dark end-card with a question-mark shimmer above it."
+    "Title card: GreenPlasma redirects a SYSTEM process with a symbolic link. CVE-2026-45586 is a local privilege escalation that abuses link following in the Windows Collaborative Translation Framework, Nightmare Eclipse exploit five, patched June 2026. A green plasma tendril wraps around a process icon and turns it into a SYSTEM token.",
+    "GreenPlasma was the fifth exploit Nightmare Eclipse released. CVE-2026-45586 elevates a local user to SYSTEM by abusing the Windows Collaborative Translation Framework. Patched June 2026 Patch Tuesday, but it was already public before the fix. A glowing process sphere lifts toward a crown of light.",
+    "A SYSTEM process follows a symbolic link the attacker planted. A Winlogon process running as SYSTEM resolves a Collaborative Translation Framework object that the local user redirected, with no memory corruption needed, confirmed on Windows 11 and Server 2022 before June 2026. A green tendril threads into a glowing binary orb without breaking its surface.",
+    "Two planted links redirect a privileged SYSTEM file operation. The attacker places an Object Manager symbolic link on a Collaborative Translation Framework session object and a volatile registry link under the CloudFiles key, then a UAC prompt wakes the SYSTEM process. A green tendril curves from a bright core toward an outer ring of dim open space.",
+    "The SYSTEM process behaves normally while following the links, so endpoint detection misses it. The clearest signal is the registry artifact, a volatile symbolic link created under the CloudFiles BlockedApps key. Two glowing orbs with green verification halos and a thin red thread rising between them.",
+    "Apply the patch, then hunt the symbolic link artifacts. Deploy the June 2026 update, alert on a volatile registry link under the CloudFiles BlockedApps key, and watch for Object Manager symlinks on Collaborative Translation Framework session objects. Two process orbs, one with a full shield ring and one with a gap in its ring.",
+    "A trusted SYSTEM process is only as safe as the names it resolves. A symbolic link the attacker controls turns that trust into a weapon. A glowing trusted process orb with a green symbolic-link arrow bending its path toward an attacker-controlled target node.",
+    "Closing question: Do you alert on registry and Object Manager symlink creation? A single glowing process orb sits on a clean dark end-card with a question-mark shimmer above it."
   ],
   "sources": [
     {
-      "source": "Nightmare Eclipse blog: GreenPlasma Technical Details",
-      "link": "https://deadeclipse666.blogspot.com/2026/06/greenplasma-cve-2026-45586.html",
-      "supports": "CVE-2026-45586 assignment; SYSTEM-scheduled task DLL search order hijack; Microsoft-signed binary loading from user-writable path; deterministic SYSTEM shell; no race; no brute force; June 2026 Patch Tuesday fix; pre-patch machines vulnerable.",
+      "source": "CVE.org: CVE-2026-45586 record (CNA: Microsoft)",
+      "link": "https://www.cve.org/CVERecord?id=CVE-2026-45586",
+      "supports": "Official CVE record; CWE-59 improper link resolution before file access (link following) in Windows Collaborative Translation Framework; local elevation of privilege by an authorized attacker; CVSS 7.8 HIGH; MSRC vendor advisory and patch reference; updated 2026-06-10.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     },
     {
-      "source": "Microsoft Security Response Center: CVE-2026-45586",
-      "link": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45586",
-      "supports": "Official CVE record; Microsoft acknowledgment; affected versions; severity rating; patch availability in June 2026 Patch Tuesday.",
+      "source": "Blackfort Technology: GreenPlasma — Arbitrary Section Creation on Windows, Analysis and Detection",
+      "link": "https://blackfort-tec.de/en/insights/greenplasma-windows-ctf-injection-analysis",
+      "supports": "Mechanism: Object Manager symbolic link placed on CTF.AsmListCache.FMPWinlogon session object plus registry link abuse (volatile REG_LINK under HKCU CloudFiles BlockedApps with SymbolicLinkValue pointing to Policies\\System); Winlogon SYSTEM context follows the symlink after a forced UAC desktop switch; PoC published May 12 2026, deliberately incomplete; affected Windows 11, Server 2022, Server 2026; detection via registry-link IOCs.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     },
     {
-      "source": "SecurityWeek: Nightmare Eclipse Releases Six Windows Zero-Days",
-      "link": "https://www.securityweek.com/nightmare-eclipse-releases-six-windows-zero-days/",
-      "supports": "Context of six-exploit wave; exploit sequence; researcher background; GitHub account suspension; MSNightmare repo; community response; GreenPlasma patched same week as YellowKey.",
+      "source": "SecurityWeek: Researcher Drops YellowKey, GreenPlasma Windows Zero-Days",
+      "link": "https://www.securityweek.com/researcher-drops-yellowkey-greenplasma-windows-zero-days/",
+      "supports": "Chaotic Eclipse / Nightmare Eclipse released GreenPlasma as a privilege escalation to SYSTEM with the full-shell code stripped out; PoC creates an arbitrary memory section object in a directory writable by SYSTEM; researcher history of dropping unpatched Windows zero-days; Microsoft investigating.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "ThreatLocker: What YellowKey and GreenPlasma reveal about trusting native Windows security",
+      "link": "https://www.threatlocker.com/blog/what-yellowkey-and-greenplasma-zero-day-exploits-reveal-about-trusting-native-windows-security",
+      "supports": "GreenPlasma (CVE-2026-45586) targets CTFMON, a process running as SYSTEM in every interactive session; fixed on June 2026 Patch Tuesday (June 10 2026) alongside YellowKey; PoC released May 13 2026 before any patch; exploit manipulates registry and object manager permissions to plant a section object and trick CTFMON into interacting with it.",
       "confidence": "high",
       "claim_tag": "reported_fact"
     }
@@ -299,42 +305,42 @@
       {
         "start": 0,
         "end": 6,
-        "text": "GreenPlasma is a privilege escalation exploit that turns a trusted Windows process into a full SYSTEM shell."
+        "text": "GreenPlasma is a Windows privilege escalation that elevates a normal user all the way to SYSTEM."
       },
       {
         "start": 6,
         "end": 13,
-        "text": "It was the fifth vulnerability Nightmare Eclipse released in June 2026, tracked as CVE-2026-45586, and it was already public when Microsoft patched it on Patch Tuesday."
+        "text": "It was the fifth exploit Nightmare Eclipse dropped, tracked as CVE-2026-45586, and it was already public when Microsoft patched it on June Patch Tuesday."
       },
       {
         "start": 13,
         "end": 20,
-        "text": "The trick is a library search-order hijack inside a SYSTEM-scheduled task, where a Microsoft-signed binary loads a file from a path any local user can write to."
+        "text": "The bug is link following in the Collaborative Translation Framework, the subsystem behind the ctfmon input process, and the fix class is improper link resolution."
       },
       {
         "start": 20,
         "end": 27,
-        "text": "The attacker drops a crafted library into that path, the task fires on schedule, and Windows hands over a SYSTEM shell with no race condition, no brute force, and nothing on disk except one file in a user profile."
+        "text": "The attacker plants an Object Manager symbolic link on a translation framework session object and a volatile registry link under the CloudFiles key, then forces a prompt that wakes a Winlogon process running as SYSTEM."
       },
       {
         "start": 27,
         "end": 34,
-        "text": "Defenders miss it because both the task and the binary carry Microsoft signatures, so endpoint tools wave them through, and only the writable path reveals the anomaly."
+        "text": "That trusted process follows the planted links instead of the real targets, so endpoint tools see nothing unusual while the redirect quietly hands over SYSTEM."
       },
       {
         "start": 34,
         "end": 41,
-        "text": "The fix is the June 2026 Patch Tuesday update, but you should also audit every scheduled task for user-writable library load paths and enable AppLocker or WDAC blocking rules."
+        "text": "Apply the June 2026 update, and then alert on the strongest tell, a volatile registry symbolic link created under the CloudFiles BlockedApps key."
       },
       {
         "start": 41,
         "end": 48,
-        "text": "The key lesson is that a code signature tells you who wrote the binary, not whether its runtime environment is safe to run in."
+        "text": "The lesson is that a trusted SYSTEM process is only as safe as the names it resolves, and a symbolic link the attacker controls turns that trust into a weapon."
       },
       {
         "start": 48,
         "end": 54,
-        "text": "Do you audit your scheduled task library load paths? Drop a yes or no in the comments."
+        "text": "Do you alert on registry and Object Manager symlink creation? Drop a yes or no in the comments."
       }
     ],
     "beats": [
@@ -344,7 +350,7 @@
         "slide_ref": 1,
         "purpose": "hook",
         "motion": "slow push-in over cover",
-        "caption": "GreenPlasma hijacks trusted process. Full SYSTEM."
+        "caption": "GreenPlasma redirects a SYSTEM process. Symlink."
       },
       {
         "start": 6,
@@ -352,7 +358,7 @@
         "slide_ref": 2,
         "purpose": "context",
         "motion": "parallax",
-        "caption": "Patched June. Public before patch. Core SYSTEM component."
+        "caption": "Patched June. Public before patch. CTF framework."
       },
       {
         "start": 13,
@@ -360,7 +366,7 @@
         "slide_ref": 3,
         "purpose": "risk",
         "motion": "slow push-in",
-        "caption": "DLL hijack in SYSTEM task. Signed binary. User path."
+        "caption": "SYSTEM process follows the planted symbolic link."
       },
       {
         "start": 20,
@@ -368,7 +374,7 @@
         "slide_ref": 4,
         "purpose": "mechanism",
         "motion": "parallax",
-        "caption": "Deterministic. No race. DLL in user profile. SYSTEM loads."
+        "caption": "Object Manager symlink plus registry link redirect."
       },
       {
         "start": 27,
@@ -376,7 +382,7 @@
         "slide_ref": 5,
         "purpose": "gap",
         "motion": "slow push-in",
-        "caption": "Both signed. Path is anomaly. EDRs allow signed."
+        "caption": "Process looks normal. Registry link is the tell."
       },
       {
         "start": 34,
@@ -384,7 +390,7 @@
         "slide_ref": 6,
         "purpose": "defense",
         "motion": "parallax",
-        "caption": "Patch. Audit paths. DLL rules. Hunt signed + user path."
+        "caption": "Patch. Alert on CloudFiles registry symlink creation."
       },
       {
         "start": 41,
@@ -392,7 +398,7 @@
         "slide_ref": 7,
         "purpose": "takeaway",
         "motion": "static high contrast",
-        "caption": "Signature validates author. Path validates runtime."
+        "caption": "Trust is only as safe as the names it resolves."
       },
       {
         "start": 48,
@@ -400,7 +406,7 @@
         "slide_ref": 8,
         "purpose": "cta",
         "motion": "end card",
-        "caption": "Do you audit task DLL paths?"
+        "caption": "Do you alert on symlink creation?"
       }
     ],
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
