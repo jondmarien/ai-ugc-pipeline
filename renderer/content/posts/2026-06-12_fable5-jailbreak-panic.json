@@ -1,0 +1,1799 @@
+{
+  "post_id": "2026-06-12_fable5-jailbreak-panic",
+  "date": "2026-06-12",
+  "slug": "fable5-jailbreak-panic",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "generated",
+  "pillar": "myth_busting",
+  "theme": "ai",
+  "style_fusion": "",
+  "audience": "security_practitioners",
+  "core_claim": "A US export-control directive on June 12, 2026 suspended access to Claude Fable 5 and Mythos 5 over a reported jailbreak. Anthropic complied but disputes the finding: the demonstrated technique was asking the model to read code and fix flaws, its strongest safeguards run as independent classifiers outside the model, some shared outputs were not from Fable 5, and a usage review found no real-world circumvention. The defender lesson is that a refusal bypass is not a safeguard bypass.",
+  "claim_tags": [
+    "reported_fact",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 5,
+    "visual_drama": 4,
+    "defender_usefulness": 4,
+    "total": 23
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "myth_busting",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-12_fable5-jailbreak-panic",
+    "filename_prefix": "2026-06-12_fable5-jailbreak-panic",
+    "expected_files": [
+      "2026-06-12_fable5-jailbreak-panic_01_cover.png",
+      "2026-06-12_fable5-jailbreak-panic_02_context.png",
+      "2026-06-12_fable5-jailbreak-panic_03_risk.png",
+      "2026-06-12_fable5-jailbreak-panic_04_mechanism.png",
+      "2026-06-12_fable5-jailbreak-panic_05_failure-point.png",
+      "2026-06-12_fable5-jailbreak-panic_06_defense.png",
+      "2026-06-12_fable5-jailbreak-panic_07_takeaway.png",
+      "2026-06-12_fable5-jailbreak-panic_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × GOVERNANCE",
+      "on_slide_copy": "A FRONTIER MODEL GOT PULLED OVER A 'JAILBREAK.' THE DEMO WAS ASKING IT TO READ CODE AND FIX BUGS.",
+      "subline": "On June 12 a US export directive suspended Fable 5 and Mythos 5. Anthropic complied, disagreed, and says it found no real-world abuse.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A single towering monolith of light stands in a dark void, its steady glow abruptly cut to a thin dying filament by an unseen hand, premium dark editorial key art, the monolith held in the upper third with clean unmarked negative space filling the lower third.",
+      "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/01_cover.png",
+      "asset_status": "generated",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT HAPPENED",
+      "on_slide_copy": "Anthropic launched Claude Fable 5 on June 9 as its first publicly available frontier model. Three days later, a US export-control directive ordered all access suspended for any foreign national, so Anthropic disabled both Fable 5 and Mythos 5 to comply.",
+      "subline": "The order arrived at 5:21pm ET on June 12 and gave no technical detail. Every other Anthropic model stayed online.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Low raking light runs along a short horizontal sequence of light in the dark: a bright launch flare, then two faint marks, then a hard severing line that cuts the glow short, while a separate row of small lamps nearby stays calmly lit, dark editorial photography, the sequence set high over an empty lower third.",
+      "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/02_context.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "The trigger was a reported jailbreak, not a real-world attack. Pulling a deployed model used by hundreds of millions over one disputed bypass sets a precedent: a frontier launch can be reversed on a verbal claim.",
+      "subline": "Anthropic argues the same standard, applied across the industry, would stall new model releases at every lab.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A focused side light catches a single tipped block of light in the dark beginning to lean toward a long receding row of identical dormant blocks, the threat of a chain reaction implied but not yet fallen, tense dark editorial, the row centered in the upper area with generous negative space below.",
+      "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/03_risk.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "WHAT THE BYPASS WAS",
+      "on_slide_copy": "By Anthropic's account, the government's demo was asking the model to read a codebase and fix its flaws, which is daily work for defenders. A researcher separately chained unicode tricks, long context, and narrative framing to coax answers past the model's spoken refusals.",
+      "subline": "Anthropic says its strongest safeguards run as independent classifiers outside the model, so talking past a refusal is not the same as defeating them.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A hard top-down beam falls on a soft inner core of light wrapped by a separate firm outer lattice in the dark, a thin probing thread slipping past the yielding inner core but stopping dead at the rigid outer lattice, abstract premium dark key art, the core framed in the upper third over clean dark space.",
+      "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/04_mechanism.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE THE PANIC BREAKS",
+      "on_slide_copy": "Anthropic says some of the shared outputs were not even from Fable 5, and the rest repeated information already public, with no real uplift. A wider usage review found no evidence the safeguards were circumvented to produce genuinely dangerous content.",
+      "subline": "The company notes the same capability is available in other models, including GPT-5.5, and is used by defenders every day.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Cool light grazes two facing fragments of light in the dark that refuse to align, one fragment clearly mismatched and fading out, a thin measuring line between them exposing the gap, tense editorial composition, the fragments held high with a clean lower third.",
+      "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/05_failure-point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "HOW TO READ THE CLAIM",
+      "on_slide_copy": "Before you panic or escalate, ask four things. Is it a refusal bypass or a real safeguard bypass? Does the output beat what is already public? Is there evidence of real-world harm? Was the demo reproduced independently?",
+      "subline": "Treat a screenshot as a claim, not a finding. Demand uplift over public knowledge before you call it a breach.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A balanced composition in the dark: a noisy stream of raw sparks of light passes through four successive fine sieves, and only a single verified mote emerges clear at the far end, calm and orderly premium editorial key art, the sieves centered with generous negative space below.",
+      "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/06_defense.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "A refusal bypass {{is not a safeguard bypass.}} [[A jailbreak headline is a claim until the evidence shows real-world uplift.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A thin rim light traces a simple balance of light in the dark, a loud bright flare on one pan clearly outweighed by a small solid anchored weight on the other, minimal high-impact key art, the balance drawn toward one edge with the center kept dark and open.",
+      "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/07_takeaway.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "When a new jailbreak headline drops, what is the first thing you check before you believe it?",
+      "subline": "Save this for the next AI security panic cycle.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Soft pooled light isolates a single calm steady pulse of light on a clean dark end-card surface, premium editorial cybersecurity key art, the pulse small in vast negative space with the lower third open.",
+      "background_asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/08_cta.png",
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "A frontier model got pulled over a jailbreak this week. By Anthropic's own account, the government's demonstration was asking the model to read a codebase and fix its flaws. That is daily work for defenders.\n\nHere is the timeline. Anthropic launched Claude Fable 5 on June 9 as its first publicly available frontier model. On June 12 at 5:21pm ET, a US export-control directive ordered all access suspended for any foreign national, so Anthropic disabled both Fable 5 and Mythos 5 to comply. The order gave no technical detail. Every other Anthropic model stayed online.\n\nThe trigger was a reported jailbreak, not a real attack. A researcher chained unicode tricks, long context, and narrative framing to coax answers past the model's refusals, and leaked its system prompt. Anthropic disputes that this was a meaningful break. It says its strongest safeguards run as independent classifiers outside the model, so talking past a spoken refusal is not the same as defeating them.\n\nIt goes further. Some of the shared outputs were not even from Fable 5. The rest repeated information already public, with no real uplift. A wider usage review found no evidence the safeguards were circumvented to produce dangerous content. The same capability sits in other models, including GPT-5.5.\n\nSo here is the defender move. Before you panic or escalate, ask four things. Is it a refusal bypass or a real safeguard bypass? Does the output beat what is already public? Is there evidence of real-world harm? Was the demo reproduced independently? Treat a screenshot as a claim, not a finding.\n\nA refusal bypass is not a safeguard bypass. A jailbreak headline is a claim until the evidence shows real-world uplift.\n\nWhen a new jailbreak headline drops, what is the first thing you check before you believe it?\n\nFollow for AI security breakdowns without the fake panic.\n\n[Claude Fable 5, Mythos 5, Anthropic, jailbreak, export control directive, AI governance, safety classifiers, refusal bypass, threat intel, no fake panic]",
+  "hashtags": [
+    "Claude Fable 5",
+    "Mythos 5",
+    "Anthropic",
+    "jailbreak",
+    "export control directive",
+    "AI governance",
+    "safety classifiers",
+    "refusal bypass",
+    "threat intel",
+    "no fake panic"
+  ],
+  "comment_prompt": "When a new jailbreak headline drops, what is the first thing you check before you believe it?",
+  "alt_text": [
+    "Title card: a frontier model got pulled over a jailbreak, and the demo was asking it to read code and fix bugs. On June 12 a US export directive suspended Fable 5 and Mythos 5, and Anthropic complied, disagreed, and says it found no real-world abuse. A single towering monolith of light in a dark void, its glow abruptly cut to a thin dying filament by an unseen hand.",
+    "Anthropic launched Claude Fable 5 on June 9 as its first publicly available frontier model, and three days later a US export-control directive ordered all access suspended for any foreign national, so Anthropic disabled Fable 5 and Mythos 5 to comply. The order arrived at 5:21pm ET and gave no technical detail while every other model stayed online. A short sequence of light shows a launch flare, two faint marks, then a hard severing line, beside a row of lamps left calmly lit.",
+    "The trigger was a reported jailbreak, not a real-world attack, and pulling a deployed model used by hundreds of millions over one disputed bypass sets a precedent that a frontier launch can be reversed on a verbal claim. Anthropic argues the same standard across the industry would stall new model releases at every lab. A single tipped block of light leans toward a long row of dormant blocks, a chain reaction implied but not yet fallen.",
+    "By Anthropic's account the government's demo was asking the model to read a codebase and fix its flaws, which is daily defender work, while a researcher separately chained unicode tricks, long context, and narrative framing to coax answers past spoken refusals. Anthropic says its strongest safeguards run as independent classifiers outside the model, so talking past a refusal is not the same as defeating them. A soft inner core of light wrapped by a separate firm outer lattice, a probing thread slipping past the core but stopping at the lattice.",
+    "Anthropic says some shared outputs were not even from Fable 5 and the rest repeated information already public with no real uplift, and a wider usage review found no evidence the safeguards were circumvented to produce dangerous content. The same capability is available in other models, including GPT-5.5, and is used by defenders every day. Two facing fragments of light refuse to align, one clearly mismatched and fading, with a thin measuring line exposing the gap.",
+    "Before you panic or escalate, ask four things: is it a refusal bypass or a real safeguard bypass, does the output beat what is already public, is there evidence of real-world harm, and was the demo reproduced independently. Treat a screenshot as a claim, not a finding, and demand uplift over public knowledge before you call it a breach. A noisy stream of raw sparks passes through four fine sieves and only a single verified mote emerges clear at the end.",
+    "A refusal bypass is not a safeguard bypass, and a jailbreak headline is a claim until the evidence shows real-world uplift. A simple balance of light shows a loud bright flare on one pan outweighed by a small solid anchored weight on the other.",
+    "Closing question: when a new jailbreak headline drops, what is the first thing you check before you believe it? Save this for the next AI security panic cycle. A single calm steady pulse of light on a clean dark end-card with open negative space."
+  ],
+  "sources": [
+    {
+      "source": "Anthropic: Statement on the US government directive to suspend access to Fable 5 and Mythos 5",
+      "link": "https://www.anthropic.com/news/fable-mythos-access",
+      "supports": "Export-control directive received June 12, 2026 at 5:21pm ET suspending all access to Fable 5 and Mythos 5 by any foreign national; Anthropic complied but disagrees; government's verbal evidence was a narrow technique essentially asking the model to read a specific codebase and fix software flaws; capability widely available from other models including GPT-5.5; concern about precedent for industry-wide model launches.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "CNBC: Anthropic disables access to Fable 5 and Mythos 5 to comply with government directive",
+      "link": "https://www.cnbc.com/2026/06/12/anthropic-disables-access-to-fable-5-and-mythos-5-to-comply-with-government-directive.html",
+      "supports": "Independent reporting that the US government issued the directive suspending access for foreign nationals, that Anthropic disabled both models to comply, the abrupt timing days after launch, and that other Anthropic models were unaffected.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "SecurityWeek: Anthropic Disputes Fable 5 AI Jailbreak",
+      "link": "https://www.securityweek.com/anthropic-disputes-fable-5-ai-jailbreak/",
+      "supports": "Anthropic disputes the jailbreak; strongest protections enforced by independent classifier systems separate from the model; some shared outputs were not from Fable 5 and others contained only general public information with no meaningful uplift; wider usage review found no evidence safeguards were circumvented to generate genuinely dangerous content; over 1,000 hours of pre-launch external red-teaming.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Cyber Security News: Anthropic's Claude Fable 5 Jailbroken to Generate Stack Exploits",
+      "link": "https://cybersecuritynews.com/anthropics-claude-fable-5-jailbroken/",
+      "supports": "Fable 5 launched June 9, 2026 as first publicly available model in the Mythos class; researcher using the alias Pliny the Liberator claimed a multi-agent bypass using unicode and homoglyph substitution, long-context manipulation, narrative framing, and request decomposition, and leaked the system prompt to GitHub; Fable 5 safety design falls back to a weaker model when high-risk classifiers trip; no evidence of real-world cyberattacks.",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "9to5Mac: Anthropic pulls Claude Mythos 5 and Claude Fable 5 following US government directive",
+      "link": "https://9to5mac.com/2026/06/12/anthropic-pulls-claude-mythos-5-and-claude-fable-5-following-us-government-directive/",
+      "supports": "Independent corroboration that Anthropic pulled both Mythos 5 and Fable 5 following the US government directive on June 12, 2026.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-12_fable5-jailbreak-panic/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 58,
+    "fps": 30,
+    "export_name": "2026-06-12_fable5-jailbreak-panic_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-12_fable5-jailbreak-panic/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 7,
+        "text": "A frontier model just got pulled over a jailbreak. By Anthropic's own account, the demo was asking the model to read code and fix bugs."
+      },
+      {
+        "start": 7,
+        "end": 15,
+        "text": "Anthropic launched Claude Fable 5 on June ninth. Three days later a US export directive ordered all access suspended for any foreign national, so the company disabled Fable 5 and Mythos 5."
+      },
+      {
+        "start": 15,
+        "end": 23,
+        "text": "The trigger was a reported jailbreak, not a real attack. Pulling a model used by hundreds of millions over one disputed bypass sets a precedent that any launch can be reversed on a verbal claim."
+      },
+      {
+        "start": 23,
+        "end": 31,
+        "text": "Here is what the bypass actually was. A researcher chained unicode tricks, long context, and narrative framing to talk past the model's refusals."
+      },
+      {
+        "start": 31,
+        "end": 39,
+        "text": "But Anthropic says its real safeguards run as independent classifiers outside the model. Talking past a refusal is not the same as defeating them."
+      },
+      {
+        "start": 39,
+        "end": 46,
+        "text": "It also says some outputs were not even from Fable 5, the rest was already public, and a usage review found no real-world abuse."
+      },
+      {
+        "start": 46,
+        "end": 53,
+        "text": "So before you panic, ask four things. Is it a refusal bypass or a safeguard bypass. Does it beat public knowledge. Is there real-world harm. Was it reproduced."
+      },
+      {
+        "start": 53,
+        "end": 58,
+        "text": "A refusal bypass is not a safeguard bypass. A headline is a claim until the evidence shows real uplift. What do you check first?"
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 7,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "A model got pulled. The jailbreak was fixing bugs."
+      },
+      {
+        "start": 7,
+        "end": 15,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Launched June 9. Suspended June 12 by export directive."
+      },
+      {
+        "start": 15,
+        "end": 23,
+        "slide_ref": 3,
+        "purpose": "risk",
+        "motion": "slow push-in",
+        "caption": "A launch reversed on a verbal claim sets a precedent."
+      },
+      {
+        "start": 23,
+        "end": 31,
+        "slide_ref": 4,
+        "purpose": "mechanism",
+        "motion": "parallax",
+        "caption": "Unicode, long context, framing to talk past refusals."
+      },
+      {
+        "start": 31,
+        "end": 39,
+        "slide_ref": 5,
+        "purpose": "rebuttal",
+        "motion": "slow push-in",
+        "caption": "Real safeguards are classifiers outside the model."
+      },
+      {
+        "start": 39,
+        "end": 46,
+        "slide_ref": 6,
+        "purpose": "evidence",
+        "motion": "parallax",
+        "caption": "Outputs public or not from Fable 5. No real-world abuse."
+      },
+      {
+        "start": 46,
+        "end": 53,
+        "slide_ref": 7,
+        "purpose": "defense",
+        "motion": "static high contrast",
+        "caption": "Four checks before you panic or escalate."
+      },
+      {
+        "start": 53,
+        "end": 58,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "A refusal bypass is not a safeguard bypass."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 1.98,
+        "text": "A frontier model just got pulled over",
+        "words": [
+          {
+            "text": "A",
+            "start": 0.0,
+            "end": 0.34
+          },
+          {
+            "text": "frontier",
+            "start": 0.34,
+            "end": 0.56
+          },
+          {
+            "text": "model",
+            "start": 0.56,
+            "end": 0.9
+          },
+          {
+            "text": "just",
+            "start": 0.9,
+            "end": 1.26
+          },
+          {
+            "text": "got",
+            "start": 1.26,
+            "end": 1.4
+          },
+          {
+            "text": "pulled",
+            "start": 1.4,
+            "end": 1.62
+          },
+          {
+            "text": "over",
+            "start": 1.62,
+            "end": 1.98
+          }
+        ]
+      },
+      {
+        "start": 1.98,
+        "end": 2.5,
+        "text": "a jailbreak.",
+        "words": [
+          {
+            "text": "a",
+            "start": 1.98,
+            "end": 2.08
+          },
+          {
+            "text": "jailbreak.",
+            "start": 2.08,
+            "end": 2.5
+          }
+        ]
+      },
+      {
+        "start": 2.94,
+        "end": 5.08,
+        "text": "By Anthropic's own account, the demo was",
+        "words": [
+          {
+            "text": "By",
+            "start": 2.94,
+            "end": 3.06
+          },
+          {
+            "text": "Anthropic's",
+            "start": 3.06,
+            "end": 3.7
+          },
+          {
+            "text": "own",
+            "start": 3.7,
+            "end": 3.88
+          },
+          {
+            "text": "account,",
+            "start": 3.88,
+            "end": 4.12
+          },
+          {
+            "text": "the",
+            "start": 4.6,
+            "end": 4.65
+          },
+          {
+            "text": "demo",
+            "start": 4.6,
+            "end": 4.86
+          },
+          {
+            "text": "was",
+            "start": 4.86,
+            "end": 5.08
+          }
+        ]
+      },
+      {
+        "start": 5.08,
+        "end": 6.76,
+        "text": "asking the model to read code and",
+        "words": [
+          {
+            "text": "asking",
+            "start": 5.08,
+            "end": 5.4
+          },
+          {
+            "text": "the",
+            "start": 5.4,
+            "end": 5.62
+          },
+          {
+            "text": "model",
+            "start": 5.62,
+            "end": 5.8
+          },
+          {
+            "text": "to",
+            "start": 5.8,
+            "end": 6.02
+          },
+          {
+            "text": "read",
+            "start": 6.02,
+            "end": 6.2
+          },
+          {
+            "text": "code",
+            "start": 6.2,
+            "end": 6.46
+          },
+          {
+            "text": "and",
+            "start": 6.46,
+            "end": 6.76
+          }
+        ]
+      },
+      {
+        "start": 6.76,
+        "end": 7.26,
+        "text": "fix bugs.",
+        "words": [
+          {
+            "text": "fix",
+            "start": 6.76,
+            "end": 7.0
+          },
+          {
+            "text": "bugs.",
+            "start": 7.0,
+            "end": 7.26
+          }
+        ]
+      },
+      {
+        "start": 7.9,
+        "end": 10.24,
+        "text": "Anthropic launched Claude Fable 5 on June",
+        "words": [
+          {
+            "text": "Anthropic",
+            "start": 7.9,
+            "end": 8.42
+          },
+          {
+            "text": "launched",
+            "start": 8.42,
+            "end": 8.66
+          },
+          {
+            "text": "Claude",
+            "start": 8.66,
+            "end": 9.02
+          },
+          {
+            "text": "Fable",
+            "start": 9.02,
+            "end": 9.38
+          },
+          {
+            "text": "5",
+            "start": 9.38,
+            "end": 9.74
+          },
+          {
+            "text": "on",
+            "start": 9.74,
+            "end": 10.04
+          },
+          {
+            "text": "June",
+            "start": 10.04,
+            "end": 10.24
+          }
+        ]
+      },
+      {
+        "start": 10.24,
+        "end": 10.69,
+        "text": "ninth.",
+        "words": [
+          {
+            "text": "ninth.",
+            "start": 10.24,
+            "end": 10.69
+          }
+        ]
+      },
+      {
+        "start": 11.14,
+        "end": 13.2,
+        "text": "Three days later a US export directive",
+        "words": [
+          {
+            "text": "Three",
+            "start": 11.14,
+            "end": 11.34
+          },
+          {
+            "text": "days",
+            "start": 11.34,
+            "end": 11.52
+          },
+          {
+            "text": "later",
+            "start": 11.52,
+            "end": 11.86
+          },
+          {
+            "text": "a",
+            "start": 12.08,
+            "end": 12.14
+          },
+          {
+            "text": "US",
+            "start": 12.14,
+            "end": 12.38
+          },
+          {
+            "text": "export",
+            "start": 12.38,
+            "end": 12.64
+          },
+          {
+            "text": "directive",
+            "start": 12.64,
+            "end": 13.2
+          }
+        ]
+      },
+      {
+        "start": 13.2,
+        "end": 15.62,
+        "text": "ordered all access suspended for any foreign",
+        "words": [
+          {
+            "text": "ordered",
+            "start": 13.2,
+            "end": 13.56
+          },
+          {
+            "text": "all",
+            "start": 13.56,
+            "end": 13.9
+          },
+          {
+            "text": "access",
+            "start": 13.9,
+            "end": 14.32
+          },
+          {
+            "text": "suspended",
+            "start": 14.32,
+            "end": 14.78
+          },
+          {
+            "text": "for",
+            "start": 14.78,
+            "end": 15.16
+          },
+          {
+            "text": "any",
+            "start": 15.16,
+            "end": 15.34
+          },
+          {
+            "text": "foreign",
+            "start": 15.34,
+            "end": 15.62
+          }
+        ]
+      },
+      {
+        "start": 15.62,
+        "end": 18.3,
+        "text": "national, so the company disabled Fable 5",
+        "words": [
+          {
+            "text": "national,",
+            "start": 15.62,
+            "end": 15.96
+          },
+          {
+            "text": "so",
+            "start": 16.5,
+            "end": 16.76
+          },
+          {
+            "text": "the",
+            "start": 16.76,
+            "end": 16.86
+          },
+          {
+            "text": "company",
+            "start": 16.86,
+            "end": 17.1
+          },
+          {
+            "text": "disabled",
+            "start": 17.1,
+            "end": 17.54
+          },
+          {
+            "text": "Fable",
+            "start": 17.54,
+            "end": 17.88
+          },
+          {
+            "text": "5",
+            "start": 17.88,
+            "end": 18.3
+          }
+        ]
+      },
+      {
+        "start": 18.3,
+        "end": 19.1,
+        "text": "and Mythos 5.",
+        "words": [
+          {
+            "text": "and",
+            "start": 18.3,
+            "end": 18.54
+          },
+          {
+            "text": "Mythos",
+            "start": 18.54,
+            "end": 18.82
+          },
+          {
+            "text": "5.",
+            "start": 18.82,
+            "end": 19.1
+          }
+        ]
+      },
+      {
+        "start": 19.1,
+        "end": 21.86,
+        "text": "The trigger was a reported jailbreak, not",
+        "words": [
+          {
+            "text": "The",
+            "start": 19.1,
+            "end": 19.84
+          },
+          {
+            "text": "trigger",
+            "start": 19.84,
+            "end": 20.1
+          },
+          {
+            "text": "was",
+            "start": 20.1,
+            "end": 20.34
+          },
+          {
+            "text": "a",
+            "start": 20.34,
+            "end": 20.44
+          },
+          {
+            "text": "reported",
+            "start": 20.44,
+            "end": 20.76
+          },
+          {
+            "text": "jailbreak,",
+            "start": 20.76,
+            "end": 21.28
+          },
+          {
+            "text": "not",
+            "start": 21.58,
+            "end": 21.86
+          }
+        ]
+      },
+      {
+        "start": 21.86,
+        "end": 22.62,
+        "text": "a real attack.",
+        "words": [
+          {
+            "text": "a",
+            "start": 21.86,
+            "end": 22.06
+          },
+          {
+            "text": "real",
+            "start": 22.06,
+            "end": 22.22
+          },
+          {
+            "text": "attack.",
+            "start": 22.22,
+            "end": 22.62
+          }
+        ]
+      },
+      {
+        "start": 23.2,
+        "end": 24.88,
+        "text": "Pulling a model used by hundreds of",
+        "words": [
+          {
+            "text": "Pulling",
+            "start": 23.2,
+            "end": 23.5
+          },
+          {
+            "text": "a",
+            "start": 23.5,
+            "end": 23.6
+          },
+          {
+            "text": "model",
+            "start": 23.6,
+            "end": 23.8
+          },
+          {
+            "text": "used",
+            "start": 23.8,
+            "end": 24.12
+          },
+          {
+            "text": "by",
+            "start": 24.12,
+            "end": 24.36
+          },
+          {
+            "text": "hundreds",
+            "start": 24.36,
+            "end": 24.64
+          },
+          {
+            "text": "of",
+            "start": 24.64,
+            "end": 24.88
+          }
+        ]
+      },
+      {
+        "start": 24.88,
+        "end": 27.38,
+        "text": "millions over one disputed bypass sets a",
+        "words": [
+          {
+            "text": "millions",
+            "start": 24.88,
+            "end": 25.18
+          },
+          {
+            "text": "over",
+            "start": 25.18,
+            "end": 25.6
+          },
+          {
+            "text": "one",
+            "start": 25.6,
+            "end": 25.9
+          },
+          {
+            "text": "disputed",
+            "start": 25.9,
+            "end": 26.26
+          },
+          {
+            "text": "bypass",
+            "start": 26.26,
+            "end": 26.56
+          },
+          {
+            "text": "sets",
+            "start": 26.56,
+            "end": 27.24
+          },
+          {
+            "text": "a",
+            "start": 27.24,
+            "end": 27.38
+          }
+        ]
+      },
+      {
+        "start": 27.38,
+        "end": 29.24,
+        "text": "precedent that any launch can be reversed",
+        "words": [
+          {
+            "text": "precedent",
+            "start": 27.38,
+            "end": 27.76
+          },
+          {
+            "text": "that",
+            "start": 27.76,
+            "end": 28.16
+          },
+          {
+            "text": "any",
+            "start": 28.16,
+            "end": 28.36
+          },
+          {
+            "text": "launch",
+            "start": 28.36,
+            "end": 28.62
+          },
+          {
+            "text": "can",
+            "start": 28.62,
+            "end": 28.84
+          },
+          {
+            "text": "be",
+            "start": 28.84,
+            "end": 28.96
+          },
+          {
+            "text": "reversed",
+            "start": 28.96,
+            "end": 29.24
+          }
+        ]
+      },
+      {
+        "start": 29.24,
+        "end": 30.28,
+        "text": "on a verbal claim.",
+        "words": [
+          {
+            "text": "on",
+            "start": 29.24,
+            "end": 29.6
+          },
+          {
+            "text": "a",
+            "start": 29.6,
+            "end": 29.68
+          },
+          {
+            "text": "verbal",
+            "start": 29.68,
+            "end": 29.86
+          },
+          {
+            "text": "claim.",
+            "start": 29.86,
+            "end": 30.28
+          }
+        ]
+      },
+      {
+        "start": 30.28,
+        "end": 32.58,
+        "text": "Here is what the bypass actually was.",
+        "words": [
+          {
+            "text": "Here",
+            "start": 30.28,
+            "end": 30.587
+          },
+          {
+            "text": "is",
+            "start": 30.587,
+            "end": 30.893
+          },
+          {
+            "text": "what",
+            "start": 31.2,
+            "end": 31.3
+          },
+          {
+            "text": "the",
+            "start": 31.3,
+            "end": 31.42
+          },
+          {
+            "text": "bypass",
+            "start": 31.42,
+            "end": 31.64
+          },
+          {
+            "text": "actually",
+            "start": 31.64,
+            "end": 32.28
+          },
+          {
+            "text": "was.",
+            "start": 32.28,
+            "end": 32.58
+          }
+        ]
+      },
+      {
+        "start": 33.08,
+        "end": 35.6,
+        "text": "A researcher chained unicode tricks, long context,",
+        "words": [
+          {
+            "text": "A",
+            "start": 33.08,
+            "end": 33.13
+          },
+          {
+            "text": "researcher",
+            "start": 33.12,
+            "end": 33.4
+          },
+          {
+            "text": "chained",
+            "start": 33.4,
+            "end": 33.9
+          },
+          {
+            "text": "unicode",
+            "start": 33.9,
+            "end": 34.22
+          },
+          {
+            "text": "tricks,",
+            "start": 34.22,
+            "end": 34.6
+          },
+          {
+            "text": "long",
+            "start": 35.08,
+            "end": 35.13
+          },
+          {
+            "text": "context,",
+            "start": 35.12,
+            "end": 35.6
+          }
+        ]
+      },
+      {
+        "start": 36.02,
+        "end": 37.98,
+        "text": "and narrative framing to talk past the",
+        "words": [
+          {
+            "text": "and",
+            "start": 36.02,
+            "end": 36.12
+          },
+          {
+            "text": "narrative",
+            "start": 36.12,
+            "end": 36.34
+          },
+          {
+            "text": "framing",
+            "start": 36.34,
+            "end": 36.7
+          },
+          {
+            "text": "to",
+            "start": 36.7,
+            "end": 37.28
+          },
+          {
+            "text": "talk",
+            "start": 37.28,
+            "end": 37.5
+          },
+          {
+            "text": "past",
+            "start": 37.5,
+            "end": 37.78
+          },
+          {
+            "text": "the",
+            "start": 37.78,
+            "end": 37.98
+          }
+        ]
+      },
+      {
+        "start": 37.98,
+        "end": 38.88,
+        "text": "model's refusals.",
+        "words": [
+          {
+            "text": "model's",
+            "start": 37.98,
+            "end": 38.36
+          },
+          {
+            "text": "refusals.",
+            "start": 38.36,
+            "end": 38.88
+          }
+        ]
+      },
+      {
+        "start": 39.36,
+        "end": 41.88,
+        "text": "But Anthropic says its real safeguards run",
+        "words": [
+          {
+            "text": "But",
+            "start": 39.36,
+            "end": 39.56
+          },
+          {
+            "text": "Anthropic",
+            "start": 39.56,
+            "end": 40.04
+          },
+          {
+            "text": "says",
+            "start": 40.04,
+            "end": 40.3
+          },
+          {
+            "text": "its",
+            "start": 40.3,
+            "end": 40.78
+          },
+          {
+            "text": "real",
+            "start": 40.78,
+            "end": 41.02
+          },
+          {
+            "text": "safeguards",
+            "start": 41.02,
+            "end": 41.5
+          },
+          {
+            "text": "run",
+            "start": 41.5,
+            "end": 41.88
+          }
+        ]
+      },
+      {
+        "start": 41.88,
+        "end": 44.14,
+        "text": "as independent classifiers outside the model.",
+        "words": [
+          {
+            "text": "as",
+            "start": 41.88,
+            "end": 42.08
+          },
+          {
+            "text": "independent",
+            "start": 42.08,
+            "end": 42.34
+          },
+          {
+            "text": "classifiers",
+            "start": 42.34,
+            "end": 43.32
+          },
+          {
+            "text": "outside",
+            "start": 43.32,
+            "end": 43.56
+          },
+          {
+            "text": "the",
+            "start": 43.56,
+            "end": 43.92
+          },
+          {
+            "text": "model.",
+            "start": 43.92,
+            "end": 44.14
+          }
+        ]
+      },
+      {
+        "start": 44.58,
+        "end": 46.3,
+        "text": "Talking past a refusal is not the",
+        "words": [
+          {
+            "text": "Talking",
+            "start": 44.58,
+            "end": 44.8
+          },
+          {
+            "text": "past",
+            "start": 44.8,
+            "end": 45.1
+          },
+          {
+            "text": "a",
+            "start": 45.1,
+            "end": 45.28
+          },
+          {
+            "text": "refusal",
+            "start": 45.28,
+            "end": 45.46
+          },
+          {
+            "text": "is",
+            "start": 45.46,
+            "end": 45.92
+          },
+          {
+            "text": "not",
+            "start": 45.92,
+            "end": 46.12
+          },
+          {
+            "text": "the",
+            "start": 46.12,
+            "end": 46.3
+          }
+        ]
+      },
+      {
+        "start": 46.3,
+        "end": 47.22,
+        "text": "same as defeating them.",
+        "words": [
+          {
+            "text": "same",
+            "start": 46.3,
+            "end": 46.5
+          },
+          {
+            "text": "as",
+            "start": 46.5,
+            "end": 46.68
+          },
+          {
+            "text": "defeating",
+            "start": 46.68,
+            "end": 46.94
+          },
+          {
+            "text": "them.",
+            "start": 46.94,
+            "end": 47.22
+          }
+        ]
+      },
+      {
+        "start": 47.22,
+        "end": 48.98,
+        "text": "It also says some outputs were not",
+        "words": [
+          {
+            "text": "It",
+            "start": 47.22,
+            "end": 47.52
+          },
+          {
+            "text": "also",
+            "start": 47.52,
+            "end": 47.64
+          },
+          {
+            "text": "says",
+            "start": 47.64,
+            "end": 48.02
+          },
+          {
+            "text": "some",
+            "start": 48.02,
+            "end": 48.28
+          },
+          {
+            "text": "outputs",
+            "start": 48.28,
+            "end": 48.56
+          },
+          {
+            "text": "were",
+            "start": 48.56,
+            "end": 48.84
+          },
+          {
+            "text": "not",
+            "start": 48.84,
+            "end": 48.98
+          }
+        ]
+      },
+      {
+        "start": 48.98,
+        "end": 51.02,
+        "text": "even from Fable 5, the rest was",
+        "words": [
+          {
+            "text": "even",
+            "start": 48.98,
+            "end": 49.22
+          },
+          {
+            "text": "from",
+            "start": 49.22,
+            "end": 49.44
+          },
+          {
+            "text": "Fable",
+            "start": 49.44,
+            "end": 49.72
+          },
+          {
+            "text": "5,",
+            "start": 49.72,
+            "end": 50.0
+          },
+          {
+            "text": "the",
+            "start": 50.52,
+            "end": 50.62
+          },
+          {
+            "text": "rest",
+            "start": 50.62,
+            "end": 50.78
+          },
+          {
+            "text": "was",
+            "start": 50.78,
+            "end": 51.02
+          }
+        ]
+      },
+      {
+        "start": 51.02,
+        "end": 53.04,
+        "text": "already public, and a usage review found",
+        "words": [
+          {
+            "text": "already",
+            "start": 51.02,
+            "end": 51.3
+          },
+          {
+            "text": "public,",
+            "start": 51.3,
+            "end": 51.62
+          },
+          {
+            "text": "and",
+            "start": 51.62,
+            "end": 52.1
+          },
+          {
+            "text": "a",
+            "start": 52.1,
+            "end": 52.18
+          },
+          {
+            "text": "usage",
+            "start": 52.18,
+            "end": 52.4
+          },
+          {
+            "text": "review",
+            "start": 52.4,
+            "end": 52.72
+          },
+          {
+            "text": "found",
+            "start": 52.72,
+            "end": 53.04
+          }
+        ]
+      },
+      {
+        "start": 53.04,
+        "end": 54.12,
+        "text": "no real-world abuse.",
+        "words": [
+          {
+            "text": "no",
+            "start": 53.04,
+            "end": 53.32
+          },
+          {
+            "text": "real-world",
+            "start": 53.32,
+            "end": 53.59
+          },
+          {
+            "text": "abuse.",
+            "start": 53.86,
+            "end": 54.12
+          }
+        ]
+      },
+      {
+        "start": 55.58,
+        "end": 57.86,
+        "text": "So before you panic, ask four things.",
+        "words": [
+          {
+            "text": "So",
+            "start": 55.58,
+            "end": 56.06
+          },
+          {
+            "text": "before",
+            "start": 56.06,
+            "end": 56.3
+          },
+          {
+            "text": "you",
+            "start": 56.3,
+            "end": 56.56
+          },
+          {
+            "text": "panic,",
+            "start": 56.56,
+            "end": 56.84
+          },
+          {
+            "text": "ask",
+            "start": 57.12,
+            "end": 57.32
+          },
+          {
+            "text": "four",
+            "start": 57.32,
+            "end": 57.6
+          },
+          {
+            "text": "things.",
+            "start": 57.6,
+            "end": 57.86
+          }
+        ]
+      },
+      {
+        "start": 58.58,
+        "end": 60.0,
+        "text": "Is it a refusal bypass or a",
+        "words": [
+          {
+            "text": "Is",
+            "start": 58.58,
+            "end": 58.63
+          },
+          {
+            "text": "it",
+            "start": 58.62,
+            "end": 58.72
+          },
+          {
+            "text": "a",
+            "start": 58.72,
+            "end": 58.78
+          },
+          {
+            "text": "refusal",
+            "start": 58.78,
+            "end": 59.08
+          },
+          {
+            "text": "bypass",
+            "start": 59.08,
+            "end": 59.4
+          },
+          {
+            "text": "or",
+            "start": 59.4,
+            "end": 59.9
+          },
+          {
+            "text": "a",
+            "start": 59.9,
+            "end": 60.0
+          }
+        ]
+      },
+      {
+        "start": 60.0,
+        "end": 60.7,
+        "text": "safeguard bypass.",
+        "words": [
+          {
+            "text": "safeguard",
+            "start": 60.0,
+            "end": 60.28
+          },
+          {
+            "text": "bypass.",
+            "start": 60.28,
+            "end": 60.7
+          }
+        ]
+      },
+      {
+        "start": 61.38,
+        "end": 62.56,
+        "text": "Does it beat public knowledge.",
+        "words": [
+          {
+            "text": "Does",
+            "start": 61.38,
+            "end": 61.58
+          },
+          {
+            "text": "it",
+            "start": 61.58,
+            "end": 61.72
+          },
+          {
+            "text": "beat",
+            "start": 61.72,
+            "end": 61.88
+          },
+          {
+            "text": "public",
+            "start": 61.88,
+            "end": 62.12
+          },
+          {
+            "text": "knowledge.",
+            "start": 62.12,
+            "end": 62.56
+          }
+        ]
+      },
+      {
+        "start": 63.26,
+        "end": 64.28,
+        "text": "Is there real-world harm.",
+        "words": [
+          {
+            "text": "Is",
+            "start": 63.26,
+            "end": 63.31
+          },
+          {
+            "text": "there",
+            "start": 63.3,
+            "end": 63.44
+          },
+          {
+            "text": "real-world",
+            "start": 63.44,
+            "end": 63.7
+          },
+          {
+            "text": "harm.",
+            "start": 63.96,
+            "end": 64.28
+          }
+        ]
+      },
+      {
+        "start": 65.02,
+        "end": 65.56,
+        "text": "Was it reproduced.",
+        "words": [
+          {
+            "text": "Was",
+            "start": 65.02,
+            "end": 65.1
+          },
+          {
+            "text": "it",
+            "start": 65.1,
+            "end": 65.26
+          },
+          {
+            "text": "reproduced.",
+            "start": 65.26,
+            "end": 65.56
+          }
+        ]
+      },
+      {
+        "start": 67.64,
+        "end": 69.34,
+        "text": "A refusal bypass is not a safeguard",
+        "words": [
+          {
+            "text": "A",
+            "start": 67.64,
+            "end": 67.72
+          },
+          {
+            "text": "refusal",
+            "start": 67.72,
+            "end": 67.96
+          },
+          {
+            "text": "bypass",
+            "start": 67.96,
+            "end": 68.3
+          },
+          {
+            "text": "is",
+            "start": 68.3,
+            "end": 68.7
+          },
+          {
+            "text": "not",
+            "start": 68.7,
+            "end": 68.94
+          },
+          {
+            "text": "a",
+            "start": 68.94,
+            "end": 69.08
+          },
+          {
+            "text": "safeguard",
+            "start": 69.08,
+            "end": 69.34
+          }
+        ]
+      },
+      {
+        "start": 69.34,
+        "end": 69.7,
+        "text": "bypass.",
+        "words": [
+          {
+            "text": "bypass.",
+            "start": 69.34,
+            "end": 69.7
+          }
+        ]
+      },
+      {
+        "start": 70.46,
+        "end": 71.88,
+        "text": "A headline is a claim until the",
+        "words": [
+          {
+            "text": "A",
+            "start": 70.46,
+            "end": 70.51
+          },
+          {
+            "text": "headline",
+            "start": 70.5,
+            "end": 70.76
+          },
+          {
+            "text": "is",
+            "start": 70.76,
+            "end": 71.08
+          },
+          {
+            "text": "a",
+            "start": 71.08,
+            "end": 71.16
+          },
+          {
+            "text": "claim",
+            "start": 71.16,
+            "end": 71.38
+          },
+          {
+            "text": "until",
+            "start": 71.38,
+            "end": 71.7
+          },
+          {
+            "text": "the",
+            "start": 71.7,
+            "end": 71.88
+          }
+        ]
+      },
+      {
+        "start": 71.88,
+        "end": 73.26,
+        "text": "evidence shows real uplift.",
+        "words": [
+          {
+            "text": "evidence",
+            "start": 71.88,
+            "end": 72.14
+          },
+          {
+            "text": "shows",
+            "start": 72.14,
+            "end": 72.52
+          },
+          {
+            "text": "real",
+            "start": 72.52,
+            "end": 72.8
+          },
+          {
+            "text": "uplift.",
+            "start": 72.8,
+            "end": 73.26
+          }
+        ]
+      },
+      {
+        "start": 73.72,
+        "end": 74.34,
+        "text": "What do you check first?",
+        "words": [
+          {
+            "text": "What",
+            "start": 73.72,
+            "end": 73.78
+          },
+          {
+            "text": "do",
+            "start": 73.78,
+            "end": 73.86
+          },
+          {
+            "text": "you",
+            "start": 73.86,
+            "end": 73.94
+          },
+          {
+            "text": "check",
+            "start": 73.94,
+            "end": 74.12
+          },
+          {
+            "text": "first?",
+            "start": 74.12,
+            "end": 74.34
+          }
+        ]
+      }
+    ]
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}

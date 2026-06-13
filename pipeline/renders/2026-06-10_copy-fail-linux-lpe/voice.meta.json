@@ -1,5 +1,5 @@
 {
-  "seed": 1892118454,
+  "seed": 1194486061,
   "seed_source": "auto",
   "model": "openbmb/VoxCPM2",
   "sample_rate": 48000,
@@ -8,6 +8,6 @@
   "clone_mode": "hi-fi",
   "prompt_text_source": "whisper",
   "script_chars": 890,
-  "generated_at": "2026-06-12T03:12:40",
-  "reuse_command": "bun run pipeline -- 2026-06-10_copy-fail-linux-lpe --seed=1892118454"
+  "generated_at": "2026-06-12T21:44:18",
+  "reuse_command": "bun run pipeline -- 2026-06-10_copy-fail-linux-lpe --seed=1194486061"
 }

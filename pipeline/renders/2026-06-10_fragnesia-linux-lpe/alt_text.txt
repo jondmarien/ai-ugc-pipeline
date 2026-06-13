@@ -10,6 +10,6 @@ The pattern: Copy Fail, then Dirty Frag, then Fragnesia. Three subsystems, same 
 
 Mitigation: blocklist esp4, esp6, rxrpc, restrict unprivileged user namespaces, harden containers, monitor for escalation, and patch the kernel when available. Three converging bugs are stopped by one module blocklist.
 
-The page-cache corruption bug class now spans three subsystems. One mitigation covers all three, but the kernel keeps finding new paths to the same primitive. Three roots merge into a trunk labeled page-cache corruption.
+The page-cache corruption bug class now spans three subsystems. One mitigation covers all three, but the kernel keeps finding new paths to the same primitive. Three roots of light merge into a single dark trunk, a red axe poised at its base while fresh roots sprout below.
 
 Closing question: How many page-cache corruption primitives are in your kernel right now? A kernel subsystem map shows three red paths converging on the page cache.

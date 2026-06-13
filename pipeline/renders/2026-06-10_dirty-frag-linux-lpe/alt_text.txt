@@ -1,10 +1,10 @@
 Title card: two primitives, one chain, deterministic root. Dirty Frag bypasses the Copy Fail mitigation with no race condition and hits Ubuntu, RHEL, Fedora, and openSUSE. Two fractured shards fuse into a single glowing red blade in a dark void.
 
-Dirty Frag extends the Dirty Pipe and Copy Fail bug class, chaining the xfrm-ESP and RxRPC page-cache writes. Reported April 30, embargo broken after a third party published xfrm-ESP details, PoC released. A family tree of kernel bugs with Dirty Frag as the newest red node.
+Dirty Frag extends the Dirty Pipe and Copy Fail bug class, chaining the xfrm-ESP and RxRPC page-cache writes. Reported April 30, embargo broken after a third party published xfrm-ESP details, PoC released. A dark branching structure of glowing nodes, the newest node at the tip pulsing red.
 
 A deterministic logic bug with no race condition required, the kernel does not panic on failure, and the success rate is very high. It hits Ubuntu 24.04.4, RHEL 10.1, openSUSE Tumbleweed, CentOS Stream 10, AlmaLinux 10, and Fedora 44, with Microsoft seeing limited in-the-wild use. A precision mechanism clicks into place every time.
 
-xfrm-ESP gives a four-byte store via IPsec but needs a user namespace that Ubuntu AppArmor blocks. RxRPC needs no namespace but rxrpc.ko is absent on most distros, except Ubuntu loads it by default. Chaining covers both blind spots for one-command root. Two gears marked ESP and RxRPC drive a ROOT output shaft.
+xfrm-ESP gives a four-byte store via IPsec but needs a user namespace that Ubuntu AppArmor blocks. RxRPC needs no namespace but rxrpc.ko is absent on most distros, except Ubuntu loads it by default. Chaining covers both blind spots for one-command root. Two interlocking gears mesh and drive a single output shaft that glows red at its end.
 
 The Copy Fail mitigation blacklists algif_aead, but Dirty Frag works regardless because ESP and RxRPC are separate attack surfaces. Blocklisting esp4, esp6, and rxrpc breaks IPsec and RxRPC, so patching is the only real fix. A blocked shield with two red arrows bypassing it.
 
@@ -12,4 +12,4 @@ Blocklist esp4, esp6, and rxrpc if you do not need IPsec or RxRPC, restrict unpr
 
 The Copy Fail mitigation does not cover the xfrm or RxRPC paths. Dirty Frag proves the bug class is wider than one subsystem, so patch the kernel, not the module. A kernel source tree with one branch pruned but two others thriving in red.
 
-Closing question: have you blocklisted esp4, esp6, and rxrpc on systems that do not need IPsec? Save this for your next kernel hardening review. A single modprobe.d config line on a clean dark end-card with open negative space.
+Closing question: have you blocklisted esp4, esp6, and rxrpc on systems that do not need IPsec? Save this for your next kernel hardening review. A single small glowing emblem of light on a clean dark end-card with open negative space.

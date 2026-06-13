@@ -1,4 +1,4 @@
-Title card: Microsoft suspended the researcher, and the exploits reappeared. The Nightmare Eclipse account was removed, the zero-days republished under MSNightmare with no warning. A GitHub octocat silhouette half dissolves into purple static.
+Title card: Microsoft suspended the researcher, and the exploits reappeared. The Nightmare Eclipse account was removed, the zero-days republished under MSNightmare with no warning. A single dark silhouetted figure half dissolves into drifting purple static, its left half solid and whole.
 
 Nightmare Eclipse dropped six Windows zero-days in months: BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, RoguePlanet. The researcher cited Microsoft's disclosure process, and Microsoft threatened legal action. A dark ledger of six entries.
 
@@ -12,4 +12,4 @@ The defender lesson: you cannot rely on coordinated disclosure, because when it 
 
 Coordinated disclosure is a courtesy, not a guarantee. When vendors break trust, researchers go public, so defenders must detect the behaviors regardless. A fractured handshake, one hand purple for vendor and one red for researcher, leaks light.
 
-Closing question: Do you have detection for SAM hive access, System32 writes, and Defender tampering? A detection rule snippet sits on a clean dark end-card with open negative space.
+Closing question: Do you have detection for SAM hive access, System32 writes, and Defender tampering? A single small glowing purple emblem sits on a clean dark end-card with open negative space.
