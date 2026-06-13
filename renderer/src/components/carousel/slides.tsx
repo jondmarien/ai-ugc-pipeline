@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import type { TPostData, TSlideData } from "@/lib/schema";
-import { fitHeadline, fonts, palette, themeAccent, type as t } from "@/design/tokens";
+import { fonts, headlineBase, palette, themeAccent, type as t } from "@/design/tokens";
 import { CarouselSlide, Kicker } from "./CarouselSlide";
 
 type SlideProps = { post: TPostData; slide: TSlideData };
@@ -80,7 +80,7 @@ export function CoverSlide({ post, slide }: SlideProps) {
   return (
     <CarouselSlide post={post} slide={slide} align="end">
       <Kicker text={slide.kicker} accent={accent} />
-      <Headline text={slide.on_slide_copy} size={fitHeadline(slide.on_slide_copy, t.coverHeadline)} accent={accent} />
+      <Headline text={slide.on_slide_copy} size={headlineBase.cover} accent={accent} />
       <Subline text={slide.subline} />
       <SwipeCue label={slide.cta} accent={accent} />
     </CarouselSlide>
@@ -92,7 +92,7 @@ function StandardSlide({ post, slide }: SlideProps) {
   return (
     <CarouselSlide post={post} slide={slide} align="end">
       <Kicker text={slide.kicker} accent={accent} />
-      <Headline text={slide.on_slide_copy} size={fitHeadline(slide.on_slide_copy, t.headline)} />
+      <Headline text={slide.on_slide_copy} size={headlineBase.body} />
       <Subline text={slide.subline} />
     </CarouselSlide>
   );
@@ -103,7 +103,7 @@ export function TakeawaySlide({ post, slide }: SlideProps) {
   return (
     <CarouselSlide post={post} slide={slide} align="center">
       <Kicker text={slide.kicker} accent={accent} />
-      <Headline text={slide.on_slide_copy} size={fitHeadline(slide.on_slide_copy, t.coverHeadline - 8, 14)} accent={accent} />
+      <Headline text={slide.on_slide_copy} size={headlineBase.takeaway} accent={accent} />
       <Subline text={slide.subline} />
     </CarouselSlide>
   );
@@ -114,7 +114,7 @@ export function CtaSlide({ post, slide }: SlideProps) {
   return (
     <CarouselSlide post={post} slide={slide} align="end">
       <Kicker text={slide.kicker} accent={accent} />
-      <Headline text={slide.on_slide_copy} size={fitHeadline(slide.on_slide_copy, t.headline)} />
+      <Headline text={slide.on_slide_copy} size={headlineBase.body} />
       <Subline text={slide.subline} />
       <div style={{ display: "flex", gap: 16, marginTop: 12, flexWrap: "wrap" }}>
         <SwipeCue label={slide.cta || "SAVE + FOLLOW"} accent={accent} />
@@ -165,7 +165,7 @@ export function ChainSlide({ post, slide }: SlideProps) {
   return (
     <CarouselSlide post={post} slide={slide} align="fill">
       <Kicker text={slide.kicker} accent={accent} />
-      <Headline text={slide.on_slide_copy} size={fitHeadline(slide.on_slide_copy, 34)} accent={accent} />
+      <Headline text={slide.on_slide_copy} size={headlineBase.chain} accent={accent} />
       <div style={{ display: "flex", flexDirection: "column", gap: 5, marginTop: 2 }}>
         {steps.map((s, i) => (
           <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "stretch", gap: 5 }}>

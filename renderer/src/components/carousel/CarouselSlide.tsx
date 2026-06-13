@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 import type { TPostData, TSlideData } from "@/lib/schema";
-import { fonts, layout, overlays, palette, themeAccent, type as typeScale } from "@/design/tokens";
+import { fitFloors, fonts, headlineBase, layout, overlays, palette, themeAccent, type as typeScale } from "@/design/tokens";
 import { SlideBackground } from "./SlideBackground";
+import { useFitToFrame } from "./useFitToFrame";
 
 // Shared canvas shell: exact pixel size, background, safe area, brand mark,
 // pagination, accent hairline, and a CTA zone. Role slides supply children.
@@ -27,6 +28,23 @@ export function CarouselSlide({
     ? safe_margin + layout.headerBand
     : Math.max(safe_margin + layout.headerBand, Math.round(height * (1 - layout.textMaxFrac)));
 
+  // Measured shrink-to-fit: the text block renders at its per-role base size, gets measured
+  // against the bounded frame, then scales DOWN (never below the legibility floor) so copy
+  // never clips. The floor is the larger of the headline and subline floor ratios.
+  const headlineBaseForRole =
+    slide.role === "cover" ? headlineBase.cover
+    : slide.role === "takeaway" ? headlineBase.takeaway
+    : align === "fill" ? headlineBase.chain
+    : headlineBase.body;
+  const minScale = Math.max(
+    fitFloors.headline / headlineBaseForRole,
+    fitFloors.subline / typeScale.subline,
+  );
+  const { frameRef, blockRef, scale } = useFitToFrame(minScale, [slide.on_slide_copy, slide.subline]);
+  // The block scales toward its anchored edge so it stays pinned: bottom for `end`, centre for
+  // `center`, top for `fill`/`start`.
+  const transformOrigin = align === "end" ? "50% 100%" : align === "center" ? "50% 50%" : "50% 0%";
+
   return (
     <div
       id="slide-root"
@@ -51,6 +69,7 @@ export function CarouselSlide({
           with the text — bottom-aligned or centered — so copy stays legible over any
           background without a hard box. */}
       <div
+        ref={frameRef}
         style={{
           position: "absolute",
           top: frameTop,
@@ -63,7 +82,15 @@ export function CarouselSlide({
           overflow: "hidden",
         }}
       >
-        <div style={{ position: "relative", alignSelf: "stretch" }}>
+        <div
+          ref={blockRef}
+          style={{
+            position: "relative",
+            alignSelf: "stretch",
+            transform: `scale(${scale})`,
+            transformOrigin,
+          }}
+        >
           <div
             aria-hidden
             style={{

@@ -35,7 +35,9 @@ export function App() {
           ),
         );
       })
-      .then(markReady)
+      // Wait for the fit layout effect (useLayoutEffect) to apply the measured scale before
+      // the export harness captures: two RAFs guarantee a committed paint past the layout pass.
+      .then(() => requestAnimationFrame(() => requestAnimationFrame(markReady)))
       .catch(markReady);
   }, [postKey, slideParam, mode]);
 
