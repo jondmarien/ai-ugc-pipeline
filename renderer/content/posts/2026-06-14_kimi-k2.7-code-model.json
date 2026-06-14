@@ -1,0 +1,402 @@
+{
+  "post_id": "2026-06-14_kimi-k2.7-code-model",
+  "date": "2026-06-14",
+  "slug": "kimi-k2.7-code-model",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "model_security",
+  "theme": "ai",
+  "audience": "security_practitioners",
+  "core_claim": "Moonshot AI released Kimi K2.7 Code, a 1T parameter Mixture-of-Experts model with 32B activated, purpose-built for agentic coding, expanding the attack surface for workflows that adopt it without independent review.",
+  "claim_tags": [
+    "reported_fact",
+    "emerging",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 4,
+    "relevance": 5,
+    "novelty": 5,
+    "visual_drama": 3,
+    "defender_usefulness": 5,
+    "total": 22
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "model_security",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-14_kimi-k2.7-code-model",
+    "filename_prefix": "2026-06-14_kimi-k2.7-code-model",
+    "expected_files": [
+      "2026-06-14_kimi-k2.7-code-model_01_cover.png",
+      "2026-06-14_kimi-k2.7-code-model_02_context.png",
+      "2026-06-14_kimi-k2.7-code-model_03_risk.png",
+      "2026-06-14_kimi-k2.7-code-model_04_mechanism.png",
+      "2026-06-14_kimi-k2.7-code-model_05_failure-point.png",
+      "2026-06-14_kimi-k2.7-code-model_06_defense.png",
+      "2026-06-14_kimi-k2.7-code-model_07_takeaway.png",
+      "2026-06-14_kimi-k2.7-code-model_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "A 1T MOE MODEL POWERS YOUR CODING AGENT",
+      "subline": "Moonshot released Kimi K2.7 Code with 32B active parameters for agentic engineering. The model is open weight. Agents that adopt it inherit its capabilities and risks.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a single machined gear fragment catching a hard rim light from the left in deep shadow, precision steel teeth reflective and unmarked, heavy industrial key art composition held in the upper third with clean empty lower third",
+      "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/01_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080x1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "Moonshot released Kimi K2.7 Code, a MoE model with 384 experts, 8 active each.",
+      "subline": "The 1T parameter model targets long-horizon software engineering with a 256K context window and mandatory thinking mode.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a conveyor belt of identical precision bearings moving from darkness toward the camera, rollers catching a single low rim light, dark editorial calm with generous empty lower third",
+      "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/02_context.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "An open-weight agentic model becomes the decision engine for every agent that adopts it.",
+      "subline": "Teams inherit training biases, tool-call patterns, and a 39 percent hallucination rate — down from 65 percent — plus supply-chain risk from the weights.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a punch-card feeder pulling a stack of unmarked cards into a heavy mechanism in darkness, one card half-swallowed by the slot, tense high contrast with clear lower third",
+      "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/03_risk.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "The model emits tool calls agents execute against your shell, files, and version control.",
+      "subline": "When the model chooses a command or edit, the agent runs it. The model judgment becomes your execution reality.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a pneumatic delivery tube with a sealed canister rushing into a machine intake in the dark, a faint glow tracing the tube curve, focal point in the upper area",
+      "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/04_mechanism.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Teams adopt the model for benchmark scores, then skip sandbox review for speed.",
+      "subline": "Proprietary benchmarks like Kimi Code Bench v2 and Kimi Claw 24/7 are Moonshot-run tests with no external reproducibility. The model has not been submitted to DeepSWE.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a stamping press driven down hard onto a raw metal blank with no guard rail in place, sparks frozen at the point of impact, dark with clear lower third",
+      "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/05_failure-point.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Run agents on this model in a throwaway VM with no real credentials.",
+      "subline": "Pin the model version, audit the tool-call schema, keep the approve-before-run gate on, and test against your own repos before production workloads.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a heavy bench vise clamped firmly on a single machined part, jaws bearing down with controlled pressure, contained and orderly with empty lower third",
+      "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/06_defense.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "The risk {{is not the benchmark score}}. [[It is every command the model chooses when you are not watching.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a single mechanical lever held mid-throw in deep shadow with a thin rim of light along its shaft, center kept dark and open",
+      "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/07_takeaway.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Would you run an agent powered by a 1T parameter open-weight coding model on your main machine?",
+      "subline": "Save this before you adopt the next agentic coding backend.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a clean dark end-card scene, a single drive belt looped around one idle pulley resting in vast empty negative space, premium editorial cybersecurity look",
+      "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/08_cta.png",
+      "asset_status": "needed",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Moonshot shipped Kimi K2.7 Code, a 1 trillion parameter Mixture-of-Experts model with 32 billion activated, purpose-built for agentic software engineering. It has a 256K context window, mandatory thinking mode, and MoonViT vision encoder. The weights are open under a Modified MIT license and available via Kimi Code CLI, Moonshot API, Hugging Face, OpenRouter, and Cloudflare Workers AI.\n\nHere is what the launch posts skip. An open-weight agentic model becomes the decision engine for every agent that loads it. The model chooses tool calls across multi-file refactors, debugging sessions, and codebase analysis. The agent executes them against your shell, your files, and your keys. The model was trained for coding. Its tool-use patterns and hallucination rate — independently reported at 39 percent, down from 65 percent — reflect that training. When a fetched web page or a poisoned repository steers the model, the agent executes the steering.\n\nThe headline benchmarks are proprietary. Kimi Code Bench v2, MLS Bench Lite, and Kimi Claw 24/7 are Moonshot-run tests with no external reproducibility. The model has not been submitted to DeepSWE, an independent benchmark considered more discriminating. Independent production telemetry from Cline shows the K2 family achieving 3.3 percent failure rates on real diff editing tasks, matching Claude 4 Sonnet. That is more meaningful than synthetic scores.\n\nTreat the model like untrusted code, because that is what the agent executes. Run the agent in a throwaway VM with restricted network egress, no real credentials, and spending limits on API calls. Keep the approve-before-run gate on outside of disposable boxes. Pin the model version and audit the tool-call schema before you adopt. Test against your own repos first.\n\nThe risk is not the benchmark score. It is every command the model chooses when you are not watching.\n\nWould you run an agent powered by a 1T parameter open-weight coding model on your main machine?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "AI agents",
+    "open weight models",
+    "model security",
+    "agentic coding",
+    "least privilege"
+  ],
+  "comment_prompt": "Would you run an agent powered by an open-weight agentic coding model on your main machine, or only in a sandbox?",
+  "alt_text": [
+    "Title card: a 1T parameter MoE model now powers your coding agent. Moonshot released Kimi K2.7 Code with 32B active parameters for agentic engineering. The model is open weight. The agents that adopt it inherit its capabilities and its risks. A single machined gear fragment catches a hard rim light in deep shadow.",
+    "Moonshot AI released Kimi K2.7 Code, a Mixture-of-Experts model with 384 experts and 8 active per token. The 1T total parameter model targets long-horizon software engineering with a 256K context window and mandatory thinking mode. A conveyor belt of identical precision bearings moves from darkness toward the camera.",
+    "An open-weight agentic model becomes the decision engine for every agent that adopts it without independent review. Teams inherit the model training biases, tool-call patterns, and hallucination rate independently reported at 39 percent down from 65 percent, along with any supply-chain risk from the weights. A punch-card feeder pulls unmarked cards into a heavy mechanism.",
+    "The model emits structured tool calls that agents execute directly against your shell, filesystem, and version control. When the model chooses a command or file edit, the agent runs it across multi-file refactors and debugging sessions. A sealed canister rushes through a pneumatic tube into a machine intake.",
+    "Teams adopt the model because it scores well on synthetic benchmarks, then skip the sandbox review for speed. Proprietary benchmarks like Kimi Code Bench v2 and Kimi Claw 24/7 are Moonshot-run tests with no external reproducibility. The model has not been submitted to independent benchmarks like DeepSWE. A stamping press hits a metal blank with no guard rail.",
+    "Run any agent on this model in a throwaway VM with restricted egress, no real credentials, and spending limits on API calls. Pin the model version, audit the tool-call schema, and keep the approve-before-run gate on outside disposable environments. A bench vise clamps down on a single part with controlled pressure.",
+    "The risk is not the benchmark score. It is every command the model chooses when you are not watching. A single mechanical lever is held mid-throw in deep shadow with a thin rim of light along its shaft.",
+    "The closing question asks whether you would run an agent powered by a 1T parameter open-weight coding model on your main machine, with a prompt to save it. A drive belt loops around one idle pulley in empty dark space."
+  ],
+  "sources": [
+    {
+      "source": "Kimi K2.7 Code resource page (Moonshot AI)",
+      "link": "https://www.kimi.com/resources/kimi-k2-7-code",
+      "supports": "Kimi K2.7 Code is a 1T parameter MoE model with 32B activated, 384 experts, 8 active, 256K context, mandatory thinking mode, MoonViT vision encoder, Modified MIT license.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Moonshot AI: kimi-code CLI (GitHub)",
+      "link": "https://github.com/MoonshotAI/kimi-code",
+      "supports": "Kimi Code CLI is a terminal coding agent that loads MCP servers and plugins, runs shell commands, fetches web pages, and can adopt external models for agentic coding.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Kimi Code documentation: Getting Started",
+      "link": "https://moonshotai.github.io/kimi-code/en/guides/getting-started.html",
+      "supports": "The agent runs read-only actions automatically; file edits and shell commands require confirmation by default; a skip-all-approvals mode exists.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "VM0.ai independent analysis: Kimi K2.7 Code",
+      "link": "https://www.vm0.ai/de/models/kimi-k2-7-code",
+      "supports": "Hallucination rate dropped from 65 percent (K2.6) to 39 percent (K2.7). SWE-bench Verified 80.2, LiveCodeBench v6 89.6, Terminal-Bench 2.0 66.7.",
+      "confidence": "medium",
+      "claim_tag": "emerging"
+    },
+    {
+      "source": "Cline blog: Moonshot Kimi K2 for coding first impressions",
+      "link": "https://cline.bot/blog/moonshots-kimi-k2-for-coding-our-first-impressions-in-cline",
+      "supports": "Production telemetry from thousands of users shows Kimi K2 family achieving 3.3 percent failure rates on real-world diff editing tasks, matching and occasionally outperforming Claude 4 Sonnet.",
+      "confidence": "medium",
+      "claim_tag": "emerging"
+    },
+    {
+      "source": "Geekhaus: Kimi K2.7 Code cuts thinking tokens 30 percent but benchmarks are proprietary",
+      "link": "https://geekhaus.club/ko/feed/2026/06/12/kimi-k2-7-code-cuts-thinking-tokens-30-but",
+      "supports": "Kimi Code Bench v2, MLS Bench Lite, and Kimi Claw 24/7 are Moonshot proprietary benchmarks. Model has not been submitted to DeepSWE independent benchmark.",
+      "confidence": "medium",
+      "claim_tag": "emerging"
+    },
+    {
+      "source": "Cloudflare Workers AI changelog: Kimi K2.7 Code",
+      "link": "https://developers.cloudflare.com/changelog/post/2026-06-12-kimi-k2-7-code-workers-ai/",
+      "supports": "Kimi K2.7 Code available on Cloudflare Workers AI as @cf/moonshotai/kimi-k2.7-code with pricing at $0.95/M input, $0.19/M cache hit, $4.00/M output.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 32,
+    "fps": 30,
+    "export_name": "2026-06-14_kimi-k2.7-code-model_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-14_kimi-k2.7-code-model/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": "Moonshot just released a 1 trillion parameter Mixture-of-Experts model built for agentic coding, and agents are already adopting it."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "text": "Kimi K2.7 Code has 32 billion active parameters, a 256K context window, and mandatory thinking mode. It chooses tool calls across your entire codebase."
+      },
+      {
+        "start": 13,
+        "end": 19,
+        "text": "The headline benchmarks are proprietary. The model has not been submitted to independent benchmarks like DeepSWE."
+      },
+      {
+        "start": 19,
+        "end": 25,
+        "text": "Treat it like untrusted code. Run it in a throwaway VM with no real keys, spending limits, and the approval gate on."
+      },
+      {
+        "start": 25,
+        "end": 32,
+        "text": "The risk is not the benchmark score. It is every command the model chooses when you are not watching. Tell me below."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 6,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Moonshot just released a 1 trillion parameter Mixture-of-Experts model built for agentic coding, and agents are already adopting it."
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Kimi K2.7 Code has 32 billion active parameters, a 256K context window, and mandatory thinking mode. It chooses tool calls across your entire codebase."
+      },
+      {
+        "start": 13,
+        "end": 19,
+        "slide_ref": 5,
+        "purpose": "failure_point",
+        "motion": "slow push-in",
+        "caption": "The headline benchmarks are proprietary. The model has not been submitted to independent benchmarks like DeepSWE."
+      },
+      {
+        "start": 19,
+        "end": 25,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "Treat it like untrusted code. Run it in a throwaway VM with no real keys, spending limits, and the approval gate on."
+      },
+      {
+        "start": 25,
+        "end": 32,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "The risk is not the benchmark score. It is every command the model chooses when you are not watching."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": []
+  },
+  "qa": {
+    "fact_checked": false,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "manual_review_required": true
+  }
+}
