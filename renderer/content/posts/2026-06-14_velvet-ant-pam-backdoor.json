@@ -1,0 +1,422 @@
+{
+  "post_id": "2026-06-14_velvet-ant-pam-backdoor",
+  "date": "2026-06-14",
+  "slug": "velvet-ant-pam-backdoor",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "offensive_ai",
+  "theme": "offensive",
+  "audience": "security_practitioners",
+  "core_claim": "China-nexus group Velvet Ant backdoored PAM and OpenSSH on Linux systems for nearly a decade, harvesting credentials and maintaining persistence in an air-gapped network by replacing trusted authentication binaries.",
+  "claim_tags": [
+    "reported_fact",
+    "emerging",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 5,
+    "visual_drama": 5,
+    "defender_usefulness": 5,
+    "total": 25
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "red",
+    "pillar_accent": "offensive_ai",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#ef4444",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-14_velvet-ant-pam-backdoor",
+    "filename_prefix": "2026-06-14_velvet-ant-pam-backdoor",
+    "expected_files": [
+      "2026-06-14_velvet-ant-pam-backdoor_01_cover.png",
+      "2026-06-14_velvet-ant-pam-backdoor_02_context.png",
+      "2026-06-14_velvet-ant-pam-backdoor_03_risk.png",
+      "2026-06-14_velvet-ant-pam-backdoor_04_mechanism.png",
+      "2026-06-14_velvet-ant-pam-backdoor_05_failure-point.png",
+      "2026-06-14_velvet-ant-pam-backdoor_06_defense.png",
+      "2026-06-14_velvet-ant-pam-backdoor_07_takeaway.png",
+      "2026-06-14_velvet-ant-pam-backdoor_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "THEY REPLACED LINUX LOGIN WITH BACKDOOR 9 YEARS",
+      "subline": "China-nexus group Velvet Ant modified PAM and OpenSSH binaries. The target network had no internet access. The attackers stayed from 2016 to 2025.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a single brass key with its teeth filed into a different pattern, catching a hard red rim light from the left in deep shadow, precision machined steel, the altered teeth visible on close inspection, heavy industrial key art held in upper third with clean empty lower third",
+      "background_asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/01_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080x1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT HAPPENED",
+      "on_slide_copy": "Sygnia uncovered Operation Highland — Velvet Ant backdoored PAM on isolated Linux systems.",
+      "subline": "Nine trojaned PAM versions found. Earliest traces 2016. Target had no direct internet access.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a conveyor belt of identical brass keys moving from darkness toward the camera, one key mid-belt showing subtly different teeth, rollers catching a single low red rim light, dark editorial calm with generous empty lower third",
+      "background_asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/02_context.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "Owning PAM means owning every credential that touches the system.",
+      "subline": "Two variants: one harvested passwords silently, the other accepted a master password. OpenSSH logged every command. Both survived reboots.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a punch-card feeder pulling a stack of unmarked cards into a heavy mechanism in darkness, one card half-swallowed by the slot, a second hidden card slipping in beside it unseen, tense high contrast with clear lower third",
+      "background_asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/03_risk.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "Attackers swapped PAM and OpenSSH for trojaned copies — no new malware to scan.",
+      "subline": "Bridged from web servers into the air-gapped segment. Backdoor lived in the login stream, invisible to AV and EDR.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a pneumatic delivery tube with a sealed canister rushing into a machine intake in the dark, a faint red glow tracing the tube curve, a perfect duplicate canister already inside the machine unseen, focal point in the upper area",
+      "background_asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/04_mechanism.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "kicker": "WHERE TEAMS FAIL",
+      "role": "failure_point",
+      "on_slide_copy": "Defenders trust authentication binaries and skip file integrity checks on PAM and OpenSSH.",
+      "subline": "Velvet Ant hit F5 BIG-IP and Cisco NX-OS (CVE-2024-20399). Each op targets deeper trusted infra. PamDOORa sells for $1,600 on crime forums.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a stamping press driven down hard onto a raw metal blank with no guard rail in place, sparks frozen at the point of impact, a second press beside it already modified with hidden tooling, dark with clear lower third",
+      "background_asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/05_failure-point.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Compare PAM and OpenSSH binaries against known-good copies — do not rely on alerts.",
+      "subline": "Remove backdoor BEFORE resetting passwords, or new credentials get harvested. Monitor /lib/security/ and /etc/pam.d/. Patch CVE-2024-20399 on Cisco gear.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a heavy bench vise clamped firmly on a single machined part, jaws bearing down with controlled pressure, a comparator gauge beside it verifying the part against a master reference, contained and orderly with empty lower third",
+      "background_asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/06_defense.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "The attack {{was not a vulnerability exploit}}. [[It was a trusted binary replacement that lived in the login stream for nine years.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a single mechanical lever held mid-throw in deep shadow with a thin red rim of light along its shaft, center kept dark and open",
+      "background_asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/07_takeaway.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "When did you last verify your PAM and OpenSSH binaries against known-good hashes?",
+      "subline": "Save this before your authentication layer becomes the attacker's persistence layer.",
+      "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
+      "visual_prompt": "a clean dark end-card scene, a single drive belt looped around one idle pulley resting in vast empty negative space, premium editorial cybersecurity look",
+      "background_asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/08_cta.png",
+      "asset_status": "needed",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Sygnia uncovered Operation Highland: China-nexus group Velvet Ant backdoored PAM and OpenSSH on Linux systems for nearly a decade. The target network had no direct internet access — attackers bridged from public-facing web servers into the isolated segment.\n\nHere is what matters. PAM is the authentication backbone in Linux. It sits between every login attempt and the system. Velvet Ant replaced trusted PAM and OpenSSH binaries with trojaned copies — nine versions found, earliest traces from 2016. Two variants: one silently harvested real credentials, the other accepted a master password. OpenSSH was modified to log every command typed, with a switch to disable logging during attacker sessions.\n\nNo new malware dropped. No exploit triggered. The attack lived in the login stream itself, invisible to AV and EDR. Group-IB independently confirmed PAM transmits credentials in plaintext through its stack — a malicious module sits directly in that stream. The pam_exec module allows arbitrary commands at login time, an untracked technique not yet in MITRE ATT&CK.\n\nThis is a pattern. Velvet Ant hit F5 BIG-IP appliances in 2024, converted them to C2 servers. They exploited CVE-2024-20399 on Cisco NX-OS switches for persistent switch-level access. Each operation moves one layer deeper into infrastructure defenders trust by default and inspect least.\n\nPAM backdoors are now commoditized. Plague (Nextron) evaded AV for over a year. PamDOORa source code sells for $1,600 on Russian forums. Linux-PAM itself had three critical CVEs in February 2025 (CVE-2025-24032, 24531, 24031), including a PKCS#11 flaw letting attackers authenticate with just a public certificate and known PIN.\n\nThe remediation order matters: compare PAM and OpenSSH binaries against known-good copies FIRST. Remove the backdoor BEFORE resetting passwords — if you reset while the backdoor is active, new credentials get harvested immediately. Monitor /lib/security/ and /etc/pam.d/ for changes. Patch CVE-2024-20399 on Cisco gear.\n\nThe attack was not a vulnerability exploit. It was a trusted binary replacement that lived in the login stream for nine years.\n\nWhen did you last verify your PAM and OpenSSH binaries against known-good hashes?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "Linux security",
+    "PAM backdoor",
+    "credential harvesting",
+    "air-gapped networks",
+    "supply chain trust"
+  ],
+  "comment_prompt": "When did you last verify your PAM and OpenSSH binaries against known-good hashes?",
+  "alt_text": [
+    "Title card: they replaced Linux login with a backdoor for nine years. China-nexus group Velvet Ant modified PAM and OpenSSH binaries. The target network had no internet access. Attackers stayed from 2016 to 2025. A single brass key with filed teeth catches a hard red rim light in deep shadow.",
+    "Sygnia uncovered Operation Highland — Velvet Ant backdoored PAM and OpenSSH on isolated Linux systems. Nine versions of trojaned PAM modules found. Earliest traces date to 2016. Target had no direct internet access. A conveyor belt of identical brass keys moves from darkness, one showing subtly different teeth.",
+    "PAM is the authentication backbone — owning it means owning every credential that touches the system. Two variants: one harvested real passwords silently, the other accepted a master password. OpenSSH logged every command typed. Both survived reboots and patch cycles. A punch-card feeder pulls cards into a mechanism, a hidden card slipping in unseen.",
+    "Attackers replaced trusted PAM and OpenSSH binaries with trojaned copies — no new malware to scan for. They bridged from internet-facing web servers into the air-gapped segment. The backdoor lived in the login stream itself, invisible to AV and EDR. A pneumatic tube delivers a canister, a perfect duplicate already inside the machine unseen.",
+    "Defenders trust authentication binaries and skip file integrity checks on PAM and OpenSSH. Velvet Ant reused this pattern across F5 BIG-IP appliances and Cisco NX-OS switches via CVE-2024-20399. PAM backdoors now commoditized — PamDOORa sold for $1,600 on cybercrime forums. A stamping press hits a blank with no guard rail, a second press already modified with hidden tooling.",
+    "Compare PAM and OpenSSH binaries against known-good copies — do not rely on alerts. Remove the backdoor BEFORE resetting passwords, or new credentials get harvested immediately. Monitor /lib/security/ and /etc/pam.d/ for changes. Patch CVE-2024-20399 on Cisco gear. A bench vise clamps a part with a comparator gauge verifying against a master reference.",
+    "The attack was not a vulnerability exploit. It was a trusted binary replacement that lived in the login stream for nine years. A single mechanical lever held mid-throw in deep shadow with a thin red rim of light along its shaft.",
+    "The closing question asks when you last verified PAM and OpenSSH binaries against known-good hashes, with a prompt to save it. A drive belt loops around one idle pulley in empty dark space."
+  ],
+  "sources": [
+    {
+      "source": "Sygnia: Operation Highland — Velvet Ant PAM Backdoor",
+      "link": "https://thehackernews.com/2026/06/china-linked-hackers-backdoored-linux.html?m=1",
+      "supports": "Velvet Ant modified PAM and OpenSSH binaries for credential harvesting and master password access. Nine versions found, earliest traces 2016. Target network air-gapped, bridged via web servers. Also hit F5 BIG-IP and Cisco NX-OS (CVE-2024-20399). Remediation: compare binaries against known-good, remove backdoor before password reset.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Group-IB DFIR: PAM Backdoor Analysis",
+      "link": "https://www.group-ib.com/blog/pam-backdoor-linux",
+      "supports": "PAM transmits credentials in plaintext through its stack; malicious module sits directly in stream. pam_exec module allows arbitrary commands at login — untracked technique not in MITRE ATT&CK.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Nextron Systems: Plague PAM Backdoor",
+      "link": "https://www.nextron-systems.com/plague-pam-backdoor",
+      "supports": "Plague PAM-based backdoor evaded AV detection for over a year. Technique broadly applicable against any Linux using standard PAM.",
+      "confidence": "medium",
+      "claim_tag": "emerging"
+    },
+    {
+      "source": "Flare.io: PamDOORa Sold on Cybercrime Forums",
+      "link": "https://flare.io/pamdoora-pam-backdoor",
+      "supports": "Complete PAM backdoor source code package (PamDOORa) sold on Russian cybercrime forums for $1,600, indicating commoditization at criminal level.",
+      "confidence": "medium",
+      "claim_tag": "emerging"
+    },
+    {
+      "source": "AhnLab EDR: PAM Module Injection Technical Breakdown",
+      "link": "https://ahnlab.com/en/pam-module-injection-analysis",
+      "supports": "Technical breakdown of PAM module injection at libpam library level, used to develop detection signatures.",
+      "confidence": "medium",
+      "claim_tag": "emerging"
+    },
+    {
+      "source": "CyberArk: Plague PAM Malware Analysis",
+      "link": "https://www.cyberark.com/resources/threat-research/plague-pam-malware",
+      "supports": "PAM-exploiting malware bypasses traditional AV because malicious code lives inside trusted authentication library, not standalone executable.",
+      "confidence": "medium",
+      "claim_tag": "emerging"
+    },
+    {
+      "source": "Broadcom: Linux-PAM Critical CVEs February 2025",
+      "link": "https://www.broadcom.com/support/security-advisories/linux-pam-cves-2025",
+      "supports": "Three critical CVEs in Linux-PAM (CVE-2025-24032, CVE-2025-24531, CVE-2025-24031). PAM-PKCS#11 default cert_policy=none allows authentication with public certificate and known PIN, no private key required.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "MITRE ATT&CK: Velvet Ant Technique Mapping",
+      "link": "https://attack.mitre.org/groups/G1033/",
+      "supports": "T1078 Valid Accounts, T1190 Exploit Public-Facing Application, T1003.001 OS Credential Dumping, T1547.001 Boot/Logon Autostart Execution, T1059 Command and Scripting Interpreter.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-14_velvet-ant-pam-backdoor/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "To be generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 36,
+    "fps": 30,
+    "export_name": "2026-06-14_velvet-ant-pam-backdoor_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-14_velvet-ant-pam-backdoor/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 7,
+        "text": "China-nexus group Velvet Ant replaced Linux PAM and OpenSSH with backdoored copies — and stayed for nine years."
+      },
+      {
+        "start": 7,
+        "end": 14,
+        "text": "The target network had no internet access. Attackers bridged from public web servers into the isolated segment."
+      },
+      {
+        "start": 14,
+        "end": 20,
+        "text": "PAM is the authentication backbone. Two variants: one harvested passwords silently, the other accepted a master password."
+      },
+      {
+        "start": 20,
+        "end": 26,
+        "text": "This pattern repeats: F5 appliances, Cisco switches. PAM backdoors now sell for sixteen hundred dollars on crime forums."
+      },
+      {
+        "start": 26,
+        "end": 32,
+        "text": "Compare PAM and OpenSSH binaries against known-good copies. Remove the backdoor BEFORE resetting passwords."
+      },
+      {
+        "start": 32,
+        "end": 36,
+        "text": "The attack was not a vulnerability exploit. It was a trusted binary replacement. When did you last verify yours?"
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 7,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "China-nexus group Velvet Ant replaced Linux PAM and OpenSSH with backdoored copies — and stayed for nine years."
+      },
+      {
+        "start": 7,
+        "end": 14,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "The target network had no internet access. Attackers bridged from public web servers into the isolated segment."
+      },
+      {
+        "start": 14,
+        "end": 20,
+        "slide_ref": 3,
+        "purpose": "risk",
+        "motion": "slow push-in",
+        "caption": "PAM is the authentication backbone. Two variants: one harvested passwords silently, the other accepted a master password."
+      },
+      {
+        "start": 20,
+        "end": 26,
+        "slide_ref": 5,
+        "purpose": "failure_point",
+        "motion": "slow push-in",
+        "caption": "This pattern repeats: F5 appliances, Cisco switches. PAM backdoors now sell for sixteen hundred dollars on crime forums."
+      },
+      {
+        "start": 26,
+        "end": 32,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "Compare PAM and OpenSSH binaries against known-good copies. Remove the backdoor BEFORE resetting passwords."
+      },
+      {
+        "start": 32,
+        "end": 36,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "The attack was not a vulnerability exploit. It was a trusted binary replacement. When did you last verify yours?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": []
+  },
+  "qa": {
+    "fact_checked": false,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "manual_review_required": true
+  }
+}
