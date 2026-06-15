@@ -1,7 +1,38 @@
 import { useMemo, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { PerformanceMonitor } from "@react-three/drei";
 import * as THREE from "three";
+
+// Lightweight FPS guard (replaces @react-three/drei's PerformanceMonitor so we
+// don't pull the whole drei barrel for one helper). Averages frame time over a
+// window; if it stays below the floor for `flipflops` consecutive windows, it
+// fires onDecline once so the canvas can drop its pixel ratio.
+function FpsGuard({
+  fps = 45,
+  flipflops = 3,
+  onDecline,
+}: {
+  fps?: number;
+  flipflops?: number;
+  onDecline: () => void;
+}) {
+  const acc = useRef({ frames: 0, time: 0, bad: 0, done: false });
+  useFrame((_, delta) => {
+    const s = acc.current;
+    if (s.done) return;
+    s.frames += 1;
+    s.time += delta;
+    if (s.time < 1) return; // evaluate roughly once per second
+    const measured = s.frames / s.time;
+    s.frames = 0;
+    s.time = 0;
+    s.bad = measured < fps ? s.bad + 1 : 0;
+    if (s.bad >= flipflops) {
+      s.done = true;
+      onDecline();
+    }
+  });
+  return null;
+}
 
 // The brand's 5 theme colors, in a spectrum that wraps the sphere:
 // offense(red) → ai(orange) → hacking(green) → defense(blue) → purple-team.
@@ -136,10 +167,7 @@ export function HeroCanvas({ reduced, visible }: { reduced: boolean; visible: bo
       style={{ position: "absolute", inset: 0 }}
     >
       <fog attach="fog" args={["#05070d", 6, 11]} />
-      <PerformanceMonitor
-        onDecline={() => setDpr((d) => Math.min(d, 1))}
-        flipflops={3}
-      />
+      <FpsGuard flipflops={3} onDecline={() => setDpr((d) => Math.min(d, 1))} />
       <SignalField count={count} reduced={reduced} />
     </Canvas>
   );
