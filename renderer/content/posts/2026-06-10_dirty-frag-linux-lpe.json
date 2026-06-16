@@ -66,7 +66,7 @@
       "slide": 1,
       "role": "cover",
       "kicker": "KERNEL X EXPLOIT",
-      "on_slide_copy": "TWO PRIMITIVES. ONE CHAIN. DETERMINISTIC ROOT.",
+      "on_slide_copy": "TWO KERNEL BUGS CHAIN INTO RELIABLE ROOT.",
       "subline": "Dirty Frag bypasses Copy Fail mitigation. No race condition. Works on Ubuntu, RHEL, Fedora, openSUSE.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A single hard rim light catches two fractured shards in a dark void fusing together into a single glowing red blade, premium dark editorial key art, the fusion held in the upper third with clean unmarked negative space filling the lower third.",

@@ -66,7 +66,7 @@
       "slide": 1,
       "role": "cover",
       "kicker": "KERNEL X EXPLOIT",
-      "on_slide_copy": "THIRD PAGE-CACHE ROOT EXPLOIT IN TWO WEEKS.",
+      "on_slide_copy": "THREE KERNEL ROOT EXPLOITS DROPPED IN TWO WEEKS.",
       "subline": "Fragnesia is CVE-2026-46300, targeting XFRM ESP-in-TCP. No host privileges required. The Dirty Frag mitigation covers it.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A single hard rim light catches three fragmented shards in a dark void aligning into a single red blade, the third shard clicking into place with a pulse, premium dark editorial key art, the fusion held in the upper third with clean unmarked negative space filling the lower third.",
