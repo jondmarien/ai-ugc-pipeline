@@ -4,7 +4,7 @@
   "slug": "miniplasma-patched-lpe",
   "platform": "instagram",
   "format": "carousel",
-  "status": "approved",
+  "status": "generated",
   "pillar": "offensive_ai",
   "theme": "offensive",
   "audience": "security_practitioners",
@@ -66,7 +66,7 @@
       "slide": 1,
       "role": "cover",
       "kicker": "WINDOWS × ZERO-DAY",
-      "on_slide_copy": "MINIPLASMA ESCAPES THE PATCH. FULLY PATCHED. STILL ROOT.",
+      "on_slide_copy": "MINIPLASMA GETS ROOT ON FULLY PATCHED WINDOWS.",
       "subline": "LPE on current Patch Tuesday. No CVE. Nightmare Eclipse exploit six. The wave closer.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "A hard rim light catches a Windows Update shield in the dark, a green plasma tendril slipping through the checkmark and emerging as a SYSTEM prompt, premium dark editorial key art, the shield held in the upper third with clean unmarked negative space filling the lower third.",
@@ -421,6 +421,1245 @@
     "music": null,
     "sfx": [],
     "licenses": [],
-    "captions": []
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.7,
+        "text": "MiniPlasma is a local privilege escalation exploit",
+        "words": [
+          {
+            "text": "MiniPlasma",
+            "start": 0.0,
+            "end": 0.9
+          },
+          {
+            "text": "is",
+            "start": 0.9,
+            "end": 1.1
+          },
+          {
+            "text": "a",
+            "start": 1.1,
+            "end": 1.22
+          },
+          {
+            "text": "local",
+            "start": 1.22,
+            "end": 1.4
+          },
+          {
+            "text": "privilege",
+            "start": 1.4,
+            "end": 1.74
+          },
+          {
+            "text": "escalation",
+            "start": 1.74,
+            "end": 2.18
+          },
+          {
+            "text": "exploit",
+            "start": 2.18,
+            "end": 2.7
+          }
+        ]
+      },
+      {
+        "start": 2.7,
+        "end": 4.7,
+        "text": "that works on fully patched Windows 10",
+        "words": [
+          {
+            "text": "that",
+            "start": 2.7,
+            "end": 3.14
+          },
+          {
+            "text": "works",
+            "start": 3.14,
+            "end": 3.34
+          },
+          {
+            "text": "on",
+            "start": 3.34,
+            "end": 3.54
+          },
+          {
+            "text": "fully",
+            "start": 3.54,
+            "end": 3.76
+          },
+          {
+            "text": "patched",
+            "start": 3.76,
+            "end": 4.12
+          },
+          {
+            "text": "Windows",
+            "start": 4.12,
+            "end": 4.32
+          },
+          {
+            "text": "10",
+            "start": 4.32,
+            "end": 4.7
+          }
+        ]
+      },
+      {
+        "start": 4.7,
+        "end": 7.02,
+        "text": "and 11, even with every June 2026",
+        "words": [
+          {
+            "text": "and",
+            "start": 4.7,
+            "end": 4.84
+          },
+          {
+            "text": "11,",
+            "start": 4.84,
+            "end": 5.06
+          },
+          {
+            "text": "even",
+            "start": 5.38,
+            "end": 5.64
+          },
+          {
+            "text": "with",
+            "start": 5.64,
+            "end": 5.84
+          },
+          {
+            "text": "every",
+            "start": 5.84,
+            "end": 6.06
+          },
+          {
+            "text": "June",
+            "start": 6.06,
+            "end": 6.3
+          },
+          {
+            "text": "2026",
+            "start": 6.3,
+            "end": 7.02
+          }
+        ]
+      },
+      {
+        "start": 7.02,
+        "end": 7.72,
+        "text": "update applied.",
+        "words": [
+          {
+            "text": "update",
+            "start": 7.02,
+            "end": 7.38
+          },
+          {
+            "text": "applied.",
+            "start": 7.38,
+            "end": 7.72
+          }
+        ]
+      },
+      {
+        "start": 8.38,
+        "end": 10.08,
+        "text": "Nightmare Eclipse released it as the sixth",
+        "words": [
+          {
+            "text": "Nightmare",
+            "start": 8.38,
+            "end": 8.7
+          },
+          {
+            "text": "Eclipse",
+            "start": 8.7,
+            "end": 8.89
+          },
+          {
+            "text": "released",
+            "start": 9.08,
+            "end": 9.34
+          },
+          {
+            "text": "it",
+            "start": 9.34,
+            "end": 9.58
+          },
+          {
+            "text": "as",
+            "start": 9.58,
+            "end": 9.74
+          },
+          {
+            "text": "the",
+            "start": 9.74,
+            "end": 9.84
+          },
+          {
+            "text": "sixth",
+            "start": 9.84,
+            "end": 10.08
+          }
+        ]
+      },
+      {
+        "start": 10.08,
+        "end": 11.85,
+        "text": "and final exploit in their wave, and",
+        "words": [
+          {
+            "text": "and",
+            "start": 10.08,
+            "end": 10.22
+          },
+          {
+            "text": "final",
+            "start": 10.22,
+            "end": 10.52
+          },
+          {
+            "text": "exploit",
+            "start": 10.52,
+            "end": 10.78
+          },
+          {
+            "text": "in",
+            "start": 10.78,
+            "end": 11.08
+          },
+          {
+            "text": "their",
+            "start": 11.08,
+            "end": 11.2
+          },
+          {
+            "text": "wave,",
+            "start": 11.2,
+            "end": 11.4
+          },
+          {
+            "text": "and",
+            "start": 11.8,
+            "end": 11.85
+          }
+        ]
+      },
+      {
+        "start": 11.84,
+        "end": 13.62,
+        "text": "Microsoft silently addressed it in the June",
+        "words": [
+          {
+            "text": "Microsoft",
+            "start": 11.84,
+            "end": 12.06
+          },
+          {
+            "text": "silently",
+            "start": 12.06,
+            "end": 12.54
+          },
+          {
+            "text": "addressed",
+            "start": 12.54,
+            "end": 13.02
+          },
+          {
+            "text": "it",
+            "start": 13.02,
+            "end": 13.26
+          },
+          {
+            "text": "in",
+            "start": 13.26,
+            "end": 13.42
+          },
+          {
+            "text": "the",
+            "start": 13.42,
+            "end": 13.48
+          },
+          {
+            "text": "June",
+            "start": 13.48,
+            "end": 13.62
+          }
+        ]
+      },
+      {
+        "start": 13.62,
+        "end": 16.52,
+        "text": "9, 2026 Patch Tuesday with no new",
+        "words": [
+          {
+            "text": "9,",
+            "start": 13.62,
+            "end": 13.91
+          },
+          {
+            "text": "2026",
+            "start": 14.2,
+            "end": 14.78
+          },
+          {
+            "text": "Patch",
+            "start": 15.1,
+            "end": 15.2
+          },
+          {
+            "text": "Tuesday",
+            "start": 15.2,
+            "end": 15.5
+          },
+          {
+            "text": "with",
+            "start": 16.0,
+            "end": 16.12
+          },
+          {
+            "text": "no",
+            "start": 16.12,
+            "end": 16.34
+          },
+          {
+            "text": "new",
+            "start": 16.34,
+            "end": 16.52
+          }
+        ]
+      },
+      {
+        "start": 16.52,
+        "end": 16.76,
+        "text": "CVE.",
+        "words": [
+          {
+            "text": "CVE.",
+            "start": 16.52,
+            "end": 16.76
+          }
+        ]
+      },
+      {
+        "start": 17.34,
+        "end": 20.94,
+        "text": "The flaw maps to CVE-2020-17103, a",
+        "words": [
+          {
+            "text": "The",
+            "start": 17.34,
+            "end": 17.42
+          },
+          {
+            "text": "flaw",
+            "start": 17.42,
+            "end": 17.58
+          },
+          {
+            "text": "maps",
+            "start": 17.58,
+            "end": 17.82
+          },
+          {
+            "text": "to",
+            "start": 17.82,
+            "end": 18.18
+          },
+          {
+            "text": "CVE-2020-17103,",
+            "start": 18.18,
+            "end": 19.53
+          },
+          {
+            "text": "a",
+            "start": 20.88,
+            "end": 20.94
+          }
+        ]
+      },
+      {
+        "start": 20.94,
+        "end": 22.327,
+        "text": "race condition in the Windows Cloud Files",
+        "words": [
+          {
+            "text": "race",
+            "start": 20.94,
+            "end": 21.08
+          },
+          {
+            "text": "condition",
+            "start": 21.08,
+            "end": 21.32
+          },
+          {
+            "text": "in",
+            "start": 21.32,
+            "end": 21.68
+          },
+          {
+            "text": "the",
+            "start": 21.68,
+            "end": 21.76
+          },
+          {
+            "text": "Windows",
+            "start": 21.76,
+            "end": 21.98
+          },
+          {
+            "text": "Cloud",
+            "start": 21.98,
+            "end": 22.153
+          },
+          {
+            "text": "Files",
+            "start": 22.153,
+            "end": 22.327
+          }
+        ]
+      },
+      {
+        "start": 22.5,
+        "end": 26.06,
+        "text": "filter driver, cldflt.sys, that was supposed",
+        "words": [
+          {
+            "text": "filter",
+            "start": 22.5,
+            "end": 22.86
+          },
+          {
+            "text": "driver,",
+            "start": 22.86,
+            "end": 23.2
+          },
+          {
+            "text": "cldflt.sys,",
+            "start": 23.2,
+            "end": 24.33
+          },
+          {
+            "text": "that",
+            "start": 25.46,
+            "end": 25.72
+          },
+          {
+            "text": "was",
+            "start": 25.72,
+            "end": 25.82
+          },
+          {
+            "text": "supposed",
+            "start": 25.82,
+            "end": 26.06
+          }
+        ]
+      },
+      {
+        "start": 26.06,
+        "end": 27.44,
+        "text": "to have been fixed back in December",
+        "words": [
+          {
+            "text": "to",
+            "start": 26.06,
+            "end": 26.28
+          },
+          {
+            "text": "have",
+            "start": 26.28,
+            "end": 26.42
+          },
+          {
+            "text": "been",
+            "start": 26.42,
+            "end": 26.56
+          },
+          {
+            "text": "fixed",
+            "start": 26.56,
+            "end": 26.74
+          },
+          {
+            "text": "back",
+            "start": 26.74,
+            "end": 27.0
+          },
+          {
+            "text": "in",
+            "start": 27.0,
+            "end": 27.22
+          },
+          {
+            "text": "December",
+            "start": 27.22,
+            "end": 27.44
+          }
+        ]
+      },
+      {
+        "start": 27.44,
+        "end": 27.98,
+        "text": "2020.",
+        "words": [
+          {
+            "text": "2020.",
+            "start": 27.44,
+            "end": 27.98
+          }
+        ]
+      },
+      {
+        "start": 28.3,
+        "end": 30.32,
+        "text": "The researcher found that the original Google",
+        "words": [
+          {
+            "text": "The",
+            "start": 28.3,
+            "end": 28.6
+          },
+          {
+            "text": "researcher",
+            "start": 28.6,
+            "end": 29.04
+          },
+          {
+            "text": "found",
+            "start": 29.04,
+            "end": 29.4
+          },
+          {
+            "text": "that",
+            "start": 29.4,
+            "end": 29.58
+          },
+          {
+            "text": "the",
+            "start": 29.58,
+            "end": 29.7
+          },
+          {
+            "text": "original",
+            "start": 29.7,
+            "end": 30.06
+          },
+          {
+            "text": "Google",
+            "start": 30.06,
+            "end": 30.32
+          }
+        ]
+      },
+      {
+        "start": 30.32,
+        "end": 33.34,
+        "text": "Project Zero proof-of-concept worked without any changes",
+        "words": [
+          {
+            "text": "Project",
+            "start": 30.32,
+            "end": 30.78
+          },
+          {
+            "text": "Zero",
+            "start": 30.78,
+            "end": 31.14
+          },
+          {
+            "text": "proof-of-concept",
+            "start": 31.14,
+            "end": 31.56
+          },
+          {
+            "text": "worked",
+            "start": 31.98,
+            "end": 32.36
+          },
+          {
+            "text": "without",
+            "start": 32.36,
+            "end": 32.66
+          },
+          {
+            "text": "any",
+            "start": 32.66,
+            "end": 32.96
+          },
+          {
+            "text": "changes",
+            "start": 32.96,
+            "end": 33.34
+          }
+        ]
+      },
+      {
+        "start": 33.34,
+        "end": 35.6,
+        "text": "on modern Windows builds, meaning the patch",
+        "words": [
+          {
+            "text": "on",
+            "start": 33.34,
+            "end": 33.58
+          },
+          {
+            "text": "modern",
+            "start": 33.58,
+            "end": 33.78
+          },
+          {
+            "text": "Windows",
+            "start": 33.78,
+            "end": 34.12
+          },
+          {
+            "text": "builds,",
+            "start": 34.12,
+            "end": 34.44
+          },
+          {
+            "text": "meaning",
+            "start": 34.94,
+            "end": 35.18
+          },
+          {
+            "text": "the",
+            "start": 35.18,
+            "end": 35.36
+          },
+          {
+            "text": "patch",
+            "start": 35.36,
+            "end": 35.6
+          }
+        ]
+      },
+      {
+        "start": 35.6,
+        "end": 37.52,
+        "text": "either regressed or was never fully enforced.",
+        "words": [
+          {
+            "text": "either",
+            "start": 35.6,
+            "end": 35.84
+          },
+          {
+            "text": "regressed",
+            "start": 35.84,
+            "end": 36.26
+          },
+          {
+            "text": "or",
+            "start": 36.26,
+            "end": 36.66
+          },
+          {
+            "text": "was",
+            "start": 36.66,
+            "end": 36.76
+          },
+          {
+            "text": "never",
+            "start": 36.76,
+            "end": 36.98
+          },
+          {
+            "text": "fully",
+            "start": 36.98,
+            "end": 37.3
+          },
+          {
+            "text": "enforced.",
+            "start": 37.3,
+            "end": 37.52
+          }
+        ]
+      },
+      {
+        "start": 38.22,
+        "end": 40.47,
+        "text": "Because no new CVE was assigned, vulnerability",
+        "words": [
+          {
+            "text": "Because",
+            "start": 38.22,
+            "end": 38.46
+          },
+          {
+            "text": "no",
+            "start": 38.46,
+            "end": 38.66
+          },
+          {
+            "text": "new",
+            "start": 38.66,
+            "end": 38.8
+          },
+          {
+            "text": "CVE",
+            "start": 38.8,
+            "end": 39.1
+          },
+          {
+            "text": "was",
+            "start": 39.1,
+            "end": 39.42
+          },
+          {
+            "text": "assigned,",
+            "start": 39.42,
+            "end": 39.8
+          },
+          {
+            "text": "vulnerability",
+            "start": 40.42,
+            "end": 40.47
+          }
+        ]
+      },
+      {
+        "start": 40.42,
+        "end": 42.48,
+        "text": "scanners that check patch status have no",
+        "words": [
+          {
+            "text": "scanners",
+            "start": 40.42,
+            "end": 40.96
+          },
+          {
+            "text": "that",
+            "start": 40.96,
+            "end": 41.24
+          },
+          {
+            "text": "check",
+            "start": 41.24,
+            "end": 41.4
+          },
+          {
+            "text": "patch",
+            "start": 41.4,
+            "end": 41.62
+          },
+          {
+            "text": "status",
+            "start": 41.62,
+            "end": 42.06
+          },
+          {
+            "text": "have",
+            "start": 42.06,
+            "end": 42.3
+          },
+          {
+            "text": "no",
+            "start": 42.3,
+            "end": 42.48
+          }
+        ]
+      },
+      {
+        "start": 42.48,
+        "end": 44.74,
+        "text": "new signature to fire, leaving defenders with",
+        "words": [
+          {
+            "text": "new",
+            "start": 42.48,
+            "end": 42.62
+          },
+          {
+            "text": "signature",
+            "start": 42.62,
+            "end": 42.88
+          },
+          {
+            "text": "to",
+            "start": 42.88,
+            "end": 43.16
+          },
+          {
+            "text": "fire,",
+            "start": 43.16,
+            "end": 43.42
+          },
+          {
+            "text": "leaving",
+            "start": 43.9,
+            "end": 44.08
+          },
+          {
+            "text": "defenders",
+            "start": 44.08,
+            "end": 44.4
+          },
+          {
+            "text": "with",
+            "start": 44.4,
+            "end": 44.74
+          }
+        ]
+      },
+      {
+        "start": 44.74,
+        "end": 46.56,
+        "text": "a genuine blind spot on otherwise current",
+        "words": [
+          {
+            "text": "a",
+            "start": 44.74,
+            "end": 44.82
+          },
+          {
+            "text": "genuine",
+            "start": 44.82,
+            "end": 45.14
+          },
+          {
+            "text": "blind",
+            "start": 45.14,
+            "end": 45.4
+          },
+          {
+            "text": "spot",
+            "start": 45.4,
+            "end": 45.76
+          },
+          {
+            "text": "on",
+            "start": 45.76,
+            "end": 45.98
+          },
+          {
+            "text": "otherwise",
+            "start": 45.98,
+            "end": 46.2
+          },
+          {
+            "text": "current",
+            "start": 46.2,
+            "end": 46.56
+          }
+        ]
+      },
+      {
+        "start": 46.56,
+        "end": 47.02,
+        "text": "systems.",
+        "words": [
+          {
+            "text": "systems.",
+            "start": 46.56,
+            "end": 47.02
+          }
+        ]
+      },
+      {
+        "start": 47.64,
+        "end": 49.46,
+        "text": "The behavioral signals to watch are registry",
+        "words": [
+          {
+            "text": "The",
+            "start": 47.64,
+            "end": 47.72
+          },
+          {
+            "text": "behavioral",
+            "start": 47.72,
+            "end": 48.04
+          },
+          {
+            "text": "signals",
+            "start": 48.04,
+            "end": 48.34
+          },
+          {
+            "text": "to",
+            "start": 48.34,
+            "end": 48.7
+          },
+          {
+            "text": "watch",
+            "start": 48.7,
+            "end": 48.92
+          },
+          {
+            "text": "are",
+            "start": 48.92,
+            "end": 49.18
+          },
+          {
+            "text": "registry",
+            "start": 49.18,
+            "end": 49.46
+          }
+        ]
+      },
+      {
+        "start": 49.46,
+        "end": 52.16,
+        "text": "symbolic links created in CloudFiles policy paths,",
+        "words": [
+          {
+            "text": "symbolic",
+            "start": 49.46,
+            "end": 49.96
+          },
+          {
+            "text": "links",
+            "start": 49.96,
+            "end": 50.32
+          },
+          {
+            "text": "created",
+            "start": 50.32,
+            "end": 50.72
+          },
+          {
+            "text": "in",
+            "start": 50.72,
+            "end": 50.98
+          },
+          {
+            "text": "CloudFiles",
+            "start": 50.98,
+            "end": 51.4
+          },
+          {
+            "text": "policy",
+            "start": 51.4,
+            "end": 51.9
+          },
+          {
+            "text": "paths,",
+            "start": 51.9,
+            "end": 52.16
+          }
+        ]
+      },
+      {
+        "start": 52.16,
+        "end": 55.66,
+        "text": "and wermgr.exe executing from outside its standard",
+        "words": [
+          {
+            "text": "and",
+            "start": 52.16,
+            "end": 52.66
+          },
+          {
+            "text": "wermgr.exe",
+            "start": 52.66,
+            "end": 53.29
+          },
+          {
+            "text": "executing",
+            "start": 53.92,
+            "end": 54.42
+          },
+          {
+            "text": "from",
+            "start": 54.42,
+            "end": 54.84
+          },
+          {
+            "text": "outside",
+            "start": 54.84,
+            "end": 55.1
+          },
+          {
+            "text": "its",
+            "start": 55.1,
+            "end": 55.4
+          },
+          {
+            "text": "standard",
+            "start": 55.4,
+            "end": 55.66
+          }
+        ]
+      },
+      {
+        "start": 55.66,
+        "end": 56.36,
+        "text": "system directories.",
+        "words": [
+          {
+            "text": "system",
+            "start": 55.66,
+            "end": 56.12
+          },
+          {
+            "text": "directories.",
+            "start": 56.12,
+            "end": 56.36
+          }
+        ]
+      },
+      {
+        "start": 56.36,
+        "end": 58.82,
+        "text": "A fix without a new CVE is",
+        "words": [
+          {
+            "text": "A",
+            "start": 56.36,
+            "end": 57.24
+          },
+          {
+            "text": "fix",
+            "start": 57.24,
+            "end": 57.44
+          },
+          {
+            "text": "without",
+            "start": 57.44,
+            "end": 57.7
+          },
+          {
+            "text": "a",
+            "start": 57.7,
+            "end": 57.88
+          },
+          {
+            "text": "new",
+            "start": 57.88,
+            "end": 58.04
+          },
+          {
+            "text": "CVE",
+            "start": 58.04,
+            "end": 58.28
+          },
+          {
+            "text": "is",
+            "start": 58.28,
+            "end": 58.82
+          }
+        ]
+      },
+      {
+        "start": 58.82,
+        "end": 60.52,
+        "text": "a scanner blind spot, and this is",
+        "words": [
+          {
+            "text": "a",
+            "start": 58.82,
+            "end": 58.96
+          },
+          {
+            "text": "scanner",
+            "start": 58.96,
+            "end": 59.18
+          },
+          {
+            "text": "blind",
+            "start": 59.18,
+            "end": 59.48
+          },
+          {
+            "text": "spot,",
+            "start": 59.48,
+            "end": 59.76
+          },
+          {
+            "text": "and",
+            "start": 60.26,
+            "end": 60.31
+          },
+          {
+            "text": "this",
+            "start": 60.3,
+            "end": 60.42
+          },
+          {
+            "text": "is",
+            "start": 60.42,
+            "end": 60.52
+          }
+        ]
+      },
+      {
+        "start": 60.52,
+        "end": 62.44,
+        "text": "exactly the kind of silent regression that",
+        "words": [
+          {
+            "text": "exactly",
+            "start": 60.52,
+            "end": 60.88
+          },
+          {
+            "text": "the",
+            "start": 60.88,
+            "end": 61.18
+          },
+          {
+            "text": "kind",
+            "start": 61.18,
+            "end": 61.36
+          },
+          {
+            "text": "of",
+            "start": 61.36,
+            "end": 61.48
+          },
+          {
+            "text": "silent",
+            "start": 61.48,
+            "end": 61.74
+          },
+          {
+            "text": "regression",
+            "start": 61.74,
+            "end": 62.04
+          },
+          {
+            "text": "that",
+            "start": 62.04,
+            "end": 62.44
+          }
+        ]
+      },
+      {
+        "start": 62.44,
+        "end": 64.16,
+        "text": "patch-status dashboards miss entirely.",
+        "words": [
+          {
+            "text": "patch-status",
+            "start": 62.44,
+            "end": 62.75
+          },
+          {
+            "text": "dashboards",
+            "start": 63.06,
+            "end": 63.54
+          },
+          {
+            "text": "miss",
+            "start": 63.54,
+            "end": 63.8
+          },
+          {
+            "text": "entirely.",
+            "start": 63.8,
+            "end": 64.16
+          }
+        ]
+      },
+      {
+        "start": 64.82,
+        "end": 66.84,
+        "text": "If your team tracks regression vulnerabilities separately",
+        "words": [
+          {
+            "text": "If",
+            "start": 64.82,
+            "end": 64.92
+          },
+          {
+            "text": "your",
+            "start": 64.92,
+            "end": 65.02
+          },
+          {
+            "text": "team",
+            "start": 65.02,
+            "end": 65.22
+          },
+          {
+            "text": "tracks",
+            "start": 65.22,
+            "end": 65.5
+          },
+          {
+            "text": "regression",
+            "start": 65.5,
+            "end": 65.76
+          },
+          {
+            "text": "vulnerabilities",
+            "start": 65.76,
+            "end": 65.96
+          },
+          {
+            "text": "separately",
+            "start": 66.16,
+            "end": 66.84
+          }
+        ]
+      },
+      {
+        "start": 66.84,
+        "end": 69.12,
+        "text": "from new CVEs, share your approach in",
+        "words": [
+          {
+            "text": "from",
+            "start": 66.84,
+            "end": 67.3
+          },
+          {
+            "text": "new",
+            "start": 67.3,
+            "end": 67.42
+          },
+          {
+            "text": "CVEs,",
+            "start": 67.42,
+            "end": 68.12
+          },
+          {
+            "text": "share",
+            "start": 68.2,
+            "end": 68.44
+          },
+          {
+            "text": "your",
+            "start": 68.44,
+            "end": 68.62
+          },
+          {
+            "text": "approach",
+            "start": 68.62,
+            "end": 68.9
+          },
+          {
+            "text": "in",
+            "start": 68.9,
+            "end": 69.12
+          }
+        ]
+      },
+      {
+        "start": 69.12,
+        "end": 69.44,
+        "text": "the comments.",
+        "words": [
+          {
+            "text": "the",
+            "start": 69.12,
+            "end": 69.2
+          },
+          {
+            "text": "comments.",
+            "start": 69.2,
+            "end": 69.44
+          }
+        ]
+      }
+    ]
   }
 }
