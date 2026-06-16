@@ -1,0 +1,15 @@
+Title card: MiniPlasma escapes the patch, fully patched yet still root. It is an LPE on current Patch Tuesday with no new CVE, Nightmare Eclipse exploit six and the wave closer. A green plasma tendril slips through an Update shield checkmark to a SYSTEM prompt.
+
+Nightmare Eclipse dropped MiniPlasma as the sixth and final exploit, targeting fully patched Windows 10 and 11 with June 2026 Patch Tuesday installed. No new CVE assigned. It maps to CVE-2020-17103, a regression in the Cloud Files filter driver believed patched in 2020.
+
+MiniPlasma works on fully patched systems. A six-year-old race condition in cldflt.sys survived every update and still reaches SYSTEM. The 2020 patch either regressed or was never fully enforced. The researcher found the original Google Project Zero exploit worked without changes.
+
+The mechanism: a race condition in the Cloud Files filter driver, cldflt.sys, exploits the HsmOsBlockPlaceholderAccess routine to escalate from a standard user account to SYSTEM. No secondary step required. A race condition arrow points from a standard user icon to a SYSTEM crown.
+
+Where defenders miss it: Patch Tuesday says protected and scanners say clean, but no new CVE was assigned so there is no new scanner signature. Scanners that only check current patch status miss regression vulnerabilities entirely. A scanner report shows clean under a red regression arrow.
+
+Mitigation: monitor CloudFiles registry symbolic links in the BlockedApps policy key, watch for wermgr.exe running outside standard system directories, and apply the silent June 9, 2026 Patch Tuesday fix. A behavioral detection rule flags the CloudFiles registry key alongside wermgr.
+
+Patched does not mean immune. It means the attack surface has shifted. A Windows Update shield, half with a green checkmark and half with a green plasma tendril slipping through to form a SYSTEM crown.
+
+Closing question: Do you track regression vulnerabilities separately from new CVEs in your patch program? A behavioral detection rule for CloudFiles registry changes sits on a clean dark end-card.

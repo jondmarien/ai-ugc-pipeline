@@ -1,0 +1,13 @@
+{
+  "seed": 992720276,
+  "seed_source": "auto",
+  "model": "openbmb/VoxCPM2",
+  "sample_rate": 48000,
+  "inference_timesteps": 10,
+  "voice_ref": "E:\\ai-ugc\\_voiceref\\jon_48k.wav",
+  "clone_mode": "hi-fi",
+  "prompt_text_source": "whisper",
+  "script_chars": 1513,
+  "generated_at": "2026-06-13T05:34:57",
+  "reuse_command": "bun run pipeline -- 2026-06-10_nightmare-eclipse-github-removal --seed=992720276"
+}

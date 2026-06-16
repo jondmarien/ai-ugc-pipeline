@@ -1,0 +1,15 @@
+Title card: a 1T parameter MoE model now powers your coding agent. Moonshot released Kimi K2.7 Code with 32B active parameters for agentic engineering. The model is open weight. The agents that adopt it inherit its capabilities and its risks. A single machined gear fragment catches a hard rim light in deep shadow.
+
+Moonshot AI released Kimi K2.7 Code, a Mixture-of-Experts model with 384 experts and 8 active per token. The 1T total parameter model targets long-horizon software engineering with a 256K context window and mandatory thinking mode. A conveyor belt of identical precision bearings moves from darkness toward the camera.
+
+An open-weight agentic model becomes the decision engine for every agent that adopts it without independent review. Teams inherit the model training biases, tool-call patterns, and hallucination rate independently reported at 39 percent down from 65 percent, along with any supply-chain risk from the weights. A punch-card feeder pulls unmarked cards into a heavy mechanism.
+
+The model emits structured tool calls that agents execute directly against your shell, filesystem, and version control. When the model chooses a command or file edit, the agent runs it across multi-file refactors and debugging sessions. A sealed canister rushes through a pneumatic tube into a machine intake.
+
+Teams adopt the model because it scores well on synthetic benchmarks, then skip the sandbox review for speed. Proprietary benchmarks like Kimi Code Bench v2 and Kimi Claw 24/7 are Moonshot-run tests with no external reproducibility. The model has not been submitted to independent benchmarks like DeepSWE. A stamping press hits a metal blank with no guard rail.
+
+Run any agent on this model in a throwaway VM with restricted egress, no real credentials, and spending limits on API calls. Pin the model version, audit the tool-call schema, and keep the approve-before-run gate on outside disposable environments. A bench vise clamps down on a single part with controlled pressure.
+
+The risk is not the benchmark score. It is every command the model chooses when you are not watching. A single mechanical lever is held mid-throw in deep shadow with a thin rim of light along its shaft.
+
+The closing question asks whether you would run an agent powered by a 1T parameter open-weight coding model on your main machine, with a prompt to save it. A drive belt loops around one idle pulley in empty dark space.

@@ -1,0 +1,19 @@
+Microsoft Defender quarantined a malicious file, and that quarantine was the exploit. Meet RoguePlanet.
+
+Nightmare Eclipse dropped it on June 10. There is no CVE and no patch, and Windows 11 Pro is confirmed vulnerable. A standard user with no admin rights ends up with a SYSTEM shell on a fully updated machine, using Defender itself as the lever.
+
+The primitive is a race. The exploit places an opportunistic lock so Defender pauses mid-scan, then swaps an NTFS junction so Defender's quarantine writes a SYSTEM-owned file into a folder the user controls. That file gets overwritten with the payload, the path is junctioned so it resolves as the real System32 wermgr.exe, and the Windows Error Reporting QueueReporting scheduled task (which an unprivileged user can trigger) runs it as SYSTEM. The result is conhost.exe in the user's session, running as NT AUTHORITY\SYSTEM.
+
+There is no toggle to fix this. It is a design-level race between Defender's scan-and-quarantine pipeline, NTFS reparse points, and the Volume Shadow Copy service. The signature only catches the compiled sample, and the behavioral chain survives a recompile. It does not work on Windows Server, because standard users there cannot mount ISOs.
+
+So hunt the behavior: a named pipe called RoguePlanet from a non-system process, wermgr.exe running outside System32, SYSTEM spawning conhost.exe with no cmd.exe in the tree, Volume Shadow Copy enumeration by non-system processes, and a burst of writes to UUID-named temp files.
+
+Your antivirus is not just a scanner. It is a SYSTEM-level file mover, and its quarantine can be raced.
+
+Could your EDR catch a SYSTEM shell born from Defender's own quarantine?
+
+Follow for AI security breakdowns without the fake panic.
+
+[RoguePlanet, Nightmare Eclipse, Microsoft Defender, Windows zero-day, local privilege escalation, race condition, WER, endpoint detection]
+
+[RoguePlanet, Nightmare Eclipse, Microsoft Defender, Windows zero-day, local privilege escalation, race condition, WER, endpoint detection]

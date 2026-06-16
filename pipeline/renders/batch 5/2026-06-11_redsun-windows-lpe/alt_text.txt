@@ -1,0 +1,15 @@
+Title card: RedSun turns Defender into the attacker. CVE-2026-41091, a link-following flaw in Microsoft Defender, patched May 21, 2026 and listed in CISA's Known Exploited Vulnerabilities catalog. A Defender shield icon with a red glow bending outward toward a protected system directory.
+
+RedSun is the second exploit Nightmare Eclipse released in their April 2026 series, targeting the Antimalware Service Executable. CVE-2026-41091 was assigned and Microsoft patched it out-of-band on May 19-21, 2026.
+
+Defender's own file-remediation runs as SYSTEM and resolves NTFS junctions without verifying the destination. CWE-59, improper link resolution before file access, allows a standard user to reach a protected system directory through a redirected Defender write. One red file glows among white system files in the dark.
+
+A race-condition class flaw: timing windows in Defender's cleanup workflow give an attacker the window to replace a directory with a junction before the SYSTEM-privileged write-back completes. A light arrow bends mid-air toward a protected core.
+
+Most endpoint tooling treats MsMpEng.exe file operations as trusted background noise, not alertable events. That assumption is the gap RedSun exploits. A field of identical dark slabs with one pulsing red and otherwise indistinguishable.
+
+Verify Defender engine version 1.1.26040.8 or later in Windows Security settings. Automatic updates push it silently but confirmation is needed on managed endpoints. Treat MsMpEng.exe writes to protected directories as an alerting condition, not background noise. A split scene: a patched Defender engine behind a green shield on one side, an unpatched version with a broken shield on the other.
+
+Your security tool is not immune. When Defender's own file operations can be redirected, the protector becomes the write primitive. A Defender shield icon, one half intact and glowing green, the other fractured with a SYSTEM token escaping.
+
+The call to action asks whether you treat security tool file operations as trusted by default in your detections. A single pulse of light on a clean dark end card.

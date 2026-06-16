@@ -1,0 +1,19 @@
+Microsoft suspended Nightmare Eclipse's GitHub account after they released six Windows zero-days. The researcher resurfaced as MSNightmare and kept going.
+
+The original six (pre-ban, April through May 2026): BlueHammer (Defender update-flow race to SYSTEM), RedSun (Defender write redirected to System32), UnDefend (disables Defender silently), YellowKey (BitLocker bypass via USB), GreenPlasma (SYSTEM via CTFMON), MiniPlasma (incomplete-fix regression). All patched as of June 2026 Patch Tuesday. Multiple exploited in the wild before patches shipped.
+
+GitHub terminated the account on May 23, 2026 and wiped six repos. GitLab suspended the mirror on May 26. Microsoft's Digital Crimes Unit threatened criminal prosecution around May 28. Community backlash forced a clarification that it would not pursue researchers. The account stayed suspended.
+
+The researcher resurfaced as MSNightmare. RoguePlanet (7th, June 9-10) and GreatXML (8th, June 11) followed the ban, both confirmed working on fully patched systems.
+
+You cannot rely on coordinated disclosure to protect you. When the process breaks, exploits go public immediately.
+
+Build detection for the behaviors, not just the CVEs: Defender tampering, stalled signature updates, System32 writes, BitLocker bypass attempts. The researcher's frustration became your adversary's toolkit.
+
+Do you have detection for Defender tampering, stalled updates, and System32 writes?
+
+Follow for AI security breakdowns without the fake panic.
+
+[Nightmare Eclipse, Microsoft, GitHub, responsible disclosure, zero-day, BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, MiniPlasma, RoguePlanet, detection engineering]
+
+[Nightmare Eclipse, Microsoft, GitHub, responsible disclosure, zero-day, BlueHammer, RedSun, UnDefend, YellowKey, GreenPlasma, MiniPlasma, RoguePlanet, detection engineering]

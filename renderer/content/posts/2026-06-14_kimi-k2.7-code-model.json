@@ -4,7 +4,7 @@
   "slug": "kimi-k2.7-code-model",
   "platform": "instagram",
   "format": "carousel",
-  "status": "draft",
+  "status": "generated",
   "pillar": "model_security",
   "theme": "ai",
   "audience": "security_practitioners",
@@ -72,7 +72,7 @@
       "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
       "visual_prompt": "a single machined gear fragment catching a hard rim light from the left in deep shadow, precision steel teeth reflective and unmarked, heavy industrial key art composition held in the upper third with clean empty lower third",
       "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/01_cover.png",
-      "asset_status": "needed",
+      "asset_status": "generated",
       "cta": "SWIPE →",
       "notes": "Add a 1080x1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
     },
@@ -85,7 +85,7 @@
       "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
       "visual_prompt": "a conveyor belt of identical precision bearings moving from darkness toward the camera, rollers catching a single low rim light, dark editorial calm with generous empty lower third",
       "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/02_context.png",
-      "asset_status": "needed",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -98,7 +98,7 @@
       "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
       "visual_prompt": "a punch-card feeder pulling a stack of unmarked cards into a heavy mechanism in darkness, one card half-swallowed by the slot, tense high contrast with clear lower third",
       "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/03_risk.png",
-      "asset_status": "needed",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -111,7 +111,7 @@
       "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
       "visual_prompt": "a pneumatic delivery tube with a sealed canister rushing into a machine intake in the dark, a faint glow tracing the tube curve, focal point in the upper area",
       "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/04_mechanism.png",
-      "asset_status": "needed",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -124,7 +124,7 @@
       "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
       "visual_prompt": "a stamping press driven down hard onto a raw metal blank with no guard rail in place, sparks frozen at the point of impact, dark with clear lower third",
       "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/05_failure-point.png",
-      "asset_status": "needed",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -137,7 +137,7 @@
       "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
       "visual_prompt": "a heavy bench vise clamped firmly on a single machined part, jaws bearing down with controlled pressure, contained and orderly with empty lower third",
       "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/06_defense.png",
-      "asset_status": "needed",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -150,7 +150,7 @@
       "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
       "visual_prompt": "a single mechanical lever held mid-throw in deep shadow with a thin rim of light along its shaft, center kept dark and open",
       "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/07_takeaway.png",
-      "asset_status": "needed",
+      "asset_status": "generated",
       "cta": "",
       "notes": ""
     },
@@ -163,7 +163,7 @@
       "visual_direction": "cinematic, dark, single accent glow, text-free background, protected lower-third",
       "visual_prompt": "a clean dark end-card scene, a single drive belt looped around one idle pulley resting in vast empty negative space, premium editorial cybersecurity look",
       "background_asset": "/backgrounds/2026-06-14_kimi-k2.7-code-model/08_cta.png",
-      "asset_status": "needed",
+      "asset_status": "generated",
       "cta": "COMMENT + SAVE",
       "notes": ""
     }
@@ -390,7 +390,656 @@
     "music": null,
     "sfx": [],
     "licenses": [],
-    "captions": []
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.12,
+        "text": "Moonshot just released a 1 trillion parameter",
+        "words": [
+          {
+            "text": "Moonshot",
+            "start": 0.0,
+            "end": 0.58
+          },
+          {
+            "text": "just",
+            "start": 0.58,
+            "end": 0.9
+          },
+          {
+            "text": "released",
+            "start": 0.9,
+            "end": 1.18
+          },
+          {
+            "text": "a",
+            "start": 1.18,
+            "end": 1.38
+          },
+          {
+            "text": "1",
+            "start": 1.38,
+            "end": 1.58
+          },
+          {
+            "text": "trillion",
+            "start": 1.58,
+            "end": 1.8
+          },
+          {
+            "text": "parameter",
+            "start": 1.8,
+            "end": 2.12
+          }
+        ]
+      },
+      {
+        "start": 2.12,
+        "end": 5.26,
+        "text": "Mixture-of-Experts model built for agentic coding, and",
+        "words": [
+          {
+            "text": "Mixture-of-Experts",
+            "start": 2.12,
+            "end": 2.59
+          },
+          {
+            "text": "model",
+            "start": 3.06,
+            "end": 3.5
+          },
+          {
+            "text": "built",
+            "start": 3.5,
+            "end": 3.96
+          },
+          {
+            "text": "for",
+            "start": 3.96,
+            "end": 4.2
+          },
+          {
+            "text": "agentic",
+            "start": 4.2,
+            "end": 4.31
+          },
+          {
+            "text": "coding,",
+            "start": 4.42,
+            "end": 4.7
+          },
+          {
+            "text": "and",
+            "start": 5.2,
+            "end": 5.26
+          }
+        ]
+      },
+      {
+        "start": 5.26,
+        "end": 6.68,
+        "text": "agents are already adopting it.",
+        "words": [
+          {
+            "text": "agents",
+            "start": 5.26,
+            "end": 5.5
+          },
+          {
+            "text": "are",
+            "start": 5.5,
+            "end": 5.74
+          },
+          {
+            "text": "already",
+            "start": 5.74,
+            "end": 5.98
+          },
+          {
+            "text": "adopting",
+            "start": 5.98,
+            "end": 6.38
+          },
+          {
+            "text": "it.",
+            "start": 6.38,
+            "end": 6.68
+          }
+        ]
+      },
+      {
+        "start": 7.28,
+        "end": 10.26,
+        "text": "Kimi K2.7 Code has 32 billion active",
+        "words": [
+          {
+            "text": "Kimi",
+            "start": 7.28,
+            "end": 7.58
+          },
+          {
+            "text": "K2.7",
+            "start": 7.58,
+            "end": 8.5
+          },
+          {
+            "text": "Code",
+            "start": 8.5,
+            "end": 8.76
+          },
+          {
+            "text": "has",
+            "start": 8.76,
+            "end": 9.06
+          },
+          {
+            "text": "32",
+            "start": 9.06,
+            "end": 9.38
+          },
+          {
+            "text": "billion",
+            "start": 9.38,
+            "end": 9.92
+          },
+          {
+            "text": "active",
+            "start": 9.92,
+            "end": 10.26
+          }
+        ]
+      },
+      {
+        "start": 10.26,
+        "end": 13.92,
+        "text": "parameters, a 256K context window, and mandatory",
+        "words": [
+          {
+            "text": "parameters,",
+            "start": 10.26,
+            "end": 10.56
+          },
+          {
+            "text": "a",
+            "start": 11.28,
+            "end": 11.33
+          },
+          {
+            "text": "256K",
+            "start": 11.32,
+            "end": 12.56
+          },
+          {
+            "text": "context",
+            "start": 12.56,
+            "end": 12.88
+          },
+          {
+            "text": "window,",
+            "start": 12.88,
+            "end": 13.28
+          },
+          {
+            "text": "and",
+            "start": 13.28,
+            "end": 13.62
+          },
+          {
+            "text": "mandatory",
+            "start": 13.62,
+            "end": 13.92
+          }
+        ]
+      },
+      {
+        "start": 13.92,
+        "end": 14.72,
+        "text": "thinking mode.",
+        "words": [
+          {
+            "text": "thinking",
+            "start": 13.92,
+            "end": 14.38
+          },
+          {
+            "text": "mode.",
+            "start": 14.38,
+            "end": 14.72
+          }
+        ]
+      },
+      {
+        "start": 15.24,
+        "end": 16.96,
+        "text": "It chooses tool calls across your entire",
+        "words": [
+          {
+            "text": "It",
+            "start": 15.24,
+            "end": 15.32
+          },
+          {
+            "text": "chooses",
+            "start": 15.32,
+            "end": 15.58
+          },
+          {
+            "text": "tool",
+            "start": 15.58,
+            "end": 15.84
+          },
+          {
+            "text": "calls",
+            "start": 15.84,
+            "end": 16.16
+          },
+          {
+            "text": "across",
+            "start": 16.16,
+            "end": 16.52
+          },
+          {
+            "text": "your",
+            "start": 16.52,
+            "end": 16.82
+          },
+          {
+            "text": "entire",
+            "start": 16.82,
+            "end": 16.96
+          }
+        ]
+      },
+      {
+        "start": 16.96,
+        "end": 18.1,
+        "text": "codebase.",
+        "words": [
+          {
+            "text": "codebase.",
+            "start": 16.96,
+            "end": 18.1
+          }
+        ]
+      },
+      {
+        "start": 19.24,
+        "end": 20.78,
+        "text": "The headline benchmarks are proprietary.",
+        "words": [
+          {
+            "text": "The",
+            "start": 19.24,
+            "end": 19.34
+          },
+          {
+            "text": "headline",
+            "start": 19.34,
+            "end": 19.56
+          },
+          {
+            "text": "benchmarks",
+            "start": 19.56,
+            "end": 20.04
+          },
+          {
+            "text": "are",
+            "start": 20.04,
+            "end": 20.5
+          },
+          {
+            "text": "proprietary.",
+            "start": 20.5,
+            "end": 20.78
+          }
+        ]
+      },
+      {
+        "start": 21.52,
+        "end": 22.94,
+        "text": "The model has not been submitted to",
+        "words": [
+          {
+            "text": "The",
+            "start": 21.52,
+            "end": 21.58
+          },
+          {
+            "text": "model",
+            "start": 21.58,
+            "end": 21.76
+          },
+          {
+            "text": "has",
+            "start": 21.76,
+            "end": 21.96
+          },
+          {
+            "text": "not",
+            "start": 21.96,
+            "end": 22.2
+          },
+          {
+            "text": "been",
+            "start": 22.2,
+            "end": 22.4
+          },
+          {
+            "text": "submitted",
+            "start": 22.4,
+            "end": 22.74
+          },
+          {
+            "text": "to",
+            "start": 22.74,
+            "end": 22.94
+          }
+        ]
+      },
+      {
+        "start": 22.94,
+        "end": 24.82,
+        "text": "independent benchmarks like DeepSWE.",
+        "words": [
+          {
+            "text": "independent",
+            "start": 22.94,
+            "end": 23.2
+          },
+          {
+            "text": "benchmarks",
+            "start": 23.2,
+            "end": 23.78
+          },
+          {
+            "text": "like",
+            "start": 23.78,
+            "end": 24.16
+          },
+          {
+            "text": "DeepSWE.",
+            "start": 24.16,
+            "end": 24.82
+          }
+        ]
+      },
+      {
+        "start": 24.82,
+        "end": 26.5,
+        "text": "Treat it like untrusted code.",
+        "words": [
+          {
+            "text": "Treat",
+            "start": 24.82,
+            "end": 25.4
+          },
+          {
+            "text": "it",
+            "start": 25.4,
+            "end": 25.58
+          },
+          {
+            "text": "like",
+            "start": 25.58,
+            "end": 25.7
+          },
+          {
+            "text": "untrusted",
+            "start": 25.7,
+            "end": 26.24
+          },
+          {
+            "text": "code.",
+            "start": 26.24,
+            "end": 26.5
+          }
+        ]
+      },
+      {
+        "start": 27.04,
+        "end": 28.64,
+        "text": "Run it in a throwaway VM with",
+        "words": [
+          {
+            "text": "Run",
+            "start": 27.04,
+            "end": 27.09
+          },
+          {
+            "text": "it",
+            "start": 27.08,
+            "end": 27.22
+          },
+          {
+            "text": "in",
+            "start": 27.22,
+            "end": 27.4
+          },
+          {
+            "text": "a",
+            "start": 27.4,
+            "end": 27.45
+          },
+          {
+            "text": "throwaway",
+            "start": 27.44,
+            "end": 27.88
+          },
+          {
+            "text": "VM",
+            "start": 27.88,
+            "end": 28.04
+          },
+          {
+            "text": "with",
+            "start": 28.04,
+            "end": 28.64
+          }
+        ]
+      },
+      {
+        "start": 28.64,
+        "end": 30.8,
+        "text": "no real keys, spending limits, and the",
+        "words": [
+          {
+            "text": "no",
+            "start": 28.64,
+            "end": 28.88
+          },
+          {
+            "text": "real",
+            "start": 28.88,
+            "end": 29.08
+          },
+          {
+            "text": "keys,",
+            "start": 29.08,
+            "end": 29.42
+          },
+          {
+            "text": "spending",
+            "start": 29.76,
+            "end": 29.98
+          },
+          {
+            "text": "limits,",
+            "start": 29.98,
+            "end": 30.28
+          },
+          {
+            "text": "and",
+            "start": 30.7,
+            "end": 30.75
+          },
+          {
+            "text": "the",
+            "start": 30.72,
+            "end": 30.8
+          }
+        ]
+      },
+      {
+        "start": 30.8,
+        "end": 31.58,
+        "text": "approval gate on.",
+        "words": [
+          {
+            "text": "approval",
+            "start": 30.8,
+            "end": 31.06
+          },
+          {
+            "text": "gate",
+            "start": 31.06,
+            "end": 31.36
+          },
+          {
+            "text": "on.",
+            "start": 31.36,
+            "end": 31.58
+          }
+        ]
+      },
+      {
+        "start": 32.36,
+        "end": 34.14,
+        "text": "The risk is not the benchmark score.",
+        "words": [
+          {
+            "text": "The",
+            "start": 32.36,
+            "end": 32.8
+          },
+          {
+            "text": "risk",
+            "start": 32.8,
+            "end": 33.02
+          },
+          {
+            "text": "is",
+            "start": 33.02,
+            "end": 33.18
+          },
+          {
+            "text": "not",
+            "start": 33.18,
+            "end": 33.36
+          },
+          {
+            "text": "the",
+            "start": 33.36,
+            "end": 33.54
+          },
+          {
+            "text": "benchmark",
+            "start": 33.54,
+            "end": 33.74
+          },
+          {
+            "text": "score.",
+            "start": 33.74,
+            "end": 34.14
+          }
+        ]
+      },
+      {
+        "start": 34.56,
+        "end": 36.08,
+        "text": "It is every command the model chooses",
+        "words": [
+          {
+            "text": "It",
+            "start": 34.56,
+            "end": 34.61
+          },
+          {
+            "text": "is",
+            "start": 34.6,
+            "end": 34.68
+          },
+          {
+            "text": "every",
+            "start": 34.68,
+            "end": 35.0
+          },
+          {
+            "text": "command",
+            "start": 35.0,
+            "end": 35.26
+          },
+          {
+            "text": "the",
+            "start": 35.26,
+            "end": 35.54
+          },
+          {
+            "text": "model",
+            "start": 35.54,
+            "end": 35.66
+          },
+          {
+            "text": "chooses",
+            "start": 35.66,
+            "end": 36.08
+          }
+        ]
+      },
+      {
+        "start": 36.08,
+        "end": 37.32,
+        "text": "when you are not watching.",
+        "words": [
+          {
+            "text": "when",
+            "start": 36.08,
+            "end": 36.56
+          },
+          {
+            "text": "you",
+            "start": 36.56,
+            "end": 36.7
+          },
+          {
+            "text": "are",
+            "start": 36.7,
+            "end": 36.8
+          },
+          {
+            "text": "not",
+            "start": 36.8,
+            "end": 36.96
+          },
+          {
+            "text": "watching.",
+            "start": 36.96,
+            "end": 37.32
+          }
+        ]
+      },
+      {
+        "start": 37.88,
+        "end": 38.28,
+        "text": "Tell me below.",
+        "words": [
+          {
+            "text": "Tell",
+            "start": 37.88,
+            "end": 37.98
+          },
+          {
+            "text": "me",
+            "start": 37.98,
+            "end": 38.12
+          },
+          {
+            "text": "below.",
+            "start": 38.12,
+            "end": 38.28
+          }
+        ]
+      }
+    ]
   },
   "qa": {
     "fact_checked": false,

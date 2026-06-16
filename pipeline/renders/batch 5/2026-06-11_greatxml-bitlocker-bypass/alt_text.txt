@@ -1,0 +1,15 @@
+Slide 1 (cover): a BitLocker lock icon in the dark, two XML file icons (unattend.xml and ReAgent.xml) sliding into a recovery partition slot, the lock shackle snapping open with a red flash.
+
+Slide 2 (context): a dark floating card with one edge glowing red and a glowing timestamp marker in the upper corner, representing the June 11 GreatXML release.
+
+Slide 3 (risk): a recovery partition icon in the dark, two XML files glowing red on its surface, a WinRE reboot arrow looping back to an unlocked BitLocker volume.
+
+Slide 4 (mechanism): a three-step chain in the dark: XML files copying to partition, Shift+Restart reboot arrow, WinRE screen spawning a SYSTEM shell, linked by red tendrils.
+
+Slide 5 (gap): a dark floating status surface with a green healthy indicator on one side and a red warning glow on the other, representing how standard monitoring misses the recovery partition exposure.
+
+Slide 6 (defense): split composition, left side recovery partition with locked BIOS and XML audit checkmark, right side with red XML files and WinRE boot arrow.
+
+Slide 7 (takeaway): a recovery partition icon, half with green rescue cross, half with two red XML files and WinRE boot arrow slipping through.
+
+Slide 8 (cta): a recovery partition audit policy screen on a clean dark end-card.

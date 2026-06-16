@@ -1,0 +1,21 @@
+Nightmare Eclipse released GreenPlasma (CVE-2026-45586) as their fifth exploit. It is a local privilege escalation that elevates an unprivileged user to SYSTEM by abusing the Windows Collaborative Translation Framework, the input subsystem behind ctfmon.
+
+The class is link following (CWE-59). The attacker places an Object Manager symbolic link on a CTF session object, then abuses a volatile registry link under the CloudFiles BlockedApps key to redirect a privileged write. A forced UAC prompt wakes a Winlogon process running as SYSTEM, and that process follows the planted links instead of the real targets.
+
+No memory corruption. No exploit binary on disk. The released proof of concept is deliberately incomplete and stops short of the final SYSTEM shell. The primitive is confirmed on Windows 11, Server 2022, and Server 2026 before the June 2026 fix.
+
+Defenders miss it because the SYSTEM process is doing exactly what it normally does. The strongest signal is the registry artifact itself: a volatile symbolic link created under HKCU CloudFiles BlockedApps, pointing into the Policies System key.
+
+Deploy the June 2026 Patch Tuesday update. Alert on that registry symlink creation. Watch for Object Manager symlinks placed on Collaborative Translation Framework session objects, and treat an unusual Winlogon desktop switch from an unprivileged process as worth a look.
+
+The patch closes this path. The pattern of redirecting a trusted process through a link it blindly resolves keeps coming back. Hunt the technique, not just the CVE.
+
+A trusted SYSTEM process is only as safe as the names it resolves. A symbolic link the attacker controls turns that trust into a weapon.
+
+Do you alert on registry and Object Manager symlink creation?
+
+Follow for AI security breakdowns without the fake panic.
+
+[GreenPlasma, CVE-2026-45586, Nightmare Eclipse, Windows zero-day, SYSTEM LPE, link following, CTFMON, symbolic link, registry link, defender takeaway]
+
+[GreenPlasma, CVE-2026-45586, Nightmare Eclipse, Windows zero-day, SYSTEM LPE, link following, CTFMON, symbolic link, registry link, defender takeaway]

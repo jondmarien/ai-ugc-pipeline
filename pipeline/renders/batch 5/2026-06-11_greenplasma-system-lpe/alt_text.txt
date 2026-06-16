@@ -1,0 +1,15 @@
+Title card: GreenPlasma redirects a SYSTEM process with a symbolic link. CVE-2026-45586 is a local privilege escalation that abuses link following in the Windows Collaborative Translation Framework, Nightmare Eclipse exploit five, patched June 2026. A green plasma tendril wraps around a process icon and turns it into a SYSTEM token.
+
+GreenPlasma was the fifth exploit Nightmare Eclipse released. CVE-2026-45586 elevates a local user to SYSTEM by abusing the Windows Collaborative Translation Framework. Patched June 2026 Patch Tuesday, but it was already public before the fix. A glowing process sphere lifts toward a crown of light.
+
+A SYSTEM process follows a symbolic link the attacker planted. A Winlogon process running as SYSTEM resolves a Collaborative Translation Framework object that the local user redirected, with no memory corruption needed, confirmed on Windows 11 and Server 2022 before June 2026. A green tendril threads into a glowing binary orb without breaking its surface.
+
+Two planted links redirect a privileged SYSTEM file operation. The attacker places an Object Manager symbolic link on a Collaborative Translation Framework session object and a volatile registry link under the CloudFiles key, then a UAC prompt wakes the SYSTEM process. A green tendril curves from a bright core toward an outer ring of dim open space.
+
+The SYSTEM process behaves normally while following the links, so endpoint detection misses it. The clearest signal is the registry artifact, a volatile symbolic link created under the CloudFiles BlockedApps key. Two glowing orbs with green verification halos and a thin red thread rising between them.
+
+Apply the patch, then hunt the symbolic link artifacts. Deploy the June 2026 update, alert on a volatile registry link under the CloudFiles BlockedApps key, and watch for Object Manager symlinks on Collaborative Translation Framework session objects. Two process orbs, one with a full shield ring and one with a gap in its ring.
+
+A trusted SYSTEM process is only as safe as the names it resolves. A symbolic link the attacker controls turns that trust into a weapon. A glowing trusted process orb with a green symbolic-link arrow bending its path toward an attacker-controlled target node.
+
+Closing question: Do you alert on registry and Object Manager symlink creation? A single glowing process orb sits on a clean dark end-card with a question-mark shimmer above it.

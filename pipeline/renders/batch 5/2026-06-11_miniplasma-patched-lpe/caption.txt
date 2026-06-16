@@ -1,0 +1,21 @@
+Nightmare Eclipse released MiniPlasma as the sixth and final exploit in their wave. A local privilege escalation exploit targeting fully patched Windows 10 and 11 systems, silently addressed in the June 9, 2026 Patch Tuesday.
+
+The flaw is not new. It maps to CVE-2020-17103, a race condition in the Windows Cloud Files filter driver (cldflt.sys) that was supposedly patched in December 2020. MiniPlasma proves the patch regressed or was never fully enforced. The original Google Project Zero proof-of-concept reportedly worked without modification on modern builds.
+
+Researcher demonstrates exploitation on a machine with every June 2026 update installed. No new CVE was assigned. Vulnerability scanners that track current patch status have no signature for this. The 2020 record says patched. The system says otherwise.
+
+Patch Tuesday says 'protected.' Scanners say 'clean.' But a six-year-old race condition in cldflt.sys is still reachable from a standard user account. No new CVE means no new scanner alert and no new vendor advisory. Defenders who rely on patch status alone have a real blind spot here.
+
+The behavioral signal to watch: registry symbolic links being created in CloudFiles policy paths, and wermgr.exe executing outside standard system directories. Microsoft silently included a fix in June 9 Patch Tuesday. If you have not applied those updates, the exposure is active.
+
+A fix without a new CVE is a scanner blind spot. Patched is not safe when an old bug quietly returns. Track silent fixes and lean on behavioral detection.
+
+Patched does not mean immune. It means the attack surface has shifted.
+
+Do you track regression vulnerabilities separately from new CVEs in your patch program?
+
+Follow for AI security breakdowns without the fake panic.
+
+[MiniPlasma, Nightmare Eclipse, Windows zero-day, LPE, fully patched, Patch Tuesday, CVE-2020-17103, cldflt.sys, Cloud Files, regression vulnerability, behavioral detection]
+
+[MiniPlasma, Nightmare Eclipse, Windows zero-day, LPE, fully patched, Patch Tuesday, CVE-2020-17103, cldflt, regression vulnerability, behavioral detection, silent patch]
