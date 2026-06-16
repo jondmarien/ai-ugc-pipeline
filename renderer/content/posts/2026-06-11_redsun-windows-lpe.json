@@ -4,7 +4,7 @@
   "slug": "redsun-windows-lpe",
   "platform": "instagram",
   "format": "carousel",
-  "status": "approved",
+  "status": "generated",
   "pillar": "offensive_ai",
   "theme": "offensive",
   "audience": "security_practitioners",
@@ -408,6 +408,1359 @@
     "music": null,
     "sfx": [],
     "licenses": [],
-    "captions": []
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 3.04,
+        "text": "Nightmare Eclipse released RedSun in April 2026",
+        "words": [
+          {
+            "text": "Nightmare",
+            "start": 0.0,
+            "end": 0.52
+          },
+          {
+            "text": "Eclipse",
+            "start": 0.52,
+            "end": 0.94
+          },
+          {
+            "text": "released",
+            "start": 0.94,
+            "end": 1.32
+          },
+          {
+            "text": "RedSun",
+            "start": 1.32,
+            "end": 1.82
+          },
+          {
+            "text": "in",
+            "start": 1.82,
+            "end": 2.0
+          },
+          {
+            "text": "April",
+            "start": 2.0,
+            "end": 2.26
+          },
+          {
+            "text": "2026",
+            "start": 2.26,
+            "end": 3.04
+          }
+        ]
+      },
+      {
+        "start": 3.04,
+        "end": 4.7,
+        "text": "as the second in a series of",
+        "words": [
+          {
+            "text": "as",
+            "start": 3.04,
+            "end": 3.46
+          },
+          {
+            "text": "the",
+            "start": 3.46,
+            "end": 3.64
+          },
+          {
+            "text": "second",
+            "start": 3.64,
+            "end": 3.94
+          },
+          {
+            "text": "in",
+            "start": 3.94,
+            "end": 4.12
+          },
+          {
+            "text": "a",
+            "start": 4.12,
+            "end": 4.2
+          },
+          {
+            "text": "series",
+            "start": 4.2,
+            "end": 4.5
+          },
+          {
+            "text": "of",
+            "start": 4.5,
+            "end": 4.7
+          }
+        ]
+      },
+      {
+        "start": 4.7,
+        "end": 7.26,
+        "text": "Microsoft Defender zero-days, and it does something",
+        "words": [
+          {
+            "text": "Microsoft",
+            "start": 4.7,
+            "end": 4.98
+          },
+          {
+            "text": "Defender",
+            "start": 4.98,
+            "end": 5.38
+          },
+          {
+            "text": "zero-days,",
+            "start": 5.38,
+            "end": 5.96
+          },
+          {
+            "text": "and",
+            "start": 6.54,
+            "end": 6.78
+          },
+          {
+            "text": "it",
+            "start": 6.78,
+            "end": 6.88
+          },
+          {
+            "text": "does",
+            "start": 6.88,
+            "end": 7.02
+          },
+          {
+            "text": "something",
+            "start": 7.02,
+            "end": 7.26
+          }
+        ]
+      },
+      {
+        "start": 7.26,
+        "end": 10.02,
+        "text": "counterintuitive: it turns Defender itself into the",
+        "words": [
+          {
+            "text": "counterintuitive:",
+            "start": 7.26,
+            "end": 7.9
+          },
+          {
+            "text": "it",
+            "start": 8.36,
+            "end": 8.44
+          },
+          {
+            "text": "turns",
+            "start": 8.44,
+            "end": 8.66
+          },
+          {
+            "text": "Defender",
+            "start": 8.66,
+            "end": 8.9
+          },
+          {
+            "text": "itself",
+            "start": 8.9,
+            "end": 9.5
+          },
+          {
+            "text": "into",
+            "start": 9.5,
+            "end": 9.82
+          },
+          {
+            "text": "the",
+            "start": 9.82,
+            "end": 10.02
+          }
+        ]
+      },
+      {
+        "start": 10.02,
+        "end": 11.2,
+        "text": "attacker's write primitive.",
+        "words": [
+          {
+            "text": "attacker's",
+            "start": 10.02,
+            "end": 10.6
+          },
+          {
+            "text": "write",
+            "start": 10.6,
+            "end": 10.71
+          },
+          {
+            "text": "primitive.",
+            "start": 10.82,
+            "end": 11.2
+          }
+        ]
+      },
+      {
+        "start": 11.8,
+        "end": 15.34,
+        "text": "This became CVE-2026-41091,",
+        "words": [
+          {
+            "text": "This",
+            "start": 11.8,
+            "end": 11.85
+          },
+          {
+            "text": "became",
+            "start": 11.82,
+            "end": 12.14
+          },
+          {
+            "text": "CVE-2026-41091,",
+            "start": 12.14,
+            "end": 15.34
+          }
+        ]
+      },
+      {
+        "start": 15.68,
+        "end": 17.68,
+        "text": "a link-following flaw in the Malware Protection",
+        "words": [
+          {
+            "text": "a",
+            "start": 15.68,
+            "end": 15.86
+          },
+          {
+            "text": "link-following",
+            "start": 15.86,
+            "end": 16.1
+          },
+          {
+            "text": "flaw",
+            "start": 16.34,
+            "end": 16.66
+          },
+          {
+            "text": "in",
+            "start": 16.66,
+            "end": 16.96
+          },
+          {
+            "text": "the",
+            "start": 16.96,
+            "end": 17.04
+          },
+          {
+            "text": "Malware",
+            "start": 17.04,
+            "end": 17.22
+          },
+          {
+            "text": "Protection",
+            "start": 17.22,
+            "end": 17.68
+          }
+        ]
+      },
+      {
+        "start": 17.68,
+        "end": 20.54,
+        "text": "Engine, patched out-of-band by Microsoft on May",
+        "words": [
+          {
+            "text": "Engine,",
+            "start": 17.68,
+            "end": 18.16
+          },
+          {
+            "text": "patched",
+            "start": 18.48,
+            "end": 18.68
+          },
+          {
+            "text": "out-of-band",
+            "start": 18.68,
+            "end": 18.99
+          },
+          {
+            "text": "by",
+            "start": 19.3,
+            "end": 19.54
+          },
+          {
+            "text": "Microsoft",
+            "start": 19.54,
+            "end": 19.9
+          },
+          {
+            "text": "on",
+            "start": 19.9,
+            "end": 20.38
+          },
+          {
+            "text": "May",
+            "start": 20.38,
+            "end": 20.54
+          }
+        ]
+      },
+      {
+        "start": 20.54,
+        "end": 23.66,
+        "text": "21, 2026, and added to CISA's Known",
+        "words": [
+          {
+            "text": "21,",
+            "start": 20.54,
+            "end": 20.82
+          },
+          {
+            "text": "2026,",
+            "start": 21.32,
+            "end": 21.96
+          },
+          {
+            "text": "and",
+            "start": 22.48,
+            "end": 22.53
+          },
+          {
+            "text": "added",
+            "start": 22.52,
+            "end": 22.76
+          },
+          {
+            "text": "to",
+            "start": 22.76,
+            "end": 22.98
+          },
+          {
+            "text": "CISA's",
+            "start": 22.98,
+            "end": 23.48
+          },
+          {
+            "text": "Known",
+            "start": 23.48,
+            "end": 23.66
+          }
+        ]
+      },
+      {
+        "start": 23.66,
+        "end": 26.04,
+        "text": "Exploited Vulnerabilities catalog the day before.",
+        "words": [
+          {
+            "text": "Exploited",
+            "start": 23.66,
+            "end": 24.28
+          },
+          {
+            "text": "Vulnerabilities",
+            "start": 24.28,
+            "end": 24.72
+          },
+          {
+            "text": "catalog",
+            "start": 24.72,
+            "end": 25.16
+          },
+          {
+            "text": "the",
+            "start": 25.16,
+            "end": 25.62
+          },
+          {
+            "text": "day",
+            "start": 25.62,
+            "end": 25.78
+          },
+          {
+            "text": "before.",
+            "start": 25.78,
+            "end": 26.04
+          }
+        ]
+      },
+      {
+        "start": 26.88,
+        "end": 30.32,
+        "text": "The category is CWE-59, improper link resolution",
+        "words": [
+          {
+            "text": "The",
+            "start": 26.88,
+            "end": 26.96
+          },
+          {
+            "text": "category",
+            "start": 26.96,
+            "end": 27.32
+          },
+          {
+            "text": "is",
+            "start": 27.32,
+            "end": 27.64
+          },
+          {
+            "text": "CWE-59,",
+            "start": 27.64,
+            "end": 28.72
+          },
+          {
+            "text": "improper",
+            "start": 28.72,
+            "end": 29.15
+          },
+          {
+            "text": "link",
+            "start": 29.58,
+            "end": 29.92
+          },
+          {
+            "text": "resolution",
+            "start": 29.92,
+            "end": 30.32
+          }
+        ]
+      },
+      {
+        "start": 30.32,
+        "end": 31.5,
+        "text": "before file access.",
+        "words": [
+          {
+            "text": "before",
+            "start": 30.32,
+            "end": 30.84
+          },
+          {
+            "text": "file",
+            "start": 30.84,
+            "end": 31.16
+          },
+          {
+            "text": "access.",
+            "start": 31.16,
+            "end": 31.5
+          }
+        ]
+      },
+      {
+        "start": 32.12,
+        "end": 35.06,
+        "text": "Defender's remediation process runs as SYSTEM, and",
+        "words": [
+          {
+            "text": "Defender's",
+            "start": 32.12,
+            "end": 32.66
+          },
+          {
+            "text": "remediation",
+            "start": 32.66,
+            "end": 33.24
+          },
+          {
+            "text": "process",
+            "start": 33.24,
+            "end": 33.56
+          },
+          {
+            "text": "runs",
+            "start": 33.56,
+            "end": 33.98
+          },
+          {
+            "text": "as",
+            "start": 33.98,
+            "end": 34.07
+          },
+          {
+            "text": "SYSTEM,",
+            "start": 34.16,
+            "end": 34.58
+          },
+          {
+            "text": "and",
+            "start": 35.0,
+            "end": 35.06
+          }
+        ]
+      },
+      {
+        "start": 35.06,
+        "end": 38.18,
+        "text": "it resolves NTFS junctions without verifying whether",
+        "words": [
+          {
+            "text": "it",
+            "start": 35.06,
+            "end": 35.16
+          },
+          {
+            "text": "resolves",
+            "start": 35.16,
+            "end": 35.38
+          },
+          {
+            "text": "NTFS",
+            "start": 35.38,
+            "end": 36.28
+          },
+          {
+            "text": "junctions",
+            "start": 36.28,
+            "end": 36.7
+          },
+          {
+            "text": "without",
+            "start": 36.7,
+            "end": 37.3
+          },
+          {
+            "text": "verifying",
+            "start": 37.3,
+            "end": 37.86
+          },
+          {
+            "text": "whether",
+            "start": 37.86,
+            "end": 38.18
+          }
+        ]
+      },
+      {
+        "start": 38.18,
+        "end": 40.06,
+        "text": "the destination is still within a directory",
+        "words": [
+          {
+            "text": "the",
+            "start": 38.18,
+            "end": 38.4
+          },
+          {
+            "text": "destination",
+            "start": 38.4,
+            "end": 38.78
+          },
+          {
+            "text": "is",
+            "start": 38.78,
+            "end": 39.12
+          },
+          {
+            "text": "still",
+            "start": 39.12,
+            "end": 39.34
+          },
+          {
+            "text": "within",
+            "start": 39.34,
+            "end": 39.58
+          },
+          {
+            "text": "a",
+            "start": 39.58,
+            "end": 39.74
+          },
+          {
+            "text": "directory",
+            "start": 39.74,
+            "end": 40.06
+          }
+        ]
+      },
+      {
+        "start": 40.06,
+        "end": 41.06,
+        "text": "the attacker controls.",
+        "words": [
+          {
+            "text": "the",
+            "start": 40.06,
+            "end": 40.42
+          },
+          {
+            "text": "attacker",
+            "start": 40.42,
+            "end": 40.62
+          },
+          {
+            "text": "controls.",
+            "start": 40.62,
+            "end": 41.06
+          }
+        ]
+      },
+      {
+        "start": 41.88,
+        "end": 44.3,
+        "text": "It is a race-condition class issue: timing",
+        "words": [
+          {
+            "text": "It",
+            "start": 41.88,
+            "end": 41.96
+          },
+          {
+            "text": "is",
+            "start": 41.96,
+            "end": 42.06
+          },
+          {
+            "text": "a",
+            "start": 42.06,
+            "end": 42.16
+          },
+          {
+            "text": "race-condition",
+            "start": 42.16,
+            "end": 42.38
+          },
+          {
+            "text": "class",
+            "start": 42.6,
+            "end": 43.1
+          },
+          {
+            "text": "issue:",
+            "start": 43.1,
+            "end": 43.54
+          },
+          {
+            "text": "timing",
+            "start": 43.98,
+            "end": 44.3
+          }
+        ]
+      },
+      {
+        "start": 44.3,
+        "end": 46.7,
+        "text": "windows during Defender's cleanup workflow give an",
+        "words": [
+          {
+            "text": "windows",
+            "start": 44.3,
+            "end": 44.58
+          },
+          {
+            "text": "during",
+            "start": 44.58,
+            "end": 45.0
+          },
+          {
+            "text": "Defender's",
+            "start": 45.0,
+            "end": 45.58
+          },
+          {
+            "text": "cleanup",
+            "start": 45.58,
+            "end": 45.76
+          },
+          {
+            "text": "workflow",
+            "start": 45.76,
+            "end": 46.3
+          },
+          {
+            "text": "give",
+            "start": 46.3,
+            "end": 46.5
+          },
+          {
+            "text": "an",
+            "start": 46.5,
+            "end": 46.7
+          }
+        ]
+      },
+      {
+        "start": 46.9,
+        "end": 48.94,
+        "text": "attacker the opportunity to swap a directory",
+        "words": [
+          {
+            "text": "attacker",
+            "start": 46.9,
+            "end": 47.2
+          },
+          {
+            "text": "the",
+            "start": 47.2,
+            "end": 47.54
+          },
+          {
+            "text": "opportunity",
+            "start": 47.54,
+            "end": 47.96
+          },
+          {
+            "text": "to",
+            "start": 47.96,
+            "end": 48.32
+          },
+          {
+            "text": "swap",
+            "start": 48.32,
+            "end": 48.52
+          },
+          {
+            "text": "a",
+            "start": 48.52,
+            "end": 48.72
+          },
+          {
+            "text": "directory",
+            "start": 48.72,
+            "end": 48.94
+          }
+        ]
+      },
+      {
+        "start": 48.94,
+        "end": 51.46,
+        "text": "for a junction before the SYSTEM-privileged write-back",
+        "words": [
+          {
+            "text": "for",
+            "start": 48.94,
+            "end": 49.38
+          },
+          {
+            "text": "a",
+            "start": 49.38,
+            "end": 49.46
+          },
+          {
+            "text": "junction",
+            "start": 49.46,
+            "end": 49.68
+          },
+          {
+            "text": "before",
+            "start": 49.68,
+            "end": 50.34
+          },
+          {
+            "text": "the",
+            "start": 50.34,
+            "end": 50.58
+          },
+          {
+            "text": "SYSTEM-privileged",
+            "start": 50.58,
+            "end": 51.02
+          },
+          {
+            "text": "write-back",
+            "start": 51.02,
+            "end": 51.46
+          }
+        ]
+      },
+      {
+        "start": 51.9,
+        "end": 54.58,
+        "text": "completes, landing the binary exactly where they",
+        "words": [
+          {
+            "text": "completes,",
+            "start": 51.9,
+            "end": 52.28
+          },
+          {
+            "text": "landing",
+            "start": 52.78,
+            "end": 53.12
+          },
+          {
+            "text": "the",
+            "start": 53.12,
+            "end": 53.28
+          },
+          {
+            "text": "binary",
+            "start": 53.28,
+            "end": 53.54
+          },
+          {
+            "text": "exactly",
+            "start": 53.54,
+            "end": 54.0
+          },
+          {
+            "text": "where",
+            "start": 54.0,
+            "end": 54.42
+          },
+          {
+            "text": "they",
+            "start": 54.42,
+            "end": 54.58
+          }
+        ]
+      },
+      {
+        "start": 54.58,
+        "end": 54.92,
+        "text": "need it.",
+        "words": [
+          {
+            "text": "need",
+            "start": 54.58,
+            "end": 54.76
+          },
+          {
+            "text": "it.",
+            "start": 54.76,
+            "end": 54.92
+          }
+        ]
+      },
+      {
+        "start": 55.28,
+        "end": 57.6,
+        "text": "Most endpoint tooling treats file operations from",
+        "words": [
+          {
+            "text": "Most",
+            "start": 55.28,
+            "end": 55.44
+          },
+          {
+            "text": "endpoint",
+            "start": 55.44,
+            "end": 55.72
+          },
+          {
+            "text": "tooling",
+            "start": 55.72,
+            "end": 56.26
+          },
+          {
+            "text": "treats",
+            "start": 56.26,
+            "end": 56.44
+          },
+          {
+            "text": "file",
+            "start": 56.44,
+            "end": 56.74
+          },
+          {
+            "text": "operations",
+            "start": 56.74,
+            "end": 57.16
+          },
+          {
+            "text": "from",
+            "start": 57.16,
+            "end": 57.6
+          }
+        ]
+      },
+      {
+        "start": 57.6,
+        "end": 61.16,
+        "text": "MsMpEng.exe as inherently trusted background noise,",
+        "words": [
+          {
+            "text": "MsMpEng.exe",
+            "start": 57.6,
+            "end": 58.28
+          },
+          {
+            "text": "as",
+            "start": 58.96,
+            "end": 59.56
+          },
+          {
+            "text": "inherently",
+            "start": 59.56,
+            "end": 59.84
+          },
+          {
+            "text": "trusted",
+            "start": 59.84,
+            "end": 60.38
+          },
+          {
+            "text": "background",
+            "start": 60.38,
+            "end": 60.66
+          },
+          {
+            "text": "noise,",
+            "start": 60.66,
+            "end": 61.16
+          }
+        ]
+      },
+      {
+        "start": 61.5,
+        "end": 63.38,
+        "text": "which means the write goes undetected in",
+        "words": [
+          {
+            "text": "which",
+            "start": 61.5,
+            "end": 61.7
+          },
+          {
+            "text": "means",
+            "start": 61.7,
+            "end": 61.88
+          },
+          {
+            "text": "the",
+            "start": 61.88,
+            "end": 62.08
+          },
+          {
+            "text": "write",
+            "start": 62.08,
+            "end": 62.17
+          },
+          {
+            "text": "goes",
+            "start": 62.26,
+            "end": 62.48
+          },
+          {
+            "text": "undetected",
+            "start": 62.48,
+            "end": 63.18
+          },
+          {
+            "text": "in",
+            "start": 63.18,
+            "end": 63.38
+          }
+        ]
+      },
+      {
+        "start": 63.38,
+        "end": 65.8,
+        "text": "environments that have not explicitly built detections",
+        "words": [
+          {
+            "text": "environments",
+            "start": 63.38,
+            "end": 63.66
+          },
+          {
+            "text": "that",
+            "start": 63.66,
+            "end": 64.1
+          },
+          {
+            "text": "have",
+            "start": 64.1,
+            "end": 64.22
+          },
+          {
+            "text": "not",
+            "start": 64.22,
+            "end": 64.4
+          },
+          {
+            "text": "explicitly",
+            "start": 64.4,
+            "end": 64.78
+          },
+          {
+            "text": "built",
+            "start": 64.78,
+            "end": 65.22
+          },
+          {
+            "text": "detections",
+            "start": 65.22,
+            "end": 65.8
+          }
+        ]
+      },
+      {
+        "start": 65.8,
+        "end": 67.82,
+        "text": "for privileged Defender process file activity.",
+        "words": [
+          {
+            "text": "for",
+            "start": 65.8,
+            "end": 65.96
+          },
+          {
+            "text": "privileged",
+            "start": 65.96,
+            "end": 66.13
+          },
+          {
+            "text": "Defender",
+            "start": 66.3,
+            "end": 66.58
+          },
+          {
+            "text": "process",
+            "start": 66.58,
+            "end": 67.1
+          },
+          {
+            "text": "file",
+            "start": 67.1,
+            "end": 67.44
+          },
+          {
+            "text": "activity.",
+            "start": 67.44,
+            "end": 67.82
+          }
+        ]
+      },
+      {
+        "start": 68.56,
+        "end": 70.4,
+        "text": "The patch is an engine update, not",
+        "words": [
+          {
+            "text": "The",
+            "start": 68.56,
+            "end": 68.68
+          },
+          {
+            "text": "patch",
+            "start": 68.68,
+            "end": 68.9
+          },
+          {
+            "text": "is",
+            "start": 68.9,
+            "end": 69.12
+          },
+          {
+            "text": "an",
+            "start": 69.12,
+            "end": 69.22
+          },
+          {
+            "text": "engine",
+            "start": 69.22,
+            "end": 69.46
+          },
+          {
+            "text": "update,",
+            "start": 69.46,
+            "end": 69.76
+          },
+          {
+            "text": "not",
+            "start": 70.22,
+            "end": 70.4
+          }
+        ]
+      },
+      {
+        "start": 70.4,
+        "end": 72.84,
+        "text": "a Windows update: verify that Defender engine",
+        "words": [
+          {
+            "text": "a",
+            "start": 70.4,
+            "end": 70.48
+          },
+          {
+            "text": "Windows",
+            "start": 70.48,
+            "end": 70.64
+          },
+          {
+            "text": "update:",
+            "start": 70.64,
+            "end": 71.06
+          },
+          {
+            "text": "verify",
+            "start": 71.58,
+            "end": 71.82
+          },
+          {
+            "text": "that",
+            "start": 71.82,
+            "end": 72.2
+          },
+          {
+            "text": "Defender",
+            "start": 72.2,
+            "end": 72.48
+          },
+          {
+            "text": "engine",
+            "start": 72.48,
+            "end": 72.84
+          }
+        ]
+      },
+      {
+        "start": 72.84,
+        "end": 76.36,
+        "text": "version 1.1.26040.8 or later is",
+        "words": [
+          {
+            "text": "version",
+            "start": 72.84,
+            "end": 73.18
+          },
+          {
+            "text": "1.1.26040.8",
+            "start": 73.18,
+            "end": 75.68
+          },
+          {
+            "text": "or",
+            "start": 75.68,
+            "end": 75.88
+          },
+          {
+            "text": "later",
+            "start": 75.88,
+            "end": 76.06
+          },
+          {
+            "text": "is",
+            "start": 76.06,
+            "end": 76.36
+          }
+        ]
+      },
+      {
+        "start": 76.36,
+        "end": 79.16,
+        "text": "deployed, especially on managed endpoints where automatic",
+        "words": [
+          {
+            "text": "deployed,",
+            "start": 76.36,
+            "end": 76.62
+          },
+          {
+            "text": "especially",
+            "start": 77.1,
+            "end": 77.54
+          },
+          {
+            "text": "on",
+            "start": 77.54,
+            "end": 77.9
+          },
+          {
+            "text": "managed",
+            "start": 77.9,
+            "end": 78.03
+          },
+          {
+            "text": "endpoints",
+            "start": 78.16,
+            "end": 78.64
+          },
+          {
+            "text": "where",
+            "start": 78.64,
+            "end": 78.88
+          },
+          {
+            "text": "automatic",
+            "start": 78.88,
+            "end": 79.16
+          }
+        ]
+      },
+      {
+        "start": 79.16,
+        "end": 80.32,
+        "text": "updates may be delayed.",
+        "words": [
+          {
+            "text": "updates",
+            "start": 79.16,
+            "end": 79.7
+          },
+          {
+            "text": "may",
+            "start": 79.7,
+            "end": 79.96
+          },
+          {
+            "text": "be",
+            "start": 79.96,
+            "end": 80.1
+          },
+          {
+            "text": "delayed.",
+            "start": 80.1,
+            "end": 80.32
+          }
+        ]
+      },
+      {
+        "start": 81.12,
+        "end": 82.7,
+        "text": "Do you treat file operations from your",
+        "words": [
+          {
+            "text": "Do",
+            "start": 81.12,
+            "end": 81.24
+          },
+          {
+            "text": "you",
+            "start": 81.24,
+            "end": 81.32
+          },
+          {
+            "text": "treat",
+            "start": 81.32,
+            "end": 81.52
+          },
+          {
+            "text": "file",
+            "start": 81.52,
+            "end": 81.76
+          },
+          {
+            "text": "operations",
+            "start": 81.76,
+            "end": 82.16
+          },
+          {
+            "text": "from",
+            "start": 82.16,
+            "end": 82.58
+          },
+          {
+            "text": "your",
+            "start": 82.58,
+            "end": 82.7
+          }
+        ]
+      },
+      {
+        "start": 82.7,
+        "end": 84.98,
+        "text": "security tool as trusted by default, or",
+        "words": [
+          {
+            "text": "security",
+            "start": 82.7,
+            "end": 82.94
+          },
+          {
+            "text": "tool",
+            "start": 82.94,
+            "end": 83.36
+          },
+          {
+            "text": "as",
+            "start": 83.36,
+            "end": 83.56
+          },
+          {
+            "text": "trusted",
+            "start": 83.56,
+            "end": 83.76
+          },
+          {
+            "text": "by",
+            "start": 83.76,
+            "end": 84.1
+          },
+          {
+            "text": "default,",
+            "start": 84.1,
+            "end": 84.32
+          },
+          {
+            "text": "or",
+            "start": 84.88,
+            "end": 84.98
+          }
+        ]
+      },
+      {
+        "start": 84.98,
+        "end": 85.78,
+        "text": "do you alert on them?",
+        "words": [
+          {
+            "text": "do",
+            "start": 84.98,
+            "end": 85.16
+          },
+          {
+            "text": "you",
+            "start": 85.16,
+            "end": 85.22
+          },
+          {
+            "text": "alert",
+            "start": 85.22,
+            "end": 85.42
+          },
+          {
+            "text": "on",
+            "start": 85.42,
+            "end": 85.66
+          },
+          {
+            "text": "them?",
+            "start": 85.66,
+            "end": 85.78
+          }
+        ]
+      },
+      {
+        "start": 86.48,
+        "end": 87.48,
+        "text": "Drop your answer in the comments.",
+        "words": [
+          {
+            "text": "Drop",
+            "start": 86.48,
+            "end": 86.66
+          },
+          {
+            "text": "your",
+            "start": 86.66,
+            "end": 86.84
+          },
+          {
+            "text": "answer",
+            "start": 86.84,
+            "end": 87.06
+          },
+          {
+            "text": "in",
+            "start": 87.06,
+            "end": 87.2
+          },
+          {
+            "text": "the",
+            "start": 87.2,
+            "end": 87.26
+          },
+          {
+            "text": "comments.",
+            "start": 87.26,
+            "end": 87.48
+          }
+        ]
+      }
+    ]
   }
 }
