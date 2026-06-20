@@ -212,7 +212,9 @@ export async function estimateCost(model, width, height) {
   // provider once rate cards / credit meters are confirmed.
   const catalog = [MODEL_CATALOG.image, MODEL_CATALOG.video].flat().find((m) => m.id === model);
   if (!catalog) throw new Error(`UnknownHiggsfieldModel: ${model}`);
-  const pixels = (width ?? 1024) * (height ?? 1280);
+  const w = Number.isFinite(width) ? width : 1024;
+  const h = Number.isFinite(height) ? height : 1280;
+  const pixels = w * h;
   const unit = catalog.type === "video" ? 1_920_000 : 1_040_000;
   const base = 0.015;
   return Number((base * (pixels / unit)).toFixed(4));
