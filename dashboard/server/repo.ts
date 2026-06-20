@@ -10,6 +10,7 @@ export type RepoPost = {
 export type RenderPackage = {
   dirName: string; date: string | null; slug: string;
   slides: string[]; hasCaption: boolean; hasSources: boolean; hasReel: boolean;
+  provider: string | null; model: string | null; costEstimate: number | null;
 };
 
 const DIR_RE = /^(\d{4}-\d{2}-\d{2})_(.+)$/;
@@ -55,12 +56,33 @@ export function listRenders(dir: string = RENDERS_DIR): RenderPackage[] {
       const full = path.join(dir, e.name);
       const files = fs.readdirSync(full);
       const { date, slug } = parseRenderDirName(e.name);
+
+      const postId = slug;
+      const postPath = path.join(POSTS_DIR, `${postId}.json`);
+      let provider: string | null = null;
+      let model: string | null = null;
+      let costEstimate: number | null = null;
+      try {
+        const raw = fs.readFileSync(postPath, "utf8");
+        const j = JSON.parse(raw);
+        const rm = j?.renderMetadata ?? {};
+        provider = typeof rm.provider === "string" && rm.provider ? rm.provider : null;
+        model = typeof rm.model === "string" && rm.model ? rm.model : null;
+        const ce = rm.costEstimate;
+        costEstimate = typeof ce === "number" && Number.isFinite(ce) ? ce : null;
+      } catch {
+        // ignore missing/unparseable post — metadata remains null
+      }
+
       return {
         dirName: e.name, date, slug,
         slides: files.filter((f) => /\.png$/i.test(f)).sort(),
         hasCaption: files.includes("caption.txt"),
         hasSources: files.includes("sources.md"),
-        hasReel: files.some((f) => /_reel\.mp4$/i.test(f)), // reels are '<dirName>_reel.mp4'
+        hasReel: files.some((f) => /_reel\.mp4$/i.test(f)),
+        provider,
+        model,
+        costEstimate,
       };
     })
     .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));

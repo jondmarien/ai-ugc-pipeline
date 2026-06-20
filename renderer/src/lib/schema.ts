@@ -258,6 +258,15 @@ export const PostData = z
       })
       .optional(),
     qa: z.record(z.string(), z.unknown()).default({}),
+    // Optional render provenance for observability/accounting (e.g. Higgsfield vs local ComfyUI).
+    renderMetadata: z
+      .object({
+        provider: z.string().optional(),
+        model: z.string().optional(),
+        costEstimate: z.number().optional(),
+      })
+      .optional()
+      .default({}),
   })
   .superRefine((post, ctx) => {
     // Slide numbering must be contiguous 1..n and match array order.
