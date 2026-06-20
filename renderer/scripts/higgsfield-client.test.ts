@@ -80,18 +80,18 @@ test("buildNegativePrompt includes text-free contract phrases", () => {
   expect(p).toContain("user interface");
 });
 
-test("estimateCost returns a finite value for an approved model", () => {
-  const cost = estimateCost("flux", 1024, 1280);
+test("estimateCost returns a finite value for an approved model", async () => {
+  const cost = await estimateCost("flux", 1024, 1280);
   expect(typeof cost).toBe("number");
   expect(Number.isFinite(cost)).toBe(true);
 });
 
-test("estimateCost rejects unknown models", () => {
-  expect(() => estimateCost("does-not-exist", 1024, 1280)).toThrow("UnknownHiggsfieldModel");
+test("estimateCost rejects unknown models", async () => {
+  await expect(estimateCost("does-not-exist", 1024, 1280)).rejects.toThrow("UnknownHiggsfieldModel");
 });
 
-test("estimateCost tolerates non-finite dimensions by falling back to the default unit", () => {
-  const cost = estimateCost("flux", Number.NaN, Number.NaN);
+test("estimateCost tolerates non-finite dimensions by falling back to the default unit", async () => {
+  const cost = await estimateCost("flux", Number.NaN, Number.NaN);
   expect(typeof cost).toBe("number");
   expect(Number.isFinite(cost)).toBe(true);
 });
@@ -110,9 +110,7 @@ test("renderSlide gates on HIGGSFIELD_API_URL/auth", async () => {
     // Unreachable unless Higgsfield is configured; treat a successful path as a live-environment edge.
     if (err) expect(err.message).toBeTruthy();
   } catch (e: any) {
-    expect(["higgsfield client misconfigured", "higgsfield auth missing"]).toContain(
-      e.message,
-    );
+    expect(["higgsfield client misconfigured", "higgsfield auth missing"].some((s) => (e?.message ?? "").includes(s))).toBe(true);
   } finally {
     removePostJson(id);
   }
