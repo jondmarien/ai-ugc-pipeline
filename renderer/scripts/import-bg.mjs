@@ -35,7 +35,9 @@ const prefix = post.upload_package.filename_prefix;
 // FLUX.2 compare set at public/backgrounds/<prefix>_flux2.
 const srcDir = (!srcArg || srcArg === "flux2" || srcArg === "_flux2")
   ? path.join(RENDERER, "public", "backgrounds", `${prefix}_flux2`)
-  : path.resolve(srcArg);
+  : srcArg === "higgsfield"
+    ? path.resolve(path.join(RENDERER, "public", "backgrounds", `${prefix}_higgsfield`))
+    : path.resolve(srcArg);
 if (!existsSync(srcDir)) { console.error(`Source folder not found: ${srcDir}`); process.exit(1); }
 
 const srcImgs = readdirSync(srcDir).filter((f) => IMG.test(f)).sort();
