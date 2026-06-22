@@ -31,7 +31,7 @@ bun run reel     -- 2026-06-02_ai-phishing-training --fit-voice   # 1080×1920 @
 bun run dev                                            # live preview @ :4317
 ```
 
-**New to this? Start with [docs/RUN_IT_YOURSELF.md](docs/RUN_IT_YOURSELF.md)** — the full self-serve guide to making new reels/carousels and Week-2 content.
+**New to this? Start with [docs/RUN_IT_YOURSELF.md](docs/RUN_IT_YOURSELF.md)** — the full self-serve guide to making new reels/carousels.
 
 Output → `../pipeline/renders/2026-06-02_ai-phishing-training/`.
 
