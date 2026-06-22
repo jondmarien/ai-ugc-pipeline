@@ -1,0 +1,15 @@
+Cover slide announces Arbor beats Claude Code by 2.5x. Visual shows a branching tree structure with glowing orange nodes in a dark void.
+
+Context slide explains Arbor improved BrowseComp accuracy from 45% to 68%. Claude Code stalled at 53%. Visual shows a tangled loop versus a branching tree comparison.
+
+Risk slide explains AI coding agents fail at cumulative learning and overfit to dev metrics. Visual shows two paths diverging, one curving down representing overfitting.
+
+Mechanism slide explains Arbor splits work with coordinator managing hypothesis tree and executors running isolated. Visual shows a central coordinator node with multiple executor branches.
+
+Failure point slide explains single-agent loops entangle changes preventing clean attribution. Visual shows multiple fiber optic cables knotted together in an entangled mass.
+
+Defense slide recommends enforcing hypothesis isolation with worktrees or containers. Visual shows multiple isolated workspaces connected to a central review gate.
+
+Takeaway slide states autonomy without isolation is noise. Visual shows a branching tree structure with a single bright node representing the winning hypothesis.
+
+CTA slide asks how you isolate hypotheses in your AI agent workflows. Visual shows a clean dark end card with subtle branching tree watermark.

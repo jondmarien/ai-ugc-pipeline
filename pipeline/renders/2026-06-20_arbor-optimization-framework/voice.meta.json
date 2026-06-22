@@ -1,0 +1,13 @@
+{
+  "seed": 2117452490,
+  "seed_source": "auto",
+  "model": "openbmb/VoxCPM2",
+  "sample_rate": 48000,
+  "inference_timesteps": 10,
+  "voice_ref": null,
+  "clone_mode": null,
+  "prompt_text_source": null,
+  "script_chars": 539,
+  "generated_at": "2026-06-21T23:09:42",
+  "reuse_command": "bun run pipeline -- 2026-06-20_arbor-optimization-framework --seed=2117452490"
+}

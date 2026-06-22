@@ -1,13 +1,37 @@
-// bun run free-comfyui  — unload ComfyUI's models + free its VRAM via the /free endpoint.
+// bun run free-comfyui
 //
-// Use at the image→audio handoff in the pipeline: ComfyUI is a persistent server that
-// keeps the diffusion model resident, while VoxCPM (voice) / Whisper (align) load their
-// own ~5GB models in a separate process. On an 8GB GPU the two can't coexist, so call
-// this AFTER all image generation and BEFORE `bun run voice` / `bun run align`.
-// Non-fatal: if ComfyUI isn't running there's nothing to free.
+// Pipeline step (local Comfy path only): POST ComfyUI /free to unload models and free VRAM
+// before voice/TTS so the GPU is available. Non-fatal if ComfyUI is down — pipeline continues.
 //
-// Override the target with COMFYUI_URL (default http://127.0.0.1:8000).
-const URL_BASE = (process.env.COMFYUI_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
+// Env: COMFYUI_URL (default http://127.0.0.1:8000). Skipped when using --higgsfield art.
+import { comfyBaseUrl } from "./lib/comfyui-env.mjs";
+import { flagSet, showHelpAndExit } from "./lib/cli.mjs";
+
+const args = process.argv.slice(2);
+const flags = flagSet(args);
+
+const HELP = `
+bun run free-comfyui — release ComfyUI VRAM between art and voice
+
+USAGE
+  bun run free-comfyui
+
+ENV
+  COMFYUI_URL   Comfy API base (default http://127.0.0.1:8000)
+
+BEHAVIOR
+  POST /free with unload_models + free_memory. Warns and exits 0 if unreachable.
+
+PIPELINE
+  Inserted automatically after art when voice runs (not with --higgsfield).
+
+EXAMPLES
+  bun run free-comfyui
+`;
+
+if (flags.has("--help") || flags.has("-h") || args.includes("-h")) showHelpAndExit(HELP);
+
+const URL_BASE = comfyBaseUrl();
 
 try {
   const res = await fetch(`${URL_BASE}/free`, {
