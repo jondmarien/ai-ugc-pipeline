@@ -1,8 +1,7 @@
 // bun run reel:higgsfield -- <post-key> [--dry-run] [--model=dop] [--only=0,1]
 // Image-to-video reel beats via Higgsfield (uses slide higgsfield_image_url or HIGGSFIELD_PUBLIC_BASE_URL).
-import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from "node:fs";
+import { existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import {
   DEFAULT_VIDEO_MODEL,
   generateVideoFromImage,
@@ -10,9 +9,9 @@ import {
   motionPromptForBeat,
   resolveSegmentImageUrl,
 } from "./higgsfield-client.mjs";
-
-const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
-const POSTS = path.join(RENDERER, "content", "posts");
+import { writePostJson } from "./lib/post-io.mjs";
+import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
+import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
 
 const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith("--")));
@@ -64,13 +63,12 @@ const onlySet = onlyRaw
     )
   : null;
 
-const file = readdirSync(POSTS).find((f) => f.endsWith(".json") && f.includes(key));
-if (!file) {
-  console.error(`No post JSON in ${POSTS} matching "${key}".`);
+const loaded = loadPostByKey(key);
+if (!loaded) {
+  console.error(`No post JSON in ${POSTS_DIR} matching "${key}".`);
   process.exit(1);
 }
-const postPath = path.join(POSTS, file);
-const post = JSON.parse(readFileSync(postPath, "utf8"));
+const { postPath, post } = loaded;
 if (!post.video?.enabled) {
   console.log(`Post ${post.post_id ?? key} has video.enabled=false — nothing to do.`);
   process.exit(0);
@@ -165,7 +163,7 @@ for (let i = 0; i < beats.length; i++) {
 }
 
 if (!DRY && generated > 0) {
-  writeFileSync(postPath, JSON.stringify(post, null, 2) + "\n", "utf8");
+  writePostJson(postPath, post);
   console.log(`\n✓ Updated ${postPath} (${generated} segment(s))`);
 } else if (DRY) {
   console.log("\n(dry-run — no API calls, no JSON writes)");

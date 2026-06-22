@@ -5,10 +5,9 @@
 // in renderer/src/lib/schema.ts (lifecycle: draft → approved → generated → upload_ready).
 import { readFileSync, writeFileSync, existsSync, readdirSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { POSTS_DIR } from "./paths.mjs";
 
-const LIB_DIR = path.dirname(fileURLToPath(import.meta.url)); // renderer/scripts/lib
-export const POSTS = path.join(LIB_DIR, "..", "..", "content", "posts");
+export const POSTS = POSTS_DIR;
 export const STATUSES = ["draft", "approved", "generated", "upload_ready"];
 const STATUS_RE = /^(\s*)"status": "(?:draft|approved|generated|upload_ready)"/m;
 
