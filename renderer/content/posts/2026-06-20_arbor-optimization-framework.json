@@ -371,496 +371,496 @@
     "captions": [
       {
         "start": 0.0,
-        "end": 1.72,
+        "end": 2.16,
         "text": "Arbor beat Claude Code and Codex by",
         "words": [
           {
             "text": "Arbor",
             "start": 0.0,
-            "end": 0.14
+            "end": 0.32
           },
           {
             "text": "beat",
-            "start": 0.14,
-            "end": 0.36
+            "start": 0.32,
+            "end": 0.62
           },
           {
             "text": "Claude",
-            "start": 0.36,
-            "end": 0.64
+            "start": 0.62,
+            "end": 0.88
           },
           {
             "text": "Code",
-            "start": 0.64,
-            "end": 0.92
+            "start": 0.88,
+            "end": 1.16
           },
           {
             "text": "and",
-            "start": 0.92,
-            "end": 1.12
+            "start": 1.16,
+            "end": 1.42
           },
           {
             "text": "Codex",
-            "start": 1.12,
-            "end": 1.26
+            "start": 1.42,
+            "end": 1.6
           },
           {
             "text": "by",
-            "start": 1.26,
-            "end": 1.72
+            "start": 1.6,
+            "end": 2.16
           }
         ]
       },
       {
-        "start": 1.72,
-        "end": 3.42,
+        "start": 2.16,
+        "end": 3.92,
         "text": "2.5x on held-out benchmarks.",
         "words": [
           {
             "text": "2.5x",
-            "start": 1.72,
-            "end": 2.62
+            "start": 2.16,
+            "end": 3.0
           },
           {
             "text": "on",
-            "start": 2.62,
-            "end": 2.86
+            "start": 3.0,
+            "end": 3.3
           },
           {
             "text": "held-out",
-            "start": 2.86,
-            "end": 3.22
+            "start": 3.3,
+            "end": 3.48
           },
           {
             "text": "benchmarks.",
-            "start": 3.22,
-            "end": 3.42
+            "start": 3.66,
+            "end": 3.92
           }
         ]
       },
       {
-        "start": 4.6,
-        "end": 6.2,
+        "start": 4.68,
+        "end": 6.28,
         "text": "Same compute, different architecture.",
         "words": [
           {
             "text": "Same",
-            "start": 4.6,
-            "end": 4.88
+            "start": 4.68,
+            "end": 4.92
           },
           {
             "text": "compute,",
-            "start": 4.88,
-            "end": 5.18
+            "start": 4.92,
+            "end": 5.24
           },
           {
             "text": "different",
-            "start": 5.52,
-            "end": 5.68
+            "start": 5.56,
+            "end": 5.78
           },
           {
             "text": "architecture.",
-            "start": 5.68,
-            "end": 6.2
+            "start": 5.78,
+            "end": 6.28
           }
         ]
       },
       {
-        "start": 7.24,
-        "end": 9.24,
+        "start": 6.84,
+        "end": 8.92,
         "text": "AI coding agents fail at cumulative learning.",
         "words": [
           {
             "text": "AI",
-            "start": 7.24,
-            "end": 7.32
+            "start": 6.84,
+            "end": 6.96
           },
           {
             "text": "coding",
-            "start": 7.32,
-            "end": 7.62
+            "start": 6.96,
+            "end": 7.28
           },
           {
             "text": "agents",
-            "start": 7.62,
-            "end": 8.0
+            "start": 7.28,
+            "end": 7.66
           },
           {
             "text": "fail",
-            "start": 8.0,
-            "end": 8.32
+            "start": 7.66,
+            "end": 7.92
           },
           {
             "text": "at",
-            "start": 8.32,
-            "end": 8.5
+            "start": 7.92,
+            "end": 8.14
           },
           {
             "text": "cumulative",
-            "start": 8.5,
-            "end": 8.68
+            "start": 8.14,
+            "end": 8.34
           },
           {
             "text": "learning.",
-            "start": 8.68,
-            "end": 9.24
+            "start": 8.34,
+            "end": 8.92
           }
         ]
       },
       {
-        "start": 10.06,
-        "end": 11.8,
+        "start": 9.52,
+        "end": 11.38,
         "text": "They treat each attempt in isolation and",
         "words": [
           {
             "text": "They",
-            "start": 10.06,
-            "end": 10.11
+            "start": 9.52,
+            "end": 9.57
           },
           {
             "text": "treat",
-            "start": 10.1,
-            "end": 10.26
+            "start": 9.52,
+            "end": 9.68
           },
           {
             "text": "each",
-            "start": 10.26,
-            "end": 10.56
+            "start": 9.68,
+            "end": 9.94
           },
           {
             "text": "attempt",
-            "start": 10.56,
-            "end": 10.84
+            "start": 9.94,
+            "end": 10.22
           },
           {
             "text": "in",
-            "start": 10.84,
-            "end": 11.02
+            "start": 10.22,
+            "end": 10.4
           },
           {
             "text": "isolation",
-            "start": 11.02,
-            "end": 11.34
+            "start": 10.4,
+            "end": 10.74
           },
           {
             "text": "and",
-            "start": 11.34,
-            "end": 11.8
+            "start": 10.74,
+            "end": 11.38
           }
         ]
       },
       {
-        "start": 11.8,
-        "end": 12.88,
+        "start": 11.38,
+        "end": 12.5,
         "text": "overfit to dev metrics.",
         "words": [
           {
             "text": "overfit",
-            "start": 11.8,
-            "end": 12.26
+            "start": 11.38,
+            "end": 11.82
           },
           {
             "text": "to",
-            "start": 12.26,
-            "end": 12.42
+            "start": 11.82,
+            "end": 11.98
           },
           {
             "text": "dev",
-            "start": 12.42,
-            "end": 12.58
+            "start": 11.98,
+            "end": 12.16
           },
           {
             "text": "metrics.",
-            "start": 12.58,
-            "end": 12.88
+            "start": 12.16,
+            "end": 12.5
           }
         ]
       },
       {
-        "start": 14.14,
-        "end": 15.82,
+        "start": 13.4,
+        "end": 15.28,
         "text": "Arbor uses Hypothesis-Tree Refinement.",
         "words": [
           {
             "text": "Arbor",
-            "start": 14.14,
-            "end": 14.19
+            "start": 13.4,
+            "end": 13.48
           },
           {
             "text": "uses",
-            "start": 14.16,
-            "end": 15.16
+            "start": 13.48,
+            "end": 14.52
           },
           {
             "text": "Hypothesis-Tree",
-            "start": 15.16,
-            "end": 15.3
+            "start": 14.52,
+            "end": 14.7
           },
           {
             "text": "Refinement.",
-            "start": 15.44,
-            "end": 15.82
+            "start": 14.88,
+            "end": 15.28
           }
         ]
       },
       {
-        "start": 16.78,
-        "end": 18.06,
+        "start": 15.96,
+        "end": 17.28,
         "text": "A coordinator manages the tree.",
         "words": [
           {
             "text": "A",
-            "start": 16.78,
-            "end": 16.83
+            "start": 15.96,
+            "end": 16.01
           },
           {
             "text": "coordinator",
-            "start": 16.8,
-            "end": 17.1
+            "start": 15.96,
+            "end": 16.28
           },
           {
             "text": "manages",
-            "start": 17.1,
-            "end": 17.68
+            "start": 16.28,
+            "end": 16.92
           },
           {
             "text": "the",
-            "start": 17.68,
-            "end": 17.88
+            "start": 16.92,
+            "end": 17.08
           },
           {
             "text": "tree.",
-            "start": 17.88,
-            "end": 18.06
+            "start": 17.08,
+            "end": 17.28
           }
         ]
       },
       {
-        "start": 18.96,
-        "end": 21.36,
+        "start": 17.62,
+        "end": 20.86,
         "text": "Executors test hypotheses in isolated git worktrees.",
         "words": [
           {
             "text": "Executors",
-            "start": 18.96,
-            "end": 19.36
+            "start": 17.62,
+            "end": 18.1
           },
           {
             "text": "test",
-            "start": 19.36,
-            "end": 19.6
+            "start": 18.1,
+            "end": 18.3
           },
           {
             "text": "hypotheses",
-            "start": 19.6,
-            "end": 20.02
+            "start": 18.3,
+            "end": 18.72
           },
           {
             "text": "in",
-            "start": 20.02,
-            "end": 20.48
+            "start": 18.72,
+            "end": 19.28
           },
           {
             "text": "isolated",
-            "start": 20.48,
-            "end": 20.82
+            "start": 19.28,
+            "end": 19.66
           },
           {
             "text": "git",
-            "start": 20.82,
-            "end": 21.16
+            "start": 19.66,
+            "end": 20.04
           },
           {
             "text": "worktrees.",
-            "start": 21.16,
-            "end": 21.36
+            "start": 20.04,
+            "end": 20.86
           }
         ]
       },
       {
-        "start": 21.56,
-        "end": 24.42,
+        "start": 21.68,
+        "end": 23.7,
         "text": "Defensive move: enforce hypothesis isolation.",
         "words": [
           {
             "text": "Defensive",
-            "start": 21.56,
-            "end": 22.62
+            "start": 21.68,
+            "end": 21.73
           },
           {
             "text": "move:",
-            "start": 22.62,
-            "end": 22.98
+            "start": 21.68,
+            "end": 22.1
           },
           {
             "text": "enforce",
-            "start": 23.3,
-            "end": 23.52
+            "start": 22.1,
+            "end": 22.42
           },
           {
             "text": "hypothesis",
-            "start": 23.52,
-            "end": 23.98
+            "start": 22.42,
+            "end": 23.14
           },
           {
             "text": "isolation.",
-            "start": 23.98,
-            "end": 24.42
+            "start": 23.14,
+            "end": 23.7
           }
         ]
       },
       {
-        "start": 25.4,
-        "end": 26.8,
+        "start": 24.46,
+        "end": 25.66,
         "text": "Use worktrees per hypothesis.",
         "words": [
           {
             "text": "Use",
-            "start": 25.4,
-            "end": 25.68
+            "start": 24.46,
+            "end": 24.64
           },
           {
             "text": "worktrees",
-            "start": 25.68,
-            "end": 25.89
+            "start": 24.64,
+            "end": 24.84
           },
           {
             "text": "per",
-            "start": 26.1,
-            "end": 26.32
+            "start": 25.04,
+            "end": 25.24
           },
           {
             "text": "hypothesis.",
-            "start": 26.32,
-            "end": 26.8
+            "start": 25.24,
+            "end": 25.66
           }
         ]
       },
       {
-        "start": 27.68,
-        "end": 29.22,
+        "start": 26.28,
+        "end": 27.76,
         "text": "Only held-out gains merge to master.",
         "words": [
           {
             "text": "Only",
-            "start": 27.68,
-            "end": 27.9
+            "start": 26.28,
+            "end": 26.44
           },
           {
             "text": "held-out",
-            "start": 27.9,
-            "end": 28.32
+            "start": 26.44,
+            "end": 26.63
           },
           {
             "text": "gains",
-            "start": 28.32,
-            "end": 28.5
+            "start": 26.82,
+            "end": 27.06
           },
           {
             "text": "merge",
-            "start": 28.5,
-            "end": 28.82
+            "start": 27.06,
+            "end": 27.38
           },
           {
             "text": "to",
-            "start": 28.82,
-            "end": 29.04
+            "start": 27.38,
+            "end": 27.6
           },
           {
             "text": "master.",
-            "start": 29.04,
-            "end": 29.22
+            "start": 27.6,
+            "end": 27.76
           }
         ]
       },
       {
-        "start": 30.18,
-        "end": 31.88,
+        "start": 27.76,
+        "end": 30.36,
         "text": "Autonomy without isolation is noise.",
         "words": [
           {
             "text": "Autonomy",
-            "start": 30.18,
-            "end": 30.58
+            "start": 27.76,
+            "end": 28.98
           },
           {
             "text": "without",
-            "start": 30.58,
-            "end": 30.86
+            "start": 28.98,
+            "end": 29.32
           },
           {
             "text": "isolation",
-            "start": 30.86,
-            "end": 31.26
+            "start": 29.32,
+            "end": 29.72
           },
           {
             "text": "is",
-            "start": 31.26,
-            "end": 31.7
+            "start": 29.72,
+            "end": 30.16
           },
           {
             "text": "noise.",
-            "start": 31.7,
-            "end": 31.88
+            "start": 30.16,
+            "end": 30.36
           }
         ]
       },
       {
-        "start": 32.76,
-        "end": 34.46,
+        "start": 31.1,
+        "end": 32.92,
         "text": "How do you isolate hypotheses in your",
         "words": [
           {
             "text": "How",
-            "start": 32.76,
-            "end": 32.9
+            "start": 31.1,
+            "end": 31.2
           },
           {
             "text": "do",
-            "start": 32.9,
-            "end": 33.0
+            "start": 31.2,
+            "end": 31.3
           },
           {
             "text": "you",
-            "start": 33.0,
-            "end": 33.08
+            "start": 31.3,
+            "end": 31.4
           },
           {
             "text": "isolate",
-            "start": 33.08,
-            "end": 33.44
+            "start": 31.4,
+            "end": 31.74
           },
           {
             "text": "hypotheses",
-            "start": 33.44,
-            "end": 33.86
+            "start": 31.74,
+            "end": 32.22
           },
           {
             "text": "in",
-            "start": 33.86,
-            "end": 34.34
+            "start": 32.22,
+            "end": 32.8
           },
           {
             "text": "your",
-            "start": 34.34,
-            "end": 34.46
+            "start": 32.8,
+            "end": 32.92
           }
         ]
       },
       {
-        "start": 34.46,
-        "end": 35.16,
+        "start": 32.92,
+        "end": 33.64,
         "text": "AI workflows?",
         "words": [
           {
             "text": "AI",
-            "start": 34.46,
-            "end": 34.64
+            "start": 32.92,
+            "end": 33.1
           },
           {
             "text": "workflows?",
-            "start": 34.64,
-            "end": 35.16
+            "start": 33.1,
+            "end": 33.64
           }
         ]
       }
