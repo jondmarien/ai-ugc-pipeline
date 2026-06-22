@@ -45,13 +45,15 @@ export const MODEL_CATALOG = Object.freeze({
     { id: "seedream-4.5", name: "Seedream 4.5", type: "image", apiModelId: "reve/text-to-image", defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
   ],
   video: [
-    { id: "kling-3.0", name: "Kling 3.0", type: "video", defaultSize: [1024, 1792] },
-    { id: "seedance-2.0", name: "Seedance 2.0", type: "video", defaultSize: [1024, 1792] },
-    { id: "veo-3.1", name: "Veo 3.1", type: "video", defaultSize: [1280, 720] },
+    { id: "dop", name: "DoP Standard", type: "video", apiModelId: "higgsfield-ai/dop/standard", defaultDuration: 5, aspectRatio: "9:16" },
+    { id: "kling-3.0", name: "Kling 3.0", type: "video", apiModelId: "kling-video/v2.1/pro/image-to-video", defaultDuration: 5, aspectRatio: "9:16" },
+    { id: "seedance-2.0", name: "Seedance 2.0", type: "video", apiModelId: "bytedance/seedance/v1/pro/image-to-video", defaultDuration: 5, aspectRatio: "9:16" },
+    { id: "veo-3.1", name: "Veo 3.1", type: "video", apiModelId: "bytedance/seedance/v1/pro/image-to-video", defaultDuration: 5, aspectRatio: "9:16" },
   ],
 });
 
 export const DEFAULT_IMAGE_MODEL = MODEL_CATALOG.image[0]?.id ?? "soul-2.0";
+export const DEFAULT_VIDEO_MODEL = process.env.HIGGSFIELD_VIDEO_MODEL?.trim() || "dop";
 
 function resolveEnv(name, fallback) {
   const v = process.env[name];
@@ -261,8 +263,101 @@ async function downloadImageToFile(imageUrl, destPath, signal) {
   const res = await fetch(imageUrl, { signal });
   if (!res.ok) throw new Error(`higgsfield image download failed: ${res.status}`);
   const buf = Buffer.from(await res.arrayBuffer());
+  mkdirSync(path.dirname(destPath), { recursive: true });
   writeFileSync(destPath, buf);
   return destPath;
+}
+
+async function downloadVideoToFile(videoUrl, destPath, signal) {
+  const res = await fetch(videoUrl, { signal });
+  if (!res.ok) throw new Error(`higgsfield video download failed: ${res.status}`);
+  const buf = Buffer.from(await res.arrayBuffer());
+  mkdirSync(path.dirname(destPath), { recursive: true });
+  writeFileSync(destPath, buf);
+  return destPath;
+}
+
+/** Resolve a publicly fetchable image URL for image-to-video (Higgsfield servers must reach it). */
+export function resolveSegmentImageUrl(slide, { publicBaseUrl } = {}) {
+  const fromSlide = String(slide?.higgsfield_image_url || "").trim();
+  if (fromSlide.startsWith("http")) return fromSlide;
+  const base = (publicBaseUrl ?? resolveEnv("HIGGSFIELD_PUBLIC_BASE_URL", "")).replace(/\/$/, "");
+  const asset = String(slide?.background_asset || "").trim();
+  if (base && asset.startsWith("/")) return `${base}${asset}`;
+  throw new Error(
+    "reel segment needs a public image URL: run art:higgsfield first (stores higgsfield_image_url) or set HIGGSFIELD_PUBLIC_BASE_URL where backgrounds are hosted over HTTPS",
+  );
+}
+
+export function motionPromptForBeat(beat, slide) {
+  const motion = String(beat?.motion || "slow cinematic push-in").trim();
+  const dir = String(slide?.visual_direction || slide?.visual_prompt || "").trim();
+  const cinematic = motion.toLowerCase().includes("end card") ? "subtle ambient drift, minimal motion" : motion;
+  if (!dir) return `Smooth cinematic camera motion: ${cinematic}. Dark cybersecurity aesthetic, no text, no logos.`;
+  return `Smooth cinematic motion (${cinematic}). Visual context: ${dir}. Dark moody lighting, no text, no logos.`;
+}
+
+export async function generateVideoFromImage({
+  imageUrl,
+  prompt,
+  model = DEFAULT_VIDEO_MODEL,
+  durationSeconds,
+  cacheBreaker = "",
+  outDir,
+  outName,
+  timeoutMs = 900_000,
+}) {
+  const catalog = catalogEntry(model);
+  if (!catalog || catalog.type !== "video") throw new Error(`UnknownHiggsfieldVideoModel: ${model}`);
+  const apiModelId = catalog.apiModelId ?? catalog.id;
+  const duration = Number.isFinite(durationSeconds)
+    ? Math.min(10, Math.max(3, Math.round(durationSeconds)))
+    : catalog.defaultDuration ?? 5;
+
+  const cacheKey = promptHash(`${imageUrl}\n${prompt}`, model, 1080, 1920, duration, cacheBreaker);
+  const cached = readCache(cacheKey);
+  if (cached?.videoPath && existsSync(cached.videoPath)) {
+    return { videoPath: cached.videoPath, provider: "higgsfield", model, duration, cached: true };
+  }
+
+  const body = { image_url: imageUrl, prompt, duration };
+  const schedule = buildRetrySchedule();
+  let lastErr;
+  for (let attempt = 0; attempt <= schedule.length; attempt++) {
+    if (attempt > 0) {
+      const ra = lastErr?.retryAfterSeconds ?? schedule[attempt - 1];
+      await jitter(ra * 1000);
+    }
+    const started = Date.now();
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), Math.max(1_000, timeoutMs));
+    try {
+      const queued = await request(`/${apiModelId}`, { method: "POST", body, signal: controller.signal });
+      const statusUrl = queued?.status_url ?? (queued?.request_id ? `/requests/${queued.request_id}/status` : null);
+      if (!statusUrl) throw new Error("higgsfield video response missing status_url / request_id");
+      const completed = await pollRequestStatus(statusUrl, {
+        timeoutMs: timeoutMs - (Date.now() - started),
+        signal: controller.signal,
+      });
+      const videoUrl = completed?.video?.url ?? completed?.videos?.[0]?.url;
+      if (!videoUrl) throw new Error("higgsfield video job completed but no video.url in response");
+      if (!outDir || !outName) throw new Error("generateVideoFromImage requires outDir and outName");
+      const videoPath = path.join(outDir, outName);
+      await downloadVideoToFile(videoUrl, videoPath, controller.signal);
+      const result = { videoPath, provider: "higgsfield", model, duration, videoUrl, cached: false };
+      writeCache(cacheKey, { ...result, videoPath }, 7 * 24 * 60 * 60 * 1000);
+      return result;
+    } catch (e) {
+      lastErr = e;
+      const status = e?.status ?? 0;
+      if (isAuthStatus(status)) throw e;
+      if (isRetryableStatus(status) && attempt < schedule.length) continue;
+      throw e;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+  throw lastErr;
 }
 
 export async function estimateCost(model, width, height) {
@@ -399,7 +494,7 @@ export async function generateImage({
   throw lastErr;
 }
 
-function updatePostJson(postPath, prefix, destName, slideIndex, model, providerLabel, licenseTermsOverride) {
+function updatePostJson(postPath, prefix, destName, slideIndex, model, providerLabel, licenseTermsOverride, higgsfieldImageUrl) {
   const post = JSON.parse(readFileSync(postPath, "utf8"));
   const assetPath = `/backgrounds/${prefix}/${destName}`;
   const slide = post.slides?.[slideIndex];
@@ -407,6 +502,9 @@ function updatePostJson(postPath, prefix, destName, slideIndex, model, providerL
 
   slide.background_asset = assetPath;
   slide.asset_status = "generated";
+  if (higgsfieldImageUrl && String(higgsfieldImageUrl).startsWith("http")) {
+    slide.higgsfield_image_url = higgsfieldImageUrl;
+  }
 
   post.asset_licenses = Array.isArray(post.asset_licenses) ? post.asset_licenses : [];
   if (!post.asset_licenses.some((l) => l?.asset === assetPath)) {
@@ -457,7 +555,6 @@ export async function renderSlide({
   // Match existing pipeline naming so import-bg/export never notice the difference.
   const outName = `${nn}_${role}.png`;
 
-  // TODO: replace with real generateImage() once provider endpoint + auth are confirmed.
   const generated = await generateImage({
     prompt,
     model,
@@ -483,6 +580,7 @@ export async function renderSlide({
     model,
     providerLabel,
     licenseTermsOverride,
+    generated.imageUrl,
   );
 
   return {
@@ -498,10 +596,14 @@ export async function renderSlide({
 export default {
   MODEL_CATALOG,
   DEFAULT_IMAGE_MODEL,
+  DEFAULT_VIDEO_MODEL,
   healthCheck,
   estimateCost,
   generateImage,
+  generateVideoFromImage,
   renderSlide,
   promptHash,
   buildNegativePrompt,
+  resolveSegmentImageUrl,
+  motionPromptForBeat,
 };
