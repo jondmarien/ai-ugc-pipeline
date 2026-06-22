@@ -28,6 +28,8 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
+import { backgroundFileName } from "./lib/slide-filename.mjs";
+import { buildNegativePrompt as buildNegativePromptFromLib } from "./lib/flux-negative-prompt.mjs";
 
 const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
 const CACHE_DIR = path.join(RENDERER, ".cache", "higgsfield");
@@ -61,13 +63,7 @@ function resolveEnv(name, fallback) {
 }
 
 export function buildNegativePrompt() {
-  // Mirrors art-comfyui's guardrails so Higgsfield outputs match the same text-free contract.
-  return [
-    "text, words, letters, numbers, typography, captions, subtitles, labels, signage, logo, watermark",
-    "garbled text, random characters, fake words, gibberish, fake writing, handwriting, paragraph of text",
-    "document, spreadsheet, calendar grid, source code, terminal window, user interface, dashboard",
-    "control panel, charts, graphs, diagrams, icons",
-  ].join(", ");
+  return buildNegativePromptFromLib();
 }
 
 function sha1(str) {
@@ -548,12 +544,11 @@ export async function renderSlide({
 
   const outDir = path.join(RENDERER, "public", "backgrounds", prefix);
   mkdirSync(outDir, { recursive: true });
-  const role = slideIndex >= 0 && post?.slides?.[slideIndex]?.role
-    ? post.slides[slideIndex].role
-    : `slide-${slideIndex + 1}`;
-  const nn = String((post?.slides?.[slideIndex]?.slide ?? slideIndex + 1)).padStart(2, "0");
-  // Match existing pipeline naming so import-bg/export never notice the difference.
-  const outName = `${nn}_${role}.png`;
+  const slide = post?.slides?.[slideIndex];
+  const outName = backgroundFileName({
+    slide: slide?.slide ?? slideIndex + 1,
+    role: slide?.role ?? `slide-${slideIndex + 1}`,
+  });
 
   const generated = await generateImage({
     prompt,
