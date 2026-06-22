@@ -93,6 +93,8 @@ export const SlideData = z.object({
   // THIS slide's background, e.g. "ancient Greek marble statuary rendered in cyberpunk neon".
   // Overrides the post-level style_fusion. Empty = inherit post / plain house style.
   style_fusion: z.string().optional().default(""),
+  // Public HTTPS URL of the slide background on Higgsfield CDN (set by art:higgsfield). Used for image-to-video reel segments.
+  higgsfield_image_url: z.string().url().optional(),
   // For role "chain": the ordered steps of the diagram. The last step is rendered as the
   // emphasized outcome. stage = short label (e.g. "STAGE 1"), title = the action, detail = a line.
   chain: z.array(z.object({
@@ -126,6 +128,8 @@ export const Beat = z.object({
   motion: z.string(),
   caption: z.string(),
   words: z.array(Word).optional(),
+  // Optional Higgsfield (or other) motion clip for this beat — served from public/ (e.g. /video/<prefix>/beat_01_hook.mp4).
+  video_asset: z.string().optional(),
 });
 
 // How burned-in reel captions animate:
@@ -258,6 +262,15 @@ export const PostData = z
       })
       .optional(),
     qa: z.record(z.string(), z.unknown()).default({}),
+    // Optional render provenance for observability/accounting (e.g. Higgsfield vs local ComfyUI).
+    renderMetadata: z
+      .object({
+        provider: z.string().optional(),
+        model: z.string().optional(),
+        costEstimate: z.number().optional(),
+      })
+      .optional()
+      .default({}),
   })
   .superRefine((post, ctx) => {
     // Slide numbering must be contiguous 1..n and match array order.
