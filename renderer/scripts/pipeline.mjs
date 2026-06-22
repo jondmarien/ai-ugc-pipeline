@@ -21,13 +21,11 @@
 //   --seed=N       voice seed (consistent speaker) — forwarded to `bun run voice`
 //   --skip=A,B     after selection, drop matched posts whose key fuzzily contains A or B
 import { spawnSync } from "node:child_process";
-import { readFileSync, readdirSync, existsSync } from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { setStatus, readStatus } from "./lib/post-status.mjs";
-
-const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
-const POSTS = path.join(RENDERER, "content", "posts");
+import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
+import { allPostKeys, loadPostByKey } from "./lib/post-resolve.mjs";
+import { expandKeysBySubstring, filterByStatus, applySkipTerms } from "./lib/post-selection.mjs";
+import { slideBackgroundExists } from "./lib/public-asset.mjs";
 const argv = process.argv.slice(2);
 // --custom-voice <path>: capture its value (an authorized reference WAV to clone) and keep
 // that path out of the positional post-keys list so it isn't treated as another post.
@@ -148,17 +146,11 @@ if (flags.has("--help") || flags.has("-h") || argv.includes("-h")) {
 // unique slug runs one, a date prefix like 2026-06-11 runs the whole day. --status=VALUE adds
 // every post currently at that status. Explicit keys run regardless of status. Merge, de-dupe,
 // sort by filename (date order).
-const ALL_KEYS = readdirSync(POSTS).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));
 const statusArg = [...flags].find((f) => f.startsWith("--status="))?.split("=")[1];
 const requested = keys.length > 0 || !!statusArg;
-const selected = new Set();
-for (const k of keys) {
-  const m = ALL_KEYS.filter((fk) => fk.includes(k));
-  if (!m.length) console.warn(`⚠ no post matches "${k}"`);
-  m.forEach((fk) => selected.add(fk));
-}
+const selected = expandKeysBySubstring(keys);
 if (statusArg) {
-  const matched = ALL_KEYS.filter((fk) => { try { return JSON.parse(readFileSync(path.join(POSTS, `${fk}.json`), "utf8")).status === statusArg; } catch { return false; } });
+  const matched = filterByStatus(allPostKeys(), statusArg);
   matched.forEach((fk) => selected.add(fk));
   console.log(`▶ status="${statusArg}" → ${matched.length} post(s).`);
 }
@@ -167,15 +159,7 @@ if (statusArg) {
 // Applied AFTER selection so it can prune a date-prefix/status expansion. Warns on no-op terms.
 const skipArg = [...flags].find((f) => f.startsWith("--skip="))?.split("=").slice(1).join("=");
 const skipTerms = (skipArg ?? "").split(",").map((t) => t.trim().toLowerCase()).filter(Boolean);
-if (skipTerms.length) {
-  const before = [...selected];
-  for (const term of skipTerms) {
-    const hit = before.filter((fk) => fk.toLowerCase().includes(term));
-    if (!hit.length) { console.warn(`⚠ --skip "${term}" matched no selected post`); continue; }
-    hit.forEach((fk) => selected.delete(fk));
-    console.log(`⤬ skip "${term}" → ${hit.length} post(s): ${hit.join(", ")}`);
-  }
-}
+if (skipTerms.length) applySkipTerms(selected, skipTerms);
 keys = [...selected].sort();
 if (!keys.length) {
   if (requested) {
@@ -225,10 +209,9 @@ function step(label, runArgs, { env, fatal = true } = {}) {
 }
 
 function runPost(key) {
-  const file = readdirSync(POSTS).find((f) => f.endsWith(".json") && f.includes(key));
-  if (!file) throw new Error(`No post JSON matching "${key}"`);
-  const fullKey = file.replace(/\.json$/, "");
-  const post = JSON.parse(readFileSync(path.join(POSTS, file), "utf8"));
+  const loaded = loadPostByKey(key);
+  if (!loaded) throw new Error(`No post JSON matching "${key}"`);
+  const { fullKey, post } = loaded;
 
   const voiceMode = post.video?.audio?.voice_mode ?? "none";
   // Voice override for this run (else use the post's voice_mode):
@@ -245,8 +228,7 @@ function runPost(key) {
   // Any slide that still needs art — INCLUDING the cover (covers used to be skipped here, so the
   // pipeline never generated 01_cover.png). A locked custom asset (asset_status "existing") never
   // counts; a background_asset that points at a missing file (e.g. a scaffold's cover placeholder) does.
-  const artExists = (s) =>
-    !!s.background_asset && existsSync(path.join(RENDERER, "public", s.background_asset.replace(/^[\\/]+/, "")));
+  const artExists = (s) => slideBackgroundExists(RENDERER, s);
   const needsArt = (post.slides ?? []).some((s) => s.asset_status !== "existing" && !artExists(s));
   const wantsArt = flags.has("--art") || (!flags.has("--no-art") && needsArt);
   const wantsVoice = !flags.has("--no-voice") && ["voxcpm2", "voxcpm2-0.5b", "bark", "http"].includes(effVoiceMode);

@@ -12,6 +12,18 @@
 
 ---
 
+## Completed (pass 2)
+
+- [x] `pipeline.mjs` — `post-selection`, `paths`, `loadPostByKey`, `slideBackgroundExists`
+- [x] `set-status.mjs` — `status-targets.mjs`
+- [x] `reel-segments-higgsfield.mjs` — post libs
+- [x] `lib/post-status.mjs` — `POSTS_DIR` from `paths.mjs`
+- [x] TS chain (`validate.ts`, `export-carousel.ts`, `render-reel.ts`) — documented in `lib.ts` (Zod `loadPost` remains canonical for TS)
+- [x] `art:diffusers` — `art.mjs` (pass 1)
+- [x] No `reel-comfyui.mjs` in repo (reel = `render-reel.ts`)
+
+---
+
 ## Completed (pass 1)
 
 - [x] Git: `main` pulled; branch `refactor/renderer-scripts-modular`
@@ -21,6 +33,12 @@
 - [x] `art.mjs`, `voice.mjs`, `align.mjs` → `python-runner`
 - [x] `import-bg.mjs`, `upscale-comfyui.mjs`, `free-comfyui.mjs`
 - [x] `bun test` — 24 pass
+
+---
+
+## Task 2–4 (done in pass 2)
+
+See completed sections above. Optional Task 5 (`process-runner.mjs`) deferred.
 
 ---
 
