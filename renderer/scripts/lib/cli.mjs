@@ -1,3 +1,7 @@
+// Shared argv helpers for Bun CLI scripts (flags, post key, --help exit).
+//
+// Convention: post key is the first positional non-flag token; flags use --name=value
+// where value may contain '=' (use flagOpt, not split("=")[1] only).
 /** Positional post key from argv (first non-flag token). */
 export function postKeyFromArgv(args) {
   return args.find((a) => !a.startsWith("--") && a !== "-h");

@@ -1,3 +1,7 @@
+// bun run package -- <post-key> [--help]
+//
+// Pipeline step: write caption.txt, alt_text.txt, sources.md, LICENSES.md, QA checklist
+// into pipeline/renders/<folder>/ (alongside export PNGs). Does not render slides.
 import { mkdirSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 import { loadPost, outputDir, slideFilename } from "./lib.ts";
@@ -109,7 +113,23 @@ function qaChecklistMd(post: TPostData): string {
 }
 
 function main() {
-  const key = process.argv[2] ?? "2026-06-02_ai-phishing-training";
+  const args = process.argv.slice(2);
+  if (args.includes("--help") || args.includes("-h")) {
+    console.log(`
+bun run package — upload metadata files for a post
+
+USAGE
+  bun run package -- <post-key>
+
+OUTPUT (under pipeline/renders/<folder>/)
+  caption.txt, alt_text.txt, sources.md, LICENSES.md, render_qa_checklist.md
+
+EXAMPLES
+  bun run package -- my-post
+`);
+    process.exit(0);
+  }
+  const key = args.find((a) => !a.startsWith("--")) ?? "2026-06-02_ai-phishing-training";
   const post = loadPost(key);
   const outDir = outputDir(post);
   mkdirSync(outDir, { recursive: true });

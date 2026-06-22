@@ -1,5 +1,7 @@
-// Background PNG naming: NN_role.png (matches import-bg, art-comfyui, schema ROLE_FILENAME).
-
+// Background PNG basename: NN_role.png under public/backgrounds/<prefix>/.
+//
+// Must stay aligned with renderer/src/lib/schema.ts ROLE_FILENAME and export slide names.
+// failure_point role maps to failure-point in filenames (historical Comfy output naming).
 const ROLE_FILE = { failure_point: "failure-point" };
 
 export function roleFileToken(role) {

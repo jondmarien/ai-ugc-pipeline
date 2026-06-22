@@ -1,5 +1,8 @@
 // bun run reel:higgsfield -- <post-key> [--dry-run] [--model=dop] [--only=0,1]
-// Image-to-video reel beats via Higgsfield (uses slide higgsfield_image_url or HIGGSFIELD_PUBLIC_BASE_URL).
+//
+// Optional pipeline step with --higgsfield: per-beat image-to-video clips for Remotion.
+// Uses slide higgsfield_image_url (from art:higgsfield) or HIGGSFIELD_PUBLIC_BASE_URL.
+// Writes public/video/<prefix>/beat_*.mp4 and sets beat.video_asset. Skips CTA beats.
 import { existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import {

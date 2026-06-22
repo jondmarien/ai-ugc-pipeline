@@ -20,6 +20,9 @@
 //   --tail=N       seconds of silence to keep after the voice (reel; default 0.6)
 //   --seed=N       voice seed (consistent speaker) — forwarded to `bun run voice`
 //   --skip=A,B     after selection, drop matched posts whose key fuzzily contains A or B
+//
+// Shared logic: ./lib/post-selection.mjs, post-resolve.mjs, post-status.mjs, public-asset.mjs.
+// Run `bun run pipeline -- --help` for full flag list.
 import { spawnSync } from "node:child_process";
 import { setStatus, readStatus } from "./lib/post-status.mjs";
 import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";

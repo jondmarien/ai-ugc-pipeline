@@ -1,3 +1,6 @@
+// Which slides get background generation (--only, --all, skip existing / locked assets).
+//
+// art-comfyui.mjs and art-higgsfield.mjs share this filter so pipeline dry-run matches art.
 /** Parse `--only=1,2` into a Set of slide numbers, or null. */
 export function parseOnlySlides(onlyArg) {
   if (!onlyArg) return null;

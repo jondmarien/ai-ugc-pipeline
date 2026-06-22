@@ -1,3 +1,7 @@
+// Post selection for bun run pipeline (multi-key, --status, --skip).
+//
+// Merges explicit substring keys with optional status batch, then applySkipTerms prunes
+// fuzzy matches (case-insensitive substring on full post filename).
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { allPostKeys, POSTS_DIR } from "./post-resolve.mjs";
