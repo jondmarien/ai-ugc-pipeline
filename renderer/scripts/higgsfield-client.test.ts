@@ -2,7 +2,7 @@ import { test, expect } from "bun:test";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { MODEL_CATALOG, DEFAULT_IMAGE_MODEL, promptHash, buildNegativePrompt, estimateCost } from "./higgsfield-client.mjs";
+import { MODEL_CATALOG, DEFAULT_IMAGE_MODEL, promptHash, buildNegativePrompt, estimateCost, motionPromptForBeat, resolveSegmentImageUrl } from "./higgsfield-client.mjs";
 import { renderSlide } from "./higgsfield-client.mjs";
 
 const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
@@ -114,4 +114,21 @@ test("renderSlide gates on HIGGSFIELD_API_URL/auth", async () => {
   } finally {
     removePostJson(id);
   }
+});
+
+test("motionPromptForBeat uses beat.motion and slide visual_direction", () => {
+  const p = motionPromptForBeat(
+    { motion: "slow push-in", purpose: "hook" },
+    { visual_direction: "server room glow" },
+  );
+  expect(p).toContain("slow push-in");
+  expect(p).toContain("server room glow");
+});
+
+test("resolveSegmentImageUrl prefers higgsfield_image_url", () => {
+  const url = resolveSegmentImageUrl({
+    higgsfield_image_url: "https://cdn.example.com/bg.png",
+    background_asset: "/backgrounds/x/01_cover.png",
+  });
+  expect(url).toBe("https://cdn.example.com/bg.png");
 });

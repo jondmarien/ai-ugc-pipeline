@@ -274,7 +274,10 @@ function runPost(key) {
     if (!USE_HIGGSFIELD) plan.push("free-comfyui (release GPU)");
     plan.push(`voice (${effVoiceMode})`, "align (captions)");
   }
-  if (wantsReel) plan.push("reel (audio auto-embedded)");
+  if (wantsReel) {
+    if (USE_HIGGSFIELD) plan.push("reel:higgsfield (motion segments)");
+    plan.push("reel (audio auto-embedded)");
+  }
 
   console.log(`\n╭─ ${fullKey}`);
   console.log(`│  art=${wantsArt ? (USE_HIGGSFIELD ? "higgsfield" : flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
@@ -301,6 +304,9 @@ function runPost(key) {
   }
 
   if (wantsReel) {
+    if (USE_HIGGSFIELD) {
+      step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey], { fatal: false });
+    }
     const reelArgs = ["reel", "--", fullKey, `--captions=${captionMode}`];
     if (!flags.has("--no-fit-voice")) reelArgs.push("--fit-voice");
     if (tailArg) reelArgs.push(tailArg);
