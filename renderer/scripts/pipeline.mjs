@@ -284,7 +284,17 @@ function runPost(key) {
 
   if (wantsVoice) {
     if (!USE_HIGGSFIELD) step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
-    step("voice (TTS)", ["voice", "--", fullKey, ...(voiceOverride ? [`--voice=${voiceOverride}`] : []), ...(customVoice ? ["--custom-voice", customVoice] : []), ...(customVoiceText ? ["--custom-voice-text", customVoiceText] : []), ...(flags.has("--no-hifi") ? ["--no-hifi"] : []), ...(flags.has("--no-clone") ? ["--no-clone"] : []), ...(seedArg ? [seedArg] : [])]);
+    step("voice (TTS)", [
+      "voice",
+      "--",
+      fullKey,
+      ...(voiceOverride ? [`--voice=${voiceOverride}`] : []),
+      ...(customVoice ? ["--custom-voice", customVoice] : []),
+      ...(customVoiceText ? ["--custom-voice-text", customVoiceText] : []),
+      ...(flags.has("--no-hifi") ? ["--no-hifi"] : []),
+      ...(flags.has("--no-clone") ? ["--no-clone"] : []),
+      ...(seedArg ? [seedArg] : []),
+    ]);
     step("align (caption sync)", ["align", "--", fullKey]);
   }
 

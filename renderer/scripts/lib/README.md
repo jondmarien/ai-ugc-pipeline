@@ -18,4 +18,5 @@
 // | art-targeting.mjs | --only= slides, selectArtSlides (--all / missing art) |
 // | comfyui-env.mjs | COMFYUI_URL, upscale/unet dirs, model auto-download |
 // | python-runner.mjs | .venv → uv run → python3 for scripts/*.py |
+// | voice-ref.mjs | Auto clone WAV: repo/_voiceref, public _voiceref, E:\\ai-ugc\\_voiceref |
 // | cli.mjs | postKeyFromArgv, flagOpt, showHelpAndExit |
