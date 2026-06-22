@@ -32,15 +32,17 @@ import { createHash } from "node:crypto";
 const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
 const CACHE_DIR = path.join(RENDERER, ".cache", "higgsfield");
 
+const DEFAULT_PLATFORM_URL = "https://platform.higgsfield.ai";
+
 export const MODEL_CATALOG = Object.freeze({
-  // Image-first set per approved architecture; video models can be added as the video
-  // path is wired (P2: Kling 3.0 / Seedance 2.0 / Veo 3.1).
+  // Image-first set per approved architecture; apiModelId is the Higgsfield platform path.
+  // Video models are catalogued for future reel/b-roll paths (not used by art:higgsfield yet).
   image: [
-    { id: "soul-2.0", name: "Soul 2.0", type: "image", defaultSize: [1024, 1280] },
-    { id: "cinema-studio-3.0", name: "Cinema Studio 3.0", type: "image", defaultSize: [1024, 1280] },
-    { id: "flux", name: "Flux", type: "image", defaultSize: [1024, 1280] },
-    { id: "gpt-image-2", name: "GPT Image 2", type: "image", defaultSize: [1024, 1280] },
-    { id: "seedream-4.5", name: "Seedream 4.5", type: "image", defaultSize: [1024, 1280] },
+    { id: "soul-2.0", name: "Soul 2.0", type: "image", apiModelId: "higgsfield-ai/soul/standard", defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
+    { id: "cinema-studio-3.0", name: "Cinema Studio 3.0", type: "image", apiModelId: "higgsfield-ai/soul/standard", defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
+    { id: "flux", name: "Flux", type: "image", apiModelId: "reve/text-to-image", defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
+    { id: "gpt-image-2", name: "GPT Image 2", type: "image", apiModelId: "reve/text-to-image", defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
+    { id: "seedream-4.5", name: "Seedream 4.5", type: "image", apiModelId: "reve/text-to-image", defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
   ],
   video: [
     { id: "kling-3.0", name: "Kling 3.0", type: "video", defaultSize: [1024, 1792] },
@@ -153,26 +155,36 @@ function headersToObject(source) {
   return out;
 }
 
+function resolveAuthHeader() {
+  const key = resolveEnv("HIGGSFIELD_API_KEY", "").trim();
+  const secret = resolveEnv("HIGGSFIELD_API_SECRET", "").trim();
+  if (key && secret) return `Key ${key}:${secret}`;
+  const combo = resolveEnv("HF_CREDENTIALS", "").trim() || resolveEnv("HIGGSFIELD_API_TOKEN", "").trim();
+  if (!combo) return "";
+  if (combo.includes(":")) return `Key ${combo}`;
+  throw new Error(
+    "higgsfield auth misconfigured: set HIGGSFIELD_API_KEY + HIGGSFIELD_API_SECRET, or HF_CREDENTIALS as key:secret",
+  );
+}
+
 async function request(pathname, opts = {}) {
-  // Real implementation will hit Higgsfield's Cloud API.
-  // For now, return a typed not-implemented error so callers fail fast and the
-  // integration boundary is explicit.
-  const baseUrl = resolveEnv("HIGGSFIELD_API_URL", "").replace(/\/$/, "");
+  const baseUrl = resolveEnv("HIGGSFIELD_API_URL", DEFAULT_PLATFORM_URL).replace(/\/$/, "");
   if (!baseUrl) {
     throw new Error(
-      "higgsfield client misconfigured: set HIGGSFIELD_API_URL (and HIGGSFIELD_API_TOKEN / HF_CREDENTIALS)",
+      "higgsfield client misconfigured: set HIGGSFIELD_API_URL (default https://platform.higgsfield.ai) and API credentials",
     );
   }
 
-  const url = `${baseUrl}${pathname}`;
-  const token = resolveEnv("HIGGSFIELD_API_TOKEN", "").trim() || resolveEnv("HF_CREDENTIALS", "").trim();
-  if (!token) {
-    throw new Error("higgsfield auth missing: HIGGSFIELD_API_TOKEN or HF_CREDENTIALS is empty");
+  const url = pathname.startsWith("http") ? pathname : `${baseUrl}${pathname.startsWith("/") ? "" : "/"}${pathname}`;
+  const auth = resolveAuthHeader();
+  if (!auth) {
+    throw new Error("higgsfield auth missing: HIGGSFIELD_API_KEY/SECRET or HF_CREDENTIALS (key:secret) is empty");
   }
 
   const method = (opts.method ?? "GET").toUpperCase();
   const headers = {
-    Authorization: `Bearer ${token}`,
+    Authorization: auth,
+    Accept: "application/json",
     "Content-Type": "application/json",
     ...headersToObject(opts.headers),
   };
@@ -180,7 +192,8 @@ async function request(pathname, opts = {}) {
   const res = await fetch(url, {
     method,
     headers,
-    body: method !== "GET" && method !== "HEAD" ? JSON.stringify(opts.body ?? null) : undefined,
+    signal: opts.signal,
+    body: method !== "GET" && method !== "HEAD" ? JSON.stringify(opts.body ?? {}) : undefined,
   });
 
   const text = await res.text();
@@ -203,14 +216,59 @@ async function request(pathname, opts = {}) {
 }
 
 export async function healthCheck() {
-  // Surface auth / connectivity early so pipeline fails on config, not mid-render.
-  return request("/health", { method: "GET" });
+  const baseUrl = resolveEnv("HIGGSFIELD_API_URL", DEFAULT_PLATFORM_URL).replace(/\/$/, "");
+  resolveAuthHeader();
+  return { ok: true, baseUrl, message: "credentials present" };
+}
+
+function catalogEntry(model) {
+  return [MODEL_CATALOG.image, MODEL_CATALOG.video].flat().find((m) => m.id === model);
+}
+
+function aspectRatioForSize(width, height) {
+  const w = Number.isFinite(width) ? width : 1024;
+  const h = Number.isFinite(height) ? height : 1280;
+  const r = w / h;
+  if (Math.abs(r - 4 / 5) < 0.08) return "4:5";
+  if (Math.abs(r - 16 / 9) < 0.08) return "16:9";
+  if (Math.abs(r - 9 / 16) < 0.08) return "9:16";
+  if (Math.abs(r - 1) < 0.08) return "1:1";
+  return w >= h ? "16:9" : "9:16";
+}
+
+async function pollRequestStatus(statusUrl, { timeoutMs, signal }) {
+  const deadline = Date.now() + timeoutMs;
+  const pollMs = 2_500;
+  while (Date.now() < deadline) {
+    if (signal?.aborted) throw new Error("aborted");
+    const status = await request(statusUrl, { method: "GET", signal });
+    const st = status?.status;
+    if (st === "completed") return status;
+    if (st === "failed" || st === "nsfw") {
+      const err = new Error(`higgsfield generation ${st}`);
+      err.status = 422;
+      err.body = status;
+      throw err;
+    }
+    await sleep(pollMs);
+  }
+  const timeoutErr = new Error(`higgsfield generation timed out after ${timeoutMs}ms`);
+  timeoutErr.status = 504;
+  throw timeoutErr;
+}
+
+async function downloadImageToFile(imageUrl, destPath, signal) {
+  const res = await fetch(imageUrl, { signal });
+  if (!res.ok) throw new Error(`higgsfield image download failed: ${res.status}`);
+  const buf = Buffer.from(await res.arrayBuffer());
+  writeFileSync(destPath, buf);
+  return destPath;
 }
 
 export async function estimateCost(model, width, height) {
   // Placeholder accounting hook. Real cost estimation should be supplied by the Higgsfield
   // provider once rate cards / credit meters are confirmed.
-  const catalog = [MODEL_CATALOG.image, MODEL_CATALOG.video].flat().find((m) => m.id === model);
+  const catalog = catalogEntry(model);
   if (!catalog) throw new Error(`UnknownHiggsfieldModel: ${model}`);
   const w = Number.isFinite(width) ? width : 1024;
   const h = Number.isFinite(height) ? height : 1280;
@@ -248,15 +306,20 @@ export async function generateImage({
     };
   }
 
-  // TODO: replace this request body with the actual Higgsfield generation endpoint + schema.
+  const catalog = catalogEntry(model);
+  if (!catalog) throw new Error(`UnknownHiggsfieldModel: ${model}`);
+  const apiModelId = catalog.apiModelId ?? catalog.id;
+  const aspectRatio = catalog.aspectRatio ?? aspectRatioForSize(width, height);
+  const resolution = catalog.resolution ?? "720p";
+
+  const fullPrompt = negativePrompt?.trim()
+    ? `${prompt}. Avoid: ${negativePrompt}`
+    : prompt;
+
   const body = {
-    model,
-    prompt,
-    negativePrompt,
-    width,
-    height,
-    seed: resolvedSeed,
-    refs,
+    prompt: fullPrompt,
+    aspect_ratio: aspectRatio,
+    resolution,
   };
 
   const schedule = buildRetrySchedule();
@@ -268,31 +331,47 @@ export async function generateImage({
     }
 
     const started = Date.now();
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), Math.max(1_000, timeoutMs));
     try {
-      // Use an AbortController-backed fetch so we can honor post.timeoutMs cleanly when the
-      // underlying environment supports AbortSignal.timeout (Node 18+).
-      const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(), Math.max(1_000, timeoutMs));
-      let res;
-      try {
-        res = await Promise.race([
-          request("/v1/generate", { method: "POST", body, signal: controller.signal }),
-          new Promise((_, reject) => controller.signal.addEventListener("abort", () => reject(new Error("aborted")))),
-        ]);
-      } finally {
-        clearTimeout(timer);
+      const queued = await request(`/${apiModelId}`, {
+        method: "POST",
+        body,
+        signal: controller.signal,
+      });
+      const statusUrl = queued?.status_url ?? (queued?.request_id ? `/requests/${queued.request_id}/status` : null);
+      if (!statusUrl) {
+        throw new Error("higgsfield provider response missing status_url / request_id");
+      }
+      const completed = await pollRequestStatus(statusUrl, {
+        timeoutMs: timeoutMs - (Date.now() - started),
+        signal: controller.signal,
+      });
+      const imageUrl = completed?.images?.[0]?.url ?? completed?.image?.url ?? completed?.imageUrl;
+      if (!imageUrl) {
+        throw new Error("higgsfield completed job but no image URL in response");
       }
 
-      // TODO: normalize actual Higgsfield response fields here.
-      // Intended contract from provider:
-      //   { imageUrl, imageBase64, file, provider, model, creditsUsed, expiresAt }
-      // Until then, fail fast with a clear message so tests exercise the error path.
-      throw new Error(
-        "higgsfield provider response not yet wired: expected imageUrl/imageBase64 from /v1/generate",
-      );
+      if (!outDir || !outName) {
+        throw new Error("higgsfield generateImage requires outDir and outName to persist PNG");
+      }
+      mkdirSync(outDir, { recursive: true });
+      const imagePath = path.join(outDir, outName);
+      await downloadImageToFile(imageUrl, imagePath, controller.signal);
+
+      const result = {
+        imagePath,
+        provider: "higgsfield",
+        model,
+        seed: resolvedSeed,
+        cached: false,
+        imageUrl,
+      };
+      writeCache(cacheKey, result, 7 * 24 * 60 * 60 * 1000);
+      return result;
     } catch (e) {
       lastErr = e;
-      const status = e?.status ?? (e?.cause?.code ?? 0);
+      const status = e?.status ?? 0;
 
       if (isAuthStatus(status)) {
         const fatal = new Error(`higgsfield auth error (${status})`);
@@ -305,17 +384,18 @@ export async function generateImage({
         continue;
       }
 
-      if (Date.now() - started >= timeoutMs) {
+      if (Date.now() - started >= timeoutMs || e?.message === "aborted") {
         const timeoutErr = new Error(`higgsfield generation timed out after ${timeoutMs}ms`);
         timeoutErr.status = 504;
         throw timeoutErr;
       }
 
       throw e;
+    } finally {
+      clearTimeout(timer);
     }
   }
 
-  // Unreachable: loop either returns or throws above.
   throw lastErr;
 }
 
