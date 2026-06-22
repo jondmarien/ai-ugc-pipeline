@@ -22,7 +22,7 @@ Every command takes a **post key** = any unique substring of a file in `content/
 | `bun run new -- <YYYY-MM-DD> <slug> <pillar>` | scaffold a new blank, schema-valid post JSON |
 | `bun run validate -- <key>` | check a post JSON is well-formed (fails loud on mistakes) |
 | `bun run export -- <key>` | 8 carousel PNGs (1080×1350) → `pipeline/renders/<date_slug>/` |
-| `bun run package -- <key>` | `caption.txt`, `alt_text.txt`, `sources.md`, `LICENSES.md`, `render_qa_checklist.md` |
+| `bun run package -- <key>` | `caption.txt`, `alt_text.txt`, `sources.md`, `LICENSES.md`, `render_qa_checklist.md`, `instagram_upload_checklist.md` (+ `slide_captions.txt` when opt-in multi-caption is on) |
 | `bun run reel -- <key>` | `<date_slug>_reel.mp4` (1080×1920 @30fps) — only if `video.enabled: true` |
 | `bun run voice -- <key>` | generate narration → `public/audio/<prefix>/voice.wav` (routes by `voice_mode`) |
 | `bun run align -- <key>` | Whisper word-timestamps → `beat.words[]` for exact `word`/`highlight` caption sync |
@@ -79,6 +79,7 @@ bun run draft -- "AI agents leaking RAG data" model_security
 #   --carousel-only   skip the reel
 #   --yolo            unattended (claude --permission-mode bypassPermissions)
 #   --dry-run         print the claude command/prompt, make no API calls
+#   --multiple-captions  scaffold per-slide Instagram captions (opt-in; default off)
 ```
 
 **Batch a whole week (up to 5 ideas):**
@@ -101,6 +102,20 @@ Spreads posts across pillars, assigns sequential weekday dates, drafts + renders
 bun run new -- 2026-06-13 ai-agent-permissions model_security
 # → content/posts/2026-06-13_ai-agent-permissions.json  (8 slides, reel enabled, all TODOs)
 ```
+
+### Optional: per-slide Instagram captions (Multiple Captions)
+
+**Off by default.** Legacy posts and normal `bun run new` / `/draft-post` flows keep a single `post.caption` → `caption.txt` for the whole carousel.
+
+Enable when you want distinct paste-ready captions per slide for Instagram’s native **Multiple Captions** carousel feature (manual app upload; Graph API still uses one parent caption).
+
+1. **Scaffold:** `bun run new -- <date> <slug> <pillar> --multiple-captions` (also `--multiple-captions` on `bun run draft`).
+2. **Post JSON:** `features.multiple_captions: true` and `slide_captions[]` with **exactly one non-empty string per slide** (same count as `slides[]`). Zod rejects `slide_captions` when the flag is off, and rejects count/empty mismatches when the flag is on.
+3. **Package:** `bun run package -- <key>` still writes `caption.txt` (carousel-level fallback). When the flag is on it also writes `slide_captions.txt` (blank-line-separated blocks; bracketed topics append to the **last** block only) and `instagram_upload_checklist.md` with paste order.
+4. **Upload:** Follow `instagram_upload_checklist.md` in the render folder — paste each block into the matching slide in the Instagram app. Use `alt_text.txt` for accessibility fields as before.
+
+Validate with `bun run validate -- <key>`; advisory warnings for caption length live in `content-checks` when the flag is on.
+
 Then open the file and replace every `TODO`:
 - `core_claim`, `caption`, `comment_prompt`
 - each slide's `on_slide_copy` / `subline` (kickers are pre-filled per role)
@@ -179,4 +194,7 @@ Weekly cadence (Mon intake → Tue score → Wed script → Thu render → Fri Q
 | Cover renders blank/procedural when you expected an image | The PNG isn't in `public/backgrounds/` or `asset_status` isn't `"existing"`. |
 
 ## 6. After rendering → manual upload
-Open `pipeline/renders/<date_slug>/`: upload the PNGs in filename order (01→08), paste `caption.txt`, add per-slide alt text from `alt_text.txt`, and post the reel MP4 separately if used. Keep `sources.md` + `LICENSES.md` for your records. (API auto-posting stays out of scope until Meta access clears.)
+Open `pipeline/renders/<date_slug>/`: upload the PNGs in filename order (01→08), add per-slide alt text from `alt_text.txt`, and post the reel MP4 separately if used. Keep `sources.md` + `LICENSES.md` for your records. (API auto-posting stays out of scope until Meta access clears.)
+
+- **Single caption (default):** paste `caption.txt` into the carousel caption field. See `instagram_upload_checklist.md` for the ordered file list.
+- **Multiple Captions (opt-in):** with `features.multiple_captions: true`, paste each block from `slide_captions.txt` into the matching slide per `instagram_upload_checklist.md`; keep `caption.txt` as the one-field fallback for tools that only accept a single caption.
