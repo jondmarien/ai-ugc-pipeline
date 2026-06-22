@@ -1,6 +1,6 @@
 // bun run pipeline -- <post-key> [<post-key> ...] [flags]
 // THE one-command render pipeline. For each post it runs, in order:
-//   1. art          backgrounds via ComfyUI  (only if inner slides lack art; --art forces, --no-art skips)
+//   1. art          backgrounds via ComfyUI or Higgsfield (--higgsfield)  (only if inner slides lack art; --art forces, --no-art skips)
 //   2. export       carousel PNGs
 //   3. package      upload-ready package files
 //   4. free-comfyui release ComfyUI's VRAM   (so VoxCPM/Whisper get the GPU; 8GB = one model at a time)
@@ -10,6 +10,7 @@
 //
 // Flags:
 //   --flux1        use the legacy FLUX.1-schnell graph for step 1 (default is FLUX.2 klein)
+//   --higgsfield   use Higgsfield Cloud API for backgrounds instead of local ComfyUI (no free-comfyui needed before voice)
 //   --art          force background regeneration even if slides already have art
 //   --no-art       skip background generation
 //   --no-package   skip the package step
@@ -83,7 +84,8 @@ STAGES (in order; each auto-skips when not needed)
   8. reel          1080×1920 Remotion reel with the voice auto-embedded
 
 ART & IMAGE QUALITY
-  --flux1                   legacy FLUX.1-schnell graph (default is FLUX.2 klein)
+  --higgsfield                cloud backgrounds via Higgsfield API (instead of local ComfyUI)
+  --flux1                   legacy FLUX.1-schnell graph (default is FLUX.2 klein; ComfyUI only)
   --art | --no-art          force background regeneration | skip art entirely
   --passes=N                sampling steps (alias of --steps). klein is step-distilled:
                             recommended 4–8, hard max 12 (clamped; >8 adds heat, not quality)
@@ -199,6 +201,7 @@ const upscaleScaleArg = [...flags].find((f) => f.startsWith("--upscale-scale="))
 // --ui-format: art executes the version-controlled workflow FILE (renderer/comfyui-workflows/) instead
 // of the code-built graph — with --upscale it picks the _with_upscale file. The file's settings win.
 const wantsUiFormat = flags.has("--ui-format");
+const USE_HIGGSFIELD = flags.has("--higgsfield");
 const Q6_MODEL = "flux-2-klein-4b-Q6_K.gguf";                          // auto-downloaded by art-comfyui if missing
 
 const DRY = flags.has("--dry-run");
@@ -248,39 +251,62 @@ function runPost(key) {
   const wantsArt = flags.has("--art") || (!flags.has("--no-art") && needsArt);
   const wantsVoice = !flags.has("--no-voice") && ["voxcpm2", "voxcpm2-0.5b", "bark", "http"].includes(effVoiceMode);
   const wantsReel = !flags.has("--no-reel") && !!post.video?.enabled;
-  if ((passesArg || wantsQ6 || wantsUiFormat) && !wantsArt)
+  if ((passesArg || wantsQ6 || wantsUiFormat) && !wantsArt && !USE_HIGGSFIELD)
     console.warn(`  ⚠ ${[passesArg && "--passes", wantsQ6 && "--q6", wantsUiFormat && "--ui-format"].filter(Boolean).join("/")} ignored this run — no art step (pass --art to force background regeneration).`);
+  if (USE_HIGGSFIELD && (flags.has("--flux1") || wantsQ6 || wantsUpscale || wantsUiFormat || passesArg))
+    console.warn(`  ⚠ ComfyUI-only flags (--flux1/--q6/--upscale/--ui-format/--passes) are ignored with --higgsfield.`);
 
   // Ordered list of the stages that will actually run for this post (after the skip logic above).
   // --upscale runs INSIDE the art graph when art runs (one generate→upscale pass per slide); the
   // standalone upscale step only fires for --upscale WITHOUT art (sharpen existing backgrounds).
   const plan = [];
-  if (wantsArt) plan.push(`art (${wantsUiFormat ? "ui-format file" : flags.has("--flux1") ? "flux1" : "flux2"}${wantsQ6 ? " Q6" : ""} backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes` : ""}${wantsUpscale ? " + integrated upscale" : ""})`);
+  if (wantsArt) {
+    if (USE_HIGGSFIELD) {
+      plan.push(`art:higgsfield (cloud backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes ignored` : ""})`);
+    } else {
+      plan.push(`art (${wantsUiFormat ? "ui-format file" : flags.has("--flux1") ? "flux1" : "flux2"}${wantsQ6 ? " Q6" : ""} backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes` : ""}${wantsUpscale ? " + integrated upscale" : ""})`);
+    }
+  }
   if (wantsUpscale && !wantsArt) plan.push(`upscale (existing backgrounds${upscaleModelArg ? `, ${upscaleModelArg.split("=")[1]}` : ""})`);
   plan.push("export (carousel)");
   if (!flags.has("--no-package")) plan.push("package (upload files)");
-  if (wantsVoice) plan.push("free-comfyui (release GPU)", `voice (${effVoiceMode})`, "align (captions)");
-  if (wantsReel) plan.push("reel (audio auto-embedded)");
+  if (wantsVoice) {
+    if (!USE_HIGGSFIELD) plan.push("free-comfyui (release GPU)");
+    plan.push(`voice (${effVoiceMode})`, "align (captions)");
+  }
+  if (wantsReel) {
+    if (USE_HIGGSFIELD) plan.push("reel:higgsfield (motion segments)");
+    plan.push("reel (audio auto-embedded)");
+  }
 
   console.log(`\n╭─ ${fullKey}`);
-  console.log(`│  art=${wantsArt ? (flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
+  console.log(`│  art=${wantsArt ? (USE_HIGGSFIELD ? "higgsfield" : flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
   console.log(`│  steps to run:`);
   plan.forEach((s, i) => console.log(`│   ${i + 1}. ${s}`));
   console.log(`╰─`);
 
   // Default art run generates every needy slide (cover included). `--art` forces a full regen (→ art --all).
-  if (wantsArt) step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux1") ? ["--flux1"] : []), ...(flags.has("--art") ? ["--all"] : []), ...(passesArg ? [passesArg] : []), ...(wantsUpscale ? ["--upscale"] : []), ...(upscaleModelArg ? [upscaleModelArg] : []), ...(upscaleScaleArg ? [upscaleScaleArg] : []), ...(wantsUiFormat ? ["--ui-format"] : [])], { fatal: false, env: wantsQ6 ? { ART2_MODEL: Q6_MODEL } : undefined });
+  if (wantsArt) {
+    if (USE_HIGGSFIELD) {
+      step("art:higgsfield (backgrounds)", ["art:higgsfield", "--", fullKey, ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
+    } else {
+      step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux1") ? ["--flux1"] : []), ...(flags.has("--art") ? ["--all"] : []), ...(passesArg ? [passesArg] : []), ...(wantsUpscale ? ["--upscale"] : []), ...(upscaleModelArg ? [upscaleModelArg] : []), ...(upscaleScaleArg ? [upscaleScaleArg] : []), ...(wantsUiFormat ? ["--ui-format"] : [])], { fatal: false, env: wantsQ6 ? { ART2_MODEL: Q6_MODEL } : undefined });
+    }
+  }
   if (wantsUpscale && !wantsArt) step("upscale (existing backgrounds)", ["upscale", "--", fullKey, ...(upscaleModelArg ? [upscaleModelArg] : []), ...(upscaleScaleArg ? [upscaleScaleArg] : [])], { fatal: false });
   step("export (carousel)", ["export", "--", fullKey]);
   if (!flags.has("--no-package")) step("package (upload files)", ["package", "--", fullKey]);
 
   if (wantsVoice) {
-    step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
+    if (!USE_HIGGSFIELD) step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
     step("voice (TTS)", ["voice", "--", fullKey, ...(voiceOverride ? [`--voice=${voiceOverride}`] : []), ...(customVoice ? ["--custom-voice", customVoice] : []), ...(customVoiceText ? ["--custom-voice-text", customVoiceText] : []), ...(flags.has("--no-hifi") ? ["--no-hifi"] : []), ...(flags.has("--no-clone") ? ["--no-clone"] : []), ...(seedArg ? [seedArg] : [])]);
     step("align (caption sync)", ["align", "--", fullKey]);
   }
 
   if (wantsReel) {
+    if (USE_HIGGSFIELD) {
+      step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey], { fatal: false });
+    }
     const reelArgs = ["reel", "--", fullKey, `--captions=${captionMode}`];
     if (!flags.has("--no-fit-voice")) reelArgs.push("--fit-voice");
     if (tailArg) reelArgs.push(tailArg);
