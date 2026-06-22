@@ -1,3 +1,7 @@
+// bun run reel -- <post-key> [--fit-voice] [--tail=N] [--captions=mode] [--help]
+//
+// Pipeline step: Remotion render → pipeline/renders/<folder>/<video.export_name>.
+// Embeds voice/music from public/ when files exist. Use after align when video.enabled.
 import { spawnSync, execFileSync } from "node:child_process";
 import { mkdirSync, existsSync, statSync, writeFileSync, rmSync } from "node:fs";
 import path from "node:path";
@@ -10,6 +14,27 @@ import { loadPost, outputDir, ROOT } from "./lib.ts";
 //   --tail=N     seconds of breathing room to keep after the voice (default 0.6).
 const argv = process.argv.slice(2);
 const flags = new Set(argv.filter((a) => a.startsWith("--")));
+if (flags.has("--help") || flags.has("-h") || argv.includes("-h")) {
+  console.log(`
+bun run reel — Remotion MP4 for video.enabled posts
+
+USAGE
+  bun run reel -- <post-key> [flags]
+
+FLAGS
+  --fit-voice       trim duration to voice + rescale beat/caption timings
+  --tail=N          seconds after voice (default 0.6)
+  --captions=MODE   block | word | highlight (overrides post for this render)
+  --help, -h
+
+PREREQUISITES
+  Carousel export recommended; voice.wav for narration (bun run voice + align).
+
+EXAMPLES
+  bun run reel -- my-post --fit-voice
+`);
+  process.exit(0);
+}
 const tailArg = [...flags].find((f) => f.startsWith("--tail="));
 const TAIL = tailArg ? Math.max(0, parseFloat(tailArg.split("=")[1]) || 0) : 0.6;
 const key = argv.find((a) => !a.startsWith("--")) ?? "2026-06-02_ai-phishing-training";

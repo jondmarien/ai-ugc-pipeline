@@ -1,34 +1,61 @@
-// bun run import-bg -- <post-key> <source-folder> [--all]
-// Copies a folder of externally-generated backgrounds (e.g. from ComfyUI) into
-// renderer/public/backgrounds/<prefix>/ named NN_role.png, and flips those slides to
-// asset_status:"existing" + background_asset in the post JSON. Then: bun run export.
+// bun run import-bg -- <post-key> [<source-folder>] [--all]
 //
-// Matching: for each target slide it looks for a source image whose filename contains
-// the 2-digit slide number (e.g. "02") or the role (e.g. "context"); if none match by
-// name but the counts line up, it assigns the sorted images in order. Skips the cover
-// unless --all.
-import { readFileSync, writeFileSync, readdirSync, copyFileSync, mkdirSync, existsSync } from "node:fs";
+// Manual / compare workflow: copy externally generated backgrounds into the canonical
+// public/backgrounds/<prefix>/ layout and mark slides asset_status:"existing".
+// Does NOT call ComfyUI or Higgsfield — use after you have PNGs in a side folder.
+//
+// Matching: filename contains slide number (02) or role (context); fallback sorted order
+// when counts match. Skips cover unless --all. Then: bun run export -- <key>.
+import { readdirSync, copyFileSync, mkdirSync, existsSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { writePostJson } from "./lib/post-io.mjs";
+import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
+import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
+import { roleFileToken } from "./lib/slide-filename.mjs";
+import { flagSet, showHelpAndExit } from "./lib/cli.mjs";
 
-const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
-const POSTS = path.join(RENDERER, "content", "posts");
-const ROLE_FILE = { failure_point: "failure-point" };
 const IMG = /\.(png|jpe?g|webp)$/i;
 
 const args = process.argv.slice(2);
-const flags = new Set(args.filter((a) => a.startsWith("--")));
+const flags = flagSet(args);
+
+const HELP = `
+bun run import-bg — adopt external background PNGs into a post
+
+USAGE
+  bun run import-bg -- <post-key> [<source-folder>] [--all]
+
+  <post-key>        slug or substring
+  <source-folder>   path to folder of images, or shorthand:
+                    (omit) | flux2 | _flux2  → public/backgrounds/<prefix>_flux2
+                    higgsfield               → public/backgrounds/<prefix>_higgsfield
+
+FLAGS
+  --all             include cover slide (default: inner slides only)
+  --help, -h
+
+OUTPUT
+  Copies to public/backgrounds/<prefix>/NN_role.png, updates post JSON, asset_status=existing.
+
+EXAMPLES
+  bun run import-bg -- my-post flux2
+  bun run import-bg -- my-post D:/ComfyUI/output/batch --all
+`;
+
+if (flags.has("--help") || flags.has("-h") || args.includes("-h")) showHelpAndExit(HELP);
+
 const [key, srcArg] = args.filter((a) => !a.startsWith("--"));
 if (!key) {
-  console.error("Usage: bun run import-bg -- <post-key> [<source-folder>|flux2] [--all]");
-  console.error("  source defaults to this post's FLUX.2 set: public/backgrounds/<prefix>_flux2");
+  console.error(HELP);
   process.exit(1);
 }
 
-const file = readdirSync(POSTS).find((f) => f.endsWith(".json") && f.includes(key));
-if (!file) { console.error(`No post JSON in ${POSTS} matching "${key}".`); process.exit(1); }
-const postPath = path.join(POSTS, file);
-const post = JSON.parse(readFileSync(postPath, "utf8"));
+const loaded = loadPostByKey(key);
+if (!loaded) {
+  console.error(`No post JSON in ${POSTS_DIR} matching "${key}".`);
+  process.exit(1);
+}
+const { postPath, post } = loaded;
 const prefix = post.upload_package.filename_prefix;
 
 // Source: an explicit folder, or the shorthand "flux2"/"_flux2"/(omitted) = this post's
@@ -69,7 +96,7 @@ targets.forEach((slide, idx) => {
   const src = byName[idx];
   if (!src) { console.warn(`⚠ slide ${slide.slide} (${slide.role}): no source image matched — left as ${slide.asset_status}`); return; }
   used.add(src);
-  const role = ROLE_FILE[slide.role] ?? slide.role;
+  const role = roleFileToken(slide.role);
   const destName = `${String(slide.slide).padStart(2, "0")}_${role}.png`;
   copyFileSync(path.join(srcDir, src), path.join(destDir, destName));
   slide.background_asset = `/backgrounds/${prefix}/${destName}`;
@@ -78,6 +105,6 @@ targets.forEach((slide, idx) => {
   n++;
 });
 
-writeFileSync(postPath, JSON.stringify(post, null, 2) + "\n", "utf8");
+writePostJson(postPath, post);
 console.log(`\n✓ Imported ${n}/${targets.length} background(s) → public/backgrounds/${prefix}/ and set asset_status=existing.`);
 console.log(`  Next: bun run export -- ${key}`);

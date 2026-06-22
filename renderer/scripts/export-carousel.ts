@@ -1,3 +1,7 @@
+// bun run export -- <post-key> [--only=N[,N]] [--help]
+//
+// Pipeline step: Playwright screenshots of each slide → pipeline/renders/<folder>/*.png
+// Runs on Node/tsx (not Bun) — see NOTE below. Requires backgrounds in public/ if slides use them.
 // NOTE: this script runs on Node via tsx (see package.json "export"), NOT the Bun
 // runtime. Driving Playwright's Chromium from inside the Bun runtime hangs (same
 // Bun↔Chromium issue that affects Remotion). Everything else in this repo runs on Bun;
@@ -21,9 +25,28 @@ function pngSize(buf: Buffer): { width: number; height: number } {
 }
 
 async function main() {
+  const args = process.argv.slice(2);
+  if (args.includes("--help") || args.includes("-h")) {
+    console.log(`
+bun run export — carousel PNGs via Playwright (Node/tsx)
+
+USAGE
+  bun run export -- <post-key> [--only=N[,N]]
+
+  <post-key>     slug or substring
+  --only=1,3     re-export only those 1-based slide numbers
+
+OUTPUT
+  pipeline/renders/<upload_package.folder>/*.png
+
+EXAMPLES
+  bun run export -- my-post
+  bun run export -- my-post --only=1
+`);
+    process.exit(0);
+  }
   // First non-flag arg is the post key; `--only=N[,N]` restricts to those 1-based
   // slide numbers (e.g. `--only=1` re-exports just the cover).
-  const args = process.argv.slice(2);
   const key = args.find((a) => !a.startsWith("--")) ?? "2026-06-02_ai-phishing-training";
   const onlyArg = args.find((a) => a.startsWith("--only="))?.split("=")[1];
   const onlySet = onlyArg
