@@ -1,3 +1,7 @@
+// Resolve post JSON files by substring key (MJS pipeline — no Zod).
+//
+// Used by art, pipeline, import-bg, upscale, reel:higgsfield, etc.
+// For schema-validated loads in TS, use scripts/lib.ts loadPost() instead.
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { POSTS_DIR } from "./paths.mjs";
@@ -18,7 +22,10 @@ export function findPostFile(key) {
   return allPostJsonFiles().find((f) => f.includes(key)) ?? null;
 }
 
-/** @returns {{ file: string, fullKey: string, postPath: string, post: object }} */
+/**
+ * Load raw post object from content/posts (mutates post.post_id default).
+ * @returns {{ file: string, fullKey: string, postPath: string, post: object } | null}
+ */
 export function loadPostByKey(key) {
   const file = findPostFile(key);
   if (!file) return null;

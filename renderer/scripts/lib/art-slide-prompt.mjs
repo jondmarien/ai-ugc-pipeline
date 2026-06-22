@@ -1,4 +1,7 @@
 // Shared per-slide background prompt assembly (ComfyUI + Higgsfield art scripts).
+//
+// Exports buildSlidePrompt(), postThemeContext(), postSeedOffset() — role motifs,
+// pillar theme, brand style, text-safe zones. Keep in sync with content-checks visual lint.
 import { themes, pillarTheme, BRAND_STYLE } from "../../src/design/tokens.ts";
 
 const ROLE_MOTIF = {

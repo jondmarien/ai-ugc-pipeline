@@ -1,3 +1,7 @@
+// Spawn renderer/scripts/*.py with consistent Python discovery.
+//
+// Order: renderer/.venv python → `uv run python` → system python3 (warn + packagesHint).
+// cwd is always RENDERER_ROOT so relative paths in Python match legacy behavior.
 import { spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import path from "node:path";

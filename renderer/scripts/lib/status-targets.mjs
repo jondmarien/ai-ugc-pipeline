@@ -1,3 +1,6 @@
+// Target list for bun run status (set-status.mjs).
+//
+// Combines --from=<current-status> (whole tier) with substring key args; de-dupes and sorts.
 import { allPostJsonFiles } from "./post-resolve.mjs";
 import { readStatus } from "./post-status.mjs";
 

@@ -1,4 +1,7 @@
-// Canonical renderer/repo paths for CLI scripts (import from ./lib/paths.mjs).
+// Canonical filesystem roots for Bun/Node CLI scripts under renderer/scripts/.
+//
+// Import RENDERER_ROOT / POSTS_DIR instead of duplicating fileURLToPath("../..") in
+// every entry script. TS tools use scripts/lib.ts (same layout, adds Zod on loadPost).
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 

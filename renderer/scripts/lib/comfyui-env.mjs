@@ -1,3 +1,7 @@
+// ComfyUI HTTP integration helpers (art-comfyui, upscale-comfyui, free-comfyui).
+//
+// Env: COMFYUI_URL, COMFYUI_UPSCALE_DIR, COMFYUI_UNET_DIR, KLEIN_GGUF_REPO.
+// Windows defaults point at E:\ComfyUI\...; override on Linux/macOS hosts.
 import { existsSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";

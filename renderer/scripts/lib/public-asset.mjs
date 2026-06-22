@@ -1,3 +1,7 @@
+// Check whether a slide's background_asset path exists under renderer/public.
+//
+// Used by pipeline (needsArt?), art-comfyui, art-higgsfield to skip slides that already
+// have on-disk backgrounds. asset_status:"existing" is handled separately in art-targeting.
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { publicDir } from "./paths.mjs";

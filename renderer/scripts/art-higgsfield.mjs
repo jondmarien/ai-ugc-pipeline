@@ -1,5 +1,10 @@
 // bun run art:higgsfield -- <post-key> [--all] [--dry-run] [--model=ID]
-// Cloud background art via Higgsfield platform API (replaces local ComfyUI for step 1).
+//
+// Pipeline art step when using --higgsfield: cloud image generation via higgsfield-client.mjs.
+// Writes public/backgrounds/<prefix>/NN_role.png and patches post JSON (licenses, URLs for reel).
+// Prompt assembly: lib/art-slide-prompt.mjs (same visual contract as Comfy art).
+//
+// Requires HIGGSFIELD_API_URL + credentials in env. Next: export, optional reel:higgsfield, reel.
 import { buildSlidePrompt, postThemeContext, postSeedOffset } from "./lib/art-slide-prompt.mjs";
 import { parseOnlySlides, selectArtSlides } from "./lib/art-targeting.mjs";
 import { writePostJson } from "./lib/post-io.mjs";
