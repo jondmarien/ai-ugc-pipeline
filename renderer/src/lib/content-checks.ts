@@ -1,5 +1,9 @@
 type AnySlide = { slide?: number; role?: string; on_slide_copy?: string; subline?: string; visual_prompt?: string };
-type AnyPost = { slides?: AnySlide[] };
+type AnyPost = {
+  slides?: AnySlide[];
+  features?: { multiple_captions?: boolean };
+  slide_captions?: string[];
+};
 
 const strip = (s: string) => (s ?? "").replace(/\[\[|\]\]|\{\{|\}\}/g, "").trim();
 const words = (s: string) => (strip(s) ? strip(s).split(/\s+/).length : 0);
@@ -24,6 +28,28 @@ export function checkCopyBudget(post: AnyPost): string[] {
     if (words(sub) > 30) out.push(`${where} subline ${words(sub)} words (max 30)`);
     if (chars(sub) > 180) out.push(`${where} subline ${chars(sub)} chars (max 180)`);
   }
+  return out;
+}
+
+/** Advisory checks for optional per-slide Instagram captions (schema enforces hard gates). */
+export function checkSlideCaptions(post: AnyPost): string[] {
+  const out: string[] = [];
+  const enabled = post.features?.multiple_captions === true;
+  const captions = post.slide_captions;
+  const n = post.slides?.length ?? 0;
+  if (!enabled) return out;
+  if (!captions?.length) {
+    out.push("features.multiple_captions is on but slide_captions is missing");
+    return out;
+  }
+  if (captions.length !== n) {
+    out.push(`slide_captions length (${captions.length}) must match slides (${n})`);
+  }
+  captions.forEach((line, i) => {
+    const trimmed = (line ?? "").trim();
+    if (!trimmed) out.push(`slide_captions[${i}] is empty`);
+    else if (trimmed.length > 2200) out.push(`slide_captions[${i}] is ${trimmed.length} chars (Instagram per-slide cap ~2200)`);
+  });
   return out;
 }
 

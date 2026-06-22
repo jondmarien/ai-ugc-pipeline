@@ -34,11 +34,17 @@ const SLIDES_DEFAULT = 8, SLIDES_MIN = 3, SLIDES_MAX = 20;
 const slidesFlag = flagArgs.find((a) => a.startsWith("--slides="))?.split("=")[1];
 const slideCount = slidesFlag === undefined ? SLIDES_DEFAULT : Number(slidesFlag);
 
+const multipleCaptionsArg = flagArgs.find((a) => a.startsWith("--multiple-captions"));
+const multipleCaptionsEnabled =
+  multipleCaptionsArg === "--multiple-captions" ||
+  multipleCaptionsArg?.split("=")[1] === "true" ||
+  multipleCaptionsArg?.split("=")[1] === "1";
+
 const PILLARS = Object.keys(pillarAccent) as Pillar[];
 
 function usageAndExit(msg?: string): never {
   if (msg) console.error(`\n✗ ${msg}`);
-  console.error(`\nUsage: bun run new -- <YYYY-MM-DD> <slug> <pillar> [--slides=N (3–20, default 8)] [--theme=offensive|defensive|hacking|purple-team|ai] [--style-fusion="ancient marble meets cyberpunk neon"] [--captions=…] [--voice=… (default voxcpm2; use none for a silent reel)] [--music=…]`);
+  console.error(`\nUsage: bun run new -- <YYYY-MM-DD> <slug> <pillar> [--slides=N (3–20, default 8)] [--theme=offensive|defensive|hacking|purple-team|ai] [--style-fusion="ancient marble meets cyberpunk neon"] [--captions=…] [--voice=… (default voxcpm2; use none for a silent reel)] [--music=…] [--multiple-captions]`);
   console.error(`  pillar ∈ ${PILLARS.join(" | ")}`);
   console.error(`  theme  ∈ offensive (red) | defensive (blue) | hacking (green) | purple-team (purple) | ai (generic AI, orange)  — optional; defaults from pillar`);
   console.error(`  example: bun run new -- 2026-06-13 ai-agent-permissions model_security --theme=defensive\n`);
@@ -194,13 +200,26 @@ const post = {
     filename_prefix: prefix,
     expected_files: [
       ...slides.map((s) => `${prefix}_${String(s.slide).padStart(2, "0")}_${ROLE_FILENAME[s.role]}.png`),
-      "caption.txt", "alt_text.txt", "sources.md", "render_qa_checklist.md",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md",
+      ...(multipleCaptionsEnabled ? ["slide_captions.txt"] : []),
     ],
     caption_file: "caption.txt",
+    slide_captions_file: "slide_captions.txt",
     alt_text_file: "alt_text.txt",
     sources_file: "sources.md",
     licenses_file: "LICENSES.md",
   },
+  features: { multiple_captions: multipleCaptionsEnabled },
+  ...(multipleCaptionsEnabled
+    ? {
+        slide_captions: slides.map(
+          (s) => `TODO ${s.role} Instagram caption: short per-slide caption distinct from on_slide_copy.`,
+        ),
+      }
+    : {}),
   slides,
   caption: "TODO: hook restated · what happened · why it matters · defender takeaway · question.\n\nFollow for AI security breakdowns without the fake panic.",
   // Topics (NOT hashtags) — rendered as a bracketed list in caption.txt; no '#', no 5-tag cap.
@@ -264,7 +283,7 @@ if (existsSync(outFile)) usageAndExit(`${outFile} already exists — pick a diff
 writeFileSync(outFile, JSON.stringify(post, null, 2) + "\n", "utf8");
 
 console.log(`✓ Created ${path.relative(path.join(POSTS_DIR, "..", ".."), outFile)}`);
-console.log(`  pillar: ${pillar}  ·  theme: ${theme} (${themeDef.name})  ·  ${slideCount} slides  ·  reel enabled (${reelDuration}s)  ·  captions: ${captionMode}\n`);
+console.log(`  pillar: ${pillar}  ·  theme: ${theme} (${themeDef.name})  ·  ${slideCount} slides  ·  reel enabled (${reelDuration}s)  ·  captions: ${captionMode}${multipleCaptionsEnabled ? "  ·  multiple_captions: on" : ""}\n`);
 console.log("Next:");
 console.log(`  1. Edit the file — replace every TODO (copy, caption, sources, alt text).`);
 console.log(`  2. (optional) Add a cover image to renderer/public/backgrounds/${prefix}_cover.png and set slide 1 asset_status to "existing".`);
