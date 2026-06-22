@@ -9,11 +9,10 @@
 // unless --all.
 import { readFileSync, writeFileSync, readdirSync, copyFileSync, mkdirSync, existsSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
-const POSTS = path.join(RENDERER, "content", "posts");
-const ROLE_FILE = { failure_point: "failure-point" };
+import { writePostJson } from "./lib/post-io.mjs";
+import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
+import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
+import { roleFileToken } from "./lib/slide-filename.mjs";
 const IMG = /\.(png|jpe?g|webp)$/i;
 
 const args = process.argv.slice(2);
@@ -25,10 +24,12 @@ if (!key) {
   process.exit(1);
 }
 
-const file = readdirSync(POSTS).find((f) => f.endsWith(".json") && f.includes(key));
-if (!file) { console.error(`No post JSON in ${POSTS} matching "${key}".`); process.exit(1); }
-const postPath = path.join(POSTS, file);
-const post = JSON.parse(readFileSync(postPath, "utf8"));
+const loaded = loadPostByKey(key);
+if (!loaded) {
+  console.error(`No post JSON in ${POSTS_DIR} matching "${key}".`);
+  process.exit(1);
+}
+const { postPath, post } = loaded;
 const prefix = post.upload_package.filename_prefix;
 
 // Source: an explicit folder, or the shorthand "flux2"/"_flux2"/(omitted) = this post's
@@ -69,7 +70,7 @@ targets.forEach((slide, idx) => {
   const src = byName[idx];
   if (!src) { console.warn(`⚠ slide ${slide.slide} (${slide.role}): no source image matched — left as ${slide.asset_status}`); return; }
   used.add(src);
-  const role = ROLE_FILE[slide.role] ?? slide.role;
+  const role = roleFileToken(slide.role);
   const destName = `${String(slide.slide).padStart(2, "0")}_${role}.png`;
   copyFileSync(path.join(srcDir, src), path.join(destDir, destName));
   slide.background_asset = `/backgrounds/${prefix}/${destName}`;
@@ -78,6 +79,6 @@ targets.forEach((slide, idx) => {
   n++;
 });
 
-writeFileSync(postPath, JSON.stringify(post, null, 2) + "\n", "utf8");
+writePostJson(postPath, post);
 console.log(`\n✓ Imported ${n}/${targets.length} background(s) → public/backgrounds/${prefix}/ and set asset_status=existing.`);
 console.log(`  Next: bun run export -- ${key}`);

@@ -1,8 +1,11 @@
 // bun run art:higgsfield -- <post-key> [--all] [--dry-run] [--model=ID]
 // Cloud background art via Higgsfield platform API (replaces local ComfyUI for step 1).
-import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { buildSlidePrompt, postThemeContext, postSeedOffset } from "./lib/art-slide-prompt.mjs";
+import { parseOnlySlides, selectArtSlides } from "./lib/art-targeting.mjs";
+import { writePostJson } from "./lib/post-io.mjs";
+import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
+import { slideBackgroundExists } from "./lib/public-asset.mjs";
+import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
 import {
   DEFAULT_IMAGE_MODEL,
   buildNegativePrompt,
@@ -10,10 +13,6 @@ import {
   healthCheck,
   renderSlide,
 } from "./higgsfield-client.mjs";
-import { buildSlidePrompt, postThemeContext, postSeedOffset } from "./lib/art-slide-prompt.mjs";
-
-const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
-const POSTS = path.join(RENDERER, "content", "posts");
 
 const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith("--")));
@@ -58,14 +57,12 @@ const MODEL = opt("model", process.env.HIGGSFIELD_IMAGE_MODEL || DEFAULT_IMAGE_M
 const SEED_BASE = Number(opt("seed", process.env.ART_SEED || "42")) || 42;
 const COOLDOWN_MS = Number(process.env.ART_COOLDOWN_MS || "3000") || 0;
 
-const file = readdirSync(POSTS).find((f) => f.endsWith(".json") && f.includes(key));
-if (!file) {
-  console.error(`No post JSON in ${POSTS} matching "${key}".`);
+const loaded = loadPostByKey(key);
+if (!loaded) {
+  console.error(`No post JSON in ${POSTS_DIR} matching "${key}".`);
   process.exit(1);
 }
-const postPath = path.join(POSTS, file);
-const post = JSON.parse(readFileSync(postPath, "utf8"));
-post.post_id = post.post_id ?? file.replace(/\.json$/, "");
+const { postPath, post } = loaded;
 const prefix = post.upload_package?.filename_prefix;
 if (!prefix) {
   console.error("post.upload_package.filename_prefix is required");
@@ -80,16 +77,10 @@ if (!DRY) {
   console.log(`Higgsfield @ ${hc.baseUrl} · model=${MODEL}`);
 }
 
-const onlyArg = opt("only", "");
-const onlySet = onlyArg ? new Set(onlyArg.split(",").map((x) => Number(x.trim())).filter((n) => !Number.isNaN(n))) : null;
+const onlySet = parseOnlySlides(opt("only", ""));
 const FORCE = flags.has("--all") || flags.has("--force");
-const artExists = (s) =>
-  !!s.background_asset && existsSync(path.join(RENDERER, "public", s.background_asset.replace(/^[\\/]+/, "")));
-const targets = (post.slides ?? []).filter((s) => {
-  if (s.asset_status === "existing") return false;
-  if (onlySet) return onlySet.has(s.slide);
-  return FORCE || !artExists(s);
-});
+const artExists = (s) => slideBackgroundExists(RENDERER, s);
+const targets = selectArtSlides(post.slides ?? [], { onlySet, force: FORCE, artExists });
 
 if (!targets.length) {
   console.log("No slides need Higgsfield art for this post.");
@@ -145,7 +136,7 @@ for (let ti = 0; ti < targets.length; ti++) {
 }
 
 if (!DRY && n > 0) {
-  writeFileSync(postPath, `${JSON.stringify(post, null, 2)}\n`, "utf8");
+  writePostJson(postPath, post);
   console.log(`\n✓ Higgsfield generated ${n}/${targets.length} background(s) → public/backgrounds/${prefix}/`);
   console.log(`  Next: bun run export -- ${key}`);
 }
