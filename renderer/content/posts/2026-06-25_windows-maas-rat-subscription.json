@@ -1,0 +1,307 @@
+{
+  "post_id": "2026-06-25_windows-maas-rat-subscription",
+  "date": "2026-06-25",
+  "slug": "windows-maas-rat-subscription",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "offensive_ai",
+  "theme": "offensive",
+  "style_fusion": "",
+  "audience": "security_practitioners",
+  "core_claim": "A threat actor is advertising a subscription-based MaaS offering that bundles remote access, credential theft, silent Chromium browser extension deployment, memory execution, and multiple persistence techniques targeting Windows 10, 11, and Server.",
+  "claim_tags": ["emerging"],
+  "score": {
+    "credibility": 4,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 4,
+    "defender_usefulness": 4,
+    "total": 21
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "alert red",
+    "pillar_accent": "offensive_ai",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#ef4444",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-25_windows-maas-rat-subscription",
+    "filename_prefix": "2026-06-25_windows-maas-rat-subscription",
+    "expected_files": [
+      "2026-06-25_windows-maas-rat-subscription_01_cover.png",
+      "2026-06-25_windows-maas-rat-subscription_02_context.png",
+      "2026-06-25_windows-maas-rat-subscription_03_risk.png",
+      "2026-06-25_windows-maas-rat-subscription_04_mechanism.png",
+      "2026-06-25_windows-maas-rat-subscription_05_failure-point.png",
+      "2026-06-25_windows-maas-rat-subscription_06_defense.png",
+      "2026-06-25_windows-maas-rat-subscription_07_takeaway.png",
+      "2026-06-25_windows-maas-rat-subscription_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "slide_captions_file": "slide_captions.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "features": {
+    "multiple_captions": false
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "OFFENSIVE",
+      "on_slide_copy": "Threat actor advertises subscription MaaS RAT with silent Chromium extension and memory execution.",
+      "subline": "Windows 10, 11, and Server targets. Monthly or yearly billing with updates and support.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "cinematic establishing shot for a cybersecurity story about a Windows MaaS RAT advertisement: a dark high-contrast scene showing abstract network connections and a stealthy malware package, dramatic rim light, strong empty lower-third for the headline",
+      "background_asset": "/backgrounds/2026-06-25_windows-maas-rat-subscription_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "ThreatMon reported a threat actor advertising a bundled MaaS package that combines RAT, credential theft, and silent browser extension deployment under subscription billing.",
+      "subline": "Delivery vectors listed include VBS, JS, SVG, LNK, and HTA.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "an abstract what changed scene for the MaaS RAT advertisement: a shifting before after pattern showing subscription malware packaging, dark editorial, lower third kept clear, no readable text",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "The offering includes remote access, credential theft, silent Chromium extension deployment, anti-VM techniques, memory execution, and persistence via task scheduler, registry, and LNK manipulation. This combination supports long-term access and financial fraud scenarios.",
+      "subline": "Targets Windows endpoints and servers with ongoing updates and support included in the subscription.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a tension-building impact scene for the MaaS RAT offering: a single focal hazard motif of a Windows system under stealth compromise with browser extension abuse, dark and high-contrast, tense atmosphere",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "The package uses DLL injection, process hollowing, sleep obfuscation, and steganography. It deploys a silent Chromium extension for credential and session theft while maintaining persistence through scheduled tasks and modified LNK files.",
+      "subline": "Anti-VM and anti-debugging features help it evade analysis environments.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean abstract diagrammatic scene showing the high-level mechanism of a subscription MaaS RAT: glowing nodes and connections representing RAT capabilities, browser extension deployment, and persistence techniques, dark, upper-area focus",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Many organizations still lack visibility into silent browser extension deployments and memory-only execution. Traditional file-based scanning often misses the initial loader and the extension that maintains access after reboot.",
+      "subline": "Subscription models lower the barrier for less-skilled operators to obtain advanced tradecraft.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a scene depicting a process control gap for the MaaS RAT threat: an overlooked browser extension audit checkpoint with an ignored checklist next to an approve button, dark, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Audit Chromium-based browser extension policies and block silent sideloading. Monitor for anomalous scheduled tasks, LNK modifications, and memory injection indicators. Treat subscription MaaS advertisements as indicators of increasing accessibility of advanced tooling.",
+      "subline": "Review endpoint detection rules for the listed persistence and injection techniques.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a defensive workflow scene for the MaaS RAT threat: verification of browser extension policies, permission gates on extension installs, an audit trail of scheduled tasks, calm and orderly, dark",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "Subscription MaaS now bundles RAT, credential theft, and silent browser extension abuse with memory execution and flexible persistence. The barrier for operators is dropping.",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a minimal iconic high-contrast scene for the MaaS RAT takeaway: a single strong symbol of a subscription malware package toward the edges in deep negative space, center open and dark",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Are you seeing increased silent Chromium extension activity or memory-only loaders in your environment? Share what you are hunting.",
+      "subline": "Save this for your next endpoint review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene with strong empty negative space for a question and handle, premium editorial cybersecurity look",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Threat actor advertises subscription MaaS RAT for Windows combining remote access, credential theft, silent Chromium extension deployment, memory execution, and persistence via tasks, registry, and LNK files. Delivery via VBS/JS/SVG/LNK/HTA. Anti-VM and obfuscation included.\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": ["MaaS", "RAT", "Windows", "cybersecurity", "threatintel", "infosec"],
+  "comment_prompt": "Are you seeing increased silent Chromium extension activity or memory-only loaders in your environment?",
+  "alt_text": [
+    "Cover slide: Dramatic dark scene with abstract Windows malware package under stress. Headline reads: Threat actor advertises subscription MaaS RAT with silent Chromium extension and memory execution. Kicker: OFFENSIVE.",
+    "Context slide: Abstract before-after pattern showing subscription malware packaging. Text explains the ThreatMon report of a bundled MaaS offering with RAT, credential theft, and browser extension capabilities.",
+    "Risk slide: Tension-building high-contrast motif of a Windows system under stealth compromise with browser extension abuse. Subscription MaaS lowers the barrier for advanced tradecraft.",
+    "Mechanism slide: Clean abstract diagram of MaaS RAT capabilities including DLL injection, process hollowing, silent Chromium extension, sleep obfuscation, and multiple persistence methods.",
+    "Failure point slide: Overlooked browser extension audit checkpoint with an ignored checklist next to an approve button. Memory-only execution and silent sideloading often evade traditional scanning.",
+    "Defense slide: Calm orderly workflow showing browser extension policy verification, scheduled task audits, and permission gates on extension installs to counter the MaaS offering.",
+    "Takeaway slide: Minimal high-contrast icon of a subscription malware package symbol in deep negative space. Subscription MaaS now bundles RAT, credential theft, and browser extension abuse.",
+    "CTA slide: Clean dark end card with question: Are you seeing increased silent Chromium extension activity or memory-only loaders in your environment? Comment and save for your next review."
+  ],
+  "sources": [
+    {
+      "source": "ThreatMon on X",
+      "link": "https://x.com/MonThreat/status/2069781986399354957",
+      "supports": "Original advertisement post describing the subscription MaaS offering, target platforms, capabilities (RAT, credential theft, silent Chromium extension, anti-VM, memory execution, obfuscation, injection, persistence), and delivery vectors.",
+      "confidence": "medium",
+      "claim_tag": "emerging"
+    },
+    {
+      "source": "ThreatMon research context",
+      "link": "https://threatmon.io/",
+      "supports": "Threat intelligence platform context confirming the reporting account and focus on malware-as-a-service and RAT activity.",
+      "confidence": "medium",
+      "claim_tag": "emerging"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 26,
+    "fps": 30,
+    "export_name": "2026-06-25_windows-maas-rat-subscription_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-25_windows-maas-rat-subscription/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "A threat actor is advertising a subscription MaaS RAT that bundles remote access, credential theft, and silent browser extension deployment."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "text": "The package targets Windows 10, 11, and Server with memory execution, anti-VM features, and multiple persistence methods."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "text": "Audit browser extension policies, monitor scheduled tasks and LNK modifications, and hunt for memory-only loaders."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "text": "Subscription MaaS is making advanced tradecraft more accessible to lower-skilled operators."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "text": "Are you seeing silent Chromium extension activity or memory-only loaders? Comment below."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Threat actor advertises subscription MaaS RAT with silent Chromium extension."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "ThreatMon reports bundled MaaS with RAT, credential theft, and browser extension."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "Audit extension policies and hunt memory-only loaders."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "Subscription MaaS bundles RAT, theft, and browser extension abuse."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Are you seeing silent Chromium extension activity or memory-only loaders?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}
