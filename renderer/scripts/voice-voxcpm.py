@@ -11,7 +11,7 @@ Setup (uv recommended):
     cd renderer
     uv venv                 # if you haven't already
     uv pip install voxcpm soundfile torch
-    npm run voice -- <post-key>     # the wrapper auto-uses .venv
+    bun run voice -- <post-key>     # the wrapper auto-uses .venv
 
 Or call directly with the venv's python:
     .venv/Scripts/python scripts/voice-voxcpm.py <post-key>
