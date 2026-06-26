@@ -353,11 +353,13 @@ export const PostData = z
           }
         });
       }
-    } else if (slideCaptions && slideCaptions.length > 0) {
+    } else if (Array.isArray(slideCaptions)) {
+      // Reject the field entirely when the flag is off (including an empty array), so the
+      // "only allowed when the flag is on" rule has no silent gap.
       ctx.addIssue({
         code: "custom",
         message:
-          "slide_captions is only allowed when features.multiple_captions is true — enable the flag or remove slide_captions",
+          "slide_captions is only allowed when features.multiple_captions is true. Enable the flag or remove slide_captions.",
         path: ["slide_captions"],
       });
     }

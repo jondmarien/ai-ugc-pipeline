@@ -152,10 +152,10 @@ EXAMPLES
     console.log(`  ✓ ${name}`);
   }
 
-  // Warn if slide PNGs are not present yet (run `npm run export` first).
+  // Warn if slide PNGs are not present yet (run `bun run export` first).
   const firstPng = slideFilename(post, 0);
   if (!existsSync(path.join(outDir, firstPng))) {
-    console.warn(`\n⚠ Slide PNGs not found in ${outDir}. Run: npm run export -- ${key}`);
+    console.warn(`\n⚠ Slide PNGs not found in ${outDir}. Run: bun run export -- ${key}`);
   }
   console.log(`\n✓ Package metadata written to ${outDir}`);
 }

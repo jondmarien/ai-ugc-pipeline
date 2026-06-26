@@ -4,7 +4,7 @@ import { POSTS_DIR } from "./lib.ts";
 import { PostData, ROLE_FILENAME } from "../src/lib/schema.ts";
 import { pillarAccent, palette, canvas, themes, pillarTheme, type Pillar, type Theme } from "../src/design/tokens.ts";
 
-// Usage: npm run new -- <YYYY-MM-DD> <slug> <pillar> [--captions=block|word|highlight]
+// Usage: bun run new -- <YYYY-MM-DD> <slug> <pillar> [--captions=block|word|highlight]
 // Generates a schema-valid BLANK post JSON you then fill in.
 const rawArgs = process.argv.slice(2);
 const flagArgs = rawArgs.filter((a) => a.startsWith("--"));
@@ -35,7 +35,9 @@ const slidesFlag = flagArgs.find((a) => a.startsWith("--slides="))?.split("=")[1
 const slideCount = slidesFlag === undefined ? SLIDES_DEFAULT : Number(slidesFlag);
 
 const multipleCaptionsArg = flagArgs.find((a) => a.startsWith("--multiple-captions"));
-const multipleCaptionsEnabled =
+// Local flag only — named distinctly so it never shadows the multipleCaptionsEnabled() helper
+// exported from schema.ts (which takes a parsed post, not CLI args).
+const multipleCaptionsFlag =
   multipleCaptionsArg === "--multiple-captions" ||
   multipleCaptionsArg?.split("=")[1] === "true" ||
   multipleCaptionsArg?.split("=")[1] === "1";
@@ -204,7 +206,8 @@ const post = {
       "alt_text.txt",
       "sources.md",
       "render_qa_checklist.md",
-      ...(multipleCaptionsEnabled ? ["slide_captions.txt"] : []),
+      "instagram_upload_checklist.md",
+      ...(multipleCaptionsFlag ? ["slide_captions.txt"] : []),
     ],
     caption_file: "caption.txt",
     slide_captions_file: "slide_captions.txt",
@@ -212,8 +215,8 @@ const post = {
     sources_file: "sources.md",
     licenses_file: "LICENSES.md",
   },
-  features: { multiple_captions: multipleCaptionsEnabled },
-  ...(multipleCaptionsEnabled
+  features: { multiple_captions: multipleCaptionsFlag },
+  ...(multipleCaptionsFlag
     ? {
         slide_captions: slides.map(
           (s) => `TODO ${s.role} Instagram caption: short per-slide caption distinct from on_slide_copy.`,
@@ -283,9 +286,9 @@ if (existsSync(outFile)) usageAndExit(`${outFile} already exists — pick a diff
 writeFileSync(outFile, JSON.stringify(post, null, 2) + "\n", "utf8");
 
 console.log(`✓ Created ${path.relative(path.join(POSTS_DIR, "..", ".."), outFile)}`);
-console.log(`  pillar: ${pillar}  ·  theme: ${theme} (${themeDef.name})  ·  ${slideCount} slides  ·  reel enabled (${reelDuration}s)  ·  captions: ${captionMode}${multipleCaptionsEnabled ? "  ·  multiple_captions: on" : ""}\n`);
+console.log(`  pillar: ${pillar}  ·  theme: ${theme} (${themeDef.name})  ·  ${slideCount} slides  ·  reel enabled (${reelDuration}s)  ·  captions: ${captionMode}${multipleCaptionsFlag ? "  ·  multiple_captions: on" : ""}\n`);
 console.log("Next:");
-console.log(`  1. Edit the file — replace every TODO (copy, caption, sources, alt text).`);
+console.log(`  1. Edit the file, replacing every TODO (copy, caption, sources, alt text).`);
 console.log(`  2. (optional) Add a cover image to renderer/public/backgrounds/${prefix}_cover.png and set slide 1 asset_status to "existing".`);
-console.log(`  3. npm run validate -- ${prefix}`);
-console.log(`  4. npm run export -- ${prefix} && npm run package -- ${prefix} && npm run reel -- ${prefix}\n`);
+console.log(`  3. bun run validate -- ${prefix}`);
+console.log(`  4. bun run export -- ${prefix} && bun run package -- ${prefix} && bun run reel -- ${prefix}\n`);
