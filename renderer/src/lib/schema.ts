@@ -95,6 +95,8 @@ export const SlideData = z.object({
   style_fusion: z.string().optional().default(""),
   // Public HTTPS URL of the slide background on Higgsfield CDN (set by art:higgsfield). Used for image-to-video reel segments.
   higgsfield_image_url: z.string().url().optional(),
+  // Public HTTPS URL of the slide background on FAL CDN (set by art:fal). Used for image-to-video reel segments.
+  fal_image_url: z.string().url().optional(),
   // For role "chain": the ordered steps of the diagram. The last step is rendered as the
   // emphasized outcome. stage = short label (e.g. "STAGE 1"), title = the action, detail = a line.
   chain: z.array(z.object({
