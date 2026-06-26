@@ -5,7 +5,8 @@
  * advisories. Does not render. Use before approving a draft or after hand-editing JSON.
  */
 import { loadPost } from "./lib.ts";
-import { checkCopyBudget, lintVisualPrompts } from "../src/lib/content-checks";
+import { checkCopyBudget, lintVisualPrompts, checkSlideCaptions } from "../src/lib/content-checks";
+import { multipleCaptionsEnabled } from "../src/lib/schema.ts";
 
 const args = process.argv.slice(2);
 if (args.includes("--help") || args.includes("-h")) {
@@ -21,6 +22,7 @@ CHECKS
   - PostData schema (required fields, enums)
   - on_slide_copy word budgets
   - visual_prompt lint (text-summoning nouns, etc.)
+  - slide_captions advisories (count vs slides, empty, ~2200-char IG cap) when features.multiple_captions is on
 
 EXAMPLES
   bun run validate -- my-post
@@ -32,10 +34,14 @@ const key = args.find((a) => !a.startsWith("--")) ?? "2026-06-02_ai-phishing-tra
 const post = loadPost(key);
 console.log(`✓ ${post.post_id} valid — ${post.slides.length} slides, score ${post.score.total}/25, pillar ${post.pillar}`);
 console.log(`  alt_text: ${post.alt_text.length}  sources: ${post.sources.length}  video.enabled: ${post.video?.enabled ?? false}`);
+if (multipleCaptionsEnabled(post)) {
+  console.log(`  features.multiple_captions: true  slide_captions: ${post.slide_captions?.length ?? 0}`);
+}
 
 const copyWarn = checkCopyBudget(post);
 const promptWarn = lintVisualPrompts(post);
-if (copyWarn.length || promptWarn.length) {
-  console.warn(`\n⚠ content advisories (${copyWarn.length + promptWarn.length}):`);
-  for (const w of [...copyWarn, ...promptWarn]) console.warn(`   • ${w}`);
+const slideCaptionWarn = checkSlideCaptions(post);
+if (copyWarn.length || promptWarn.length || slideCaptionWarn.length) {
+  console.warn(`\n⚠ content advisories (${copyWarn.length + promptWarn.length + slideCaptionWarn.length}):`);
+  for (const w of [...copyWarn, ...promptWarn, ...slideCaptionWarn]) console.warn(`   • ${w}`);
 }
