@@ -192,10 +192,10 @@
       "claim_tag": "emerging"
     },
     {
-      "source": "ThreatMon research context",
-      "link": "https://threatmon.io/",
-      "supports": "Threat intelligence platform context confirming the reporting account and focus on malware-as-a-service and RAT activity.",
-      "confidence": "medium",
+      "source": "Kaspersky Securelist: CrystalX RAT (MaaS analysis)",
+      "link": "https://securelist.com/crystalx-rat-with-prankware-features/119283/",
+      "supports": "Independent corroboration that the pattern is real and current. Kaspersky (April 2026) documents a subscription-tier MaaS RAT with an auto-builder, anti-analysis, and credential theft from Chromium-based browsers. It does not confirm this specific advertised product.",
+      "confidence": "high",
       "claim_tag": "emerging"
     }
   ],
