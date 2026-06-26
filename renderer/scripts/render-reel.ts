@@ -64,7 +64,7 @@ if (audio) {
   const check = (file?: string) => (file ? existsSync(path.join(publicDir, file.replace(/^\//, ""))) : false);
   if (audio.voice_mode !== "none" && !check(audio.voice_file)) {
     console.warn(`⚠ voice (${audio.voice_mode}): ${audio.voice_file ?? "no file"} not found in public/ — rendering without narration.`);
-    if (audio.voice_mode === "voxcpm2") console.warn(`  → generate it: npm run voice -- ${key}`);
+    if (audio.voice_mode === "voxcpm2") console.warn(`  → generate it: bun run voice -- ${key}`);
     audio.voice_mode = "none";
   }
   if (audio.music_mode !== "none" && !check(audio.music_file)) {

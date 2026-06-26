@@ -6,14 +6,9 @@ import { mkdirSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 import { loadPost, outputDir, slideFilename } from "./lib.ts";
 import type { TPostData } from "../src/lib/schema.ts";
-
-function captionTxt(post: TPostData): string {
-  // Topics render as a bracketed list, NOT hashtags (they no longer help reach and
-  // cap you at ~5). Strip any legacy leading '#'. e.g. [AI agents, open source, ...]
-  const topics = post.hashtags.map((t) => t.replace(/^#/, "").trim()).filter(Boolean);
-  const topicLine = topics.length ? `[${topics.join(", ")}]\n` : "";
-  return `${post.caption}\n\n${topicLine}`;
-}
+import { captionTxt, slideCaptionsOutputName, slideCaptionsTxt } from "../src/lib/caption-export.ts";
+import { multipleCaptionsEnabled } from "../src/lib/schema.ts";
+import { instagramUploadChecklist } from "./lib/instagram-upload.ts";
 
 function altTextTxt(post: TPostData): string {
   // One paste-ready alt-text block per slide, in slide order, separated by a blank line — no
@@ -97,11 +92,16 @@ function qaChecklistMd(post: TPostData): string {
     `| Brand consistency | Accent (${post.brand.pillar_accent}), handle, pagination consistent | PASS (shared shell) |`,
     `| Media rights | Asset/audio licenses logged | ${post.asset_licenses.length ? "PASS" : "REVIEW"} (see LICENSES.md) |`,
     `| Upload readiness | caption/alt/sources present | PASS |`,
+    multipleCaptionsEnabled(post)
+      ? `| Per-slide IG captions | multiple_captions on; slide_captions count | ${post.slide_captions?.length === post.slides.length ? "PASS" : "FAIL"} (${post.slide_captions?.length ?? 0}/${post.slides.length}) |`
+      : "",
     "",
     "## Files in this package",
     ...files.map((f) => `- ${f}`),
     post.video?.enabled ? `- ${post.video.export_name} (Reel)` : "",
     "- caption.txt",
+    ...(multipleCaptionsEnabled(post) ? [`- ${slideCaptionsOutputName(post)}`] : []),
+    "- instagram_upload_checklist.md",
     "- alt_text.txt",
     "- sources.md",
     "- LICENSES.md",
@@ -123,6 +123,7 @@ USAGE
 
 OUTPUT (under pipeline/renders/<folder>/)
   caption.txt, alt_text.txt, sources.md, LICENSES.md, render_qa_checklist.md
+  (+ slide_captions.txt + instagram_upload_checklist.md when features.multiple_captions is on)
 
 EXAMPLES
   bun run package -- my-post
@@ -135,21 +136,26 @@ EXAMPLES
   mkdirSync(outDir, { recursive: true });
 
   const writes: Array<[string, string]> = [
-    ["caption.txt", captionTxt(post)],
+    [post.upload_package.caption_file ?? "caption.txt", captionTxt(post)],
     ["alt_text.txt", altTextTxt(post)],
     ["sources.md", sourcesMd(post)],
     ["LICENSES.md", licensesMd(post)],
     ["render_qa_checklist.md", qaChecklistMd(post)],
+    ["instagram_upload_checklist.md", instagramUploadChecklist(post, outDir)],
   ];
+  const slideCaptions = slideCaptionsTxt(post);
+  if (slideCaptions !== null) {
+    writes.push([slideCaptionsOutputName(post), slideCaptions]);
+  }
   for (const [name, content] of writes) {
     writeFileSync(path.join(outDir, name), content, "utf8");
     console.log(`  ✓ ${name}`);
   }
 
-  // Warn if slide PNGs are not present yet (run `npm run export` first).
+  // Warn if slide PNGs are not present yet (run `bun run export` first).
   const firstPng = slideFilename(post, 0);
   if (!existsSync(path.join(outDir, firstPng))) {
-    console.warn(`\n⚠ Slide PNGs not found in ${outDir}. Run: npm run export -- ${key}`);
+    console.warn(`\n⚠ Slide PNGs not found in ${outDir}. Run: bun run export -- ${key}`);
   }
   console.log(`\n✓ Package metadata written to ${outDir}`);
 }
