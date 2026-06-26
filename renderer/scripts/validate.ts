@@ -22,6 +22,7 @@ CHECKS
   - PostData schema (required fields, enums)
   - on_slide_copy word budgets
   - visual_prompt lint (text-summoning nouns, etc.)
+  - slide_captions advisories (count vs slides, empty, ~2200-char IG cap) when features.multiple_captions is on
 
 EXAMPLES
   bun run validate -- my-post

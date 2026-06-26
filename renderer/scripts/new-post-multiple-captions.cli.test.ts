@@ -6,9 +6,9 @@ import { fileURLToPath } from "node:url";
 import { POSTS_DIR } from "./lib.ts";
 
 const rendererRoot = path.resolve(fileURLToPath(new URL(".", import.meta.url)), "..");
-const bun = process.env.BUN_INSTALL
-  ? path.join(process.env.BUN_INSTALL, "bin", "bun")
-  : path.join(process.env.HOME ?? "/root", ".bun", "bin", "bun");
+// Use the bun binary running this test (cross-platform; the old $BUN_INSTALL/bin/bun guess
+// missed the .exe on Windows and broke the spawn).
+const bun = process.execPath;
 
 const slug = `kanban-multi-cap-${Date.now()}`;
 const jsonName = `2099-01-01_${slug}.json`;
