@@ -65,7 +65,7 @@ function writeCache(key, value, ttlMs) {
   } catch {}
 }
 
-async function callXaiImages(prompt, model, size) {
+async function callXaiImages(prompt, model) {
   const key = process.env.XAI_API_KEY;
   if (!key) throw new Error("XAI_API_KEY not set");
 
@@ -75,7 +75,11 @@ async function callXaiImages(prompt, model, size) {
       "Authorization": `Bearer ${key}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ model, prompt, n: 1 }),
+    body: JSON.stringify({
+      model,
+      prompt,
+      n: 1,
+    }),
   });
 
   if (!res.ok) {
@@ -118,7 +122,6 @@ export async function generateImage(postKey, opts = {}) {
     return { success: true, dryRun: true, model };
   }
 
-  const entry = MODEL_CATALOG.image.find(m => m.id === model) || MODEL_CATALOG.image[0];
   console.log(`[xai] Generating image for ${postKey} (model=${model})`);
 
   const result = await callXaiImages("Dark cinematic background for cybersecurity slide", model);
@@ -140,7 +143,6 @@ export async function generateVideo(postKey, opts = {}) {
 
   console.log(`[xai] Generating video for ${postKey} (model=${model})`);
 
-  // For real i2v we would pass a real image_url from the art step
   const result = await callXaiVideos("Slow cinematic camera push-in", model, "https://example.com/placeholder.jpg", 5);
   const videoUrl = result.video?.url || result.data?.[0]?.url;
 
