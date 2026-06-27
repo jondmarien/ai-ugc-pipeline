@@ -9,8 +9,8 @@ export const instagramAdapter: PlatformAdapter = {
       "Manual upload to Instagram:",
       `  1) Open the render folder: ${pkg.dir}`,
       `  2) Post the reel: ${pkg.reelPath}`,
-      `  3) Copy the caption from caption.txt in the same folder`,
-      `  4) Add hashtags from hashtags.txt`,
+      `  3) Copy the caption from caption.txt (topics are already appended as a bracketed list)`,
+      `  4) Paste the per-slide alt text from alt_text.txt if posting the carousel`,
       `  5) Tag location / collaborators if needed, then publish`,
     ].join("\n");
 

@@ -1,16 +1,17 @@
 /**
  * TikTok OAuth2 platform config.
  *
- * Scopes include publish + upload + user info (basic + stats for the future
- * analytics/dashboard feature).
+ * Scopes match the live TikTok app (Login Kit + Content Posting API): video.publish
+ * for Direct Post and user.info.basic for the creator_info query the post flow requires.
+ * Analytics scopes (user.info.stats, video.list) are deferred to the future dashboard
+ * spec — TikTok's audit makes you demo every requested scope, so we only request what
+ * this feature uses.
  */
 export const tokenEndpoint = "https://open.tiktokapis.com/v2/oauth/token/";
 
 export const scopes = [
   "video.publish",
-  "video.upload",
   "user.info.basic",
-  "user.info.stats",
 ];
 
 export function buildRefreshBody(
