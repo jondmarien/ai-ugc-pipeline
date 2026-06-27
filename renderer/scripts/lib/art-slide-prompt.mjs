@@ -30,7 +30,10 @@ function stripColor(s) {
     .trim();
 }
 
-export function buildSlidePrompt(slide, { accentHex, accentName, topic, mood, styleFusion }) {
+// Structured, model-agnostic description of a slide background. Per-model composers (below) turn
+// this into the concrete prompt string each model wants. Keeping one canonical spec means we adapt
+// to a new model by adding a composer, not by re-authoring every prompt.
+export function buildPromptSpec(slide, { accentHex, accentName, topic, mood, styleFusion }) {
   let subject;
   if (slide.visual_prompt?.trim()) {
     subject = slide.visual_prompt.trim();
@@ -43,7 +46,7 @@ export function buildSlidePrompt(slide, { accentHex, accentName, topic, mood, st
   }
   const zone = TEXT_ZONE[slide.role] || DEFAULT_ZONE;
   const SIGNAGE = /\b(alert|warning|danger|caution|breach|threat|notice)\b/gi;
-  const cleanAccent = (accentName || "").replace(SIGNAGE, "").replace(/\s{2,}/g, " ").trim() || "red";
+  const accent = (accentName || "").replace(SIGNAGE, "").replace(/\s{2,}/g, " ").trim() || "red";
   const cleanMood = mood
     ? mood
         .replace(SIGNAGE, "")
@@ -52,9 +55,45 @@ export function buildSlidePrompt(slide, { accentHex, accentName, topic, mood, st
         .replace(/,\s*,/g, ",")
         .trim()
     : "";
-  const fused = styleFusion ? ` fused with ${stripColor(styleFusion).trim() || styleFusion.trim()}` : "";
-  const styleTag = `Style: ${BRAND_STYLE}${fused}.${cleanMood ? ` Mood: ${cleanMood}.` : ""}`;
-  return `${subject}. Lit by a single ${cleanAccent} (${accentHex}) accent glow against a deep navy void #05070d. ${zone}. ${styleTag}`;
+  const fusionClause = styleFusion ? ` fused with ${stripColor(styleFusion).trim() || styleFusion.trim()}` : "";
+  return { subject, accent, accentHex, voidHex: "#05070d", zone, brandStyle: BRAND_STYLE, fusionClause, mood: cleanMood };
+}
+
+// FLUX-family composer — the canonical house string (FLUX.2 [klein] local, fal flux, Higgsfield
+// flux_2). This reproduces the historical buildSlidePrompt output byte-for-byte.
+export function composeFluxPrompt(spec) {
+  const styleTag = `Style: ${spec.brandStyle}${spec.fusionClause}.${spec.mood ? ` Mood: ${spec.mood}.` : ""}`;
+  return `${spec.subject}. Lit by a single ${spec.accent} (${spec.accentHex}) accent glow against a deep navy void ${spec.voidHex}. ${spec.zone}. ${styleTag}`;
+}
+
+// NONE of the Higgsfield CLI image models accept a negative-prompt param, so we bake the critical
+// exclusions into the POSITIVE prompt as plain language (modern models obey this far better than a
+// folded SD-style "Avoid:" dump). This is also the fix for cover slides rendering hallucinated text
+// "posters" — it forbids text/typography explicitly and up front.
+const POSITIVE_EXCLUSIONS =
+  "Pure abstract background imagery only: absolutely no text, no words, no letters, no numbers, no captions, no labels, no typography, no watermark, no logo, and no user-interface elements.";
+
+function composeNaturalPrompt(spec) {
+  // Natural-language models (Soul, Seedream, GPT-Image): drop the literal #hex (they read color
+  // names) and lead with the exclusions so text suppression wins.
+  const styleTag = `Style: ${spec.brandStyle}${spec.fusionClause}.${spec.mood ? ` Mood: ${spec.mood}.` : ""}`;
+  return `${POSITIVE_EXCLUSIONS} ${spec.subject}. Lit by a single ${spec.accent} accent glow against a deep navy void. ${spec.zone}. ${styleTag}`;
+}
+
+// Prompt family per model. "flux" gets the rich house prose (our prompts are tuned for it); all
+// families get the positive exclusions and an empty negative (no Higgsfield model supports one).
+export const PROMPT_FAMILIES = Object.freeze(["flux", "soul", "seedream", "gpt"]);
+
+export function composePromptForFamily(spec, family) {
+  const isNatural = family === "soul" || family === "seedream" || family === "gpt";
+  const prompt = isNatural ? composeNaturalPrompt(spec) : `${composeFluxPrompt(spec)} ${POSITIVE_EXCLUSIONS}`;
+  return { prompt, negative: "" };
+}
+
+// Back-compat: the historical entry point used by ComfyUI/FAL art, the MCP plan, and visual lint.
+// Unchanged output (FLUX-family string).
+export function buildSlidePrompt(slide, ctx) {
+  return composeFluxPrompt(buildPromptSpec(slide, ctx));
 }
 
 export function postThemeContext(post) {

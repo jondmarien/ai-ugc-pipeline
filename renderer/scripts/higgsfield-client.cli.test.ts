@@ -6,6 +6,9 @@ import {
   buildCliCreateArgs,
   parseCliCreateJson,
   resolveCliBin,
+  imageModelCost,
+  imageModelFamily,
+  estimateCost,
   MODEL_CATALOG,
 } from "./higgsfield-client.mjs";
 
@@ -105,9 +108,30 @@ test("resolveCliBin returns a bin + shell shape", () => {
   expect(typeof r.shell).toBe("boolean");
 });
 
-test("every image catalog entry has a cliJobSetType", () => {
+test("every image catalog entry has a cliJobSetType + promptFamily", () => {
   for (const m of MODEL_CATALOG.image) {
     expect(typeof m.cliJobSetType).toBe("string");
     expect((m.cliJobSetType as string).length).toBeGreaterThan(0);
+    expect(["flux", "soul", "seedream", "gpt"]).toContain(m.promptFamily);
   }
+});
+
+test("credit cost table reflects the verified Higgsfield rates", () => {
+  expect(imageModelCost("soul-2.0")).toBe(0.12);
+  expect(imageModelCost("flux")).toBe(1);
+  expect(imageModelCost("seedream-4.5")).toBe(1);
+  expect(imageModelCost("gpt-image-2")).toBe(7); // the one that must be gated by --budget
+  expect(imageModelCost("cinema-studio-3.0")).toBe(1); // null → conservative fallback
+});
+
+test("imageModelFamily maps models to composers", () => {
+  expect(imageModelFamily("flux")).toBe("flux");
+  expect(imageModelFamily("soul-2.0")).toBe("soul");
+  expect(imageModelFamily("seedream-4.5")).toBe("seedream");
+  expect(imageModelFamily("gpt-image-2")).toBe("gpt");
+});
+
+test("estimateCost returns the table credit value", async () => {
+  expect(await estimateCost("gpt-image-2")).toBe(7);
+  expect(await estimateCost("soul-2.0")).toBe(0.12);
 });
