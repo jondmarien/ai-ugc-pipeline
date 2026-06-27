@@ -20,17 +20,29 @@ A content production system for AI-in-cybersecurity UGC — Instagram-style caro
 
 ## How it fits together
 
-```
-idea → score → frame → script → visual → caption → QA → ASSEMBLE → upload → feedback
-                                                          │
-                          pipeline/content + pipeline/media own everything up to here
-                                                          │
-                                            renderer/ attaches at "Assemble" (optional)
-                                                          ▼
-                                   pipeline/renders/<date_slug>/  →  manual upload
+One JSON file per post is the source of truth: it's *designed* by the skills, *rendered* into upload-ready assets, then *distributed* through a human gate. Nothing downstream invents claims, and nothing posts without approval.
+
+```mermaid
+flowchart TB
+    IDEA["Idea + pillar"]
+    SK["Design + research<br/>skills + copy chain (LLM)"]
+    JSON["Post JSON, the single source of truth<br/>schema-validated; nothing downstream invents claims"]
+    REN["Render — bun run pipeline (code)<br/>art (local FLUX.2 or cloud) → carousel → package → voice → captions → reel"]
+    PKG["pipeline/renders/&lt;key&gt;/<br/>PNGs · reel.mp4 · caption · alt · sources · LICENSES"]
+    subgraph DIST["Distribute — gated, opt-in"]
+        YT["YouTube Shorts (API)"]
+        TT["TikTok (API)"]
+        IG["Instagram (manual checklist)"]
+    end
+    IDEA --> SK --> JSON --> REN --> PKG
+    PKG --> YT
+    PKG --> TT
+    PKG --> IG
+    G1["human gate: approve before render"] -.-> JSON
+    G2["human gate: only a generated post publishes"] -.-> DIST
 ```
 
-The 10-stage workflow lives in [`pipeline/content/CONTENT_PIPELINE.md`](pipeline/content/CONTENT_PIPELINE.md). The renderer is an **adapter, not a brain** — delete it and manual Canva/Figma/CapCut assembly of the same approved content still works.
+The 10-stage content workflow lives in [`pipeline/content/CONTENT_PIPELINE.md`](pipeline/content/CONTENT_PIPELINE.md); the system design is in [`renderer/docs/PROJECT_ARCHITECTURE.md`](renderer/docs/PROJECT_ARCHITECTURE.md) (layers + the post-JSON model), [`renderer/docs/PIPELINE_ARCHITECTURE.md`](renderer/docs/PIPELINE_ARCHITECTURE.md) (the render engine), and [`renderer/docs/PUBLISHING_ARCHITECTURE.md`](renderer/docs/PUBLISHING_ARCHITECTURE.md) (the gated publisher). The renderer is an **adapter, not a brain** — delete it and manual Canva/Figma/CapCut assembly of the same approved content still works.
 
 ## Content pillars
 
