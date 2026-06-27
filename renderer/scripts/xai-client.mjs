@@ -77,4 +77,16 @@ export async function generateImage(postKey, opts = {}) {
   throw new Error("Real xAI image generation not yet implemented");
 }
 
+export async function generateVideo(postKey, opts = {}) {
+  const { dryRun = false, only = null, model = DEFAULT_VIDEO_MODEL, cooldown = 0 } = opts;
+
+  if (dryRun) {
+    console.log(`[xai] DRY-RUN video gen for ${postKey} (model=${model})`);
+    return { success: true, dryRun: true, model };
+  }
+
+  // Real implementation will go here later
+  throw new Error("Real xAI video generation not yet implemented");
+}
+
 console.log("xai-client skeleton loaded");
