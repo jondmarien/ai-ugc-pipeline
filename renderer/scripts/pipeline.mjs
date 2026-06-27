@@ -189,6 +189,7 @@ const upscaleScaleArg = [...flags].find((f) => f.startsWith("--upscale-scale="))
 // of the code-built graph — with --upscale it picks the _with_upscale file. The file's settings win.
 const wantsUiFormat = flags.has("--ui-format");
 const USE_HIGGSFIELD = flags.has("--higgsfield");
+const USE_FAL = flags.has("--fal");
 const Q6_MODEL = "flux-2-klein-4b-Q6_K.gguf";                          // auto-downloaded by art-comfyui if missing
 
 const DRY = flags.has("--dry-run");
@@ -238,7 +239,7 @@ function runPost(key) {
   const wantsReel = !flags.has("--no-reel") && !!post.video?.enabled;
   if ((passesArg || wantsQ6 || wantsUiFormat) && !wantsArt && !USE_HIGGSFIELD)
     console.warn(`  ⚠ ${[passesArg && "--passes", wantsQ6 && "--q6", wantsUiFormat && "--ui-format"].filter(Boolean).join("/")} ignored this run — no art step (pass --art to force background regeneration).`);
-  if (USE_HIGGSFIELD && (flags.has("--flux1") || wantsQ6 || wantsUpscale || wantsUiFormat || passesArg))
+  if ((USE_HIGGSFIELD || USE_FAL) && (flags.has("--flux1") || wantsQ6 || wantsUpscale || wantsUiFormat || passesArg))
     console.warn(`  ⚠ ComfyUI-only flags (--flux1/--q6/--upscale/--ui-format/--passes) are ignored with --higgsfield.`);
 
   // Ordered list of the stages that will actually run for this post (after the skip logic above).
@@ -248,6 +249,8 @@ function runPost(key) {
   if (wantsArt) {
     if (USE_HIGGSFIELD) {
       plan.push(`art:higgsfield (cloud backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes ignored` : ""})`);
+    } else if (USE_FAL) {
+      plan.push(`art:fal (cloud backgrounds via FAL.ai${passesArg ? `, ${passesArg.split("=")[1]} passes ignored` : ""})`);
     } else {
       plan.push(`art (${wantsUiFormat ? "ui-format file" : flags.has("--flux1") ? "flux1" : "flux2"}${wantsQ6 ? " Q6" : ""} backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes` : ""}${wantsUpscale ? " + integrated upscale" : ""})`);
     }
@@ -256,16 +259,17 @@ function runPost(key) {
   plan.push("export (carousel)");
   if (!flags.has("--no-package")) plan.push("package (upload files)");
   if (wantsVoice) {
-    if (!USE_HIGGSFIELD) plan.push("free-comfyui (release GPU)");
+    if (!USE_HIGGSFIELD && !USE_FAL) plan.push("free-comfyui (release GPU)");
     plan.push(`voice (${effVoiceMode})`, "align (captions)");
   }
   if (wantsReel) {
     if (USE_HIGGSFIELD) plan.push("reel:higgsfield (motion segments)");
+    if (USE_FAL) plan.push("reel:fal (motion segments)");
     plan.push("reel (audio auto-embedded)");
   }
 
   console.log(`\n╭─ ${fullKey}`);
-  console.log(`│  art=${wantsArt ? (USE_HIGGSFIELD ? "higgsfield" : flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
+  console.log(`│  art=${wantsArt ? (USE_HIGGSFIELD ? "higgsfield" : USE_FAL ? "fal" : flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
   console.log(`│  steps to run:`);
   plan.forEach((s, i) => console.log(`│   ${i + 1}. ${s}`));
   console.log(`╰─`);
@@ -274,6 +278,8 @@ function runPost(key) {
   if (wantsArt) {
     if (USE_HIGGSFIELD) {
       step("art:higgsfield (backgrounds)", ["art:higgsfield", "--", fullKey, ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
+    } else if (USE_FAL) {
+      step("art:fal (backgrounds)", ["art:fal", "--", fullKey, ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
     } else {
       step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux1") ? ["--flux1"] : []), ...(flags.has("--art") ? ["--all"] : []), ...(passesArg ? [passesArg] : []), ...(wantsUpscale ? ["--upscale"] : []), ...(upscaleModelArg ? [upscaleModelArg] : []), ...(upscaleScaleArg ? [upscaleScaleArg] : []), ...(wantsUiFormat ? ["--ui-format"] : [])], { fatal: false, env: wantsQ6 ? { ART2_MODEL: Q6_MODEL } : undefined });
     }
@@ -283,7 +289,7 @@ function runPost(key) {
   if (!flags.has("--no-package")) step("package (upload files)", ["package", "--", fullKey]);
 
   if (wantsVoice) {
-    if (!USE_HIGGSFIELD) step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
+    if (!USE_HIGGSFIELD && !USE_FAL) step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
     step("voice (TTS)", [
       "voice",
       "--",
@@ -301,6 +307,9 @@ function runPost(key) {
   if (wantsReel) {
     if (USE_HIGGSFIELD) {
       step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey], { fatal: false });
+    }
+    if (USE_FAL) {
+      step("reel:fal (motion segments)", ["reel:fal", "--", fullKey], { fatal: false });
     }
     const reelArgs = ["reel", "--", fullKey, `--captions=${captionMode}`];
     if (!flags.has("--no-fit-voice")) reelArgs.push("--fit-voice");
