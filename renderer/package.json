@@ -30,9 +30,12 @@
     "test": "bun test",
     "test:smoke": "bun scripts/fit-smoke.mjs",
     "typecheck": "tsc --noEmit && tsc --noEmit -p remotion/tsconfig.json",
-    "remotion:studio": "bunx remotion studio remotion/index.ts"
+    "remotion:studio": "bunx remotion studio remotion/index.ts",
+    "art:fal": "bun scripts/art-fal.mjs",
+    "reel:fal": "bun scripts/reel-fal.mjs"
   },
   "dependencies": {
+    "@fal-ai/client": "^1.10.1",
     "@fontsource/archivo": "^5.2.5",
     "@fontsource/inter": "^5.2.5",
     "@fontsource/jetbrains-mono": "^5.2.5",
