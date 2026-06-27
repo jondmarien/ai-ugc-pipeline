@@ -1,6 +1,6 @@
 # Project Architecture
 
-How the AI-in-cybersecurity UGC pipeline is put together — the layers, the one JSON file everything hangs off, and where the work actually runs. For the step-by-step render flow (research → art → reel), see [PIPELINE_ARCHITECTURE.md](./PIPELINE_ARCHITECTURE.md).
+How the AI-in-cybersecurity UGC pipeline is put together — the layers, the one JSON file everything hangs off, and where the work actually runs. For the step-by-step render flow (research → art → reel), see [PIPELINE_ARCHITECTURE.md](./PIPELINE_ARCHITECTURE.md); for the gated YouTube/TikTok publish subsystem, see [PUBLISHING_ARCHITECTURE.md](./PUBLISHING_ARCHITECTURE.md).
 
 **Positioning:** real threats, real tools, no fake panic. The whole system exists to turn a sourced security claim into an Instagram carousel + reel, with a human approving before anything ships.
 
@@ -34,12 +34,19 @@ flowchart TB
         ALIGN["align.mjs → align-whisper.py"]
         REEL["render-reel.ts (Remotion)"]
     end
-    subgraph External["External / ML (GPU) — [code]"]
-        COMFY["ComfyUI :8000"]
+    subgraph External["External / ML — [code]"]
+        COMFY["ComfyUI :8000 (local GPU)"]
+        CLOUD["Cloud art/video<br/>FAL.ai · Higgsfield (--fal/--higgsfield)"]
         VOX["VoxCPM2"]
         WHIS["faster-whisper"]
     end
     OUT["pipeline/renders/&lt;key&gt;/<br/>PNGs · reel.mp4 · caption · sources · LICENSES"]
+    subgraph Distribution["Distribution · gated, opt-in — [code]+[human]"]
+        PUB["publish.mjs → run.ts<br/>(only a 'generated' post)"]
+        YT["YouTube Shorts (API)"]
+        TT["TikTok (API)"]
+        IG["Instagram (manual checklist)"]
+    end
 
     CMD --> SK1 --> SK2 --> NEW
     DOCS -.governs.-> SK1
@@ -50,8 +57,13 @@ flowchart TB
     JSON --> ART
     ART --> EXP --> PKG --> VOICE --> ALIGN --> REEL --> OUT
     ART <--> COMFY
+    ART -. cloud opt .-> CLOUD
     VOICE <--> VOX
     ALIGN <--> WHIS
+    OUT --> PUB
+    PUB --> YT
+    PUB --> TT
+    PUB -.manual.-> IG
 ```
 
 ---
@@ -61,12 +73,17 @@ flowchart TB
 ```
 ai-ugc-pipeline/
 ├── CLAUDE.md                      project guide + non-negotiable rules
+├── publish.config.json            per-platform publish settings (privacy/interaction)
 ├── .claude/
-│   ├── commands/                  /draft-post, /draft-week (slash commands)
-│   └── skills/
+│   ├── commands/                  /draft-post, /draft-week, /ingest-post, … (slash commands)
+│   └── skills/                    (mirrored to assets/skills/ for non-.claude agents)
 │       ├── ai-cybersecurity-ugc-carousel/   writes the content
 │       ├── react-remotion-instagram-renderer/  maps content → JSON
-│       └── humanizer/             (vendored, MIT) de-AI + voice calibration
+│       ├── humanizer/             de-AI + voice calibration
+│       ├── stop-slop/             strip predictable AI patterns
+│       ├── professional-proofreader/  final grammar/clarity pass
+│       └── ig-ingest/             mine reference IG posts → pipeline deltas
+├── docs/publishing/               publishing setup guide + audit applications + legal
 ├── pipeline/
 │   ├── content/                   workflow + voice + QA docs, idea backlog
 │   │   ├── QA_CHECKLIST.md  CONTENT_PIPELINE.md  CAPTION_BANK.md
@@ -81,7 +98,9 @@ ai-ugc-pipeline/
     │   └── components/carousel/    React carousel (Deck/Slide/Background)
     ├── remotion/                   reel composition (Scene, CaptionLayer, AudioBed)
     ├── scripts/                    the pipeline (see table below)
-    ├── public/backgrounds|audio/   generated assets (gitignored)
+    │   └── publish/                publish subsystem (adapters, auth/OAuth, state, run)
+    ├── public/backgrounds|audio|video/  generated assets (gitignored)
+    ├── .secrets/                   OAuth tokens (gitignored) · .env  client creds (gitignored)
     ├── docs/                       these architecture + how-to docs
     └── pyproject.toml              ML deps (VoxCPM, Whisper) — uv-managed .venv
 ```
@@ -99,14 +118,16 @@ ai-ugc-pipeline/
 | **Scaffold** | `renderer/scripts/new-post.ts` | Create a schema-valid skeleton from flags (`--theme/--captions/--voice/--music`). |
 | **Draft (headless)** | `renderer/scripts/draft.mjs`, `draft-week.mjs` | Drive the `claude` CLI + skills to research, fill, validate, render. |
 | **Validate** | `renderer/scripts/validate.ts` | Parse a post against the schema (N slides — default 8, alt_text length = N, score sum, ≥1 source). |
-| **Art** | `renderer/scripts/art-comfyui.mjs` | Drive ComfyUI HTTP API; **FLUX.2-klein (default)** / FLUX.1-schnell (`--flux1`) GGUF graphs; per-slide prompts, cover included; disk-aware (skips slides whose art already exists). |
+| **Art (local)** | `renderer/scripts/art-comfyui.mjs` | Drive ComfyUI HTTP API; **FLUX.2-klein (default)** / FLUX.1-schnell (`--flux1`) GGUF graphs; per-slide prompts, cover included; disk-aware (skips slides whose art already exists). |
+| **Art/video (cloud)** | `art-fal.mjs` / `art-higgsfield.mjs` (+ `reel-fal.mjs` / `reel-segments-higgsfield.mjs`) | Optional `--fal` / `--higgsfield`: same backgrounds + per-beat reel motion via a cloud API (`FAL_KEY` / `HIGGSFIELD_API_URL`). See [IMAGE_MODELS.md](./IMAGE_MODELS.md). |
 | **Export** | `renderer/scripts/export-carousel.ts` | Playwright → 1080×1350 carousel PNGs. |
-| **Package** | `renderer/scripts/build-package.ts` | Assemble `caption.txt`, `alt_text.txt`, `sources.md`, `LICENSES.md`. |
+| **Package** | `renderer/scripts/build-package.ts` | Assemble `caption.txt`, `alt_text.txt`, `sources.md`, `LICENSES.md`, `render_qa_checklist.md`, `instagram_upload_checklist.md` (+ `slide_captions.txt` when `features.multiple_captions`). |
 | **Voice** | `renderer/scripts/voice.mjs` → `voice-voxcpm.py` / `voice-http.mjs` | TTS narration (**VoxCPM2 2B default, on for every post**; OpenAI-compatible server via `http`); logs a reusable seed. |
 | **Align** | `renderer/scripts/align.mjs` → `align-whisper.py` | faster-whisper word-level caption timings. |
 | **Reel** | `renderer/scripts/render-reel.ts` | Remotion render, audio auto-embedded. |
-| **Orchestrator** | `renderer/scripts/pipeline.mjs` | One command: art → export → package → free-comfyui → voice → align → reel. |
+| **Orchestrator** | `renderer/scripts/pipeline.mjs` | One command: art → export → package → free-comfyui → voice → align → reel (+ optional `--publish=` stage). |
 | **GPU release** | `renderer/scripts/free-comfyui.mjs` | Unload ComfyUI's models so VoxCPM/Whisper get the 8 GB. |
+| **Publish** | `renderer/scripts/publish.mjs` + `publish/` (adapters, auth, config, state, run) | Gated, idempotent publish of the reel to YouTube Shorts + TikTok (Instagram manual). Only a `generated` post; see [PUBLISHING_ARCHITECTURE.md](./PUBLISHING_ARCHITECTURE.md). |
 
 ---
 
@@ -135,7 +156,7 @@ erDiagram
     PostData {
         string post_id
         string date "YYYY-MM-DD"
-        enum status "draft approved upload_ready"
+        enum status "draft approved generated upload_ready"
         enum pillar
         enum theme "offensive defensive hacking purple-team ai opt"
         string core_claim
@@ -197,18 +218,23 @@ erDiagram
 
 ## 5. Lifecycle
 
-A post moves `draft → approved → upload_ready`, and a human does the final upload — there's no auto-publish. Each slide independently tracks whether its background art is needed, generated, supplied, or just procedural CSS.
+A post moves `draft → approved → generated → upload_ready`, with a human gate in front of both rendering and publishing. `approved` is the human OK to render; a complete `bun run pipeline` run flips the post to `generated` (rendered, has a reel); publishing then targets only `generated` posts and flips them to `upload_ready`. Instagram is a manual upload at that point; YouTube/TikTok publish through the gated `bun run publish` (see [PUBLISHING_ARCHITECTURE.md](./PUBLISHING_ARCHITECTURE.md)). Each slide independently tracks whether its background art is needed, generated, supplied, or just procedural CSS.
 
 ```mermaid
 stateDiagram-v2
     direction LR
     [*] --> draft
     draft --> approved : QA gates pass [human]
-    approved --> upload_ready : rendered + packaged [code]
-    upload_ready --> [*] : manual human upload [human]
+    approved --> generated : rendered + packaged [pipeline]
+    generated --> upload_ready : gated YouTube and TikTok publish, IG manual [human-gated]
+    upload_ready --> [*]
     note right of draft
         per-slide asset_status:
         needed -> generated / existing / procedural
+    end note
+    note right of generated
+        publish gate: only generated posts publish.
+        --force never bypasses approval
     end note
 ```
 
@@ -234,11 +260,12 @@ flowchart LR
     W --> R["reel render<br/>(CPU / Chromium)"]
 ```
 
-**External systems:** ComfyUI runs as a persistent HTTP server on `127.0.0.1:8000` (its own env at `E:\ComfyUI`); VoxCPM2 + faster-whisper run in the renderer's own `uv` venv (`renderer/.venv`, Python 3.12); the optional `http` voice mode hits an OpenAI-compatible `/v1/audio/speech` server (e.g. Kokoro-FastAPI). Image gen, TTS, and alignment all run locally — no required cloud AI.
+**External systems:** ComfyUI runs as a persistent HTTP server on `127.0.0.1:8000` (its own env at `E:\ComfyUI`); VoxCPM2 + faster-whisper run in the renderer's own `uv` venv (`renderer/.venv`, Python 3.12); the optional `http` voice mode hits an OpenAI-compatible `/v1/audio/speech` server (e.g. Kokoro-FastAPI). Image gen, TTS, and alignment all run locally by default — no required cloud AI; the optional `--fal` / `--higgsfield` art path moves backgrounds + reel motion to a cloud API instead (and needs no `free-comfyui` GPU hand-off).
 
 ## 7. Tech stack
 
 - **Authoring/render:** Bun + TypeScript, React (carousel), Playwright (PNG export), Remotion (reel), zod (schema).
 - **Image gen:** ComfyUI + ComfyUI-GGUF — **FLUX.2-klein 4B (Q5, default)** / FLUX.1-schnell (Q4, `--flux1`); or cloud via `--fal` / `--higgsfield` (also per-beat reel motion). See [IMAGE_MODELS.md](./IMAGE_MODELS.md).
 - **Speech:** VoxCPM2 (Apache-2.0) for TTS; faster-whisper for word alignment. torch/torchaudio/torchvision pinned together (CUDA index) in `pyproject.toml`.
+- **Publishing:** gated YouTube Shorts + TikTok via a pluggable adapter layer (`renderer/scripts/publish/`); OAuth2 (`google-auth-library` for YouTube, PKCE for TikTok), raw `fetch` for the upload APIs. Instagram stays manual. See [PUBLISHING_ARCHITECTURE.md](./PUBLISHING_ARCHITECTURE.md).
 - **Content/QA:** house docs in `pipeline/content/` (voice, QA gates, idea backlog), enforced by the content + render skills, the humanizer/stop-slop/professional-proofreader copy chain, and the slash commands.
