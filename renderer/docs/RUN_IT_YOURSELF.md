@@ -27,7 +27,10 @@ Every command takes a **post key** = any unique substring of a file in `content/
 | `bun run voice -- <key>` | generate narration → `public/audio/<prefix>/voice.wav` (routes by `voice_mode`) |
 | `bun run align -- <key>` | Whisper word-timestamps → `beat.words[]` for exact `word`/`highlight` caption sync |
 | `bun run art -- <key>` | generate AI backgrounds for inner slides (FLUX.2-klein 4B by default; FLUX.1-schnell is legacy via `--flux1`; local) → `public/backgrounds/<prefix>/` |
+| `bun run art:fal` / `art:higgsfield -- <key>` | same backgrounds via a cloud API instead of local ComfyUI (FAL.ai `FAL_KEY` / Higgsfield `HIGGSFIELD_API_URL`+creds) |
 | `bun run import-bg -- <key> <folder>` | import externally-generated backgrounds (e.g. ComfyUI GGUF) → copies + sets `asset_status: existing` |
+| `bun run publish:auth <youtube\|tiktok>` | one-time OAuth → gitignored token in `renderer/.secrets/` |
+| `bun run publish -- <key> --platforms=youtube,tiktok` | gated publish of the reel to YouTube Shorts + TikTok (add `--dry-run`/`--yes`); only a `generated` post |
 | `bun run dev` | live preview at `http://localhost:4317/?post=<slug>&mode=deck` |
 | `bun run typecheck` | typecheck app + remotion |
 | `bun run draft-context` | print a variety digest of recent posts (overused hooks, image motifs, and defender-takeaway angles) so the next draft stays distinct |
@@ -61,7 +64,7 @@ Skip any step you don't need (no `art` → procedural backgrounds; no `voice` �
 
 ## 2b. Automated drafting (uses the skills — idea → rendered, no manual JSON)
 
-If you have the `claude` CLI installed and logged in, you don't have to fill JSON by hand. The repo ships two skills in `.claude/skills/` (`ai-cybersecurity-ugc-carousel` writes the content, `react-remotion-instagram-renderer` maps it to the schema) and a command that drives them end to end.
+If you have the `claude` CLI installed and logged in, you don't have to fill JSON by hand. The repo ships skills in `.claude/skills/` (`ai-cybersecurity-ugc-carousel` writes the content, `react-remotion-instagram-renderer` maps it to the schema, and the `humanizer` → `stop-slop` → `professional-proofreader` chain polishes the copy) and a command that drives them end to end.
 
 **Interactive (recommended)** — open Claude Code in the repo root and run:
 ```
@@ -141,6 +144,7 @@ cp content/posts/2026-06-02_ai-phishing-training.json content/posts/2026-06-13_m
 - **Real AI imagery on every slide:** `bun run art -- <key>` generates a background per inner slide with **FLUX.2 [klein] 4B** by default (local, Apache-2.0, commercial-OK — no server/Docker; **FLUX.1-schnell is legacy via `--flux1`**), writing to `public/backgrounds/<prefix>/` and flipping each slide to `asset_status: "generated"`. It builds each prompt from the slide's `visual_prompt` (or its on-slide copy + the post's core claim, so the image matches the topic). Then `bun run export` bakes them in.
   - Setup (uv): `uv pip install "diffusers>=0.38" transformers accelerate torch sentencepiece protobuf pillow` (0.38.0 patches a trust_remote_code CVE). Fits 8GB via cpu-offload (~10–20s/image after a one-time weights download). Preview prompts with `--dry-run`; include the cover too with `--all`; swap models with `ART_MODEL` (e.g. an SDXL repo). Log the model in the package `LICENSES.md`.
   - **Model choices (commercial-safe, 8GB):** default **FLUX.2 [klein] 4B** (Apache-2.0), tuned for 8GB **at FP8 (~6GB)** / GGUF (~3GB) — the script auto-uses `Flux2KleinPipeline` if your diffusers has it; otherwise the **most reliable 8GB route is ComfyUI's official FP8 Klein-4B workflow**, then drop the PNGs into `public/backgrounds/<prefix>/` and set the slides to `asset_status: "existing"`. **FLUX.1-schnell** (Apache-2.0) is the legacy/fallback engine via `--flux1`. **Avoid FLUX.2 [dev]/[klein] 9B — non-commercial and too large for 8GB.** SDXL (OpenRAIL++) is the LoRA-ecosystem alternative.
+- **Cloud art (no local GPU):** `bun run art:fal -- <key>` (FAL.ai, needs `FAL_KEY`) or `bun run art:higgsfield -- <key>` (needs `HIGGSFIELD_API_URL` + credentials) generate the same per-slide backgrounds via API, and `bun run reel:fal` / `bun run reel:higgsfield` add per-beat image-to-video motion to the reel. The pipeline drives both with `--fal` / `--higgsfield`. See `IMAGE_MODELS.md` → Cloud art + video.
 - **Cover** (or any slide) can use a hand-made image: drop a text-free PNG in `public/backgrounds/`, set `background_asset` + `asset_status: "existing"`.
 - The scaffolder pre-points the cover at `public/backgrounds/<prefix>_cover.png` with status `needed` (renders procedurally until the file exists + you flip it to `existing`).
 
@@ -193,8 +197,20 @@ Weekly cadence (Mon intake → Tue score → Wed script → Thu render → Fri Q
 | `validate`/`export` exits non-zero with field errors | The JSON is incomplete/inconsistent. Fix the named field — the renderer never guesses. Common ones: `alt_text` count ≠ 8, `score.total` ≠ sum, slide 1 not `cover`. |
 | Cover renders blank/procedural when you expected an image | The PNG isn't in `public/backgrounds/` or `asset_status` isn't `"existing"`. |
 
-## 6. After rendering → manual upload
-Open `pipeline/renders/<date_slug>/`: upload the PNGs in filename order (01→08), add per-slide alt text from `alt_text.txt`, and post the reel MP4 separately if used. Keep `sources.md` + `LICENSES.md` for your records. (API auto-posting stays out of scope until Meta access clears.)
+## 6. After rendering → upload
+
+### Instagram (manual)
+Open `pipeline/renders/<date_slug>/`: upload the PNGs in filename order (01→08), add per-slide alt text from `alt_text.txt`, and post the reel MP4 separately if used. Keep `sources.md` + `LICENSES.md` for your records. Meta API access is still pending, so Instagram stays a manual paste using `instagram_upload_checklist.md`.
 
 - **Single caption (default):** paste `caption.txt` into the carousel caption field. See `instagram_upload_checklist.md` for the ordered file list.
 - **Multiple Captions (opt-in):** with `features.multiple_captions: true`, paste each block from `slide_captions.txt` into the matching slide per `instagram_upload_checklist.md`; keep `caption.txt` as the one-field fallback for tools that only accept a single caption.
+
+### YouTube Shorts + TikTok (gated auto-publish)
+These publish via API through a human gate. Authorize once (`bun run publish:auth youtube` / `tiktok`), then:
+
+```bash
+bun run publish -- <date_slug> --platforms=youtube,tiktok --dry-run   # preview the plan, post nothing
+bun run publish -- <date_slug> --platforms=youtube,tiktok             # real run (asks to confirm)
+```
+
+Only a **`generated`** post (approved *and* rendered) can publish; success flips it to `upload_ready`, and re-runs skip platforms already posted. Uploads stay private / `SELF_ONLY` until each platform's audit passes (a one-value flip in `publish.config.json`). Full setup + audit applications: [`../../docs/publishing/PUBLISHING.md`](../../docs/publishing/PUBLISHING.md). You can also append `--publish=youtube,tiktok` to `bun run pipeline` to publish right after the reel.

@@ -11,7 +11,7 @@ bunx playwright install chromium     # carousel screenshots
 bunx remotion browser ensure         # reel rendering (once)
 
 # ONE command — art → carousel → package → free GPU → voice → synced captions → reel:
-bun run pipeline   -- 2026-06-02_ai-phishing-training                 # FLUX.2 + VoxCPM2-2B default; add --flux1 (legacy), --vox0.5, --seed=N, --no-voice/--no-reel
+bun run pipeline   -- 2026-06-02_ai-phishing-training                 # local FLUX.2 + VoxCPM2-2B default; add --flux1, --fal/--higgsfield (cloud art+motion), --publish=youtube,tiktok, --vox0.5, --seed=N, --no-voice/--no-reel
 
 # idea → researched + humanized JSON → rendered (skills + claude CLI):
 bun run draft      -- "AI agents leaking RAG data" model_security --theme=defensive --voice=voxcpm2
@@ -28,15 +28,18 @@ bun run voice    -- 2026-06-02_ai-phishing-training --vox2 --seed=12345   # narr
 #                --custom-voice path/to/jon.wav (clone your OWN voice, VoxCPM2 zero-shot; seed optional)
 bun run align    -- 2026-06-02_ai-phishing-training   # Whisper word-sync captions
 bun run reel     -- 2026-06-02_ai-phishing-training --fit-voice   # 1080×1920 @30fps MP4, audio embedded
+bun run publish  -- 2026-06-02_ai-phishing-training --platforms=youtube,tiktok --dry-run   # gated YT/TikTok publish (authorize once: bun run publish:auth youtube|tiktok)
 bun run dev                                            # live preview @ :4317
 ```
+
+**Cloud art/video (optional):** `--fal` (FAL.ai, needs `FAL_KEY`) or `--higgsfield` (needs `HIGGSFIELD_API_URL` + credentials) swap local ComfyUI for a cloud API across both backgrounds and per-beat reel motion. Standalone: `bun run art:fal|art:higgsfield`, `bun run reel:fal|reel:higgsfield`. See [docs/IMAGE_MODELS.md](docs/IMAGE_MODELS.md).
 
 **New to this? Start with [docs/RUN_IT_YOURSELF.md](docs/RUN_IT_YOURSELF.md)** — the full self-serve guide to making new reels/carousels.
 
 Output → `../pipeline/renders/2026-06-02_ai-phishing-training/`.
 
 ## What's working
-Both carousels (phishing, prompt injection) render end to end: 8× **1080×1350** PNGs over **unique per-post FLUX.2-klein backgrounds** (theme-coloured, text-free), full upload package, and a **1080×1920 @30fps H.264** reel with **VoxCPM2 narration** auto-embedded and **Whisper word-synced captions**. The voice seed is logged to `voice.meta.json` so a voice you like is reproducible. ComfyUI optional — without it, inner slides fall back to procedural CSS.
+Posts render end to end: N× **1080×1350** PNGs over **unique per-post FLUX.2-klein backgrounds** (theme-coloured, text-free; or cloud art via `--fal`/`--higgsfield`), full upload package (incl. an Instagram upload checklist and optional per-slide `slide_captions.txt`), and a **1080×1920 @30fps H.264** reel with **VoxCPM2 narration** auto-embedded (optional voice clone) and **Whisper word-synced captions**. The voice seed is logged to `voice.meta.json` so a voice you like is reproducible. Gated publishing to **YouTube Shorts + TikTok** ships via `bun run publish` (Instagram stays a manual checklist). ComfyUI optional — without it, inner slides fall back to procedural CSS.
 
 ## Docs
 | Doc | What |
@@ -44,7 +47,8 @@ Both carousels (phishing, prompt injection) render end to end: 8× **1080×1350*
 | [docs/RUN_IT_YOURSELF.md](docs/RUN_IT_YOURSELF.md) | **self-serve terminal guide** — new reels/carousels, Week-2 content, troubleshooting |
 | [docs/PROJECT_ARCHITECTURE.md](docs/PROJECT_ARCHITECTURE.md) | whole-system view — layers, post-JSON model, GPU boundaries (Mermaid) |
 | [docs/PIPELINE_ARCHITECTURE.md](docs/PIPELINE_ARCHITECTURE.md) | content→render flow — research, the 7 steps, sequence diagrams (Mermaid) |
-| [docs/IMAGE_MODELS.md](docs/IMAGE_MODELS.md) | slide background generation — FLUX.1-schnell / FLUX.2-klein-4B / SDXL matrix, FLUX.2 download, rich-export path |
+| [docs/IMAGE_MODELS.md](docs/IMAGE_MODELS.md) | slide background generation — local FLUX.1-schnell / FLUX.2-klein-4B / SDXL matrix + the cloud `--fal` / `--higgsfield` art+motion path |
+| [../docs/publishing/PUBLISHING.md](../docs/publishing/PUBLISHING.md) | gated YouTube/TikTok publishing — setup, auth, the publish command, audits |
 | [docs/RENDERER_ARCHITECTURE.md](docs/RENDERER_ARCHITECTURE.md) | structure, deps, commands, boundaries |
 | [docs/CONTENT_SCHEMA.md](docs/CONTENT_SCHEMA.md) | JSON contract + Markdown→JSON mapping + filenames |
 | [docs/CAROUSEL_COMPONENTS.md](docs/CAROUSEL_COMPONENTS.md) | role components + shared shell |
@@ -55,7 +59,7 @@ Both carousels (phishing, prompt injection) render end to end: 8× **1080×1350*
 | [docs/PIPELINE_INTEGRATION_NOTES.md](docs/PIPELINE_INTEGRATION_NOTES.md) | how this fits the pipeline |
 
 ## Guardrails
-No fabricated facts (claims triangulated + tagged `[Verified]/[Emerging]/[Scenario]`); no exploit/payload/evasion content; copy reads human, not AI (the `humanizer` skill + [`../pipeline/content/VOICE_AND_TONE_GUIDE.md`](../pipeline/content/VOICE_AND_TONE_GUIDE.md)); backgrounds are text-free/logo-free/credential-free; every model/asset that ships must be commercial-licensed (**VoxCPM2 ✅ Apache-2.0; F5-TTS base weights ❌ CC-BY-NC**); manual upload + human approval stay the default — no auto-publishing.
+No fabricated facts (claims triangulated + tagged `[Verified]/[Emerging]/[Scenario]`); no exploit/payload/evasion content; copy reads human, not AI (the `humanizer` skill + [`../pipeline/content/VOICE_AND_TONE_GUIDE.md`](../pipeline/content/VOICE_AND_TONE_GUIDE.md)); backgrounds are text-free/logo-free/credential-free; every model/asset that ships must be commercial-licensed (**VoxCPM2 ✅ Apache-2.0; F5-TTS base weights ❌ CC-BY-NC**); a human approval gate stays in front of every post — Instagram is manual, and YouTube/TikTok publish only through the gated `bun run publish` (a rendered, approved post). Nothing auto-posts a draft.
 
 ## Note on dependencies
 - `node_modules/` is not committed; run `bun install`.
