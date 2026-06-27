@@ -81,6 +81,8 @@ STAGES (in order; each auto-skips when not needed)
   6. voice         narration TTS (VoxCPM2 by default; your voice clone if a ref clip exists)
   7. align         Whisper word-synced captions
   8. reel          1080×1920 Remotion reel with the voice auto-embedded
+  9. publish       OPT-IN (--publish=…): post the reel to YouTube/TikTok via the gated
+                   publish command (same approved/generated gate; Instagram stays manual)
 
 ART & IMAGE QUALITY
   --flux1                   legacy FLUX.1-schnell graph (default is FLUX.2 klein)
@@ -118,6 +120,9 @@ STAGE TOGGLES & MISC
   --no-voice                skip voice + align (silent reel)
   --no-reel                 stop after the carousel/package
   --no-package              skip the package step
+  --publish=a,b             after the reel, publish to youtube,tiktok (gated on approved/
+                            generated; respects --dry-run; --yes skips the confirm prompt).
+                            Authorize once first: bun run publish:auth youtube|tiktok
   --dry-run                 print what would run, submit nothing
   --help, -h                this help
 
@@ -134,6 +139,8 @@ EXAMPLES
       execute the version-controlled with-upscale workflow file, UltraSharp model
   bun run pipeline -- post-a post-b --no-reel
       batch two posts, carousel + package only
+  bun run pipeline -- 2026-06-08_chatbot-log-leak --publish=youtube,tiktok --dry-run
+      full render, then preview the publish plan for both platforms (posts nothing)
 
 DOCS  renderer/docs/IMAGE_MODELS.md (quality knobs) · PIPELINE_ARCHITECTURE.md · CLAUDE.md
 `;
@@ -189,6 +196,10 @@ const tailArg = [...flags].find((f) => f.startsWith("--tail="));
 // Captions default to "highlight" for pipeline reels; override with --captions=block|word.
 const capFlag = [...flags].find((f) => f.startsWith("--captions="))?.split("=")[1];
 const captionMode = ["block", "word", "highlight"].includes(capFlag) ? capFlag : "highlight";
+// Opt-in final stage: after the reel, publish to YouTube/TikTok via the gated `publish` command
+// (same approved/generated gate; Instagram stays manual). --publish=youtube,tiktok ; omit to skip.
+const publishArg = [...flags].find((f) => f.startsWith("--publish="))?.split("=")[1];
+const publishPlatforms = publishArg ? publishArg.split(",").map((s) => s.trim()).filter(Boolean) : null;
 // Opt-in quality knobs — all default OFF; only meaningful with the art step (or, for --upscale,
 // when there are background images to sharpen). They don't change a normal `bun run pipeline` run.
 const passesArg = [...flags].find((f) => f.startsWith("--passes="));   // forwarded to `bun run art`
@@ -261,6 +272,7 @@ function runPost(key) {
   if (!flags.has("--no-package")) plan.push("package (upload files)");
   if (wantsVoice) plan.push("free-comfyui (release GPU)", `voice (${effVoiceMode})`, "align (captions)");
   if (wantsReel) plan.push("reel (audio auto-embedded)");
+  if (publishPlatforms) plan.push(`publish (${publishPlatforms.join(",")}${DRY ? ", dry-run" : ""})`);
 
   console.log(`\n╭─ ${fullKey}`);
   console.log(`│  art=${wantsArt ? (flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
@@ -327,6 +339,18 @@ for (const key of keys) {
     const fk = runPost(key);
     ok++;
     if (COMPLETE_RUN && fk) markGenerated(fk);
+    // Opt-in publish stage (after the reel; same approved/generated gate as `bun run publish`).
+    if (publishPlatforms && fk) {
+      if (flags.has("--no-reel")) {
+        console.warn(`  ⚠ --publish ignored for ${fk}: --no-reel means there is no reel to publish.`);
+      } else {
+        step(
+          `publish (${publishPlatforms.join(",")})`,
+          ["publish", "--", fk, `--platforms=${publishPlatforms.join(",")}`, ...(DRY ? ["--dry-run"] : []), ...(flags.has("--yes") ? ["--yes"] : [])],
+          { fatal: false },
+        );
+      }
+    }
   } catch (e) {
     console.error(`\n✗ ${key}: ${e.message}`);
     if (keys.length === 1) process.exit(1);
