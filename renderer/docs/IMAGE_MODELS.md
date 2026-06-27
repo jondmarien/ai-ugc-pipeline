@@ -26,17 +26,24 @@ HF_HUB_CACHE=E:/ai-ugc-hf/hub
 
 **TL;DR:** the default art engine is **FLUX.2 [klein] 4B** (Apache-2.0, tuned for 8 GB); **FLUX.1-schnell** stays as a legacy `--flux1` fallback. Avoid anything labeled *dev* or *9B* — non-commercial.
 
-## Cloud art + video (no local GPU): `--fal` / `--higgsfield`
+## Cloud art (no local GPU): `--fal` / `--higgsfield` — and opt-in reel motion: `--motion=`
 
-When you don't want to run a local model, two cloud paths generate the **same** per-slide backgrounds (same prompt contract as ComfyUI art, via `lib/art-slide-prompt.mjs`) **and** per-beat image-to-video motion clips for the reel. The pipeline drives them with `--fal` or `--higgsfield`; ComfyUI-only knobs (`--flux1`/`--q6`/`--upscale`/`--ui-format`/`--passes`) are ignored, and no `free-comfyui` GPU handoff runs.
+When you don't want to run a local model, two cloud paths generate the **same** per-slide backgrounds (same prompt contract as ComfyUI art, via `lib/art-slide-prompt.mjs`). **Art and reel motion are decoupled:** `--fal` / `--higgsfield` pick the cloud **art** provider only; cloud **reel motion** (per-beat image-to-video) is separately opted into with `--motion=<provider>`. With a cloud art provider the ComfyUI-only knobs (`--flux1`/`--q6`/`--upscale`/`--ui-format`/`--passes`) are ignored and no `free-comfyui` handoff runs; if art stays local but `--motion=` is cloud, ComfyUI still runs for art and the GPU handoff happens as usual.
 
-| Provider | Flag | Standalone commands | Auth | Models |
-| --- | --- | --- | --- | --- |
-| **FAL.ai** | `--fal` | `bun run art:fal -- <key>` · `bun run reel:fal -- <key>` | `FAL_KEY` (env) | Images: FLUX.1 dev/schnell, FLUX.2 pro/dev. Video: Kling 2.1 Standard (image-to-video). Pick with `--model=`. |
-| **Higgsfield** | `--higgsfield` | `bun run art:higgsfield -- <key>` · `bun run reel:higgsfield -- <key>` | the authed `higgsfield` CLI (default), or platform API keys (env) | Images: Soul 2.0 (default), Cinema Studio 3.0, Flux, GPT Image 2, Seedream 4.5. Video: DoP / Kling / Seedance / Veo (image-to-video). Pick with `--model=`. |
+| Provider | Art flag | Reel motion | Standalone commands | Auth | Models |
+| --- | --- | --- | --- | --- | --- |
+| **FAL.ai** | `--fal` | `--motion=fal` | `bun run art:fal -- <key>` · `bun run reel:fal -- <key>` | `FAL_KEY` (env) | Images: FLUX.1 dev/schnell, FLUX.2 pro/dev. Video: Kling 2.1 Standard (i2v). |
+| **Higgsfield** | `--higgsfield` | `--motion=higgsfield` | `bun run art:higgsfield -- <key>` · `bun run reel:higgsfield -- <key>` | the authed `higgsfield` CLI (default), or platform API keys (env) | Images: Soul 2.0 (default), Cinema Studio 3.0, Flux, GPT Image 2, Seedream 4.5. Video: DoP / Kling / Seedance / Veo (i2v). |
 
-- **Art** writes `public/backgrounds/<prefix>/NN_role.png`, flips each slide to `asset_status: "generated"`, and records a public image URL (`fal_image_url` / `higgsfield_image_url`) so the video step can animate it. Logs licenses into the post's `asset_licenses`.
-- **Reel motion** (`reel:fal` / `reel:higgsfield`) writes `public/video/<prefix>/beat_*.mp4` and sets `beat.video_asset` (CTA beats skipped); the Remotion reel composites these clips. In Higgsfield **CLI mode** the local PNG is handed straight to the CLI (it auto-uploads), so no public hosting is needed; otherwise it falls back to `FAL_PUBLIC_BASE_URL` / `HIGGSFIELD_PUBLIC_BASE_URL` / the stored image URL.
+**Picking a model** (pipeline passthroughs): `--higgsfield-model=<id>` / `--fal-model=<id>` for the image (art) model, `--motion-model=<id>` for the i2v (reel motion) model. List the Higgsfield catalog with `bun run higgsfield:models` (add `--live` for the full provider catalog). Standalone scripts take `--model=<id>` directly.
+
+**Reel motion is opt-in** — `--motion=local` (default, or omit) means **no cloud i2v**: the reel is composited entirely by local Remotion (animated stills). `--motion=higgsfield|fal` animates the existing backgrounds — **whatever made them**, local or cloud — into per-beat clips. Examples:
+- `--higgsfield` → Higgsfield art, local Remotion reel.
+- `--higgsfield --motion=higgsfield` → Higgsfield art + Higgsfield i2v reel.
+- `--motion=higgsfield` (no `--higgsfield`) → local ComfyUI art + Higgsfield i2v reel.
+
+- **Art** writes `public/backgrounds/<prefix>/NN_role.png`, flips each slide to `asset_status: "generated"`, and records a public image URL (`fal_image_url` / `higgsfield_image_url`) so the motion step can animate it. Logs licenses into the post's `asset_licenses`.
+- **Reel motion** (`reel:fal` / `reel:higgsfield`) writes `public/video/<prefix>/beat_*.mp4` and sets `beat.video_asset` (CTA beats skipped); the Remotion reel composites these clips. In Higgsfield **CLI mode** the local PNG is handed straight to the CLI (it auto-uploads), so no public hosting is needed; otherwise it falls back to `FAL_PUBLIC_BASE_URL` / `HIGGSFIELD_PUBLIC_BASE_URL` / the stored image URL. The reel `.mp4` itself is **always** rendered locally by Remotion.
 - Both cache responses under `renderer/.cache/<provider>/` (keyed on model + prompt-hash + seed + size). Flags: `--all` (regenerate the cover too), `--dry-run`, `--only=N`, `--model=ID`. Keys come from `process.env` only — never commit them (`renderer/.env` is gitignored).
 
 ### Higgsfield provider modes: `cli` · `rest` · `mcp`
