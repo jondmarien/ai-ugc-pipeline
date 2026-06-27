@@ -262,8 +262,10 @@ export async function generateVideoFromImage({
   }
 }
 
-function updatePostJson(postPath, prefix, destName, slideIndex, model, falImageUrl) {
-  const post = JSON.parse(readFileSync(postPath, "utf8"));
+// Mutates the passed-in `post` object (the caller's single source of truth) and persists it.
+// Reading a fresh copy from disk here would be clobbered by the caller's own final write, so we
+// patch the shared object instead — incremental per-slide writes still persist correctly.
+function updatePostJson(post, postPath, prefix, destName, slideIndex, model, falImageUrl) {
   const assetPath = `/backgrounds/${prefix}/${destName}`;
   const slide = post.slides?.[slideIndex];
   if (!slide) throw new Error(`FAL write failed: slide index ${slideIndex} missing from ${postPath}`);
@@ -333,7 +335,7 @@ export async function renderSlide({
   });
 
   const postPath = path.join(RENDERER, "content", "posts", `${post.post_id}.json`);
-  const assetPath = updatePostJson(postPath, prefix, outName, slideIndex, model, generated.imageUrl);
+  const assetPath = updatePostJson(post, postPath, prefix, outName, slideIndex, model, generated.imageUrl);
 
   return {
     imagePath: path.join(outDir, outName),
