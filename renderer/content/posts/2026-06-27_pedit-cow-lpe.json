@@ -1,0 +1,337 @@
+{
+  "post_id": "2026-06-27_pedit-cow-lpe",
+  "date": "2026-06-27",
+  "slug": "pedit-cow-lpe",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "offensive_ai",
+  "theme": "offensive",
+  "style_fusion": "",
+  "audience": "security_practitioners",
+  "core_claim": "A partial copy-on-write bug in Linux net/sched act_pedit lets an unprivileged local user corrupt the page cache of setuid binaries like /bin/su and obtain root.",
+  "claim_tags": [
+    "verified"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 4,
+    "defender_usefulness": 5,
+    "total": 23
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "alert red",
+    "pillar_accent": "offensive_ai",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#ef4444",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-27_pedit-cow-lpe",
+    "filename_prefix": "2026-06-27_pedit-cow-lpe",
+    "expected_files": [
+      "2026-06-27_pedit-cow-lpe_01_cover.png",
+      "2026-06-27_pedit-cow-lpe_02_context.png",
+      "2026-06-27_pedit-cow-lpe_03_risk.png",
+      "2026-06-27_pedit-cow-lpe_04_mechanism.png",
+      "2026-06-27_pedit-cow-lpe_05_failure-point.png",
+      "2026-06-27_pedit-cow-lpe_06_defense.png",
+      "2026-06-27_pedit-cow-lpe_07_takeaway.png",
+      "2026-06-27_pedit-cow-lpe_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md",
+      "instagram_upload_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "slide_captions_file": "slide_captions.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "features": {
+    "multiple_captions": false
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "Kernel hands root via page-cache bug.",
+      "subline": "CVE-2026-46331 turns act_pedit into an unprivileged LPE.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a cracked kernel ring sitting on dark metal with one glowing fracture line running through it, high contrast rim light, deep negative space below",
+      "background_asset": "/backgrounds/2026-06-27_pedit-cow-lpe_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "Validation mistake writes to shared page-cache page.",
+      "subline": "Present since v5.18. Fixed in v7.1-rc7.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single sheet of paper partially copied with one edge still attached to the original stack in deep shadow",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "Unprivileged namespaces give CAP_NET_ADMIN by default on RHEL and Debian.",
+      "subline": "No disk writes. No file-integrity alerts. Root on next su.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a setuid binary icon half-hidden behind a translucent namespace boundary in low light",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "Namespace child uses act_pedit to corrupt cached /bin/su ELF entrypoint.",
+      "subline": "Public PoC at sgkdev/packet_edit_meme. Works on RHEL 10, Debian 13, Ubuntu 24.04.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "abstract flow of a traffic-control rule arrow pointing at a shared memory page that fractures into two paths",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Page-cache integrity assumptions were not re-checked after the optimisation.",
+      "subline": "File-integrity tools see nothing because nothing on disk changes.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single overlooked verification gate standing open in an otherwise orderly dark corridor",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Apply the upstream fix or distribution update immediately.",
+      "subline": "Restrict unprivileged namespaces. Monitor with eBPF or auditd.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean patch stamp being pressed onto dark metal in deep shadow",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "Page-cache poisoning attacks are no longer theoretical.",
+      "subline": "Treat shared memory like it is.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single verified kernel ring etched into dark metal with one clean highlight",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Which kernel are you running right now?",
+      "subline": "Save this for your next patch window review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "clean dark end-card scene with strong empty negative space for a question and handle, premium editorial cybersecurity look",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Linux kernel hands attackers root through a page-cache bug no one was watching. CVE-2026-46331 (pedit COW) in act_pedit lets an unprivileged user corrupt the cached ELF of /bin/su and get a root shell on the next invocation. Public PoC exists. Affected: RHEL, Debian, Ubuntu 24.04. Fixed in v7.1-rc7. Patch now. Restrict unprivileged namespaces where possible. Monitor namespace creation and setuid execution. The page cache is shared memory. Treat it like it is.\n\nFollow for real kernel and AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "LinuxKernel",
+    "PrivilegeEscalation",
+    "CVE202646331",
+    "Cybersecurity",
+    "RedTeam"
+  ],
+  "comment_prompt": "Which distribution are you running, and have you disabled unprivileged user namespaces on production hosts?",
+  "alt_text": [
+    "Cover: cracked kernel ring with glowing fracture on dark metal, high contrast, lower third empty.",
+    "Context: single sheet of paper partially copied with one edge still attached to the original stack in shadow.",
+    "Risk: setuid binary icon half-hidden behind a translucent namespace boundary in low light.",
+    "Mechanism: abstract traffic-control rule arrow pointing at a shared memory page that fractures.",
+    "Failure point: overlooked verification gate standing open in an otherwise orderly dark corridor.",
+    "Defense: clean patch stamp being pressed onto dark metal in deep shadow.",
+    "Takeaway: single verified kernel ring etched into dark metal with one clean highlight.",
+    "CTA: clean dark end-card scene with strong empty negative space for a question and handle."
+  ],
+  "sources": [
+    {
+      "source": "cybersecuritynews.com",
+      "link": "https://cybersecuritynews.com/linux-pedit-cow-exploit/",
+      "supports": "Overview, mechanism, affected distributions table, PoC name packet_edit_meme, mitigation steps.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "thecybersecguru.com",
+      "link": "https://thecybersecguru.com/news/linux-lpe-pedit-cow-dirtyclone-cve-2026-46331-cve-2026-43503/",
+      "supports": "Detailed root cause in tcf_pedit_act, DirtyClone sibling CVE, workarounds including module blacklist and sysctl.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "GitHub sgkdev/packet_edit_meme",
+      "link": "https://github.com/sgkdev/packet_edit_meme",
+      "supports": "Public PoC code, build instructions, verified targets table (RHEL 10, Debian 13, Ubuntu 24.04 with --ubuntu flag).",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "NVD / kernel.org",
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-46331",
+      "supports": "Official CVE description, commit 899ee91156e5 culprit, fix in v7.1-rc7.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "Red Hat CVE entry",
+      "link": "https://access.redhat.com/security/cve/CVE-2026-46331",
+      "supports": "Flaw description in tcf_pedit_act and skb_ensure_writable COW range calculation.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 26,
+    "fps": 30,
+    "export_name": "2026-06-27_pedit-cow-lpe_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-27_pedit-cow-lpe/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "Linux kernel hands attackers root through a page-cache bug no one was watching."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "text": "CVE-2026-46331 in act_pedit lets an unprivileged user corrupt the cached ELF of /bin/su."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "text": "Patch kernels immediately and restrict unprivileged namespaces on multi-tenant hosts."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "text": "Page-cache poisoning attacks are no longer theoretical. Treat shared memory like it is."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "text": "Which kernel are you running, and have you restricted namespaces?"
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Kernel hands root via page-cache bug"
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Validation mistake writes to shared page-cache page"
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "Patch now. Restrict namespaces. Monitor."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "Page-cache poisoning is real"
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Which kernel are you running?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}
