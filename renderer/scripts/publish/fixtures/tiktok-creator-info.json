@@ -1,0 +1,12 @@
+{
+  "data": {
+    "creator_username": "chron0s_cyb3r_w0rld",
+    "creator_nickname": "chron0s",
+    "privacy_level_options": ["SELF_ONLY"],
+    "comment_disabled": false,
+    "duet_disabled": false,
+    "stitch_disabled": false,
+    "max_video_post_duration_sec": 600
+  },
+  "error": { "code": "ok", "message": "", "log_id": "fixture-creator-info" }
+}

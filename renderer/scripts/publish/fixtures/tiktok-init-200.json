@@ -1,0 +1,7 @@
+{
+  "data": {
+    "publish_id": "v_pub_url~v2.123456789",
+    "upload_url": "https://open-upload.tiktokapis.com/video/?upload_id=fixture&upload_token=fixture"
+  },
+  "error": { "code": "ok", "message": "", "log_id": "fixture-init" }
+}
