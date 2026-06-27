@@ -129,6 +129,8 @@ REEL MOTION  (opt-in; the reel itself is always composited locally by Remotion)
                             art source (local or cloud). Higgsfield CLI mode auto-uploads the local
                             PNG, so no public hosting is needed.
   --motion-model=ID         i2v model for --motion (e.g. dop for Higgsfield; kling-standard for FAL)
+  --motion-budget=N         credit cap for Higgsfield motion (default 60; 0 = unlimited; --yes overrides).
+                            i2v is pricey: ≈7.5 cr/clip (dop), 22 (veo-3.1) — a 6-beat reel is 45/132.
 
 CAPTIONS & REEL
   --captions=MODE           highlight (default) | block | word — reel subtitle style
@@ -234,6 +236,8 @@ if (motionArgRaw && !MOTION_VALID.includes(motionArgRaw)) {
 }
 const MOTION = motionArgRaw && motionArgRaw !== "none" && motionArgRaw !== "local" ? motionArgRaw : null;
 const motionModelArg = [...flags].find((f) => f.startsWith("--motion-model="))?.split("=")[1];
+// Separate credit cap for the (pricier) motion step; forwarded to reel:* as --budget. --yes overrides.
+const motionBudgetArg = [...flags].find((f) => f.startsWith("--motion-budget="))?.split("=")[1];
 // Higgsfield provider mode (cli default | rest | mcp) applies to whichever Higgsfield step runs
 // this turn — art (--higgsfield) and/or motion (--motion=higgsfield).
 const hfModeArg = [...flags].find((f) => f.startsWith("--higgsfield-mode="))?.split("=")[1];
@@ -363,7 +367,7 @@ function runPost(key) {
     // Reel motion is OPT-IN via --motion=<provider> and independent of the art provider; the final
     // reel is always composited locally by Remotion (these only pre-generate per-beat i2v clips).
     if (MOTION === "higgsfield") {
-      step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey, ...hfModeArgs, ...(motionModelArg ? [`--model=${motionModelArg}`] : [])], { fatal: false });
+      step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey, ...hfModeArgs, ...(motionModelArg ? [`--model=${motionModelArg}`] : []), ...(motionBudgetArg ? [`--budget=${motionBudgetArg}`] : []), ...(flags.has("--yes") ? ["--yes"] : [])], { fatal: false });
     }
     if (MOTION === "fal") {
       step("reel:fal (motion segments)", ["reel:fal", "--", fullKey, ...(motionModelArg ? [`--model=${motionModelArg}`] : [])], { fatal: false });

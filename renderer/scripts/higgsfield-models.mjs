@@ -52,12 +52,18 @@ function imageSection() {
 }
 
 function videoSection() {
-  console.log(`\nVIDEO  (pipeline flag: --motion-model=<id>, with --motion=higgsfield)`);
+  console.log(`\nVIDEO / motion  (pipeline flag: --motion-model=<id>, with --motion=higgsfield)`);
   table([
-    ["ID", "NAME", "CLI JOB TYPE"],
-    ["--", "----", "------------"],
-    ...MODEL_CATALOG.video.map((m) => [m.id + (m.id === DEFAULT_VIDEO_MODEL ? " (default)" : ""), m.name, m.cliJobSetType ?? "—"]),
+    ["ID", "NAME", "CR/CLIP", "CLI JOB TYPE"],
+    ["--", "----", "-------", "------------"],
+    ...MODEL_CATALOG.video.map((m) => [
+      m.id + (m.id === DEFAULT_VIDEO_MODEL ? " (default)" : ""),
+      m.name,
+      typeof m.creditCost === "number" ? String(m.creditCost) : "?",
+      m.cliJobSetType ?? "—",
+    ]),
   ]);
+  console.log(`  (cr/clip = credits per beat; a reel has several beats. Motion gate default = 60 credits.)`);
 }
 
 console.log("Higgsfield models the pipeline accepts:");
