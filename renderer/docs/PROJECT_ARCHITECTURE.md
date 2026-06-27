@@ -239,6 +239,6 @@ flowchart LR
 ## 7. Tech stack
 
 - **Authoring/render:** Bun + TypeScript, React (carousel), Playwright (PNG export), Remotion (reel), zod (schema).
-- **Image gen:** ComfyUI + ComfyUI-GGUF — **FLUX.2-klein 4B (Q5, default)** / FLUX.1-schnell (Q4, `--flux1`). See [IMAGE_MODELS.md](./IMAGE_MODELS.md).
+- **Image gen:** ComfyUI + ComfyUI-GGUF — **FLUX.2-klein 4B (Q5, default)** / FLUX.1-schnell (Q4, `--flux1`); or cloud via `--fal` / `--higgsfield` (also per-beat reel motion). See [IMAGE_MODELS.md](./IMAGE_MODELS.md).
 - **Speech:** VoxCPM2 (Apache-2.0) for TTS; faster-whisper for word alignment. torch/torchaudio/torchvision pinned together (CUDA index) in `pyproject.toml`.
-- **Content/QA:** house docs in `pipeline/content/` (voice, QA gates, idea backlog), enforced by the two skills + the slash commands.
+- **Content/QA:** house docs in `pipeline/content/` (voice, QA gates, idea backlog), enforced by the content + render skills, the humanizer/stop-slop/professional-proofreader copy chain, and the slash commands.

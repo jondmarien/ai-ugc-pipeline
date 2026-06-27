@@ -2,9 +2,9 @@
 
 **AI cybersecurity explained through viral carousels: real threats, real tools, no fake panic.**
 
-A manual-first, API-ready content production system for AI-in-cybersecurity UGC — Instagram-style carousels and short-form Reels — plus an optional React/Remotion rendering layer that turns approved posts into pixel-exact assets.
+A content production system for AI-in-cybersecurity UGC — Instagram-style carousels and short-form Reels — plus an optional React/Remotion rendering layer that turns approved posts into pixel-exact assets, and a gated publisher for YouTube Shorts + TikTok.
 
-> Built while Instagram/Meta API access is pending verification. Everything is designed to **publish manually now** (Meta Business Suite / Instagram) and **plug into API automation later** behind a human approval gate.
+> **Publishing:** YouTube Shorts and TikTok publish through a gated `bun run publish` (only a rendered+approved post, with dry-run/confirm). **Instagram stays manual** (Meta API access pending) — the pipeline emits a paste-ready upload checklist. Nothing auto-posts; a human gate is always in front. See [`docs/publishing/PUBLISHING.md`](docs/publishing/PUBLISHING.md).
 
 ---
 
@@ -45,14 +45,14 @@ bun install
 bunx playwright install chromium      # carousel screenshots
 bunx remotion browser ensure          # reel rendering (once)
 
-# one command: backgrounds (ComfyUI / FLUX.2) → carousel → package → free GPU → voice → synced captions → reel
-bun run pipeline -- 2026-06-02_ai-phishing-training --flux2
+# one command: backgrounds (local FLUX.2 klein by default) → carousel → package → free GPU → voice → synced captions → reel
+bun run pipeline -- 2026-06-02_ai-phishing-training
 ```
 
-Output lands in `pipeline/renders/2026-06-02_ai-phishing-training/`. The pipeline runs one GPU model at a time (8 GB) and auto-skips stages it doesn't need. Individual steps (`export`, `package`, `voice`, `align`, `reel`) and flags are in [`renderer/README.md`](renderer/README.md); the design lives in [`renderer/docs/PROJECT_ARCHITECTURE.md`](renderer/docs/PROJECT_ARCHITECTURE.md) and [`renderer/docs/PIPELINE_ARCHITECTURE.md`](renderer/docs/PIPELINE_ARCHITECTURE.md).
+Output lands in `pipeline/renders/2026-06-02_ai-phishing-training/`. The pipeline runs one GPU model at a time (8 GB) and auto-skips stages it doesn't need. Backgrounds are local ComfyUI/FLUX.2 by default; pass `--fal` or `--higgsfield` to generate art (and per-beat reel motion) via a cloud API instead — see [`renderer/docs/IMAGE_MODELS.md`](renderer/docs/IMAGE_MODELS.md). Add `--publish=youtube,tiktok` to publish the reel after rendering (gated; see below). Individual steps (`export`, `package`, `voice`, `align`, `reel`) and flags are in [`renderer/README.md`](renderer/README.md); the design lives in [`renderer/docs/PROJECT_ARCHITECTURE.md`](renderer/docs/PROJECT_ARCHITECTURE.md) and [`renderer/docs/PIPELINE_ARCHITECTURE.md`](renderer/docs/PIPELINE_ARCHITECTURE.md).
 
 ### Or automate it with the skills (idea → rendered, no manual JSON)
-With the `claude` CLI installed, the repo's two skills (`.claude/skills/`) do the content + source research for you:
+With the `claude` CLI installed, the repo's skills (`.claude/skills/`) do the content + source research for you (the content/render pair plus the `humanizer` → `stop-slop` → `professional-proofreader` copy chain, and `ig-ingest` for mining reference posts):
 ```
 # interactive, in Claude Code at the repo root:
 /draft-post AI agents leaking RAG data | model_security | slides=10 | captions=highlight
@@ -61,7 +61,22 @@ With the `claude` CLI installed, the repo's two skills (`.claude/skills/`) do th
 cd renderer && bun run draft -- "AI agents leaking RAG data" model_security --captions=highlight
 cd renderer && bun run draft-week -- "idea1::offensive_ai" "idea2::model_security::captions=word" "idea3::governance"
 ```
-`/draft-post` makes one post; `/draft-week` batches up to 5 with pillar variety + a posting calendar. Both research real sources, write schema-valid JSON, validate, and render the carousel + reel. **Slide count** is selectable per post — `slides=N` (3–20, default 8). **Subtitle style** is selectable per post — `block` (paragraph), `word` (karaoke), or `highlight` (active word lit). See [`renderer/docs/RUN_IT_YOURSELF.md`](renderer/docs/RUN_IT_YOURSELF.md) §2b. (Always review generated sources before posting — the no-fabrication rule still applies.)
+`/draft-post` makes one post; `/draft-week` batches up to 5 with pillar variety + a posting calendar. Both research real sources, write schema-valid JSON, validate, and render the carousel + reel. **Slide count** is selectable per post — `slides=N` (3–20, default 8). **Subtitle style** is selectable per post — `block` (paragraph), `word` (karaoke), or `highlight` (active word lit, the default). Carousels can also opt into native **per-slide Instagram captions** (the `--multiple-captions` opt-in), which emit a `slide_captions.txt` + paste-order checklist. See [`renderer/docs/RUN_IT_YOURSELF.md`](renderer/docs/RUN_IT_YOURSELF.md) §2b. (Always review generated sources before posting — the no-fabrication rule still applies.)
+
+## Publish (optional, gated)
+
+After a post renders, publish its reel to YouTube Shorts + TikTok. Instagram stays a manual checklist.
+
+```bash
+cd renderer
+bun run publish:auth youtube           # one-time OAuth (also: tiktok)
+bun run publish -- <post-key> --platforms=youtube,tiktok --dry-run   # preview, post nothing
+bun run publish -- <post-key> --platforms=youtube,tiktok             # real run (asks to confirm)
+# or as a final pipeline stage:
+bun run pipeline -- <post-key> --publish=youtube,tiktok
+```
+
+Only a **`generated`** post (approved *and* rendered) can publish; success flips it to `upload_ready`, and re-runs skip platforms already posted. Uploads stay private / `SELF_ONLY` until each platform's API audit passes (a one-value flip in `publish.config.json`). Full setup, audit applications, and the privacy policy live in [`docs/publishing/`](docs/publishing/).
 
 ## Non-negotiables (the trust standard)
 
@@ -70,7 +85,7 @@ cd renderer && bun run draft-week -- "idea1::offensive_ai" "idea2::model_securit
 - **Defender value** — every post ends with a practical takeaway.
 - **Human voice** — copy is written sharp and specific, then run through the `humanizer` skill to strip AI tells; see [`pipeline/content/VOICE_AND_TONE_GUIDE.md`](pipeline/content/VOICE_AND_TONE_GUIDE.md).
 - **Media rights tracked** — every model/asset that ships is commercial-licensed (e.g. **VoxCPM2 ✅ Apache-2.0**; **F5-TTS base weights ❌ CC-BY-NC**). Logged in `LICENSES.md`.
-- **Human approval before posting** — no auto-publishing.
+- **Human approval before posting** — a gate, not a ban. Instagram is manual; YouTube/TikTok publish only through the gated `bun run publish` (a rendered, approved post, with dry-run/confirm). Nothing auto-posts a draft.
 
 ## Default formats
 
@@ -78,7 +93,9 @@ Carousel `1080×1350` · Reel `1080×1920` @30fps H.264 · 8-slide arc: cover �
 
 ## Status
 
-- Content + media kits, the renderer, and three skills (`ai-cybersecurity-ugc-carousel`, `react-remotion-instagram-renderer`, `humanizer`): complete and in use.
-- **Both Week-1 carousels (phishing, prompt injection) render end to end** — unique per-post FLUX.2-klein backgrounds, narrated reels (VoxCPM2) with Whisper-synced captions, committed under `pipeline/renders/`.
-- Wired into `/draft-post`: a 5-way brand **theme** system (offensive=red / defensive=blue / hacking=green / purple-team=purple / generic-AI=orange), a **humanizer** voice pass, deeper source-triangulated research, and a reproducible voice seed (`voice.meta.json`).
-- Next: Posts 3–5 from the backlog, then Meta API publishing once access clears — always behind the human approval gate.
+- Content + media kits, the renderer, and six skills (`ai-cybersecurity-ugc-carousel`, `react-remotion-instagram-renderer`, `humanizer`, `stop-slop`, `professional-proofreader`, `ig-ingest`): complete and in use.
+- **Posts render end to end** — unique per-post FLUX.2-klein backgrounds (local), narrated reels (VoxCPM2, optional voice clone) with Whisper-synced captions, committed under `pipeline/renders/`.
+- Wired into `/draft-post`: a 5-way brand **theme** system (offensive=red / defensive=blue / hacking=green / purple-team=purple / generic-AI=orange), the **humanizer → stop-slop → professional-proofreader** copy chain, deeper source-triangulated research, dynamic slide count (3–20), optional per-slide Instagram captions, and a reproducible voice seed (`voice.meta.json`).
+- **Cloud art/video (optional):** `--fal` (FAL.ai) or `--higgsfield` generate backgrounds + per-beat reel motion via API instead of local ComfyUI.
+- **Gated publishing (live):** YouTube Shorts + TikTok via `bun run publish` (a rendered, approved post → `upload_ready`); Instagram stays a manual checklist while Meta API access clears. Uploads are private/`SELF_ONLY` until each platform's audit passes.
+- Next: continue the backlog; flip publishing to public per platform once the YouTube + TikTok audits clear.

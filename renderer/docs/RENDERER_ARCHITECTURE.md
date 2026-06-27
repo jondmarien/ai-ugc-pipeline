@@ -79,7 +79,7 @@ pipeline/renders/<YYYY-MM-DD_slug>/   ──► manual upload (Business Suite / 
 
 ## Design boundaries (what this layer must NOT become)
 
-- ❌ No auto-publishing to Instagram (manual upload + approval stays default; API is a separate future module).
+- ❌ No auto-publishing to Instagram (no Meta API access; Instagram stays manual upload + approval). YouTube/TikTok DO publish via the gated `bun run publish` (a rendered, approved post, with dry-run/confirm) — never silently and never a `draft`.
 - ❌ No SaaS dashboard, auth, billing, or job queue.
 - ❌ No autonomous research / claim generation — content discipline lives in `pipeline/content/`.
 - ❌ No auto-generated exploit visuals; mechanism imagery stays abstract.
@@ -89,4 +89,4 @@ pipeline/renders/<YYYY-MM-DD_slug>/   ──► manual upload (Business Suite / 
 
 **Done (PoC):** schema + validation, design tokens, 8 role components, Playwright export, package builder, Remotion reel stub, Week-1 Post 1 rendered end-to-end.
 
-**Next** (see `WEEK_1_RENDER_TESTS.md`): render Post 4/5 (new text-free visuals) → narrated reel with VoxCPM2 voice + licensed music + populated `LICENSES.md` → batch command for Posts 1–5 → optional `1080×1080` variant. Publishing/API stays out of scope until Meta access clears.
+**Next** (see `WEEK_1_RENDER_TESTS.md`): render Post 4/5 (new text-free visuals) → narrated reel with VoxCPM2 voice + licensed music + populated `LICENSES.md` → batch command for Posts 1–5 → optional `1080×1080` variant. Gated YouTube/TikTok publishing now ships (`bun run publish`); Instagram API stays out of scope until Meta access clears.

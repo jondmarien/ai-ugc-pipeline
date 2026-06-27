@@ -26,6 +26,19 @@ HF_HUB_CACHE=E:/ai-ugc-hf/hub
 
 **TL;DR:** the default art engine is **FLUX.2 [klein] 4B** (Apache-2.0, tuned for 8 GB); **FLUX.1-schnell** stays as a legacy `--flux1` fallback. Avoid anything labeled *dev* or *9B* — non-commercial.
 
+## Cloud art + video (no local GPU): `--fal` / `--higgsfield`
+
+When you don't want to run a local model, two cloud paths generate the **same** per-slide backgrounds (same prompt contract as ComfyUI art, via `lib/art-slide-prompt.mjs`) **and** per-beat image-to-video motion clips for the reel. The pipeline drives them with `--fal` or `--higgsfield`; ComfyUI-only knobs (`--flux1`/`--q6`/`--upscale`/`--ui-format`/`--passes`) are ignored, and no `free-comfyui` GPU handoff runs.
+
+| Provider | Flag | Standalone commands | Auth (env) | Models |
+| --- | --- | --- | --- | --- |
+| **FAL.ai** | `--fal` | `bun run art:fal -- <key>` · `bun run reel:fal -- <key>` | `FAL_KEY` | Images: FLUX.1 dev/schnell, FLUX.2 pro/dev. Video: Kling 2.1 Standard (image-to-video). Pick with `--model=`. |
+| **Higgsfield** | `--higgsfield` | `bun run art:higgsfield -- <key>` · `bun run reel:higgsfield -- <key>` | `HIGGSFIELD_API_URL` + credentials | Cloud image + image-to-video. Pick with `--model=`. |
+
+- **Art** writes `public/backgrounds/<prefix>/NN_role.png`, flips each slide to `asset_status: "generated"`, and records a public image URL (`fal_image_url` / `higgsfield_image_url`) so the video step can animate it. Logs licenses into the post's `asset_licenses`.
+- **Reel motion** (`reel:fal` / `reel:higgsfield`) writes `public/video/<prefix>/beat_*.mp4` and sets `beat.video_asset` (CTA beats skipped); the Remotion reel composites these clips. Falls back to `FAL_PUBLIC_BASE_URL` / `HIGGSFIELD_PUBLIC_BASE_URL` if a slide has no stored image URL.
+- Both cache responses under `renderer/.cache/<provider>/` (keyed on model + prompt-hash + seed + size). Flags: `--all` (regenerate the cover too), `--dry-run`, `--only=N`, `--model=ID`. Keys come from `process.env` only — never commit them (`renderer/.env` is gitignored).
+
 ## Thermal stability: cooldown between generations (8 GB cards)
 
 Back-to-back FLUX on an 8 GB card pins CPU+GPU with heavy GGUF/CPU offload. On a thermally or power-marginal rig that sustained load can trip an OS **CPU watchdog** (a core stops responding) around the 3rd–5th image. `bun run art` therefore inserts a **cooldown between generations** — default **25 s**, shown as a live in-place countdown.
