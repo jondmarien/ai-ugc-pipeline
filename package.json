@@ -2,6 +2,8 @@
   "name": "ai-ugc-pipeline",
   "private": true,
   "scripts": {
-    "dash": "bun dashboard/scripts/dash.ts"
+    "dash": "bun dashboard/scripts/dash.ts",
+    "art:xai": "bun renderer/scripts/art-xai.mjs",
+    "reel:xai": "bun renderer/scripts/reel-xai.mjs"
   }
 }
