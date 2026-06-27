@@ -33,9 +33,19 @@ When you don't want to run a local model, two cloud paths generate the **same** 
 | Provider | Art flag | Reel motion | Standalone commands | Auth | Models |
 | --- | --- | --- | --- | --- | --- |
 | **FAL.ai** | `--fal` | `--motion=fal` | `bun run art:fal -- <key>` · `bun run reel:fal -- <key>` | `FAL_KEY` (env) | Images: FLUX.1 dev/schnell, FLUX.2 pro/dev. Video: Kling 2.1 Standard (i2v). |
-| **Higgsfield** | `--higgsfield` | `--motion=higgsfield` | `bun run art:higgsfield -- <key>` · `bun run reel:higgsfield -- <key>` | the authed `higgsfield` CLI (default), or platform API keys (env) | Images: Soul 2.0 (default), Cinema Studio 3.0, Flux, GPT Image 2, Seedream 4.5. Video: DoP / Kling / Seedance / Veo (i2v). |
+| **Higgsfield** | `--higgsfield` | `--motion=higgsfield` | `bun run art:higgsfield -- <key>` · `bun run reel:higgsfield -- <key>` | the authed `higgsfield` CLI (default), or platform API keys (env) | Images: **Flux/FLUX.2 (default, 1 cr)**, Soul 2.0 (0.12 cr), Seedream 4.5 (1 cr), GPT Image 2 (7 cr), Cinema Studio 3.0. Video: DoP / Kling / Seedance / Veo (i2v). |
 
-**Picking a model** (pipeline passthroughs): `--higgsfield-model=<id>` / `--fal-model=<id>` for the image (art) model, `--motion-model=<id>` for the i2v (reel motion) model. List the Higgsfield catalog with `bun run higgsfield:models` (add `--live` for the full provider catalog). Standalone scripts take `--model=<id>` directly.
+**Why FLUX.2 is the Higgsfield default:** our slide prompts are authored for FLUX (lighting-first prose, `VISUAL_PROMPT_BANK.md`), so `flux_2` follows them faithfully and renders clean abstract backgrounds. Soul V2 is a social-media-aesthetic model — cheap (0.12 cr) but it ignores detailed prose and hallucinates **text/poster layouts** (especially on covers), so it's an opt-in for cost-sensitive runs, not the default.
+
+**Picking a model** (pipeline passthroughs): `--higgsfield-model=<id>` / `--fal-model=<id>` for the image (art) model, `--motion-model=<id>` for the i2v (reel motion) model. List the Higgsfield catalog **with per-image credit cost** via `bun run higgsfield:models` (add `--live` for the full provider catalog). Standalone scripts take `--model=<id>` directly.
+
+**Credit-cost gate (art + motion):** both steps print a pre-flight estimate and abort if it exceeds a budget cap unless `--yes`.
+- **Art** — `art:higgsfield` checks `slides × image rate` against `--budget=N` (default **20**; `0` = unlimited). Blocks e.g. GPT Image 2 (~56 cr for 8 slides). FLUX.2/Seedream (1 cr) land at 8–15/carousel; Soul ~1.
+- **Motion** — `reel:higgsfield` checks `beats × clip rate` against `--budget=N` (default **60**; pipeline flag `--motion-budget=`). i2v is far pricier: **7.5 cr/clip** (dop/kling/seedance → `cinematic_studio_video_v2`), **22 cr/clip** (veo-3.1). A 6-beat reel is ~45 cr on the default, ~132 on Veo — so Veo is gated unless you raise the cap or pass `--yes`. Motion clips are also forced to **9:16** (the models default to 16:9).
+
+Pass `--budget=` (art), `--motion-budget=` (motion), and `--yes` through `bun run pipeline`.
+
+**Per-model prompt shaping:** one canonical `PromptSpec` (`lib/art-slide-prompt.mjs`) is composed per model family — `flux` gets the rich house prose; `soul`/`seedream`/`gpt` get natural-language phrasing. No Higgsfield image model accepts a negative-prompt param, so the exclusions (**no text/typography/UI**) are baked into the *positive* prompt rather than a folded `Avoid:` list. The local ComfyUI/FLUX path is unchanged (real negative conditioning).
 
 **Reel motion is opt-in** — `--motion=local` (default, or omit) means **no cloud i2v**: the reel is composited entirely by local Remotion (animated stills). `--motion=higgsfield|fal` animates the existing backgrounds — **whatever made them**, local or cloud — into per-beat clips. Examples:
 - `--higgsfield` → Higgsfield art, local Remotion reel.

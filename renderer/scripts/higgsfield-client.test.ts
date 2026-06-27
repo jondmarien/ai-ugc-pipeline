@@ -57,8 +57,8 @@ test("MODEL_CATALOG exposes the approved image set", () => {
   ]);
 });
 
-test("DEFAULT_IMAGE_MODEL is the first approved image model", () => {
-  expect(DEFAULT_IMAGE_MODEL).toBe("soul-2.0");
+test("DEFAULT_IMAGE_MODEL is flux (FLUX.2 — matches our FLUX-tuned prompts, suppresses text)", () => {
+  expect(DEFAULT_IMAGE_MODEL).toBe("flux");
 });
 
 test("promptHash is deterministic for equal inputs", () => {

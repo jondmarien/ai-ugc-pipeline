@@ -129,6 +129,8 @@ REEL MOTION  (opt-in; the reel itself is always composited locally by Remotion)
                             art source (local or cloud). Higgsfield CLI mode auto-uploads the local
                             PNG, so no public hosting is needed.
   --motion-model=ID         i2v model for --motion (e.g. dop for Higgsfield; kling-standard for FAL)
+  --motion-budget=N         credit cap for Higgsfield motion (default 60; 0 = unlimited; --yes overrides).
+                            i2v is pricey: ≈7.5 cr/clip (dop), 22 (veo-3.1) — a 6-beat reel is 45/132.
 
 CAPTIONS & REEL
   --captions=MODE           highlight (default) | block | word — reel subtitle style
@@ -221,6 +223,8 @@ const USE_HIGGSFIELD = flags.has("--higgsfield");
 const USE_FAL = flags.has("--fal");
 const hfImageModelArg = [...flags].find((f) => f.startsWith("--higgsfield-model="))?.split("=")[1];
 const falImageModelArg = [...flags].find((f) => f.startsWith("--fal-model="))?.split("=")[1];
+// Credit budget cap for the Higgsfield art step (forwarded). --yes overrides the cap.
+const hfBudgetArg = [...flags].find((f) => f.startsWith("--budget="));
 // --motion=<provider> opts INTO per-beat cloud image-to-video motion for the reel, animating the
 // existing backgrounds (whether generated locally or by a cloud provider). Default "none" = the
 // reel is pure local Remotion (animated stills). Independent of which provider made the art.
@@ -232,6 +236,8 @@ if (motionArgRaw && !MOTION_VALID.includes(motionArgRaw)) {
 }
 const MOTION = motionArgRaw && motionArgRaw !== "none" && motionArgRaw !== "local" ? motionArgRaw : null;
 const motionModelArg = [...flags].find((f) => f.startsWith("--motion-model="))?.split("=")[1];
+// Separate credit cap for the (pricier) motion step; forwarded to reel:* as --budget. --yes overrides.
+const motionBudgetArg = [...flags].find((f) => f.startsWith("--motion-budget="))?.split("=")[1];
 // Higgsfield provider mode (cli default | rest | mcp) applies to whichever Higgsfield step runs
 // this turn — art (--higgsfield) and/or motion (--motion=higgsfield).
 const hfModeArg = [...flags].find((f) => f.startsWith("--higgsfield-mode="))?.split("=")[1];
@@ -330,7 +336,7 @@ function runPost(key) {
   // Default art run generates every needy slide (cover included). `--art` forces a full regen (→ art --all).
   if (wantsArt) {
     if (USE_HIGGSFIELD) {
-      step("art:higgsfield (backgrounds)", ["art:higgsfield", "--", fullKey, ...hfModeArgs, ...(hfImageModelArg ? [`--model=${hfImageModelArg}`] : []), ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
+      step("art:higgsfield (backgrounds)", ["art:higgsfield", "--", fullKey, ...hfModeArgs, ...(hfImageModelArg ? [`--model=${hfImageModelArg}`] : []), ...(hfBudgetArg ? [hfBudgetArg] : []), ...(flags.has("--yes") ? ["--yes"] : []), ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
     } else if (USE_FAL) {
       step("art:fal (backgrounds)", ["art:fal", "--", fullKey, ...(falImageModelArg ? [`--model=${falImageModelArg}`] : []), ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
     } else {
@@ -361,7 +367,7 @@ function runPost(key) {
     // Reel motion is OPT-IN via --motion=<provider> and independent of the art provider; the final
     // reel is always composited locally by Remotion (these only pre-generate per-beat i2v clips).
     if (MOTION === "higgsfield") {
-      step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey, ...hfModeArgs, ...(motionModelArg ? [`--model=${motionModelArg}`] : [])], { fatal: false });
+      step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey, ...hfModeArgs, ...(motionModelArg ? [`--model=${motionModelArg}`] : []), ...(motionBudgetArg ? [`--budget=${motionBudgetArg}`] : []), ...(flags.has("--yes") ? ["--yes"] : [])], { fatal: false });
     }
     if (MOTION === "fal") {
       step("reel:fal (motion segments)", ["reel:fal", "--", fullKey, ...(motionModelArg ? [`--model=${motionModelArg}`] : [])], { fatal: false });
