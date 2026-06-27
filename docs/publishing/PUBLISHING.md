@@ -8,7 +8,7 @@ How to wire up and run the gated multi-platform publisher. **Instagram stays man
 
 ## 0. How it works (one paragraph)
 
-A post's rendered `reel.mp4` is uploaded to YouTube (as a Short) and TikTok (Direct Post) by per-platform adapters behind one `publish()` interface. Tokens are minted once via an interactive OAuth flow and stored locally. Publishing is **gated**: only a post whose status is `approved` or `generated` can publish, it asks for confirmation (unless `--yes`), records each result in `pipeline/renders/<key>/publish.state.json` (so re-runs skip already-published platforms), and flips the post to `upload_ready` when every requested platform succeeds. Until each platform's API audit passes, uploads are **private** (YouTube) / **SELF_ONLY** (TikTok); going public is a one-value change in `publish.config.json`.
+A post's rendered `reel.mp4` is uploaded to YouTube (as a Short) and TikTok (Direct Post) by per-platform adapters behind one `publish()` interface. Tokens are minted once via an interactive OAuth flow and stored locally. Publishing is **gated**: only a `generated` post can publish (a post becomes `generated` once it is approved AND rendered, so a reel exists to post; `draft` and unrendered `approved` are rejected), it asks for confirmation (unless `--yes`), records each result in `pipeline/renders/<key>/publish.state.json` (so re-runs skip already-published platforms), and flips the post to `upload_ready` when every requested platform succeeds. Until each platform's API audit passes, uploads are **private** (YouTube) / **SELF_ONLY** (TikTok); going public is a one-value change in `publish.config.json`.
 
 ---
 
@@ -83,7 +83,7 @@ bun run publish -- <post-key> --platforms=youtube,tiktok
 ```
 
 Rules:
-- The post must be **`approved` or `generated`** (the human-approval gate). `--force` re-publishes a platform already marked published; it does **not** bypass approval.
+- The post must be **`generated`** (approved AND rendered, so the reel exists). `--force` re-publishes a platform already marked published; it does **not** bypass the gate.
 - Platforms run independently. One failing does not block the other; failures are recorded and the run leaves the status unchanged so you can fix and re-run (published platforms are skipped).
 - On full success the post flips to `upload_ready`.
 

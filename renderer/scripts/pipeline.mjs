@@ -82,7 +82,8 @@ STAGES (in order; each auto-skips when not needed)
   7. align         Whisper word-synced captions
   8. reel          1080×1920 Remotion reel with the voice auto-embedded
   9. publish       OPT-IN (--publish=…): post the reel to YouTube/TikTok via the gated
-                   publish command (same approved/generated gate; Instagram stays manual)
+                   publish command (publishes at the generated status this run produces;
+                   Instagram stays manual)
 
 ART & IMAGE QUALITY
   --flux1                   legacy FLUX.1-schnell graph (default is FLUX.2 klein)
@@ -120,9 +121,9 @@ STAGE TOGGLES & MISC
   --no-voice                skip voice + align (silent reel)
   --no-reel                 stop after the carousel/package
   --no-package              skip the package step
-  --publish=a,b             after the reel, publish to youtube,tiktok (gated on approved/
-                            generated; respects --dry-run; --yes skips the confirm prompt).
-                            Authorize once first: bun run publish:auth youtube|tiktok
+  --publish=a,b             after the reel, publish to youtube,tiktok (publishes at the
+                            generated status this run produces; respects --dry-run; --yes
+                            skips the confirm prompt). Authorize once: bun run publish:auth …
   --dry-run                 print what would run, submit nothing
   --help, -h                this help
 
@@ -197,7 +198,7 @@ const tailArg = [...flags].find((f) => f.startsWith("--tail="));
 const capFlag = [...flags].find((f) => f.startsWith("--captions="))?.split("=")[1];
 const captionMode = ["block", "word", "highlight"].includes(capFlag) ? capFlag : "highlight";
 // Opt-in final stage: after the reel, publish to YouTube/TikTok via the gated `publish` command
-// (same approved/generated gate; Instagram stays manual). --publish=youtube,tiktok ; omit to skip.
+// (gated on the generated status; Instagram stays manual). --publish=youtube,tiktok ; omit to skip.
 const publishArg = [...flags].find((f) => f.startsWith("--publish="))?.split("=")[1];
 const publishPlatforms = publishArg ? publishArg.split(",").map((s) => s.trim()).filter(Boolean) : null;
 // Opt-in quality knobs — all default OFF; only meaningful with the art step (or, for --upscale,
@@ -339,7 +340,8 @@ for (const key of keys) {
     const fk = runPost(key);
     ok++;
     if (COMPLETE_RUN && fk) markGenerated(fk);
-    // Opt-in publish stage (after the reel; same approved/generated gate as `bun run publish`).
+    // Opt-in publish stage. By here a complete run has flipped the post approved -> generated,
+    // which is exactly the status `bun run publish` requires.
     if (publishPlatforms && fk) {
       if (flags.has("--no-reel")) {
         console.warn(`  ⚠ --publish ignored for ${fk}: --no-reel means there is no reel to publish.`);
