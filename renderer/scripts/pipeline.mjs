@@ -88,7 +88,9 @@ STAGES (in order; each auto-skips when not needed)
                    Instagram stays manual)
 
 ART & IMAGE QUALITY
-  --higgsfield                cloud backgrounds via Higgsfield API (instead of local ComfyUI)
+  --higgsfield                cloud backgrounds via Higgsfield (instead of local ComfyUI)
+  --higgsfield-mode=MODE      cli (default, headless via the authed CLI) | rest (platform API) |
+                              mcp (agent-driven; writes a plan only — use the manual two-step flow)
   --flux1                   legacy FLUX.1-schnell graph (default is FLUX.2 klein; ComfyUI only)
   --art | --no-art          force background regeneration | skip art entirely
   --passes=N                sampling steps (alias of --steps). klein is step-distilled:
@@ -202,6 +204,13 @@ const upscaleScaleArg = [...flags].find((f) => f.startsWith("--upscale-scale="))
 const wantsUiFormat = flags.has("--ui-format");
 const USE_HIGGSFIELD = flags.has("--higgsfield");
 const USE_FAL = flags.has("--fal");
+// Higgsfield provider mode for the art/reel steps: cli (default, headless) | rest | mcp.
+// mcp is agent-driven (writes a plan only); use the manual two-step flow for it (see art:higgsfield --help).
+const hfModeArg = [...flags].find((f) => f.startsWith("--higgsfield-mode="))?.split("=")[1];
+if (USE_HIGGSFIELD && hfModeArg === "mcp") {
+  console.warn(`  ⚠ --higgsfield-mode=mcp is agent-driven: the art step only writes a generation plan.\n     Use the two-step flow instead: art:higgsfield --mode=mcp --plan → generate via MCP → --mode=mcp --ingest.`);
+}
+const hfModeArgs = USE_HIGGSFIELD && hfModeArg ? [`--mode=${hfModeArg}`] : [];
 const Q6_MODEL = "flux-2-klein-4b-Q6_K.gguf";                          // auto-downloaded by art-comfyui if missing
 
 const DRY = flags.has("--dry-run");
@@ -290,7 +299,7 @@ function runPost(key) {
   // Default art run generates every needy slide (cover included). `--art` forces a full regen (→ art --all).
   if (wantsArt) {
     if (USE_HIGGSFIELD) {
-      step("art:higgsfield (backgrounds)", ["art:higgsfield", "--", fullKey, ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
+      step("art:higgsfield (backgrounds)", ["art:higgsfield", "--", fullKey, ...hfModeArgs, ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
     } else if (USE_FAL) {
       step("art:fal (backgrounds)", ["art:fal", "--", fullKey, ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
     } else {
@@ -319,7 +328,7 @@ function runPost(key) {
 
   if (wantsReel) {
     if (USE_HIGGSFIELD) {
-      step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey], { fatal: false });
+      step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey, ...hfModeArgs], { fatal: false });
     }
     if (USE_FAL) {
       step("reel:fal (motion segments)", ["reel:fal", "--", fullKey], { fatal: false });
