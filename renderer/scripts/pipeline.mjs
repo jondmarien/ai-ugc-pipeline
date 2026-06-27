@@ -87,10 +87,15 @@ STAGES (in order; each auto-skips when not needed)
                    publish command (publishes at the generated status this run produces;
                    Instagram stays manual)
 
-ART & IMAGE QUALITY
+ART & IMAGE QUALITY  (--higgsfield / --fal pick the cloud ART provider only — reel motion is
+                      separate, see REEL MOTION below)
   --higgsfield                cloud backgrounds via Higgsfield (instead of local ComfyUI)
+  --higgsfield-model=ID       Higgsfield image model: soul-2.0 (default), cinema-studio-3.0,
+                              flux, gpt-image-2, seedream-4.5 (see: bun run higgsfield:models)
   --higgsfield-mode=MODE      cli (default, headless via the authed CLI) | rest (platform API) |
                               mcp (agent-driven; writes a plan only — use the manual two-step flow)
+  --fal                       cloud backgrounds via FAL.ai (needs FAL_KEY)
+  --fal-model=ID              FAL image model: flux-dev (default), flux-schnell, flux-2-pro, flux-2-dev
   --flux1                   legacy FLUX.1-schnell graph (default is FLUX.2 klein; ComfyUI only)
   --art | --no-art          force background regeneration | skip art entirely
   --passes=N                sampling steps (alias of --steps). klein is step-distilled:
@@ -116,6 +121,14 @@ VOICE & NARRATION
   --no-hifi                 timbre-only cloning (skip the Whisper transcript match)
   --no-clone                ignore the reference clip; use the plain seeded voice
   --seed=N                  lock the speaker (same N = same voice; logged to voice.meta.json)
+
+REEL MOTION  (opt-in; the reel itself is always composited locally by Remotion)
+  --motion=PROVIDER         local (default) | higgsfield | fal — animate the existing backgrounds
+                            into per-beat image-to-video clips via a cloud provider. "local" (or
+                            omitted) = no cloud i2v, Remotion animates the stills. Works with any
+                            art source (local or cloud). Higgsfield CLI mode auto-uploads the local
+                            PNG, so no public hosting is needed.
+  --motion-model=ID         i2v model for --motion (e.g. dop for Higgsfield; kling-standard for FAL)
 
 CAPTIONS & REEL
   --captions=MODE           highlight (default) | block | word — reel subtitle style
@@ -202,15 +215,31 @@ const upscaleScaleArg = [...flags].find((f) => f.startsWith("--upscale-scale="))
 // --ui-format: art executes the version-controlled workflow FILE (renderer/comfyui-workflows/) instead
 // of the code-built graph — with --upscale it picks the _with_upscale file. The file's settings win.
 const wantsUiFormat = flags.has("--ui-format");
+// --higgsfield / --fal pick the cloud ART provider (backgrounds) ONLY. Reel motion is decoupled:
+// it is opt-in via --motion=<provider> (see below). Each also takes an image-model passthrough.
 const USE_HIGGSFIELD = flags.has("--higgsfield");
 const USE_FAL = flags.has("--fal");
-// Higgsfield provider mode for the art/reel steps: cli (default, headless) | rest | mcp.
-// mcp is agent-driven (writes a plan only); use the manual two-step flow for it (see art:higgsfield --help).
-const hfModeArg = [...flags].find((f) => f.startsWith("--higgsfield-mode="))?.split("=")[1];
-if (USE_HIGGSFIELD && hfModeArg === "mcp") {
-  console.warn(`  ⚠ --higgsfield-mode=mcp is agent-driven: the art step only writes a generation plan.\n     Use the two-step flow instead: art:higgsfield --mode=mcp --plan → generate via MCP → --mode=mcp --ingest.`);
+const hfImageModelArg = [...flags].find((f) => f.startsWith("--higgsfield-model="))?.split("=")[1];
+const falImageModelArg = [...flags].find((f) => f.startsWith("--fal-model="))?.split("=")[1];
+// --motion=<provider> opts INTO per-beat cloud image-to-video motion for the reel, animating the
+// existing backgrounds (whether generated locally or by a cloud provider). Default "none" = the
+// reel is pure local Remotion (animated stills). Independent of which provider made the art.
+const motionArgRaw = [...flags].find((f) => f.startsWith("--motion="))?.split("=")[1];
+const MOTION_VALID = ["higgsfield", "fal", "none", "local"];
+if (motionArgRaw && !MOTION_VALID.includes(motionArgRaw)) {
+  console.error(`✋ --motion=${motionArgRaw} is invalid (use ${MOTION_VALID.join("|")}).`);
+  process.exit(1);
 }
-const hfModeArgs = USE_HIGGSFIELD && hfModeArg ? [`--mode=${hfModeArg}`] : [];
+const MOTION = motionArgRaw && motionArgRaw !== "none" && motionArgRaw !== "local" ? motionArgRaw : null;
+const motionModelArg = [...flags].find((f) => f.startsWith("--motion-model="))?.split("=")[1];
+// Higgsfield provider mode (cli default | rest | mcp) applies to whichever Higgsfield step runs
+// this turn — art (--higgsfield) and/or motion (--motion=higgsfield).
+const hfModeArg = [...flags].find((f) => f.startsWith("--higgsfield-mode="))?.split("=")[1];
+const USES_HIGGSFIELD_ANY = USE_HIGGSFIELD || MOTION === "higgsfield";
+if (USES_HIGGSFIELD_ANY && hfModeArg === "mcp") {
+  console.warn(`  ⚠ --higgsfield-mode=mcp is agent-driven: the Higgsfield step only writes a generation plan.\n     Use the two-step flow instead: art:higgsfield --mode=mcp --plan → generate via MCP → --mode=mcp --ingest.`);
+}
+const hfModeArgs = USES_HIGGSFIELD_ANY && hfModeArg ? [`--mode=${hfModeArg}`] : [];
 const Q6_MODEL = "flux-2-klein-4b-Q6_K.gguf";                          // auto-downloaded by art-comfyui if missing
 
 const DRY = flags.has("--dry-run");
@@ -262,6 +291,8 @@ function runPost(key) {
     console.warn(`  ⚠ ${[passesArg && "--passes", wantsQ6 && "--q6", wantsUiFormat && "--ui-format"].filter(Boolean).join("/")} ignored this run — no art step (pass --art to force background regeneration).`);
   if ((USE_HIGGSFIELD || USE_FAL) && (flags.has("--flux1") || wantsQ6 || wantsUpscale || wantsUiFormat || passesArg))
     console.warn(`  ⚠ ComfyUI-only flags (--flux1/--q6/--upscale/--ui-format/--passes) are ignored with --higgsfield.`);
+  if (MOTION && !wantsReel)
+    console.warn(`  ⚠ --motion=${MOTION} ignored — no reel this run (${flags.has("--no-reel") ? "--no-reel" : "post.video.enabled is false"}).`);
 
   // Ordered list of the stages that will actually run for this post (after the skip logic above).
   // --upscale runs INSIDE the art graph when art runs (one generate→upscale pass per slide); the
@@ -284,14 +315,14 @@ function runPost(key) {
     plan.push(`voice (${effVoiceMode})`, "align (captions)");
   }
   if (wantsReel) {
-    if (USE_HIGGSFIELD) plan.push("reel:higgsfield (motion segments)");
-    if (USE_FAL) plan.push("reel:fal (motion segments)");
+    if (MOTION === "higgsfield") plan.push(`reel:higgsfield (motion segments${motionModelArg ? `, ${motionModelArg}` : ""})`);
+    if (MOTION === "fal") plan.push(`reel:fal (motion segments${motionModelArg ? `, ${motionModelArg}` : ""})`);
     plan.push("reel (audio auto-embedded)");
   }
   if (publishPlatforms) plan.push(`publish (${publishPlatforms.join(",")}${DRY ? ", dry-run" : ""})`);
 
   console.log(`\n╭─ ${fullKey}`);
-  console.log(`│  art=${wantsArt ? (USE_HIGGSFIELD ? "higgsfield" : USE_FAL ? "fal" : flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
+  console.log(`│  art=${wantsArt ? (USE_HIGGSFIELD ? "higgsfield" : USE_FAL ? "fal" : flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}  ·  motion=${MOTION ?? "local"}`);
   console.log(`│  steps to run:`);
   plan.forEach((s, i) => console.log(`│   ${i + 1}. ${s}`));
   console.log(`╰─`);
@@ -299,9 +330,9 @@ function runPost(key) {
   // Default art run generates every needy slide (cover included). `--art` forces a full regen (→ art --all).
   if (wantsArt) {
     if (USE_HIGGSFIELD) {
-      step("art:higgsfield (backgrounds)", ["art:higgsfield", "--", fullKey, ...hfModeArgs, ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
+      step("art:higgsfield (backgrounds)", ["art:higgsfield", "--", fullKey, ...hfModeArgs, ...(hfImageModelArg ? [`--model=${hfImageModelArg}`] : []), ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
     } else if (USE_FAL) {
-      step("art:fal (backgrounds)", ["art:fal", "--", fullKey, ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
+      step("art:fal (backgrounds)", ["art:fal", "--", fullKey, ...(falImageModelArg ? [`--model=${falImageModelArg}`] : []), ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
     } else {
       step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux1") ? ["--flux1"] : []), ...(flags.has("--art") ? ["--all"] : []), ...(passesArg ? [passesArg] : []), ...(wantsUpscale ? ["--upscale"] : []), ...(upscaleModelArg ? [upscaleModelArg] : []), ...(upscaleScaleArg ? [upscaleScaleArg] : []), ...(wantsUiFormat ? ["--ui-format"] : [])], { fatal: false, env: wantsQ6 ? { ART2_MODEL: Q6_MODEL } : undefined });
     }
@@ -327,11 +358,13 @@ function runPost(key) {
   }
 
   if (wantsReel) {
-    if (USE_HIGGSFIELD) {
-      step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey, ...hfModeArgs], { fatal: false });
+    // Reel motion is OPT-IN via --motion=<provider> and independent of the art provider; the final
+    // reel is always composited locally by Remotion (these only pre-generate per-beat i2v clips).
+    if (MOTION === "higgsfield") {
+      step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey, ...hfModeArgs, ...(motionModelArg ? [`--model=${motionModelArg}`] : [])], { fatal: false });
     }
-    if (USE_FAL) {
-      step("reel:fal (motion segments)", ["reel:fal", "--", fullKey], { fatal: false });
+    if (MOTION === "fal") {
+      step("reel:fal (motion segments)", ["reel:fal", "--", fullKey, ...(motionModelArg ? [`--model=${motionModelArg}`] : [])], { fatal: false });
     }
     const reelArgs = ["reel", "--", fullKey, `--captions=${captionMode}`];
     if (!flags.has("--no-fit-voice")) reelArgs.push("--fit-voice");
