@@ -5,7 +5,7 @@ description: Create AI-in-cybersecurity UGC carousel content for Instagram, Link
 
 # AI Cybersecurity UGC Carousel Skill
 
-Use this skill to create **viral-style but technically credible** UGC carousel content about AI in cybersecurity. The style is cinematic, high-contrast, hook-driven, and swipeable, but the standard is **practitioner-grade accuracy**. Do not create fake panic, unsupported claims, exploit instructions, or fabricated numbers.
+Use this skill to create **viral-style but technically credible** UGC carousel content about AI in cybersecurity. The style is cinematic, high-contrast, hook-driven, and swipeable, but the standard is **practitioner-grade accuracy**. Do not create fake panic, unsupported claims, or fabricated numbers. Altitude is per-post: default to high-level mechanisms, but **offensive-theme posts may go deep/technical** (real tools, techniques, tradecraft) when it is educational and framed for authorized security work; never give turnkey instructions whose only purpose is indiscriminate real-world harm.
 
 ## Operating Principle
 
@@ -23,7 +23,7 @@ When the user asks for a post, carousel, content idea, or workflow, produce the 
 | Carousel script | 6–9 slides unless the user requests a longer list post |
 | Visual direction | One image prompt per slide or per post, depending on scope |
 | Caption | Short narrative caption with a question and follow CTA |
-| Hashtags | 5–10 relevant tags, avoiding spammy stuffing |
+| Topics | A bracketed list of plain-text topics — `[topic1, topic2, …]`, NOT hashtags (no `#`, no 5-tag cap). Stored in the JSON `hashtags` field; the renderer prints them as `[…]` in caption.txt. |
 | QA notes | Source/claim warnings, safety notes, and technical accuracy checks |
 
 ## Workflow
@@ -47,22 +47,28 @@ Use current sources when facts matter. Prefer primary sources such as vendor pos
 
 Do not invent statistics, timelines, company names, breach details, CVEs, tool capabilities, or quotes. If a claim is uncertain, use wording such as “could,” “may,” “reported,” “demoed,” or “the risk is.”
 
+**Research as a loop, not a single lookup.** (1) Landscape scan — a broad search to map the claim space and the strongest counter-arguments. (2) Gather primaries. (3) **Triangulate** — find ≥2 independent reputable sources for any load-bearing factual claim; a single or weak source means you tag the claim down. (4) **Confidence-tier** each claim: `[Verified]` (≥2 independent agree) · `[Emerging]` (one reputable, or weak corroboration) · `[Scenario]` (illustrative, no confirming source — label it in-copy). Hard gates: no fabricated URLs; re-open each link and confirm it still says what you claim; disclose angles that came up empty; never name a real victim without a cited public source.
+
 ### 3. Build the carousel narrative
 
-Use this default 8-slide structure unless another structure fits better.
+Use this default 8-slide structure unless another structure fits better. The slide count is configurable (`slides=N`, 3–20, default 8): **`cover` is always slide 1 and `cta` is always the last**, with `takeaway` at slide N−1; the middle is filled from the named roles below, then **generic `point` body slides** when a post needs more than the five named middle slides (or trimmed from the end of the named list when N < 8).
 
-| Slide | Purpose | Copy pattern |
-| --- | --- | --- |
-| 1 | Cover hook | “AI PHISHING JUST CROSSED A LINE MOST TEAMS ARE NOT READY FOR” |
-| 2 | What happened | State the event, pattern, or scenario in plain language |
-| 3 | Why it matters | Explain the security impact, not the hype |
-| 4 | How it works | Describe the mechanism at a safe, high level |
-| 5 | Where teams fail | Identify the gap in people, process, or tooling |
-| 6 | Defensive move | Give practical controls or review steps |
-| 7 | Takeaway | Compress the lesson into one memorable line |
-| 8 | CTA | Ask a specific question and invite following/saving |
+| Slide | Purpose | Copy pattern | Length budget |
+| --- | --- | --- | --- |
+| 1 | Cover hook | 8 words max, concrete and countable (a number, a named object, a verb). Its only job is stopping the scroll; the subline carries any qualifier. e.g. “AI PHISHING JUST CROSSED A LINE” | **≤8 words** on the body line; subline **≤30 words** |
+| 2 | What happened | Prove the cover wasn’t bait: state the event/pattern AND the stakes in the reader’s terms. Pass/fail: a skeptic who swiped thinks “worth my time” from this slide alone, or the funnel leaks here. | Body **≤14 words** (one short plain sentence); subline **≤30 words** |
+| 3 | Why it matters | Explain the security impact, not the hype | Body **≤14 words**; subline **≤30 words** |
+| 4 | How it works | Describe the mechanism at a safe, high level | Body **≤14 words**; subline **≤30 words** |
+| 5 | Where teams fail | Identify the gap in people, process, or tooling | Body **≤14 words**; subline **≤30 words** |
+| 6 | Defensive move | Give practical controls or review steps | Body **≤14 words**; subline **≤30 words** |
+| 7 | Takeaway | The **save-object**: a named checklist, decision rule, query/detection snippet, or fill-in-the-blank framework a defender would screenshot (fallback: one sharp quotable rule — see CAPTION_BANK §3). Compress the lesson into one memorable line. **Accent-mark it:** wrap the affirmative point in `[[…]]` (renders in the theme accent colour) and any negation/”what it’s NOT” in `{{…}}` (renders red). e.g. `The win {{isn’t ‘AI that thinks.’}} [[It’s an agent you own and can contain.]]` | Body **≤22 words**; subline **≤30 words** |
+| 8 | CTA | Ask a specific question and invite following/saving | Body **≤14 words**; subline **≤30 words** |
 
-For list posts, use: cover, context, items 1–N, final synthesis, CTA. For myth-busting posts, use: viral claim, what is true, what is exaggerated, what actually matters, defender takeaway.
+**One idea per slide, plain language.** Each body slide states ONE claim in one short sentence. Expand each acronym in plain words on its **subline**, not the body line (e.g. body: ‘Attackers rewrite a trusted system file.’ subline: ‘The bug is in algif_aead, the kernel’s crypto socket API.’). If a slide carries more than one idea, split it into another `point` slide rather than cramming. Tech-heavy posts may run 10-14 slides; for multi-step mechanisms prefer the `chain` role (it renders a clean on-brand step diagram with no AI background). These budgets are enforced as advisories by `bun run validate` (copy over budget warns); resolve them before rendering.
+
+**Slide-count guidance (2026-06-07, sourced):** plan the content first, then set the count. Industry data (Hootsuite/Later/Socialinsider, 2025–2026) puts peak engagement at 8–10 slides, but completion rate beats slide count: a tight 5 with zero filler outperforms a padded 10, and low completion reads to the ranking system as a broken promise. Never pad to hit a number. **Every slide must pass the standalone test** (one complete idea with zero context) because Instagram re-serves carousels to non-interactors starting from slide 2: any slide can be someone’s first impression.
+
+For **longer list posts** (`slides=N`, N>8), keep cover → context → a run of `point` body slides (one item each) → takeaway → CTA. For **short posts** (N<8), drop the least-essential middle roles (e.g. N=5: cover, context, risk, takeaway, cta). For myth-busting posts, use: viral claim, what is true, what is exaggerated, what actually matters, defender takeaway.
 
 ### 4. Write hooks with specificity
 
@@ -82,24 +88,26 @@ Default social format is **1080 × 1350 px portrait** for Instagram-style carous
 
 | Visual layer | Standard |
 | --- | --- |
-| Background | Cinematic cybersecurity visual, high contrast, dark edges |
+| Background | Dark cinematic key art, lighting-first (described like a DP), high contrast, generous negative space |
 | Text band | Dark lower third or gradient for readability |
 | Typography | Bold condensed sans-serif, high-contrast white |
-| Accent color | One strong color: neon green, cyan, red, or electric blue |
+| Accent color | Theme-driven, set by the renderer — `offensive` red `#ef4444` · `defensive` blue `#3b82f6` · `hacking` green `#39ff88` · `purple-team` `#a855f7` · `ai` orange `#f97316`. Do NOT hardcode a colour in the image prompt. |
 | CTA | Small “SWIPE FOR MORE,” “SAVE THIS,” or platform-appropriate cue |
 | Brand mark | Small handle/logo, unobtrusive |
 
 When generating images, usually ask for **no rendered text** and add exact text in a layout tool unless the user specifically wants text rendered by the image model.
 
-### 6. Use safe image prompts
+### 6. Use safe image prompts (FLUX.2 [klein])
 
-For covers, request a dramatic but non-infringing scene with space for typography. Avoid real company logos unless the user has a legal/brand reason to include them. Avoid depicting illegal step-by-step actions.
+Each slide's **visual direction becomes the `visual_prompt` field in the post JSON** — the literal string FLUX.2 [klein] receives. klein has no prompt upsampler, so write the whole idea in **prose**, `Subject + Action + Style + Context`, **lighting-first** (the highest-impact lever), 30–80 words, specific not long. No quoted text or lettering words (klein garbles them); keep type-free zones positive ("clean unmarked surfaces, generous negative space in the lower third"). **Don't hardcode an accent colour** — the renderer adds the theme glow. Synthetic faces only, no real logos/credentials; keep mechanisms conceptual (offensive-theme posts may go more concrete when genuinely educational).
 
-Use the prompt templates in `references/prompt-and-caption-templates.md` when producing multiple posts or when the user asks for reusable prompts.
+Follow `pipeline/content/VISUAL_PROMPT_BANK.md` (the authority) and the templates in `references/prompt-and-caption-templates.md`.
 
 ### 7. Write captions in the house style
 
 Use short paragraphs. Start with a restated hook, then explain what happened, why it matters, the defender implication, and a specific comment question. End with a follow/save CTA.
+
+**Then run the copy chain: `humanizer` → `stop-slop` → `professional-proofreader`** (and `pipeline/content/VOICE_AND_TONE_GUIDE.md`). Strip AI tells (**NO em-dashes at all (`—`/`–`), NO sentence fragments**, listicle cadence, "delve/leverage", "not just X but Y", voice-flat symmetry, generic CTA closes) while keeping the house voice: sharp, dry, specific, a visible stance, one voice-signal line that could only be ours, complete sentences with plain punctuation. This changes *how* it reads, never *what* it claims.
 
 | Caption section | Function |
 | --- | --- |
@@ -117,11 +125,12 @@ Before final delivery, check the content against this gate.
 | Check | Required standard |
 | --- | --- |
 | Source support | Claims are sourced, qualified, or framed as scenario/opinion |
-| No exploit walkthrough | Do not provide operational abuse steps, payloads, or evasion details |
+| Altitude per post | High-level by default; offensive-theme posts MAY go deep/technical (tools, techniques, tradecraft) when educational + authorized-security-framed. No turnkey instructions whose only purpose is indiscriminate harm. |
 | No fake authority | Do not invent paper names, CVEs, benchmarks, or quotes |
 | Practitioner value | Include at least one defender takeaway |
 | Visual feasibility | Headline is short enough for a mobile cover |
 | Brand consistency | Tone, format, CTA, and typography guidance are repeatable |
+| Voice de-AI scan | Copy passes the humanizer audit / `VOICE_AND_TONE_GUIDE.md` pre-publish scan; reads human, not machine |
 
 If the content fails, revise before delivering.
 
@@ -145,8 +154,8 @@ Visual: ...
 ## Caption
 ...
 
-## Hashtags
-#AI #Cybersecurity ...
+## Topics
+[topic one, topic two, topic three, …]
 
 ## QA Notes
 ...
