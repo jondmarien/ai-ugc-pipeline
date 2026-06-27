@@ -65,4 +65,16 @@ function writeCache(key, value, ttlMs) {
   } catch {}
 }
 
+export async function generateImage(postKey, opts = {}) {
+  const { dryRun = false, only = null, model = DEFAULT_IMAGE_MODEL, cooldown = 0 } = opts;
+
+  if (dryRun) {
+    console.log(`[xai] DRY-RUN image gen for ${postKey} (model=${model})`);
+    return { success: true, dryRun: true, model };
+  }
+
+  // Real implementation will go here later
+  throw new Error("Real xAI image generation not yet implemented");
+}
+
 console.log("xai-client skeleton loaded");
