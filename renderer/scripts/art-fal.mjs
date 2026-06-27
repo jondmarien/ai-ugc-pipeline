@@ -4,15 +4,20 @@
 // Writes public/backgrounds/<prefix>/NN_role.png and patches post JSON.
 // Prompt assembly: lib/art-slide-prompt.mjs (same visual contract as Comfy art).
 //
-// Requires FAL_KEY in env. Next: export, optional reel, reel.
-//
-// This is the initial integration; full client and reel support to be expanded.
+// Requires FAL_KEY in env. Next: export, optional reel:fal, reel.
 import { buildSlidePrompt, postThemeContext, postSeedOffset } from "./lib/art-slide-prompt.mjs";
 import { parseOnlySlides, selectArtSlides } from "./lib/art-targeting.mjs";
 import { writePostJson } from "./lib/post-io.mjs";
 import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
 import { slideBackgroundExists } from "./lib/public-asset.mjs";
 import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
+import {
+  DEFAULT_IMAGE_MODEL,
+  buildNegativePrompt,
+  estimateCost,
+  healthCheck,
+  renderSlide,
+} from "./fal-client.mjs";
 
 const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith("--")));
@@ -53,7 +58,7 @@ if (!key) {
 }
 
 const DRY = flags.has("--dry-run");
-const MODEL = opt("model", process.env.FAL_IMAGE_MODEL || "flux-dev");
+const MODEL = opt("model", process.env.FAL_IMAGE_MODEL || DEFAULT_IMAGE_MODEL);
 const SEED_BASE = Number(opt("seed", process.env.ART_SEED || "42")) || 42;
 const COOLDOWN_MS = Number(process.env.ART_COOLDOWN_MS || "3000") || 0;
 
@@ -73,7 +78,12 @@ const themeCtx = postThemeContext(post);
 const postBaseSeed = SEED_BASE + postSeedOffset(prefix);
 
 if (!DRY) {
-  console.log(`FAL @ api.fal.ai · model=${MODEL} (stub client - full implementation pending)`);
+  const hc = await healthCheck();
+  console.log(`FAL @ ${hc.baseUrl} · model=${MODEL}`);
+  if (!hc.hasKey) {
+    console.error(hc.message);
+    process.exit(1);
+  }
 }
 
 const onlySet = parseOnlySlides(opt("only", ""));
@@ -86,21 +96,56 @@ if (!targets.length) {
   process.exit(0);
 }
 
-console.log(`Would generate ${targets.length} slide(s) with FAL for ${key} (dry-run=${DRY})`);
-if (DRY) {
-  targets.forEach((s, i) => {
-    const prompt = buildSlidePrompt(s, post, themeCtx);
-    console.log(`  [${i+1}] slide ${s.slide} (${s.role}): ${prompt.slice(0,80)}...`);
-  });
-  process.exit(0);
+let totalCost = typeof post.renderMetadata?.costEstimate === "number" ? post.renderMetadata.costEstimate : 0;
+const width = post.canvas?.width ?? 1080;
+const height = post.canvas?.height ?? 1350;
+const neg = buildNegativePrompt();
+
+let n = 0;
+for (let ti = 0; ti < targets.length; ti++) {
+  const slide = targets[ti];
+  const slideIndex = post.slides.indexOf(slide);
+  const styleFusion = String(slide.style_fusion || themeCtx.postStyleFusion || "").trim();
+  const promptText = buildSlidePrompt(slide, { ...themeCtx, styleFusion });
+  const seed = postBaseSeed + slide.slide;
+
+  if (DRY) {
+    console.log(`\n[slide ${slide.slide} ${slide.role}] seed=${seed}\n  ${promptText}`);
+    continue;
+  }
+
+  if (COOLDOWN_MS && ti > 0) await new Promise((r) => setTimeout(r, COOLDOWN_MS));
+
+  process.stdout.write(`  slide ${slide.slide} (${slide.role})… `);
+  const t0 = Date.now();
+  try {
+    const unitCost = await estimateCost(MODEL, width, height);
+    totalCost += unitCost;
+    await renderSlide({
+      post,
+      slideIndex,
+      prompt: promptText,
+      model: MODEL,
+      negativePrompt: neg,
+      width: 1024,
+      height: 1280,
+      seed,
+      timeoutMs: Number(process.env.FAL_TIMEOUT_MS || "600000"),
+    });
+    post.renderMetadata = {
+      provider: "fal",
+      model: MODEL,
+      costEstimate: Number(totalCost.toFixed(4)),
+    };
+    process.stdout.write(`\r  slide ${slide.slide} (${slide.role})… ✓ (${((Date.now() - t0) / 1000).toFixed(0)}s)\n`);
+    n++;
+  } catch (e) {
+    process.stdout.write(`\r  slide ${slide.slide} (${slide.role})… ✗ ${e.message}\n`);
+  }
 }
 
-// For non-dry, in initial integration, log and update metadata without calling API (to avoid spend)
-console.log("FAL art step: basic integration complete. Full API calls in follow-up iteration.");
-// Patch renderMetadata.provider = "fal"
-if (!post.renderMetadata) post.renderMetadata = {};
-post.renderMetadata.provider = "fal";
-post.renderMetadata.model = MODEL;
-writePostJson(postPath, post);
-console.log(`Updated ${postPath} with renderMetadata.provider=fal`);
-process.exit(0);
+if (!DRY && n > 0) {
+  writePostJson(postPath, post);
+  console.log(`\n✓ FAL generated ${n}/${targets.length} background(s) → public/backgrounds/${prefix}/`);
+  console.log(`  Next: bun run export -- ${key}`);
+}

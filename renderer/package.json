@@ -31,7 +31,8 @@
     "test:smoke": "bun scripts/fit-smoke.mjs",
     "typecheck": "tsc --noEmit && tsc --noEmit -p remotion/tsconfig.json",
     "remotion:studio": "bunx remotion studio remotion/index.ts",
-    "art:fal": "bun scripts/art-fal.mjs"
+    "art:fal": "bun scripts/art-fal.mjs",
+    "reel:fal": "bun scripts/reel-fal.mjs"
   },
   "dependencies": {
     "@fal-ai/client": "^1.10.1",
