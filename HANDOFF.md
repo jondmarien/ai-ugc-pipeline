@@ -12,7 +12,14 @@
 ## Goal (one line)
 Automate publishing a post's rendered `reel.mp4` to **YouTube Shorts** and **TikTok** with a gated, idempotent command. **Instagram stays manual** (Jon is locked out of Meta's dev API). Dashboard analytics repoint is a **separate later spec** (out of scope here).
 
-## Status: 7 of 11 tasks DONE ✅ (committed, `bun test scripts/publish` = 12 pass / 0 fail)
+## Status: 11 of 11 tasks DONE ✅ (committed, `bun test` = 37 pass / 0 fail)
+
+> Build complete. Tasks 8–11 were finished after the original handoff: TikTok adapter,
+> the gated `publish` orchestrator (`publish.mjs` + `run.ts`), the pipeline `--publish=`
+> stage, and the docs (`docs/publishing/PUBLISHING.md`, `YOUTUBE_AUDIT_APPLICATION.md`,
+> CLAUDE.md). The two tracked tweaks below are applied (TikTok scopes trimmed to
+> `video.publish`+`user.info.basic`; privacy stays private/SELF_ONLY). Live OAuth + a real
+> private post on each platform remain the manual verification step.
 
 | # | Task | State |
 |---|------|-------|
@@ -23,10 +30,10 @@ Automate publishing a post's rendered `reel.mp4` to **YouTube Shorts** and **Tik
 | 5 | One-time `publish:auth` CLI (`auth/cli.mjs`) | ✅ (live OAuth = manual, deferred) |
 | 6 | Shared adapter contract (`types.ts`) + Instagram **manual** adapter | ✅ |
 | 7 | YouTube adapter (`adapters/youtube.ts`, resumable REST + DI) | ✅ committed `b0af5c7` — **NOTE: its code-quality review was interrupted; tests pass + implementer self-reviewed. Re-run the review or accept.** |
-| 8 | **TikTok adapter** | ⏳ NEXT |
-| 9 | Gated `publish` CLI orchestrator (`publish.mjs` + `run.ts`) | ⏳ |
-| 10 | Pipeline `--publish=` flag | ⏳ |
-| 11 | Docs + audit drafts | ⏳ (PARTLY done — see below) |
+| 8 | **TikTok adapter** (`adapters/tiktok.ts` + fixtures) | ✅ committed `5a1c281` |
+| 9 | Gated `publish` CLI orchestrator (`publish.mjs` + `run.ts`) | ✅ committed `88023b0` |
+| 10 | Pipeline `--publish=` flag | ✅ committed `9a807cf` |
+| 11 | Docs + audit drafts | ✅ committed `68056cf` |
 
 ## The shared contract (read `renderer/scripts/publish/types.ts`)
 - `RenderPackage { key, dir, reelPath, post:{post_id,caption,hashtags,...} }`
