@@ -8,10 +8,11 @@ import { youtubeAdapter } from "./adapters/youtube";
 import { tiktokAdapter } from "./adapters/tiktok";
 import { instagramAdapter } from "./adapters/instagram";
 
-// The human-approval gate. A post reaches `generated` only by first being `approved`
-// (`bun run pipeline` flips approved → generated after a render), so both count as
-// "human-approved". `draft` is rejected. --force NEVER bypasses this.
-const APPROVED_STATUSES = ["approved", "generated"];
+// The publish gate: ONLY `generated` posts may publish. A post reaches `generated` by being
+// human-approved AND rendered (`bun run pipeline` flips approved → generated after a successful
+// render), so `generated` means "approved and has a reel to post". `draft`/`approved` are
+// rejected (approved-but-unrendered has no reel). --force NEVER bypasses this.
+const PUBLISHABLE_STATUSES = ["generated"];
 
 const ADAPTERS: Record<string, PlatformAdapter> = {
   youtube: youtubeAdapter,
@@ -35,8 +36,7 @@ export type PublishPlan = {
  * PURE decision function: given a post's status, prior publish state, and the --force
  * flag, decide which platforms to publish to.
  *
- * - Throws unless status is `approved` or `generated` (the human-approval gate). --force
- *   does NOT bypass this.
+ * - Throws unless status is `generated` (approved AND rendered). --force does NOT bypass this.
  * - Skips a platform already `published` in state unless --force.
  * - Returns dry-run-ready summary lines.
  */
@@ -45,10 +45,10 @@ export function planPublish(
   platforms: string[],
   { status, state, force }: PlanInput,
 ): PublishPlan {
-  if (!status || !APPROVED_STATUSES.includes(status)) {
+  if (!status || !PUBLISHABLE_STATUSES.includes(status)) {
     throw new Error(
-      `Post "${key}" has status "${status ?? "none"}" — publishing requires an approved or generated post ` +
-        `(the human-approval gate; --force does not bypass it). Approve it first: bun run status -- approved ${key}`,
+      `Post "${key}" has status "${status ?? "none"}" — publishing requires a "generated" post ` +
+        `(approved AND rendered; --force does not bypass this). Render it first: bun run pipeline -- ${key}`,
     );
   }
 
@@ -176,7 +176,7 @@ export async function runPublish(key: string, platforms: string[], opts: RunOpts
   // Flip to upload_ready only when every adapter we ran did not fail.
   const allOk = results.length > 0 && results.every((r) => r.status !== "failed");
   if (allOk) {
-    const t = setStatus(canonicalKey, "upload_ready", { onlyFrom: APPROVED_STATUSES });
+    const t = setStatus(canonicalKey, "upload_ready", { onlyFrom: PUBLISHABLE_STATUSES });
     if (t.changed) console.log(`\n✓ status: ${t.old} → upload_ready`);
   } else {
     console.log(`\n⚠ Some platforms failed; status left at "${status}". Fix and re-run (published platforms are skipped).`);

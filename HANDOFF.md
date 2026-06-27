@@ -20,6 +20,11 @@ Automate publishing a post's rendered `reel.mp4` to **YouTube Shorts** and **Tik
 > CLAUDE.md). The two tracked tweaks below are applied (TikTok scopes trimmed to
 > `video.publish`+`user.info.basic`; privacy stays private/SELF_ONLY). Live OAuth + a real
 > private post on each platform remain the manual verification step.
+>
+> **Gate update (per Jon, post-build):** publishing now requires status **`generated`** only,
+> NOT `approved` as well. `generated` already means approved-and-rendered, so it is the status
+> that actually has a reel to post; an unrendered `approved` post is rejected. The notes below
+> that say `["approved","generated"]` predate this change — the code/docs are `generated`-only.
 
 | # | Task | State |
 |---|------|-------|

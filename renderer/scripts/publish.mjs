@@ -1,6 +1,6 @@
 // bun run publish -- <post-key> --platforms=youtube,tiktok [--dry-run] [--force] [--yes]
 //
-// Gated, idempotent publishing of an APPROVED post's reel to YouTube Shorts + TikTok.
+// Gated, idempotent publishing of a GENERATED (approved + rendered) post's reel to YouTube + TikTok.
 // Instagram is a manual checklist (no Meta API). Authorize once per platform first:
 //   bun run publish:auth youtube   ·   bun run publish:auth tiktok
 //
@@ -10,7 +10,7 @@
 //   --force           re-publish a platform already marked published (does NOT bypass approval)
 //   --yes             skip the interactive confirmation
 //
-// The post must be `approved` or `generated` (the human-approval gate). On full success the
+// The post must be `generated` (approved AND rendered, so a reel exists). On full success the
 // post flips to `upload_ready` and publish.state.json records each platform result.
 import { runPublish } from "./publish/run.ts";
 
@@ -30,7 +30,7 @@ FLAGS
 
 NOTES
   • Authorize once: bun run publish:auth youtube | tiktok
-  • Only approved/generated posts publish; success flips status to upload_ready.
+  • Only "generated" posts publish (approved AND rendered); success flips to upload_ready.
   • Privacy stays private/SELF_ONLY until each platform's audit passes (publish.config.json).
 `;
 
