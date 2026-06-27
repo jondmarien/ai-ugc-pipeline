@@ -221,6 +221,8 @@ const USE_HIGGSFIELD = flags.has("--higgsfield");
 const USE_FAL = flags.has("--fal");
 const hfImageModelArg = [...flags].find((f) => f.startsWith("--higgsfield-model="))?.split("=")[1];
 const falImageModelArg = [...flags].find((f) => f.startsWith("--fal-model="))?.split("=")[1];
+// Credit budget cap for the Higgsfield art step (forwarded). --yes overrides the cap.
+const hfBudgetArg = [...flags].find((f) => f.startsWith("--budget="));
 // --motion=<provider> opts INTO per-beat cloud image-to-video motion for the reel, animating the
 // existing backgrounds (whether generated locally or by a cloud provider). Default "none" = the
 // reel is pure local Remotion (animated stills). Independent of which provider made the art.
@@ -330,7 +332,7 @@ function runPost(key) {
   // Default art run generates every needy slide (cover included). `--art` forces a full regen (→ art --all).
   if (wantsArt) {
     if (USE_HIGGSFIELD) {
-      step("art:higgsfield (backgrounds)", ["art:higgsfield", "--", fullKey, ...hfModeArgs, ...(hfImageModelArg ? [`--model=${hfImageModelArg}`] : []), ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
+      step("art:higgsfield (backgrounds)", ["art:higgsfield", "--", fullKey, ...hfModeArgs, ...(hfImageModelArg ? [`--model=${hfImageModelArg}`] : []), ...(hfBudgetArg ? [hfBudgetArg] : []), ...(flags.has("--yes") ? ["--yes"] : []), ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
     } else if (USE_FAL) {
       step("art:fal (backgrounds)", ["art:fal", "--", fullKey, ...(falImageModelArg ? [`--model=${falImageModelArg}`] : []), ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
     } else {
