@@ -89,7 +89,7 @@ sequenceDiagram
     RUN->>STATE: readState(dir)
     RUN->>PL: planPublish(status, state, force)
     PL-->>RUN: { toRun, skipped, summary }  (throws unless "generated")
-    Note over RUN: print plan; if --dry-run stop;<br/>else confirm unless --yes
+    Note over RUN: print the plan, then dry run stops<br/>or confirm before posting (yes flag skips it)
     loop each platform in toRun
         RUN->>AD: publish(pkg, { dryRun:false })
         AD-->>RUN: AdapterResult (independent try/catch)
