@@ -17,7 +17,7 @@ If the user provides or references `ai-ugc-pipeline`, inspect the existing `pipe
 | --- | --- |
 | `pipeline/content/POST_TEMPLATE.md` | Defines the post data the renderer should map into JSON. |
 | `pipeline/content/WEEK_1_POSTS.md` | Provides real fixtures and initial render tests. |
-| `pipeline/content/VISUAL_PROMPT_BANK.md` | Defines the dark cinematic visual style, pillar accents, and no-rendered-text rule. |
+| `pipeline/content/VISUAL_PROMPT_BANK.md` | The authority for each slide's `visual_prompt`: the FLUX.2 [klein] prompt formula (prose, lighting-first, theme-driven accent, text-free), the theme palette, and the no-rendered-text rule. |
 | `pipeline/content/QA_CHECKLIST.md` | Defines source, safety, defender-value, readability, platform, and media-rights gates. |
 | `pipeline/media/VIDEO_ASSEMBLY_WORKFLOW.md` | Defines Reel packaging, caption/audio expectations, and manual upload conventions. |
 | `pipeline/media/OPEN_SOURCE_EVALUATION_MATRIX.md` | Defines production-safe vs R&D-only media tool choices. |
@@ -84,13 +84,14 @@ Use one post-level JSON object. Keep field names stable so future automation can
       "role": "cover",
       "on_slide_copy": "AI PHISHING MADE OLD TRAINING OBSOLETE",
       "subline": "The risk is personalization at scale.",
-      "visual_prompt": "cinematic AI cybersecurity scene, dark lower-third, no rendered text, no logos",
+      "visual_prompt": "A cinematic close-up of a single brass key dissolving into fine particles mid-air, lit by one hard rim light raking through volumetric haze, premium dark key art, focal subject in the upper third with clean unmarked surfaces and generous negative space across the lower third",
       "background_asset": "assets/backgrounds/2026-06-01-ai-phishing-awareness/01.png",
       "cta": "SWIPE →"
     }
   ],
   "caption": "...",
-  "hashtags": ["#AI", "#Cybersecurity"],
+  "hashtags": ["AI agents", "open source AI"],
+
   "alt_text": ["Slide 1 description..."],
   "sources": [{ "source": "Source title", "link": "https://example.com", "supports": "Which claim this source supports.", "confidence": "high", "claim_tag": "reported_fact" }],
   "asset_licenses": [{ "asset": "assets/backgrounds/.../01.png", "source": "generated|stock|owned|existing_pipeline_asset", "license_or_terms": "...", "commercial_use_allowed": true }],
@@ -190,7 +191,7 @@ For a rendered post package, deliver:
 | `content/post.json` | Source data for carousel and/or Reel. |
 | `YYYY-MM-DD_slug_01_cover.png` through `YYYY-MM-DD_slug_08_cta.png` | Final upload-ready slide images. |
 | `YYYY-MM-DD_slug_reel.mp4` | Final Reel if requested. |
-| `caption.txt` | Caption, hashtags, and comment prompt. |
+| `caption.txt` | Caption followed by a bracketed topic list `[topic1, topic2, …]` (the `hashtags` field, rendered without `#`). |
 | `alt_text.txt` | Slide-by-slide alt text. |
 | `sources.md` | Claims, links, and credibility notes. |
 | `LICENSES.md` | Required when stock/generative/audio/video assets need rights tracking. |
