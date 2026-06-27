@@ -11,6 +11,7 @@ import {
   healthCheck,
   motionPromptForBeat,
   resolveSegmentImageUrl,
+  resolveMode,
 } from "./higgsfield-client.mjs";
 import { writePostJson } from "./lib/post-io.mjs";
 import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
@@ -55,6 +56,7 @@ if (!key) {
 }
 
 const DRY = flags.has("--dry-run");
+const MODE = resolveMode(opt("mode", ""));
 const MODEL = opt("model", process.env.HIGGSFIELD_VIDEO_MODEL || DEFAULT_VIDEO_MODEL);
 const onlyRaw = opt("only", "");
 const onlySet = onlyRaw
@@ -93,8 +95,8 @@ const outDir = path.join(RENDERER, "public", "video", prefix);
 mkdirSync(outDir, { recursive: true });
 
 if (!DRY) {
-  const hc = await healthCheck();
-  console.log(`Higgsfield reel segments @ ${hc.baseUrl} · model=${MODEL}`);
+  const hc = await healthCheck(MODE);
+  console.log(`Higgsfield reel segments [${hc.mode}] @ ${hc.baseUrl} · model=${MODEL}`);
 }
 
 let generated = 0;
@@ -124,17 +126,24 @@ for (let i = 0; i < beats.length; i++) {
   const durationSeconds = beat.end - beat.start;
   const prompt = motionPromptForBeat(beat, slide);
 
+  // CLI mode can hand the local PNG straight to the CLI (it auto-uploads), so a public URL is
+  // optional there. REST mode still needs a fetchable URL via resolveSegmentImageUrl.
+  const localImagePath = slide.background_asset
+    ? path.join(RENDERER, "public", slide.background_asset.replace(/^\//, ""))
+    : null;
   let imageUrl;
   try {
     imageUrl = resolveSegmentImageUrl(slide);
   } catch (e) {
-    console.error(`  beat ${i}: ${e.message}`);
-    continue;
+    if (MODE !== "cli" || !(localImagePath && existsSync(localImagePath))) {
+      console.error(`  beat ${i}: ${e.message}`);
+      continue;
+    }
   }
 
   if (DRY) {
     console.log(`  [dry-run] beat ${i} slide_ref=${beat.slide_ref} ~${durationSeconds.toFixed(1)}s`);
-    console.log(`    image: ${imageUrl.slice(0, 80)}…`);
+    console.log(`    image: ${imageUrl ? imageUrl.slice(0, 80) + "…" : localImagePath}`);
     console.log(`    prompt: ${prompt.slice(0, 120)}…`);
     console.log(`    → ${videoAsset}`);
     continue;
@@ -143,11 +152,13 @@ for (let i = 0; i < beats.length; i++) {
   console.log(`  beat ${i} (${purpose}) → ${outName} …`);
   const result = await generateVideoFromImage({
     imageUrl,
+    imagePath: localImagePath,
     prompt,
     model: MODEL,
     durationSeconds,
     outDir,
     outName,
+    mode: MODE,
   });
   beat.video_asset = videoAsset;
   generated++;

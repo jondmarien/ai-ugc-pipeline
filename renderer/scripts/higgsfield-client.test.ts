@@ -96,7 +96,7 @@ test("estimateCost tolerates non-finite dimensions by falling back to the defaul
   expect(Number.isFinite(cost)).toBe(true);
 });
 
-test("renderSlide gates on HIGGSFIELD_API_URL/auth", async () => {
+test("renderSlide gates on HIGGSFIELD_API_URL/auth (rest mode)", async () => {
   const id = makePostJson();
   try {
     const err = await renderSlide({
@@ -105,6 +105,7 @@ test("renderSlide gates on HIGGSFIELD_API_URL/auth", async () => {
       prompt: "x",
       width: 1024,
       height: 1280,
+      mode: "rest", // pin to REST so the test asserts the auth gate (not a live CLI call)
       postPath: path.join(POSTS, `${id}.json`),
     });
     // Unreachable unless Higgsfield is configured; treat a successful path as a live-environment edge.
