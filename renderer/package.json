@@ -21,6 +21,7 @@
     "align": "bun scripts/align.mjs",
     "art": "bun scripts/art-comfyui.mjs",
     "art:higgsfield": "bun scripts/art-higgsfield.mjs",
+    "higgsfield:models": "bun scripts/higgsfield-models.mjs",
     "reel:higgsfield": "bun scripts/reel-segments-higgsfield.mjs",
     "upscale": "bun scripts/upscale-comfyui.mjs",
     "art:diffusers": "bun scripts/art.mjs",
