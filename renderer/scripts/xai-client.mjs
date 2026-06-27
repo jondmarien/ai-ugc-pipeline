@@ -65,6 +65,31 @@ function writeCache(key, value, ttlMs) {
   } catch {}
 }
 
+async function callXaiImages(prompt, model, size) {
+  const key = process.env.XAI_API_KEY;
+  if (!key) throw new Error("XAI_API_KEY not set");
+
+  const res = await fetch("https://api.x.ai/v1/images/generations", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model,
+      prompt,
+      n: 1,
+      size: `${size[0]}x${size[1]}`,
+    }),
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`xAI image error: ${res.status} ${text}`);
+  }
+  return res.json();
+}
+
 export async function generateImage(postKey, opts = {}) {
   const { dryRun = false, only = null, model = DEFAULT_IMAGE_MODEL, cooldown = 0 } = opts;
 
@@ -73,8 +98,20 @@ export async function generateImage(postKey, opts = {}) {
     return { success: true, dryRun: true, model };
   }
 
-  // Real implementation will go here later
-  throw new Error("Real xAI image generation not yet implemented");
+  const entry = MODEL_CATALOG.image.find(m => m.id === model) || MODEL_CATALOG.image[0];
+  const size = entry.defaultSize;
+
+  console.log(`[xai] Generating image for ${postKey} (model=${model})`);
+
+  const result = await callXaiImages("Dark cinematic background for cybersecurity slide", model, size);
+  const imageUrl = result.data?.[0]?.url;
+
+  if (!imageUrl) throw new Error("No image URL returned from xAI");
+
+  // In real implementation we would download + save to public/backgrounds/...
+  console.log(`[xai] Image generated: ${imageUrl}`);
+
+  return { success: true, url: imageUrl, model };
 }
 
 export async function generateVideo(postKey, opts = {}) {
