@@ -75,17 +75,37 @@ async function callXaiImages(prompt, model, size) {
       "Authorization": `Bearer ${key}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      model,
-      prompt,
-      n: 1,
-      size: `${size[0]}x${size[1]}`,
-    }),
+    body: JSON.stringify({ model, prompt, n: 1 }),
   });
 
   if (!res.ok) {
     const text = await res.text().catch(() => "");
     throw new Error(`xAI image error: ${res.status} ${text}`);
+  }
+  return res.json();
+}
+
+async function callXaiVideos(prompt, model, imageUrl, duration = 5) {
+  const key = process.env.XAI_API_KEY;
+  if (!key) throw new Error("XAI_API_KEY not set");
+
+  const res = await fetch("https://api.x.ai/v1/videos/generations", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model,
+      prompt,
+      image: { url: imageUrl },
+      duration,
+    }),
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`xAI video error: ${res.status} ${text}`);
   }
   return res.json();
 }
@@ -99,16 +119,12 @@ export async function generateImage(postKey, opts = {}) {
   }
 
   const entry = MODEL_CATALOG.image.find(m => m.id === model) || MODEL_CATALOG.image[0];
-  const size = entry.defaultSize;
-
   console.log(`[xai] Generating image for ${postKey} (model=${model})`);
 
-  const result = await callXaiImages("Dark cinematic background for cybersecurity slide", model, size);
+  const result = await callXaiImages("Dark cinematic background for cybersecurity slide", model);
   const imageUrl = result.data?.[0]?.url;
 
   if (!imageUrl) throw new Error("No image URL returned from xAI");
-
-  // In real implementation we would download + save to public/backgrounds/...
   console.log(`[xai] Image generated: ${imageUrl}`);
 
   return { success: true, url: imageUrl, model };
@@ -122,8 +138,16 @@ export async function generateVideo(postKey, opts = {}) {
     return { success: true, dryRun: true, model };
   }
 
-  // Real implementation will go here later
-  throw new Error("Real xAI video generation not yet implemented");
+  console.log(`[xai] Generating video for ${postKey} (model=${model})`);
+
+  // For real i2v we would pass a real image_url from the art step
+  const result = await callXaiVideos("Slow cinematic camera push-in", model, "https://example.com/placeholder.jpg", 5);
+  const videoUrl = result.video?.url || result.data?.[0]?.url;
+
+  if (!videoUrl) throw new Error("No video URL returned from xAI");
+  console.log(`[xai] Video generated: ${videoUrl}`);
+
+  return { success: true, url: videoUrl, model };
 }
 
 console.log("xai-client skeleton loaded");
