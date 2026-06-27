@@ -5,7 +5,7 @@
 // Prompt assembly: lib/art-slide-prompt.mjs (same visual contract as Comfy art).
 //
 // Requires HIGGSFIELD_API_URL + credentials in env. Next: export, optional reel:higgsfield, reel.
-import { buildSlidePrompt, postThemeContext, postSeedOffset } from "./lib/art-slide-prompt.mjs";
+import { buildPromptSpec, composePromptForFamily, postThemeContext, postSeedOffset } from "./lib/art-slide-prompt.mjs";
 import { parseOnlySlides, selectArtSlides } from "./lib/art-targeting.mjs";
 import { writePostJson } from "./lib/post-io.mjs";
 import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
@@ -13,8 +13,8 @@ import { slideBackgroundExists } from "./lib/public-asset.mjs";
 import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
 import {
   DEFAULT_IMAGE_MODEL,
-  buildNegativePrompt,
-  estimateCost,
+  imageModelCost,
+  imageModelFamily,
   healthCheck,
   renderSlide,
   resolveMode,
@@ -49,7 +49,9 @@ FLAGS
   --mode=cli|rest|mcp provider mode (default: auto)
   --all | --force     regenerate every non-"existing" slide
   --only=N[,N]        regenerate specific slide numbers
-  --model=ID          catalog id (default: ${DEFAULT_IMAGE_MODEL})
+  --model=ID          catalog id (default: ${DEFAULT_IMAGE_MODEL}) — see: bun run higgsfield:models
+  --budget=N          abort if the estimated credit cost exceeds N (default 20; 0 = unlimited)
+  --yes               override the budget gate
   --plan              (mcp) write the art manifest and print agent instructions
   --ingest            (mcp) ingest already-generated PNGs into the post JSON
   --dry-run           print prompts only
@@ -77,6 +79,10 @@ const MODE = resolveMode(opt("mode", ""));
 const MODEL = opt("model", process.env.HIGGSFIELD_IMAGE_MODEL || DEFAULT_IMAGE_MODEL);
 const SEED_BASE = Number(opt("seed", process.env.ART_SEED || "42")) || 42;
 const COOLDOWN_MS = Number(process.env.ART_COOLDOWN_MS || "3000") || 0;
+// Credit budget gate: estimated cost (slides × model rate) must stay ≤ BUDGET unless --yes. Default
+// 20 credits/post blocks an accidental expensive run (e.g. gpt-image-2 at 7/img); 0 = unlimited.
+const BUDGET = Number(opt("budget", process.env.HIGGSFIELD_BUDGET ?? "20"));
+const YES = flags.has("--yes");
 
 const loaded = loadPostByKey(key);
 if (!loaded) {
@@ -142,21 +148,35 @@ if (!targets.length) {
   process.exit(0);
 }
 
+// Prompt family + per-image rate for the chosen model, then the pre-flight credit estimate/gate.
+const family = imageModelFamily(MODEL);
+const unitCost = imageModelCost(MODEL);
+const estTotal = Number((unitCost * targets.length).toFixed(2));
+console.log(`Estimated cost: ${targets.length} slide(s) × ${unitCost} cr (${MODEL}, family=${family}) ≈ ${estTotal} credits.`);
+if (BUDGET > 0 && estTotal > BUDGET && !YES && !DRY) {
+  console.error(
+    `\n✋ Estimated ${estTotal} credits exceeds the budget cap of ${BUDGET}.\n` +
+      `   Pick a cheaper model (bun run higgsfield:models), raise the cap with --budget=${Math.ceil(estTotal)},\n` +
+      `   set HIGGSFIELD_BUDGET, or pass --yes to override.`,
+  );
+  process.exit(1);
+}
+
 let totalCost = typeof post.renderMetadata?.costEstimate === "number" ? post.renderMetadata.costEstimate : 0;
-const width = post.canvas?.width ?? 1080;
-const height = post.canvas?.height ?? 1350;
-const neg = buildNegativePrompt();
 
 let n = 0;
 for (let ti = 0; ti < targets.length; ti++) {
   const slide = targets[ti];
   const slideIndex = post.slides.indexOf(slide);
   const styleFusion = String(slide.style_fusion || themeCtx.postStyleFusion || "").trim();
-  const promptText = buildSlidePrompt(slide, { ...themeCtx, styleFusion });
+  const spec = buildPromptSpec(slide, { ...themeCtx, styleFusion });
+  // Model-aware prompt: no Higgsfield image model takes a negative param, so exclusions (incl. "no
+  // text") are baked into the positive prompt; flux gets the rich house prose, others natural language.
+  const { prompt: promptText, negative } = composePromptForFamily(spec, family);
   const seed = postBaseSeed + slide.slide;
 
   if (DRY) {
-    console.log(`\n[slide ${slide.slide} ${slide.role}] seed=${seed}\n  ${promptText}`);
+    console.log(`\n[slide ${slide.slide} ${slide.role}] seed=${seed} family=${family}\n  ${promptText}${negative ? `\n  (negative: ${negative.slice(0, 80)}…)` : ""}`);
     continue;
   }
 
@@ -165,14 +185,13 @@ for (let ti = 0; ti < targets.length; ti++) {
   process.stdout.write(`  slide ${slide.slide} (${slide.role})… `);
   const t0 = Date.now();
   try {
-    const unitCost = await estimateCost(MODEL, width, height);
     totalCost += unitCost;
     await renderSlide({
       post,
       slideIndex,
       prompt: promptText,
       model: MODEL,
-      negativePrompt: neg,
+      negativePrompt: negative,
       width: 1024,
       height: 1280,
       seed,

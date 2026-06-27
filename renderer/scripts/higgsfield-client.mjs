@@ -55,18 +55,24 @@ export const MODEL_CATALOG = Object.freeze({
   // - mcpModel      : a hint for the MCP generate_image tool (mcp mode); the agent may override
   //                   via models_explore.
   // Note: the CLI/platform image models accept 3:4 (not 4:5); aspect 4:5 is mapped to 3:4.
+  // promptFamily → which composer in art-slide-prompt.mjs shapes the prompt (flux keeps a real
+  // negative; soul/seedream/gpt are positive-only). creditCost → credits per image (verified via
+  // `higgsfield generate cost`); null = unknown / not a plain text→image (e.g. cinematic_studio_image
+  // requires camera params we don't supply — kept for compatibility but not recommended).
   image: [
-    { id: "soul-2.0", name: "Soul 2.0", type: "image", apiModelId: "higgsfield-ai/soul/standard", cliJobSetType: "text2image_soul_v2", cliExtraArgs: ["--quality", "2k"], mcpModel: "soul", defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
-    { id: "cinema-studio-3.0", name: "Cinema Studio 3.0", type: "image", apiModelId: "higgsfield-ai/soul/standard", cliJobSetType: "cinematic_studio_image", cliExtraArgs: [], mcpModel: "soul", defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
-    { id: "flux", name: "Flux", type: "image", apiModelId: "reve/text-to-image", cliJobSetType: "flux_2", cliExtraArgs: ["--resolution", "2k"], mcpModel: "flux", defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
-    { id: "gpt-image-2", name: "GPT Image 2", type: "image", apiModelId: "reve/text-to-image", cliJobSetType: "gpt_image_2", cliExtraArgs: [], mcpModel: "gpt-image", defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
-    { id: "seedream-4.5", name: "Seedream 4.5", type: "image", apiModelId: "reve/text-to-image", cliJobSetType: "seedream_v4_5", cliExtraArgs: [], mcpModel: "seedream", defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
+    { id: "soul-2.0", name: "Soul 2.0", type: "image", apiModelId: "higgsfield-ai/soul/standard", cliJobSetType: "text2image_soul_v2", cliExtraArgs: ["--quality", "2k"], mcpModel: "soul", promptFamily: "soul", creditCost: 0.12, defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
+    { id: "cinema-studio-3.0", name: "Cinema Studio 3.0", type: "image", apiModelId: "higgsfield-ai/soul/standard", cliJobSetType: "cinematic_studio_image", cliExtraArgs: [], mcpModel: "soul", promptFamily: "soul", creditCost: null, defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
+    { id: "flux", name: "Flux", type: "image", apiModelId: "reve/text-to-image", cliJobSetType: "flux_2", cliExtraArgs: ["--resolution", "2k"], mcpModel: "flux", promptFamily: "flux", creditCost: 1, defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
+    { id: "gpt-image-2", name: "GPT Image 2", type: "image", apiModelId: "reve/text-to-image", cliJobSetType: "gpt_image_2", cliExtraArgs: [], mcpModel: "gpt-image", promptFamily: "gpt", creditCost: 7, defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
+    { id: "seedream-4.5", name: "Seedream 4.5", type: "image", apiModelId: "reve/text-to-image", cliJobSetType: "seedream_v4_5", cliExtraArgs: [], mcpModel: "seedream", promptFamily: "seedream", creditCost: 1, defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
   ],
+  // creditCost = credits per CLIP (verified via `higgsfield generate cost`). i2v is far pricier than
+  // images, so a reel of N beats × this is what the motion budget gate checks.
   video: [
-    { id: "dop", name: "DoP Standard", type: "video", apiModelId: "higgsfield-ai/dop/standard", cliJobSetType: "cinematic_studio_video_v2", defaultDuration: 5, aspectRatio: "9:16" },
-    { id: "kling-3.0", name: "Kling 3.0", type: "video", apiModelId: "kling-video/v2.1/pro/image-to-video", cliJobSetType: "cinematic_studio_video_v2", defaultDuration: 5, aspectRatio: "9:16" },
-    { id: "seedance-2.0", name: "Seedance 2.0", type: "video", apiModelId: "bytedance/seedance/v1/pro/image-to-video", cliJobSetType: "cinematic_studio_video_v2", defaultDuration: 5, aspectRatio: "9:16" },
-    { id: "veo-3.1", name: "Veo 3.1", type: "video", apiModelId: "bytedance/seedance/v1/pro/image-to-video", cliJobSetType: "veo3_1", defaultDuration: 5, aspectRatio: "9:16" },
+    { id: "dop", name: "DoP Standard", type: "video", apiModelId: "higgsfield-ai/dop/standard", cliJobSetType: "cinematic_studio_video_v2", creditCost: 7.5, defaultDuration: 5, aspectRatio: "9:16" },
+    { id: "kling-3.0", name: "Kling 3.0", type: "video", apiModelId: "kling-video/v2.1/pro/image-to-video", cliJobSetType: "cinematic_studio_video_v2", creditCost: 7.5, defaultDuration: 5, aspectRatio: "9:16" },
+    { id: "seedance-2.0", name: "Seedance 2.0", type: "video", apiModelId: "bytedance/seedance/v1/pro/image-to-video", cliJobSetType: "cinematic_studio_video_v2", creditCost: 7.5, defaultDuration: 5, aspectRatio: "9:16" },
+    { id: "veo-3.1", name: "Veo 3.1", type: "video", apiModelId: "bytedance/seedance/v1/pro/image-to-video", cliJobSetType: "veo3_1", creditCost: 22, defaultDuration: 5, aspectRatio: "9:16" },
   ],
 });
 
@@ -88,7 +94,10 @@ export function resolveMode(explicit) {
   return hasRestCreds() ? "rest" : "cli";
 }
 
-export const DEFAULT_IMAGE_MODEL = MODEL_CATALOG.image[0]?.id ?? "soul-2.0";
+// Default to FLUX.2 (flux_2): our prompts are FLUX-tuned so it follows them faithfully (no text
+// "posters"), it's higher quality than Soul, and it costs ~1 cr/img (8–15 cr/carousel). Soul stays
+// the cheap (0.12 cr) opt-in via --higgsfield-model=soul-2.0. Override with HIGGSFIELD_IMAGE_MODEL.
+export const DEFAULT_IMAGE_MODEL = process.env.HIGGSFIELD_IMAGE_MODEL?.trim() || "flux";
 export const DEFAULT_VIDEO_MODEL = process.env.HIGGSFIELD_VIDEO_MODEL?.trim() || "dop";
 
 function resolveEnv(name, fallback) {
@@ -484,7 +493,9 @@ async function generateVideoFromImageViaCli({
     return { videoPath: cached.videoPath, provider: "higgsfield-cli", model, cached: true };
   }
 
-  const args = ["generate", "create", jobSetType, "--prompt", prompt, "--image", imageRef, "--wait", "--wait-timeout", `${Math.ceil(timeoutMs / 60000)}m`, "--json"];
+  // Reels are 9:16 — pass it explicitly (the video models default to 16:9, which would letterbox).
+  const aspect = catalog.aspectRatio || "9:16";
+  const args = ["generate", "create", jobSetType, "--prompt", prompt, "--image", imageRef, "--aspect_ratio", aspect, "--wait", "--wait-timeout", `${Math.ceil(timeoutMs / 60000)}m`, "--json"];
   const r = runCli(args, { timeoutMs });
   if (r.status !== 0) {
     throw new Error(`higgsfield CLI video generate failed: ${(r.stderr || r.stdout || "").trim().slice(0, 300)}`);
@@ -624,17 +635,32 @@ export async function generateVideoFromImage({
   throw lastErr;
 }
 
-export async function estimateCost(model, width, height) {
-  // Placeholder accounting hook. Real cost estimation should be supplied by the Higgsfield
-  // provider once rate cards / credit meters are confirmed.
+const DEFAULT_CREDIT_COST = 1; // conservative fallback when a model has no verified rate
+
+/** Credits per image for a catalog model id (verified via `higgsfield generate cost`). */
+export function imageModelCost(model) {
   const catalog = catalogEntry(model);
   if (!catalog) throw new Error(`UnknownHiggsfieldModel: ${model}`);
-  const w = Number.isFinite(width) ? width : 1024;
-  const h = Number.isFinite(height) ? height : 1280;
-  const pixels = w * h;
-  const unit = catalog.type === "video" ? 1_920_000 : 1_040_000;
-  const base = 0.015;
-  return Number((base * (pixels / unit)).toFixed(4));
+  return typeof catalog.creditCost === "number" ? catalog.creditCost : DEFAULT_CREDIT_COST;
+}
+
+/** Prompt family for a catalog model id (drives which composer shapes the prompt). */
+export function imageModelFamily(model) {
+  const catalog = catalogEntry(model);
+  if (!catalog) throw new Error(`UnknownHiggsfieldModel: ${model}`);
+  return catalog.promptFamily ?? "flux";
+}
+
+/** Credits per CLIP for a video (i2v) model id (verified via `higgsfield generate cost`). */
+export function videoModelCost(model) {
+  const catalog = catalogEntry(model);
+  if (!catalog || catalog.type !== "video") throw new Error(`UnknownHiggsfieldVideoModel: ${model}`);
+  return typeof catalog.creditCost === "number" ? catalog.creditCost : DEFAULT_CREDIT_COST;
+}
+
+export async function estimateCost(model, _width, _height) {
+  // Credits per generation, from the verified rate table (dimensions don't change Higgsfield cost).
+  return imageModelCost(model);
 }
 
 export async function generateImage({
@@ -875,6 +901,9 @@ export default {
   hasRestCreds,
   healthCheck,
   estimateCost,
+  imageModelCost,
+  imageModelFamily,
+  videoModelCost,
   generateImage,
   generateVideoFromImage,
   renderSlide,

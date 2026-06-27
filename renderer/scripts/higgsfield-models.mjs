@@ -29,23 +29,46 @@ if (HELP) {
 }
 
 function table(rows) {
-  const widths = [0, 0, 0];
+  const cols = Math.max(...rows.map((r) => r.length));
+  const widths = Array(cols).fill(0);
   for (const r of rows) r.forEach((c, i) => (widths[i] = Math.max(widths[i], String(c).length)));
-  for (const r of rows) console.log("  " + r.map((c, i) => String(c).padEnd(widths[i])).join("   "));
+  for (const r of rows) console.log("  " + r.map((c, i) => String(c).padEnd(widths[i])).join("   ").trimEnd());
 }
 
-function section(title, list, defId, kind) {
-  console.log(`\n${title}  (pipeline flag: ${kind})`);
+function imageSection() {
+  console.log(`\nIMAGE  (pipeline flag: --higgsfield-model=<id>)`);
   table([
-    ["ID", "NAME", "CLI JOB TYPE"],
-    ["--", "----", "------------"],
-    ...list.map((m) => [m.id + (m.id === defId ? " (default)" : ""), m.name, m.cliJobSetType ?? "—"]),
+    ["ID", "NAME", "CR/IMG", "FAMILY", "CLI JOB TYPE"],
+    ["--", "----", "------", "------", "------------"],
+    ...MODEL_CATALOG.image.map((m) => [
+      m.id + (m.id === DEFAULT_IMAGE_MODEL ? " (default)" : ""),
+      m.name,
+      typeof m.creditCost === "number" ? String(m.creditCost) : "?",
+      m.promptFamily ?? "flux",
+      m.cliJobSetType ?? "—",
+    ]),
   ]);
+  console.log(`  (cr/img = credits per image; an 8-slide post ≈ 8× that. "?" = needs extra params / unverified.)`);
+}
+
+function videoSection() {
+  console.log(`\nVIDEO / motion  (pipeline flag: --motion-model=<id>, with --motion=higgsfield)`);
+  table([
+    ["ID", "NAME", "CR/CLIP", "CLI JOB TYPE"],
+    ["--", "----", "-------", "------------"],
+    ...MODEL_CATALOG.video.map((m) => [
+      m.id + (m.id === DEFAULT_VIDEO_MODEL ? " (default)" : ""),
+      m.name,
+      typeof m.creditCost === "number" ? String(m.creditCost) : "?",
+      m.cliJobSetType ?? "—",
+    ]),
+  ]);
+  console.log(`  (cr/clip = credits per beat; a reel has several beats. Motion gate default = 60 credits.)`);
 }
 
 console.log("Higgsfield models the pipeline accepts:");
-section("IMAGE", MODEL_CATALOG.image, DEFAULT_IMAGE_MODEL, "--higgsfield-model=<id>");
-section("VIDEO", MODEL_CATALOG.video, DEFAULT_VIDEO_MODEL, "--motion-model=<id> (with --motion=higgsfield)");
+imageSection();
+videoSection();
 
 console.log(`\nExamples:`);
 console.log(`  bun run pipeline -- <key> --higgsfield --higgsfield-model=flux`);

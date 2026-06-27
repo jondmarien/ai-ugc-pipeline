@@ -12,6 +12,7 @@ import {
   motionPromptForBeat,
   resolveSegmentImageUrl,
   resolveMode,
+  videoModelCost,
 } from "./higgsfield-client.mjs";
 import { writePostJson } from "./lib/post-io.mjs";
 import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
@@ -35,15 +36,17 @@ USAGE
   Skips beats with purpose "cta" (static end card). Writes MP4s to public/video/<prefix>/ and sets beat.video_asset.
 
 FLAGS
-  --model=ID          video catalog id (default: ${DEFAULT_VIDEO_MODEL})
+  --model=ID          video catalog id (default: ${DEFAULT_VIDEO_MODEL}) — see: bun run higgsfield:models
   --only=I[,I]        beat indices (0-based) to generate
   --force             regenerate even when beat.video_asset file exists
+  --budget=N          abort if the estimated clip cost exceeds N credits (default 60; 0 = unlimited)
+  --yes               override the budget gate
   --dry-run           print plan only
   --help, -h
 
 EXAMPLES
   bun run reel:higgsfield -- my-post
-  bun run pipeline -- my-post --higgsfield
+  bun run pipeline -- my-post --higgsfield --motion=higgsfield
 `;
 
 if (flags.has("--help") || flags.has("-h") || args.includes("-h")) {
@@ -58,6 +61,10 @@ if (!key) {
 const DRY = flags.has("--dry-run");
 const MODE = resolveMode(opt("mode", ""));
 const MODEL = opt("model", process.env.HIGGSFIELD_VIDEO_MODEL || DEFAULT_VIDEO_MODEL);
+// Motion credit gate: i2v is pricey (≈7.5 cr/clip default, 22 for Veo). Estimated cost must stay
+// ≤ BUDGET unless --yes. Default 60 allows a typical reel on the default model but blocks Veo; 0 = off.
+const BUDGET = Number(opt("budget", process.env.HIGGSFIELD_MOTION_BUDGET ?? "60"));
+const YES = flags.has("--yes");
 const onlyRaw = opt("only", "");
 const onlySet = onlyRaw
   ? new Set(
@@ -93,6 +100,29 @@ if (!beats.length) {
 const slideByNum = new Map((post.slides ?? []).map((s) => [s.slide, s]));
 const outDir = path.join(RENDERER, "public", "video", prefix);
 mkdirSync(outDir, { recursive: true });
+
+// Pre-flight credit estimate + budget gate. Count the beats that would actually generate this run
+// (non-CTA, in --only if set, slide present, not already generated unless --force).
+const FORCE = flags.has("--force");
+const eligibleBeats = beats.filter((beat, i) => {
+  if (onlySet && !onlySet.has(i)) return false;
+  if (String(beat.purpose).toLowerCase() === "cta") return false;
+  if (!slideByNum.has(beat.slide_ref)) return false;
+  if (!FORCE && beat.video_asset && existsSync(path.join(RENDERER, "public", String(beat.video_asset).replace(/^\//, "")))) return false;
+  return true;
+}).length;
+const unitCost = videoModelCost(MODEL);
+const estTotal = Number((unitCost * eligibleBeats).toFixed(2));
+console.log(`Estimated motion cost: ${eligibleBeats} clip(s) × ${unitCost} cr (${MODEL}) ≈ ${estTotal} credits.`);
+if (BUDGET > 0 && estTotal > BUDGET && !YES && !DRY) {
+  console.error(
+    `\n✋ Estimated ${estTotal} credits exceeds the motion budget cap of ${BUDGET}.\n` +
+      `   Use a cheaper model (--model=dop), fewer beats (--only=), raise the cap (--motion-budget=${Math.ceil(estTotal)}\n` +
+      `   on the pipeline / --budget=${Math.ceil(estTotal)} here, set HIGGSFIELD_MOTION_BUDGET), or pass --yes.\n` +
+      `   (Skipping motion — the reel still renders locally from the stills.)`,
+  );
+  process.exit(1);
+}
 
 if (!DRY) {
   const hc = await healthCheck(MODE);
