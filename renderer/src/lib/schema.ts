@@ -93,6 +93,10 @@ export const SlideData = z.object({
   // THIS slide's background, e.g. "ancient Greek marble statuary rendered in cyberpunk neon".
   // Overrides the post-level style_fusion. Empty = inherit post / plain house style.
   style_fusion: z.string().optional().default(""),
+  // Public HTTPS URL of the slide background on Higgsfield CDN (set by art:higgsfield). Used for image-to-video reel segments.
+  higgsfield_image_url: z.string().url().optional(),
+  // Public HTTPS URL of the slide background on FAL CDN (set by art:fal). Used for image-to-video reel segments.
+  fal_image_url: z.string().url().optional(),
   // For role "chain": the ordered steps of the diagram. The last step is rendered as the
   // emphasized outcome. stage = short label (e.g. "STAGE 1"), title = the action, detail = a line.
   chain: z.array(z.object({
@@ -126,6 +130,8 @@ export const Beat = z.object({
   motion: z.string(),
   caption: z.string(),
   words: z.array(Word).optional(),
+  // Optional Higgsfield (or other) motion clip for this beat — served from public/ (e.g. /video/<prefix>/beat_01_hook.mp4).
+  video_asset: z.string().optional(),
 });
 
 // How burned-in reel captions animate:
@@ -207,10 +213,20 @@ export const UploadPackage = z.object({
   filename_prefix: z.string().min(1),
   expected_files: z.array(z.string()).optional(),
   caption_file: z.string().default("caption.txt"),
+  /** Per-slide IG captions export (blank-line blocks). Used only when features.multiple_captions is true. */
+  slide_captions_file: z.string().default("slide_captions.txt"),
   alt_text_file: z.string().default("alt_text.txt"),
   sources_file: z.string().default("sources.md"),
   licenses_file: z.string().default("LICENSES.md"),
 });
+
+/** Opt-in feature flags. Default behavior unchanged when omitted or false. */
+export const PostFeatures = z
+  .object({
+    /** Native Instagram per-slide captions (distinct from post.caption and on_slide_copy). */
+    multiple_captions: z.boolean().default(false),
+  })
+  .default({ multiple_captions: false });
 
 export const PostData = z
   .object({
@@ -239,8 +255,11 @@ export const PostData = z
     canvas: CanvasSpec,
     brand: BrandSpec,
     upload_package: UploadPackage,
+    features: PostFeatures.optional().default({ multiple_captions: false }),
     slides: z.array(SlideData).min(1),
     caption: z.string().min(1),
+    /** Ordered per-slide Instagram captions (1:1 with slides). Required when features.multiple_captions is true. */
+    slide_captions: z.array(z.string()).optional(),
     hashtags: z.array(z.string()).min(1),
     comment_prompt: z.string().optional().default(""),
     alt_text: z.array(z.string()).min(1),
@@ -258,6 +277,15 @@ export const PostData = z
       })
       .optional(),
     qa: z.record(z.string(), z.unknown()).default({}),
+    // Optional render provenance for observability/accounting (e.g. Higgsfield vs local ComfyUI).
+    renderMetadata: z
+      .object({
+        provider: z.string().optional(),
+        model: z.string().optional(),
+        costEstimate: z.number().optional(),
+      })
+      .optional()
+      .default({}),
   })
   .superRefine((post, ctx) => {
     // Slide numbering must be contiguous 1..n and match array order.
@@ -300,6 +328,43 @@ export const PostData = z
         path: ["score", "total"],
       });
     }
+    const multiCaptions = post.features?.multiple_captions === true;
+    const slideCaptions = post.slide_captions;
+    if (multiCaptions) {
+      if (!slideCaptions?.length) {
+        ctx.addIssue({
+          code: "custom",
+          message:
+            "slide_captions is required (one non-empty string per slide) when features.multiple_captions is true",
+          path: ["slide_captions"],
+        });
+      } else if (slideCaptions.length !== post.slides.length) {
+        ctx.addIssue({
+          code: "custom",
+          message: `slide_captions count (${slideCaptions.length}) must match slide count (${post.slides.length}) when features.multiple_captions is true`,
+          path: ["slide_captions"],
+        });
+      } else {
+        slideCaptions.forEach((line, i) => {
+          if (!line.trim()) {
+            ctx.addIssue({
+              code: "custom",
+              message: `slide_captions[${i}] must be non-empty when features.multiple_captions is true`,
+              path: ["slide_captions", i],
+            });
+          }
+        });
+      }
+    } else if (Array.isArray(slideCaptions)) {
+      // Reject the field entirely when the flag is off (including an empty array), so the
+      // "only allowed when the flag is on" rule has no silent gap.
+      ctx.addIssue({
+        code: "custom",
+        message:
+          "slide_captions is only allowed when features.multiple_captions is true. Enable the flag or remove slide_captions.",
+        path: ["slide_captions"],
+      });
+    }
   });
 
 export type TPostData = z.infer<typeof PostData>;
@@ -307,6 +372,12 @@ export type TSlideData = z.infer<typeof SlideData>;
 export type TVideoSpec = z.infer<typeof VideoSpec>;
 export type TBeat = z.infer<typeof Beat>;
 export type TCaptionMode = z.infer<typeof CaptionMode>;
+export type TPostFeatures = z.infer<typeof PostFeatures>;
+
+/** True when the post opts into native per-slide Instagram captions. */
+export function multipleCaptionsEnabled(post: Pick<TPostData, "features">): boolean {
+  return post.features?.multiple_captions === true;
+}
 
 export function validatePost(raw: unknown): TPostData {
   return PostData.parse(raw);

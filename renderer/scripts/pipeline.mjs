@@ -1,6 +1,6 @@
 // bun run pipeline -- <post-key> [<post-key> ...] [flags]
 // THE one-command render pipeline. For each post it runs, in order:
-//   1. art          backgrounds via ComfyUI  (only if inner slides lack art; --art forces, --no-art skips)
+//   1. art          backgrounds via ComfyUI or Higgsfield (--higgsfield)  (only if inner slides lack art; --art forces, --no-art skips)
 //   2. export       carousel PNGs
 //   3. package      upload-ready package files
 //   4. free-comfyui release ComfyUI's VRAM   (so VoxCPM/Whisper get the GPU; 8GB = one model at a time)
@@ -10,6 +10,7 @@
 //
 // Flags:
 //   --flux1        use the legacy FLUX.1-schnell graph for step 1 (default is FLUX.2 klein)
+//   --higgsfield   use Higgsfield Cloud API for backgrounds instead of local ComfyUI (no free-comfyui needed before voice)
 //   --art          force background regeneration even if slides already have art
 //   --no-art       skip background generation
 //   --no-package   skip the package step
@@ -19,14 +20,15 @@
 //   --tail=N       seconds of silence to keep after the voice (reel; default 0.6)
 //   --seed=N       voice seed (consistent speaker) — forwarded to `bun run voice`
 //   --skip=A,B     after selection, drop matched posts whose key fuzzily contains A or B
+//
+// Shared logic: ./lib/post-selection.mjs, post-resolve.mjs, post-status.mjs, public-asset.mjs.
+// Run `bun run pipeline -- --help` for full flag list.
 import { spawnSync } from "node:child_process";
-import { readFileSync, readdirSync, existsSync } from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { setStatus, readStatus } from "./lib/post-status.mjs";
-
-const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
-const POSTS = path.join(RENDERER, "content", "posts");
+import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
+import { allPostKeys, loadPostByKey } from "./lib/post-resolve.mjs";
+import { expandKeysBySubstring, filterByStatus, applySkipTerms } from "./lib/post-selection.mjs";
+import { slideBackgroundExists } from "./lib/public-asset.mjs";
 const argv = process.argv.slice(2);
 // --custom-voice <path>: capture its value (an authorized reference WAV to clone) and keep
 // that path out of the positional post-keys list so it isn't treated as another post.
@@ -86,7 +88,8 @@ STAGES (in order; each auto-skips when not needed)
                    Instagram stays manual)
 
 ART & IMAGE QUALITY
-  --flux1                   legacy FLUX.1-schnell graph (default is FLUX.2 klein)
+  --higgsfield                cloud backgrounds via Higgsfield API (instead of local ComfyUI)
+  --flux1                   legacy FLUX.1-schnell graph (default is FLUX.2 klein; ComfyUI only)
   --art | --no-art          force background regeneration | skip art entirely
   --passes=N                sampling steps (alias of --steps). klein is step-distilled:
                             recommended 4–8, hard max 12 (clamped; >8 adds heat, not quality)
@@ -154,17 +157,11 @@ if (flags.has("--help") || flags.has("-h") || argv.includes("-h")) {
 // unique slug runs one, a date prefix like 2026-06-11 runs the whole day. --status=VALUE adds
 // every post currently at that status. Explicit keys run regardless of status. Merge, de-dupe,
 // sort by filename (date order).
-const ALL_KEYS = readdirSync(POSTS).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));
 const statusArg = [...flags].find((f) => f.startsWith("--status="))?.split("=")[1];
 const requested = keys.length > 0 || !!statusArg;
-const selected = new Set();
-for (const k of keys) {
-  const m = ALL_KEYS.filter((fk) => fk.includes(k));
-  if (!m.length) console.warn(`⚠ no post matches "${k}"`);
-  m.forEach((fk) => selected.add(fk));
-}
+const selected = expandKeysBySubstring(keys);
 if (statusArg) {
-  const matched = ALL_KEYS.filter((fk) => { try { return JSON.parse(readFileSync(path.join(POSTS, `${fk}.json`), "utf8")).status === statusArg; } catch { return false; } });
+  const matched = filterByStatus(allPostKeys(), statusArg);
   matched.forEach((fk) => selected.add(fk));
   console.log(`▶ status="${statusArg}" → ${matched.length} post(s).`);
 }
@@ -173,15 +170,7 @@ if (statusArg) {
 // Applied AFTER selection so it can prune a date-prefix/status expansion. Warns on no-op terms.
 const skipArg = [...flags].find((f) => f.startsWith("--skip="))?.split("=").slice(1).join("=");
 const skipTerms = (skipArg ?? "").split(",").map((t) => t.trim().toLowerCase()).filter(Boolean);
-if (skipTerms.length) {
-  const before = [...selected];
-  for (const term of skipTerms) {
-    const hit = before.filter((fk) => fk.toLowerCase().includes(term));
-    if (!hit.length) { console.warn(`⚠ --skip "${term}" matched no selected post`); continue; }
-    hit.forEach((fk) => selected.delete(fk));
-    console.log(`⤬ skip "${term}" → ${hit.length} post(s): ${hit.join(", ")}`);
-  }
-}
+if (skipTerms.length) applySkipTerms(selected, skipTerms);
 keys = [...selected].sort();
 if (!keys.length) {
   if (requested) {
@@ -211,6 +200,8 @@ const upscaleScaleArg = [...flags].find((f) => f.startsWith("--upscale-scale="))
 // --ui-format: art executes the version-controlled workflow FILE (renderer/comfyui-workflows/) instead
 // of the code-built graph — with --upscale it picks the _with_upscale file. The file's settings win.
 const wantsUiFormat = flags.has("--ui-format");
+const USE_HIGGSFIELD = flags.has("--higgsfield");
+const USE_FAL = flags.has("--fal");
 const Q6_MODEL = "flux-2-klein-4b-Q6_K.gguf";                          // auto-downloaded by art-comfyui if missing
 
 const DRY = flags.has("--dry-run");
@@ -234,10 +225,9 @@ function step(label, runArgs, { env, fatal = true } = {}) {
 }
 
 function runPost(key) {
-  const file = readdirSync(POSTS).find((f) => f.endsWith(".json") && f.includes(key));
-  if (!file) throw new Error(`No post JSON matching "${key}"`);
-  const fullKey = file.replace(/\.json$/, "");
-  const post = JSON.parse(readFileSync(path.join(POSTS, file), "utf8"));
+  const loaded = loadPostByKey(key);
+  if (!loaded) throw new Error(`No post JSON matching "${key}"`);
+  const { fullKey, post } = loaded;
 
   const voiceMode = post.video?.audio?.voice_mode ?? "none";
   // Voice override for this run (else use the post's voice_mode):
@@ -254,46 +244,86 @@ function runPost(key) {
   // Any slide that still needs art — INCLUDING the cover (covers used to be skipped here, so the
   // pipeline never generated 01_cover.png). A locked custom asset (asset_status "existing") never
   // counts; a background_asset that points at a missing file (e.g. a scaffold's cover placeholder) does.
-  const artExists = (s) =>
-    !!s.background_asset && existsSync(path.join(RENDERER, "public", s.background_asset.replace(/^[\\/]+/, "")));
+  const artExists = (s) => slideBackgroundExists(RENDERER, s);
   const needsArt = (post.slides ?? []).some((s) => s.asset_status !== "existing" && !artExists(s));
   const wantsArt = flags.has("--art") || (!flags.has("--no-art") && needsArt);
   const wantsVoice = !flags.has("--no-voice") && ["voxcpm2", "voxcpm2-0.5b", "bark", "http"].includes(effVoiceMode);
   const wantsReel = !flags.has("--no-reel") && !!post.video?.enabled;
-  if ((passesArg || wantsQ6 || wantsUiFormat) && !wantsArt)
+  if ((passesArg || wantsQ6 || wantsUiFormat) && !wantsArt && !USE_HIGGSFIELD)
     console.warn(`  ⚠ ${[passesArg && "--passes", wantsQ6 && "--q6", wantsUiFormat && "--ui-format"].filter(Boolean).join("/")} ignored this run — no art step (pass --art to force background regeneration).`);
+  if ((USE_HIGGSFIELD || USE_FAL) && (flags.has("--flux1") || wantsQ6 || wantsUpscale || wantsUiFormat || passesArg))
+    console.warn(`  ⚠ ComfyUI-only flags (--flux1/--q6/--upscale/--ui-format/--passes) are ignored with --higgsfield.`);
 
   // Ordered list of the stages that will actually run for this post (after the skip logic above).
   // --upscale runs INSIDE the art graph when art runs (one generate→upscale pass per slide); the
   // standalone upscale step only fires for --upscale WITHOUT art (sharpen existing backgrounds).
   const plan = [];
-  if (wantsArt) plan.push(`art (${wantsUiFormat ? "ui-format file" : flags.has("--flux1") ? "flux1" : "flux2"}${wantsQ6 ? " Q6" : ""} backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes` : ""}${wantsUpscale ? " + integrated upscale" : ""})`);
+  if (wantsArt) {
+    if (USE_HIGGSFIELD) {
+      plan.push(`art:higgsfield (cloud backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes ignored` : ""})`);
+    } else if (USE_FAL) {
+      plan.push(`art:fal (cloud backgrounds via FAL.ai${passesArg ? `, ${passesArg.split("=")[1]} passes ignored` : ""})`);
+    } else {
+      plan.push(`art (${wantsUiFormat ? "ui-format file" : flags.has("--flux1") ? "flux1" : "flux2"}${wantsQ6 ? " Q6" : ""} backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes` : ""}${wantsUpscale ? " + integrated upscale" : ""})`);
+    }
+  }
   if (wantsUpscale && !wantsArt) plan.push(`upscale (existing backgrounds${upscaleModelArg ? `, ${upscaleModelArg.split("=")[1]}` : ""})`);
   plan.push("export (carousel)");
   if (!flags.has("--no-package")) plan.push("package (upload files)");
-  if (wantsVoice) plan.push("free-comfyui (release GPU)", `voice (${effVoiceMode})`, "align (captions)");
-  if (wantsReel) plan.push("reel (audio auto-embedded)");
+  if (wantsVoice) {
+    if (!USE_HIGGSFIELD && !USE_FAL) plan.push("free-comfyui (release GPU)");
+    plan.push(`voice (${effVoiceMode})`, "align (captions)");
+  }
+  if (wantsReel) {
+    if (USE_HIGGSFIELD) plan.push("reel:higgsfield (motion segments)");
+    if (USE_FAL) plan.push("reel:fal (motion segments)");
+    plan.push("reel (audio auto-embedded)");
+  }
   if (publishPlatforms) plan.push(`publish (${publishPlatforms.join(",")}${DRY ? ", dry-run" : ""})`);
 
   console.log(`\n╭─ ${fullKey}`);
-  console.log(`│  art=${wantsArt ? (flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
+  console.log(`│  art=${wantsArt ? (USE_HIGGSFIELD ? "higgsfield" : USE_FAL ? "fal" : flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}`);
   console.log(`│  steps to run:`);
   plan.forEach((s, i) => console.log(`│   ${i + 1}. ${s}`));
   console.log(`╰─`);
 
   // Default art run generates every needy slide (cover included). `--art` forces a full regen (→ art --all).
-  if (wantsArt) step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux1") ? ["--flux1"] : []), ...(flags.has("--art") ? ["--all"] : []), ...(passesArg ? [passesArg] : []), ...(wantsUpscale ? ["--upscale"] : []), ...(upscaleModelArg ? [upscaleModelArg] : []), ...(upscaleScaleArg ? [upscaleScaleArg] : []), ...(wantsUiFormat ? ["--ui-format"] : [])], { fatal: false, env: wantsQ6 ? { ART2_MODEL: Q6_MODEL } : undefined });
+  if (wantsArt) {
+    if (USE_HIGGSFIELD) {
+      step("art:higgsfield (backgrounds)", ["art:higgsfield", "--", fullKey, ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
+    } else if (USE_FAL) {
+      step("art:fal (backgrounds)", ["art:fal", "--", fullKey, ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
+    } else {
+      step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux1") ? ["--flux1"] : []), ...(flags.has("--art") ? ["--all"] : []), ...(passesArg ? [passesArg] : []), ...(wantsUpscale ? ["--upscale"] : []), ...(upscaleModelArg ? [upscaleModelArg] : []), ...(upscaleScaleArg ? [upscaleScaleArg] : []), ...(wantsUiFormat ? ["--ui-format"] : [])], { fatal: false, env: wantsQ6 ? { ART2_MODEL: Q6_MODEL } : undefined });
+    }
+  }
   if (wantsUpscale && !wantsArt) step("upscale (existing backgrounds)", ["upscale", "--", fullKey, ...(upscaleModelArg ? [upscaleModelArg] : []), ...(upscaleScaleArg ? [upscaleScaleArg] : [])], { fatal: false });
   step("export (carousel)", ["export", "--", fullKey]);
   if (!flags.has("--no-package")) step("package (upload files)", ["package", "--", fullKey]);
 
   if (wantsVoice) {
-    step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
-    step("voice (TTS)", ["voice", "--", fullKey, ...(voiceOverride ? [`--voice=${voiceOverride}`] : []), ...(customVoice ? ["--custom-voice", customVoice] : []), ...(customVoiceText ? ["--custom-voice-text", customVoiceText] : []), ...(flags.has("--no-hifi") ? ["--no-hifi"] : []), ...(flags.has("--no-clone") ? ["--no-clone"] : []), ...(seedArg ? [seedArg] : [])]);
+    if (!USE_HIGGSFIELD && !USE_FAL) step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
+    step("voice (TTS)", [
+      "voice",
+      "--",
+      fullKey,
+      ...(voiceOverride ? [`--voice=${voiceOverride}`] : []),
+      ...(customVoice ? ["--custom-voice", customVoice] : []),
+      ...(customVoiceText ? ["--custom-voice-text", customVoiceText] : []),
+      ...(flags.has("--no-hifi") ? ["--no-hifi"] : []),
+      ...(flags.has("--no-clone") ? ["--no-clone"] : []),
+      ...(seedArg ? [seedArg] : []),
+    ]);
     step("align (caption sync)", ["align", "--", fullKey]);
   }
 
   if (wantsReel) {
+    if (USE_HIGGSFIELD) {
+      step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey], { fatal: false });
+    }
+    if (USE_FAL) {
+      step("reel:fal (motion segments)", ["reel:fal", "--", fullKey], { fatal: false });
+    }
     const reelArgs = ["reel", "--", fullKey, `--captions=${captionMode}`];
     if (!flags.has("--no-fit-voice")) reelArgs.push("--fit-voice");
     if (tailArg) reelArgs.push(tailArg);

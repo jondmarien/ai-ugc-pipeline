@@ -1,3 +1,5 @@
+// Shared post loading for TS entry scripts (validate, export, reel, package).
+// MJS scripts use ./lib/post-resolve.mjs (same substring match; adds post_id default without Zod).
 import { readFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";

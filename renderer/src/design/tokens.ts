@@ -67,7 +67,11 @@ export const layout = {
 // Legibility floors (px) for the measured shrink-to-fit. The text block scales DOWN from its
 // per-role base size until it fits the bounded frame, but never below these — so the smallest
 // text stays readable even when copy is very long (overflow:hidden is the hard backstop).
-export const fitFloors = { headline: 44, subline: 30 } as const;
+// The subline floor is deliberately the SMALLER constraint: it must not bind a long cover
+// headline (104px base, several short ALL-CAPS lines) above the scale it needs to fit, or the
+// block floors at 0.75 and clips the kicker off the top. 24px only applies at the floor; normal
+// copy renders larger.
+export const fitFloors = { headline: 44, subline: 24 } as const;
 // Per-role base headline size (replaces the old char-count fitHeadline tiers). The whole text
 // block (headline + subline + plate) renders at this size, is measured, then scaled to fit.
 export const headlineBase = { cover: 104, takeaway: 92, body: 72, chain: 34 } as const;

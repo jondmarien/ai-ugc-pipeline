@@ -1,4 +1,4 @@
-import { AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Img, OffthreadVideo, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { palette } from "./theme";
 
 type Slide = {
@@ -15,25 +15,38 @@ export function Scene({
   durationInFrames,
   wallActive = false,
   artOpacity = 0.85,
+  videoAsset,
 }: {
   slide: Slide;
   accent: string;
   durationInFrames: number;
   wallActive?: boolean;
   artOpacity?: number;
+  /** When set, plays a Higgsfield (or other) motion clip instead of a static background + Ken Burns. */
+  videoAsset?: string;
 }) {
   const frame = useCurrentFrame();
-  const scale = interpolate(frame, [0, durationInFrames], [1.04, 1.12], {
-    extrapolateRight: "clamp",
-  });
+  const scale = videoAsset
+    ? 1
+    : interpolate(frame, [0, durationInFrames], [1.04, 1.12], {
+        extrapolateRight: "clamp",
+      });
+  const useVideo = Boolean(videoAsset?.trim());
   const useImage =
+    !useVideo &&
     slide.background_asset &&
     (slide.asset_status === "existing" || slide.asset_status === "generated" || slide.asset_status === "stock");
 
   return (
     <AbsoluteFill style={{ backgroundColor: wallActive ? "transparent" : palette.bgDeep, overflow: "hidden" }}>
       <AbsoluteFill style={{ transform: `scale(${scale})` }}>
-        {useImage ? (
+        {useVideo ? (
+          <OffthreadVideo
+            src={staticFile(videoAsset!.replace(/^\//, ""))}
+            muted
+            style={{ width: "100%", height: "100%", objectFit: "cover", opacity: wallActive ? artOpacity : 1 }}
+          />
+        ) : useImage ? (
           <Img
             src={staticFile(slide.background_asset!.replace(/^\//, ""))}
             style={{ width: "100%", height: "100%", objectFit: "cover", opacity: wallActive ? artOpacity : 1 }}

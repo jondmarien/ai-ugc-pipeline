@@ -1,3 +1,7 @@
+// bun run export -- <post-key> [--only=N[,N]] [--help]
+//
+// Pipeline step: Playwright screenshots of each slide → pipeline/renders/<folder>/*.png
+// Runs on Node/tsx (not Bun) — see NOTE below. Requires backgrounds in public/ if slides use them.
 // NOTE: this script runs on Node via tsx (see package.json "export"), NOT the Bun
 // runtime. Driving Playwright's Chromium from inside the Bun runtime hangs (same
 // Bun↔Chromium issue that affects Remotion). Everything else in this repo runs on Bun;
@@ -21,7 +25,33 @@ function pngSize(buf: Buffer): { width: number; height: number } {
 }
 
 async function main() {
-  const key = process.argv[2] ?? "2026-06-02_ai-phishing-training";
+  const args = process.argv.slice(2);
+  if (args.includes("--help") || args.includes("-h")) {
+    console.log(`
+bun run export — carousel PNGs via Playwright (Node/tsx)
+
+USAGE
+  bun run export -- <post-key> [--only=N[,N]]
+
+  <post-key>     slug or substring
+  --only=1,3     re-export only those 1-based slide numbers
+
+OUTPUT
+  pipeline/renders/<upload_package.folder>/*.png
+
+EXAMPLES
+  bun run export -- my-post
+  bun run export -- my-post --only=1
+`);
+    process.exit(0);
+  }
+  // First non-flag arg is the post key; `--only=N[,N]` restricts to those 1-based
+  // slide numbers (e.g. `--only=1` re-exports just the cover).
+  const key = args.find((a) => !a.startsWith("--")) ?? "2026-06-02_ai-phishing-training";
+  const onlyArg = args.find((a) => a.startsWith("--only="))?.split("=")[1];
+  const onlySet = onlyArg
+    ? new Set(onlyArg.split(",").map((n) => parseInt(n, 10)).filter((n) => n > 0))
+    : null;
   const post = loadPost(key);
   const { width, height } = post.canvas;
   const outDir = outputDir(post);
@@ -45,6 +75,7 @@ async function main() {
     const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: 1 });
 
     for (let i = 0; i < post.slides.length; i++) {
+      if (onlySet && !onlySet.has(i + 1)) continue;
       const url = `http://localhost:${PORT}/?post=${encodeURIComponent(post.upload_package.filename_prefix)}&slide=${i + 1}`;
       await page.goto(url, { waitUntil: "load", timeout: 30000 });
       // The real readiness signal: set after document.fonts.ready + all images loaded.
@@ -52,13 +83,31 @@ async function main() {
       const el = page.locator("#slide-root");
       await el.waitFor({ state: "visible" });
 
+      // Shrink-to-fit telemetry: the slide records the measured fit on window.__fitDebug.
+      // If the scaled text block still exceeds the frame, the copy is clipping — fail QA.
+      const dbg = await page.evaluate(
+        () =>
+          (window as unknown as {
+            __fitDebug?: { natural: number; avail: number; scale: number; floored: boolean };
+          }).__fitDebug,
+      );
+
       const fname = slideFilename(post, i);
       const buf = await el.screenshot({ type: "png" });
       writeFileSync(path.join(outDir, fname), buf);
 
       const size = pngSize(buf);
       const ok = size.width === width && size.height === height && buf.length > 1000;
-      console.log(`  ${ok ? "✓" : "✗"} ${fname}  (${size.width}×${size.height}, ${(buf.length / 1024).toFixed(0)} KB)`);
+      let fit = "";
+      if (dbg) {
+        const clips = dbg.natural * dbg.scale > dbg.avail + 1;
+        fit = `  fit ${dbg.scale.toFixed(2)}${dbg.floored ? " floored" : ""}${clips ? " ⚠ TEXT CLIPS" : ""}`;
+        if (clips)
+          problems.push(
+            `${fname}: text overflows the frame (scale ${dbg.scale.toFixed(2)}, ${Math.round(dbg.natural)}>${dbg.avail}px) — shorten the copy or lower the fit floor`,
+          );
+      }
+      console.log(`  ${ok ? "✓" : "✗"} ${fname}  (${size.width}×${size.height}, ${(buf.length / 1024).toFixed(0)} KB)${fit}`);
       if (!ok) problems.push(`${fname}: got ${size.width}×${size.height}, expected ${width}×${height}`);
     }
 
@@ -81,7 +130,9 @@ async function main() {
     if (!existsSync(pub)) console.warn(`\n⚠ cover background not found at ${pub} — cover may be procedural-only.`);
   }
 
-  console.log(`\n✓ ${post.slides.length} slides exported to ${outDir}`);
+  console.log(
+    `\n✓ ${onlySet ? `slide(s) ${[...onlySet].join(",")}` : `${post.slides.length} slides`} exported to ${outDir}`,
+  );
 }
 
 main()

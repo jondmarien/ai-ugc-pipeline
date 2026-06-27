@@ -31,12 +31,12 @@ bun run reel     -- 2026-06-02_ai-phishing-training --fit-voice   # 1080×1920 @
 bun run dev                                            # live preview @ :4317
 ```
 
-**New to this? Start with [docs/RUN_IT_YOURSELF.md](docs/RUN_IT_YOURSELF.md)** — the full self-serve guide to making new reels/carousels and Week-2 content.
+**New to this? Start with [docs/RUN_IT_YOURSELF.md](docs/RUN_IT_YOURSELF.md)** — the full self-serve guide to making new reels/carousels.
 
 Output → `../pipeline/renders/2026-06-02_ai-phishing-training/`.
 
 ## What's working
-Both Week-1 carousels (phishing, prompt injection) render end to end: 8× **1080×1350** PNGs over **unique per-post FLUX.2-klein backgrounds** (theme-coloured, text-free), full upload package, and a **1080×1920 @30fps H.264** reel with **VoxCPM2 narration** auto-embedded and **Whisper word-synced captions**. The voice seed is logged to `voice.meta.json` so a voice you like is reproducible. ComfyUI optional — without it, inner slides fall back to procedural CSS.
+Both carousels (phishing, prompt injection) render end to end: 8× **1080×1350** PNGs over **unique per-post FLUX.2-klein backgrounds** (theme-coloured, text-free), full upload package, and a **1080×1920 @30fps H.264** reel with **VoxCPM2 narration** auto-embedded and **Whisper word-synced captions**. The voice seed is logged to `voice.meta.json` so a voice you like is reproducible. ComfyUI optional — without it, inner slides fall back to procedural CSS.
 
 ## Docs
 | Doc | What |

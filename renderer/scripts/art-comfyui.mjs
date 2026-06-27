@@ -13,15 +13,22 @@
 //   ART_T5 (t5xxl_fp8_e4m3fn.safetensors), ART_CLIP (clip_l.safetensors),
 //   ART_VAE (split_files\vae\ae.safetensors), ART_CLIP_DEVICE (cpu).
 // Legacy local-diffusers path is still available via:  bun run art:diffusers -- <key>
-import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from "node:fs";
-import { spawnSync } from "node:child_process";
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { themes, pillarTheme, BRAND_STYLE } from "../src/design/tokens.ts";
-
-const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
-const POSTS = path.join(RENDERER, "content", "posts");
-const ROLE_FILE = { failure_point: "failure-point" };
+import { buildSlidePrompt, postThemeContext, postSeedOffset } from "./lib/art-slide-prompt.mjs";
+import { parseOnlySlides, selectArtSlides } from "./lib/art-targeting.mjs";
+import {
+  comfyBaseUrl,
+  defaultUpscaleDir,
+  ensureFlux2Model,
+  ensureUpscaleModelOnDisk,
+} from "./lib/comfyui-env.mjs";
+import { FLUX_NEGATIVE_PROMPT } from "./lib/flux-negative-prompt.mjs";
+import { writePostJson } from "./lib/post-io.mjs";
+import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
+import { slideBackgroundExists } from "./lib/public-asset.mjs";
+import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
+import { backgroundFileName } from "./lib/slide-filename.mjs";
 
 const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith("--")));
@@ -94,7 +101,7 @@ if (!key) {
   process.exit(1);
 }
 
-const URL_BASE = (process.env.COMFYUI_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
+const URL_BASE = comfyBaseUrl();
 
 // FLUX.2 [klein] 4B (distilled GGUF) mode — `--flux2`. Different architecture: a single Qwen3
 // text encoder (CLIPLoader type "flux2", run on CPU), the flux2 VAE, and the
@@ -177,53 +184,9 @@ const F2_CFG = Number(process.env.ART2_CFG || 1.2);
 // GGUF isn't already in ComfyUI's unet dir, fetch it from the same unsloth repo Q5 came from (the `hf`
 // CLI, same command the docs use). Only the klein-4B GGUFs are auto-fetchable; a remote ComfyUI whose
 // models dir isn't on this box just gets a warning. Override the dir with COMFYUI_UNET_DIR.
-const COMFY_UNET_DIR = process.env.COMFYUI_UNET_DIR || "E:\\ComfyUI\\models\\unet";
-const KLEIN_GGUF_REPO = process.env.KLEIN_GGUF_REPO || "unsloth/FLUX.2-klein-4B-GGUF";
-function ensureFlux2Model(modelFile) {
-  if (!/^flux-2-klein-4b-.*\.gguf$/i.test(modelFile)) return; // only known klein-4B GGUFs
-  let dirExists = false;
-  try { dirExists = existsSync(COMFY_UNET_DIR); } catch { dirExists = false; }
-  if (!dirExists) {
-    console.warn(`  ⚠ ComfyUI unet dir not found at ${COMFY_UNET_DIR} (remote ComfyUI?). Make sure ${modelFile} is present there, or set COMFYUI_UNET_DIR.`);
-    return;
-  }
-  if (existsSync(path.join(COMFY_UNET_DIR, modelFile))) return; // already downloaded
-  console.log(`  ↓ ${modelFile} not in ${COMFY_UNET_DIR} — downloading from ${KLEIN_GGUF_REPO} via hf…`);
-  const r = spawnSync("hf", ["download", KLEIN_GGUF_REPO, modelFile, "--local-dir", COMFY_UNET_DIR],
-    { stdio: "inherit", shell: process.platform === "win32" });
-  if (r.status !== 0)
-    console.warn(`  ⚠ auto-download failed (hf exit ${r.status ?? "?"}). Run manually:  hf download ${KLEIN_GGUF_REPO} ${modelFile} --local-dir ${COMFY_UNET_DIR}`);
-  else
-    console.log(`  ✓ ${modelFile} downloaded.`);
-}
-
-// Upscale model (for the integrated --upscale path). Auto-fetch the known `.pth` to ComfyUI's
-// upscale_models dir if missing (same direct-download idea as scripts/upscale-comfyui.mjs).
-const COMFY_UPSCALE_DIR = process.env.COMFYUI_UPSCALE_DIR || "E:\\ComfyUI\\models\\upscale_models";
-const UPSCALE_SOURCES = {
-  "RealESRGAN_x4plus.pth": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth",
-  "4x-UltraSharp.pth": "https://huggingface.co/lokCX/4x-Ultrasharp/resolve/main/4x-UltraSharp.pth?download=true",
-};
+const COMFY_UPSCALE_DIR = defaultUpscaleDir();
 async function ensureUpscaleModel(modelFile) {
-  const url = UPSCALE_SOURCES[modelFile];
-  if (!url) return;
-  let dirExists = false;
-  try { dirExists = existsSync(COMFY_UPSCALE_DIR); } catch { dirExists = false; }
-  if (!dirExists) {
-    console.warn(`  ⚠ ComfyUI upscale dir not found at ${COMFY_UPSCALE_DIR} (remote ComfyUI?). Put ${modelFile} there, or set COMFYUI_UPSCALE_DIR.`);
-    return;
-  }
-  const dest = path.join(COMFY_UPSCALE_DIR, modelFile);
-  if (existsSync(dest)) return;
-  console.log(`  ↓ ${modelFile} not found — downloading (~65 MB) from ${url.split("?")[0]} …`);
-  try {
-    const r = await fetch(url, { redirect: "follow" });
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    writeFileSync(dest, Buffer.from(await r.arrayBuffer()));
-    console.log(`  ✓ ${modelFile} downloaded to ${COMFY_UPSCALE_DIR}.`);
-  } catch (e) {
-    console.warn(`  ⚠ auto-download failed (${e.message}). Get it manually:\n     ${url.split("?")[0]}\n     → ${COMFY_UPSCALE_DIR}`);
-  }
+  await ensureUpscaleModelOnDisk(modelFile, COMFY_UPSCALE_DIR);
 }
 
 // Append the upscale tail to a built graph: VAE-decoded IMAGE → UpscaleModelLoader/ImageUpscaleWithModel
@@ -292,97 +255,7 @@ function loadUiGraph(promptText, seed) {
   return g;
 }
 
-// Text/UI suppression lives ONLY in the negative node (never the positive — negative phrasing
-// in a FLUX positive prompt can SUMMON the very tokens). Bites only when F2_CFG > 1. This targets
-// INCIDENTAL/garbled text (the usual failure: a background that sits behind our crisp overlay copy
-// should be text-free). When a slide INTENTIONALLY wants a word/sign, the author writes it in the
-// positive visual_prompt the FLUX.2 way — exact string in "quotes" + placement + font — and it is
-// NEVER stripped; deliberate quoted text simply outweighs this generic negative.
-const NEG_PROMPT =
-  "text, words, letters, numbers, typography, captions, subtitles, labels, signage, logo, watermark, " +
-  "garbled text, random characters, fake words, gibberish, fake writing, handwriting, paragraph of text, " +
-  "document, spreadsheet, calendar grid, source code, terminal window, user interface, dashboard, " +
-  "control panel, charts, graphs, diagrams, icons";
-
-// Role-aware visual motifs (NO on-slide text — FLUX would render garbled words).
-const ROLE_MOTIF = {
-  context: "two diverging glowing streams of light over a dark grid, one clean direct path and one hidden shadowed path, contrast of a trusted versus an untrusted flow",
-  risk: "untrusted signals fanning outward through the dark toward many small floating targets, thin glowing connection lines, a sense of spreading exposure",
-  mechanism: "an abstract glowing core emitting outbound beams of light to a sequence of connected nodes lighting up one after another, an automated chain",
-  failure_point: "a dark scene of glowing hazard hotspots and overlapping risk zones, tense highlights, a sense of an overlooked gap in the defenses",
-  defense: "a layered protective shield wrapping an isolated sandbox, padlocks and permission gates, controlled gateways, calm and secure",
-  takeaway: "translucent mask and glyph motifs glowing in the corners and along the edges, faint ambient circuitry and particle haze across the whole frame, the center kept calm and uncluttered (dark but not empty), minimal high-impact composition",
-  cta: "a forward-motion arrow and a softly glowing question mark toward the upper area, sense of momentum inviting a swipe",
-  // Generic body slide (dynamic-count posts beyond the named arc). Per-slide visual_prompt
-  // should override this; this is the fallback motif for an unfilled `point` slide.
-  point: "a single focal abstract object glowing in the dark with thin connecting light lines, clean high-contrast composition, one clear idea",
-};
-
-// Where the slide's TEXT sits → keep that zone of the image dark/empty so captions stay legible.
-// Takeaway centers its text (centered radial scrim); every other role is bottom-aligned.
-// NOTE: never use the word "text"/"overlay"/"headline"/"caption" here — these live in the
-// POSITIVE prompt and FLUX renders them as literal (garbled) lettering. Describe the empty
-// zone purely as composition (dark, uncluttered) and let the carousel place real copy later.
-const TEXT_ZONE = {
-  takeaway: "keep the central area calm and uncluttered (dark but not empty); arrange the focal elements in the corners and along the edges, with faint ambient detail elsewhere",
-};
-const DEFAULT_ZONE = "keep the lower portion of the frame dark, calm and uncluttered; place the focal elements in the upper third and around the edges";
-
-// Strip colour words from reused copy (e.g. visual_direction) so it can't fight the theme accent.
-function stripColor(s) {
-  return s
-    .replace(/\b(cyan|electric[- ]?blue|blue|red|teal|neon[- ]?green|green|amber|magenta|crimson|scarlet|azure|orange|purple|violet)\b/gi, "")
-    .replace(/\b(accent|glow)\b/gi, "")
-    .replace(/\s{2,}/g, " ")
-    .replace(/\s+([,.;])/g, "$1")
-    .replace(/,(\s*,)+/g, ",")
-    .trim();
-}
-
-function buildPrompt(slide, accentHex, accentName, topic, mood, styleFusion) {
-  // Subject priority — front-load the most POST-SPECIFIC scene available (FLUX anchors on it):
-  //   1. slide.visual_prompt (specific, authored)  2. slide.visual_direction (colour-stripped)
-  //   3. generic ROLE_MOTIF blended with the post topic (last resort).
-  let subject;
-  if (slide.visual_prompt && slide.visual_prompt.trim()) {
-    subject = slide.visual_prompt.trim();
-  } else if (slide.visual_direction && slide.visual_direction.trim()) {
-    subject = `dark cinematic cybersecurity illustration, ${stripColor(slide.visual_direction.trim())}`;
-  } else {
-    const motif = ROLE_MOTIF[slide.role] || "abstract flowing data network, nodes and light trails";
-    const themed = topic ? `${motif}, evoking the theme of ${topic}` : motif;
-    subject = `dark cinematic cybersecurity illustration, ${themed}`;
-  }
-  const zone = TEXT_ZONE[slide.role] || DEFAULT_ZONE;
-  // Strip signage/alarm words from the accent name + mood — FLUX renders "alert"/"warning"
-  // as literal lettering (a garbled title card), especially on the offensive/red theme.
-  const SIGNAGE = /\b(alert|warning|danger|caution|breach|threat|notice)\b/gi;
-  const cleanAccent = (accentName || "").replace(SIGNAGE, "").replace(/\s{2,}/g, " ").trim() || "red";
-  const cleanMood = mood ? mood.replace(SIGNAGE, "").replace(/\s{2,}/g, " ").replace(/\s+([,.;—-])/g, "$1").replace(/,\s*,/g, ",").trim() : "";
-  // Natural-language sentences (FLUX's qwen/T5 encoder favours prose over comma-tag soup).
-  // Shape follows the FLUX.2 [klein] guidance: subject + lighting (the accent glow, phrased as a
-  // light source — lighting is klein's highest-impact lever) + the text-safe zone, then a trailing
-  // `Style: … Mood:` tag (klein's documented consistency trick). BRAND_STYLE is the constant house
-  // look so every post reads as one brand; the theme accent + mood change per category. NO "no text"
-  // here — that lives in the negative node.
-  // Style fusion (FLUX.2 technique): blend the house look with a second named aesthetic under one
-  // unifying palette (e.g. "ancient Greek marble statuary rendered in cyberpunk neon"). Opt-in per
-  // post (post.style_fusion) or per slide (slide.style_fusion); empty = the plain house style.
-  const fused = styleFusion ? ` fused with ${stripColor(styleFusion).trim() || styleFusion.trim()}` : "";
-  const styleTag = `Style: ${BRAND_STYLE}${fused}.${cleanMood ? ` Mood: ${cleanMood}.` : ""}`;
-  return `${subject}. Lit by a single ${cleanAccent} (${accentHex}) accent glow against a deep navy void #05070d. ${zone}. ${styleTag}`;
-}
-
-// Stable per-post seed offset (FNV-1a hash of the prefix) so the same role/slide in
-// DIFFERENT posts renders different images, while a given post stays reproducible.
-function postSeedOffset(s) {
-  let h = 2166136261;
-  for (let i = 0; i < s.length; i++) {
-    h ^= s.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return (h >>> 0) % 90000;
-}
+// Negative prompt: shared FLUX_NEGATIVE_PROMPT in lib/flux-negative-prompt.mjs (see comment there).
 
 function buildGraph(promptText, seed) {
   return {
@@ -390,7 +263,7 @@ function buildGraph(promptText, seed) {
     "5": { class_type: "DualCLIPLoader", inputs: { clip_name1: T5, clip_name2: CLIP_L, type: "flux", device: CLIP_DEVICE } },
     "6": { class_type: "VAELoader", inputs: { vae_name: VAE } },
     "7": { class_type: "CLIPTextEncode", inputs: { text: promptText, clip: ["5", 0] } },
-    "8": { class_type: "CLIPTextEncode", inputs: { text: NEG_PROMPT, clip: ["5", 0] } },
+    "8": { class_type: "CLIPTextEncode", inputs: { text: FLUX_NEGATIVE_PROMPT, clip: ["5", 0] } },
     "9": { class_type: "EmptySD3LatentImage", inputs: { width: WIDTH, height: HEIGHT, batch_size: 1 } },
     "10": { class_type: "KSampler", inputs: { seed, steps: STEPS, cfg: 1, sampler_name: "euler", scheduler: "simple", denoise: 1, model: ["4", 0], positive: ["7", 0], negative: ["8", 0], latent_image: ["9", 0] } },
     "11": { class_type: "VAEDecode", inputs: { samples: ["10", 0], vae: ["6", 0] } },
@@ -405,7 +278,7 @@ function buildGraphFlux2(promptText, seed) {
     "5": { class_type: "CLIPLoader", inputs: { clip_name: F2_CLIP, type: "flux2", device: CLIP_DEVICE } },
     "6": { class_type: "VAELoader", inputs: { vae_name: F2_VAE } },
     "7": { class_type: "CLIPTextEncode", inputs: { text: promptText, clip: ["5", 0] } },
-    "8": { class_type: "CLIPTextEncode", inputs: { text: NEG_PROMPT, clip: ["5", 0] } },
+    "8": { class_type: "CLIPTextEncode", inputs: { text: FLUX_NEGATIVE_PROMPT, clip: ["5", 0] } },
     "9": { class_type: "Flux2Scheduler", inputs: { steps: STEPS, width: WIDTH, height: HEIGHT } },
     "10": { class_type: "RandomNoise", inputs: { noise_seed: seed } },
     "11": { class_type: "KSamplerSelect", inputs: { sampler_name: "euler" } },
@@ -478,22 +351,15 @@ async function fetchImage(img) {
 }
 
 // ---- main ----
-const file = readdirSync(POSTS).find((f) => f.endsWith(".json") && f.includes(key));
-if (!file) { console.error(`No post JSON in ${POSTS} matching "${key}".`); process.exit(1); }
-const postPath = path.join(POSTS, file);
-const post = JSON.parse(readFileSync(postPath, "utf8"));
+const loaded = loadPostByKey(key);
+if (!loaded) {
+  console.error(`No post JSON in ${POSTS_DIR} matching "${key}".`);
+  process.exit(1);
+}
+const { postPath, post } = loaded;
 const prefix = post.upload_package.filename_prefix;
-// Brand theme drives the accent colour + mood (explicit post.theme, else pillar fallback).
-const theme = post.theme || pillarTheme[post.pillar] || "defensive";
-const T = themes[theme] || themes.defensive;
-const accentHex = T.accent;
-const accentName = T.name;
-const mood = T.mood;
-// Optional style fusion for the whole post (a slide may override with slide.style_fusion).
-const postStyleFusion = String(post.style_fusion || "").trim();
-// Short, text-free theme hint (≤12 words from the post's claim/slug) for fallback prompts,
-// and a per-post seed base so different posts don't collide on identical images.
-const topic = String(post.core_claim || post.slug || "").replace(/["']/g, "").split(/\s+/).filter(Boolean).slice(0, 12).join(" ");
+const themeCtx = postThemeContext(post);
+const postStyleFusion = themeCtx.postStyleFusion;
 const postBaseSeed = SEED_BASE + postSeedOffset(prefix);
 
 // Ensure the selected FLUX.2 klein GGUF is present (auto-download Q6 etc. on first use).
@@ -528,24 +394,11 @@ if (!DRY) {
   console.log(`DRY RUN @ ${URL_BASE} · ${cfgParts.join(" · ")}`);
 }
 
-const onlyArg = opt("only", "");
-const onlySet = onlyArg ? new Set(onlyArg.split(",").map((x) => Number(x.trim())).filter((n) => !Number.isNaN(n))) : null;
+const onlySet = parseOnlySlides(opt("only", ""));
 // Targeting (cover is NOT special-cased — it generates by need, like any slide):
-//   • asset_status "existing" → never touched (locked custom asset, e.g. a hand-made cover).
-//   • --only=N → regenerate exactly those slides (explicit intent overrides the has-art check).
-//   • --all / --force → regenerate every non-"existing" slide (cover included).
-//   • default → only slides that still NEED art (no background_asset yet), cover included.
-// This is why `bun run pipeline` no longer needs `--all` to get a cover background.
 const FORCE = flags.has("--all") || flags.has("--force") || COMPARE;
-// A slide "has art" only if its background_asset actually exists ON DISK — a fresh scaffold points
-// the cover at a not-yet-created path, which must still count as needing art.
-const artExists = (s) =>
-  !!s.background_asset && existsSync(path.join(RENDERER, "public", s.background_asset.replace(/^[\\/]+/, "")));
-const targets = post.slides.filter((s) => {
-  if (s.asset_status === "existing") return false; // locked custom asset — never overwrite
-  if (onlySet) return onlySet.has(s.slide); // explicit selection wins
-  return FORCE || !artExists(s); // else: regenerate-all, or only slides still missing art (cover included)
-});
+const artExists = (s) => slideBackgroundExists(RENDERER, s);
+const targets = selectArtSlides(post.slides, { onlySet, force: FORCE, artExists });
 if (onlySet) console.log(`(regenerating only slide(s): ${[...onlySet].join(", ")})`);
 const compareMode = FLUX2 && COMPARE;
 const outPrefix = compareMode ? `${prefix}_flux2` : prefix;
@@ -558,10 +411,11 @@ for (let ti = 0; ti < targets.length; ti++) {
   const slide = targets[ti];
   // Cooldown between generations (not before the first) — eases sustained load. Live countdown.
   if (COOLDOWN_MS && ti > 0 && !DRY) await cooldownPause(COOLDOWN_MS);
-  const role = ROLE_FILE[slide.role] ?? slide.role;
-  const nn = String(slide.slide).padStart(2, "0");
-  const destName = `${nn}_${role}.png`;
-  const promptText = buildPrompt(slide, accentHex, accentName, topic, mood, String(slide.style_fusion || postStyleFusion || "").trim());
+  const destName = backgroundFileName(slide);
+  const promptText = buildSlidePrompt(slide, {
+    ...themeCtx,
+    styleFusion: String(slide.style_fusion || postStyleFusion || "").trim(),
+  });
   const seed = postBaseSeed + slide.slide;
   if (DRY) {
     console.log(`\n[slide ${slide.slide} ${slide.role}] seed=${seed}\n  ${promptText}`);
@@ -615,7 +469,7 @@ if (!DRY) {
     console.log(`\n✓ Generated ${n}/${targets.length} FLUX.2 background(s) → public/backgrounds/${outPrefix}/ (comparison set; post JSON untouched).`);
     console.log(`  Compare against the live set in public/backgrounds/${prefix}/.`);
   } else {
-    writeFileSync(postPath, JSON.stringify(post, null, 2) + "\n", "utf8");
+    writePostJson(postPath, post);
     const which = FLUX2 ? "FLUX.2 klein" : "FLUX.1-schnell";
     console.log(`\n✓ Generated ${n}/${targets.length} ${which} background(s) → public/backgrounds/${prefix}/ (asset_status=generated, licenses logged).`);
     console.log(`  Next: bun run export -- ${key}`);

@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Chrono's Cyber World of AI — design system
+   Dark cinematic "quiet command center". The brand's 5 theme colors are the
+   ownable palette: offense(red) ↔ defense(blue), meeting at purple-team, with
+   hacking(green) and ai(orange). Everything sits on a deep navy void.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@theme inline {
+  --color-void: #05070d;
+  --color-void-deep: #02030a;
+  --color-fg: #f8fafc;
+  --color-muted: #94a3b8;
+  --color-faint: #64748b;
+  --color-hairline: rgba(148, 163, 184, 0.14);
+
+  /* pillar accents (the visual-identity system) */
+  --color-offensive: #ef4444; /* attack tradecraft */
+  --color-defensive: #3b82f6; /* detection & response */
+  --color-hacking: #39ff88; /* hands-on technique */
+  --color-team: #a855f7; /* purple-team: offense + defense */
+  --color-ai: #f97316; /* model-centric / generic AI */
+
+  --font-display: "Clash Display", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "General Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --max: 1240px;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-void-deep);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-team);
+  color: #fff;
+}
+
+/* Custom scrollbar — quiet, on-brand */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: #1c2436;
+  border-radius: 99px;
+  border: 2px solid var(--color-void-deep);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3548;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-defensive);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Reusable expressive utilities ─────────────────────────────────────── */
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 0.96;
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* monospaced kicker label, e.g. "// 01 — THE THESIS" */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
+/* hairline divider */
+.hairline {
+  border-color: var(--color-hairline);
+}
+
+/* grain overlay — film texture over the whole void */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* subtle scanline / CRT vibe on demand */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(148, 163, 184, 0.035) 0px,
+    rgba(148, 163, 184, 0.035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* gradient hairline used as section rules */
+.rule-glow {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(148, 163, 184, 0.35),
+    transparent
+  );
+}
+
+/* text that decrypts in (paired with GSAP/JS scramble) */
+.decrypt {
+  font-variant-ligatures: none;
+}
+
+/* reveal helper — initial hidden state for GSAP staggered entrances */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
