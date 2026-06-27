@@ -93,9 +93,9 @@ Carousel `1080×1350` · Reel `1080×1920` @30fps H.264 · 8-slide arc: cover �
 
 ## Status
 
-- Content + media kits, the renderer, and six skills (`ai-cybersecurity-ugc-carousel`, `react-remotion-instagram-renderer`, `humanizer`, `stop-slop`, `professional-proofreader`, `ig-ingest`): complete and in use.
-- **Posts render end to end** — unique per-post FLUX.2-klein backgrounds (local), narrated reels (VoxCPM2, optional voice clone) with Whisper-synced captions, committed under `pipeline/renders/`.
-- Wired into `/draft-post`: a 5-way brand **theme** system (offensive=red / defensive=blue / hacking=green / purple-team=purple / generic-AI=orange), the **humanizer → stop-slop → professional-proofreader** copy chain, deeper source-triangulated research, dynamic slide count (3–20), optional per-slide Instagram captions, and a reproducible voice seed (`voice.meta.json`).
-- **Cloud art/video (optional):** `--fal` (FAL.ai) or `--higgsfield` generate backgrounds + per-beat reel motion via API instead of local ComfyUI.
-- **Gated publishing (live):** YouTube Shorts + TikTok via `bun run publish` (a rendered, approved post → `upload_ready`); Instagram stays a manual checklist while Meta API access clears. Uploads are private/`SELF_ONLY` until each platform's audit passes.
-- Next: continue the backlog; flip publishing to public per platform once the YouTube + TikTok audits clear.
+**Production — the full pipeline runs end to end and is in regular use:** idea → researched, sourced, in-voice copy → rendered carousel + narrated reel → gated multi-platform publish. Local-first on an 8 GB GPU, with optional cloud art/video and a human approval gate in front of every post.
+
+**Roadmap (pipeline-level):**
+- **Take publishing public** — YouTube and TikTok uploads stay private / `SELF_ONLY` until each platform's API audit passes; going public is then a one-value flip in `publish.config.json`, no code change.
+- **Automate Instagram** — wire up Instagram publishing once Meta API access clears; today it's the only platform that's a manual paste (from the generated upload checklist).
+- **Analytics dashboard** — repoint the existing dashboard from Instagram metrics to YouTube + TikTok stats (the read scopes are already reserved at auth; tracked as a separate spec).

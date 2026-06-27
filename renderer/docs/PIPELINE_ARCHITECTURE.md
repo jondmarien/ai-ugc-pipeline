@@ -1,6 +1,6 @@
 # Pipeline Architecture
 
-The content-to-render pipeline, end to end: how a sourced idea becomes a validated post JSON and then a carousel + reel. For the system-wide view (layers, data model, GPU boundaries) see [PROJECT_ARCHITECTURE.md](./PROJECT_ARCHITECTURE.md). For the pre-render "Assemble" stage in depth (variety digest, research loop, copy chain) see [DRAFT_PIPELINE_ARCHITECTURE.md](./DRAFT_PIPELINE_ARCHITECTURE.md).
+The content-to-render pipeline, end to end: how a sourced idea becomes a validated post JSON and then a carousel + reel. For the system-wide view (layers, data model, GPU boundaries) see [PROJECT_ARCHITECTURE.md](./PROJECT_ARCHITECTURE.md). For the pre-render "Assemble" stage in depth (variety digest, research loop, copy chain) see [DRAFT_PIPELINE_ARCHITECTURE.md](./DRAFT_PIPELINE_ARCHITECTURE.md). For the optional publish stage that posts the finished reel, see [PUBLISHING_ARCHITECTURE.md](./PUBLISHING_ARCHITECTURE.md).
 
 There are two entry points. **`/draft-post`** (and `/draft-week`) takes an *idea* and does everything — research, write, scaffold, validate, render. **`bun run pipeline`** is the render-only engine you call when the JSON already exists (you hand-edited it, or you're re-rendering).
 
@@ -71,7 +71,7 @@ sequenceDiagram
 
 *All `[code]`: the render path is deterministic, with no LLM in it.*
 
-One command runs seven steps in order. It keeps one GPU model resident at a time (art on ComfyUI, then `free-comfyui`, then VoxCPM/Whisper), and the reel auto-embeds the generated voice.
+One command runs seven core steps in order (plus an optional publish stage with `--publish=`). It keeps one GPU model resident at a time (art on ComfyUI, then `free-comfyui`, then VoxCPM/Whisper), and the reel auto-embeds the generated voice. Backgrounds are local ComfyUI by default; `--fal` / `--higgsfield` swap in a cloud API for both art and per-beat reel motion (no `free-comfyui` hand-off then).
 
 ```mermaid
 sequenceDiagram
@@ -109,6 +109,9 @@ sequenceDiagram
 
 > **align-whisper.py details:** uses a SHORT proper-noun-only Whisper `initial_prompt` (prevents the decoder skipping the opening and dropping early captions); applies a global proper-noun CORRECTIONS map plus an optional per-post `video.caption_corrections` map; and trims trailing VoxCPM clone hallucination from both the audio and the captions (`trim_trailing_hallucination`).
 | 7 | reel | `render-reel.ts` | slides + captions + audio → `<prefix>_reel.mp4` | `--no-reel` or `video.enabled=false` |
+| 8 | publish *(opt-in)* | `publish.mjs` → `publish/run.ts` | reel → YouTube Shorts + TikTok (gated, idempotent) | no `--publish=` (default); also skipped under `--no-reel` |
+
+> **Step 8 (publish)** only runs with `--publish=youtube,tiktok`. By then the complete run has flipped the post `approved → generated`, which is exactly the status the publish gate requires; it respects `--dry-run`, forwards `--yes`, and is non-fatal per platform. Instagram stays a manual checklist. Full subsystem: [PUBLISHING_ARCHITECTURE.md](./PUBLISHING_ARCHITECTURE.md).
 
 ### Skip / decision logic
 
@@ -131,7 +134,10 @@ flowchart TD
     AL --> RQ
     RQ -- yes --> RE["reel --fit-voice"]
     RQ -- no --> DONE["done"]
-    RE --> DONE
+    RE --> PQ{"--publish=…?"}
+    PQ -- yes --> PUB["publish (gated; only a 'generated' post)"]
+    PQ -- no --> DONE
+    PUB --> DONE
 ```
 
 ---
@@ -141,6 +147,7 @@ flowchart TD
 | Flag | Applies to | Effect |
 |------|-----------|--------|
 | `--flux1` | art | Opt into legacy FLUX.1-schnell. **FLUX.2-klein is the default** (no flag), and the cover is auto-generated. |
+| `--fal` / `--higgsfield` | art + reel | Generate backgrounds AND per-beat reel motion via a cloud API instead of local ComfyUI (`FAL_KEY` / `HIGGSFIELD_API_URL`+creds). ComfyUI-only knobs are ignored; no `free-comfyui` hand-off. |
 | `--art` / `--no-art` | art | Force regen / skip entirely. |
 | `--vox2` / `--vox0.5` | voice | Override voice model for this run (VoxCPM2 2B / VoxCPM-0.5B) without editing the JSON. |
 | `--seed=N` | voice | Lock the speaker. Same N = same voice. Logged to `voice.meta.json`. Omit → auto-rolled + logged. |
@@ -148,7 +155,8 @@ flowchart TD
 | `--no-reel` | reel | Stop after carousel/package. |
 | `--no-package` | package | Skip the upload-file assembly. |
 | `--no-fit-voice` | reel | Don't trim/realign the reel to the voice length. |
-| `--dry-run` | all | Print what would run. |
+| `--publish=a,b` | publish | Opt-in: after the reel, publish to `youtube,tiktok` via the gated `bun run publish` (a `generated` post; `--yes` skips the confirm). |
+| `--dry-run` | all | Print what would run (publish included). |
 
 Multiple post keys → batch.
 
@@ -162,4 +170,4 @@ Multiple post keys → batch.
 
 ## 6. Output
 
-Everything lands in `pipeline/renders/<key>/`: eight carousel PNGs (`<prefix>_NN_role.png`), `<prefix>_reel.mp4`, `caption.txt`, `alt_text.txt`, `sources.md`, `LICENSES.md`, and `voice.meta.json` (reusable seed). A human reviews and uploads — no auto-publish.
+Everything lands in `pipeline/renders/<key>/`: N carousel PNGs (`<prefix>_NN_role.png`), `<prefix>_reel.mp4`, `caption.txt`, `alt_text.txt`, `sources.md`, `LICENSES.md`, `render_qa_checklist.md`, `instagram_upload_checklist.md` (+ `slide_captions.txt` when multi-caption is on), and `voice.meta.json` (reusable seed). A human reviews, then either uploads to Instagram manually or runs the gated `bun run publish` for YouTube/TikTok (which also writes `publish.state.json`). Nothing auto-posts a draft.
