@@ -66,11 +66,13 @@ export const MODEL_CATALOG = Object.freeze({
     { id: "gpt-image-2", name: "GPT Image 2", type: "image", apiModelId: "reve/text-to-image", cliJobSetType: "gpt_image_2", cliExtraArgs: [], mcpModel: "gpt-image", promptFamily: "gpt", creditCost: 7, defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
     { id: "seedream-4.5", name: "Seedream 4.5", type: "image", apiModelId: "reve/text-to-image", cliJobSetType: "seedream_v4_5", cliExtraArgs: [], mcpModel: "seedream", promptFamily: "seedream", creditCost: 1, defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
   ],
+  // creditCost = credits per CLIP (verified via `higgsfield generate cost`). i2v is far pricier than
+  // images, so a reel of N beats × this is what the motion budget gate checks.
   video: [
-    { id: "dop", name: "DoP Standard", type: "video", apiModelId: "higgsfield-ai/dop/standard", cliJobSetType: "cinematic_studio_video_v2", defaultDuration: 5, aspectRatio: "9:16" },
-    { id: "kling-3.0", name: "Kling 3.0", type: "video", apiModelId: "kling-video/v2.1/pro/image-to-video", cliJobSetType: "cinematic_studio_video_v2", defaultDuration: 5, aspectRatio: "9:16" },
-    { id: "seedance-2.0", name: "Seedance 2.0", type: "video", apiModelId: "bytedance/seedance/v1/pro/image-to-video", cliJobSetType: "cinematic_studio_video_v2", defaultDuration: 5, aspectRatio: "9:16" },
-    { id: "veo-3.1", name: "Veo 3.1", type: "video", apiModelId: "bytedance/seedance/v1/pro/image-to-video", cliJobSetType: "veo3_1", defaultDuration: 5, aspectRatio: "9:16" },
+    { id: "dop", name: "DoP Standard", type: "video", apiModelId: "higgsfield-ai/dop/standard", cliJobSetType: "cinematic_studio_video_v2", creditCost: 7.5, defaultDuration: 5, aspectRatio: "9:16" },
+    { id: "kling-3.0", name: "Kling 3.0", type: "video", apiModelId: "kling-video/v2.1/pro/image-to-video", cliJobSetType: "cinematic_studio_video_v2", creditCost: 7.5, defaultDuration: 5, aspectRatio: "9:16" },
+    { id: "seedance-2.0", name: "Seedance 2.0", type: "video", apiModelId: "bytedance/seedance/v1/pro/image-to-video", cliJobSetType: "cinematic_studio_video_v2", creditCost: 7.5, defaultDuration: 5, aspectRatio: "9:16" },
+    { id: "veo-3.1", name: "Veo 3.1", type: "video", apiModelId: "bytedance/seedance/v1/pro/image-to-video", cliJobSetType: "veo3_1", creditCost: 22, defaultDuration: 5, aspectRatio: "9:16" },
   ],
 });
 
@@ -491,7 +493,9 @@ async function generateVideoFromImageViaCli({
     return { videoPath: cached.videoPath, provider: "higgsfield-cli", model, cached: true };
   }
 
-  const args = ["generate", "create", jobSetType, "--prompt", prompt, "--image", imageRef, "--wait", "--wait-timeout", `${Math.ceil(timeoutMs / 60000)}m`, "--json"];
+  // Reels are 9:16 — pass it explicitly (the video models default to 16:9, which would letterbox).
+  const aspect = catalog.aspectRatio || "9:16";
+  const args = ["generate", "create", jobSetType, "--prompt", prompt, "--image", imageRef, "--aspect_ratio", aspect, "--wait", "--wait-timeout", `${Math.ceil(timeoutMs / 60000)}m`, "--json"];
   const r = runCli(args, { timeoutMs });
   if (r.status !== 0) {
     throw new Error(`higgsfield CLI video generate failed: ${(r.stderr || r.stdout || "").trim().slice(0, 300)}`);
@@ -645,6 +649,13 @@ export function imageModelFamily(model) {
   const catalog = catalogEntry(model);
   if (!catalog) throw new Error(`UnknownHiggsfieldModel: ${model}`);
   return catalog.promptFamily ?? "flux";
+}
+
+/** Credits per CLIP for a video (i2v) model id (verified via `higgsfield generate cost`). */
+export function videoModelCost(model) {
+  const catalog = catalogEntry(model);
+  if (!catalog || catalog.type !== "video") throw new Error(`UnknownHiggsfieldVideoModel: ${model}`);
+  return typeof catalog.creditCost === "number" ? catalog.creditCost : DEFAULT_CREDIT_COST;
 }
 
 export async function estimateCost(model, _width, _height) {
@@ -892,6 +903,7 @@ export default {
   estimateCost,
   imageModelCost,
   imageModelFamily,
+  videoModelCost,
   generateImage,
   generateVideoFromImage,
   renderSlide,

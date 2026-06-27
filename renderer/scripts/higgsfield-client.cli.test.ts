@@ -8,6 +8,7 @@ import {
   resolveCliBin,
   imageModelCost,
   imageModelFamily,
+  videoModelCost,
   estimateCost,
   MODEL_CATALOG,
 } from "./higgsfield-client.mjs";
@@ -129,6 +130,13 @@ test("imageModelFamily maps models to composers", () => {
   expect(imageModelFamily("soul-2.0")).toBe("soul");
   expect(imageModelFamily("seedream-4.5")).toBe("seedream");
   expect(imageModelFamily("gpt-image-2")).toBe("gpt");
+});
+
+test("videoModelCost reflects verified i2v clip rates (and rejects image ids)", () => {
+  expect(videoModelCost("dop")).toBe(7.5);
+  expect(videoModelCost("seedance-2.0")).toBe(7.5);
+  expect(videoModelCost("veo-3.1")).toBe(22); // the one the motion gate must block
+  expect(() => videoModelCost("flux")).toThrow("UnknownHiggsfieldVideoModel");
 });
 
 test("estimateCost returns the table credit value", async () => {

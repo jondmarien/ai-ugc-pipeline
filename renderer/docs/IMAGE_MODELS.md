@@ -39,7 +39,11 @@ When you don't want to run a local model, two cloud paths generate the **same** 
 
 **Picking a model** (pipeline passthroughs): `--higgsfield-model=<id>` / `--fal-model=<id>` for the image (art) model, `--motion-model=<id>` for the i2v (reel motion) model. List the Higgsfield catalog **with per-image credit cost** via `bun run higgsfield:models` (add `--live` for the full provider catalog). Standalone scripts take `--model=<id>` directly.
 
-**Credit-cost gate:** `art:higgsfield` prints a pre-flight estimate (`slides × model rate`) and **aborts if it exceeds `--budget=N` (default 20 credits; `0` = unlimited)** unless you pass `--yes`. This blocks an accidental expensive run — e.g. GPT Image 2 at 7 cr/img is ~56 credits for an 8-slide post. FLUX.2/Seedream (1 cr) land at 8–15/carousel; Soul at ~1. Pass `--budget=` / `--yes` through `bun run pipeline` too.
+**Credit-cost gate (art + motion):** both steps print a pre-flight estimate and abort if it exceeds a budget cap unless `--yes`.
+- **Art** — `art:higgsfield` checks `slides × image rate` against `--budget=N` (default **20**; `0` = unlimited). Blocks e.g. GPT Image 2 (~56 cr for 8 slides). FLUX.2/Seedream (1 cr) land at 8–15/carousel; Soul ~1.
+- **Motion** — `reel:higgsfield` checks `beats × clip rate` against `--budget=N` (default **60**; pipeline flag `--motion-budget=`). i2v is far pricier: **7.5 cr/clip** (dop/kling/seedance → `cinematic_studio_video_v2`), **22 cr/clip** (veo-3.1). A 6-beat reel is ~45 cr on the default, ~132 on Veo — so Veo is gated unless you raise the cap or pass `--yes`. Motion clips are also forced to **9:16** (the models default to 16:9).
+
+Pass `--budget=` (art), `--motion-budget=` (motion), and `--yes` through `bun run pipeline`.
 
 **Per-model prompt shaping:** one canonical `PromptSpec` (`lib/art-slide-prompt.mjs`) is composed per model family — `flux` gets the rich house prose; `soul`/`seedream`/`gpt` get natural-language phrasing. No Higgsfield image model accepts a negative-prompt param, so the exclusions (**no text/typography/UI**) are baked into the *positive* prompt rather than a folded `Avoid:` list. The local ComfyUI/FLUX path is unchanged (real negative conditioning).
 
