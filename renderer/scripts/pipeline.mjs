@@ -264,7 +264,7 @@ function runPost(key) {
   }
   if (wantsReel) {
     if (USE_HIGGSFIELD) plan.push("reel:higgsfield (motion segments)");
-    if (USE_FAL) plan.push("reel:fal (motion segments - future)");
+    if (USE_FAL) plan.push("reel:fal (motion segments)");
     plan.push("reel (audio auto-embedded)");
   }
 
@@ -289,7 +289,7 @@ function runPost(key) {
   if (!flags.has("--no-package")) step("package (upload files)", ["package", "--", fullKey]);
 
   if (wantsVoice) {
-    if (!USE_HIGGSFIELD) step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
+    if (!USE_HIGGSFIELD && !USE_FAL) step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
     step("voice (TTS)", [
       "voice",
       "--",
@@ -307,6 +307,9 @@ function runPost(key) {
   if (wantsReel) {
     if (USE_HIGGSFIELD) {
       step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey], { fatal: false });
+    }
+    if (USE_FAL) {
+      step("reel:fal (motion segments)", ["reel:fal", "--", fullKey], { fatal: false });
     }
     const reelArgs = ["reel", "--", fullKey, `--captions=${captionMode}`];
     if (!flags.has("--no-fit-voice")) reelArgs.push("--fit-voice");
