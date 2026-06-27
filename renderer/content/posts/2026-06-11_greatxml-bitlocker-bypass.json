@@ -4,7 +4,7 @@
   "slug": "greatxml-bitlocker-bypass",
   "platform": "instagram",
   "format": "carousel",
-  "status": "approved",
+  "status": "generated",
   "pillar": "offensive_ai",
   "theme": "offensive",
   "audience": "security_practitioners",
@@ -418,6 +418,1157 @@
     "music": null,
     "sfx": [],
     "licenses": [],
-    "captions": []
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.22,
+        "text": "A researcher known as Chaotic Eclipse stumbled",
+        "words": [
+          {
+            "text": "A",
+            "start": 0.0,
+            "end": 0.2
+          },
+          {
+            "text": "researcher",
+            "start": 0.2,
+            "end": 0.5
+          },
+          {
+            "text": "known",
+            "start": 0.5,
+            "end": 0.82
+          },
+          {
+            "text": "as",
+            "start": 0.82,
+            "end": 1.02
+          },
+          {
+            "text": "Chaotic",
+            "start": 1.02,
+            "end": 1.46
+          },
+          {
+            "text": "Eclipse",
+            "start": 1.46,
+            "end": 1.7
+          },
+          {
+            "text": "stumbled",
+            "start": 1.7,
+            "end": 2.22
+          }
+        ]
+      },
+      {
+        "start": 2.22,
+        "end": 4.52,
+        "text": "across a BitLocker bypass while testing Defender",
+        "words": [
+          {
+            "text": "across",
+            "start": 2.22,
+            "end": 2.66
+          },
+          {
+            "text": "a",
+            "start": 2.66,
+            "end": 2.86
+          },
+          {
+            "text": "BitLocker",
+            "start": 2.86,
+            "end": 3.22
+          },
+          {
+            "text": "bypass",
+            "start": 3.22,
+            "end": 3.52
+          },
+          {
+            "text": "while",
+            "start": 3.52,
+            "end": 3.96
+          },
+          {
+            "text": "testing",
+            "start": 3.96,
+            "end": 4.26
+          },
+          {
+            "text": "Defender",
+            "start": 4.26,
+            "end": 4.52
+          }
+        ]
+      },
+      {
+        "start": 4.52,
+        "end": 6.9,
+        "text": "Offline Scan, and it took them four",
+        "words": [
+          {
+            "text": "Offline",
+            "start": 4.52,
+            "end": 4.98
+          },
+          {
+            "text": "Scan,",
+            "start": 4.98,
+            "end": 5.4
+          },
+          {
+            "text": "and",
+            "start": 6.1,
+            "end": 6.18
+          },
+          {
+            "text": "it",
+            "start": 6.18,
+            "end": 6.28
+          },
+          {
+            "text": "took",
+            "start": 6.28,
+            "end": 6.46
+          },
+          {
+            "text": "them",
+            "start": 6.46,
+            "end": 6.66
+          },
+          {
+            "text": "four",
+            "start": 6.66,
+            "end": 6.9
+          }
+        ]
+      },
+      {
+        "start": 6.9,
+        "end": 9.04,
+        "text": "hours from discovery to a working exploit.",
+        "words": [
+          {
+            "text": "hours",
+            "start": 6.9,
+            "end": 7.24
+          },
+          {
+            "text": "from",
+            "start": 7.24,
+            "end": 7.5
+          },
+          {
+            "text": "discovery",
+            "start": 7.5,
+            "end": 7.8
+          },
+          {
+            "text": "to",
+            "start": 7.8,
+            "end": 8.38
+          },
+          {
+            "text": "a",
+            "start": 8.38,
+            "end": 8.48
+          },
+          {
+            "text": "working",
+            "start": 8.48,
+            "end": 8.7
+          },
+          {
+            "text": "exploit.",
+            "start": 8.7,
+            "end": 9.04
+          }
+        ]
+      },
+      {
+        "start": 9.84,
+        "end": 12.9,
+        "text": "This is a post-compromise, second-stage tool: planting",
+        "words": [
+          {
+            "text": "This",
+            "start": 9.84,
+            "end": 9.98
+          },
+          {
+            "text": "is",
+            "start": 9.98,
+            "end": 10.08
+          },
+          {
+            "text": "a",
+            "start": 10.08,
+            "end": 10.2
+          },
+          {
+            "text": "post-compromise,",
+            "start": 10.2,
+            "end": 11.06
+          },
+          {
+            "text": "second-stage",
+            "start": 11.36,
+            "end": 11.8
+          },
+          {
+            "text": "tool:",
+            "start": 11.8,
+            "end": 12.14
+          },
+          {
+            "text": "planting",
+            "start": 12.58,
+            "end": 12.9
+          }
+        ]
+      },
+      {
+        "start": 12.9,
+        "end": 15.54,
+        "text": "the files requires administrator rights, because writing",
+        "words": [
+          {
+            "text": "the",
+            "start": 12.9,
+            "end": 13.0
+          },
+          {
+            "text": "files",
+            "start": 13.0,
+            "end": 13.2
+          },
+          {
+            "text": "requires",
+            "start": 13.2,
+            "end": 13.68
+          },
+          {
+            "text": "administrator",
+            "start": 13.68,
+            "end": 14.12
+          },
+          {
+            "text": "rights,",
+            "start": 14.12,
+            "end": 14.64
+          },
+          {
+            "text": "because",
+            "start": 15.12,
+            "end": 15.32
+          },
+          {
+            "text": "writing",
+            "start": 15.32,
+            "end": 15.54
+          }
+        ]
+      },
+      {
+        "start": 15.54,
+        "end": 18.04,
+        "text": "to the recovery partition needs diskpart with",
+        "words": [
+          {
+            "text": "to",
+            "start": 15.54,
+            "end": 15.8
+          },
+          {
+            "text": "the",
+            "start": 15.8,
+            "end": 15.92
+          },
+          {
+            "text": "recovery",
+            "start": 15.92,
+            "end": 16.16
+          },
+          {
+            "text": "partition",
+            "start": 16.16,
+            "end": 16.66
+          },
+          {
+            "text": "needs",
+            "start": 16.66,
+            "end": 17.32
+          },
+          {
+            "text": "diskpart",
+            "start": 17.32,
+            "end": 17.57
+          },
+          {
+            "text": "with",
+            "start": 17.82,
+            "end": 18.04
+          }
+        ]
+      },
+      {
+        "start": 18.04,
+        "end": 20.06,
+        "text": "an elevated prompt, which a standard user",
+        "words": [
+          {
+            "text": "an",
+            "start": 18.04,
+            "end": 18.16
+          },
+          {
+            "text": "elevated",
+            "start": 18.16,
+            "end": 18.48
+          },
+          {
+            "text": "prompt,",
+            "start": 18.48,
+            "end": 18.86
+          },
+          {
+            "text": "which",
+            "start": 19.26,
+            "end": 19.34
+          },
+          {
+            "text": "a",
+            "start": 19.34,
+            "end": 19.46
+          },
+          {
+            "text": "standard",
+            "start": 19.46,
+            "end": 19.68
+          },
+          {
+            "text": "user",
+            "start": 19.68,
+            "end": 20.06
+          }
+        ]
+      },
+      {
+        "start": 20.06,
+        "end": 20.76,
+        "text": "cannot run.",
+        "words": [
+          {
+            "text": "cannot",
+            "start": 20.06,
+            "end": 20.38
+          },
+          {
+            "text": "run.",
+            "start": 20.38,
+            "end": 20.76
+          }
+        ]
+      },
+      {
+        "start": 21.28,
+        "end": 23.26,
+        "text": "An attacker who already has admin copies",
+        "words": [
+          {
+            "text": "An",
+            "start": 21.28,
+            "end": 21.34
+          },
+          {
+            "text": "attacker",
+            "start": 21.34,
+            "end": 21.58
+          },
+          {
+            "text": "who",
+            "start": 21.58,
+            "end": 21.96
+          },
+          {
+            "text": "already",
+            "start": 21.96,
+            "end": 22.24
+          },
+          {
+            "text": "has",
+            "start": 22.24,
+            "end": 22.56
+          },
+          {
+            "text": "admin",
+            "start": 22.56,
+            "end": 22.9
+          },
+          {
+            "text": "copies",
+            "start": 22.9,
+            "end": 23.26
+          }
+        ]
+      },
+      {
+        "start": 23.6,
+        "end": 27.38,
+        "text": "unattend.xml and ReAgent.xml to the recovery partition",
+        "words": [
+          {
+            "text": "unattend.xml",
+            "start": 23.6,
+            "end": 24.48
+          },
+          {
+            "text": "and",
+            "start": 24.96,
+            "end": 25.01
+          },
+          {
+            "text": "ReAgent.xml",
+            "start": 25.0,
+            "end": 25.96
+          },
+          {
+            "text": "to",
+            "start": 25.96,
+            "end": 26.44
+          },
+          {
+            "text": "the",
+            "start": 26.44,
+            "end": 26.56
+          },
+          {
+            "text": "recovery",
+            "start": 26.56,
+            "end": 26.8
+          },
+          {
+            "text": "partition",
+            "start": 26.8,
+            "end": 27.38
+          }
+        ]
+      },
+      {
+        "start": 27.38,
+        "end": 30.24,
+        "text": "root, and every subsequent Shift+Restart from the",
+        "words": [
+          {
+            "text": "root,",
+            "start": 27.38,
+            "end": 27.66
+          },
+          {
+            "text": "and",
+            "start": 28.0,
+            "end": 28.18
+          },
+          {
+            "text": "every",
+            "start": 28.18,
+            "end": 28.46
+          },
+          {
+            "text": "subsequent",
+            "start": 28.46,
+            "end": 28.86
+          },
+          {
+            "text": "Shift+Restart",
+            "start": 28.86,
+            "end": 29.3
+          },
+          {
+            "text": "from",
+            "start": 29.74,
+            "end": 30.08
+          },
+          {
+            "text": "the",
+            "start": 30.08,
+            "end": 30.24
+          }
+        ]
+      },
+      {
+        "start": 30.24,
+        "end": 32.9,
+        "text": "lock screen then bypasses BitLocker and drops",
+        "words": [
+          {
+            "text": "lock",
+            "start": 30.24,
+            "end": 30.42
+          },
+          {
+            "text": "screen",
+            "start": 30.42,
+            "end": 30.7
+          },
+          {
+            "text": "then",
+            "start": 31.14,
+            "end": 31.26
+          },
+          {
+            "text": "bypasses",
+            "start": 31.26,
+            "end": 31.86
+          },
+          {
+            "text": "BitLocker",
+            "start": 31.86,
+            "end": 32.26
+          },
+          {
+            "text": "and",
+            "start": 32.26,
+            "end": 32.68
+          },
+          {
+            "text": "drops",
+            "start": 32.68,
+            "end": 32.9
+          }
+        ]
+      },
+      {
+        "start": 32.9,
+        "end": 34.22,
+        "text": "into an unrestricted shell.",
+        "words": [
+          {
+            "text": "into",
+            "start": 32.9,
+            "end": 33.22
+          },
+          {
+            "text": "an",
+            "start": 33.22,
+            "end": 33.34
+          },
+          {
+            "text": "unrestricted",
+            "start": 33.34,
+            "end": 33.76
+          },
+          {
+            "text": "shell.",
+            "start": 33.76,
+            "end": 34.22
+          }
+        ]
+      },
+      {
+        "start": 34.7,
+        "end": 37.36,
+        "text": "The payoff is persistence: planted files survive",
+        "words": [
+          {
+            "text": "The",
+            "start": 34.7,
+            "end": 34.78
+          },
+          {
+            "text": "payoff",
+            "start": 34.78,
+            "end": 35.06
+          },
+          {
+            "text": "is",
+            "start": 35.06,
+            "end": 35.34
+          },
+          {
+            "text": "persistence:",
+            "start": 35.34,
+            "end": 35.88
+          },
+          {
+            "text": "planted",
+            "start": 36.42,
+            "end": 36.82
+          },
+          {
+            "text": "files",
+            "start": 36.82,
+            "end": 36.96
+          },
+          {
+            "text": "survive",
+            "start": 36.96,
+            "end": 37.36
+          }
+        ]
+      },
+      {
+        "start": 37.36,
+        "end": 40.52,
+        "text": "credential rotation, remote access loss, and even",
+        "words": [
+          {
+            "text": "credential",
+            "start": 37.36,
+            "end": 37.7
+          },
+          {
+            "text": "rotation,",
+            "start": 37.7,
+            "end": 38.3
+          },
+          {
+            "text": "remote",
+            "start": 38.92,
+            "end": 39.12
+          },
+          {
+            "text": "access",
+            "start": 39.12,
+            "end": 39.42
+          },
+          {
+            "text": "loss,",
+            "start": 39.42,
+            "end": 39.82
+          },
+          {
+            "text": "and",
+            "start": 40.26,
+            "end": 40.31
+          },
+          {
+            "text": "even",
+            "start": 40.3,
+            "end": 40.52
+          }
+        ]
+      },
+      {
+        "start": 40.52,
+        "end": 43.56,
+        "text": "OS reinstall, because the recovery partition sits",
+        "words": [
+          {
+            "text": "OS",
+            "start": 40.52,
+            "end": 40.76
+          },
+          {
+            "text": "reinstall,",
+            "start": 40.76,
+            "end": 41.36
+          },
+          {
+            "text": "because",
+            "start": 41.86,
+            "end": 42.12
+          },
+          {
+            "text": "the",
+            "start": 42.12,
+            "end": 42.28
+          },
+          {
+            "text": "recovery",
+            "start": 42.28,
+            "end": 42.58
+          },
+          {
+            "text": "partition",
+            "start": 42.58,
+            "end": 43.14
+          },
+          {
+            "text": "sits",
+            "start": 43.14,
+            "end": 43.56
+          }
+        ]
+      },
+      {
+        "start": 43.56,
+        "end": 45.22,
+        "text": "outside the primary OS volume.",
+        "words": [
+          {
+            "text": "outside",
+            "start": 43.56,
+            "end": 43.86
+          },
+          {
+            "text": "the",
+            "start": 43.86,
+            "end": 44.22
+          },
+          {
+            "text": "primary",
+            "start": 44.22,
+            "end": 44.46
+          },
+          {
+            "text": "OS",
+            "start": 44.46,
+            "end": 44.92
+          },
+          {
+            "text": "volume.",
+            "start": 44.92,
+            "end": 45.22
+          }
+        ]
+      },
+      {
+        "start": 46.08,
+        "end": 48.48,
+        "text": "BitLocker reports the drive as encrypted and",
+        "words": [
+          {
+            "text": "BitLocker",
+            "start": 46.08,
+            "end": 46.68
+          },
+          {
+            "text": "reports",
+            "start": 46.68,
+            "end": 47.0
+          },
+          {
+            "text": "the",
+            "start": 47.0,
+            "end": 47.24
+          },
+          {
+            "text": "drive",
+            "start": 47.24,
+            "end": 47.44
+          },
+          {
+            "text": "as",
+            "start": 47.44,
+            "end": 47.56
+          },
+          {
+            "text": "encrypted",
+            "start": 47.68,
+            "end": 47.92
+          },
+          {
+            "text": "and",
+            "start": 47.92,
+            "end": 48.48
+          }
+        ]
+      },
+      {
+        "start": 48.48,
+        "end": 51.26,
+        "text": "TPM reports healthy, so standard monitoring gives",
+        "words": [
+          {
+            "text": "TPM",
+            "start": 48.48,
+            "end": 48.76
+          },
+          {
+            "text": "reports",
+            "start": 48.76,
+            "end": 49.14
+          },
+          {
+            "text": "healthy,",
+            "start": 49.14,
+            "end": 49.44
+          },
+          {
+            "text": "so",
+            "start": 49.98,
+            "end": 50.16
+          },
+          {
+            "text": "standard",
+            "start": 50.16,
+            "end": 50.46
+          },
+          {
+            "text": "monitoring",
+            "start": 50.46,
+            "end": 50.86
+          },
+          {
+            "text": "gives",
+            "start": 50.86,
+            "end": 51.26
+          }
+        ]
+      },
+      {
+        "start": 51.26,
+        "end": 53.4,
+        "text": "no warning that the recovery partition is",
+        "words": [
+          {
+            "text": "no",
+            "start": 51.26,
+            "end": 51.54
+          },
+          {
+            "text": "warning",
+            "start": 51.54,
+            "end": 51.84
+          },
+          {
+            "text": "that",
+            "start": 51.84,
+            "end": 52.18
+          },
+          {
+            "text": "the",
+            "start": 52.18,
+            "end": 52.28
+          },
+          {
+            "text": "recovery",
+            "start": 52.28,
+            "end": 52.54
+          },
+          {
+            "text": "partition",
+            "start": 52.54,
+            "end": 53.12
+          },
+          {
+            "text": "is",
+            "start": 53.12,
+            "end": 53.4
+          }
+        ]
+      },
+      {
+        "start": 53.4,
+        "end": 54.26,
+        "text": "the actual exposure.",
+        "words": [
+          {
+            "text": "the",
+            "start": 53.4,
+            "end": 53.54
+          },
+          {
+            "text": "actual",
+            "start": 53.54,
+            "end": 53.84
+          },
+          {
+            "text": "exposure.",
+            "start": 53.84,
+            "end": 54.26
+          }
+        ]
+      },
+      {
+        "start": 54.9,
+        "end": 56.6,
+        "text": "There is no patch yet, so monitor",
+        "words": [
+          {
+            "text": "There",
+            "start": 54.9,
+            "end": 55.14
+          },
+          {
+            "text": "is",
+            "start": 55.14,
+            "end": 55.26
+          },
+          {
+            "text": "no",
+            "start": 55.26,
+            "end": 55.42
+          },
+          {
+            "text": "patch",
+            "start": 55.42,
+            "end": 55.64
+          },
+          {
+            "text": "yet,",
+            "start": 55.64,
+            "end": 55.96
+          },
+          {
+            "text": "so",
+            "start": 56.18,
+            "end": 56.36
+          },
+          {
+            "text": "monitor",
+            "start": 56.36,
+            "end": 56.6
+          }
+        ]
+      },
+      {
+        "start": 56.6,
+        "end": 59.68,
+        "text": "for unattend.xml writes to the recovery partition",
+        "words": [
+          {
+            "text": "for",
+            "start": 56.6,
+            "end": 56.9
+          },
+          {
+            "text": "unattend.xml",
+            "start": 56.9,
+            "end": 57.86
+          },
+          {
+            "text": "writes",
+            "start": 57.86,
+            "end": 58.42
+          },
+          {
+            "text": "to",
+            "start": 58.42,
+            "end": 58.72
+          },
+          {
+            "text": "the",
+            "start": 58.72,
+            "end": 58.82
+          },
+          {
+            "text": "recovery",
+            "start": 58.82,
+            "end": 59.1
+          },
+          {
+            "text": "partition",
+            "start": 59.1,
+            "end": 59.68
+          }
+        ]
+      },
+      {
+        "start": 59.68,
+        "end": 62.58,
+        "text": "outside Windows Update context, audit that partition",
+        "words": [
+          {
+            "text": "outside",
+            "start": 59.68,
+            "end": 60.16
+          },
+          {
+            "text": "Windows",
+            "start": 60.16,
+            "end": 60.46
+          },
+          {
+            "text": "Update",
+            "start": 60.46,
+            "end": 60.76
+          },
+          {
+            "text": "context,",
+            "start": 60.76,
+            "end": 61.08
+          },
+          {
+            "text": "audit",
+            "start": 61.76,
+            "end": 62.04
+          },
+          {
+            "text": "that",
+            "start": 62.04,
+            "end": 62.24
+          },
+          {
+            "text": "partition",
+            "start": 62.24,
+            "end": 62.58
+          }
+        ]
+      },
+      {
+        "start": 62.58,
+        "end": 65.28,
+        "text": "regularly, and lock BIOS to restrict unauthorized",
+        "words": [
+          {
+            "text": "regularly,",
+            "start": 62.58,
+            "end": 63.16
+          },
+          {
+            "text": "and",
+            "start": 63.6,
+            "end": 63.7
+          },
+          {
+            "text": "lock",
+            "start": 63.7,
+            "end": 63.9
+          },
+          {
+            "text": "BIOS",
+            "start": 63.9,
+            "end": 64.2
+          },
+          {
+            "text": "to",
+            "start": 64.2,
+            "end": 64.56
+          },
+          {
+            "text": "restrict",
+            "start": 64.56,
+            "end": 64.82
+          },
+          {
+            "text": "unauthorized",
+            "start": 64.82,
+            "end": 65.28
+          }
+        ]
+      },
+      {
+        "start": 65.28,
+        "end": 66.26,
+        "text": "WinRE boots.",
+        "words": [
+          {
+            "text": "WinRE",
+            "start": 65.28,
+            "end": 65.96
+          },
+          {
+            "text": "boots.",
+            "start": 65.96,
+            "end": 66.26
+          }
+        ]
+      },
+      {
+        "start": 66.26,
+        "end": 69.9,
+        "text": "Full-disk encryption is only as trustworthy",
+        "words": [
+          {
+            "text": "Full-disk",
+            "start": 66.26,
+            "end": 67.34
+          },
+          {
+            "text": "encryption",
+            "start": 68.42,
+            "end": 68.82
+          },
+          {
+            "text": "is",
+            "start": 68.82,
+            "end": 69.08
+          },
+          {
+            "text": "only",
+            "start": 69.08,
+            "end": 69.32
+          },
+          {
+            "text": "as",
+            "start": 69.32,
+            "end": 69.52
+          },
+          {
+            "text": "trustworthy",
+            "start": 69.52,
+            "end": 69.9
+          }
+        ]
+      },
+      {
+        "start": 69.9,
+        "end": 71.9,
+        "text": "as the recovery path sitting next to",
+        "words": [
+          {
+            "text": "as",
+            "start": 69.9,
+            "end": 70.3
+          },
+          {
+            "text": "the",
+            "start": 70.3,
+            "end": 70.44
+          },
+          {
+            "text": "recovery",
+            "start": 70.44,
+            "end": 70.66
+          },
+          {
+            "text": "path",
+            "start": 70.66,
+            "end": 71.08
+          },
+          {
+            "text": "sitting",
+            "start": 71.08,
+            "end": 71.38
+          },
+          {
+            "text": "next",
+            "start": 71.38,
+            "end": 71.7
+          },
+          {
+            "text": "to",
+            "start": 71.7,
+            "end": 71.9
+          }
+        ]
+      },
+      {
+        "start": 71.9,
+        "end": 72.72,
+        "text": "it on the same drive.",
+        "words": [
+          {
+            "text": "it",
+            "start": 71.9,
+            "end": 72.0
+          },
+          {
+            "text": "on",
+            "start": 72.0,
+            "end": 72.16
+          },
+          {
+            "text": "the",
+            "start": 72.16,
+            "end": 72.28
+          },
+          {
+            "text": "same",
+            "start": 72.28,
+            "end": 72.46
+          },
+          {
+            "text": "drive.",
+            "start": 72.46,
+            "end": 72.72
+          }
+        ]
+      }
+    ]
   }
 }

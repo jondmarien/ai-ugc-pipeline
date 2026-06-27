@@ -1,0 +1,19 @@
+Nightmare Eclipse released RedSun as the second exploit in their April 2026 series. CVE-2026-41091. A local privilege escalation that turns Microsoft Defender's own remediation into an attacker-controlled write primitive.
+
+The flaw is CWE-59: improper link resolution before file access. Defender's Antimalware Service Executable (MsMpEng.exe) runs as SYSTEM. During file remediation it performs privileged writes to paths it does not fully validate. An attacker with local access can place an NTFS junction so that write resolves into a protected system directory.
+
+It is a race-condition class issue. Timing windows during Defender's cleanup workflow give the attacker the window to swap in the junction before the write completes.
+
+Most endpoint tooling treats MsMpEng.exe file operations as inherently trustworthy. That blind spot is where this exploit lives.
+
+Microsoft patched it out-of-band on May 19-21, 2026 in Malware Protection Engine v1.1.26040.8. CISA added it to the Known Exploited Vulnerabilities catalog on May 20, requiring US federal agencies to remediate by June 3. Huntress confirmed active exploitation in the wild.
+
+Verify your Defender engine version. Check Windows Security, then Settings, then About. If it shows below 1.1.26040.8, trigger a manual update. For defenders: treat MsMpEng.exe file writes to protected directories as an alerting condition, not background noise.
+
+Do you treat security tool file operations as trusted by default in your detections?
+
+Follow for AI security breakdowns without the fake panic.
+
+[RedSun, CVE-2026-41091, Nightmare Eclipse, Microsoft Defender, link following, CWE-59, Windows LPE, CISA KEV, MsMpEng, Defender remediation]
+
+[RedSun, CVE-2026-41091, Nightmare Eclipse, Microsoft Defender, Windows LPE, link following, CWE-59, CISA KEV, MsMpEng, Defender remediation]

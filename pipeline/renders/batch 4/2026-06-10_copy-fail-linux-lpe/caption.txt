@@ -17,5 +17,3 @@ Have you verified your kernel package includes the CVE-2026-31431 fix?
 Follow for AI security breakdowns without the fake panic.
 
 [Copy Fail, CVE-2026-31431, Linux kernel, local privilege escalation, page cache, algif_aead, Dirty Pipe, kernel hardening, exploit development]
-
-[Copy Fail, CVE-2026-31431, Linux kernel, local privilege escalation, page cache, algif_aead, Dirty Pipe, kernel hardening, exploit development]

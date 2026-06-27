@@ -1,0 +1,19 @@
+Sygnia uncovered Operation Highland: China-nexus group Velvet Ant backdoored PAM and OpenSSH on Linux systems for nearly a decade. The target network had no direct internet access — attackers bridged from public-facing web servers into the isolated segment.
+
+Here is what matters. PAM is the authentication backbone in Linux. It sits between every login attempt and the system. Velvet Ant replaced trusted PAM and OpenSSH binaries with trojaned copies — nine versions found, earliest traces from 2016. Two variants: one silently harvested real credentials, the other accepted a master password. OpenSSH was modified to log every command typed, with a switch to disable logging during attacker sessions.
+
+No new malware dropped. No exploit triggered. The attack lived in the login stream itself, invisible to AV and EDR. Group-IB independently confirmed PAM transmits credentials in plaintext through its stack — a malicious module sits directly in that stream. The pam_exec module allows arbitrary commands at login time, an untracked technique not yet in MITRE ATT&CK.
+
+This is a pattern. Velvet Ant hit F5 BIG-IP appliances in 2024, converted them to C2 servers. They exploited CVE-2024-20399 on Cisco NX-OS switches for persistent switch-level access. Each operation moves one layer deeper into infrastructure defenders trust by default and inspect least.
+
+PAM backdoors are now commoditized. Plague (Nextron) evaded AV for over a year. PamDOORa source code sells for $1,600 on Russian forums. Linux-PAM itself had three critical CVEs in February 2025 (CVE-2025-24032, 24531, 24031), including a PKCS#11 flaw letting attackers authenticate with just a public certificate and known PIN.
+
+The remediation order matters: compare PAM and OpenSSH binaries against known-good copies FIRST. Remove the backdoor BEFORE resetting passwords — if you reset while the backdoor is active, new credentials get harvested immediately. Monitor /lib/security/ and /etc/pam.d/ for changes. Patch CVE-2024-20399 on Cisco gear.
+
+The attack was not a vulnerability exploit. It was a trusted binary replacement that lived in the login stream for nine years.
+
+When did you last verify your PAM and OpenSSH binaries against known-good hashes?
+
+Follow for AI security breakdowns without the fake panic.
+
+[Linux security, PAM backdoor, credential harvesting, air-gapped networks, supply chain trust]

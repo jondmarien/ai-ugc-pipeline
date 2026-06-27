@@ -1,0 +1,15 @@
+Title card: UnDefend starves Microsoft Defender of its own signature updates. CVE-2026-45498 is a user-mode denial-of-service tool that holds Defender's definition files locked so new signatures cannot load, the third Nightmare Eclipse exploit released April 2026. A Defender shield's update pulse flatlines into a red line.
+
+Nightmare Eclipse dropped UnDefend as the third exploit in April 2026, after BlueHammer and RedSun. CVE-2026-45498 holds Defender's definition files locked so signatures cannot load, on fully patched Windows, from a standard user account. A security panel reads healthy while the definition age grows.
+
+UnDefend watches Defender's definition update directory using directory change notifications and races to lock each new file before Defender can read it. Backup definitions are locked at startup. Signatures never arrive. No kernel driver involved, no network interception. Two definition-file icons with red lock symbols.
+
+The mechanism is a user-mode file-locking race. UnDefend opens and holds Defender's signature files before the update process can use them. The tool also watches for Defender service restarts and re-locks the signature base immediately when the service stops. A file being held open before a locked door.
+
+Defender shows green and reports protection up to date, but definitions are aging silently. No alert fires immediately. The status display cannot verify what the engine is actually doing. Defenders trust the dashboard. A green dashboard with a faint red data stream leaking unseen.
+
+Apply the patch: Defender Antimalware Platform version 4.18.26040.7 fixes CVE-2026-45498. Confirm the version on every endpoint. Alert when definition age exceeds 24 hours using monitoring independent of Defender's own status display. A split scene: a patched shield with a version label versus a stale one with an aging timestamp.
+
+A green checkmark is not proof of protection. It is a UI state that can be decoupled from the engine. A Defender shield half glowing with a live pulse, half faded grey and unupdated.
+
+The call to action asks how you verify Defender is actually updating and running. A monitoring view of Defender platform version and definition age on a clean dark end card.

@@ -4,7 +4,7 @@
   "slug": "greenplasma-system-lpe",
   "platform": "instagram",
   "format": "carousel",
-  "status": "approved",
+  "status": "generated",
   "pillar": "offensive_ai",
   "theme": "offensive",
   "audience": "security_practitioners",
@@ -413,6 +413,1218 @@
     "music": null,
     "sfx": [],
     "licenses": [],
-    "captions": []
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.94,
+        "text": "GreenPlasma is a Windows privilege escalation that",
+        "words": [
+          {
+            "text": "GreenPlasma",
+            "start": 0.0,
+            "end": 0.8
+          },
+          {
+            "text": "is",
+            "start": 0.8,
+            "end": 1.02
+          },
+          {
+            "text": "a",
+            "start": 1.02,
+            "end": 1.16
+          },
+          {
+            "text": "Windows",
+            "start": 1.16,
+            "end": 1.413
+          },
+          {
+            "text": "privilege",
+            "start": 1.413,
+            "end": 1.667
+          },
+          {
+            "text": "escalation",
+            "start": 1.92,
+            "end": 2.16
+          },
+          {
+            "text": "that",
+            "start": 2.16,
+            "end": 2.94
+          }
+        ]
+      },
+      {
+        "start": 2.94,
+        "end": 4.58,
+        "text": "elevates a normal user all the way",
+        "words": [
+          {
+            "text": "elevates",
+            "start": 2.94,
+            "end": 3.4
+          },
+          {
+            "text": "a",
+            "start": 3.4,
+            "end": 3.46
+          },
+          {
+            "text": "normal",
+            "start": 3.46,
+            "end": 3.62
+          },
+          {
+            "text": "user",
+            "start": 3.62,
+            "end": 4.04
+          },
+          {
+            "text": "all",
+            "start": 4.04,
+            "end": 4.34
+          },
+          {
+            "text": "the",
+            "start": 4.34,
+            "end": 4.46
+          },
+          {
+            "text": "way",
+            "start": 4.46,
+            "end": 4.58
+          }
+        ]
+      },
+      {
+        "start": 4.58,
+        "end": 4.92,
+        "text": "to SYSTEM.",
+        "words": [
+          {
+            "text": "to",
+            "start": 4.58,
+            "end": 4.72
+          },
+          {
+            "text": "SYSTEM.",
+            "start": 4.72,
+            "end": 4.92
+          }
+        ]
+      },
+      {
+        "start": 5.58,
+        "end": 7.22,
+        "text": "It was the fifth exploit Nightmare Eclipse",
+        "words": [
+          {
+            "text": "It",
+            "start": 5.58,
+            "end": 5.64
+          },
+          {
+            "text": "was",
+            "start": 5.64,
+            "end": 5.74
+          },
+          {
+            "text": "the",
+            "start": 5.74,
+            "end": 5.88
+          },
+          {
+            "text": "fifth",
+            "start": 5.88,
+            "end": 6.17
+          },
+          {
+            "text": "exploit",
+            "start": 6.46,
+            "end": 6.62
+          },
+          {
+            "text": "Nightmare",
+            "start": 6.62,
+            "end": 6.82
+          },
+          {
+            "text": "Eclipse",
+            "start": 6.82,
+            "end": 7.22
+          }
+        ]
+      },
+      {
+        "start": 7.64,
+        "end": 11.96,
+        "text": "dropped, tracked as CVE-2026-45586, and",
+        "words": [
+          {
+            "text": "dropped,",
+            "start": 7.64,
+            "end": 7.84
+          },
+          {
+            "text": "tracked",
+            "start": 8.12,
+            "end": 8.18
+          },
+          {
+            "text": "as",
+            "start": 8.18,
+            "end": 8.54
+          },
+          {
+            "text": "CVE-2026-45586,",
+            "start": 8.54,
+            "end": 11.08
+          },
+          {
+            "text": "and",
+            "start": 11.72,
+            "end": 11.96
+          }
+        ]
+      },
+      {
+        "start": 11.96,
+        "end": 13.86,
+        "text": "it was already public when Microsoft patched",
+        "words": [
+          {
+            "text": "it",
+            "start": 11.96,
+            "end": 12.02
+          },
+          {
+            "text": "was",
+            "start": 12.02,
+            "end": 12.12
+          },
+          {
+            "text": "already",
+            "start": 12.12,
+            "end": 12.5
+          },
+          {
+            "text": "public",
+            "start": 12.5,
+            "end": 12.78
+          },
+          {
+            "text": "when",
+            "start": 12.78,
+            "end": 13.1
+          },
+          {
+            "text": "Microsoft",
+            "start": 13.1,
+            "end": 13.4
+          },
+          {
+            "text": "patched",
+            "start": 13.4,
+            "end": 13.86
+          }
+        ]
+      },
+      {
+        "start": 13.86,
+        "end": 15.16,
+        "text": "it on June Patch Tuesday.",
+        "words": [
+          {
+            "text": "it",
+            "start": 13.86,
+            "end": 14.12
+          },
+          {
+            "text": "on",
+            "start": 14.12,
+            "end": 14.34
+          },
+          {
+            "text": "June",
+            "start": 14.34,
+            "end": 14.58
+          },
+          {
+            "text": "Patch",
+            "start": 14.58,
+            "end": 14.84
+          },
+          {
+            "text": "Tuesday.",
+            "start": 14.84,
+            "end": 15.16
+          }
+        ]
+      },
+      {
+        "start": 15.98,
+        "end": 17.34,
+        "text": "The bug is link following in the",
+        "words": [
+          {
+            "text": "The",
+            "start": 15.98,
+            "end": 16.03
+          },
+          {
+            "text": "bug",
+            "start": 16.02,
+            "end": 16.18
+          },
+          {
+            "text": "is",
+            "start": 16.18,
+            "end": 16.4
+          },
+          {
+            "text": "link",
+            "start": 16.4,
+            "end": 16.56
+          },
+          {
+            "text": "following",
+            "start": 16.56,
+            "end": 16.96
+          },
+          {
+            "text": "in",
+            "start": 16.96,
+            "end": 17.22
+          },
+          {
+            "text": "the",
+            "start": 17.22,
+            "end": 17.34
+          }
+        ]
+      },
+      {
+        "start": 17.34,
+        "end": 20.44,
+        "text": "Collaborative Translation Framework, the subsystem behind the",
+        "words": [
+          {
+            "text": "Collaborative",
+            "start": 17.34,
+            "end": 17.68
+          },
+          {
+            "text": "Translation",
+            "start": 17.68,
+            "end": 18.14
+          },
+          {
+            "text": "Framework,",
+            "start": 18.14,
+            "end": 18.78
+          },
+          {
+            "text": "the",
+            "start": 19.2,
+            "end": 19.38
+          },
+          {
+            "text": "subsystem",
+            "start": 19.38,
+            "end": 19.62
+          },
+          {
+            "text": "behind",
+            "start": 19.62,
+            "end": 20.2
+          },
+          {
+            "text": "the",
+            "start": 20.2,
+            "end": 20.44
+          }
+        ]
+      },
+      {
+        "start": 20.44,
+        "end": 22.94,
+        "text": "ctfmon input process, and the fix class",
+        "words": [
+          {
+            "text": "ctfmon",
+            "start": 20.44,
+            "end": 21.1
+          },
+          {
+            "text": "input",
+            "start": 21.1,
+            "end": 21.34
+          },
+          {
+            "text": "process,",
+            "start": 21.34,
+            "end": 21.78
+          },
+          {
+            "text": "and",
+            "start": 22.3,
+            "end": 22.36
+          },
+          {
+            "text": "the",
+            "start": 22.36,
+            "end": 22.46
+          },
+          {
+            "text": "fix",
+            "start": 22.46,
+            "end": 22.54
+          },
+          {
+            "text": "class",
+            "start": 22.62,
+            "end": 22.94
+          }
+        ]
+      },
+      {
+        "start": 22.94,
+        "end": 24.2,
+        "text": "is improper link resolution.",
+        "words": [
+          {
+            "text": "is",
+            "start": 22.94,
+            "end": 23.14
+          },
+          {
+            "text": "improper",
+            "start": 23.14,
+            "end": 23.48
+          },
+          {
+            "text": "link",
+            "start": 23.48,
+            "end": 23.88
+          },
+          {
+            "text": "resolution.",
+            "start": 23.88,
+            "end": 24.2
+          }
+        ]
+      },
+      {
+        "start": 24.2,
+        "end": 26.9,
+        "text": "The attacker plants an Object Manager symbolic",
+        "words": [
+          {
+            "text": "The",
+            "start": 24.2,
+            "end": 24.96
+          },
+          {
+            "text": "attacker",
+            "start": 24.96,
+            "end": 25.2
+          },
+          {
+            "text": "plants",
+            "start": 25.2,
+            "end": 25.54
+          },
+          {
+            "text": "an",
+            "start": 25.54,
+            "end": 25.76
+          },
+          {
+            "text": "Object",
+            "start": 25.76,
+            "end": 26.04
+          },
+          {
+            "text": "Manager",
+            "start": 26.04,
+            "end": 26.35
+          },
+          {
+            "text": "symbolic",
+            "start": 26.66,
+            "end": 26.9
+          }
+        ]
+      },
+      {
+        "start": 26.9,
+        "end": 29.48,
+        "text": "link on a translation framework session object",
+        "words": [
+          {
+            "text": "link",
+            "start": 26.9,
+            "end": 27.26
+          },
+          {
+            "text": "on",
+            "start": 27.26,
+            "end": 27.7
+          },
+          {
+            "text": "a",
+            "start": 27.7,
+            "end": 27.78
+          },
+          {
+            "text": "translation",
+            "start": 27.78,
+            "end": 28.16
+          },
+          {
+            "text": "framework",
+            "start": 28.16,
+            "end": 28.6
+          },
+          {
+            "text": "session",
+            "start": 28.6,
+            "end": 28.98
+          },
+          {
+            "text": "object",
+            "start": 28.98,
+            "end": 29.48
+          }
+        ]
+      },
+      {
+        "start": 29.48,
+        "end": 31.92,
+        "text": "and a volatile registry link under the",
+        "words": [
+          {
+            "text": "and",
+            "start": 29.48,
+            "end": 30.04
+          },
+          {
+            "text": "a",
+            "start": 30.04,
+            "end": 30.1
+          },
+          {
+            "text": "volatile",
+            "start": 30.1,
+            "end": 30.4
+          },
+          {
+            "text": "registry",
+            "start": 30.4,
+            "end": 30.88
+          },
+          {
+            "text": "link",
+            "start": 30.88,
+            "end": 31.34
+          },
+          {
+            "text": "under",
+            "start": 31.34,
+            "end": 31.74
+          },
+          {
+            "text": "the",
+            "start": 31.74,
+            "end": 31.92
+          }
+        ]
+      },
+      {
+        "start": 31.92,
+        "end": 34.44,
+        "text": "CloudFiles key, then forces a prompt that",
+        "words": [
+          {
+            "text": "CloudFiles",
+            "start": 31.92,
+            "end": 32.34
+          },
+          {
+            "text": "key,",
+            "start": 32.34,
+            "end": 32.66
+          },
+          {
+            "text": "then",
+            "start": 33.14,
+            "end": 33.38
+          },
+          {
+            "text": "forces",
+            "start": 33.38,
+            "end": 33.68
+          },
+          {
+            "text": "a",
+            "start": 33.68,
+            "end": 33.9
+          },
+          {
+            "text": "prompt",
+            "start": 33.9,
+            "end": 34.16
+          },
+          {
+            "text": "that",
+            "start": 34.16,
+            "end": 34.44
+          }
+        ]
+      },
+      {
+        "start": 34.44,
+        "end": 36.86,
+        "text": "wakes a Winlogon process running as SYSTEM.",
+        "words": [
+          {
+            "text": "wakes",
+            "start": 34.44,
+            "end": 34.6
+          },
+          {
+            "text": "a",
+            "start": 34.6,
+            "end": 34.82
+          },
+          {
+            "text": "Winlogon",
+            "start": 34.82,
+            "end": 35.42
+          },
+          {
+            "text": "process",
+            "start": 35.42,
+            "end": 35.8
+          },
+          {
+            "text": "running",
+            "start": 35.8,
+            "end": 36.36
+          },
+          {
+            "text": "as",
+            "start": 36.36,
+            "end": 36.47
+          },
+          {
+            "text": "SYSTEM.",
+            "start": 36.58,
+            "end": 36.86
+          }
+        ]
+      },
+      {
+        "start": 37.32,
+        "end": 39.5,
+        "text": "That trusted process follows the planted links",
+        "words": [
+          {
+            "text": "That",
+            "start": 37.32,
+            "end": 37.48
+          },
+          {
+            "text": "trusted",
+            "start": 37.48,
+            "end": 37.74
+          },
+          {
+            "text": "process",
+            "start": 37.74,
+            "end": 38.2
+          },
+          {
+            "text": "follows",
+            "start": 38.2,
+            "end": 38.62
+          },
+          {
+            "text": "the",
+            "start": 38.62,
+            "end": 38.92
+          },
+          {
+            "text": "planted",
+            "start": 38.92,
+            "end": 39.18
+          },
+          {
+            "text": "links",
+            "start": 39.18,
+            "end": 39.5
+          }
+        ]
+      },
+      {
+        "start": 39.5,
+        "end": 41.8,
+        "text": "instead of the real targets, so endpoint",
+        "words": [
+          {
+            "text": "instead",
+            "start": 39.5,
+            "end": 40.0
+          },
+          {
+            "text": "of",
+            "start": 40.0,
+            "end": 40.28
+          },
+          {
+            "text": "the",
+            "start": 40.28,
+            "end": 40.4
+          },
+          {
+            "text": "real",
+            "start": 40.4,
+            "end": 40.56
+          },
+          {
+            "text": "targets,",
+            "start": 40.56,
+            "end": 40.9
+          },
+          {
+            "text": "so",
+            "start": 41.48,
+            "end": 41.6
+          },
+          {
+            "text": "endpoint",
+            "start": 41.6,
+            "end": 41.8
+          }
+        ]
+      },
+      {
+        "start": 41.8,
+        "end": 44.08,
+        "text": "tools see nothing unusual while the redirect",
+        "words": [
+          {
+            "text": "tools",
+            "start": 41.8,
+            "end": 42.26
+          },
+          {
+            "text": "see",
+            "start": 42.26,
+            "end": 42.54
+          },
+          {
+            "text": "nothing",
+            "start": 42.54,
+            "end": 42.8
+          },
+          {
+            "text": "unusual",
+            "start": 42.8,
+            "end": 43.22
+          },
+          {
+            "text": "while",
+            "start": 43.22,
+            "end": 43.62
+          },
+          {
+            "text": "the",
+            "start": 43.62,
+            "end": 43.76
+          },
+          {
+            "text": "redirect",
+            "start": 43.76,
+            "end": 44.08
+          }
+        ]
+      },
+      {
+        "start": 44.08,
+        "end": 45.5,
+        "text": "quietly hands over SYSTEM.",
+        "words": [
+          {
+            "text": "quietly",
+            "start": 44.08,
+            "end": 44.46
+          },
+          {
+            "text": "hands",
+            "start": 44.46,
+            "end": 44.7
+          },
+          {
+            "text": "over",
+            "start": 44.7,
+            "end": 44.94
+          },
+          {
+            "text": "SYSTEM.",
+            "start": 45.18,
+            "end": 45.5
+          }
+        ]
+      },
+      {
+        "start": 46.0,
+        "end": 48.4,
+        "text": "Apply the June 2026 update, and then",
+        "words": [
+          {
+            "text": "Apply",
+            "start": 46.0,
+            "end": 46.24
+          },
+          {
+            "text": "the",
+            "start": 46.24,
+            "end": 46.48
+          },
+          {
+            "text": "June",
+            "start": 46.48,
+            "end": 46.787
+          },
+          {
+            "text": "2026",
+            "start": 46.787,
+            "end": 47.093
+          },
+          {
+            "text": "update,",
+            "start": 47.4,
+            "end": 47.78
+          },
+          {
+            "text": "and",
+            "start": 48.2,
+            "end": 48.26
+          },
+          {
+            "text": "then",
+            "start": 48.26,
+            "end": 48.4
+          }
+        ]
+      },
+      {
+        "start": 48.4,
+        "end": 50.52,
+        "text": "alert on the strongest tell, a volatile",
+        "words": [
+          {
+            "text": "alert",
+            "start": 48.4,
+            "end": 48.62
+          },
+          {
+            "text": "on",
+            "start": 48.62,
+            "end": 48.88
+          },
+          {
+            "text": "the",
+            "start": 48.88,
+            "end": 49.0
+          },
+          {
+            "text": "strongest",
+            "start": 49.0,
+            "end": 49.34
+          },
+          {
+            "text": "tell,",
+            "start": 49.34,
+            "end": 49.62
+          },
+          {
+            "text": "a",
+            "start": 49.62,
+            "end": 50.14
+          },
+          {
+            "text": "volatile",
+            "start": 50.14,
+            "end": 50.52
+          }
+        ]
+      },
+      {
+        "start": 50.52,
+        "end": 53.32,
+        "text": "registry symbolic link created under the CloudFiles",
+        "words": [
+          {
+            "text": "registry",
+            "start": 50.52,
+            "end": 51.0
+          },
+          {
+            "text": "symbolic",
+            "start": 51.0,
+            "end": 51.48
+          },
+          {
+            "text": "link",
+            "start": 51.48,
+            "end": 51.82
+          },
+          {
+            "text": "created",
+            "start": 51.82,
+            "end": 52.26
+          },
+          {
+            "text": "under",
+            "start": 52.26,
+            "end": 52.74
+          },
+          {
+            "text": "the",
+            "start": 52.74,
+            "end": 52.84
+          },
+          {
+            "text": "CloudFiles",
+            "start": 52.84,
+            "end": 53.32
+          }
+        ]
+      },
+      {
+        "start": 53.32,
+        "end": 54.18,
+        "text": "BlockedApps key.",
+        "words": [
+          {
+            "text": "BlockedApps",
+            "start": 53.32,
+            "end": 53.86
+          },
+          {
+            "text": "key.",
+            "start": 53.86,
+            "end": 54.18
+          }
+        ]
+      },
+      {
+        "start": 54.82,
+        "end": 56.22,
+        "text": "The lesson is that a trusted SYSTEM",
+        "words": [
+          {
+            "text": "The",
+            "start": 54.82,
+            "end": 54.9
+          },
+          {
+            "text": "lesson",
+            "start": 54.9,
+            "end": 55.12
+          },
+          {
+            "text": "is",
+            "start": 55.12,
+            "end": 55.34
+          },
+          {
+            "text": "that",
+            "start": 55.34,
+            "end": 55.48
+          },
+          {
+            "text": "a",
+            "start": 55.48,
+            "end": 55.58
+          },
+          {
+            "text": "trusted",
+            "start": 55.58,
+            "end": 55.8
+          },
+          {
+            "text": "SYSTEM",
+            "start": 55.8,
+            "end": 56.22
+          }
+        ]
+      },
+      {
+        "start": 56.22,
+        "end": 58.04,
+        "text": "process is only as safe as the",
+        "words": [
+          {
+            "text": "process",
+            "start": 56.22,
+            "end": 56.62
+          },
+          {
+            "text": "is",
+            "start": 56.62,
+            "end": 57.06
+          },
+          {
+            "text": "only",
+            "start": 57.06,
+            "end": 57.32
+          },
+          {
+            "text": "as",
+            "start": 57.32,
+            "end": 57.48
+          },
+          {
+            "text": "safe",
+            "start": 57.48,
+            "end": 57.72
+          },
+          {
+            "text": "as",
+            "start": 57.72,
+            "end": 57.94
+          },
+          {
+            "text": "the",
+            "start": 57.94,
+            "end": 58.04
+          }
+        ]
+      },
+      {
+        "start": 58.04,
+        "end": 60.06,
+        "text": "names it resolves, and a symbolic link",
+        "words": [
+          {
+            "text": "names",
+            "start": 58.04,
+            "end": 58.22
+          },
+          {
+            "text": "it",
+            "start": 58.22,
+            "end": 58.4
+          },
+          {
+            "text": "resolves,",
+            "start": 58.4,
+            "end": 58.66
+          },
+          {
+            "text": "and",
+            "start": 59.22,
+            "end": 59.36
+          },
+          {
+            "text": "a",
+            "start": 59.36,
+            "end": 59.44
+          },
+          {
+            "text": "symbolic",
+            "start": 59.44,
+            "end": 59.68
+          },
+          {
+            "text": "link",
+            "start": 59.68,
+            "end": 60.06
+          }
+        ]
+      },
+      {
+        "start": 60.06,
+        "end": 62.52,
+        "text": "the attacker controls turns that trust into",
+        "words": [
+          {
+            "text": "the",
+            "start": 60.06,
+            "end": 60.3
+          },
+          {
+            "text": "attacker",
+            "start": 60.3,
+            "end": 60.54
+          },
+          {
+            "text": "controls",
+            "start": 60.54,
+            "end": 61.1
+          },
+          {
+            "text": "turns",
+            "start": 61.1,
+            "end": 61.6
+          },
+          {
+            "text": "that",
+            "start": 61.6,
+            "end": 61.88
+          },
+          {
+            "text": "trust",
+            "start": 61.88,
+            "end": 62.1
+          },
+          {
+            "text": "into",
+            "start": 62.1,
+            "end": 62.52
+          }
+        ]
+      },
+      {
+        "start": 62.52,
+        "end": 62.86,
+        "text": "a weapon.",
+        "words": [
+          {
+            "text": "a",
+            "start": 62.52,
+            "end": 62.64
+          },
+          {
+            "text": "weapon.",
+            "start": 62.64,
+            "end": 62.86
+          }
+        ]
+      },
+      {
+        "start": 63.48,
+        "end": 64.92,
+        "text": "Do you alert on registry and Object",
+        "words": [
+          {
+            "text": "Do",
+            "start": 63.48,
+            "end": 63.53
+          },
+          {
+            "text": "you",
+            "start": 63.5,
+            "end": 63.56
+          },
+          {
+            "text": "alert",
+            "start": 63.56,
+            "end": 63.8
+          },
+          {
+            "text": "on",
+            "start": 63.8,
+            "end": 64.04
+          },
+          {
+            "text": "registry",
+            "start": 64.04,
+            "end": 64.3
+          },
+          {
+            "text": "and",
+            "start": 64.3,
+            "end": 64.7
+          },
+          {
+            "text": "Object",
+            "start": 64.7,
+            "end": 64.92
+          }
+        ]
+      },
+      {
+        "start": 64.92,
+        "end": 66.04,
+        "text": "Manager symlink creation?",
+        "words": [
+          {
+            "text": "Manager",
+            "start": 64.92,
+            "end": 65.2
+          },
+          {
+            "text": "symlink",
+            "start": 65.2,
+            "end": 65.48
+          },
+          {
+            "text": "creation?",
+            "start": 65.76,
+            "end": 66.04
+          }
+        ]
+      },
+      {
+        "start": 66.9,
+        "end": 67.88,
+        "text": "Drop a yes or no in the",
+        "words": [
+          {
+            "text": "Drop",
+            "start": 66.9,
+            "end": 67.02
+          },
+          {
+            "text": "a",
+            "start": 67.02,
+            "end": 67.2
+          },
+          {
+            "text": "yes",
+            "start": 67.2,
+            "end": 67.36
+          },
+          {
+            "text": "or",
+            "start": 67.36,
+            "end": 67.52
+          },
+          {
+            "text": "no",
+            "start": 67.52,
+            "end": 67.66
+          },
+          {
+            "text": "in",
+            "start": 67.66,
+            "end": 67.8
+          },
+          {
+            "text": "the",
+            "start": 67.8,
+            "end": 67.88
+          }
+        ]
+      },
+      {
+        "start": 67.88,
+        "end": 68.14,
+        "text": "comments.",
+        "words": [
+          {
+            "text": "comments.",
+            "start": 67.88,
+            "end": 68.14
+          }
+        ]
+      }
+    ]
   }
 }

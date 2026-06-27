@@ -10,7 +10,7 @@ import { CaptionTrack, type CaptionLine } from "./CaptionTrack";
 import { EndCard } from "./EndCard";
 import { AudioBed, type AudioConfig } from "./AudioBed";
 
-type Beat = { start: number; end: number; slide_ref: number; purpose: string; caption: string; words?: WordTiming[] };
+type Beat = { start: number; end: number; slide_ref: number; purpose: string; caption: string; words?: WordTiming[]; video_asset?: string };
 type Slide = { role: string; background_asset?: string; asset_status?: string; on_slide_copy?: string };
 type Post = {
   pillar: string;
@@ -55,7 +55,7 @@ export function ReelComposition({ post }: { post: Post }) {
         const isCta = beat.purpose === "cta";
         return (
           <Sequence key={i} from={from} durationInFrames={durationInFrames}>
-            <Scene slide={slide} accent={accent} durationInFrames={durationInFrames} wallActive={!!wall} artOpacity={wallArtOpacity} />
+            <Scene slide={slide} accent={accent} durationInFrames={durationInFrames} wallActive={!!wall} artOpacity={wallArtOpacity} videoAsset={beat.video_asset} />
             {isCta ? (
               <EndCard question={post.comment_prompt ?? slide.on_slide_copy ?? ""} handle={handle} accent={accent} />
             ) : useSynced ? null : (

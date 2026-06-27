@@ -6,7 +6,8 @@
 //   bun run status -- approved 2026-06-10 2026-06-11      # every 06-10 + 06-11 post
 //   bun run status -- upload_ready --from=generated       # promote a whole tier
 //   bun run status -- approved my-slug --dry-run          # preview only
-import { STATUSES, listPosts, readStatus, setStatus } from "./lib/post-status.mjs";
+import { STATUSES, setStatus } from "./lib/post-status.mjs";
+import { collectStatusTargets } from "./lib/status-targets.mjs";
 
 const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith("--")));
@@ -41,15 +42,7 @@ const fromStatus = opt("from", "");
 if (fromStatus && !STATUSES.includes(fromStatus)) { console.error(`✗ --from must be one of: ${STATUSES.join(", ")}`); process.exit(1); }
 const keyArgs = positional.slice(1);
 
-const all = listPosts();
-let targets = [];
-if (fromStatus) targets.push(...all.filter((f) => readStatus(f) === fromStatus));
-for (const k of keyArgs) {
-  const m = all.filter((f) => f.includes(k));
-  if (!m.length) console.warn(`  ⚠ no post matches "${k}"`);
-  targets.push(...m);
-}
-targets = [...new Set(targets)].map((f) => f.replace(/\.json$/, "")).sort();
+const targets = collectStatusTargets({ keyArgs, fromStatus: fromStatus || null });
 if (!targets.length) { console.error("✗ no posts selected. Pass post key(s) and/or --from=<status>.\n" + HELP); process.exit(1); }
 
 let n = 0;

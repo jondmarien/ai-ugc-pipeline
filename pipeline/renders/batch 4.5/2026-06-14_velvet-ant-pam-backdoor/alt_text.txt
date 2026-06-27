@@ -1,0 +1,15 @@
+Title card: they replaced Linux login with a backdoor for nine years. China-nexus group Velvet Ant modified PAM and OpenSSH binaries. The target network had no internet access. Attackers stayed from 2016 to 2025. A single brass key with filed teeth catches a hard red rim light in deep shadow.
+
+Sygnia uncovered Operation Highland — Velvet Ant backdoored PAM and OpenSSH on isolated Linux systems. Nine versions of trojaned PAM modules found. Earliest traces date to 2016. Target had no direct internet access. A conveyor belt of identical brass keys moves from darkness, one showing subtly different teeth.
+
+PAM is the authentication backbone — owning it means owning every credential that touches the system. Two variants: one harvested real passwords silently, the other accepted a master password. OpenSSH logged every command typed. Both survived reboots and patch cycles. A punch-card feeder pulls cards into a mechanism, a hidden card slipping in unseen.
+
+Attackers replaced trusted PAM and OpenSSH binaries with trojaned copies — no new malware to scan for. They bridged from internet-facing web servers into the air-gapped segment. The backdoor lived in the login stream itself, invisible to AV and EDR. A pneumatic tube delivers a canister, a perfect duplicate already inside the machine unseen.
+
+Defenders trust authentication binaries and skip file integrity checks on PAM and OpenSSH. Velvet Ant reused this pattern across F5 BIG-IP appliances and Cisco NX-OS switches via CVE-2024-20399. PAM backdoors now commoditized — PamDOORa sold for $1,600 on cybercrime forums. A stamping press hits a blank with no guard rail, a second press already modified with hidden tooling.
+
+Compare PAM and OpenSSH binaries against known-good copies — do not rely on alerts. Remove the backdoor BEFORE resetting passwords, or new credentials get harvested immediately. Monitor /lib/security/ and /etc/pam.d/ for changes. Patch CVE-2024-20399 on Cisco gear. A bench vise clamps a part with a comparator gauge verifying against a master reference.
+
+The attack was not a vulnerability exploit. It was a trusted binary replacement that lived in the login stream for nine years. A single mechanical lever held mid-throw in deep shadow with a thin red rim of light along its shaft.
+
+The closing question asks when you last verified PAM and OpenSSH binaries against known-good hashes, with a prompt to save it. A drive belt loops around one idle pulley in empty dark space.

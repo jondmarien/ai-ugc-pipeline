@@ -15,10 +15,11 @@
 //   COMFYUI_URL (default http://127.0.0.1:8000), UPSCALE_MODEL.
 import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { comfyBaseUrl, defaultUpscaleDir, ensureUpscaleModelOnDisk } from "./lib/comfyui-env.mjs";
+import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
+import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
 
-const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
-const POSTS = path.join(RENDERER, "content", "posts");
+const POSTS = POSTS_DIR;
 
 const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith("--")));
@@ -71,43 +72,16 @@ if (!key) {
   process.exit(1);
 }
 
-const URL_BASE = (process.env.COMFYUI_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
+const URL_BASE = comfyBaseUrl();
 const MODEL = opt("upscale-model", process.env.UPSCALE_MODEL || "RealESRGAN_x4plus.pth");
 const SCALE = Math.max(0.25, Number(opt("upscale-scale", "1")) || 1); // final size = canvas × SCALE
 const DRY = flags.has("--dry-run");
 const onlyArg = opt("only", "");
 const onlySet = onlyArg ? new Set(onlyArg.split(",").map((x) => Number(x.trim())).filter((n) => !Number.isNaN(n))) : null;
 
-// Where ComfyUI keeps upscale models, and how to auto-fetch the common ones (same idea as the Q6
-// GGUF auto-download in art-comfyui). `.pth` = a PyTorch weights checkpoint. Override the dir with
-// COMFYUI_UPSCALE_DIR. Both sources are direct downloads (no hf CLI needed).
-const COMFY_UPSCALE_DIR = process.env.COMFYUI_UPSCALE_DIR || "E:\\ComfyUI\\models\\upscale_models";
-const MODEL_SOURCES = {
-  "RealESRGAN_x4plus.pth": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth",
-  "4x-UltraSharp.pth": "https://huggingface.co/lokCX/4x-Ultrasharp/resolve/main/4x-UltraSharp.pth?download=true",
-};
+const COMFY_UPSCALE_DIR = defaultUpscaleDir();
 async function ensureUpscaleModel(modelFile) {
-  const url = MODEL_SOURCES[modelFile];
-  if (!url) return false;                          // unknown model — caller warns with manual steps
-  let dirExists = false;
-  try { dirExists = existsSync(COMFY_UPSCALE_DIR); } catch { dirExists = false; }
-  if (!dirExists) {
-    console.warn(`  ⚠ ComfyUI upscale dir not found at ${COMFY_UPSCALE_DIR} (remote ComfyUI?). Put ${modelFile} there, or set COMFYUI_UPSCALE_DIR.`);
-    return false;
-  }
-  const dest = path.join(COMFY_UPSCALE_DIR, modelFile);
-  if (existsSync(dest)) return true;               // already on disk
-  console.log(`  ↓ ${modelFile} not found — downloading (~65 MB) from ${url.split("?")[0]} …`);
-  try {
-    const r = await fetch(url, { redirect: "follow" });
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    writeFileSync(dest, Buffer.from(await r.arrayBuffer()));
-    console.log(`  ✓ ${modelFile} downloaded to ${COMFY_UPSCALE_DIR}.`);
-    return true;
-  } catch (e) {
-    console.warn(`  ⚠ auto-download failed (${e.message}). Get it manually:\n     ${url.split("?")[0]}\n     → ${COMFY_UPSCALE_DIR}`);
-    return false;
-  }
+  return ensureUpscaleModelOnDisk(modelFile, COMFY_UPSCALE_DIR);
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -164,9 +138,12 @@ async function fetchImage(img) {
 }
 
 // ---- main ----
-const file = readdirSync(POSTS).find((f) => f.endsWith(".json") && f.includes(key));
-if (!file) { console.error(`No post JSON in ${POSTS} matching "${key}".`); process.exit(1); }
-const post = JSON.parse(readFileSync(path.join(POSTS, file), "utf8"));
+const loaded = loadPostByKey(key);
+if (!loaded) {
+  console.error(`No post JSON in ${POSTS} matching "${key}".`);
+  process.exit(1);
+}
+const { post } = loaded;
 const canvasW = post.canvas?.width ?? 1080;
 const canvasH = post.canvas?.height ?? 1350;
 const targetW = Math.round(canvasW * SCALE);

@@ -1,0 +1,14 @@
+# Sources — 2026-06-11_miniplasma-patched-lpe
+
+**Core claim:** MiniPlasma is an LPE exploit that re-exploits a race condition in the Windows Cloud Files filter driver (cldflt.sys), effectively a return of CVE-2020-17103 that was believed patched in 2020. Released by Nightmare Eclipse as the sixth and final exploit in their wave. Silently addressed in the June 9, 2026 Patch Tuesday with no new CVE assigned.
+**Claim tags:** reported_fact, practitioner_takeaway
+
+| Source | Link | Supports | Confidence | Claim tag |
+| --- | --- | --- | --- | --- |
+| Nightmare-Eclipse/MiniPlasma GitHub repository (README) | https://github.com/Nightmare-Eclipse/MiniPlasma | Sixth and final exploit in wave; targets fully patched Windows 10/11; single race condition in cldflt.sys (HsmOsBlockPlaceholderAccess routine); maps to CVE-2020-17103; original Google Project Zero PoC worked without changes; researcher unsure if patch never applied or silently rolled back; no new CVE assigned. | high | reported_fact |
+| Kaspersky Securelist: MiniPlasma detecting exploitation | https://securelist.com/tr/mini-plasma-vulner/120099/ | Sixth of six publicly released Windows exploits by Nightmare Eclipse without prior Microsoft coordination; CVE-2020-17103 regression in Cloud Files filter driver; fully updated Windows 11, Server 2022, and Server 2025 vulnerable; Microsoft scheduled patch for June 9, 2026; behavioral detection indicators including CloudFiles BlockedApps registry symbolic link and wermgr.exe outside system paths. | high | reported_fact |
+| CSO Online: Patched Windows bug resurfaces 6 years later as working SYSTEM-level exploit | https://www.csoonline.com/article/4172320/patched-windows-bug-resurfaces-6-years-later-as-working-system-level-exploit.html | Race condition in cldflt.sys HsmOsBlockPlaceholderAccess routine; originally reported by Google Project Zero James Forshaw; patched December 2020; confirmed still exploitable on fully patched systems with May 2026 updates; Will Dormann confirmed buggy behavior; MiniPlasma is sixth in a wave beginning with BlueHammer. | high | reported_fact |
+| NVD: CVE-2020-17103 Detail | https://nvd.nist.gov/vuln/detail/CVE-2020-17103 | Windows Cloud Files Mini Filter Driver Elevation of Privilege Vulnerability; originally published December 2020; CISA-ADP added MiniPlasma GitHub PoC reference in May 2026 confirming the regression; CVSS 7.8 HIGH. | high | reported_fact |
+| Tenable: Windows Cloud Files Mini Filter Driver EoP (MiniPlasma) (CVE-2020-17103) | https://www.tenable.com/plugins/nessus/316497 | Microsoft originally addressed CVE-2020-17103 in December 2020; fix has since regressed; publicly available PoC demonstrates vulnerability again exploitable on currently patched hosts as of May 2026; Nessus plugin 316497 published May 22, 2026. | high | reported_fact |
+
+> Re-open every link before posting and confirm the claim still matches the source wording.

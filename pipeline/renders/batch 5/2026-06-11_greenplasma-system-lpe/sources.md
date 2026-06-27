@@ -1,0 +1,13 @@
+# Sources — 2026-06-11_greenplasma-system-lpe
+
+**Core claim:** GreenPlasma is a Windows privilege escalation that abuses link following in the Collaborative Translation Framework. The attacker plants an Object Manager symbolic link on a CTF session object and a registry link to redirect a SYSTEM operation. Released by Nightmare Eclipse as their fifth exploit, patched on June 2026 Patch Tuesday.
+**Claim tags:** reported_fact, practitioner_takeaway
+
+| Source | Link | Supports | Confidence | Claim tag |
+| --- | --- | --- | --- | --- |
+| CVE.org: CVE-2026-45586 record (CNA: Microsoft) | https://www.cve.org/CVERecord?id=CVE-2026-45586 | Official CVE record; CWE-59 improper link resolution before file access (link following) in Windows Collaborative Translation Framework; local elevation of privilege by an authorized attacker; CVSS 7.8 HIGH; MSRC vendor advisory and patch reference; updated 2026-06-10. | high | reported_fact |
+| Blackfort Technology: GreenPlasma — Arbitrary Section Creation on Windows, Analysis and Detection | https://blackfort-tec.de/en/insights/greenplasma-windows-ctf-injection-analysis | Mechanism: Object Manager symbolic link placed on CTF.AsmListCache.FMPWinlogon session object plus registry link abuse (volatile REG_LINK under HKCU CloudFiles BlockedApps with SymbolicLinkValue pointing to Policies\System); Winlogon SYSTEM context follows the symlink after a forced UAC desktop switch; PoC published May 12 2026, deliberately incomplete; affected Windows 11, Server 2022, Server 2026; detection via registry-link IOCs. | high | reported_fact |
+| SecurityWeek: Researcher Drops YellowKey, GreenPlasma Windows Zero-Days | https://www.securityweek.com/researcher-drops-yellowkey-greenplasma-windows-zero-days/ | Chaotic Eclipse / Nightmare Eclipse released GreenPlasma as a privilege escalation to SYSTEM with the full-shell code stripped out; PoC creates an arbitrary memory section object in a directory writable by SYSTEM; researcher history of dropping unpatched Windows zero-days; Microsoft investigating. | high | reported_fact |
+| ThreatLocker: What YellowKey and GreenPlasma reveal about trusting native Windows security | https://www.threatlocker.com/blog/what-yellowkey-and-greenplasma-zero-day-exploits-reveal-about-trusting-native-windows-security | GreenPlasma (CVE-2026-45586) targets CTFMON, a process running as SYSTEM in every interactive session; fixed on June 2026 Patch Tuesday (June 10 2026) alongside YellowKey; PoC released May 13 2026 before any patch; exploit manipulates registry and object manager permissions to plant a section object and trick CTFMON into interacting with it. | high | reported_fact |
+
+> Re-open every link before posting and confirm the claim still matches the source wording.

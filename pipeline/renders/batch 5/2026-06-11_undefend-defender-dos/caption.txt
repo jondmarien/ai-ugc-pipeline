@@ -1,0 +1,19 @@
+Nightmare Eclipse released UnDefend as the third exploit in their April 2026 series. CVE-2026-45498 is a user-mode denial-of-service vulnerability that prevents Microsoft Defender from loading new signature definitions, leaving it stale while its own status display still reads healthy.
+
+The mechanism is a file-locking race. UnDefend watches Defender's definition update directory using directory change notifications. When a new definition file appears, it races to open and lock the file before Defender can use it. Backup definition files are locked immediately at startup. No kernel driver, no network interception. Standard user access is enough.
+
+Defender shows green. 'Protection up to date.' But the signature database is not updating. Definitions age silently. No alert fires immediately. The dashboard cannot verify what it is reporting. Defenders trust the green checkmark. The checkmark does not verify the engine.
+
+The patch exists. Microsoft fixed CVE-2026-45498 in Defender Antimalware Platform version 4.18.26040.7, released May 21, 2026. CISA added it to the Known Exploited Vulnerabilities catalog the same day with a June 3 remediation deadline for federal agencies. Huntress confirmed active exploitation in a real intrusion in April 2026.
+
+Defenders should confirm the platform version on all endpoints, alert when definition age exceeds 24 hours using a monitoring path independent of Defender's own status display, and treat stale definitions as an active incident signal.
+
+A green checkmark is not proof of protection. It is a UI state that can be decoupled from the engine.
+
+How do you verify Defender is actually updating and running?
+
+Follow for AI security breakdowns without the fake panic.
+
+[UnDefend, CVE-2026-45498, Nightmare Eclipse, Microsoft Defender, denial of service, definition updates, signature staleness, endpoint validation, CISA KEV, patch verification]
+
+[UnDefend, CVE202645498, Nightmare Eclipse, Windows zero-day, Microsoft Defender, denial of service, definition updates, signature staleness, endpoint validation, CISA KEV]

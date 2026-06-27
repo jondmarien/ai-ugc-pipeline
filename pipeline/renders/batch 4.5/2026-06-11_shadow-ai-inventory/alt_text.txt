@@ -1,0 +1,15 @@
+Title card: the AI your team uses most is the AI you never approved. Microsoft found 78 percent of AI users at work bring their own tools, mostly unsanctioned. A radar dish sweeps and catches many small craft beyond a single marked ring.
+
+People adopt a new AI tool in an afternoon, long before anyone reviews or inventories it, so adoption outruns governance every time. A vast dark warehouse of stacked crates, most bare, only a few carrying a paper tag.
+
+Each unsanctioned tool is an ungoverned path for company data to leave through, and IBM reported one in five breached organizations traced a breach to shadow AI. A single lit lantern marks one charted path while unlit trails branch into shadow.
+
+With no approval there is no logging, no retention rule, and no data-handling review behind the tool, so the gaps stay invisible until something leaks. An open manifest with most lines filled but a run of blank rows in the middle.
+
+Security usually learns a tool exists only after the data has already left through it, because you cannot review what was never on your list. A ship already small on the horizon with a fresh wake, seen from an empty watchtower.
+
+Start with visibility, not bans: inventory what is in use, offer a sanctioned option, and run each tool through vendor review, because a ban with no safe path drives the tools underground. A hand draws a fresh boundary on a map and circles the scattered markers.
+
+You cannot govern the AI you cannot see. Inventory first, then write the policy. A single bright pin dropped onto a dark unmarked map as a faint grid resolves around it.
+
+The call to action asks whether you have a current list of the AI tools your team actually uses. A blank checklist on a clipboard resting in vast dark negative space.

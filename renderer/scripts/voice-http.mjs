@@ -1,7 +1,7 @@
 // Generate reel narration from ANY OpenAI-compatible /v1/audio/speech server
 // (e.g. Kokoro-FastAPI, openedai-speech, docker-kokoro). No Python, no model download.
 //
-//   npm run voice -- <post-key>          (when the post's voice_mode is "http")
+//   bun run voice -- <post-key>          (when the post's voice_mode is "http")
 //   node scripts/voice-http.mjs <post-key>
 //
 // Configure the endpoint via env (defaults target Kokoro-FastAPI on :8880):
@@ -57,7 +57,7 @@ try {
 } catch (e) {
   console.error(`✗ Could not reach ${BASE}/audio/speech — is your TTS server running?`);
   console.error(`  Try Kokoro-FastAPI:  docker run -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-cpu  (or -gpu)`);
-  console.error(`  Then: TTS_BASE_URL=http://localhost:8880/v1 npm run voice -- ${key}`);
+  console.error(`  Then: TTS_BASE_URL=http://localhost:8880/v1 bun run voice -- ${key}`);
   console.error(`  (LM Studio on :1234 does NOT serve /v1/audio/speech as of 2026.)\n  ${e}`);
   process.exit(1);
 }
@@ -69,5 +69,5 @@ if (!res.ok) {
 const buf = Buffer.from(await res.arrayBuffer());
 writeFileSync(outWav, buf);
 console.log(`✓ Wrote ${outWav}  (${(buf.length / 1024).toFixed(0)} KB)`);
-console.log(`  Next: npm run reel -- ${key}`);
+console.log(`  Next: bun run reel -- ${key}`);
 console.log("  Reminder: label AI-generated audio; confirm the voice/model license allows commercial use.");

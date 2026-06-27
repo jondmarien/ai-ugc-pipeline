@@ -1,0 +1,319 @@
+{
+  "post_id": "2026-06-22_google-okf-agent-context",
+  "date": "2026-06-22",
+  "slug": "google-okf-agent-context",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "governance",
+  "theme": "ai",
+  "style_fusion": "",
+  "audience": "security_practitioners",
+  "core_claim": "Google Cloud Open Knowledge Format (OKF) v0.1 packages curated agent context as portable markdown and YAML bundles, so defenders should treat those bundles like versioned code with review and access control, not like disposable RAG chunks.",
+  "claim_tags": [
+    "reported_fact",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 4,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 4,
+    "defender_usefulness": 5,
+    "total": 22
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "governance",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-22_google-okf-agent-context",
+    "filename_prefix": "2026-06-22_google-okf-agent-context",
+    "expected_files": [
+      "2026-06-22_google-okf-agent-context_01_cover.png",
+      "2026-06-22_google-okf-agent-context_02_context.png",
+      "2026-06-22_google-okf-agent-context_03_risk.png",
+      "2026-06-22_google-okf-agent-context_04_mechanism.png",
+      "2026-06-22_google-okf-agent-context_05_failure-point.png",
+      "2026-06-22_google-okf-agent-context_06_defense.png",
+      "2026-06-22_google-okf-agent-context_07_takeaway.png",
+      "2026-06-22_google-okf-agent-context_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "GOVERNANCE \u00d7 AGENTS",
+      "on_slide_copy": "Bigger models do not fix missing context.",
+      "subline": "Google Open Knowledge Format (OKF) v0.1 turns curated context into markdown bundles agents can share without a vendor SDK.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A stack of linked folio volumes floats in black space with hair thin filaments between covers, warm accent rim on one spine, editorial still life, stack high with smooth dark void below.",
+      "background_asset": "/backgrounds/2026-06-22_google-okf-agent-context_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE \u2192",
+      "notes": ""
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT SHIPPED",
+      "on_slide_copy": "Google Cloud published Open Knowledge Format (OKF) v0.1 as an open spec.",
+      "subline": "It is a format, not a cloud service. Knowledge lives as markdown files with YAML frontmatter in a bundle directory.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Side light catches a row of identical slim volumes sliding into matching slots inside a wooden archive case, each spine plain and unmarked, dark museum still life, composition weighted to the upper half with open shadow below.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "Strong models still fail when schemas, metrics, and runbooks live in silos.",
+      "subline": "Agents assemble answers from catalogs, wikis, and drives that do not share one portable shape.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Several mismatched ceramic vessels sit on a long table in darkness, each holding a different loose material, a single filament trying to stitch them together but snapping mid span, tense editorial still life, lower area kept empty.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW OKF WORKS",
+      "on_slide_copy": "Each markdown file is one concept. File path is identity. Links build the graph.",
+      "subline": "Only the type field is mandatory in frontmatter. Optional index.md and log.md round out the bundle.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A constellation of small polished stones floats in black space, hair thin filaments connecting stone to stone in a web pattern, one stone brighter as if an entry point, abstract editorial, focal cluster high above clear negative space.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Teams treat retrieval chunks as truth and skip curated concepts.",
+      "subline": "RAG re-derives at query time. OKF holds concepts agents can read, update, and version like docs.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A shredder mouth in shadow consumes a ribbon of torn paper strips while a single intact folio sits ignored on a nearby ledge, moral still life about losing structure, subject placed upper third.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Store OKF bundles in git and review changes like application modules.",
+      "subline": "Scope which agents may write bundles. Treat cross-links as trust boundaries, not decoration.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Two hands pass a wax sealed folio across a narrow stone bridge while a third hand holds a magnifier over the seal, ritual verification scene in low light, bridge centered high with dark void beneath.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "[[Portable context is a supply-chain artifact.]] Govern it like infrastructure.",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "One closed folio rests on black marble with a single warm accent edge light, vast empty darkness around it, iconic minimal composition with the object small in the upper corner.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Would you PR-review an agent wiki the same way you review a Terraform module?",
+      "subline": "Save this for your next agent rollout checklist.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A blank stone lectern faces the viewer in a dark hall, a single overhead cone of light, no markings anywhere, end card energy with generous empty space for typography.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Google Cloud shipped Open Knowledge Format (OKF) v0.1: curated agent context as portable markdown and YAML bundles, not another proprietary catalog API.\n\nThe thesis is direct: your model is rarely the bottleneck. Missing or fragmented context is. Table definitions, metric math, and runbooks still sit across wikis, drives, and engineers' heads.\n\nOKF formalizes the LLM-wiki pattern Karpathy outlined. One concept per file, path as identity, markdown links as the graph, and only type required in frontmatter. That is closer to metadata-as-code than to dumping embeddings and hoping retrieval guesses right.\n\nDefender move this week: if your team exports runbooks or data docs for agents, pin the bundle in git, PR-review edits, and limit which tools can write back into the bundle.\n\nWould you PR-review an agent knowledge bundle like infra modules? Comment yes or no and why.\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "agent context",
+    "OKF",
+    "AI governance",
+    "data engineering",
+    "security practitioners"
+  ],
+  "comment_prompt": "Would you PR-review an agent knowledge bundle the same way you review Terraform or app modules?",
+  "alt_text": [
+    "Cover argues agents need portable curated wikis not only bigger models; dark scene of linked folio stacks.",
+    "Google published OKF v0.1 as markdown and YAML bundles not a hosted service; archive case with slim volumes.",
+    "Fragmented context breaks agent answers even with strong models; mismatched vessels linked by a snapping thread.",
+    "OKF uses one concept per markdown file with linked paths forming a graph; floating stones connected by filaments.",
+    "Teams fail when they rely on RAG chunks instead of curated concepts; shredder eats strips beside an intact folio.",
+    "Defenders should git-review OKF bundles and scope agent write access; sealed folio passed across a bridge with inspection.",
+    "Takeaway: portable context is a supply-chain artifact to govern like infrastructure; single folio on dark marble.",
+    "Asks whether you would PR-review agent wikis like modules; blank lectern under a single spotlight."
+  ],
+  "sources": [
+    {
+      "source": "Google Cloud Blog",
+      "link": "https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing",
+      "supports": "OKF v0.1 as markdown plus YAML bundles, format not platform.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Google Cloud knowledge-catalog (GitHub)",
+      "link": "https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md",
+      "supports": "Conformance rules, type field, bundle structure.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "MarkTechPost",
+      "link": "https://www.marktechpost.com/2026/06/16/google-cloud-introduces-open-knowledge-format-okf-a-vendor-neutral-markdown-spec-for-giving-ai-agents-curated-context/",
+      "supports": "Announcement summary and use cases.",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 26,
+    "fps": 30,
+    "export_name": "2026-06-22_google-okf-agent-context_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-22_google-okf-agent-context/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "Your agent probably does not need a bigger model. It needs curated context in a shape any tool can read."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "text": "Google's Open Knowledge Format v0.1 packages that context as markdown files with YAML frontmatter in a portable bundle."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "text": "That beats hoping retrieval stitches siloed catalogs and wikis together at query time without mistakes."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "text": "Treat those bundles like infrastructure. Version them, PR-review edits, and control which agents can write back."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "text": "Would you review an agent wiki like a Terraform module? Tell me in the comments."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Portable wiki beats bigger model."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "OKF v0.1 is markdown bundles."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "slide_ref": 4,
+        "purpose": "mechanism",
+        "motion": "slow push-in",
+        "caption": "Concepts link into a graph."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "static high contrast",
+        "caption": "Git review and write scopes."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Comment your review policy."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}

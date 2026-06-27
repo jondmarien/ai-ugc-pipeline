@@ -1,0 +1,26 @@
+Arbor is a generalist autonomous research framework that beat Claude Code and Codex by >2.5x on held-out benchmarks.
+
+Same compute budget. Different architecture.
+
+The paper (arXiv:2606.11926) introduces Hypothesis-Tree Refinement (HTR) for Autonomous Optimization. Researchers from Renmin University of China and Microsoft Research showed best held-out results on all 6 real research tasks across model training, harness engineering, and data synthesis.
+
+Key benchmarks:
+- BrowseComp: Arbor 67.67% vs Claude Code 53.33%, Codex 50.00%
+- Terminal-Bench 2.0: Arbor 77.36 vs Claude Code 71.70, Codex 73.59
+- MLE-Bench Lite (GPT-5.5): 86.36% Any Medal rate
+
+Current AI coding agents fail at cumulative learning. They treat each attempt in isolation, cannot compare multiple hypotheses, and overfit to dev metrics while degrading on held-out data.
+
+Arbor's approach: split the work. A long-lived coordinator manages the hypothesis tree. Short-lived executors implement one hypothesis each in isolated git worktrees. Failed attempts become negative constraints via insight backpropagation.
+
+The 6-step cycle: Observe, Ideate, Select, Dispatch, Backpropagate, Decide.
+
+Defender takeaway: enforce hypothesis isolation. Use worktrees or containers per hypothesis. Only changes that improve held-out evaluation merge to master.
+
+Autonomy without isolation is noise. A coordinator that remembers and executors that forget is the architecture that actually learns.
+
+Sources: arXiv:2606.11926, github.com/RUC-NLPIR/Arbor, VentureBeat (June 2026).
+
+Follow for AI security breakdowns without the fake panic.
+
+[AI security, cybersecurity, AI agents, machine learning, optimization]

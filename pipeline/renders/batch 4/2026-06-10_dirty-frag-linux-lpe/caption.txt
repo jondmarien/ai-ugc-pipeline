@@ -17,5 +17,3 @@ Have you blocklisted esp4, esp6, and rxrpc on systems that do not need IPsec?
 Follow for AI security breakdowns without the fake panic.
 
 [Dirty Frag, Linux kernel, local privilege escalation, Copy Fail, xfrm-ESP, RxRPC, page cache, CVE-2026-43284, CVE-2026-43500, kernel hardening]
-
-[Dirty Frag, Linux kernel, local privilege escalation, Copy Fail, xfrm-ESP, RxRPC, page cache, CVE-2026-43284, CVE-2026-43500, kernel hardening]

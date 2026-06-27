@@ -1,0 +1,887 @@
+{
+  "post_id": "2026-06-20_arbor-optimization-framework",
+  "date": "2026-06-20",
+  "slug": "arbor-optimization-framework",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "generated",
+  "pillar": "model_security",
+  "theme": "ai",
+  "style_fusion": "circuit board meets laboratory notebook",
+  "audience": "security_practitioners",
+  "core_claim": "Arbor, a generalist autonomous research framework from Renmin University and Microsoft Research, achieved best held-out results on all 6 real research tasks and outperformed Claude Code and Codex by >2.5x using Hypothesis-Tree Refinement (HTR): a long-lived coordinator managing a persistent hypothesis tree plus short-lived executors running isolated experiments in git worktrees.",
+  "claim_tags": [
+    "reported_fact"
+  ],
+  "score": {
+    "credibility": 4,
+    "relevance": 4,
+    "novelty": 5,
+    "visual_drama": 3,
+    "defender_usefulness": 4,
+    "total": 20
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "model_security",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-20_arbor-optimization-framework",
+    "filename_prefix": "2026-06-20_arbor-optimization-framework",
+    "expected_files": [
+      "2026-06-20_arbor-optimization-framework_01_cover.png",
+      "2026-06-20_arbor-optimization-framework_02_context.png",
+      "2026-06-20_arbor-optimization-framework_03_risk.png",
+      "2026-06-20_arbor-optimization-framework_04_mechanism.png",
+      "2026-06-20_arbor-optimization-framework_05_failure-point.png",
+      "2026-06-20_arbor-optimization-framework_06_defense.png",
+      "2026-06-20_arbor-optimization-framework_07_takeaway.png",
+      "2026-06-20_arbor-optimization-framework_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "ARBOR BEATS CLAUDE CODE BY 2.5X",
+      "subline": "Same compute. Different architecture. Better held-out results.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a cinematic establishing shot for an AI optimization story: a branching tree structure in a dark void with glowing orange nodes, each branch leading to an isolated workspace, dramatic rim light from above, empty lower third for headline, no readable text",
+      "background_asset": "/backgrounds/2026-06-20_arbor-optimization-framework/01_cover.png",
+      "asset_status": "generated",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT HAPPENED",
+      "on_slide_copy": "Arbor improved BrowseComp accuracy 45% to 68%. Claude Code 53%, Codex 50%.",
+      "subline": "Renmin University + Microsoft Research. arXiv:2606.11926. June 2026.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "an abstract before/after comparison scene: on one side a single tangled loop representing a monolithic agent, on the other a branching tree with multiple isolated workspaces, dark editorial, orange accent lines connecting nodes, lower third clear",
+      "background_asset": "/backgrounds/2026-06-20_arbor-optimization-framework/02_context.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "AI coding agents fail at cumulative learning. They overfit to dev metrics.",
+      "subline": "Claude Code dropped from 75 dev to 71 held-out. Arbor improved.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a tension-building scene showing divergence: two paths starting together, one curving down (representing overfitting) while another continues upward, orange warning glow on the declining path, dark, lower third clear",
+      "background_asset": "/backgrounds/2026-06-20_arbor-optimization-framework/03_risk.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "Arbor splits work: coordinator manages hypothesis tree. Executors run isolated.",
+      "subline": "Hypothesis-Tree Refinement (HTR): 6-step cycle. Observe, ideate, select, dispatch, backpropagate, decide.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean abstract diagram showing a central coordinator node with multiple executor branches extending outward, each branch leading to an isolated workspace represented by a contained structure, glowing connections, dark, upper-area focus, no readable text",
+      "background_asset": "/backgrounds/2026-06-20_arbor-optimization-framework/04_mechanism.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Single-agent loops entangle changes. You cannot tell what helped.",
+      "subline": "Tweak chunking, retrieval, and prompting together. Reward hacking follows.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a scene depicting entanglement: multiple fiber optic cables knotted together rather than separated, a figure near a single tangled mass unable to see which cable connects where, dark, lower third clear",
+      "background_asset": "/backgrounds/2026-06-20_arbor-optimization-framework/05_failure-point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Enforce hypothesis isolation. Use worktrees or containers per hypothesis.",
+      "subline": "Held-out merge gate: only changes that improve E_test promote to master.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a defensive workflow scene: multiple isolated workspaces connected to a central review gate, each workspace clearly separated, an approval checkpoint with verification checklist motifs, calm and orderly, dark",
+      "background_asset": "/backgrounds/2026-06-20_arbor-optimization-framework/06_defense.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "[[Autonomy without isolation is noise.]] A coordinator that remembers and executors that forget is the architecture that actually learns.",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a minimal iconic scene: a branching tree structure in deep negative space, a single orange node glowing brighter representing the winning hypothesis, branches extending cleanly without entanglement, center open and dark",
+      "background_asset": "/backgrounds/2026-06-20_arbor-optimization-framework/07_takeaway.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "How do you isolate hypotheses in your AI agent workflows today?",
+      "subline": "Drop a comment or save this for your next optimization sprint.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene with strong empty negative space for a question and handle, subtle branching tree watermark in background, premium editorial cybersecurity look",
+      "background_asset": "/backgrounds/2026-06-20_arbor-optimization-framework/08_cta.png",
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Arbor is a generalist autonomous research framework that beat Claude Code and Codex by >2.5x on held-out benchmarks.\n\nSame compute budget. Different architecture.\n\nThe paper (arXiv:2606.11926) introduces Hypothesis-Tree Refinement (HTR) for Autonomous Optimization. Researchers from Renmin University of China and Microsoft Research showed best held-out results on all 6 real research tasks across model training, harness engineering, and data synthesis.\n\nKey benchmarks:\n- BrowseComp: Arbor 67.67% vs Claude Code 53.33%, Codex 50.00%\n- Terminal-Bench 2.0: Arbor 77.36 vs Claude Code 71.70, Codex 73.59\n- MLE-Bench Lite (GPT-5.5): 86.36% Any Medal rate\n\nCurrent AI coding agents fail at cumulative learning. They treat each attempt in isolation, cannot compare multiple hypotheses, and overfit to dev metrics while degrading on held-out data.\n\nArbor's approach: split the work. A long-lived coordinator manages the hypothesis tree. Short-lived executors implement one hypothesis each in isolated git worktrees. Failed attempts become negative constraints via insight backpropagation.\n\nThe 6-step cycle: Observe, Ideate, Select, Dispatch, Backpropagate, Decide.\n\nDefender takeaway: enforce hypothesis isolation. Use worktrees or containers per hypothesis. Only changes that improve held-out evaluation merge to master.\n\nAutonomy without isolation is noise. A coordinator that remembers and executors that forget is the architecture that actually learns.\n\nSources: arXiv:2606.11926, github.com/RUC-NLPIR/Arbor, VentureBeat (June 2026).\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "AI security",
+    "cybersecurity",
+    "AI agents",
+    "machine learning",
+    "optimization"
+  ],
+  "comment_prompt": "How do you isolate hypotheses in your AI agent workflows today?",
+  "alt_text": [
+    "Cover slide announces Arbor beats Claude Code by 2.5x. Visual shows a branching tree structure with glowing orange nodes in a dark void.",
+    "Context slide explains Arbor improved BrowseComp accuracy from 45% to 68%. Claude Code stalled at 53%. Visual shows a tangled loop versus a branching tree comparison.",
+    "Risk slide explains AI coding agents fail at cumulative learning and overfit to dev metrics. Visual shows two paths diverging, one curving down representing overfitting.",
+    "Mechanism slide explains Arbor splits work with coordinator managing hypothesis tree and executors running isolated. Visual shows a central coordinator node with multiple executor branches.",
+    "Failure point slide explains single-agent loops entangle changes preventing clean attribution. Visual shows multiple fiber optic cables knotted together in an entangled mass.",
+    "Defense slide recommends enforcing hypothesis isolation with worktrees or containers. Visual shows multiple isolated workspaces connected to a central review gate.",
+    "Takeaway slide states autonomy without isolation is noise. Visual shows a branching tree structure with a single bright node representing the winning hypothesis.",
+    "CTA slide asks how you isolate hypotheses in your AI agent workflows. Visual shows a clean dark end card with subtle branching tree watermark."
+  ],
+  "sources": [
+    {
+      "source": "arXiv:2606.11926",
+      "link": "https://arxiv.org/abs/2606.11926",
+      "supports": "Hypothesis-Tree Refinement (HTR) architecture, benchmark results, 6-step cycle, Autonomous Optimization formalization.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "GitHub RUC-NLPIR/Arbor",
+      "link": "https://github.com/RUC-NLPIR/Arbor",
+      "supports": "Open-source implementation, Apache 2.0 license, coordinator/executor architecture, git worktree isolation.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Arbor Project Site",
+      "link": "https://ruc-nlpir.github.io/Arbor/",
+      "supports": "BrowseComp 45.33% to 67.67%, Terminal-Bench 77.36, 6/6 tasks won, MLE-Bench Lite results.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "VentureBeat",
+      "link": "https://venturebeat.com/orchestration/new-ai-optimization-framework-beats-claude-code-and-codex-by-2-5x-on-the-same-compute-budget",
+      "supports": ">2.5x improvement claim, author quotes, cross-task transfer capability.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-20_arbor-optimization-framework/01_cover.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-20_arbor-optimization-framework/02_context.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-20_arbor-optimization-framework/03_risk.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-20_arbor-optimization-framework/04_mechanism.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-20_arbor-optimization-framework/05_failure-point.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-20_arbor-optimization-framework/06_defense.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-20_arbor-optimization-framework/07_takeaway.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    },
+    {
+      "asset": "/backgrounds/2026-06-20_arbor-optimization-framework/08_cta.png",
+      "source": "FLUX.2 [klein] 4B (GGUF) via local ComfyUI",
+      "license_or_terms": "Apache-2.0 — commercial use allowed; text-free generated background.",
+      "commercial_use_allowed": true,
+      "disclosure_required": false,
+      "notes": "Generated locally with flux-2-klein-4b-Q5_K_S.gguf; no rendered text, no logos."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 26,
+    "fps": 30,
+    "export_name": "2026-06-20_arbor-optimization-framework_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-20_arbor-optimization-framework/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "Arbor beat Claude Code and Codex by 2.5x on held-out benchmarks. Same compute, different architecture."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "text": "AI coding agents fail at cumulative learning. They treat each attempt in isolation and overfit to dev metrics."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "text": "Arbor uses Hypothesis-Tree Refinement. A coordinator manages the tree. Executors test hypotheses in isolated git worktrees."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "text": "Defensive move: enforce hypothesis isolation. Use worktrees per hypothesis. Only held-out gains merge to master."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "text": "Autonomy without isolation is noise. How do you isolate hypotheses in your AI workflows?"
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Arbor beat Claude Code and Codex by 2.5x."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "AI agents fail at cumulative learning."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "slide_ref": 4,
+        "purpose": "mechanism",
+        "motion": "slow push-in",
+        "caption": "Hypothesis-Tree Refinement: coordinator plus executors."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "static high contrast",
+        "caption": "Enforce hypothesis isolation. Only held-out gains merge."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "end card",
+        "caption": "Autonomy without isolation is noise."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.16,
+        "text": "Arbor beat Claude Code and Codex by",
+        "words": [
+          {
+            "text": "Arbor",
+            "start": 0.0,
+            "end": 0.32
+          },
+          {
+            "text": "beat",
+            "start": 0.32,
+            "end": 0.62
+          },
+          {
+            "text": "Claude",
+            "start": 0.62,
+            "end": 0.88
+          },
+          {
+            "text": "Code",
+            "start": 0.88,
+            "end": 1.16
+          },
+          {
+            "text": "and",
+            "start": 1.16,
+            "end": 1.42
+          },
+          {
+            "text": "Codex",
+            "start": 1.42,
+            "end": 1.6
+          },
+          {
+            "text": "by",
+            "start": 1.6,
+            "end": 2.16
+          }
+        ]
+      },
+      {
+        "start": 2.16,
+        "end": 3.92,
+        "text": "2.5x on held-out benchmarks.",
+        "words": [
+          {
+            "text": "2.5x",
+            "start": 2.16,
+            "end": 3.0
+          },
+          {
+            "text": "on",
+            "start": 3.0,
+            "end": 3.3
+          },
+          {
+            "text": "held-out",
+            "start": 3.3,
+            "end": 3.48
+          },
+          {
+            "text": "benchmarks.",
+            "start": 3.66,
+            "end": 3.92
+          }
+        ]
+      },
+      {
+        "start": 4.68,
+        "end": 6.28,
+        "text": "Same compute, different architecture.",
+        "words": [
+          {
+            "text": "Same",
+            "start": 4.68,
+            "end": 4.92
+          },
+          {
+            "text": "compute,",
+            "start": 4.92,
+            "end": 5.24
+          },
+          {
+            "text": "different",
+            "start": 5.56,
+            "end": 5.78
+          },
+          {
+            "text": "architecture.",
+            "start": 5.78,
+            "end": 6.28
+          }
+        ]
+      },
+      {
+        "start": 6.84,
+        "end": 8.92,
+        "text": "AI coding agents fail at cumulative learning.",
+        "words": [
+          {
+            "text": "AI",
+            "start": 6.84,
+            "end": 6.96
+          },
+          {
+            "text": "coding",
+            "start": 6.96,
+            "end": 7.28
+          },
+          {
+            "text": "agents",
+            "start": 7.28,
+            "end": 7.66
+          },
+          {
+            "text": "fail",
+            "start": 7.66,
+            "end": 7.92
+          },
+          {
+            "text": "at",
+            "start": 7.92,
+            "end": 8.14
+          },
+          {
+            "text": "cumulative",
+            "start": 8.14,
+            "end": 8.34
+          },
+          {
+            "text": "learning.",
+            "start": 8.34,
+            "end": 8.92
+          }
+        ]
+      },
+      {
+        "start": 9.52,
+        "end": 11.38,
+        "text": "They treat each attempt in isolation and",
+        "words": [
+          {
+            "text": "They",
+            "start": 9.52,
+            "end": 9.57
+          },
+          {
+            "text": "treat",
+            "start": 9.52,
+            "end": 9.68
+          },
+          {
+            "text": "each",
+            "start": 9.68,
+            "end": 9.94
+          },
+          {
+            "text": "attempt",
+            "start": 9.94,
+            "end": 10.22
+          },
+          {
+            "text": "in",
+            "start": 10.22,
+            "end": 10.4
+          },
+          {
+            "text": "isolation",
+            "start": 10.4,
+            "end": 10.74
+          },
+          {
+            "text": "and",
+            "start": 10.74,
+            "end": 11.38
+          }
+        ]
+      },
+      {
+        "start": 11.38,
+        "end": 12.5,
+        "text": "overfit to dev metrics.",
+        "words": [
+          {
+            "text": "overfit",
+            "start": 11.38,
+            "end": 11.82
+          },
+          {
+            "text": "to",
+            "start": 11.82,
+            "end": 11.98
+          },
+          {
+            "text": "dev",
+            "start": 11.98,
+            "end": 12.16
+          },
+          {
+            "text": "metrics.",
+            "start": 12.16,
+            "end": 12.5
+          }
+        ]
+      },
+      {
+        "start": 13.4,
+        "end": 15.28,
+        "text": "Arbor uses Hypothesis-Tree Refinement.",
+        "words": [
+          {
+            "text": "Arbor",
+            "start": 13.4,
+            "end": 13.48
+          },
+          {
+            "text": "uses",
+            "start": 13.48,
+            "end": 14.52
+          },
+          {
+            "text": "Hypothesis-Tree",
+            "start": 14.52,
+            "end": 14.7
+          },
+          {
+            "text": "Refinement.",
+            "start": 14.88,
+            "end": 15.28
+          }
+        ]
+      },
+      {
+        "start": 15.96,
+        "end": 17.28,
+        "text": "A coordinator manages the tree.",
+        "words": [
+          {
+            "text": "A",
+            "start": 15.96,
+            "end": 16.01
+          },
+          {
+            "text": "coordinator",
+            "start": 15.96,
+            "end": 16.28
+          },
+          {
+            "text": "manages",
+            "start": 16.28,
+            "end": 16.92
+          },
+          {
+            "text": "the",
+            "start": 16.92,
+            "end": 17.08
+          },
+          {
+            "text": "tree.",
+            "start": 17.08,
+            "end": 17.28
+          }
+        ]
+      },
+      {
+        "start": 17.62,
+        "end": 20.86,
+        "text": "Executors test hypotheses in isolated git worktrees.",
+        "words": [
+          {
+            "text": "Executors",
+            "start": 17.62,
+            "end": 18.1
+          },
+          {
+            "text": "test",
+            "start": 18.1,
+            "end": 18.3
+          },
+          {
+            "text": "hypotheses",
+            "start": 18.3,
+            "end": 18.72
+          },
+          {
+            "text": "in",
+            "start": 18.72,
+            "end": 19.28
+          },
+          {
+            "text": "isolated",
+            "start": 19.28,
+            "end": 19.66
+          },
+          {
+            "text": "git",
+            "start": 19.66,
+            "end": 20.04
+          },
+          {
+            "text": "worktrees.",
+            "start": 20.04,
+            "end": 20.86
+          }
+        ]
+      },
+      {
+        "start": 21.68,
+        "end": 23.7,
+        "text": "Defensive move: enforce hypothesis isolation.",
+        "words": [
+          {
+            "text": "Defensive",
+            "start": 21.68,
+            "end": 21.73
+          },
+          {
+            "text": "move:",
+            "start": 21.68,
+            "end": 22.1
+          },
+          {
+            "text": "enforce",
+            "start": 22.1,
+            "end": 22.42
+          },
+          {
+            "text": "hypothesis",
+            "start": 22.42,
+            "end": 23.14
+          },
+          {
+            "text": "isolation.",
+            "start": 23.14,
+            "end": 23.7
+          }
+        ]
+      },
+      {
+        "start": 24.46,
+        "end": 25.66,
+        "text": "Use worktrees per hypothesis.",
+        "words": [
+          {
+            "text": "Use",
+            "start": 24.46,
+            "end": 24.64
+          },
+          {
+            "text": "worktrees",
+            "start": 24.64,
+            "end": 24.84
+          },
+          {
+            "text": "per",
+            "start": 25.04,
+            "end": 25.24
+          },
+          {
+            "text": "hypothesis.",
+            "start": 25.24,
+            "end": 25.66
+          }
+        ]
+      },
+      {
+        "start": 26.28,
+        "end": 27.76,
+        "text": "Only held-out gains merge to master.",
+        "words": [
+          {
+            "text": "Only",
+            "start": 26.28,
+            "end": 26.44
+          },
+          {
+            "text": "held-out",
+            "start": 26.44,
+            "end": 26.63
+          },
+          {
+            "text": "gains",
+            "start": 26.82,
+            "end": 27.06
+          },
+          {
+            "text": "merge",
+            "start": 27.06,
+            "end": 27.38
+          },
+          {
+            "text": "to",
+            "start": 27.38,
+            "end": 27.6
+          },
+          {
+            "text": "master.",
+            "start": 27.6,
+            "end": 27.76
+          }
+        ]
+      },
+      {
+        "start": 27.76,
+        "end": 30.36,
+        "text": "Autonomy without isolation is noise.",
+        "words": [
+          {
+            "text": "Autonomy",
+            "start": 27.76,
+            "end": 28.98
+          },
+          {
+            "text": "without",
+            "start": 28.98,
+            "end": 29.32
+          },
+          {
+            "text": "isolation",
+            "start": 29.32,
+            "end": 29.72
+          },
+          {
+            "text": "is",
+            "start": 29.72,
+            "end": 30.16
+          },
+          {
+            "text": "noise.",
+            "start": 30.16,
+            "end": 30.36
+          }
+        ]
+      },
+      {
+        "start": 31.1,
+        "end": 32.92,
+        "text": "How do you isolate hypotheses in your",
+        "words": [
+          {
+            "text": "How",
+            "start": 31.1,
+            "end": 31.2
+          },
+          {
+            "text": "do",
+            "start": 31.2,
+            "end": 31.3
+          },
+          {
+            "text": "you",
+            "start": 31.3,
+            "end": 31.4
+          },
+          {
+            "text": "isolate",
+            "start": 31.4,
+            "end": 31.74
+          },
+          {
+            "text": "hypotheses",
+            "start": 31.74,
+            "end": 32.22
+          },
+          {
+            "text": "in",
+            "start": 32.22,
+            "end": 32.8
+          },
+          {
+            "text": "your",
+            "start": 32.8,
+            "end": 32.92
+          }
+        ]
+      },
+      {
+        "start": 32.92,
+        "end": 33.64,
+        "text": "AI workflows?",
+        "words": [
+          {
+            "text": "AI",
+            "start": 32.92,
+            "end": 33.1
+          },
+          {
+            "text": "workflows?",
+            "start": 33.1,
+            "end": 33.64
+          }
+        ]
+      }
+    ]
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}

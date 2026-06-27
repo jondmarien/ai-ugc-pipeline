@@ -20,6 +20,8 @@
     "voice": "bun scripts/voice.mjs",
     "align": "bun scripts/align.mjs",
     "art": "bun scripts/art-comfyui.mjs",
+    "art:higgsfield": "bun scripts/art-higgsfield.mjs",
+    "reel:higgsfield": "bun scripts/reel-segments-higgsfield.mjs",
     "upscale": "bun scripts/upscale-comfyui.mjs",
     "art:diffusers": "bun scripts/art.mjs",
     "import-bg": "bun scripts/import-bg.mjs",
@@ -30,9 +32,12 @@
     "typecheck": "tsc --noEmit && tsc --noEmit -p remotion/tsconfig.json",
     "remotion:studio": "bunx remotion studio remotion/index.ts",
     "publish": "bun scripts/publish.mjs",
-    "publish:auth": "bun scripts/publish/auth/cli.mjs"
+    "publish:auth": "bun scripts/publish/auth/cli.mjs",
+    "art:fal": "bun scripts/art-fal.mjs",
+    "reel:fal": "bun scripts/reel-fal.mjs"
   },
   "dependencies": {
+    "@fal-ai/client": "^1.10.1",
     "@fontsource/archivo": "^5.2.5",
     "@fontsource/inter": "^5.2.5",
     "@fontsource/jetbrains-mono": "^5.2.5",

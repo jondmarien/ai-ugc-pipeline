@@ -1,0 +1,319 @@
+{
+  "post_id": "2026-06-22_perplexity-brain-work-memory",
+  "date": "2026-06-22",
+  "slug": "perplexity-brain-work-memory",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "model_security",
+  "theme": "ai",
+  "style_fusion": "",
+  "audience": "security_practitioners",
+  "core_claim": "Perplexity Brain stores a traceable context graph of agent work and synthesizes it on a schedule, which creates a new custody and integrity surface defenders must govern with retention, provenance review, and scoped access.",
+  "claim_tags": [
+    "reported_fact",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 4,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 3,
+    "defender_usefulness": 5,
+    "total": 21
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "model_security",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-22_perplexity-brain-work-memory",
+    "filename_prefix": "2026-06-22_perplexity-brain-work-memory",
+    "expected_files": [
+      "2026-06-22_perplexity-brain-work-memory_01_cover.png",
+      "2026-06-22_perplexity-brain-work-memory_02_context.png",
+      "2026-06-22_perplexity-brain-work-memory_03_risk.png",
+      "2026-06-22_perplexity-brain-work-memory_04_mechanism.png",
+      "2026-06-22_perplexity-brain-work-memory_05_failure-point.png",
+      "2026-06-22_perplexity-brain-work-memory_06_defense.png",
+      "2026-06-22_perplexity-brain-work-memory_07_takeaway.png",
+      "2026-06-22_perplexity-brain-work-memory_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "MODEL SECURITY \u00d7 AGENTS",
+      "on_slide_copy": "Perplexity remembers the job, not your playlist.",
+      "subline": "Brain builds a context graph of agent work and refines it on a schedule, not a user taste profile.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A night skyline reflected in still water with a lattice of faint nodes hovering above the reflection like a second city, cool editorial atmosphere, lattice confined to upper frame with smooth dark water below.",
+      "background_asset": "/backgrounds/2026-06-22_perplexity-brain-work-memory_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE \u2192",
+      "notes": ""
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT LAUNCHED",
+      "on_slide_copy": "Perplexity launched Brain for its Computer agent in research preview.",
+      "subline": "Rolling to Max and Enterprise Max subscribers. Memory targets work history, not engagement preferences.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A clockwork sphere of interlocking brass rings rotates slowly in a void, each ring etched with wear marks suggesting repeated cycles, macro product still life, object high with empty lower field.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "A persistent work graph is a new data custody surface.",
+      "subline": "Sessions, connectors, corrections, and sources can accumulate unless you define retention and scope.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Roots of a single tree break through a porcelain floor tile and spread under transparent glass, tension between organic growth and brittle structure, roots upper left fading into dark lower margin.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW BRAIN WORKS",
+      "on_slide_copy": "Brain links memories back to sessions, files, or sources with provenance.",
+      "subline": "Overnight synthesis updates an LLM wiki loaded into the agent sandbox for the next run.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "Moonlight on a tide pool reveals pebbles each tied by a thin string to a central cork float, traceable radial pattern, natural macro scene with calm empty sand band at bottom.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Teams trust vendor metrics before running their own replay tests.",
+      "subline": "Perplexity cites early gains on repeated tasks. That is first-party data until you reproduce it.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A measuring rod lies beside a crooked shadow that does not match its length, skeptic still life about unverified claims, objects on a ledge in upper half only.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Set retention, export, and delete paths before agents touch production data.",
+      "subline": "Review what entered the graph after corrections. Treat stale graph nodes like stale credentials.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A gardener trims a bonsai while a sieve catches fallen clippings beside a small fire pit, controlled pruning metaphor, scene offset to top with wide dark tabletop below.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "[[Work memory needs the same integrity rules as prompt context.]] {{Stale graph nodes poison the next run.}}",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "A single knot in a rope glows under hard side light while the rest of the rope fades into black, tight macro symbolic shot placed off center high.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Do you log what your agent remembered last night before you let it touch PII again?",
+      "subline": "Save this for your agent memory review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "An empty chair faces a dormant workstation silhouette in silhouette only, no glowing rectangles, quiet end card darkness with space for text low.",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Perplexity Brain is not another preferences blob. It remembers what the Computer agent did, then synthesizes that work into a context graph on a schedule (including overnight runs).\n\nThat shift matters for security. User taste memory optimizes engagement. Work memory optimizes performance, but it also persists sessions, connector results, corrections, and sources unless you govern it.\n\nPerplexity says early first-party runs on repeated tasks showed about 25 percent higher answer correctness, 16 percent higher recall, and 13 percent lower cost when historical context mattered. Treat those numbers as a vendor signal until your team replays the same workflows locally.\n\nDefender move: define retention and deletion for work graphs, audit provenance links after user corrections, and block agents from auto-loading memory that touched sensitive connectors without a human diff.\n\nDo you inspect overnight agent memory before the next business run? Comment how your team handles it.\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "agent memory",
+    "Perplexity Brain",
+    "context graph",
+    "AI security",
+    "enterprise agents"
+  ],
+  "comment_prompt": "Do you review overnight agent memory before it runs again on sensitive data?",
+  "alt_text": [
+    "Cover contrasts work memory with user taste memory for Perplexity Brain; skyline with a node lattice above water.",
+    "Brain launched in research preview for Max tiers and tracks agent work; brass clockwork rings with wear marks.",
+    "Persistent work graphs create custody risk for sessions and connectors; tree roots breaking through tile under glass.",
+    "Brain ties memories to sessions and sources and refreshes an LLM wiki overnight; tide pool pebbles linked to a float.",
+    "Teams should not trust vendor metrics without replay tests; measuring rod beside a mismatched shadow.",
+    "Set retention and audit corrections in work memory like stale credentials; gardener pruning bonsai with clippings caught.",
+    "Takeaway: work memory needs prompt-style integrity rules; glowing knot on an otherwise dark rope.",
+    "Asks if you log overnight agent memory before PII tasks; empty chair facing a dark workstation silhouette."
+  ],
+  "sources": [
+    {
+      "source": "Perplexity Hub Blog",
+      "link": "https://www.perplexity.ai/hub/blog/self-improving-memory-for-agents",
+      "supports": "Brain context graph, overnight synthesis, provenance framing.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "MarkTechPost",
+      "link": "https://www.marktechpost.com/2026/06/18/perplexity-launches-brain/",
+      "supports": "Launch summary, metric claims, Max tier availability.",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Perplexity Computer memory page",
+      "link": "https://www.perplexity.ai/computer/memory",
+      "supports": "Product positioning for Brain memory.",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 26,
+    "fps": 30,
+    "export_name": "2026-06-22_perplexity-brain-work-memory_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-22_perplexity-brain-work-memory/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "Perplexity Brain does not optimize your tastes. It remembers what the agent did and tries to do the job better next time."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "text": "It builds a traceable context graph, then synthesizes sessions and corrections on a schedule, including overnight."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "text": "That is performance upside and a new custody problem if connector output and corrections pile up without policy."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "text": "Set retention, export, and review provenance before production data touches the graph again."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "text": "Do you audit overnight agent memory? Drop your workflow in the comments."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Memory of the job."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "slide_ref": 4,
+        "purpose": "mechanism",
+        "motion": "parallax",
+        "caption": "Graph plus overnight sync."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "slide_ref": 3,
+        "purpose": "risk",
+        "motion": "slow push-in",
+        "caption": "Custody of work history."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "static high contrast",
+        "caption": "Retention and provenance."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Comment your audit step."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}

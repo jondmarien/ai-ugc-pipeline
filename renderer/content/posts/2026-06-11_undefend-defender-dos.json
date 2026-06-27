@@ -4,7 +4,7 @@
   "slug": "undefend-defender-dos",
   "platform": "instagram",
   "format": "carousel",
-  "status": "approved",
+  "status": "generated",
   "pillar": "offensive_ai",
   "theme": "offensive",
   "audience": "security_practitioners",
@@ -413,6 +413,1447 @@
     "music": null,
     "sfx": [],
     "licenses": [],
-    "captions": []
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.72,
+        "text": "In April 2026, a researcher named Nightmare",
+        "words": [
+          {
+            "text": "In",
+            "start": 0.0,
+            "end": 0.24
+          },
+          {
+            "text": "April",
+            "start": 0.24,
+            "end": 0.48
+          },
+          {
+            "text": "2026,",
+            "start": 0.48,
+            "end": 1.34
+          },
+          {
+            "text": "a",
+            "start": 1.34,
+            "end": 1.62
+          },
+          {
+            "text": "researcher",
+            "start": 1.62,
+            "end": 1.92
+          },
+          {
+            "text": "named",
+            "start": 1.92,
+            "end": 2.32
+          },
+          {
+            "text": "Nightmare",
+            "start": 2.32,
+            "end": 2.72
+          }
+        ]
+      },
+      {
+        "start": 2.72,
+        "end": 5.44,
+        "text": "Eclipse dropped a tool called UnDefend, and",
+        "words": [
+          {
+            "text": "Eclipse",
+            "start": 2.72,
+            "end": 3.08
+          },
+          {
+            "text": "dropped",
+            "start": 3.08,
+            "end": 3.66
+          },
+          {
+            "text": "a",
+            "start": 3.66,
+            "end": 3.88
+          },
+          {
+            "text": "tool",
+            "start": 3.88,
+            "end": 4.08
+          },
+          {
+            "text": "called",
+            "start": 4.08,
+            "end": 4.38
+          },
+          {
+            "text": "UnDefend,",
+            "start": 4.38,
+            "end": 4.98
+          },
+          {
+            "text": "and",
+            "start": 5.28,
+            "end": 5.44
+          }
+        ]
+      },
+      {
+        "start": 5.44,
+        "end": 7.62,
+        "text": "it prevents Microsoft Defender from loading updated",
+        "words": [
+          {
+            "text": "it",
+            "start": 5.44,
+            "end": 5.54
+          },
+          {
+            "text": "prevents",
+            "start": 5.54,
+            "end": 5.74
+          },
+          {
+            "text": "Microsoft",
+            "start": 5.74,
+            "end": 6.08
+          },
+          {
+            "text": "Defender",
+            "start": 6.08,
+            "end": 6.58
+          },
+          {
+            "text": "from",
+            "start": 6.58,
+            "end": 7.02
+          },
+          {
+            "text": "loading",
+            "start": 7.02,
+            "end": 7.26
+          },
+          {
+            "text": "updated",
+            "start": 7.26,
+            "end": 7.62
+          }
+        ]
+      },
+      {
+        "start": 7.62,
+        "end": 9.74,
+        "text": "signatures without triggering a single alert.",
+        "words": [
+          {
+            "text": "signatures",
+            "start": 7.62,
+            "end": 7.96
+          },
+          {
+            "text": "without",
+            "start": 7.96,
+            "end": 8.52
+          },
+          {
+            "text": "triggering",
+            "start": 8.52,
+            "end": 9.0
+          },
+          {
+            "text": "a",
+            "start": 9.0,
+            "end": 9.2
+          },
+          {
+            "text": "single",
+            "start": 9.2,
+            "end": 9.42
+          },
+          {
+            "text": "alert.",
+            "start": 9.42,
+            "end": 9.74
+          }
+        ]
+      },
+      {
+        "start": 10.44,
+        "end": 14.5,
+        "text": "It was assigned CVE-2026-45498 and",
+        "words": [
+          {
+            "text": "It",
+            "start": 10.44,
+            "end": 10.54
+          },
+          {
+            "text": "was",
+            "start": 10.54,
+            "end": 10.64
+          },
+          {
+            "text": "assigned",
+            "start": 10.64,
+            "end": 10.96
+          },
+          {
+            "text": "CVE-2026-45498",
+            "start": 10.96,
+            "end": 13.66
+          },
+          {
+            "text": "and",
+            "start": 13.66,
+            "end": 14.5
+          }
+        ]
+      },
+      {
+        "start": 14.5,
+        "end": 16.72,
+        "text": "added to the CISA Known Exploited Vulnerabilities",
+        "words": [
+          {
+            "text": "added",
+            "start": 14.5,
+            "end": 14.72
+          },
+          {
+            "text": "to",
+            "start": 14.72,
+            "end": 14.96
+          },
+          {
+            "text": "the",
+            "start": 14.96,
+            "end": 15.08
+          },
+          {
+            "text": "CISA",
+            "start": 15.08,
+            "end": 15.293
+          },
+          {
+            "text": "Known",
+            "start": 15.293,
+            "end": 15.507
+          },
+          {
+            "text": "Exploited",
+            "start": 15.72,
+            "end": 16.1
+          },
+          {
+            "text": "Vulnerabilities",
+            "start": 16.1,
+            "end": 16.72
+          }
+        ]
+      },
+      {
+        "start": 16.72,
+        "end": 18.94,
+        "text": "catalog in May 2026.",
+        "words": [
+          {
+            "text": "catalog",
+            "start": 16.72,
+            "end": 17.3
+          },
+          {
+            "text": "in",
+            "start": 17.3,
+            "end": 17.86
+          },
+          {
+            "text": "May",
+            "start": 17.86,
+            "end": 18.04
+          },
+          {
+            "text": "2026.",
+            "start": 18.04,
+            "end": 18.94
+          }
+        ]
+      },
+      {
+        "start": 19.82,
+        "end": 22.66,
+        "text": "Huntress confirmed real-world exploitation the same month.",
+        "words": [
+          {
+            "text": "Huntress",
+            "start": 19.82,
+            "end": 20.24
+          },
+          {
+            "text": "confirmed",
+            "start": 20.24,
+            "end": 20.64
+          },
+          {
+            "text": "real-world",
+            "start": 20.64,
+            "end": 21.34
+          },
+          {
+            "text": "exploitation",
+            "start": 21.34,
+            "end": 21.58
+          },
+          {
+            "text": "the",
+            "start": 21.58,
+            "end": 22.24
+          },
+          {
+            "text": "same",
+            "start": 22.24,
+            "end": 22.42
+          },
+          {
+            "text": "month.",
+            "start": 22.42,
+            "end": 22.66
+          }
+        ]
+      },
+      {
+        "start": 23.26,
+        "end": 25.44,
+        "text": "The mechanism is a user-mode file-locking race.",
+        "words": [
+          {
+            "text": "The",
+            "start": 23.26,
+            "end": 23.31
+          },
+          {
+            "text": "mechanism",
+            "start": 23.3,
+            "end": 23.5
+          },
+          {
+            "text": "is",
+            "start": 23.5,
+            "end": 23.94
+          },
+          {
+            "text": "a",
+            "start": 23.94,
+            "end": 24.04
+          },
+          {
+            "text": "user-mode",
+            "start": 24.04,
+            "end": 24.413
+          },
+          {
+            "text": "file-locking",
+            "start": 24.413,
+            "end": 24.787
+          },
+          {
+            "text": "race.",
+            "start": 25.16,
+            "end": 25.44
+          }
+        ]
+      },
+      {
+        "start": 26.22,
+        "end": 29.14,
+        "text": "UnDefend watches Defender's definition directory and locks",
+        "words": [
+          {
+            "text": "UnDefend",
+            "start": 26.22,
+            "end": 26.6
+          },
+          {
+            "text": "watches",
+            "start": 26.6,
+            "end": 26.86
+          },
+          {
+            "text": "Defender's",
+            "start": 26.86,
+            "end": 27.92
+          },
+          {
+            "text": "definition",
+            "start": 27.92,
+            "end": 27.97
+          },
+          {
+            "text": "directory",
+            "start": 27.92,
+            "end": 28.24
+          },
+          {
+            "text": "and",
+            "start": 28.24,
+            "end": 28.94
+          },
+          {
+            "text": "locks",
+            "start": 28.94,
+            "end": 29.14
+          }
+        ]
+      },
+      {
+        "start": 29.14,
+        "end": 31.4,
+        "text": "each new signature file before Defender can",
+        "words": [
+          {
+            "text": "each",
+            "start": 29.14,
+            "end": 29.48
+          },
+          {
+            "text": "new",
+            "start": 29.48,
+            "end": 29.66
+          },
+          {
+            "text": "signature",
+            "start": 30.2,
+            "end": 30.25
+          },
+          {
+            "text": "file",
+            "start": 30.2,
+            "end": 30.38
+          },
+          {
+            "text": "before",
+            "start": 30.38,
+            "end": 30.74
+          },
+          {
+            "text": "Defender",
+            "start": 30.74,
+            "end": 31.1
+          },
+          {
+            "text": "can",
+            "start": 31.1,
+            "end": 31.4
+          }
+        ]
+      },
+      {
+        "start": 31.4,
+        "end": 31.76,
+        "text": "read it.",
+        "words": [
+          {
+            "text": "read",
+            "start": 31.4,
+            "end": 31.62
+          },
+          {
+            "text": "it.",
+            "start": 31.62,
+            "end": 31.76
+          }
+        ]
+      },
+      {
+        "start": 32.4,
+        "end": 34.28,
+        "text": "No kernel driver, no network interception.",
+        "words": [
+          {
+            "text": "No",
+            "start": 32.4,
+            "end": 32.56
+          },
+          {
+            "text": "kernel",
+            "start": 32.56,
+            "end": 32.76
+          },
+          {
+            "text": "driver,",
+            "start": 32.76,
+            "end": 33.14
+          },
+          {
+            "text": "no",
+            "start": 33.64,
+            "end": 33.72
+          },
+          {
+            "text": "network",
+            "start": 33.72,
+            "end": 34.0
+          },
+          {
+            "text": "interception.",
+            "start": 34.0,
+            "end": 34.28
+          }
+        ]
+      },
+      {
+        "start": 35.1,
+        "end": 36.64,
+        "text": "Standard user access is enough.",
+        "words": [
+          {
+            "text": "Standard",
+            "start": 35.1,
+            "end": 35.34
+          },
+          {
+            "text": "user",
+            "start": 35.34,
+            "end": 35.66
+          },
+          {
+            "text": "access",
+            "start": 35.66,
+            "end": 36.1
+          },
+          {
+            "text": "is",
+            "start": 36.1,
+            "end": 36.4
+          },
+          {
+            "text": "enough.",
+            "start": 36.4,
+            "end": 36.64
+          }
+        ]
+      },
+      {
+        "start": 37.56,
+        "end": 39.88,
+        "text": "It also locks backup definition files immediately",
+        "words": [
+          {
+            "text": "It",
+            "start": 37.56,
+            "end": 37.74
+          },
+          {
+            "text": "also",
+            "start": 37.74,
+            "end": 37.96
+          },
+          {
+            "text": "locks",
+            "start": 37.96,
+            "end": 38.2
+          },
+          {
+            "text": "backup",
+            "start": 38.2,
+            "end": 38.66
+          },
+          {
+            "text": "definition",
+            "start": 38.66,
+            "end": 38.98
+          },
+          {
+            "text": "files",
+            "start": 38.98,
+            "end": 39.44
+          },
+          {
+            "text": "immediately",
+            "start": 39.44,
+            "end": 39.88
+          }
+        ]
+      },
+      {
+        "start": 39.88,
+        "end": 42.38,
+        "text": "at startup, and re-locks the signature base",
+        "words": [
+          {
+            "text": "at",
+            "start": 39.88,
+            "end": 40.28
+          },
+          {
+            "text": "startup,",
+            "start": 40.28,
+            "end": 40.5
+          },
+          {
+            "text": "and",
+            "start": 40.5,
+            "end": 41.16
+          },
+          {
+            "text": "re-locks",
+            "start": 41.16,
+            "end": 41.56
+          },
+          {
+            "text": "the",
+            "start": 41.56,
+            "end": 41.72
+          },
+          {
+            "text": "signature",
+            "start": 41.72,
+            "end": 42.06
+          },
+          {
+            "text": "base",
+            "start": 42.06,
+            "end": 42.38
+          }
+        ]
+      },
+      {
+        "start": 42.38,
+        "end": 44.56,
+        "text": "any time the Defender service stops and",
+        "words": [
+          {
+            "text": "any",
+            "start": 42.38,
+            "end": 42.5
+          },
+          {
+            "text": "time",
+            "start": 42.5,
+            "end": 42.62
+          },
+          {
+            "text": "the",
+            "start": 42.74,
+            "end": 43.2
+          },
+          {
+            "text": "Defender",
+            "start": 43.2,
+            "end": 43.44
+          },
+          {
+            "text": "service",
+            "start": 43.44,
+            "end": 43.72
+          },
+          {
+            "text": "stops",
+            "start": 43.72,
+            "end": 44.2
+          },
+          {
+            "text": "and",
+            "start": 44.2,
+            "end": 44.56
+          }
+        ]
+      },
+      {
+        "start": 44.56,
+        "end": 45.14,
+        "text": "tries to restart.",
+        "words": [
+          {
+            "text": "tries",
+            "start": 44.56,
+            "end": 44.76
+          },
+          {
+            "text": "to",
+            "start": 44.76,
+            "end": 44.96
+          },
+          {
+            "text": "restart.",
+            "start": 44.96,
+            "end": 45.14
+          }
+        ]
+      },
+      {
+        "start": 46.42,
+        "end": 48.32,
+        "text": "The signatures cannot load from any path.",
+        "words": [
+          {
+            "text": "The",
+            "start": 46.42,
+            "end": 46.54
+          },
+          {
+            "text": "signatures",
+            "start": 46.54,
+            "end": 46.88
+          },
+          {
+            "text": "cannot",
+            "start": 46.88,
+            "end": 47.24
+          },
+          {
+            "text": "load",
+            "start": 47.24,
+            "end": 47.62
+          },
+          {
+            "text": "from",
+            "start": 47.62,
+            "end": 47.86
+          },
+          {
+            "text": "any",
+            "start": 47.86,
+            "end": 48.06
+          },
+          {
+            "text": "path.",
+            "start": 48.06,
+            "end": 48.32
+          }
+        ]
+      },
+      {
+        "start": 49.36,
+        "end": 51.6,
+        "text": "Here is the dangerous part: Defender's status",
+        "words": [
+          {
+            "text": "Here",
+            "start": 49.36,
+            "end": 49.68
+          },
+          {
+            "text": "is",
+            "start": 49.68,
+            "end": 49.84
+          },
+          {
+            "text": "the",
+            "start": 49.84,
+            "end": 49.96
+          },
+          {
+            "text": "dangerous",
+            "start": 49.96,
+            "end": 50.26
+          },
+          {
+            "text": "part:",
+            "start": 50.26,
+            "end": 50.58
+          },
+          {
+            "text": "Defender's",
+            "start": 51.02,
+            "end": 51.4
+          },
+          {
+            "text": "status",
+            "start": 51.4,
+            "end": 51.6
+          }
+        ]
+      },
+      {
+        "start": 51.6,
+        "end": 54.26,
+        "text": "display still shows green, reports no threats,",
+        "words": [
+          {
+            "text": "display",
+            "start": 51.6,
+            "end": 52.08
+          },
+          {
+            "text": "still",
+            "start": 52.08,
+            "end": 52.44
+          },
+          {
+            "text": "shows",
+            "start": 52.44,
+            "end": 52.82
+          },
+          {
+            "text": "green,",
+            "start": 52.82,
+            "end": 52.98
+          },
+          {
+            "text": "reports",
+            "start": 53.64,
+            "end": 53.69
+          },
+          {
+            "text": "no",
+            "start": 53.64,
+            "end": 53.98
+          },
+          {
+            "text": "threats,",
+            "start": 53.98,
+            "end": 54.26
+          }
+        ]
+      },
+      {
+        "start": 54.54,
+        "end": 56.14,
+        "text": "and claims protection is up to date,",
+        "words": [
+          {
+            "text": "and",
+            "start": 54.54,
+            "end": 54.59
+          },
+          {
+            "text": "claims",
+            "start": 54.56,
+            "end": 54.74
+          },
+          {
+            "text": "protection",
+            "start": 54.74,
+            "end": 55.08
+          },
+          {
+            "text": "is",
+            "start": 55.08,
+            "end": 55.48
+          },
+          {
+            "text": "up",
+            "start": 55.48,
+            "end": 55.7
+          },
+          {
+            "text": "to",
+            "start": 55.7,
+            "end": 55.92
+          },
+          {
+            "text": "date,",
+            "start": 55.92,
+            "end": 56.14
+          }
+        ]
+      },
+      {
+        "start": 56.36,
+        "end": 58.64,
+        "text": "even while definitions are aging silently and",
+        "words": [
+          {
+            "text": "even",
+            "start": 56.36,
+            "end": 56.48
+          },
+          {
+            "text": "while",
+            "start": 56.48,
+            "end": 56.66
+          },
+          {
+            "text": "definitions",
+            "start": 56.66,
+            "end": 56.9
+          },
+          {
+            "text": "are",
+            "start": 56.9,
+            "end": 57.4
+          },
+          {
+            "text": "aging",
+            "start": 57.4,
+            "end": 57.62
+          },
+          {
+            "text": "silently",
+            "start": 57.62,
+            "end": 58.02
+          },
+          {
+            "text": "and",
+            "start": 58.02,
+            "end": 58.64
+          }
+        ]
+      },
+      {
+        "start": 58.64,
+        "end": 59.76,
+        "text": "no new threats can be detected.",
+        "words": [
+          {
+            "text": "no",
+            "start": 58.64,
+            "end": 58.82
+          },
+          {
+            "text": "new",
+            "start": 58.82,
+            "end": 58.98
+          },
+          {
+            "text": "threats",
+            "start": 58.98,
+            "end": 59.24
+          },
+          {
+            "text": "can",
+            "start": 59.24,
+            "end": 59.48
+          },
+          {
+            "text": "be",
+            "start": 59.48,
+            "end": 59.62
+          },
+          {
+            "text": "detected.",
+            "start": 59.62,
+            "end": 59.76
+          }
+        ]
+      },
+      {
+        "start": 59.76,
+        "end": 61.4,
+        "text": "The patch is out.",
+        "words": [
+          {
+            "text": "The",
+            "start": 59.76,
+            "end": 60.76
+          },
+          {
+            "text": "patch",
+            "start": 60.76,
+            "end": 60.98
+          },
+          {
+            "text": "is",
+            "start": 60.98,
+            "end": 61.2
+          },
+          {
+            "text": "out.",
+            "start": 61.2,
+            "end": 61.4
+          }
+        ]
+      },
+      {
+        "start": 62.38,
+        "end": 64.82,
+        "text": "Microsoft fixed this in Defender Antimalware Platform",
+        "words": [
+          {
+            "text": "Microsoft",
+            "start": 62.38,
+            "end": 62.66
+          },
+          {
+            "text": "fixed",
+            "start": 62.66,
+            "end": 63.2
+          },
+          {
+            "text": "this",
+            "start": 63.2,
+            "end": 63.44
+          },
+          {
+            "text": "in",
+            "start": 63.44,
+            "end": 63.56
+          },
+          {
+            "text": "Defender",
+            "start": 63.56,
+            "end": 63.76
+          },
+          {
+            "text": "Antimalware",
+            "start": 63.76,
+            "end": 64.48
+          },
+          {
+            "text": "Platform",
+            "start": 64.48,
+            "end": 64.82
+          }
+        ]
+      },
+      {
+        "start": 64.82,
+        "end": 69.04,
+        "text": "version 4.18.26040.7,",
+        "words": [
+          {
+            "text": "version",
+            "start": 64.82,
+            "end": 65.56
+          },
+          {
+            "text": "4.18.26040.7,",
+            "start": 65.56,
+            "end": 69.04
+          }
+        ]
+      },
+      {
+        "start": 69.28,
+        "end": 71.26,
+        "text": "released May 21, 2026.",
+        "words": [
+          {
+            "text": "released",
+            "start": 69.28,
+            "end": 69.6
+          },
+          {
+            "text": "May",
+            "start": 69.6,
+            "end": 69.88
+          },
+          {
+            "text": "21,",
+            "start": 69.88,
+            "end": 70.16
+          },
+          {
+            "text": "2026.",
+            "start": 70.58,
+            "end": 71.26
+          }
+        ]
+      },
+      {
+        "start": 71.26,
+        "end": 74.38,
+        "text": "Confirm that version on every endpoint, and",
+        "words": [
+          {
+            "text": "Confirm",
+            "start": 71.26,
+            "end": 71.96
+          },
+          {
+            "text": "that",
+            "start": 72.66,
+            "end": 72.84
+          },
+          {
+            "text": "version",
+            "start": 72.84,
+            "end": 73.08
+          },
+          {
+            "text": "on",
+            "start": 73.08,
+            "end": 73.3
+          },
+          {
+            "text": "every",
+            "start": 73.3,
+            "end": 73.54
+          },
+          {
+            "text": "endpoint,",
+            "start": 73.54,
+            "end": 74.0
+          },
+          {
+            "text": "and",
+            "start": 74.0,
+            "end": 74.38
+          }
+        ]
+      },
+      {
+        "start": 74.38,
+        "end": 76.84,
+        "text": "alert when definition age exceeds 24 hours",
+        "words": [
+          {
+            "text": "alert",
+            "start": 74.38,
+            "end": 74.6
+          },
+          {
+            "text": "when",
+            "start": 74.6,
+            "end": 74.82
+          },
+          {
+            "text": "definition",
+            "start": 74.82,
+            "end": 75.08
+          },
+          {
+            "text": "age",
+            "start": 75.08,
+            "end": 75.54
+          },
+          {
+            "text": "exceeds",
+            "start": 75.54,
+            "end": 75.84
+          },
+          {
+            "text": "24",
+            "start": 75.84,
+            "end": 76.52
+          },
+          {
+            "text": "hours",
+            "start": 76.52,
+            "end": 76.84
+          }
+        ]
+      },
+      {
+        "start": 76.84,
+        "end": 79.7,
+        "text": "using monitoring independent of Defender's own status",
+        "words": [
+          {
+            "text": "using",
+            "start": 76.84,
+            "end": 77.4
+          },
+          {
+            "text": "monitoring",
+            "start": 77.4,
+            "end": 77.76
+          },
+          {
+            "text": "independent",
+            "start": 77.76,
+            "end": 78.3
+          },
+          {
+            "text": "of",
+            "start": 78.3,
+            "end": 78.74
+          },
+          {
+            "text": "Defender's",
+            "start": 78.74,
+            "end": 79.24
+          },
+          {
+            "text": "own",
+            "start": 79.24,
+            "end": 79.38
+          },
+          {
+            "text": "status",
+            "start": 79.38,
+            "end": 79.7
+          }
+        ]
+      },
+      {
+        "start": 79.7,
+        "end": 80.0,
+        "text": "UI.",
+        "words": [
+          {
+            "text": "UI.",
+            "start": 79.7,
+            "end": 80.0
+          }
+        ]
+      },
+      {
+        "start": 81.28,
+        "end": 82.92,
+        "text": "A green checkmark is a UI state,",
+        "words": [
+          {
+            "text": "A",
+            "start": 81.28,
+            "end": 81.38
+          },
+          {
+            "text": "green",
+            "start": 81.38,
+            "end": 81.56
+          },
+          {
+            "text": "checkmark",
+            "start": 81.56,
+            "end": 82.04
+          },
+          {
+            "text": "is",
+            "start": 82.04,
+            "end": 82.26
+          },
+          {
+            "text": "a",
+            "start": 82.26,
+            "end": 82.36
+          },
+          {
+            "text": "UI",
+            "start": 82.36,
+            "end": 82.56
+          },
+          {
+            "text": "state,",
+            "start": 82.56,
+            "end": 82.92
+          }
+        ]
+      },
+      {
+        "start": 83.24,
+        "end": 84.8,
+        "text": "not proof that the engine is actually",
+        "words": [
+          {
+            "text": "not",
+            "start": 83.24,
+            "end": 83.46
+          },
+          {
+            "text": "proof",
+            "start": 83.46,
+            "end": 83.7
+          },
+          {
+            "text": "that",
+            "start": 83.7,
+            "end": 83.94
+          },
+          {
+            "text": "the",
+            "start": 83.94,
+            "end": 84.02
+          },
+          {
+            "text": "engine",
+            "start": 84.02,
+            "end": 84.22
+          },
+          {
+            "text": "is",
+            "start": 84.22,
+            "end": 84.5
+          },
+          {
+            "text": "actually",
+            "start": 84.5,
+            "end": 84.8
+          }
+        ]
+      },
+      {
+        "start": 84.8,
+        "end": 85.16,
+        "text": "updating.",
+        "words": [
+          {
+            "text": "updating.",
+            "start": 84.8,
+            "end": 85.16
+          }
+        ]
+      },
+      {
+        "start": 86.0,
+        "end": 87.92,
+        "text": "Those two things can be completely decoupled",
+        "words": [
+          {
+            "text": "Those",
+            "start": 86.0,
+            "end": 86.2
+          },
+          {
+            "text": "two",
+            "start": 86.2,
+            "end": 86.4
+          },
+          {
+            "text": "things",
+            "start": 86.4,
+            "end": 86.64
+          },
+          {
+            "text": "can",
+            "start": 86.64,
+            "end": 86.84
+          },
+          {
+            "text": "be",
+            "start": 86.84,
+            "end": 86.96
+          },
+          {
+            "text": "completely",
+            "start": 86.96,
+            "end": 87.34
+          },
+          {
+            "text": "decoupled",
+            "start": 87.34,
+            "end": 87.92
+          }
+        ]
+      },
+      {
+        "start": 87.92,
+        "end": 88.5,
+        "text": "from each other.",
+        "words": [
+          {
+            "text": "from",
+            "start": 87.92,
+            "end": 88.12
+          },
+          {
+            "text": "each",
+            "start": 88.12,
+            "end": 88.24
+          },
+          {
+            "text": "other.",
+            "start": 88.24,
+            "end": 88.5
+          }
+        ]
+      },
+      {
+        "start": 89.26,
+        "end": 90.84,
+        "text": "How do you verify that Defender is",
+        "words": [
+          {
+            "text": "How",
+            "start": 89.26,
+            "end": 89.42
+          },
+          {
+            "text": "do",
+            "start": 89.42,
+            "end": 89.54
+          },
+          {
+            "text": "you",
+            "start": 89.54,
+            "end": 89.62
+          },
+          {
+            "text": "verify",
+            "start": 89.62,
+            "end": 89.74
+          },
+          {
+            "text": "that",
+            "start": 89.74,
+            "end": 89.79
+          },
+          {
+            "text": "Defender",
+            "start": 90.26,
+            "end": 90.42
+          },
+          {
+            "text": "is",
+            "start": 90.42,
+            "end": 90.84
+          }
+        ]
+      },
+      {
+        "start": 90.84,
+        "end": 92.84,
+        "text": "actually updating and running on your endpoints?",
+        "words": [
+          {
+            "text": "actually",
+            "start": 90.84,
+            "end": 91.2
+          },
+          {
+            "text": "updating",
+            "start": 91.2,
+            "end": 91.58
+          },
+          {
+            "text": "and",
+            "start": 91.58,
+            "end": 91.86
+          },
+          {
+            "text": "running",
+            "start": 91.86,
+            "end": 92.1
+          },
+          {
+            "text": "on",
+            "start": 92.1,
+            "end": 92.32
+          },
+          {
+            "text": "your",
+            "start": 92.32,
+            "end": 92.46
+          },
+          {
+            "text": "endpoints?",
+            "start": 92.46,
+            "end": 92.84
+          }
+        ]
+      },
+      {
+        "start": 93.58,
+        "end": 94.52,
+        "text": "Drop it in the comments.",
+        "words": [
+          {
+            "text": "Drop",
+            "start": 93.58,
+            "end": 93.9
+          },
+          {
+            "text": "it",
+            "start": 93.9,
+            "end": 94.08
+          },
+          {
+            "text": "in",
+            "start": 94.08,
+            "end": 94.2
+          },
+          {
+            "text": "the",
+            "start": 94.2,
+            "end": 94.28
+          },
+          {
+            "text": "comments.",
+            "start": 94.28,
+            "end": 94.52
+          }
+        ]
+      }
+    ]
   }
 }

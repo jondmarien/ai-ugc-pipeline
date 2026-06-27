@@ -1,5 +1,5 @@
 import { test, expect } from "bun:test";
-import { checkCopyBudget, lintVisualPrompts } from "./content-checks";
+import { checkCopyBudget, lintVisualPrompts, checkSlideCaptions } from "./content-checks";
 
 const slide = (over: Record<string, unknown>) => ({
   slide: 1, role: "mechanism", kicker: "", subline: "", visual_prompt: "x",
@@ -56,4 +56,18 @@ test("clean abstract prose passes", () => {
 test("denylist noun trips lint", () => {
   const w = lintVisualPrompts(post([slide({ visual_prompt: "a patch diff glows in a dark void" })]));
   expect(w.join(" ")).toContain("diff");
+});
+
+test("checkSlideCaptions clean when flag off", () => {
+  const w = checkSlideCaptions(post([slide({ on_slide_copy: "Short claim here." })]));
+  expect(w.length).toBe(0);
+});
+
+test("checkSlideCaptions warns on length mismatch", () => {
+  const w = checkSlideCaptions({
+    features: { multiple_captions: true },
+    slides: [slide({ slide: 1 }), slide({ slide: 2, role: "context" })],
+    slide_captions: ["one only"],
+  });
+  expect(w.some((m) => m.includes("slide_captions length"))).toBe(true);
 });

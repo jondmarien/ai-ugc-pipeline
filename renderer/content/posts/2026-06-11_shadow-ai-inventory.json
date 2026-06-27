@@ -4,7 +4,7 @@
   "slug": "shadow-ai-inventory",
   "platform": "instagram",
   "format": "carousel",
-  "status": "approved",
+  "status": "generated",
   "pillar": "governance",
   "theme": "defensive",
   "audience": "security_practitioners",
@@ -365,635 +365,578 @@
     "captions": [
       {
         "start": 0.0,
-        "end": 2.18,
+        "end": 2.02,
         "text": "The AI your team uses the most",
         "words": [
           {
             "text": "The",
             "start": 0.0,
-            "end": 0.56
+            "end": 0.38
           },
           {
             "text": "AI",
-            "start": 0.56,
-            "end": 0.8
+            "start": 0.38,
+            "end": 0.68
           },
           {
             "text": "your",
-            "start": 0.8,
-            "end": 1.2
+            "start": 0.68,
+            "end": 1.1
           },
           {
             "text": "team",
-            "start": 1.2,
-            "end": 1.46
+            "start": 1.1,
+            "end": 1.34
           },
           {
             "text": "uses",
-            "start": 1.46,
-            "end": 1.74
+            "start": 1.34,
+            "end": 1.62
           },
           {
             "text": "the",
-            "start": 1.74,
-            "end": 1.98
+            "start": 1.62,
+            "end": 1.84
           },
           {
             "text": "most",
-            "start": 1.98,
-            "end": 2.18
+            "start": 1.84,
+            "end": 2.02
           }
         ]
       },
       {
-        "start": 2.18,
-        "end": 4.12,
+        "start": 2.02,
+        "end": 4.02,
         "text": "is probably the AI you never approved.",
         "words": [
           {
             "text": "is",
-            "start": 2.18,
-            "end": 2.38
+            "start": 2.02,
+            "end": 2.34
           },
           {
             "text": "probably",
-            "start": 2.38,
-            "end": 2.7
+            "start": 2.34,
+            "end": 2.66
           },
           {
             "text": "the",
-            "start": 2.7,
-            "end": 2.98
+            "start": 2.66,
+            "end": 2.94
           },
           {
             "text": "AI",
-            "start": 2.98,
+            "start": 2.94,
             "end": 3.24
           },
           {
             "text": "you",
             "start": 3.24,
-            "end": 3.48
+            "end": 3.42
           },
           {
             "text": "never",
-            "start": 3.48,
-            "end": 3.64
+            "start": 3.42,
+            "end": 3.62
           },
           {
             "text": "approved.",
-            "start": 3.64,
-            "end": 4.12
+            "start": 3.62,
+            "end": 4.02
           }
         ]
       },
       {
-        "start": 4.74,
-        "end": 6.98,
-        "text": "Microsoft found that 78 % of AI",
+        "start": 4.66,
+        "end": 7.2,
+        "text": "Microsoft found that 78 percent of AI",
         "words": [
           {
             "text": "Microsoft",
-            "start": 4.74,
-            "end": 5.06
+            "start": 4.66,
+            "end": 4.98
           },
           {
             "text": "found",
-            "start": 5.06,
-            "end": 5.6
+            "start": 4.98,
+            "end": 5.56
           },
           {
             "text": "that",
-            "start": 5.6,
-            "end": 5.76
+            "start": 5.56,
+            "end": 5.86
           },
           {
             "text": "78",
-            "start": 5.76,
-            "end": 6.2
+            "start": 5.86,
+            "end": 6.28
           },
           {
-            "text": "%",
-            "start": 6.2,
-            "end": 6.62
+            "text": "percent",
+            "start": 6.28,
+            "end": 6.53
           },
           {
             "text": "of",
-            "start": 6.62,
-            "end": 6.8
+            "start": 6.78,
+            "end": 6.98
           },
           {
             "text": "AI",
-            "start": 6.8,
-            "end": 6.98
+            "start": 6.98,
+            "end": 7.2
           }
         ]
       },
       {
-        "start": 6.98,
-        "end": 8.74,
+        "start": 7.2,
+        "end": 9.1,
         "text": "users at work bring their own tools,",
         "words": [
           {
             "text": "users",
-            "start": 6.98,
-            "end": 7.38
+            "start": 7.2,
+            "end": 7.56
           },
           {
             "text": "at",
-            "start": 7.38,
-            "end": 7.64
+            "start": 7.56,
+            "end": 7.82
           },
           {
             "text": "work",
-            "start": 7.64,
-            "end": 7.8
+            "start": 7.82,
+            "end": 8.0
           },
           {
             "text": "bring",
-            "start": 7.8,
-            "end": 8.06
+            "start": 8.0,
+            "end": 8.44
           },
           {
             "text": "their",
-            "start": 8.06,
-            "end": 8.3
+            "start": 8.44,
+            "end": 8.68
           },
           {
             "text": "own",
-            "start": 8.3,
-            "end": 8.46
+            "start": 8.68,
+            "end": 8.84
           },
           {
             "text": "tools,",
-            "start": 8.46,
-            "end": 8.74
+            "start": 8.84,
+            "end": 9.1
           }
         ]
       },
       {
-        "start": 9.1,
-        "end": 11.66,
-        "text": "usually before anyone reviews them, so start",
+        "start": 9.48,
+        "end": 11.14,
+        "text": "usually before anyone reviews them.",
         "words": [
           {
             "text": "usually",
-            "start": 9.1,
-            "end": 9.48
+            "start": 9.48,
+            "end": 9.82
           },
           {
             "text": "before",
-            "start": 9.48,
-            "end": 9.86
-          },
-          {
-            "text": "anyone",
-            "start": 9.86,
+            "start": 9.82,
             "end": 10.16
           },
           {
-            "text": "reviews",
+            "text": "anyone",
             "start": 10.16,
-            "end": 10.52
+            "end": 10.5
           },
           {
-            "text": "them,",
-            "start": 10.52,
-            "end": 10.82
+            "text": "reviews",
+            "start": 10.5,
+            "end": 10.86
           },
           {
-            "text": "so",
-            "start": 11.28,
-            "end": 11.46
+            "text": "them.",
+            "start": 10.86,
+            "end": 11.14
+          }
+        ]
+      },
+      {
+        "start": 11.52,
+        "end": 13.98,
+        "text": "So start with visibility, not bans.",
+        "words": [
+          {
+            "text": "So",
+            "start": 11.52,
+            "end": 11.78
           },
           {
             "text": "start",
-            "start": 11.46,
-            "end": 11.66
-          }
-        ]
-      },
-      {
-        "start": 11.66,
-        "end": 13.04,
-        "text": "with visibility, not bands.",
-        "words": [
+            "start": 11.78,
+            "end": 12.04
+          },
           {
             "text": "with",
-            "start": 11.66,
-            "end": 11.84
+            "start": 12.04,
+            "end": 12.2
           },
           {
             "text": "visibility,",
-            "start": 11.84,
-            "end": 12.1
+            "start": 12.2,
+            "end": 12.46
           },
           {
             "text": "not",
-            "start": 12.68,
-            "end": 12.84
+            "start": 13.14,
+            "end": 13.24
           },
           {
-            "text": "bands.",
-            "start": 12.84,
-            "end": 13.04
+            "text": "bans.",
+            "start": 13.24,
+            "end": 13.98
           }
         ]
       },
       {
-        "start": 14.24,
-        "end": 16.02,
+        "start": 14.72,
+        "end": 17.1,
         "text": "Inventory what is actually in use, offer",
         "words": [
           {
             "text": "Inventory",
-            "start": 14.24,
-            "end": 14.24
+            "start": 14.72,
+            "end": 15.22
           },
           {
             "text": "what",
-            "start": 14.24,
-            "end": 14.52
+            "start": 15.22,
+            "end": 15.58
           },
           {
             "text": "is",
-            "start": 14.52,
-            "end": 14.64
+            "start": 15.58,
+            "end": 15.68
           },
           {
             "text": "actually",
-            "start": 14.64,
-            "end": 14.94
+            "start": 15.68,
+            "end": 16.0
           },
           {
             "text": "in",
-            "start": 14.94,
-            "end": 15.14
+            "start": 16.0,
+            "end": 16.22
           },
           {
             "text": "use,",
-            "start": 15.14,
-            "end": 15.36
+            "start": 16.22,
+            "end": 16.4
           },
           {
             "text": "offer",
-            "start": 15.72,
-            "end": 16.02
+            "start": 16.78,
+            "end": 17.1
           }
         ]
       },
       {
-        "start": 16.02,
-        "end": 17.9,
+        "start": 17.1,
+        "end": 19.1,
         "text": "a sanctioned option, and run each tool",
         "words": [
           {
             "text": "a",
-            "start": 16.02,
-            "end": 16.1
+            "start": 17.1,
+            "end": 17.22
           },
           {
             "text": "sanctioned",
-            "start": 16.1,
-            "end": 16.38
+            "start": 17.22,
+            "end": 17.48
           },
           {
             "text": "option,",
-            "start": 16.38,
-            "end": 16.7
+            "start": 17.48,
+            "end": 17.82
           },
           {
             "text": "and",
-            "start": 17.14,
-            "end": 17.24
+            "start": 18.28,
+            "end": 18.36
           },
           {
             "text": "run",
-            "start": 17.24,
-            "end": 17.4
+            "start": 18.36,
+            "end": 18.54
           },
           {
             "text": "each",
-            "start": 17.4,
-            "end": 17.6
+            "start": 18.54,
+            "end": 18.78
           },
           {
             "text": "tool",
-            "start": 17.6,
-            "end": 17.9
+            "start": 18.78,
+            "end": 19.1
           }
         ]
       },
       {
-        "start": 17.9,
-        "end": 19.52,
+        "start": 19.1,
+        "end": 20.88,
         "text": "through the same vendor review as any",
         "words": [
           {
             "text": "through",
-            "start": 17.9,
-            "end": 18.1
+            "start": 19.1,
+            "end": 19.36
           },
           {
             "text": "the",
-            "start": 18.1,
-            "end": 18.24
+            "start": 19.36,
+            "end": 19.5
           },
           {
             "text": "same",
-            "start": 18.24,
-            "end": 18.44
+            "start": 19.5,
+            "end": 19.7
           },
           {
             "text": "vendor",
-            "start": 18.44,
-            "end": 18.68
+            "start": 19.7,
+            "end": 19.96
           },
           {
             "text": "review",
-            "start": 18.68,
-            "end": 18.98
+            "start": 19.96,
+            "end": 20.32
           },
           {
             "text": "as",
-            "start": 18.98,
-            "end": 19.28
+            "start": 20.32,
+            "end": 20.68
           },
           {
             "text": "any",
-            "start": 19.28,
-            "end": 19.52
+            "start": 20.68,
+            "end": 20.88
           }
         ]
       },
       {
-        "start": 19.52,
-        "end": 20.04,
+        "start": 20.88,
+        "end": 21.38,
         "text": "other software.",
         "words": [
           {
             "text": "other",
-            "start": 19.52,
-            "end": 19.78
+            "start": 20.88,
+            "end": 21.12
           },
           {
             "text": "software.",
-            "start": 19.78,
-            "end": 20.04
+            "start": 21.12,
+            "end": 21.38
           }
         ]
       },
       {
-        "start": 20.76,
-        "end": 22.3,
+        "start": 22.22,
+        "end": 24.1,
         "text": "You cannot govern the AI you cannot",
         "words": [
           {
             "text": "You",
-            "start": 20.76,
-            "end": 20.78
+            "start": 22.22,
+            "end": 22.27
           },
           {
             "text": "cannot",
-            "start": 20.78,
-            "end": 20.98
+            "start": 22.24,
+            "end": 22.48
           },
           {
             "text": "govern",
-            "start": 20.98,
-            "end": 21.4
+            "start": 22.48,
+            "end": 22.9
           },
           {
             "text": "the",
-            "start": 21.4,
-            "end": 21.58
+            "start": 22.9,
+            "end": 23.14
           },
           {
             "text": "AI",
-            "start": 21.58,
-            "end": 21.78
+            "start": 23.14,
+            "end": 23.38
           },
           {
             "text": "you",
-            "start": 21.78,
-            "end": 22.12
+            "start": 23.38,
+            "end": 23.88
           },
           {
             "text": "cannot",
-            "start": 22.12,
-            "end": 22.3
+            "start": 23.88,
+            "end": 24.1
           }
         ]
       },
       {
-        "start": 22.3,
-        "end": 22.62,
+        "start": 24.1,
+        "end": 24.44,
         "text": "see.",
         "words": [
           {
             "text": "see.",
-            "start": 22.3,
-            "end": 22.62
+            "start": 24.1,
+            "end": 24.44
           }
         ]
       },
       {
-        "start": 23.5,
-        "end": 25.04,
+        "start": 26.02,
+        "end": 28.22,
         "text": "Inventory first, then write the policy.",
         "words": [
           {
             "text": "Inventory",
-            "start": 23.5,
-            "end": 23.5
+            "start": 26.02,
+            "end": 26.54
           },
           {
             "text": "first,",
-            "start": 23.5,
-            "end": 23.94
+            "start": 26.54,
+            "end": 26.92
           },
           {
             "text": "then",
-            "start": 24.3,
-            "end": 24.46
+            "start": 27.52,
+            "end": 27.66
           },
           {
             "text": "write",
-            "start": 24.46,
-            "end": 24.64
+            "start": 27.66,
+            "end": 27.8
           },
           {
             "text": "the",
-            "start": 24.64,
-            "end": 24.82
+            "start": 27.8,
+            "end": 27.98
           },
           {
             "text": "policy.",
-            "start": 24.82,
-            "end": 25.04
+            "start": 27.98,
+            "end": 28.22
           }
         ]
       },
       {
-        "start": 25.66,
-        "end": 26.58,
+        "start": 28.9,
+        "end": 29.94,
         "text": "Do you have a current list of",
         "words": [
           {
             "text": "Do",
-            "start": 25.66,
-            "end": 25.68
+            "start": 28.9,
+            "end": 28.96
           },
           {
             "text": "you",
-            "start": 25.68,
-            "end": 25.78
+            "start": 28.96,
+            "end": 29.06
           },
           {
             "text": "have",
-            "start": 25.78,
-            "end": 25.9
+            "start": 29.06,
+            "end": 29.28
           },
           {
             "text": "a",
-            "start": 25.9,
-            "end": 25.96
+            "start": 29.28,
+            "end": 29.33
           },
           {
             "text": "current",
-            "start": 25.96,
-            "end": 26.14
+            "start": 29.3,
+            "end": 29.5
           },
           {
             "text": "list",
-            "start": 26.14,
-            "end": 26.4
+            "start": 29.5,
+            "end": 29.76
           },
           {
             "text": "of",
-            "start": 26.4,
-            "end": 26.58
+            "start": 29.76,
+            "end": 29.94
           }
         ]
       },
       {
-        "start": 26.58,
-        "end": 28.28,
+        "start": 29.94,
+        "end": 31.74,
         "text": "the AI tools your team actually uses?",
         "words": [
           {
             "text": "the",
-            "start": 26.58,
-            "end": 26.7
+            "start": 29.94,
+            "end": 30.04
           },
           {
             "text": "AI",
-            "start": 26.7,
-            "end": 26.88
+            "start": 30.04,
+            "end": 30.22
           },
           {
             "text": "tools",
-            "start": 26.88,
-            "end": 27.18
+            "start": 30.22,
+            "end": 30.5
           },
           {
             "text": "your",
-            "start": 27.18,
-            "end": 27.44
+            "start": 30.5,
+            "end": 30.76
           },
           {
             "text": "team",
-            "start": 27.44,
-            "end": 27.7
+            "start": 30.76,
+            "end": 30.96
           },
           {
             "text": "actually",
-            "start": 27.7,
-            "end": 27.9
+            "start": 30.96,
+            "end": 31.26
           },
           {
             "text": "uses?",
-            "start": 27.9,
-            "end": 28.28
+            "start": 31.26,
+            "end": 31.74
           }
         ]
       },
       {
-        "start": 28.76,
-        "end": 29.16,
-        "text": "Tell me below. If you have any",
+        "start": 32.2,
+        "end": 32.66,
+        "text": "Tell me below.",
         "words": [
           {
             "text": "Tell",
-            "start": 28.76,
-            "end": 28.88
+            "start": 32.2,
+            "end": 32.3
           },
           {
             "text": "me",
-            "start": 28.88,
-            "end": 29.02
+            "start": 32.3,
+            "end": 32.42
           },
           {
             "text": "below.",
-            "start": 29.02,
-            "end": 29.16
-          },
-          {
-            "text": "If",
-            "start": 29.16,
-            "end": 29.16
-          },
-          {
-            "text": "you",
-            "start": 29.16,
-            "end": 29.16
-          },
-          {
-            "text": "have",
-            "start": 29.16,
-            "end": 29.16
-          },
-          {
-            "text": "any",
-            "start": 29.16,
-            "end": 29.16
-          }
-        ]
-      },
-      {
-        "start": 29.16,
-        "end": 29.3,
-        "text": "questions, please leave a comment below.",
-        "words": [
-          {
-            "text": "questions,",
-            "start": 29.16,
-            "end": 29.16
-          },
-          {
-            "text": "please",
-            "start": 29.16,
-            "end": 29.16
-          },
-          {
-            "text": "leave",
-            "start": 29.16,
-            "end": 29.16
-          },
-          {
-            "text": "a",
-            "start": 29.16,
-            "end": 29.16
-          },
-          {
-            "text": "comment",
-            "start": 29.16,
-            "end": 29.3
-          },
-          {
-            "text": "below.",
-            "start": 29.3,
-            "end": 29.3
+            "start": 32.42,
+            "end": 32.66
           }
         ]
       }

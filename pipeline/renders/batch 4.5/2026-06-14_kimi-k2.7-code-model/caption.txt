@@ -1,0 +1,15 @@
+Moonshot shipped Kimi K2.7 Code, a 1 trillion parameter Mixture-of-Experts model with 32 billion activated, purpose-built for agentic software engineering. It has a 256K context window, mandatory thinking mode, and MoonViT vision encoder. The weights are open under a Modified MIT license and available via Kimi Code CLI, Moonshot API, Hugging Face, OpenRouter, and Cloudflare Workers AI.
+
+Here is what the launch posts skip. An open-weight agentic model becomes the decision engine for every agent that loads it. The model chooses tool calls across multi-file refactors, debugging sessions, and codebase analysis. The agent executes them against your shell, your files, and your keys. The model was trained for coding. Its tool-use patterns and hallucination rate — independently reported at 39 percent, down from 65 percent — reflect that training. When a fetched web page or a poisoned repository steers the model, the agent executes the steering.
+
+The headline benchmarks are proprietary. Kimi Code Bench v2, MLS Bench Lite, and Kimi Claw 24/7 are Moonshot-run tests with no external reproducibility. The model has not been submitted to DeepSWE, an independent benchmark considered more discriminating. Independent production telemetry from Cline shows the K2 family achieving 3.3 percent failure rates on real diff editing tasks, matching Claude 4 Sonnet. That is more meaningful than synthetic scores.
+
+Treat the model like untrusted code, because that is what the agent executes. Run the agent in a throwaway VM with restricted network egress, no real credentials, and spending limits on API calls. Keep the approve-before-run gate on outside of disposable boxes. Pin the model version and audit the tool-call schema before you adopt. Test against your own repos first.
+
+The risk is not the benchmark score. It is every command the model chooses when you are not watching.
+
+Would you run an agent powered by a 1T parameter open-weight coding model on your main machine?
+
+Follow for AI security breakdowns without the fake panic.
+
+[AI agents, open weight models, model security, agentic coding, least privilege]
