@@ -1,0 +1,5 @@
+Linux kernel hands attackers root through a page-cache bug no one was watching. CVE-2026-46331 (pedit COW) in act_pedit lets an unprivileged user corrupt the cached ELF of /bin/su and get a root shell on the next invocation. Public PoC exists. Affected: RHEL, Debian, Ubuntu 24.04. Fixed in v7.1-rc7. Patch now. Restrict unprivileged namespaces where possible. Monitor namespace creation and setuid execution. The page cache is shared memory. Treat it like it is.
+
+Follow for real kernel and AI security breakdowns without the fake panic.
+
+[LinuxKernel, PrivilegeEscalation, CVE202646331, Cybersecurity, RedTeam]
