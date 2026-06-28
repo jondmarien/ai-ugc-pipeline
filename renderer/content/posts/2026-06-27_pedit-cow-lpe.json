@@ -4,7 +4,7 @@
   "slug": "pedit-cow-lpe",
   "platform": "instagram",
   "format": "carousel",
-  "status": "draft",
+  "status": "generated",
   "pillar": "offensive_ai",
   "theme": "offensive",
   "style_fusion": "",
@@ -75,10 +75,11 @@
       "subline": "CVE-2026-46331 turns act_pedit into an unprivileged LPE.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a cracked kernel ring sitting on dark metal with one glowing fracture line running through it, high contrast rim light, deep negative space below",
-      "background_asset": "/backgrounds/2026-06-27_pedit-cow-lpe_cover.png",
-      "asset_status": "needed",
+      "background_asset": "/backgrounds/2026-06-27_pedit-cow-lpe/01_cover.png",
+      "asset_status": "generated",
       "cta": "SWIPE →",
-      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'.",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260627_063734_8c327d81-cefa-48f1-84b3-404c51e834a1.png"
     },
     {
       "slide": 2,
@@ -88,10 +89,11 @@
       "subline": "Present since v5.18. Fixed in v7.1-rc7.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single sheet of paper partially copied with one edge still attached to the original stack in deep shadow",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-27_pedit-cow-lpe/02_context.png",
+      "asset_status": "generated",
       "cta": "",
-      "notes": ""
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260627_064013_5890301e-f3d2-46e2-8781-71cc75f624fd.png"
     },
     {
       "slide": 3,
@@ -101,10 +103,11 @@
       "subline": "No disk writes. No file-integrity alerts. Root on next su.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a setuid binary icon half-hidden behind a translucent namespace boundary in low light",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-27_pedit-cow-lpe/03_risk.png",
+      "asset_status": "generated",
       "cta": "",
-      "notes": ""
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260627_064223_3de608e6-b972-489a-bfba-c354afc3de0a.png"
     },
     {
       "slide": 4,
@@ -114,10 +117,11 @@
       "subline": "Public PoC at sgkdev/packet_edit_meme. Works on RHEL 10, Debian 13, Ubuntu 24.04.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "abstract flow of a traffic-control rule arrow pointing at a shared memory page that fractures into two paths",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-27_pedit-cow-lpe/04_mechanism.png",
+      "asset_status": "generated",
       "cta": "",
-      "notes": ""
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260627_064437_bea2082d-de61-4fb7-bf4b-82e332d72add.png"
     },
     {
       "slide": 5,
@@ -127,10 +131,11 @@
       "subline": "File-integrity tools see nothing because nothing on disk changes.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single overlooked verification gate standing open in an otherwise orderly dark corridor",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-27_pedit-cow-lpe/05_failure-point.png",
+      "asset_status": "generated",
       "cta": "",
-      "notes": ""
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260627_064644_abb9aab7-7a33-4b33-afe0-4fa497766ad2.png"
     },
     {
       "slide": 6,
@@ -140,10 +145,11 @@
       "subline": "Restrict unprivileged namespaces. Monitor with eBPF or auditd.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a clean patch stamp being pressed onto dark metal in deep shadow",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-27_pedit-cow-lpe/06_defense.png",
+      "asset_status": "generated",
       "cta": "",
-      "notes": ""
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260627_064856_b5ddc809-7676-4d38-bc8e-8edcc137d936.png"
     },
     {
       "slide": 7,
@@ -153,10 +159,11 @@
       "subline": "Treat shared memory like it is.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "a single verified kernel ring etched into dark metal with one clean highlight",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-27_pedit-cow-lpe/07_takeaway.png",
+      "asset_status": "generated",
       "cta": "",
-      "notes": ""
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260627_065106_62a9c88a-2cf7-4430-85fb-398f7795620f.png"
     },
     {
       "slide": 8,
@@ -166,10 +173,11 @@
       "subline": "Save this for your next patch window review.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
       "visual_prompt": "clean dark end-card scene with strong empty negative space for a question and handle, premium editorial cybersecurity look",
-      "background_asset": "",
-      "asset_status": "procedural",
+      "background_asset": "/backgrounds/2026-06-27_pedit-cow-lpe/08_cta.png",
+      "asset_status": "generated",
       "cta": "COMMENT + SAVE",
-      "notes": ""
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260627_065345_0cc8ae3a-3428-4a37-8649-7086be3abbb1.png"
     }
   ],
   "caption": "Linux kernel hands attackers root through a page-cache bug no one was watching. CVE-2026-46331 (pedit COW) in act_pedit lets an unprivileged user corrupt the cached ELF of /bin/su and get a root shell on the next invocation. Public PoC exists. Affected: RHEL, Debian, Ubuntu 24.04. Fixed in v7.1-rc7. Patch now. Restrict unprivileged namespaces where possible. Monitor namespace creation and setuid execution. The page cache is shared memory. Treat it like it is.\n\nFollow for real kernel and AI security breakdowns without the fake panic.",
@@ -228,7 +236,72 @@
       "claim_tag": "verified"
     }
   ],
-  "asset_licenses": [],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-06-27_pedit-cow-lpe/01_cover.png",
+      "source": "Higgsfield CLI / seedream-4.5",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-06-27_pedit-cow-lpe/02_context.png",
+      "source": "Higgsfield CLI / seedream-4.5",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-06-27_pedit-cow-lpe/03_risk.png",
+      "source": "Higgsfield CLI / seedream-4.5",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-06-27_pedit-cow-lpe/04_mechanism.png",
+      "source": "Higgsfield CLI / seedream-4.5",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-06-27_pedit-cow-lpe/05_failure-point.png",
+      "source": "Higgsfield CLI / seedream-4.5",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-06-27_pedit-cow-lpe/06_defense.png",
+      "source": "Higgsfield CLI / seedream-4.5",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-06-27_pedit-cow-lpe/07_takeaway.png",
+      "source": "Higgsfield CLI / seedream-4.5",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-06-27_pedit-cow-lpe/08_cta.png",
+      "source": "Higgsfield CLI / seedream-4.5",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    }
+  ],
   "video": {
     "enabled": true,
     "duration_seconds": 26,
@@ -314,7 +387,381 @@
     "subtitle_style": "large centered lower-third, high contrast, two lines max",
     "music": null,
     "sfx": [],
-    "licenses": []
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.0,
+        "text": "Linux kernel hands attackers root through a",
+        "words": [
+          {
+            "text": "Linux",
+            "start": 0.0,
+            "end": 0.16
+          },
+          {
+            "text": "kernel",
+            "start": 0.16,
+            "end": 0.48
+          },
+          {
+            "text": "hands",
+            "start": 0.48,
+            "end": 0.78
+          },
+          {
+            "text": "attackers",
+            "start": 0.78,
+            "end": 1.14
+          },
+          {
+            "text": "root",
+            "start": 1.14,
+            "end": 1.58
+          },
+          {
+            "text": "through",
+            "start": 1.58,
+            "end": 1.88
+          },
+          {
+            "text": "a",
+            "start": 1.88,
+            "end": 2.0
+          }
+        ]
+      },
+      {
+        "start": 2.0,
+        "end": 3.82,
+        "text": "page-cache bug no one was watching.",
+        "words": [
+          {
+            "text": "page-cache",
+            "start": 2.0,
+            "end": 2.21
+          },
+          {
+            "text": "bug",
+            "start": 2.42,
+            "end": 2.76
+          },
+          {
+            "text": "no",
+            "start": 2.76,
+            "end": 3.18
+          },
+          {
+            "text": "one",
+            "start": 3.18,
+            "end": 3.36
+          },
+          {
+            "text": "was",
+            "start": 3.36,
+            "end": 3.48
+          },
+          {
+            "text": "watching.",
+            "start": 3.48,
+            "end": 3.82
+          }
+        ]
+      },
+      {
+        "start": 4.18,
+        "end": 8.16,
+        "text": "CVE-2026-46331 in",
+        "words": [
+          {
+            "text": "CVE-2026-46331",
+            "start": 4.18,
+            "end": 7.56
+          },
+          {
+            "text": "in",
+            "start": 7.56,
+            "end": 8.16
+          }
+        ]
+      },
+      {
+        "start": 8.16,
+        "end": 11.48,
+        "text": "act_pedit lets an unprivileged user corrupt the",
+        "words": [
+          {
+            "text": "act_pedit",
+            "start": 8.16,
+            "end": 8.76
+          },
+          {
+            "text": "lets",
+            "start": 9.36,
+            "end": 9.6
+          },
+          {
+            "text": "an",
+            "start": 9.6,
+            "end": 9.78
+          },
+          {
+            "text": "unprivileged",
+            "start": 9.78,
+            "end": 10.36
+          },
+          {
+            "text": "user",
+            "start": 10.36,
+            "end": 10.76
+          },
+          {
+            "text": "corrupt",
+            "start": 10.76,
+            "end": 11.2
+          },
+          {
+            "text": "the",
+            "start": 11.2,
+            "end": 11.48
+          }
+        ]
+      },
+      {
+        "start": 11.48,
+        "end": 13.5,
+        "text": "cached ELF of /bin/su.",
+        "words": [
+          {
+            "text": "cached",
+            "start": 11.48,
+            "end": 11.74
+          },
+          {
+            "text": "ELF",
+            "start": 11.74,
+            "end": 12.24
+          },
+          {
+            "text": "of",
+            "start": 12.24,
+            "end": 12.46
+          },
+          {
+            "text": "/bin/su.",
+            "start": 12.46,
+            "end": 13.5
+          }
+        ]
+      },
+      {
+        "start": 14.54,
+        "end": 17.42,
+        "text": "Patch kernels immediately and restrict unprivileged namespaces",
+        "words": [
+          {
+            "text": "Patch",
+            "start": 14.54,
+            "end": 14.72
+          },
+          {
+            "text": "kernels",
+            "start": 14.72,
+            "end": 15.0
+          },
+          {
+            "text": "immediately",
+            "start": 15.0,
+            "end": 15.54
+          },
+          {
+            "text": "and",
+            "start": 15.54,
+            "end": 15.98
+          },
+          {
+            "text": "restrict",
+            "start": 15.98,
+            "end": 16.24
+          },
+          {
+            "text": "unprivileged",
+            "start": 16.24,
+            "end": 16.92
+          },
+          {
+            "text": "namespaces",
+            "start": 16.92,
+            "end": 17.42
+          }
+        ]
+      },
+      {
+        "start": 17.42,
+        "end": 18.64,
+        "text": "on multi-tenant hosts.",
+        "words": [
+          {
+            "text": "on",
+            "start": 17.42,
+            "end": 17.82
+          },
+          {
+            "text": "multi-tenant",
+            "start": 17.82,
+            "end": 18.44
+          },
+          {
+            "text": "hosts.",
+            "start": 18.44,
+            "end": 18.64
+          }
+        ]
+      },
+      {
+        "start": 18.64,
+        "end": 21.7,
+        "text": "Page-cache poisoning attacks are no longer theoretical.",
+        "words": [
+          {
+            "text": "Page-cache",
+            "start": 18.64,
+            "end": 19.28
+          },
+          {
+            "text": "poisoning",
+            "start": 19.92,
+            "end": 20.28
+          },
+          {
+            "text": "attacks",
+            "start": 20.28,
+            "end": 20.72
+          },
+          {
+            "text": "are",
+            "start": 20.72,
+            "end": 21.04
+          },
+          {
+            "text": "no",
+            "start": 21.04,
+            "end": 21.2
+          },
+          {
+            "text": "longer",
+            "start": 21.2,
+            "end": 21.48
+          },
+          {
+            "text": "theoretical.",
+            "start": 21.48,
+            "end": 21.7
+          }
+        ]
+      },
+      {
+        "start": 22.62,
+        "end": 23.92,
+        "text": "Treat shared memory like it is.",
+        "words": [
+          {
+            "text": "Treat",
+            "start": 22.62,
+            "end": 22.67
+          },
+          {
+            "text": "shared",
+            "start": 22.64,
+            "end": 22.98
+          },
+          {
+            "text": "memory",
+            "start": 22.98,
+            "end": 23.2
+          },
+          {
+            "text": "like",
+            "start": 23.2,
+            "end": 23.62
+          },
+          {
+            "text": "it",
+            "start": 23.62,
+            "end": 23.76
+          },
+          {
+            "text": "is.",
+            "start": 23.76,
+            "end": 23.92
+          }
+        ]
+      },
+      {
+        "start": 23.92,
+        "end": 26.14,
+        "text": "Which kernel are you running, and have",
+        "words": [
+          {
+            "text": "Which",
+            "start": 23.92,
+            "end": 24.56
+          },
+          {
+            "text": "kernel",
+            "start": 24.56,
+            "end": 24.78
+          },
+          {
+            "text": "are",
+            "start": 24.78,
+            "end": 25.12
+          },
+          {
+            "text": "you",
+            "start": 25.12,
+            "end": 25.26
+          },
+          {
+            "text": "running,",
+            "start": 25.26,
+            "end": 25.48
+          },
+          {
+            "text": "and",
+            "start": 25.48,
+            "end": 25.94
+          },
+          {
+            "text": "have",
+            "start": 25.94,
+            "end": 26.14
+          }
+        ]
+      },
+      {
+        "start": 26.14,
+        "end": 27.18,
+        "text": "you restricted namespaces?",
+        "words": [
+          {
+            "text": "you",
+            "start": 26.14,
+            "end": 26.26
+          },
+          {
+            "text": "restricted",
+            "start": 26.26,
+            "end": 26.58
+          },
+          {
+            "text": "namespaces?",
+            "start": 26.58,
+            "end": 27.18
+          }
+        ]
+      }
+    ]
   },
   "qa": {
     "fact_checked": true,
@@ -333,5 +780,10 @@
       "filename_order",
       "license_metadata"
     ]
+  },
+  "renderMetadata": {
+    "provider": "higgsfield-cli",
+    "model": "gpt-image-2",
+    "costEstimate": 64
   }
 }
