@@ -1,0 +1,315 @@
+{
+  "post_id": "2026-06-28_microsoft-mai-image-2-5-hillclimbing",
+  "date": "2026-06-28",
+  "slug": "microsoft-mai-image-2-5-hillclimbing",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "model_security",
+  "theme": "ai",
+  "style_fusion": "",
+  "audience": "security_practitioners",
+  "core_claim": "Microsoft's hill-climbing machine for MAI models is delivering rapid gains, with MAI-Image-2.5 reaching #2 on Arena image editing through from-scratch training and continuous evaluation loops.",
+  "claim_tags": [
+    "verified"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 4,
+    "novelty": 4,
+    "visual_drama": 4,
+    "defender_usefulness": 5,
+    "total": 22
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "electric orange",
+    "pillar_accent": "model_security",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-06-28_microsoft-mai-image-2-5-hillclimbing",
+    "filename_prefix": "2026-06-28_microsoft-mai-image-2-5-hillclimbing",
+    "expected_files": [
+      "2026-06-28_microsoft-mai-image-2-5-hillclimbing_01_cover.png",
+      "2026-06-28_microsoft-mai-image-2-5-hillclimbing_02_context.png",
+      "2026-06-28_microsoft-mai-image-2-5-hillclimbing_03_risk.png",
+      "2026-06-28_microsoft-mai-image-2-5-hillclimbing_04_mechanism.png",
+      "2026-06-28_microsoft-mai-image-2-5-hillclimbing_05_failure-point.png",
+      "2026-06-28_microsoft-mai-image-2-5-hillclimbing_06_defense.png",
+      "2026-06-28_microsoft-mai-image-2-5-hillclimbing_07_takeaway.png",
+      "2026-06-28_microsoft-mai-image-2-5-hillclimbing_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md",
+      "instagram_upload_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "slide_captions_file": "slide_captions.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "features": {
+    "multiple_captions": false
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "THE HILL-CLIMBING MACHINE JUST GOT FASTER",
+      "subline": "MAI-Image-2.5 climbs to #2 on Arena image editing.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a solitary climber ascending a steep jagged mountain ridge at dusk with a single glowing light source highlighting the path, dramatic rim lighting, high contrast cinematic scene, strong empty lower third for headline",
+      "background_asset": "/backgrounds/2026-06-28_microsoft-mai-image-2-5-hillclimbing_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "Microsoft launches seven new MAI models trained from scratch on clean data.",
+      "subline": "The hill-climbing machine runs on continuous iteration.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a series of ascending stone steps carved into a dark mountain face, each step lit by a faint glow, high contrast editorial scene, empty lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "Faster image model gains outpace static security reviews.",
+      "subline": "Deepfake quality and edit precision are rising together.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a dark mirror reflecting a distorted mountain landscape, subtle shifts in the reflection, tense high-contrast atmosphere",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "Hill-climbing uses more compute, clean data, and real-world evaluation loops.",
+      "subline": "Co-designed with Maia 200 silicon for efficiency.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a chain of glowing lanterns ascending a dark path on a mountain, each lantern lighting the next segment, clean abstract flow without diagrams or text",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Teams rely on Arena scores without internal red-teaming.",
+      "subline": "Benchmarks are signals, not shields.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a climber standing at a false summit overlooking a deeper unseen drop, dark tense scene",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Triangulate benchmarks, run blind tests, layer output filters.",
+      "subline": "Re-test on every major release.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a climber checking multiple compasses and altimeters before committing to the next ridge, calm orderly verification scene in darkness",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "Arena rankings show progress. They do not replace your own evaluation velocity.",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single verified checkmark etched into dark stone at the edge of a vast empty ridge, high contrast minimal icon in negative space",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "How are you validating new image models before production use?",
+      "subline": "Save this for your next model review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene with strong empty negative space for a question and handle, premium editorial cybersecurity look",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Microsoft just launched MAI-Image-2.5, climbing to #2 on Arena's image editing leaderboard. Their \"hill-climbing machine\" trains from scratch on clean data and keeps iterating with real-world reinforcement loops.\n\nFor security teams, faster image model gains mean faster deepfake and edit quality. Arena scores are a starting signal, not the full picture.\n\nDefender move: triangulate benchmarks, run your own blind tests, and layer output filtering before trusting generated content in enterprise workflows.\n\nFollow for AI security breakdowns without the fake panic.\n\n#AIsecurity #modelsecurity #cybersecurity",
+  "hashtags": [
+    "AI security",
+    "model security",
+    "cybersecurity",
+    "threat intel"
+  ],
+  "comment_prompt": "How are you validating new image models before production use?",
+  "alt_text": [
+    "Cover: Dramatic climber ascending dark mountain ridge with single accent light. Headline reads THE HILL-CLIMBING MACHINE JUST GOT FASTER.",
+    "Context: Ascending stone steps on dark mountain with faint glow showing continuous iteration in MAI model training.",
+    "Risk: Dark mirror reflecting distorted mountain landscape symbolizing rising deepfake and edit risks from new models.",
+    "Mechanism: Chain of glowing lanterns lighting a dark mountain path representing hill-climbing via compute, data, and evaluation.",
+    "Failure point: Climber at false summit overlooking deeper unseen drop, illustrating reliance on vendor benchmarks alone.",
+    "Defense: Climber verifying multiple compasses before next ridge, showing triangulation of benchmarks and internal testing.",
+    "Takeaway: Single verified checkmark etched in dark stone on empty ridge. Arena rankings show progress but do not replace your evaluation.",
+    "CTA: Clean dark end card with question prompt. How are you validating new image models before production use?"
+  ],
+  "sources": [
+    {
+      "source": "Microsoft AI",
+      "link": "https://microsoft.ai/news/building-a-hillclimbing-machine-launching-seven-new-mai-models/",
+      "supports": "Launch of seven MAI models including MAI-Image-2.5, hill-climbing philosophy, training from scratch on clean data, Maia silicon co-design, RLE frontier tuning.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    },
+    {
+      "source": "Microsoft AI",
+      "link": "https://microsoft.ai/news/introducing-mai-image-2-5/",
+      "supports": "MAI-Image-2.5 ranking #2 on Arena image editing, #3 on text-to-image, performance gains, features, pricing, safety guardrails, availability.",
+      "confidence": "high",
+      "claim_tag": "verified"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 26,
+    "fps": 30,
+    "export_name": "2026-06-28_microsoft-mai-image-2-5-hillclimbing_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-06-28_microsoft-mai-image-2-5-hillclimbing/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "Microsoft just launched MAI-Image-2.5 and it climbed straight to number two on the Arena image editing leaderboard."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "text": "Their hill-climbing machine trains new models from scratch on clean traceable data and keeps iterating with real-world reinforcement loops."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "text": "For defenders this means image generation and editing quality are advancing faster than static security reviews can keep up."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "text": "Arena scores are useful signals. They are not a substitute for your own blind evaluations and output filtering in production."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "text": "Re-test every major release. How are you validating new image models before you trust them?"
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "THE HILL-CLIMBING MACHINE JUST GOT FASTER"
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Seven new MAI models trained from scratch"
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "Triangulate benchmarks and layer filters"
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "Arena rankings show progress not protection"
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "How do you validate new image models?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}
