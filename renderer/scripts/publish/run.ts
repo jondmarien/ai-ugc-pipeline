@@ -6,6 +6,7 @@ import { readState, recordResult, type PublishResult } from "./state";
 import type { PlatformAdapter, RenderPackage, AdapterResult } from "./types";
 import { youtubeAdapter } from "./adapters/youtube";
 import { tiktokAdapter } from "./adapters/tiktok";
+import { facebookAdapter } from "./adapters/facebook";
 import { instagramAdapter } from "./adapters/instagram";
 
 // The publish gate: ONLY `generated` posts may publish. A post reaches `generated` by being
@@ -17,6 +18,7 @@ const PUBLISHABLE_STATUSES = ["generated"];
 const ADAPTERS: Record<string, PlatformAdapter> = {
   youtube: youtubeAdapter,
   tiktok: tiktokAdapter,
+  facebook: facebookAdapter,
   instagram: instagramAdapter,
 };
 
