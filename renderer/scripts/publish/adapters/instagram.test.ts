@@ -71,7 +71,7 @@ test("postType: reels runs upload -> container create (with is_ai_generated=true
     loadConfig: () => reelsCfg,
     getCredentials: async () => ({ igUserId: "ig_1", pageAccessToken: "tok" }),
     fetchImpl: fakeFetch,
-    uploadTemp: async () => ({ url: "https://ai-ugc.chron0.tech/blob/x.mp4", cleanup: async () => { cleaned = true; } }),
+    uploadTemp: async () => ({ url: "https://aiugc.chron0.tech/blob/x.mp4", cleanup: async () => { cleaned = true; } }),
     pollIntervalMs: 0,
     maxPolls: 3,
   });
@@ -101,7 +101,7 @@ test("postType: reels includes trial_params when instagram.trialReels is enabled
     loadConfig: () => ({ ...reelsCfg, trialReels: true }),
     getCredentials: async () => ({ igUserId: "ig_1", pageAccessToken: "tok" }),
     fetchImpl: fakeFetch,
-    uploadTemp: async () => ({ url: "https://ai-ugc.chron0.tech/blob/x.mp4", cleanup: async () => {} }),
+    uploadTemp: async () => ({ url: "https://aiugc.chron0.tech/blob/x.mp4", cleanup: async () => {} }),
     pollIntervalMs: 0,
     maxPolls: 3,
   });
@@ -141,7 +141,7 @@ test("postType: carousel uploads each slide, creates children then a parent (is_
     loadConfig: () => carouselCfg,
     getCredentials: async () => ({ igUserId: "ig_1", pageAccessToken: "tok" }),
     fetchImpl: fakeFetch,
-    uploadTemp: async () => ({ url: "https://ai-ugc.chron0.tech/blob/x.png", cleanup: async () => { cleanedCount++; } }),
+    uploadTemp: async () => ({ url: "https://aiugc.chron0.tech/blob/x.png", cleanup: async () => { cleanedCount++; } }),
     pollIntervalMs: 0,
     maxPolls: 3,
   });
@@ -181,7 +181,7 @@ test("mode: api returns a failed result (not a throw) and still cleans up when t
     loadConfig: () => reelsCfg,
     getCredentials: async () => ({ igUserId: "ig_1", pageAccessToken: "tok" }),
     fetchImpl: fakeFetch,
-    uploadTemp: async () => ({ url: "https://ai-ugc.chron0.tech/blob/x.mp4", cleanup: async () => { cleaned = true; } }),
+    uploadTemp: async () => ({ url: "https://aiugc.chron0.tech/blob/x.mp4", cleanup: async () => { cleaned = true; } }),
     pollIntervalMs: 0,
     maxPolls: 1,
   });

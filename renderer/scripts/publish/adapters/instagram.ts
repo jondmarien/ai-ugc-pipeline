@@ -90,7 +90,7 @@ function friendlyError(err: unknown): string {
     return msg;
   }
   if (msg.includes("PUBLISH_TEMP_SECRET")) {
-    return `${msg} — set PUBLISH_TEMP_SECRET in renderer/.env (matches the Vercel env var on ai-ugc.chron0.tech)`;
+    return `${msg} — set PUBLISH_TEMP_SECRET in renderer/.env (matches the Vercel env var on aiugc.chron0.tech)`;
   }
   if (msg.includes("trial_params") || msg.includes("TRIAL")) {
     return `${msg} — Trial Reels requires the account to be approved for the feature; set instagram.trialReels to false until then`;

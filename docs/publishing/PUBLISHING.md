@@ -36,7 +36,7 @@ Meta's app creation flow is now **use-case-driven** (the old "add products indiv
    - Do **not** pick "Authenticate and request data from users with Facebook Login" — that's the consumer sign-in use case; it's incompatible with the two above and is what blocks everything else if picked first.
    - **Facebook Login for Business** and **Webhooks** are added automatically once the two use cases above are selected — you don't add them separately.
 3. Request only the five scopes named above. Standard Access with yourself as an app admin/tester is enough — no public App Review needed since this only ever publishes to accounts you own (see `META_AUDIT_SUBMISSION.md` if a review is ever requested).
-4. One-time: link a **Vercel Blob** store to the `ai-ugc.chron0.tech` Vercel project (Instagram's `video_url` must be publicly fetchable; see §0 architecture in `renderer/docs/PUBLISHING_ARCHITECTURE.md`) and set a `PUBLISH_TEMP_SECRET` value as a Vercel env var on that project.
+4. One-time: link a **Vercel Blob** store to the `aiugc.chron0.tech` Vercel project (Instagram's `video_url` must be publicly fetchable; see §0 architecture in `renderer/docs/PUBLISHING_ARCHITECTURE.md`) and set a `PUBLISH_TEMP_SECRET` value as a Vercel env var on that project.
 
 ---
 
@@ -54,7 +54,7 @@ META_APP_SECRET=...
 PUBLISH_TEMP_SECRET=...
 ```
 
-`PUBLISH_TEMP_SECRET` must match the value set on the `ai-ugc.chron0.tech` Vercel project (step 1, Meta). `renderer/.env` and `renderer/.secrets/` are gitignored. Never commit them.
+`PUBLISH_TEMP_SECRET` must match the value set on the `aiugc.chron0.tech` Vercel project (step 1, Meta). `renderer/.env` and `renderer/.secrets/` are gitignored. Never commit them.
 
 ---
 
@@ -138,7 +138,7 @@ No code change is needed to go public — only the `publish.config.json` privacy
 | `Reel not found` | Render it first: `bun run pipeline -- <key>`. |
 | `No Meta credentials found` | Run `bun run publish:auth meta` first. |
 | `Meta Page token is invalid or expired` | Re-run `bun run publish:auth meta`. |
-| `PUBLISH_TEMP_SECRET is not set` | Set it in `renderer/.env`, matching the value on the `ai-ugc.chron0.tech` Vercel project. |
+| `PUBLISH_TEMP_SECRET is not set` | Set it in `renderer/.env`, matching the value on the `aiugc.chron0.tech` Vercel project. |
 | Instagram container stuck at `IN_PROGRESS` past ~5 min | The adapter times out and reports failed; check the video meets Reels specs (duration/aspect ratio) and re-run. |
 | `No slides found for carousel publish` | The post has no carousel PNGs rendered; render it first, or set `instagram.postType` back to `"reels"`. |
 | Instagram error mentioning `trial_params` / `TRIAL` | Trial Reels requires Meta's approval for the feature; set `instagram.trialReels` to `false` until then. |

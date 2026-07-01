@@ -4,13 +4,13 @@ import { basename } from "node:path";
 // ---------------------------------------------------------------------------
 // Temporary public hosting for Instagram's `video_url` fetch requirement.
 //
-// Reuses the already-deployed ai-ugc.chron0.tech Vercel project (website/api/
+// Reuses the already-deployed aiugc.chron0.tech Vercel project (website/api/
 // publish-temp.ts + publish-temp-delete.ts, backed by Vercel Blob) instead of
 // standing up separate S3/R2 infra. See docs/publishing/META_INTEGRATION_SPEC.md
 // for the full rationale.
 // ---------------------------------------------------------------------------
 
-const TEMP_HOST_BASE = process.env.PUBLISH_TEMP_HOST ?? "https://ai-ugc.chron0.tech";
+const TEMP_HOST_BASE = process.env.PUBLISH_TEMP_HOST ?? "https://aiugc.chron0.tech";
 
 export type TempUpload = {
   url: string;
@@ -33,7 +33,7 @@ export async function uploadTemp(filePath: string, deps?: Partial<TempHostingDep
 
   if (!secret) {
     throw new Error(
-      "PUBLISH_TEMP_SECRET is not set — required to upload the reel to ai-ugc.chron0.tech for Instagram publishing.",
+      "PUBLISH_TEMP_SECRET is not set — required to upload the reel to aiugc.chron0.tech for Instagram publishing.",
     );
   }
 

@@ -30,11 +30,11 @@ Rate limit: 100 API-published posts / 24h rolling window, checkable via `GET /<I
 
 ## Temp hosting decision
 
-Our renderer only produces local files (`pipeline/renders/<key>/reel.mp4`); IG's `video_url` requires a public URL. **Reuse the existing `ai-ugc.chron0.tech` Vercel project (`website/`) via Vercel Blob** rather than standing up S3/R2 or a tunnel:
+Our renderer only produces local files (`pipeline/renders/<key>/reel.mp4`); IG's `video_url` requires a public URL. **Reuse the existing `aiugc.chron0.tech` Vercel project (`website/`) via Vercel Blob** rather than standing up S3/R2 or a tunnel:
 
 - `website/api/publish-temp.ts` — POST, bearer-auth (`PUBLISH_TEMP_SECRET`), uploads bytes via `@vercel/blob` `put()`, returns `{url, pathname}`.
 - `website/api/publish-temp-delete.ts` — POST, same auth, `del(pathname)` after the IG container reaches `FINISHED` (or on failure/timeout, via `finally`).
-- One-time setup: link a Vercel Blob store to the `ai-ugc.chron0.tech` project (auto-injects `BLOB_READ_WRITE_TOKEN`), set `PUBLISH_TEMP_SECRET` as a matching Vercel env var and in `renderer/.env`.
+- One-time setup: link a Vercel Blob store to the `aiugc.chron0.tech` project (auto-injects `BLOB_READ_WRITE_TOKEN`), set `PUBLISH_TEMP_SECRET` as a matching Vercel env var and in `renderer/.env`.
 - Rejected: standalone S3/R2 (new infra when a deployed project already exists), ngrok/cloudflared (needs a live local process for the whole container-processing window), reusing a YouTube URL (couples IG to YouTube's run order and "private" YouTube videos aren't public-fetchable anyway).
 
 ## Meta Dev Portal setup
