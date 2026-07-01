@@ -36,7 +36,7 @@ Adapters are built by **dependency-injection factories** (`makeYoutubeAdapter(de
 | **TikTok adapter** | `publish/adapters/tiktok.ts` | Direct Post: `creator_info` → privacy → `video/init` → PUT chunk → poll status. |
 | **Facebook adapter** | `publish/adapters/facebook.ts` | Page video resumable upload: `upload_phase` start → transfer (single chunk) → finish; `published=false` by default. |
 | **Instagram adapter** | `publish/adapters/instagram.ts` | `mode: "api"` — `postType: "reels"` (default) or `"carousel"` (children + parent container from every slide PNG), both via the temp-hosting pre-step, then poll `status_code` → `media_publish`. Always sets `is_ai_generated=true` (parent only, for carousels); adds `trial_params` when `trialReels` is enabled. `mode: "manual"` (default) returns a paste-ready checklist; no network. |
-| **Temp hosting** | `publish/adapters/lib/temp-hosting.ts` | Uploads the reel to `website/api/publish-temp.ts` (Vercel Blob on `ai-ugc.chron0.tech`) for Instagram's public `video_url` fetch, then deletes it via `publish-temp-delete.ts`. |
+| **Temp hosting** | `publish/adapters/lib/temp-hosting.ts` | Uploads the reel to `website/api/publish-temp.ts` (Vercel Blob on `aiugc.chron0.tech`) for Instagram's public `video_url` fetch, then deletes it via `publish-temp-delete.ts`. |
 | **Orchestrator** | `publish/run.ts` | `planPublish()` (pure gate/skip decision) + `runPublish()` (resolve → plan → run adapters → record → flip status). |
 | **CLI entry** | `publish.mjs` | Thin argv parser → `runPublish` (`--platforms --dry-run --force --yes`). |
 | **Fixtures** | `publish/fixtures/*.json` | Canned API responses for the adapter tests. |
@@ -138,5 +138,5 @@ The cloud art path (`--fal` / `--higgsfield`) shares this subsystem's "inject th
 - Tokens are stored only on the operator's machine (`renderer/.secrets/`, gitignored) and sent only to the official `oauth2.googleapis.com` / `open.tiktokapis.com` / `graph.facebook.com` endpoints — never to third parties, never logged.
 - Client credentials come from `renderer/.env` (`YOUTUBE_CLIENT_ID/SECRET`, `TIKTOK_CLIENT_KEY/SECRET`, `META_APP_ID/SECRET`, `PUBLISH_TEMP_SECRET`), also gitignored.
 - TikTok auth uses PKCE + a CSRF `state` check; tokens refresh non-interactively and are revocable any time from the operator's platform settings.
-- The Instagram temp-hosting step (`website/api/publish-temp*.ts`) is protected by a shared bearer secret (`PUBLISH_TEMP_SECRET`), not user auth — it's a private handoff between the pipeline and the `ai-ugc.chron0.tech` deployment, and the uploaded blob is deleted immediately after Meta's fetch completes (or on any failure/timeout).
+- The Instagram temp-hosting step (`website/api/publish-temp*.ts`) is protected by a shared bearer secret (`PUBLISH_TEMP_SECRET`), not user auth — it's a private handoff between the pipeline and the `aiugc.chron0.tech` deployment, and the uploaded blob is deleted immediately after Meta's fetch completes (or on any failure/timeout).
 - Single-operator only: one owned account per platform, so OAuth is one-time and per-user rate caps are irrelevant.
