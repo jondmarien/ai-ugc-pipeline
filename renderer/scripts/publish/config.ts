@@ -28,6 +28,9 @@ const PublishConfigSchema = z.object({
   instagram: z.object({
     enabled: z.boolean(),
     mode: z.enum(["api", "manual"]),
+    postType: z.enum(["reels", "carousel"]).default("reels"),
+    // Trial Reels are only postable once the account is approved for the feature by Meta.
+    trialReels: z.boolean().default(false),
   }),
 });
 

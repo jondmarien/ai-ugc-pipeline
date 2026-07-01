@@ -14,6 +14,12 @@ A **User access token** (via Facebook Login for Business) is exchanged short-liv
 
 Resumable upload to `POST /<PAGE_ID>/videos` (`upload_phase=start/transfer/finish`) — same shape as the existing YouTube resumable adapter (`renderer/scripts/publish/adapters/youtube.ts`).
 
+## Carousel support, AI content disclosure, Trial Reels (added post-implementation)
+
+- **Carousels**: the Instagram adapter also supports `instagram.postType: "carousel"` — every slide PNG (`pkg.slides`) is temp-hosted, turned into a child container (`image_url`, `is_carousel_item=true`, `alt_text`), then combined into a parent `media_type=CAROUSEL` container (`children=<ids>`). All temp-hosted images are cleaned up in a `finally`. See [carousel container docs](https://developers.facebook.com/documentation/instagram-platform/content-publishing#create-a-carousel-container).
+- **AI content disclosure**: every Instagram container this pipeline creates sets `is_ai_generated=true` — required, not configurable, since all output is AI-generated. For carousels, **only the parent** container may set it; Meta errors if a child container also sets it. Facebook Page videos have no documented equivalent parameter on this endpoint as of Graph API v25.0, so it isn't sent there. See [AI content docs](https://developers.facebook.com/documentation/instagram-platform/content-publishing#ai-content).
+- **Trial Reels**: `instagram.trialReels: true` adds `trial_params: {graduation_strategy: "MANUAL"}` to Reels containers, once the account is approved for the feature. See [trial reels docs](https://developers.facebook.com/documentation/instagram-platform/content-publishing#trial-reels-posts).
+
 ## Instagram Reels publish — two-step container flow
 
 1. `POST /<IG_USER_ID>/media` — `media_type=REELS`, `video_url` (Meta fetches from a **public URL**, unlike YouTube/TikTok's byte-upload model), `caption` (max 2200 chars / 30 hashtags / 20 @tags), optional `share_to_feed`, `cover_url`, `thumb_offset`, `alt_text` (images only).

@@ -17,7 +17,7 @@ Paste-ready answers for Meta's use-case customization / App Review screens. This
 
 **`instagram_basic`** — Read-only access to the linked Instagram Business Account's ID, required to construct the container-publish calls below.
 
-**`instagram_content_publish`** — Authorizes the Instagram Reels publish flow: `POST /<IG_USER_ID>/media` (create a REELS container from a temporarily-hosted public video URL), poll `GET /<CONTAINER_ID>?fields=status_code`, then `POST /<IG_USER_ID>/media_publish`. Only the operator's own original videos are posted, to the operator's own account.
+**`instagram_content_publish`** — Authorizes the Instagram publish flow: `POST /<IG_USER_ID>/media` (create a REELS or CAROUSEL container from temporarily-hosted, publicly-fetchable media), poll `GET /<CONTAINER_ID>?fields=status_code`, then `POST /<IG_USER_ID>/media_publish`. Only the operator's own original content is posted, to the operator's own account. Every post sets `is_ai_generated=true` (Meta's required AI content self-disclosure — all of this pipeline's output is AI-generated).
 
 ## 2. How OAuth works
 
@@ -43,7 +43,8 @@ Instagram allows 100 API-published posts per 24h rolling window per IG user (`GE
 1. **Website match:** briefly show `https://ai-ugc.chron0.tech` in a browser.
 2. **Auth:** run `bun run publish:auth meta`; show the Facebook Login for Business consent screen, granting the five scopes, and the "Page: <name> / Instagram Business Account: <id>" success message.
 3. **Facebook publish:** run `bun run publish -- <approved-key> --platforms=facebook`; show the resumable upload completing and the video appearing as an unpublished draft on the Page.
-4. **Instagram publish:** run `bun run publish -- <approved-key> --platforms=instagram` (with `instagram.mode` set to `"api"`); show the temp-hosting upload, the container status poll reaching `FINISHED`, and the Reel appearing on the linked account.
-5. **Cleanup:** show (or narrate) the temp-hosted blob being deleted post-publish.
+4. **Instagram publish:** run `bun run publish -- <approved-key> --platforms=instagram` (with `instagram.mode` set to `"api"`, `postType` set to `"reels"` or `"carousel"`); show the temp-hosting upload(s), the container status poll reaching `FINISHED`, the `is_ai_generated` self-disclosure label appearing on the published post, and the Reel or carousel appearing on the linked account.
+5. **Cleanup:** show (or narrate) the temp-hosted blob(s) being deleted post-publish.
+6. **(Once approved) Trial Reels:** if the account has been approved for the feature, show a run with `instagram.trialReels: true` and the resulting Reel appearing only to non-followers before manual graduation.
 
 Keep all token values, App Secret, and `PUBLISH_TEMP_SECRET` out of frame.

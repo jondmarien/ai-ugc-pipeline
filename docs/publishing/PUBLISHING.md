@@ -80,11 +80,13 @@ Edit `publish.config.json` (repo root):
   "youtube": { "enabled": true, "privacy": "private", "categoryId": "28" },
   "tiktok":  { "enabled": true, "privacy": "SELF_ONLY", "disableComment": false, "disableDuet": false, "disableStitch": false },
   "facebook": { "enabled": true, "privacy": "draft" },
-  "instagram": { "enabled": true, "mode": "manual" }
+  "instagram": { "enabled": true, "mode": "manual", "postType": "reels", "trialReels": false }
 }
 ```
 
-Keep `private` / `SELF_ONLY` / `draft` until the audits pass (see step 6). `categoryId` 28 = Science & Technology. Flip `instagram.mode` from `"manual"` to `"api"` once you're ready to publish Reels automatically — `"manual"` is still the default and is the only mode that supports carousels (the API adapter here is Reels-only).
+Keep `private` / `SELF_ONLY` / `draft` until the audits pass (see step 6). `categoryId` 28 = Science & Technology. Flip `instagram.mode` from `"manual"` to `"api"` once you're ready to publish automatically. `instagram.postType` picks what the API adapter publishes: `"reels"` (default) or `"carousel"` (every slide PNG, in order, via the [carousel container flow](https://developers.facebook.com/documentation/instagram-platform/content-publishing#create-a-carousel-container) — each image is temp-hosted and cleaned up the same way the reel is). `instagram.trialReels` adds [Trial Reels](https://developers.facebook.com/documentation/instagram-platform/content-publishing#trial-reels-posts) params (shown only to non-followers first) — leave it `false` until Meta approves your account for the feature, or every publish will fail.
+
+**Every Instagram post this pipeline makes sets `is_ai_generated=true`** — this is Meta's [required AI content self-disclosure](https://developers.facebook.com/documentation/instagram-platform/content-publishing#ai-content) and is not configurable per post (all output here is AI-generated). For carousels, only the parent container sets it; Meta rejects the request if a child container also sets it. Facebook Page videos have no equivalent documented parameter on this endpoint as of Graph API v25.0, so it isn't sent there.
 
 ---
 
@@ -138,3 +140,5 @@ No code change is needed to go public — only the `publish.config.json` privacy
 | `Meta Page token is invalid or expired` | Re-run `bun run publish:auth meta`. |
 | `PUBLISH_TEMP_SECRET is not set` | Set it in `renderer/.env`, matching the value on the `ai-ugc.chron0.tech` Vercel project. |
 | Instagram container stuck at `IN_PROGRESS` past ~5 min | The adapter times out and reports failed; check the video meets Reels specs (duration/aspect ratio) and re-run. |
+| `No slides found for carousel publish` | The post has no carousel PNGs rendered; render it first, or set `instagram.postType` back to `"reels"`. |
+| Instagram error mentioning `trial_params` / `TRIAL` | Trial Reels requires Meta's approval for the feature; set `instagram.trialReels` to `false` until then. |

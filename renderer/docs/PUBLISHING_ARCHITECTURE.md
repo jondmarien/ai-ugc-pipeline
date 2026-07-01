@@ -35,7 +35,7 @@ Adapters are built by **dependency-injection factories** (`makeYoutubeAdapter(de
 | **YouTube adapter** | `publish/adapters/youtube.ts` | `videos.insert` via the raw **resumable REST** flow (init session → PUT bytes). |
 | **TikTok adapter** | `publish/adapters/tiktok.ts` | Direct Post: `creator_info` → privacy → `video/init` → PUT chunk → poll status. |
 | **Facebook adapter** | `publish/adapters/facebook.ts` | Page video resumable upload: `upload_phase` start → transfer (single chunk) → finish; `published=false` by default. |
-| **Instagram adapter** | `publish/adapters/instagram.ts` | `mode: "api"` — container create → poll `status_code` → `media_publish`, via the temp-hosting pre-step. `mode: "manual"` (default) returns a paste-ready checklist; no network. |
+| **Instagram adapter** | `publish/adapters/instagram.ts` | `mode: "api"` — `postType: "reels"` (default) or `"carousel"` (children + parent container from every slide PNG), both via the temp-hosting pre-step, then poll `status_code` → `media_publish`. Always sets `is_ai_generated=true` (parent only, for carousels); adds `trial_params` when `trialReels` is enabled. `mode: "manual"` (default) returns a paste-ready checklist; no network. |
 | **Temp hosting** | `publish/adapters/lib/temp-hosting.ts` | Uploads the reel to `website/api/publish-temp.ts` (Vercel Blob on `ai-ugc.chron0.tech`) for Instagram's public `video_url` fetch, then deletes it via `publish-temp-delete.ts`. |
 | **Orchestrator** | `publish/run.ts` | `planPublish()` (pure gate/skip decision) + `runPublish()` (resolve → plan → run adapters → record → flip status). |
 | **CLI entry** | `publish.mjs` | Thin argv parser → `runPublish` (`--platforms --dry-run --force --yes`). |
@@ -107,7 +107,11 @@ sequenceDiagram
 - **YouTube** — `getAccessToken` → `POST .../upload/youtube/v3/videos?uploadType=resumable` (JSON metadata, capture `Location`) → `PUT` the reel bytes → shape `{ id, url: youtu.be/<id> }`. Friendly hints for `quotaExceeded` / 401.
 - **TikTok** — `creator_info/query` → `pickPrivacy()` (must be in the creator's allowed options, else a clear mismatch error) → `video/init` (`FILE_UPLOAD`, single chunk) → `PUT` bytes **with `Content-Range` + `Content-Type: video/mp4`** (required) → poll `status/fetch` until `PUBLISH_COMPLETE`. Friendly hints for unaudited/scope/privacy errors.
 - **Facebook** — `getMetaCredentials` → `POST /<PAGE_ID>/videos?upload_phase=start` → `POST .../videos` with `upload_phase=transfer` (multipart, whole file as one chunk) → `POST .../videos?upload_phase=finish` (`published=false` unless config privacy is `"public"`) → shape `{ id: video_id, url: facebook.com/watch/?v=<id> }`. Friendly hints for token (code 190) / bad-parameter (code 100) errors.
-- **Instagram** (`mode: "api"`) — `getMetaCredentials` → `uploadTemp()` (stage the reel publicly via `website/api/publish-temp.ts`) → `POST /<IG_USER_ID>/media` (`media_type=REELS`, the temp URL, caption truncated to 2200 chars/30 hashtags) → poll `GET /<CONTAINER_ID>?fields=status_code` until `FINISHED`/`ERROR`/`EXPIRED` (timeout ~5 min) → `POST /<IG_USER_ID>/media_publish` → `finally`: delete the temp blob regardless of outcome. `mode: "manual"` (default) returns the checklist as `message`; no network.
+- **Instagram** (`mode: "api"`) — `getMetaCredentials` → depending on `postType`:
+  - `"reels"` (default): `uploadTemp()` the reel → `POST /<IG_USER_ID>/media` (`media_type=REELS`, the temp URL, caption truncated to 2200 chars/30 hashtags, `is_ai_generated=true`, `trial_params` if `trialReels`) → poll `GET /<CONTAINER_ID>?fields=status_code` until `FINISHED`/`ERROR`/`EXPIRED` (timeout ~5 min) → `POST /<IG_USER_ID>/media_publish`.
+  - `"carousel"`: `uploadTemp()` every slide PNG (`pkg.slides`, in order) → `POST /<IG_USER_ID>/media` per image (`image_url`, `is_carousel_item=true`, `alt_text`) to get child container ids → `POST /<IG_USER_ID>/media` (`media_type=CAROUSEL`, `children=<ids>`, caption, `is_ai_generated=true` — **only the parent** container may set this, a child container setting it is a Meta API error) → poll the parent container → `media_publish`.
+  - `finally`: every temp-hosted file (the reel, or all carousel images) is deleted regardless of outcome.
+  `mode: "manual"` (default) returns the checklist as `message`; no network.
 
 ---
 

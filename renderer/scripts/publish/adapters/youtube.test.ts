@@ -4,7 +4,7 @@ import fixture from "../fixtures/youtube-insert-200.json";
 import type { RenderPackage } from "../types";
 
 const pkg: RenderPackage = {
-  key: "k", dir: "/d", reelPath: "/d/k_reel.mp4",
+  key: "k", dir: "/d", reelPath: "/d/k_reel.mp4", slides: [],
   post: { post_id: "k", caption: "BlueHammer abused Defender's update flow.\n\nFollow.", hashtags: ["BlueHammer"] },
 };
 
