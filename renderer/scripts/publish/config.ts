@@ -21,9 +21,13 @@ const PublishConfigSchema = z.object({
     disableDuet: z.boolean(),
     disableStitch: z.boolean(),
   }),
+  facebook: z.object({
+    enabled: z.boolean(),
+    privacy: z.enum(["draft", "public"]),
+  }),
   instagram: z.object({
     enabled: z.boolean(),
-    mode: z.literal("manual"),
+    mode: z.enum(["api", "manual"]),
   }),
 });
 
