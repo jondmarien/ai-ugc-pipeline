@@ -3,6 +3,7 @@ export type RenderPackage = {
   key: string;            // e.g. "2026-06-11_bluehammer-cve-2026-33825"
   dir: string;            // absolute path to pipeline/renders/<key>/
   reelPath: string;       // absolute path to <key>_reel.mp4
+  slides: Array<{ path: string; altText: string }>; // carousel PNGs in order, each with its alt text
   post: {
     post_id: string;
     caption: string;

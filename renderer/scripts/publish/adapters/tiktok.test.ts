@@ -9,6 +9,7 @@ const pkg: RenderPackage = {
   key: "2026-06-11_bluehammer-cve-2026-33825",
   dir: "/d",
   reelPath: "/d/k_reel.mp4",
+  slides: [],
   post: { post_id: "k", caption: "BlueHammer abused Defender's update flow.\n\nFollow.", hashtags: ["BlueHammer"] },
 };
 
