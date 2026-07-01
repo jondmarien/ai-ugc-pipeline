@@ -1,5 +1,6 @@
 import { test, expect } from "bun:test";
 import { captionTxt, slideCaptionsTxt } from "./caption-export";
+import type { TPostData } from "./schema.ts";
 
 test("captionTxt unchanged for legacy single-caption posts", () => {
   const out = captionTxt({
@@ -13,7 +14,7 @@ test("slideCaptionsTxt returns null when multiple_captions is off", () => {
   expect(
     slideCaptionsTxt({
       features: { multiple_captions: false },
-      slides: [{}, {}, {}] as { slide: number }[],
+      slides: [{}, {}, {}] as unknown as TPostData["slides"],
       slide_captions: ["a", "b", "c"],
       hashtags: [],
     }),
@@ -23,7 +24,7 @@ test("slideCaptionsTxt returns null when multiple_captions is off", () => {
 test("slideCaptionsTxt emits distinct blocks with topics on last slide only", () => {
   const out = slideCaptionsTxt({
     features: { multiple_captions: true },
-    slides: [{}, {}, {}] as { slide: number }[],
+    slides: [{}, {}, {}] as unknown as TPostData["slides"],
     slide_captions: ["Cover caption.", "Middle caption.", "CTA caption."],
     hashtags: ["threat intel"],
   });

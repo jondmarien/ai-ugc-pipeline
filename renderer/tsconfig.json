@@ -19,7 +19,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "types": ["bun"]
   },
   "include": ["src", "scripts"],
   "exclude": ["node_modules", "dist", "remotion"]
