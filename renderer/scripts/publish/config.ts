@@ -21,9 +21,16 @@ const PublishConfigSchema = z.object({
     disableDuet: z.boolean(),
     disableStitch: z.boolean(),
   }),
+  facebook: z.object({
+    enabled: z.boolean(),
+    privacy: z.enum(["draft", "public"]),
+  }),
   instagram: z.object({
     enabled: z.boolean(),
-    mode: z.literal("manual"),
+    mode: z.enum(["api", "manual"]),
+    postType: z.enum(["reels", "carousel"]).default("reels"),
+    // Trial Reels are only postable once the account is approved for the feature by Meta.
+    trialReels: z.boolean().default(false),
   }),
 });
 

@@ -216,7 +216,7 @@ export function makeTiktokAdapter(deps: TiktokDeps): PlatformAdapter {
             "Content-Range": `bytes 0-${videoSize - 1}/${videoSize}`,
             "Content-Type": "video/mp4",
           },
-          body: bytes,
+          body: new Blob([new Uint8Array(bytes)]),
         });
         if (!putResp.ok) {
           throw new Error(`TikTok chunk upload failed: ${putResp.status} ${putResp.statusText}`);
