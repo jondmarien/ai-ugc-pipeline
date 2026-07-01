@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "website",
-      "runtimeExecutable": "bun",
-      "runtimeArgs": ["--cwd", "./website", "run", "dev"],
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd website && bun run dev"],
       "port": 4319
     }
   ]

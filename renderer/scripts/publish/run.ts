@@ -118,7 +118,9 @@ function logResult(r: AdapterResult): void {
 
 async function confirmPrompt(question: string): Promise<boolean> {
   process.stdout.write(question);
-  for await (const line of console) {
+  // Node/Bun's Console implements Symbol.asyncIterator at runtime (reads stdin line by line);
+  // the DOM lib's Console type (pulled in for browser-shared code) doesn't model that overload.
+  for await (const line of console as unknown as AsyncIterable<string>) {
     return /^y(es)?$/i.test(line.trim());
   }
   return false;
