@@ -2,10 +2,14 @@
  * publish:auth — one-time interactive OAuth CLI
  *
  * Usage:
- *   bun run publish:auth <youtube|tiktok>
+ *   bun run publish:auth <youtube|tiktok|meta>
  *
  * Obtains a refresh token via the loopback OAuth flow and writes:
  *   renderer/.secrets/<platform>.json  →  { refresh_token, access_token, expires_at }
+ *
+ * `meta` is different: Facebook/Instagram Page tokens don't rotate via refresh_token.
+ * It writes renderer/.secrets/meta.json → { user_access_token, page_id, page_access_token,
+ * ig_user_id, ... } — see auth/meta.ts for the token lifecycle this feeds.
  *
  * IMPORTANT: Register exactly this redirect URI in each platform's developer console:
  *   http://localhost:8788/callback
@@ -13,6 +17,7 @@
  * Env vars required (set in renderer/.env):
  *   YouTube  → YOUTUBE_CLIENT_ID, YOUTUBE_CLIENT_SECRET
  *   TikTok   → TIKTOK_CLIENT_KEY,  TIKTOK_CLIENT_SECRET
+ *   Meta     → META_APP_ID, META_APP_SECRET
  */
 
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -31,8 +36,8 @@ const PORT = 8788;
 
 const platform = process.argv[2]?.toLowerCase();
 
-if (!platform || !["youtube", "tiktok"].includes(platform)) {
-  console.error("Usage: bun run publish:auth <youtube|tiktok>");
+if (!platform || !["youtube", "tiktok", "meta"].includes(platform)) {
+  console.error("Usage: bun run publish:auth <youtube|tiktok|meta>");
   process.exit(1);
 }
 
@@ -44,6 +49,7 @@ function checkEnv(vars) {
 const PLATFORM_ENV = {
   youtube: ["YOUTUBE_CLIENT_ID", "YOUTUBE_CLIENT_SECRET"],
   tiktok: ["TIKTOK_CLIENT_KEY", "TIKTOK_CLIENT_SECRET"],
+  meta: ["META_APP_ID", "META_APP_SECRET"],
 };
 
 const missing = checkEnv(PLATFORM_ENV[platform]);
@@ -316,14 +322,138 @@ async function runTikTok() {
 }
 
 // ---------------------------------------------------------------------------
+// Meta (Facebook Login for Business) flow
+//
+// Unlike YouTube/TikTok, this does NOT store a refresh_token — Meta Page tokens
+// derived from a long-lived User token don't rotate on a timer (see auth/meta.ts).
+// This flow: loopback OAuth (response_type=token, implicit grant — Meta returns
+// the token directly in the redirect fragment) → exchange for long-lived →
+// GET /me/accounts to resolve the Page + linked IG Business Account.
+// ---------------------------------------------------------------------------
+
+async function runMeta() {
+  const appId = process.env.META_APP_ID;
+  const appSecret = process.env.META_APP_SECRET;
+  const { scopes, exchangeLongLivedToken, fetchPageAccounts, pickPageWithInstagram, GRAPH_BASE, GRAPH_API_VERSION } =
+    await import("./meta.js");
+
+  const params = new URLSearchParams({
+    client_id: appId,
+    redirect_uri: REDIRECT_URI,
+    response_type: "code",
+    scope: scopes.join(","),
+  });
+  const authUrl = `https://www.facebook.com/${GRAPH_API_VERSION}/dialog/oauth?${params.toString()}`;
+
+  console.log(`\n[publish:auth] Meta (Facebook Page + Instagram)`);
+  console.log(`[publish:auth] Redirect URI (register this under Facebook Login for Business settings):`);
+  console.log(`  ${REDIRECT_URI}\n`);
+  console.log(`[publish:auth] Opening authorization URL in browser...`);
+  console.log(`[publish:auth] If it does not open, paste this URL manually:\n`);
+  console.log(`  ${authUrl}\n`);
+  await tryOpenBrowser(authUrl);
+
+  return new Promise((resolve, reject) => {
+    const server = Bun.serve({
+      port: PORT,
+      async fetch(req) {
+        const url = new URL(req.url);
+        if (url.pathname !== "/callback") {
+          return new Response("Not found", { status: 404 });
+        }
+
+        const code = url.searchParams.get("code");
+        const error = url.searchParams.get("error");
+
+        if (error || !code) {
+          const msg = `Authorization failed: ${error ?? "no code returned"}`;
+          server.stop();
+          reject(new Error(msg));
+          return new Response(`<html><body><h2>Authorization failed</h2><p>${msg}</p></body></html>`, {
+            status: 400,
+            headers: { "Content-Type": "text/html" },
+          });
+        }
+
+        try {
+          // Exchange the auth code for a short-lived User access token.
+          const tokenParams = new URLSearchParams({
+            client_id: appId,
+            client_secret: appSecret,
+            redirect_uri: REDIRECT_URI,
+            code,
+          });
+          const codeResp = await fetch(`${GRAPH_BASE}/oauth/access_token?${tokenParams.toString()}`);
+          if (!codeResp.ok) {
+            throw new Error(`Meta code exchange failed: ${codeResp.status} — ${await codeResp.text()}`);
+          }
+          const { access_token: shortLivedToken } = await codeResp.json();
+
+          // Exchange short-lived → long-lived (~60 days) User access token.
+          const longLived = await exchangeLongLivedToken(shortLivedToken, appId, appSecret);
+          const nowSec = Math.floor(Date.now() / 1000);
+
+          // Resolve the Page (+ linked IG Business Account) the user manages.
+          const accounts = await fetchPageAccounts(longLived.access_token);
+          const page = pickPageWithInstagram(accounts);
+          if (!page) {
+            throw new Error(
+              "No Facebook Page with a linked Instagram Business account was found. " +
+                "Confirm the Page is connected to your Instagram professional account and that " +
+                "you granted access to it during login.",
+            );
+          }
+
+          const stored = {
+            user_access_token: longLived.access_token,
+            user_token_expires_at: nowSec + longLived.expires_in,
+            page_id: page.id,
+            page_access_token: page.access_token,
+            ig_user_id: page.instagram_business_account.id,
+            last_verified_at: nowSec,
+          };
+
+          writeSecrets("meta", stored);
+
+          console.log(`\n[publish:auth] Meta authorization complete.`);
+          console.log(`[publish:auth] Page: ${page.name} (${page.id})`);
+          console.log(`[publish:auth] Instagram Business Account: ${page.instagram_business_account.id}`);
+          console.log(`[publish:auth] Granted scopes: ${scopes.join(", ")}`);
+          console.log(`[publish:auth] Token written to renderer/.secrets/meta.json`);
+
+          server.stop();
+          resolve();
+
+          return new Response(
+            `<html><body><h2>Meta authorized.</h2><p>You can close this tab.</p></body></html>`,
+            { headers: { "Content-Type": "text/html" } },
+          );
+        } catch (err) {
+          server.stop();
+          reject(err);
+          return new Response(
+            `<html><body><h2>Token exchange failed</h2><p>${err.message}</p></body></html>`,
+            { status: 500, headers: { "Content-Type": "text/html" } },
+          );
+        }
+      },
+    });
+
+    console.log(`[publish:auth] Waiting for callback on ${REDIRECT_URI} ...`);
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
 try {
   if (platform === "youtube") {
     await runYouTube();
-  } else {
+  } else if (platform === "tiktok") {
     await runTikTok();
+  } else {
+    await runMeta();
   }
   process.exit(0);
 } catch (err) {
