@@ -1,11 +1,12 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
-import { loadPost, outputDir } from "../lib.ts";
+import { loadPost, outputDir, slideFilename } from "../lib.ts";
 import { readStatus, setStatus } from "../lib/post-status.mjs";
 import { readState, recordResult, type PublishResult } from "./state";
 import type { PlatformAdapter, RenderPackage, AdapterResult } from "./types";
 import { youtubeAdapter } from "./adapters/youtube";
 import { tiktokAdapter } from "./adapters/tiktok";
+import { facebookAdapter } from "./adapters/facebook";
 import { instagramAdapter } from "./adapters/instagram";
 
 // The publish gate: ONLY `generated` posts may publish. A post reaches `generated` by being
@@ -17,6 +18,7 @@ const PUBLISHABLE_STATUSES = ["generated"];
 const ADAPTERS: Record<string, PlatformAdapter> = {
   youtube: youtubeAdapter,
   tiktok: tiktokAdapter,
+  facebook: facebookAdapter,
   instagram: instagramAdapter,
 };
 
@@ -78,10 +80,15 @@ function resolvePackage(key: string): { canonicalKey: string; dir: string; pkg: 
   const post = loadPost(key);
   const dir = outputDir(post);
   const reelName = post.video?.export_name ?? `${post.upload_package.filename_prefix}_reel.mp4`;
+  const slides = post.slides.map((_, i) => ({
+    path: path.join(dir, slideFilename(post, i)),
+    altText: post.alt_text[i] ?? "",
+  }));
   const pkg: RenderPackage = {
     key: post.post_id,
     dir,
     reelPath: path.join(dir, reelName),
+    slides,
     post: { post_id: post.post_id, caption: post.caption, hashtags: post.hashtags },
   };
   return { canonicalKey: post.post_id, dir, pkg };
@@ -111,7 +118,9 @@ function logResult(r: AdapterResult): void {
 
 async function confirmPrompt(question: string): Promise<boolean> {
   process.stdout.write(question);
-  for await (const line of console) {
+  // Node/Bun's Console implements Symbol.asyncIterator at runtime (reads stdin line by line);
+  // the DOM lib's Console type (pulled in for browser-shared code) doesn't model that overload.
+  for await (const line of console as unknown as AsyncIterable<string>) {
     return /^y(es)?$/i.test(line.trim());
   }
   return false;
