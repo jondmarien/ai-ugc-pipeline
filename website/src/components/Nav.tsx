@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SOCIALS } from "../lib/content";
+import { getSocial } from "../lib/content";
 import { BrandMark } from "./BrandMark";
 
 const LINKS = [
@@ -18,7 +18,7 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const tiktok = SOCIALS.find((s) => s.key === "tiktok")!;
+  const tiktok = getSocial("tiktok");
 
   return (
     <header

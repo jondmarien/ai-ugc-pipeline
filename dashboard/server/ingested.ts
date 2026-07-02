@@ -51,7 +51,7 @@ export function listIngested(dir: string = INGESTED_DIR): IngestedDoc[] {
         date: fileName.match(FILE_RE)?.[1] ?? null,
         title,
         handle: parseHandle(metaLine),
-        sourceUrl: url && url.startsWith("http") ? url : null,
+        sourceUrl: url?.startsWith("http") ? url : null,
         coverHook: parseCoverHook(md),
         mtimeMs: fs.statSync(full).mtimeMs,
       };

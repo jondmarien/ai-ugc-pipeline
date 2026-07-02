@@ -93,6 +93,7 @@ export function CalendarView() {
       <h1 className="page-title">Content Calendar</h1>
       <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
         <button
+          type="button"
           className="chip"
           onClick={() =>
             setYm(([y, m]) => (m === 0 ? [y - 1, 11] : [y, m - 1]))
@@ -104,6 +105,7 @@ export function CalendarView() {
           {ym[0]}-{String(ym[1] + 1).padStart(2, "0")}
         </span>
         <button
+          type="button"
           className="chip"
           onClick={() =>
             setYm(([y, m]) => (m === 11 ? [y + 1, 0] : [y, m + 1]))
@@ -122,9 +124,10 @@ export function CalendarView() {
         {monthDays(ym[0], ym[1]).map((date) => (
           <Panel key={date}>
             <div className="meta-caps">{date.slice(8)}</div>
-            {(byDate.get(date) ?? []).map((s, i) => (
+            {(byDate.get(date) ?? []).map((s) => (
               <button
-                key={i}
+                type="button"
+                key={s.dir ?? s.label}
                 className="chip"
                 style={{
                   color: slotColor(s),
@@ -145,7 +148,11 @@ export function CalendarView() {
         <Panel>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <strong>{openDir}</strong>
-            <button className="chip" onClick={() => setOpenDir(null)}>
+            <button
+              type="button"
+              className="chip"
+              onClick={() => setOpenDir(null)}
+            >
               Close
             </button>
           </div>

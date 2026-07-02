@@ -99,7 +99,7 @@ export function listPublishedMeta(
 
     for (const platform of ["facebook", "instagram"] as const) {
       const result = state[platform];
-      if (!result || result.status !== "published") continue;
+      if (result?.status !== "published") continue;
 
       const { caption, hashtags } = readPostMeta(slug, postsDir);
 

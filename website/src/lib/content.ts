@@ -36,6 +36,12 @@ export const SOCIALS = [
   },
 ] as const;
 
+export function getSocial(key: (typeof SOCIALS)[number]["key"]) {
+  const social = SOCIALS.find((s) => s.key === key);
+  if (!social) throw new Error(`Unknown social key: ${key}`);
+  return social;
+}
+
 // The 5-theme content system = the brand's visual identity rule.
 export const PILLARS = [
   {

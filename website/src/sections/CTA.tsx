@@ -7,7 +7,7 @@ export function CTA() {
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.5] [background:radial-gradient(60%_50%_at_50%_120%,#a855f733,transparent_70%)]" />
       <div className="mx-auto max-w-[var(--max)] text-center" data-reveal-group>
         <p data-reveal className="kicker mb-8">
-          // The standing offer
+          {"// The standing offer"}
         </p>
         <h2
           data-reveal

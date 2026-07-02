@@ -88,6 +88,7 @@ export function HookVault() {
         />
         {["post", "ingested", "caption-bank"].map((s) => (
           <button
+            type="button"
             key={s}
             className={`chip ${srcFilter === s ? "active" : ""}`}
             onClick={() => setSrcFilter(srcFilter === s ? null : s)}
@@ -97,6 +98,7 @@ export function HookVault() {
         ))}
         {TYPES.map((t) => (
           <button
+            type="button"
             key={t}
             className={`chip ${typeFilter === t ? "active" : ""}`}
             onClick={() => setTypeFilter(typeFilter === t ? null : t)}
@@ -141,7 +143,11 @@ export function HookVault() {
                   </option>
                 ))}
               </select>
-              <button className="chip" onClick={() => use(r.text)}>
+              <button
+                type="button"
+                className="chip"
+                onClick={() => use(r.text)}
+              >
                 Use this
               </button>
             </div>

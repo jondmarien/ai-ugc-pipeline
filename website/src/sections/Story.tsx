@@ -12,7 +12,7 @@ export function Story() {
       >
         <div>
           <p data-reveal className="kicker mb-5">
-            // 04 — Who's behind it
+            {"// 04 — Who's behind it"}
           </p>
           <h2
             data-reveal

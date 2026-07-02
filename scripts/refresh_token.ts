@@ -16,7 +16,7 @@ export function rewriteEnv(content: string, newToken: string): string {
       `IG_ACCESS_TOKEN=${newToken}`,
     );
   }
-  return content + `IG_ACCESS_TOKEN=${newToken}\n`;
+  return `${content}IG_ACCESS_TOKEN=${newToken}\n`;
 }
 
 function parseEnv(content: string): Record<string, string> {

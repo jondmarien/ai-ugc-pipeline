@@ -203,6 +203,7 @@ export function Analytics() {
       <div style={{ display: "flex", gap: 8, margin: "16px 0" }}>
         {SORTS.map((k) => (
           <button
+            type="button"
             key={k}
             className={`chip ${sort === k ? "active" : ""}`}
             onClick={() => setSort(k)}

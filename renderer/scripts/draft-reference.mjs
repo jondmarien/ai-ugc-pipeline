@@ -143,7 +143,7 @@ L.push(
 );
 L.push(
   overusedMotifs.length
-    ? "  " + overusedMotifs.map(([w, c]) => `${w}×${c}`).join(", ")
+    ? `  ${overusedMotifs.map(([w, c]) => `${w}×${c}`).join(", ")}`
     : "  (no motif used 3+ times yet)",
 );
 L.push("");

@@ -9,7 +9,13 @@ export function BrandMark({ compact = false }: { compact?: boolean }) {
       aria-label="Chrono's Cyber World of AI — home"
     >
       <span className="relative inline-grid place-items-center">
-        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden>
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 32 32"
+          fill="none"
+          aria-hidden="true"
+        >
           <circle cx="16" cy="16" r="13" stroke="#2a3548" strokeWidth="1.5" />
           <circle
             cx="16"

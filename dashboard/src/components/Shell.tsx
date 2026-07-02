@@ -26,7 +26,7 @@ export function Shell({
   const qc = useQueryClient();
   const account = useApi<any>("/api/ig/account");
   const tokenAge = useApi<{ ageDays: number }>("/api/ig/token-age");
-  const theme = MODULES.find((m) => m.key === active)!.theme;
+  const theme = MODULES.find((m) => m.key === active)?.theme;
   return (
     <div className="shell">
       <aside className="sidebar">

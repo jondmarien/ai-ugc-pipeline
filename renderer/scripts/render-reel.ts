@@ -222,7 +222,7 @@ try {
     probe
       .trim()
       .split("\n")
-      .map((l) => "  " + l)
+      .map((l) => `  ${l}`)
       .join("\n"),
   );
 } catch {

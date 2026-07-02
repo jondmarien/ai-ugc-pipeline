@@ -13,7 +13,7 @@
 //
 // Mirrors art-comfyui.mjs: HTTP-only, no diffusers, ComfyUI just has to be running. Config via env:
 //   COMFYUI_URL (default http://127.0.0.1:8000), UPSCALE_MODEL.
-import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import {
   comfyBaseUrl,
@@ -293,7 +293,7 @@ if (ok > 0) {
     if (!cur.includes(`Image upscaler: \`${MODEL}\``))
       writeFileSync(
         licPath,
-        cur + (cur.endsWith("\n") || !cur ? "" : "\n") + note + "\n",
+        `${cur + (cur.endsWith("\n") || !cur ? "" : "\n") + note}\n`,
       );
   } catch {
     /* non-fatal */

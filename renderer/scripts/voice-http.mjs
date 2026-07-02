@@ -65,7 +65,7 @@ console.log(
 );
 
 const headers = { "Content-Type": "application/json" };
-if (API_KEY) headers["Authorization"] = `Bearer ${API_KEY}`;
+if (API_KEY) headers.Authorization = `Bearer ${API_KEY}`;
 
 let res;
 try {

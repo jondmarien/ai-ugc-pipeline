@@ -6,7 +6,7 @@ export function Thesis() {
     >
       <div data-reveal-group>
         <p data-reveal className="kicker mb-10">
-          // 01 — The thesis
+          {"// 01 — The thesis"}
         </p>
 
         <h2

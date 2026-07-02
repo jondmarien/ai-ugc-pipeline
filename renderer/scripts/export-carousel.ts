@@ -13,7 +13,7 @@
 // build once, then 8 fast screenshots.
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { chromium } from "playwright";
+import { type Browser, chromium } from "playwright";
 import { build, type PreviewServer, preview } from "vite";
 import { loadPost, outputDir, ROOT, slideFilename } from "./lib.ts";
 
@@ -75,7 +75,7 @@ EXAMPLES
   });
 
   let server: PreviewServer | undefined;
-  let browser;
+  let browser: Browser | undefined;
   const problems: string[] = [];
   try {
     // 2) Serve the static build (sirv under the hood — no transforms, no HMR).
@@ -147,12 +147,12 @@ EXAMPLES
   } finally {
     if (browser) await browser.close();
     if (server)
-      await new Promise<void>((res) => server!.httpServer.close(() => res()));
+      await new Promise<void>((res) => server?.httpServer.close(() => res()));
   }
 
   if (problems.length) {
     console.error("\nRENDER QA FAILED:");
-    for (const p of problems) console.error("  - " + p);
+    for (const p of problems) console.error(`  - ${p}`);
     process.exit(1);
   }
 

@@ -8,7 +8,7 @@ export function Pipeline() {
     >
       <div className="mx-auto max-w-[var(--max)]" data-reveal-group>
         <p data-reveal className="kicker mb-5">
-          // 03 — How it's made
+          {"// 03 — How it's made"}
         </p>
         <h2
           data-reveal

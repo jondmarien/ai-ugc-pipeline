@@ -10,7 +10,7 @@ export function Pillars() {
         <div className="mb-14 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p data-reveal className="kicker mb-5">
-              // 02 — Coverage
+              {"// 02 — Coverage"}
             </p>
             <h2
               data-reveal

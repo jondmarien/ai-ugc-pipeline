@@ -128,7 +128,7 @@ if (flags.has("--dry-run")) {
   console.log(
     `claude -p <prompt: ${prompt.length} chars> --permission-mode ${permMode} --allowedTools "${allowed}" --add-dir "${REPO}"`,
   );
-  console.log("\n--- prompt preview ---\n" + prompt + "\n--- end ---");
+  console.log(`\n--- prompt preview ---\n${prompt}\n--- end ---`);
   process.exit(0);
 }
 

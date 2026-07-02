@@ -21,12 +21,14 @@ function colorize(text: string, accent: string, danger: string) {
   return text.split(/(\[\[[^\]]+\]\]|\{\{[^}]+\}\})/g).map((seg, i) => {
     if (seg.startsWith("[[") && seg.endsWith("]]"))
       return (
+        // biome-ignore lint/suspicious/noArrayIndexKey: segments are a static split of one fixed string, never reordered/filtered
         <span key={i} style={{ color: accent }}>
           {seg.slice(2, -2)}
         </span>
       );
     if (seg.startsWith("{{") && seg.endsWith("}}"))
       return (
+        // biome-ignore lint/suspicious/noArrayIndexKey: segments are a static split of one fixed string, never reordered/filtered
         <span key={i} style={{ color: danger }}>
           {seg.slice(2, -2)}
         </span>
@@ -269,7 +271,7 @@ export function ChainSlide({ post, slide }: SlideProps) {
       >
         {steps.map((s, i) => (
           <div
-            key={i}
+            key={s.stage ?? s.title}
             style={{
               display: "flex",
               flexDirection: "column",

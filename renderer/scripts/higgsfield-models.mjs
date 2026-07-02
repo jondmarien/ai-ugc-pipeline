@@ -32,7 +32,9 @@ function table(rows) {
   const cols = Math.max(...rows.map((r) => r.length));
   const widths = Array(cols).fill(0);
   for (const r of rows)
-    r.forEach((c, i) => (widths[i] = Math.max(widths[i], String(c).length)));
+    r.forEach((c, i) => {
+      widths[i] = Math.max(widths[i], String(c).length);
+    });
   for (const r of rows)
     console.log(
       "  " +

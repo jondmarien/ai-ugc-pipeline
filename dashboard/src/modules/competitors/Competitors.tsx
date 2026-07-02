@@ -66,10 +66,10 @@ export function Competitors() {
             color: "var(--fg)",
           }}
         />
-        <button className="chip" onClick={add}>
+        <button type="button" className="chip" onClick={add}>
           Watch
         </button>
-        <button className="chip" onClick={queueIngest}>
+        <button type="button" className="chip" onClick={queueIngest}>
           Queue ingest
         </button>
       </div>
@@ -98,6 +98,7 @@ export function Competitors() {
               </div>
               {watchlist.includes(h) && (
                 <button
+                  type="button"
                   className="chip"
                   onClick={() => save(watchlist.filter((w) => w !== h))}
                 >

@@ -96,9 +96,10 @@ test("adapter runs creator_info -> init -> upload -> poll and includes Content-R
   expect(r.status).toBe("published");
   expect(r.privacy).toBe("SELF_ONLY");
   expect(seen).toEqual(["creator_info", "init", "put", "status"]);
-  const cr = putHeaders!["Content-Range"] ?? putHeaders!["content-range"];
+  const headers = putHeaders as Record<string, string> | null;
+  const cr = headers?.["Content-Range"] ?? headers?.["content-range"];
   expect(cr).toBe("bytes 0-1023/1024");
-  const ct = putHeaders!["Content-Type"] ?? putHeaders!["content-type"];
+  const ct = headers?.["Content-Type"] ?? headers?.["content-type"];
   expect(ct).toBe("video/mp4");
 });
 
