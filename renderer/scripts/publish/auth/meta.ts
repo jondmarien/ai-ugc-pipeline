@@ -143,7 +143,10 @@ export async function fetchPageAccounts(
   fetchImpl: typeof fetch = fetch,
 ): Promise<PageAccount[]> {
   const params = new URLSearchParams({
-    fields: "id,name,access_token,instagram_business_account",
+    // Expanding instagram_business_account{id,username} (rather than the bare field)
+    // is the pattern Meta's own current examples use; some accounts don't populate the
+    // bare field but do populate the expanded one.
+    fields: "id,name,access_token,instagram_business_account{id,username}",
     access_token: userAccessToken,
     appsecret_proof: appSecretProof(userAccessToken, appSecret),
   });
@@ -154,6 +157,28 @@ export async function fetchPageAccounts(
   }
   const json = (await resp.json()) as { data?: PageAccount[] };
   return json.data ?? [];
+}
+
+/**
+ * Fallback per-Page lookup: some accounts don't populate instagram_business_account on
+ * the aggregate /me/accounts call but do return it when queried directly on the Page,
+ * using the PAGE's own access token rather than the user token.
+ */
+export async function fetchInstagramAccountForPage(
+  pageId: string,
+  pageAccessToken: string,
+  appSecret: string,
+  fetchImpl: typeof fetch = fetch,
+): Promise<{ id: string; username?: string } | null> {
+  const params = new URLSearchParams({
+    fields: "instagram_business_account{id,username}",
+    access_token: pageAccessToken,
+    appsecret_proof: appSecretProof(pageAccessToken, appSecret),
+  });
+  const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}?${params.toString()}`);
+  if (!resp.ok) return null;
+  const json = (await resp.json()) as { instagram_business_account?: { id: string; username?: string } };
+  return json.instagram_business_account ?? null;
 }
 
 /** GET /debug_token — liveness check for a Page access token. */
