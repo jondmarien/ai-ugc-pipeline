@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Shell } from "./components/Shell";
 import { Analytics } from "./modules/analytics/Analytics";
 import { CalendarView } from "./modules/calendar/Calendar";
+import { Comments } from "./modules/comments/Comments";
 import { Competitors } from "./modules/competitors/Competitors";
 import { HookVault } from "./modules/hooks/HookVault";
 import { Meta } from "./modules/meta/Meta";
@@ -19,6 +20,7 @@ const VIEWS: Record<ModuleKey, React.ComponentType> = {
   calendar: CalendarView,
   trending: Trending,
   meta: Meta,
+  comments: Comments,
 };
 
 export default function App() {

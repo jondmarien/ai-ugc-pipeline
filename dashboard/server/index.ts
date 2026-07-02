@@ -1,6 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { serve } from "bun";
+import {
+  deleteComment,
+  listComments,
+  replyToComment,
+  setCommentHidden,
+} from "./comments";
 import { aggregateHooks, parseCaptionBankHooks } from "./hooks";
 import { getAccount, getMedia } from "./ig";
 import { listIngested } from "./ingested";
@@ -123,6 +129,38 @@ const server = serve({
       if (p === "/api/trends") {
         const r = await getTrends(force);
         return env(r.data, r.error, r.fetchedAt);
+      }
+
+      // GET lists comments on a media id; DELETE deletes a comment id — same
+      // path shape, disambiguated by method (see comments.ts for the Graph
+      // API endpoints this maps to).
+      const commentsRoot = p.match(/^\/api\/comments\/([^/]+)$/);
+      if (commentsRoot && req.method === "GET") {
+        return env(await listComments(decodeURIComponent(commentsRoot[1])));
+      }
+      if (commentsRoot && req.method === "DELETE") {
+        return env(await deleteComment(decodeURIComponent(commentsRoot[1])));
+      }
+
+      const commentHide = p.match(/^\/api\/comments\/([^/]+)\/hide$/);
+      if (commentHide && req.method === "POST") {
+        const { hidden } = await req.json();
+        return env(
+          await setCommentHidden(
+            decodeURIComponent(commentHide[1]),
+            Boolean(hidden),
+          ),
+        );
+      }
+
+      const commentReply = p.match(/^\/api\/comments\/([^/]+)\/reply$/);
+      if (commentReply && req.method === "POST") {
+        const { message } = await req.json();
+        if (!message || typeof message !== "string")
+          return env(null, "message required");
+        return env(
+          await replyToComment(decodeURIComponent(commentReply[1]), message),
+        );
       }
 
       const state = p.match(/^\/api\/state\/([\w.-]+)$/);

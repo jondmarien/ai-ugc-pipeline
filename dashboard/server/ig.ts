@@ -107,7 +107,9 @@ function credentials(): { token: string; userId: string; appSecret?: string } {
 async function graphGet(pathAndQuery: string): Promise<any> {
   const { token, appSecret } = credentials();
   const sep = pathAndQuery.includes("?") ? "&" : "?";
-  const proof = appSecret ? `&appsecret_proof=${appSecretProof(token, appSecret)}` : "";
+  const proof = appSecret
+    ? `&appsecret_proof=${appSecretProof(token, appSecret)}`
+    : "";
   const res = await fetch(
     `${GRAPH}${pathAndQuery}${sep}access_token=${token}${proof}`,
   );
@@ -148,6 +150,7 @@ export async function getMedia(force = false) {
       const items = [];
       for (const m of media.data ?? []) {
         let insights: Record<string, number> = {};
+        let insightsError: string | null = null;
         try {
           insights = parseInsights(
             await graphGet(
@@ -164,11 +167,15 @@ export async function getMedia(force = false) {
                 `/${m.id}/insights?metric=${SAFE_METRICS.join(",")}`,
               ),
             );
-          } catch {
-            /* very old / insights-unavailable media: keep the post, empty insights */
+          } catch (e) {
+            // Both attempts failed (e.g. missing instagram_manage_insights scope,
+            // or media too old for insights). Record why instead of silently
+            // leaving `insights` empty, so the UI can distinguish "no data" from
+            // "genuinely zero" rather than rendering both as a bare 0.
+            insightsError = e instanceof Error ? e.message : String(e);
           }
         }
-        items.push({ ...m, insights });
+        items.push({ ...m, insights, insightsError });
       }
       return items;
     },

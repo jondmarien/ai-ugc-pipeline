@@ -18,7 +18,11 @@ export function Overview() {
 
   const items = media.data ?? [];
   const recent = items.filter((m) => Date.parse(m.timestamp) > weekAgo());
-  const views7d = recent.reduce((a, m) => a + (m.insights.views ?? 0), 0);
+  const recentWithInsights = recent.filter((m) => !m.insightsError);
+  const views7d = recentWithInsights.reduce(
+    (a, m) => a + (m.insights.views ?? 0),
+    0,
+  );
   const rendered7d = (posts.data ?? []).filter(
     (p) => Date.parse(p.date) > weekAgo(),
   ).length;
@@ -48,10 +52,19 @@ export function Overview() {
         fetchedAt={media.fetchedAt}
       />
       <div className="grid cols-3" style={{ marginBottom: 16 }}>
-        <StatCard label="IG VIEWS · 7D" value={views7d.toLocaleString()} />
+        <StatCard
+          label="IG VIEWS · 7D"
+          value={
+            recent.length && !recentWithInsights.length
+              ? "N/A"
+              : views7d.toLocaleString()
+          }
+        />
         <StatCard
           label="AVG ENGAGEMENT"
-          value={`${s.avgEngagement.toFixed(1)}%`}
+          value={
+            s.insightsAvailable > 0 ? `${s.avgEngagement.toFixed(1)}%` : "N/A"
+          }
         />
         <StatCard label="POSTS RENDERED · 7D" value={rendered7d} />
       </div>

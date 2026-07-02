@@ -20,7 +20,14 @@ export type MediaItem = {
       number
     >
   >;
+  /** Set when the Graph API insights call failed for this item (e.g. missing
+   * instagram_manage_insights scope) — `insights` is then empty, NOT zero. */
+  insightsError?: string | null;
 };
+
+export function hasInsights(m: MediaItem): boolean {
+  return !m.insightsError;
+}
 
 export function denominator(m: MediaItem): number {
   return m.insights.reach || m.insights.views || 0;
@@ -45,13 +52,30 @@ export function tierFor(rate: number): Tier {
 }
 
 export function summarize(items: MediaItem[]) {
-  const n = items.length || 1;
-  const sum = (f: (m: MediaItem) => number) =>
+  // Likes/comments come straight off the media object regardless of the
+  // insights permission, so they're always averaged over every item.
+  const allN = items.length || 1;
+  const sumAll = (f: (m: MediaItem) => number) =>
     items.reduce((a, m) => a + f(m), 0);
+
+  // Everything else (reach, saves, shares, views, engagement) comes from the
+  // per-item Graph API insights call, which fails wholesale without the
+  // instagram_manage_insights scope. Average only over items that actually
+  // got insights back, so a missing scope shows as "no data" (via
+  // insightsAvailable === 0), not as a real zero.
+  const valid = items.filter(hasInsights);
+  const n = valid.length || 1;
+  const sum = (f: (m: MediaItem) => number) =>
+    valid.reduce((a, m) => a + f(m), 0);
   const reachSum = sum(denominator);
+  const insightsError =
+    items.length > 0 && valid.length === 0
+      ? (items.find((m) => m.insightsError)?.insightsError ?? null)
+      : null;
+
   return {
-    avgLikes: sum((m) => m.like_count) / n,
-    avgComments: sum((m) => m.comments_count) / n,
+    avgLikes: sumAll((m) => m.like_count) / allN,
+    avgComments: sumAll((m) => m.comments_count) / allN,
     avgReach: sum((m) => m.insights.reach ?? 0) / n,
     avgSaves: sum((m) => m.insights.saved ?? 0) / n,
     avgEngagement: sum(engagementRate) / n,
@@ -64,6 +88,9 @@ export function summarize(items: MediaItem[]) {
     sharesRate: reachSum
       ? (sum((m) => m.insights.shares ?? 0) / reachSum) * 100
       : 0,
+    insightsAvailable: valid.length,
+    insightsTotal: items.length,
+    insightsError,
   };
 }
 

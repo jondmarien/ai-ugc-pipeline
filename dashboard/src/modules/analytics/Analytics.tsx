@@ -16,6 +16,9 @@ import {
 } from "../../lib/analytics";
 import { useApi } from "../../lib/api";
 
+const na = (v: number, available: boolean, fmt: (v: number) => string) =>
+  available ? fmt(v) : "N/A";
+
 const SORTS = [
   "recent",
   "likes",
@@ -85,19 +88,38 @@ export function Analytics() {
         error={media.error}
         fetchedAt={media.fetchedAt}
       />
+      {s.insightsError && (
+        <div className="staleness" style={{ marginBottom: 8 }}>
+          INSIGHTS UNAVAILABLE · {s.insightsError} · reach/saves/shares/views
+          need the instagram_manage_insights scope, re-run `bun run publish:auth
+          meta` in renderer/ to grant it
+        </div>
+      )}
 
       <div className="grid cols-3" style={{ marginBottom: 16 }}>
         <StatCard label="AVG LIKES" value={s.avgLikes.toFixed(0)} />
         <StatCard label="AVG COMMENTS" value={s.avgComments.toFixed(0)} />
-        <StatCard label="AVG REACH" value={s.avgReach.toFixed(0)} />
-        <StatCard label="AVG SAVES" value={s.avgSaves.toFixed(0)} />
+        <StatCard
+          label="AVG REACH"
+          value={na(s.avgReach, s.insightsAvailable > 0, (v) => v.toFixed(0))}
+        />
+        <StatCard
+          label="AVG SAVES"
+          value={na(s.avgSaves, s.insightsAvailable > 0, (v) => v.toFixed(0))}
+        />
         <StatCard
           label="ENGAGEMENT RATE"
-          value={`${s.avgEngagement.toFixed(1)}%`}
+          value={na(
+            s.avgEngagement,
+            s.insightsAvailable > 0,
+            (v) => `${v.toFixed(1)}%`,
+          )}
         />
         <StatCard
           label="TOTAL REEL VIEWS"
-          value={s.totalReelViews.toLocaleString()}
+          value={na(s.totalReelViews, s.insightsAvailable > 0, (v) =>
+            v.toLocaleString(),
+          )}
         />
       </div>
 
@@ -126,14 +148,26 @@ export function Analytics() {
       <div className="grid cols-3" style={{ marginBottom: 16 }}>
         <Panel>
           <div className="meta-caps">SAVES RATE (BENCHMARK 2%)</div>
-          <div className="num">{s.savesRate.toFixed(2)}%</div>
+          <div className="num">
+            {na(
+              s.savesRate,
+              s.insightsAvailable > 0,
+              (v) => `${v.toFixed(2)}%`,
+            )}
+          </div>
           <p className="meta-caps">
             SAVES DIVIDED BY REACH. ABOVE 2% MEANS THE ALGORITHM PUSHES IT.
           </p>
         </Panel>
         <Panel>
           <div className="meta-caps">SHARES RATE (BENCHMARK 1%)</div>
-          <div className="num">{s.sharesRate.toFixed(2)}%</div>
+          <div className="num">
+            {na(
+              s.sharesRate,
+              s.insightsAvailable > 0,
+              (v) => `${v.toFixed(2)}%`,
+            )}
+          </div>
           <p className="meta-caps">
             SHARES DIVIDED BY REACH. ABOVE 1% IS A STRONG DISTRIBUTION SIGNAL.
           </p>
@@ -234,7 +268,9 @@ function PostRow({ m, full = false }: { m: MediaItem; full?: boolean }) {
       <div className="meta-caps">
         L{m.like_count} C{m.comments_count}{" "}
         {full
-          ? `· R${m.insights.reach ?? 0} · S${m.insights.saved ?? 0} · V${m.insights.views ?? 0}`
+          ? m.insightsError
+            ? "· insights unavailable"
+            : `· R${m.insights.reach ?? 0} · S${m.insights.saved ?? 0} · V${m.insights.views ?? 0}`
           : ""}
         <span
           className="chip"
