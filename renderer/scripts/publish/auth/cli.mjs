@@ -334,8 +334,15 @@ async function runTikTok() {
 async function runMeta() {
   const appId = process.env.META_APP_ID;
   const appSecret = process.env.META_APP_SECRET;
-  const { scopes, exchangeLongLivedToken, fetchPageAccounts, pickPageWithInstagram, GRAPH_BASE, GRAPH_API_VERSION } =
-    await import("./meta.js");
+  const {
+    scopes,
+    exchangeLongLivedToken,
+    fetchPageAccounts,
+    fetchInstagramAccountForPage,
+    pickPageWithInstagram,
+    GRAPH_BASE,
+    GRAPH_API_VERSION,
+  } = await import("./meta.js");
 
   const params = new URLSearchParams({
     client_id: appId,
@@ -400,12 +407,41 @@ async function runMeta() {
 
           // Resolve the Page (+ linked IG Business Account) the user manages.
           const accounts = await fetchPageAccounts(longLived.access_token, appSecret);
-          const page = pickPageWithInstagram(accounts);
+
+          console.log(`\n[publish:auth] Pages returned by /me/accounts:`);
+          for (const a of accounts) {
+            console.log(
+              `  - ${a.name} (${a.id}) — instagram_business_account: ${
+                a.instagram_business_account ? `${a.instagram_business_account.id} (@${a.instagram_business_account.username ?? "?"})` : "none"
+              }`,
+            );
+          }
+
+          let page = pickPageWithInstagram(accounts);
+
+          // Fallback: some accounts don't populate instagram_business_account on the
+          // aggregate call but do when queried directly per-Page with the Page's own token.
+          if (!page) {
+            for (const a of accounts) {
+              const ig = await fetchInstagramAccountForPage(a.id, a.access_token, appSecret);
+              if (ig) {
+                console.log(`[publish:auth] Found via per-Page fallback lookup: ${a.name} -> ${ig.id}`);
+                page = { ...a, instagram_business_account: ig };
+                break;
+              }
+            }
+          }
+
           if (!page) {
             throw new Error(
-              "No Facebook Page with a linked Instagram Business account was found. " +
-                "Confirm the Page is connected to your Instagram professional account and that " +
-                "you granted access to it during login.",
+              `No Facebook Page with a linked Instagram Business account was found across ${accounts.length} ` +
+                `Page(s) (see the list printed above). Checklist: (1) the Instagram account must be a ` +
+                `Professional (Business or Creator) account, not Personal — check in the Instagram app under ` +
+                `Settings > Account type and tools; (2) re-link it fresh via the Facebook Page's own Settings > ` +
+                `Linked Accounts > Instagram (not just a cross-posting toggle); (3) confirm the Page and IG ` +
+                `account both appear together under the same asset in Meta Business Suite > Business assets; ` +
+                `(4) confirm you're logging in as an admin of that specific Page. Then re-run ` +
+                `\`bun run publish:auth meta\`.`,
             );
           }
 
