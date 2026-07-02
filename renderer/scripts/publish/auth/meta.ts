@@ -8,10 +8,11 @@
  * are checked for liveness via GET /debug_token instead of refreshed. Both the
  * Facebook and Instagram adapters read from this module directly (not oauth.ts).
  */
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+
+import { createHmac } from "node:crypto";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { createHmac } from "node:crypto";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 // renderer/.secrets/ — three levels up from renderer/scripts/publish/auth/
@@ -107,7 +108,9 @@ export function isRecentlyVerified(store: MetaStore, nowSec: number): boolean {
 }
 
 /** Pick the Page (and its linked IG account) that has an instagram_business_account. */
-export function pickPageWithInstagram(accounts: PageAccount[]): PageAccount | undefined {
+export function pickPageWithInstagram(
+  accounts: PageAccount[],
+): PageAccount | undefined {
   return accounts.find((a) => a.instagram_business_account?.id);
 }
 
@@ -126,8 +129,12 @@ export function extractGrantedIds(
 ): { pageId: string | null; igUserId: string | null } {
   const targetFor = (scope: string): string | null =>
     granularScopes?.find((g) => g.scope === scope)?.target_ids?.[0] ?? null;
-  const pageId = targetFor("pages_manage_posts") ?? targetFor("pages_show_list") ?? targetFor("pages_read_engagement");
-  const igUserId = targetFor("instagram_content_publish") ?? targetFor("instagram_basic");
+  const pageId =
+    targetFor("pages_manage_posts") ??
+    targetFor("pages_show_list") ??
+    targetFor("pages_read_engagement");
+  const igUserId =
+    targetFor("instagram_content_publish") ?? targetFor("instagram_basic");
   return { pageId, igUserId };
 }
 
@@ -148,10 +155,14 @@ export async function exchangeLongLivedToken(
     client_secret: appSecret,
     fb_exchange_token: shortLivedToken,
   });
-  const resp = await fetchImpl(`${GRAPH_BASE}/oauth/access_token?${params.toString()}`);
+  const resp = await fetchImpl(
+    `${GRAPH_BASE}/oauth/access_token?${params.toString()}`,
+  );
   if (!resp.ok) {
     const text = await resp.text();
-    throw new Error(`Meta long-lived token exchange failed: ${resp.status} — ${text}`);
+    throw new Error(
+      `Meta long-lived token exchange failed: ${resp.status} — ${text}`,
+    );
   }
   return (await resp.json()) as { access_token: string; expires_in: number };
 }
@@ -170,7 +181,9 @@ export async function fetchPageAccounts(
     access_token: userAccessToken,
     appsecret_proof: appSecretProof(userAccessToken, appSecret),
   });
-  const resp = await fetchImpl(`${GRAPH_BASE}/me/accounts?${params.toString()}`);
+  const resp = await fetchImpl(
+    `${GRAPH_BASE}/me/accounts?${params.toString()}`,
+  );
   if (!resp.ok) {
     const text = await resp.text();
     throw new Error(`Meta /me/accounts failed: ${resp.status} — ${text}`);
@@ -198,10 +211,14 @@ export async function fetchInstagramAccountForPage(
   const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}?${params.toString()}`);
   if (!resp.ok) {
     const text = await resp.text();
-    console.error(`[publish:auth] Per-Page IG lookup for ${pageId} failed: ${resp.status} — ${text}`);
+    console.error(
+      `[publish:auth] Per-Page IG lookup for ${pageId} failed: ${resp.status} — ${text}`,
+    );
     return null;
   }
-  const json = (await resp.json()) as { instagram_business_account?: { id: string; username?: string } };
+  const json = (await resp.json()) as {
+    instagram_business_account?: { id: string; username?: string };
+  };
   return json.instagram_business_account ?? null;
 }
 
@@ -226,10 +243,16 @@ export async function fetchPageDetails(
   const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}?${params.toString()}`);
   if (!resp.ok) {
     const text = await resp.text();
-    console.error(`[publish:auth] Direct Page lookup for ${pageId} failed: ${resp.status} — ${text}`);
+    console.error(
+      `[publish:auth] Direct Page lookup for ${pageId} failed: ${resp.status} — ${text}`,
+    );
     return null;
   }
-  return (await resp.json()) as { id: string; name: string; access_token: string };
+  return (await resp.json()) as {
+    id: string;
+    name: string;
+    access_token: string;
+  };
 }
 
 export type DebugTokenData = {
@@ -250,7 +273,9 @@ export async function debugToken(
     input_token: inputToken,
     access_token: `${appId}|${appSecret}`,
   });
-  const resp = await fetchImpl(`${GRAPH_BASE}/debug_token?${params.toString()}`);
+  const resp = await fetchImpl(
+    `${GRAPH_BASE}/debug_token?${params.toString()}`,
+  );
   if (!resp.ok) {
     const text = await resp.text();
     throw new Error(`Meta /debug_token failed: ${resp.status} — ${text}`);
@@ -271,7 +296,9 @@ export async function debugToken(
  * - Throws an actionable error (no silent auto-refresh — Meta gives us no refresh_token
  *   for Page tokens) telling the user to re-run publish:auth meta.
  */
-export async function getMetaCredentials(deps?: Partial<Deps>): Promise<MetaCredentials> {
+export async function getMetaCredentials(
+  deps?: Partial<Deps>,
+): Promise<MetaCredentials> {
   const nowSec = deps?.nowSec ?? Math.floor(Date.now() / 1000);
   const readStore = deps?.readStore ?? defaultReadStore;
   const writeStore = deps?.writeStore ?? defaultWriteStore;
@@ -286,12 +313,21 @@ export async function getMetaCredentials(deps?: Partial<Deps>): Promise<MetaCred
   }
 
   if (isRecentlyVerified(store, nowSec)) {
-    return { pageId: store.page_id, pageAccessToken: store.page_access_token, igUserId: store.ig_user_id };
+    return {
+      pageId: store.page_id,
+      pageAccessToken: store.page_access_token,
+      igUserId: store.ig_user_id,
+    };
   }
 
   const appId = process.env.META_APP_ID ?? "";
   const appSecret = process.env.META_APP_SECRET ?? "";
-  const check = await debugToken(store.page_access_token, appId, appSecret, fetchImpl);
+  const check = await debugToken(
+    store.page_access_token,
+    appId,
+    appSecret,
+    fetchImpl,
+  );
 
   if (!check.is_valid) {
     throw new Error(
@@ -301,5 +337,9 @@ export async function getMetaCredentials(deps?: Partial<Deps>): Promise<MetaCred
 
   writeStore({ ...store, last_verified_at: nowSec });
 
-  return { pageId: store.page_id, pageAccessToken: store.page_access_token, igUserId: store.ig_user_id };
+  return {
+    pageId: store.page_id,
+    pageAccessToken: store.page_access_token,
+    igUserId: store.ig_user_id,
+  };
 }

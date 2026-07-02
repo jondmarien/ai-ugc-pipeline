@@ -37,7 +37,8 @@ function firstWavInDir(dir) {
   }
   const jon = wavs.find((f) => /^jon/i.test(f));
   if (jon) return { path: path.join(dir, jon), source: `_voiceref/${jon}` };
-  if (wavs.length === 1) return { path: path.join(dir, wavs[0]), source: `_voiceref/${wavs[0]}` };
+  if (wavs.length === 1)
+    return { path: path.join(dir, wavs[0]), source: `_voiceref/${wavs[0]}` };
   return null;
 }
 
@@ -63,7 +64,9 @@ export function resolveVoiceRef({ explicitPath = null, noClone = false } = {}) {
   const repoHit = firstWavInDir(path.join(REPO_ROOT, "_voiceref"));
   if (repoHit) return repoHit;
 
-  const publicHit = firstWavInDir(path.join(RENDERER_ROOT, "public", "audio", "_voiceref"));
+  const publicHit = firstWavInDir(
+    path.join(RENDERER_ROOT, "public", "audio", "_voiceref"),
+  );
   if (publicHit) return publicHit;
 
   for (const hostPath of VOICE_REF_HOST_FALLBACKS) {

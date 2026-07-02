@@ -1,6 +1,12 @@
 import type { ReactElement } from "react";
+import {
+  fonts,
+  headlineBase,
+  palette,
+  type as t,
+  themeAccent,
+} from "@/design/tokens";
 import type { TPostData, TSlideData } from "@/lib/schema";
-import { fonts, headlineBase, palette, themeAccent, type as t } from "@/design/tokens";
 import { CarouselSlide, Kicker } from "./CarouselSlide";
 
 type SlideProps = { post: TPostData; slide: TSlideData };
@@ -13,18 +19,44 @@ type SlideProps = { post: TPostData; slide: TSlideData };
 // are consumed here (alt_text + reel captions are separate, so they never see the markers).
 function colorize(text: string, accent: string, danger: string) {
   return text.split(/(\[\[[^\]]+\]\]|\{\{[^}]+\}\})/g).map((seg, i) => {
-    if (seg.startsWith("[[") && seg.endsWith("]]")) return <span key={i} style={{ color: accent }}>{seg.slice(2, -2)}</span>;
-    if (seg.startsWith("{{") && seg.endsWith("}}")) return <span key={i} style={{ color: danger }}>{seg.slice(2, -2)}</span>;
+    if (seg.startsWith("[[") && seg.endsWith("]]"))
+      return (
+        // biome-ignore lint/suspicious/noArrayIndexKey: segments are a static split of one fixed string, never reordered/filtered
+        <span key={i} style={{ color: accent }}>
+          {seg.slice(2, -2)}
+        </span>
+      );
+    if (seg.startsWith("{{") && seg.endsWith("}}"))
+      return (
+        // biome-ignore lint/suspicious/noArrayIndexKey: segments are a static split of one fixed string, never reordered/filtered
+        <span key={i} style={{ color: danger }}>
+          {seg.slice(2, -2)}
+        </span>
+      );
     return seg;
   });
 }
 
-function Headline({ text, size, accent, danger }: { text: string; size: number; accent?: string; danger?: string }) {
+function Headline({
+  text,
+  size,
+  accent,
+  danger,
+}: {
+  text: string;
+  size: number;
+  accent?: string;
+  danger?: string;
+}) {
   const acc = accent ?? palette.fg;
   // {{negation}} normally renders danger red. On a red-accent theme (offensive / data_leakage) that
   // would be red-on-red with the [[affirmative]] accent, so fall back to muted slate — keeping a
   // distinct, legible third tone: white base, red affirmative, slate negation.
-  const neg = danger ?? (acc.toLowerCase() === palette.danger.toLowerCase() ? palette.muted : palette.danger);
+  const neg =
+    danger ??
+    (acc.toLowerCase() === palette.danger.toLowerCase()
+      ? palette.muted
+      : palette.danger);
   return (
     <h1
       style={{
@@ -46,7 +78,17 @@ function Headline({ text, size, accent, danger }: { text: string; size: number; 
 function Subline({ text }: { text: string }) {
   if (!text) return null;
   return (
-    <p style={{ fontFamily: fonts.body, fontWeight: 500, fontSize: t.subline, lineHeight: 1.22, color: palette.muted, margin: 0, maxWidth: "90%" }}>
+    <p
+      style={{
+        fontFamily: fonts.body,
+        fontWeight: 500,
+        fontSize: t.subline,
+        lineHeight: 1.22,
+        color: palette.muted,
+        margin: 0,
+        maxWidth: "90%",
+      }}
+    >
       {text}
     </p>
   );
@@ -80,7 +122,11 @@ export function CoverSlide({ post, slide }: SlideProps) {
   return (
     <CarouselSlide post={post} slide={slide} align="end">
       <Kicker text={slide.kicker} accent={accent} />
-      <Headline text={slide.on_slide_copy} size={headlineBase.cover} accent={accent} />
+      <Headline
+        text={slide.on_slide_copy}
+        size={headlineBase.cover}
+        accent={accent}
+      />
       <Subline text={slide.subline} />
       <SwipeCue label={slide.cta} accent={accent} />
     </CarouselSlide>
@@ -103,7 +149,11 @@ export function TakeawaySlide({ post, slide }: SlideProps) {
   return (
     <CarouselSlide post={post} slide={slide} align="center">
       <Kicker text={slide.kicker} accent={accent} />
-      <Headline text={slide.on_slide_copy} size={headlineBase.takeaway} accent={accent} />
+      <Headline
+        text={slide.on_slide_copy}
+        size={headlineBase.takeaway}
+        accent={accent}
+      />
       <Subline text={slide.subline} />
     </CarouselSlide>
   );
@@ -116,7 +166,9 @@ export function CtaSlide({ post, slide }: SlideProps) {
       <Kicker text={slide.kicker} accent={accent} />
       <Headline text={slide.on_slide_copy} size={headlineBase.body} />
       <Subline text={slide.subline} />
-      <div style={{ display: "flex", gap: 16, marginTop: 12, flexWrap: "wrap" }}>
+      <div
+        style={{ display: "flex", gap: 16, marginTop: 12, flexWrap: "wrap" }}
+      >
         <SwipeCue label={slide.cta || "SAVE + FOLLOW"} accent={accent} />
         <div
           style={{
@@ -135,7 +187,15 @@ export function CtaSlide({ post, slide }: SlideProps) {
 }
 
 // One step box in a chain diagram. The final step (the outcome) is emphasized with the accent.
-function ChainStep({ step, accent, outcome }: { step: { stage?: string; title: string; detail?: string }; accent: string; outcome?: boolean }) {
+function ChainStep({
+  step,
+  accent,
+  outcome,
+}: {
+  step: { stage?: string; title: string; detail?: string };
+  accent: string;
+  outcome?: boolean;
+}) {
   return (
     <div
       style={{
@@ -147,11 +207,42 @@ function ChainStep({ step, accent, outcome }: { step: { stage?: string; title: s
       }}
     >
       {step.stage ? (
-        <div style={{ fontFamily: fonts.mono, fontSize: 13, letterSpacing: "0.16em", textTransform: "uppercase", color: accent, marginBottom: 2 }}>{step.stage}</div>
+        <div
+          style={{
+            fontFamily: fonts.mono,
+            fontSize: 13,
+            letterSpacing: "0.16em",
+            textTransform: "uppercase",
+            color: accent,
+            marginBottom: 2,
+          }}
+        >
+          {step.stage}
+        </div>
       ) : null}
-      <div style={{ fontFamily: fonts.headline, fontWeight: 800, fontSize: outcome ? 25 : 22, lineHeight: 1.04, color: palette.fg }}>{step.title}</div>
+      <div
+        style={{
+          fontFamily: fonts.headline,
+          fontWeight: 800,
+          fontSize: outcome ? 25 : 22,
+          lineHeight: 1.04,
+          color: palette.fg,
+        }}
+      >
+        {step.title}
+      </div>
       {step.detail ? (
-        <div style={{ fontFamily: fonts.body, fontSize: 15, lineHeight: 1.18, color: palette.muted, marginTop: 3 }}>{step.detail}</div>
+        <div
+          style={{
+            fontFamily: fonts.body,
+            fontSize: 15,
+            lineHeight: 1.18,
+            color: palette.muted,
+            marginTop: 3,
+          }}
+        >
+          {step.detail}
+        </div>
       ) : null}
     </div>
   );
@@ -165,12 +256,45 @@ export function ChainSlide({ post, slide }: SlideProps) {
   return (
     <CarouselSlide post={post} slide={slide} align="fill">
       <Kicker text={slide.kicker} accent={accent} />
-      <Headline text={slide.on_slide_copy} size={headlineBase.chain} accent={accent} />
-      <div style={{ display: "flex", flexDirection: "column", gap: 5, marginTop: 2 }}>
+      <Headline
+        text={slide.on_slide_copy}
+        size={headlineBase.chain}
+        accent={accent}
+      />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 5,
+          marginTop: 2,
+        }}
+      >
         {steps.map((s, i) => (
-          <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "stretch", gap: 5 }}>
-            <ChainStep step={s} accent={accent} outcome={i === steps.length - 1} />
-            {i < steps.length - 1 ? <div style={{ alignSelf: "center", width: 2, height: 8, background: accent, opacity: 0.7 }} /> : null}
+          <div
+            key={s.stage ?? s.title}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "stretch",
+              gap: 5,
+            }}
+          >
+            <ChainStep
+              step={s}
+              accent={accent}
+              outcome={i === steps.length - 1}
+            />
+            {i < steps.length - 1 ? (
+              <div
+                style={{
+                  alignSelf: "center",
+                  width: 2,
+                  height: 8,
+                  background: accent,
+                  opacity: 0.7,
+                }}
+              />
+            ) : null}
           </div>
         ))}
       </div>
@@ -181,7 +305,10 @@ export function ChainSlide({ post, slide }: SlideProps) {
 // Role → component registry. context/risk/mechanism/failure_point/defense/point share
 // the standard body layout; cover/takeaway/cta/chain are specialized. `point` is the generic
 // body slide; `chain` is a full-bleed step-flow diagram from slide.chain[].
-export const SLIDE_COMPONENTS: Record<TSlideData["role"], (p: SlideProps) => ReactElement> = {
+export const SLIDE_COMPONENTS: Record<
+  TSlideData["role"],
+  (p: SlideProps) => ReactElement
+> = {
   cover: CoverSlide,
   context: StandardSlide,
   risk: StandardSlide,

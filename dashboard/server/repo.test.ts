@@ -1,6 +1,6 @@
-import { describe, expect, test, beforeEach, afterEach } from "bun:test";
-import path from "node:path";
+import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import fs from "node:fs";
+import path from "node:path";
 import { listPosts, listRenders, parseRenderDirName } from "./repo";
 
 const fx = path.join(import.meta.dir, "fixtures");
@@ -13,24 +13,39 @@ describe("listPosts", () => {
     expect(p.slug).toBe("fixture-post");
     expect(p.date).toBe("2026-06-07");
     expect(p.theme).toBe("defensive");
-    expect(p.coverHook).toBe("Your AI agent reads everything. So do attackers.");
+    expect(p.coverHook).toBe(
+      "Your AI agent reads everything. So do attackers.",
+    );
     expect(p.slideCount).toBe(2);
   });
 });
 
 describe("listPosts resilience", () => {
   const tmp = path.join(fx, "tmp-posts");
-  beforeEach(() => { fs.rmSync(tmp, { recursive: true, force: true }); fs.mkdirSync(tmp, { recursive: true }); });
+  beforeEach(() => {
+    fs.rmSync(tmp, { recursive: true, force: true });
+    fs.mkdirSync(tmp, { recursive: true });
+  });
   afterEach(() => fs.rmSync(tmp, { recursive: true, force: true }));
 
   test("skips a corrupt/half-written post instead of throwing", () => {
-    fs.writeFileSync(path.join(tmp, "good.json"), JSON.stringify({
-      post_id: "good", date: "2026-06-08", slug: "good", slides: [{ role: "cover", on_slide_copy: "Hi" }],
-    }));
+    fs.writeFileSync(
+      path.join(tmp, "good.json"),
+      JSON.stringify({
+        post_id: "good",
+        date: "2026-06-08",
+        slug: "good",
+        slides: [{ role: "cover", on_slide_copy: "Hi" }],
+      }),
+    );
     // valid JSON followed by a null-byte tail = the real partial-write artifact we hit
-    fs.writeFileSync(path.join(tmp, "bad.json"), Buffer.concat([
-      Buffer.from(JSON.stringify({ slug: "bad" })), Buffer.alloc(16),
-    ]));
+    fs.writeFileSync(
+      path.join(tmp, "bad.json"),
+      Buffer.concat([
+        Buffer.from(JSON.stringify({ slug: "bad" })),
+        Buffer.alloc(16),
+      ]),
+    );
     const posts = listPosts(tmp);
     expect(posts).toHaveLength(1);
     expect(posts[0].slug).toBe("good");
@@ -39,11 +54,16 @@ describe("listPosts resilience", () => {
 
 describe("parseRenderDirName", () => {
   test("conforming name yields date+slug", () => {
-    expect(parseRenderDirName("2026-06-07_hermes-desktop"))
-      .toEqual({ date: "2026-06-07", slug: "hermes-desktop" });
+    expect(parseRenderDirName("2026-06-07_hermes-desktop")).toEqual({
+      date: "2026-06-07",
+      slug: "hermes-desktop",
+    });
   });
   test("non-conforming name yields null date", () => {
-    expect(parseRenderDirName("week 1")).toEqual({ date: null, slug: "week 1" });
+    expect(parseRenderDirName("week 1")).toEqual({
+      date: null,
+      slug: "week 1",
+    });
   });
 });
 

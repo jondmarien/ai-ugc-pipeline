@@ -1,7 +1,7 @@
-import { describe, expect, test, beforeEach } from "bun:test";
-import path from "node:path";
+import { beforeEach, describe, expect, test } from "bun:test";
 import fs from "node:fs";
-import { metricsFor, parseInsights, fetchWithCache } from "./ig";
+import path from "node:path";
+import { fetchWithCache, metricsFor, parseInsights } from "./ig";
 
 const fx = path.join(import.meta.dir, "fixtures", "ig");
 const tmpCache = path.join(import.meta.dir, "fixtures", "tmp-ig-cache");
@@ -26,7 +26,9 @@ describe("metricsFor", () => {
 
 describe("parseInsights", () => {
   test("flattens Graph insights array to a record", () => {
-    const raw = JSON.parse(fs.readFileSync(path.join(fx, "insights-video.json"), "utf8"));
+    const raw = JSON.parse(
+      fs.readFileSync(path.join(fx, "insights-video.json"), "utf8"),
+    );
     const r = parseInsights(raw);
     expect(r.views).toBe(1200);
     expect(r.ig_reels_avg_watch_time).toBe(8200);
@@ -36,7 +38,10 @@ describe("parseInsights", () => {
 describe("fetchWithCache", () => {
   test("serves fresh cache WITHOUT calling upstream (cache-first)", async () => {
     let calls = 0;
-    const fetcher = async () => { calls++; return { ok: calls }; };
+    const fetcher = async () => {
+      calls++;
+      return { ok: calls };
+    };
     const a = await fetchWithCache("k", fetcher, tmpCache);
     const b = await fetchWithCache("k", fetcher, tmpCache);
     expect(calls).toBe(1);
@@ -45,7 +50,10 @@ describe("fetchWithCache", () => {
   });
   test("force bypasses fresh cache", async () => {
     let calls = 0;
-    const fetcher = async () => { calls++; return { ok: calls }; };
+    const fetcher = async () => {
+      calls++;
+      return { ok: calls };
+    };
     await fetchWithCache("k2", fetcher, tmpCache);
     const b = await fetchWithCache("k2", fetcher, tmpCache, { force: true });
     expect(calls).toBe(2);
@@ -53,14 +61,21 @@ describe("fetchWithCache", () => {
   });
   test("stale cache triggers refetch", async () => {
     let calls = 0;
-    const fetcher = async () => { calls++; return { ok: calls }; };
+    const fetcher = async () => {
+      calls++;
+      return { ok: calls };
+    };
     await fetchWithCache("k3", fetcher, tmpCache, { maxAgeMs: -1 });
     await fetchWithCache("k3", fetcher, tmpCache, { maxAgeMs: -1 });
     expect(calls).toBe(2);
   });
   test("serves stale cache with error when upstream fails", async () => {
     let calls = 0;
-    const fetcher = async () => { calls++; if (calls > 1) throw new Error("down"); return { ok: 1 }; };
+    const fetcher = async () => {
+      calls++;
+      if (calls > 1) throw new Error("down");
+      return { ok: 1 };
+    };
     const a = await fetchWithCache("k4", fetcher, tmpCache);
     const b = await fetchWithCache("k4", fetcher, tmpCache, { force: true });
     expect(b.data).toEqual({ ok: 1 });
@@ -68,7 +83,13 @@ describe("fetchWithCache", () => {
     expect(b.fetchedAt).toBe(a.fetchedAt);
   });
   test("failure with no cache returns null data + error", async () => {
-    const r = await fetchWithCache("missing", async () => { throw new Error("nope"); }, tmpCache);
+    const r = await fetchWithCache(
+      "missing",
+      async () => {
+        throw new Error("nope");
+      },
+      tmpCache,
+    );
     expect(r.data).toBeNull();
     expect(r.error).toContain("nope");
   });

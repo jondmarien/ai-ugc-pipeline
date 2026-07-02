@@ -1,15 +1,29 @@
-type AnySlide = { slide?: number; role?: string; on_slide_copy?: string; subline?: string; visual_prompt?: string };
+type AnySlide = {
+  slide?: number;
+  role?: string;
+  on_slide_copy?: string;
+  subline?: string;
+  visual_prompt?: string;
+};
 type AnyPost = {
   slides?: AnySlide[];
   features?: { multiple_captions?: boolean };
   slide_captions?: string[];
 };
 
-const strip = (s: string) => (s ?? "").replace(/\[\[|\]\]|\{\{|\}\}/g, "").trim();
+const strip = (s: string) =>
+  (s ?? "").replace(/\[\[|\]\]|\{\{|\}\}/g, "").trim();
 const words = (s: string) => (strip(s) ? strip(s).split(/\s+/).length : 0);
 const chars = (s: string) => strip(s).length;
 
-const BODY = new Set(["context", "risk", "mechanism", "failure_point", "defense", "point"]);
+const BODY = new Set([
+  "context",
+  "risk",
+  "mechanism",
+  "failure_point",
+  "defense",
+  "point",
+]);
 
 export function checkCopyBudget(post: AnyPost): string[] {
   const out: string[] = [];
@@ -19,14 +33,18 @@ export function checkCopyBudget(post: AnyPost): string[] {
     if (s.role === "cover" && words(copy) > 8)
       out.push(`${where} on_slide_copy ${words(copy)} words (cover max 8)`);
     else if (BODY.has(s.role ?? "")) {
-      if (words(copy) > 14) out.push(`${where} on_slide_copy ${words(copy)} words (body max 14)`);
-      if (chars(copy) > 90) out.push(`${where} on_slide_copy ${chars(copy)} chars (body max 90)`);
+      if (words(copy) > 14)
+        out.push(`${where} on_slide_copy ${words(copy)} words (body max 14)`);
+      if (chars(copy) > 90)
+        out.push(`${where} on_slide_copy ${chars(copy)} chars (body max 90)`);
     } else if (s.role === "takeaway" && words(copy) > 22)
       out.push(`${where} on_slide_copy ${words(copy)} words (takeaway max 22)`);
 
     const sub = s.subline ?? "";
-    if (words(sub) > 30) out.push(`${where} subline ${words(sub)} words (max 30)`);
-    if (chars(sub) > 180) out.push(`${where} subline ${chars(sub)} chars (max 180)`);
+    if (words(sub) > 30)
+      out.push(`${where} subline ${words(sub)} words (max 30)`);
+    if (chars(sub) > 180)
+      out.push(`${where} subline ${chars(sub)} chars (max 180)`);
   }
   return out;
 }
@@ -43,18 +61,42 @@ export function checkSlideCaptions(post: AnyPost): string[] {
     return out;
   }
   if (captions.length !== n) {
-    out.push(`slide_captions length (${captions.length}) must match slides (${n})`);
+    out.push(
+      `slide_captions length (${captions.length}) must match slides (${n})`,
+    );
   }
   captions.forEach((line, i) => {
     const trimmed = (line ?? "").trim();
     if (!trimmed) out.push(`slide_captions[${i}] is empty`);
-    else if (trimmed.length > 2200) out.push(`slide_captions[${i}] is ${trimmed.length} chars (Instagram per-slide cap ~2200)`);
+    else if (trimmed.length > 2200)
+      out.push(
+        `slide_captions[${i}] is ${trimmed.length} chars (Instagram per-slide cap ~2200)`,
+      );
   });
   return out;
 }
 
-const DENY = ["diff","commit","log","terminal","console","dashboard","panel","label","labeled",
-  "marked","logo","snippet","email","thread","code","script","plaintext","version","map"];
+const DENY = [
+  "diff",
+  "commit",
+  "log",
+  "terminal",
+  "console",
+  "dashboard",
+  "panel",
+  "label",
+  "labeled",
+  "marked",
+  "logo",
+  "snippet",
+  "email",
+  "thread",
+  "code",
+  "script",
+  "plaintext",
+  "version",
+  "map",
+];
 const DENY_RE = new RegExp(`\\b(${DENY.join("|")})\\b`, "i");
 const CAPS_RUN_RE = /\b[A-Z0-9_]{2,}\b(\s+\b[A-Z0-9_]{2,}\b)+/;
 

@@ -10,13 +10,13 @@ import {
   generateVideoFromImage,
   healthCheck,
   motionPromptForBeat,
-  resolveSegmentImageUrl,
   resolveMode,
+  resolveSegmentImageUrl,
   videoModelCost,
 } from "./higgsfield-client.mjs";
+import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
 import { writePostJson } from "./lib/post-io.mjs";
 import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
-import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
 
 const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith("--")));
@@ -60,10 +60,15 @@ if (!key) {
 
 const DRY = flags.has("--dry-run");
 const MODE = resolveMode(opt("mode", ""));
-const MODEL = opt("model", process.env.HIGGSFIELD_VIDEO_MODEL || DEFAULT_VIDEO_MODEL);
+const MODEL = opt(
+  "model",
+  process.env.HIGGSFIELD_VIDEO_MODEL || DEFAULT_VIDEO_MODEL,
+);
 // Motion credit gate: i2v is pricey (≈7.5 cr/clip default, 22 for Veo). Estimated cost must stay
 // ≤ BUDGET unless --yes. Default 60 allows a typical reel on the default model but blocks Veo; 0 = off.
-const BUDGET = Number(opt("budget", process.env.HIGGSFIELD_MOTION_BUDGET ?? "60"));
+const BUDGET = Number(
+  opt("budget", process.env.HIGGSFIELD_MOTION_BUDGET ?? "60"),
+);
 const YES = flags.has("--yes");
 const onlyRaw = opt("only", "");
 const onlySet = onlyRaw
@@ -82,7 +87,9 @@ if (!loaded) {
 }
 const { postPath, post } = loaded;
 if (!post.video?.enabled) {
-  console.log(`Post ${post.post_id ?? key} has video.enabled=false — nothing to do.`);
+  console.log(
+    `Post ${post.post_id ?? key} has video.enabled=false — nothing to do.`,
+  );
   process.exit(0);
 }
 const prefix = post.upload_package?.filename_prefix;
@@ -108,12 +115,25 @@ const eligibleBeats = beats.filter((beat, i) => {
   if (onlySet && !onlySet.has(i)) return false;
   if (String(beat.purpose).toLowerCase() === "cta") return false;
   if (!slideByNum.has(beat.slide_ref)) return false;
-  if (!FORCE && beat.video_asset && existsSync(path.join(RENDERER, "public", String(beat.video_asset).replace(/^\//, "")))) return false;
+  if (
+    !FORCE &&
+    beat.video_asset &&
+    existsSync(
+      path.join(
+        RENDERER,
+        "public",
+        String(beat.video_asset).replace(/^\//, ""),
+      ),
+    )
+  )
+    return false;
   return true;
 }).length;
 const unitCost = videoModelCost(MODEL);
 const estTotal = Number((unitCost * eligibleBeats).toFixed(2));
-console.log(`Estimated motion cost: ${eligibleBeats} clip(s) × ${unitCost} cr (${MODEL}) ≈ ${estTotal} credits.`);
+console.log(
+  `Estimated motion cost: ${eligibleBeats} clip(s) × ${unitCost} cr (${MODEL}) ≈ ${estTotal} credits.`,
+);
 if (BUDGET > 0 && estTotal > BUDGET && !YES && !DRY) {
   console.error(
     `\n✋ Estimated ${estTotal} credits exceeds the motion budget cap of ${BUDGET}.\n` +
@@ -126,7 +146,9 @@ if (BUDGET > 0 && estTotal > BUDGET && !YES && !DRY) {
 
 if (!DRY) {
   const hc = await healthCheck(MODE);
-  console.log(`Higgsfield reel segments [${hc.mode}] @ ${hc.baseUrl} · model=${MODEL}`);
+  console.log(
+    `Higgsfield reel segments [${hc.mode}] @ ${hc.baseUrl} · model=${MODEL}`,
+  );
 }
 
 let generated = 0;
@@ -146,10 +168,18 @@ for (let i = 0; i < beats.length; i++) {
   const purpose = String(beat.purpose || "beat").replace(/[^a-z0-9_-]+/gi, "-");
   const outName = `beat_${String(i + 1).padStart(2, "0")}_${purpose}.mp4`;
   const videoAsset = `/video/${prefix}/${outName}`;
-  const localPath = path.join(outDir, outName);
+  const _localPath = path.join(outDir, outName);
 
-  if (!flags.has("--force") && beat.video_asset && existsSync(path.join(RENDERER, "public", beat.video_asset.replace(/^\//, "")))) {
-    console.log(`  beat ${i}: ${beat.video_asset} exists — skip (use --force to regen)`);
+  if (
+    !flags.has("--force") &&
+    beat.video_asset &&
+    existsSync(
+      path.join(RENDERER, "public", beat.video_asset.replace(/^\//, "")),
+    )
+  ) {
+    console.log(
+      `  beat ${i}: ${beat.video_asset} exists — skip (use --force to regen)`,
+    );
     continue;
   }
 
@@ -172,8 +202,12 @@ for (let i = 0; i < beats.length; i++) {
   }
 
   if (DRY) {
-    console.log(`  [dry-run] beat ${i} slide_ref=${beat.slide_ref} ~${durationSeconds.toFixed(1)}s`);
-    console.log(`    image: ${imageUrl ? imageUrl.slice(0, 80) + "…" : localImagePath}`);
+    console.log(
+      `  [dry-run] beat ${i} slide_ref=${beat.slide_ref} ~${durationSeconds.toFixed(1)}s`,
+    );
+    console.log(
+      `    image: ${imageUrl ? `${imageUrl.slice(0, 80)}…` : localImagePath}`,
+    );
     console.log(`    prompt: ${prompt.slice(0, 120)}…`);
     console.log(`    → ${videoAsset}`);
     continue;
@@ -193,7 +227,9 @@ for (let i = 0; i < beats.length; i++) {
   beat.video_asset = videoAsset;
   generated++;
 
-  post.video.licenses = Array.isArray(post.video.licenses) ? post.video.licenses : [];
+  post.video.licenses = Array.isArray(post.video.licenses)
+    ? post.video.licenses
+    : [];
   if (!post.video.licenses.some((l) => l?.asset === videoAsset)) {
     post.video.licenses.push({
       asset: videoAsset,

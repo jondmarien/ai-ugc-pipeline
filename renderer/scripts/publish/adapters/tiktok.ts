@@ -1,8 +1,13 @@
 import { readFileSync } from "node:fs";
-import type { PlatformAdapter, RenderPackage, AdapterResult, PublishOpts } from "../types";
-import { tiktokMetadata } from "../metadata";
-import { loadPublishConfig } from "../config";
 import { getAccessToken } from "../auth/oauth";
+import { loadPublishConfig } from "../config";
+import { tiktokMetadata } from "../metadata";
+import type {
+  AdapterResult,
+  PlatformAdapter,
+  PublishOpts,
+  RenderPackage,
+} from "../types";
 
 // ---------------------------------------------------------------------------
 // TikTok Content Posting API — Direct Post of a reel video.
@@ -24,7 +29,10 @@ const TIKTOK_HOST = "https://open.tiktokapis.com";
 // API response shapes (only the fields we read)
 // ---------------------------------------------------------------------------
 
-type TiktokEnvelope<T> = { data?: T; error?: { code?: string; message?: string; log_id?: string } };
+type TiktokEnvelope<T> = {
+  data?: T;
+  error?: { code?: string; message?: string; log_id?: string };
+};
 
 type CreatorInfo = {
   privacy_level_options?: string[];
@@ -66,7 +74,10 @@ export type TiktokDeps = {
  * Return `configured` if the creator's account permits it, else throw a clear
  * privacy-mismatch error. Unaudited apps only expose SELF_ONLY.
  */
-export function pickPrivacy(creatorInfo: TiktokEnvelope<CreatorInfo>, configured: string): string {
+export function pickPrivacy(
+  creatorInfo: TiktokEnvelope<CreatorInfo>,
+  configured: string,
+): string {
   const opts = creatorInfo?.data?.privacy_level_options ?? [];
   if (!opts.includes(configured)) {
     throw new Error(
@@ -86,8 +97,10 @@ export function shapeTiktokResult(
   const data = statusResp?.data ?? {};
   const published = data.status === "PUBLISH_COMPLETE";
   const postId =
-    (Array.isArray(data.publicaly_available_post_id) && data.publicaly_available_post_id[0]) ||
-    (Array.isArray(data.publicly_available_post_id) && data.publicly_available_post_id[0]) ||
+    (Array.isArray(data.publicaly_available_post_id) &&
+      data.publicaly_available_post_id[0]) ||
+    (Array.isArray(data.publicly_available_post_id) &&
+      data.publicly_available_post_id[0]) ||
     null;
   return {
     platform: "tiktok",
@@ -97,7 +110,11 @@ export function shapeTiktokResult(
     // SELF_ONLY posts have no public URL; only set one when TikTok returns a public post id.
     url: postId != null ? `https://www.tiktok.com/video/${postId}` : null,
     privacy,
-    ...(published ? {} : { error: `TikTok did not complete (status: ${data.status ?? "unknown"})` }),
+    ...(published
+      ? {}
+      : {
+          error: `TikTok did not complete (status: ${data.status ?? "unknown"})`,
+        }),
   };
 }
 
@@ -139,11 +156,15 @@ async function tiktokPost<T>(
   });
   const json = (await resp.json().catch(() => ({}))) as TiktokEnvelope<T>;
   if (!resp.ok) {
-    throw new Error(`TikTok ${path} failed: ${resp.status} — ${json?.error?.code ?? ""} ${json?.error?.message ?? ""}`.trim());
+    throw new Error(
+      `TikTok ${path} failed: ${resp.status} — ${json?.error?.code ?? ""} ${json?.error?.message ?? ""}`.trim(),
+    );
   }
   const code = json?.error?.code;
   if (code && code !== "ok") {
-    throw new Error(`TikTok ${path} error: ${code} — ${json?.error?.message ?? ""}`.trim());
+    throw new Error(
+      `TikTok ${path} error: ${code} — ${json?.error?.message ?? ""}`.trim(),
+    );
   }
   return json;
 }
@@ -162,12 +183,20 @@ export function makeTiktokAdapter(deps: TiktokDeps): PlatformAdapter {
     name: "tiktok",
     kind: "api",
 
-    async publish(pkg: RenderPackage, opts: PublishOpts): Promise<AdapterResult> {
+    async publish(
+      pkg: RenderPackage,
+      opts: PublishOpts,
+    ): Promise<AdapterResult> {
       const cfg = deps.loadConfig();
 
       // Dry-run: touch nothing (no token, no network, no file read).
       if (opts.dryRun) {
-        return { platform: "tiktok", kind: "api", status: "manual", message: "(dry-run)" };
+        return {
+          platform: "tiktok",
+          kind: "api",
+          status: "manual",
+          message: "(dry-run)",
+        };
       }
 
       try {
@@ -194,15 +223,20 @@ export function makeTiktokAdapter(deps: TiktokDeps): PlatformAdapter {
         // 3. init the upload (single-chunk FILE_UPLOAD)
         const bytes = deps.readFile(pkg.reelPath);
         const videoSize = bytes.byteLength;
-        const init = await tiktokPost<InitData>(deps.fetchImpl, "/v2/post/publish/video/init/", token, {
-          post_info: meta.post_info,
-          source_info: {
-            source: "FILE_UPLOAD",
-            video_size: videoSize,
-            chunk_size: videoSize,
-            total_chunk_count: 1,
+        const init = await tiktokPost<InitData>(
+          deps.fetchImpl,
+          "/v2/post/publish/video/init/",
+          token,
+          {
+            post_info: meta.post_info,
+            source_info: {
+              source: "FILE_UPLOAD",
+              video_size: videoSize,
+              chunk_size: videoSize,
+              total_chunk_count: 1,
+            },
           },
-        });
+        );
         const publishId = init.data?.publish_id;
         const uploadUrl = init.data?.upload_url;
         if (!publishId || !uploadUrl) {
@@ -219,15 +253,22 @@ export function makeTiktokAdapter(deps: TiktokDeps): PlatformAdapter {
           body: new Blob([new Uint8Array(bytes)]),
         });
         if (!putResp.ok) {
-          throw new Error(`TikTok chunk upload failed: ${putResp.status} ${putResp.statusText}`);
+          throw new Error(
+            `TikTok chunk upload failed: ${putResp.status} ${putResp.statusText}`,
+          );
         }
 
         // 5. poll status until terminal
         let last: TiktokEnvelope<StatusData> = {};
         for (let i = 0; i < maxPolls; i++) {
-          last = await tiktokPost<StatusData>(deps.fetchImpl, "/v2/post/publish/status/fetch/", token, {
-            publish_id: publishId,
-          });
+          last = await tiktokPost<StatusData>(
+            deps.fetchImpl,
+            "/v2/post/publish/status/fetch/",
+            token,
+            {
+              publish_id: publishId,
+            },
+          );
           const s = last.data?.status;
           if (s === "PUBLISH_COMPLETE" || s === "FAILED") break;
           if (i < maxPolls - 1) await sleep(pollIntervalMs);
@@ -235,7 +276,12 @@ export function makeTiktokAdapter(deps: TiktokDeps): PlatformAdapter {
 
         return shapeTiktokResult(last, privacy, publishId);
       } catch (err) {
-        return { platform: "tiktok", kind: "api", status: "failed", error: friendlyError(err) };
+        return {
+          platform: "tiktok",
+          kind: "api",
+          status: "failed",
+          error: friendlyError(err),
+        };
       }
     },
   };

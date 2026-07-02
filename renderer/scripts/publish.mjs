@@ -46,9 +46,14 @@ if (!key) {
   process.exit(1);
 }
 
-const platformsArg = argv.find((a) => a.startsWith("--platforms="))?.split("=")[1];
+const platformsArg = argv
+  .find((a) => a.startsWith("--platforms="))
+  ?.split("=")[1];
 const platforms = platformsArg
-  ? platformsArg.split(",").map((s) => s.trim()).filter(Boolean)
+  ? platformsArg
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
   : ["youtube", "tiktok"];
 
 const opts = {

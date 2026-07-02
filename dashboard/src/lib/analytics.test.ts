@@ -1,24 +1,60 @@
 import { describe, expect, test } from "bun:test";
-import { engagementRate, tierFor, summarize, dayOfWeekBuckets, hashtagStats, type MediaItem } from "./analytics";
+import {
+  dayOfWeekBuckets,
+  engagementRate,
+  hashtagStats,
+  type MediaItem,
+  summarize,
+  tierFor,
+} from "./analytics";
 
 const reel: MediaItem = {
-  id: "m1", media_type: "VIDEO", timestamp: "2026-06-05T14:00:00+0000",
-  like_count: 50, comments_count: 6, caption: "hello #AISecurity #InfoSec", permalink: "",
-  insights: { views: 1200, reach: 900, saved: 30, shares: 12, total_interactions: 98,
-    ig_reels_avg_watch_time: 8200, ig_reels_video_view_total_time: 9840000 },
+  id: "m1",
+  media_type: "VIDEO",
+  timestamp: "2026-06-05T14:00:00+0000",
+  like_count: 50,
+  comments_count: 6,
+  caption: "hello #AISecurity #InfoSec",
+  permalink: "",
+  insights: {
+    views: 1200,
+    reach: 900,
+    saved: 30,
+    shares: 12,
+    total_interactions: 98,
+    ig_reels_avg_watch_time: 8200,
+    ig_reels_video_view_total_time: 9840000,
+  },
 };
 const img: MediaItem = {
-  id: "m2", media_type: "CAROUSEL_ALBUM", timestamp: "2026-06-03T09:00:00+0000",
-  like_count: 80, comments_count: 12, caption: "post #InfoSec", permalink: "",
-  insights: { views: 600, reach: 0, saved: 10, shares: 2, total_interactions: 104 },
+  id: "m2",
+  media_type: "CAROUSEL_ALBUM",
+  timestamp: "2026-06-03T09:00:00+0000",
+  like_count: 80,
+  comments_count: 12,
+  caption: "post #InfoSec",
+  permalink: "",
+  insights: {
+    views: 600,
+    reach: 0,
+    saved: 10,
+    shares: 2,
+    total_interactions: 104,
+  },
 };
 
 describe("engagementRate", () => {
   test("(likes+comments+saved+shares)/reach*100", () => {
-    expect(engagementRate(reel)).toBeCloseTo(((50 + 6 + 30 + 12) / 900) * 100, 5);
+    expect(engagementRate(reel)).toBeCloseTo(
+      ((50 + 6 + 30 + 12) / 900) * 100,
+      5,
+    );
   });
   test("falls back to views when reach is 0", () => {
-    expect(engagementRate(img)).toBeCloseTo(((80 + 12 + 10 + 2) / 600) * 100, 5);
+    expect(engagementRate(img)).toBeCloseTo(
+      ((80 + 12 + 10 + 2) / 600) * 100,
+      5,
+    );
   });
   test("0 when both denominators are missing", () => {
     expect(engagementRate({ ...img, insights: {} })).toBe(0);

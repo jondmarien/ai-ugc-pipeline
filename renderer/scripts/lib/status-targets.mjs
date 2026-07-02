@@ -7,7 +7,7 @@ import { readStatus } from "./post-status.mjs";
 /** Resolve post keys for `bun run status` (substring keys + optional --from tier). */
 export function collectStatusTargets({ keyArgs = [], fromStatus = null }) {
   const all = allPostJsonFiles();
-  let targets = [];
+  const targets = [];
   if (fromStatus) {
     targets.push(...all.filter((f) => readStatus(f) === fromStatus));
   }

@@ -2,7 +2,7 @@
 //
 // Used by art, pipeline, import-bg, upscale, reel:higgsfield, etc.
 // For schema-validated loads in TS, use scripts/lib.ts loadPost() instead.
-import { readFileSync, readdirSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { POSTS_DIR } from "./paths.mjs";
 

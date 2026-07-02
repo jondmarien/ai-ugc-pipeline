@@ -1,20 +1,26 @@
-import { test, expect, afterEach } from "bun:test";
+import { afterEach, expect, test } from "bun:test";
 import {
-  resolveMode,
-  hasRestCreds,
-  cliAspectRatio,
   buildCliCreateArgs,
-  parseCliCreateJson,
-  resolveCliBin,
+  cliAspectRatio,
+  estimateCost,
+  hasRestCreds,
   imageModelCost,
   imageModelFamily,
-  videoModelCost,
-  estimateCost,
   MODEL_CATALOG,
+  parseCliCreateJson,
+  resolveCliBin,
+  resolveMode,
+  videoModelCost,
 } from "./higgsfield-client.mjs";
 
 // Snapshot + restore the env keys these tests mutate so order doesn't matter.
-const ENV_KEYS = ["HIGGSFIELD_MODE", "HIGGSFIELD_API_KEY", "HIGGSFIELD_API_SECRET", "HF_CREDENTIALS", "HIGGSFIELD_API_TOKEN"];
+const ENV_KEYS = [
+  "HIGGSFIELD_MODE",
+  "HIGGSFIELD_API_KEY",
+  "HIGGSFIELD_API_SECRET",
+  "HF_CREDENTIALS",
+  "HIGGSFIELD_API_TOKEN",
+];
 const saved: Record<string, string | undefined> = {};
 for (const k of ENV_KEYS) saved[k] = process.env[k];
 afterEach(() => {
@@ -68,7 +74,11 @@ test("buildCliCreateArgs assembles a valid `generate create` argv", () => {
     aspectRatio: "3:4",
     extraArgs: ["--quality", "2k"],
   });
-  expect(args.slice(0, 3)).toEqual(["generate", "create", "text2image_soul_v2"]);
+  expect(args.slice(0, 3)).toEqual([
+    "generate",
+    "create",
+    "text2image_soul_v2",
+  ]);
   expect(args).toContain("--prompt");
   expect(args[args.indexOf("--prompt") + 1]).toBe("dark cyber bg, no text");
   expect(args[args.indexOf("--aspect_ratio") + 1]).toBe("3:4");
@@ -78,13 +88,23 @@ test("buildCliCreateArgs assembles a valid `generate create` argv", () => {
 });
 
 test("buildCliCreateArgs requires jobSetType and prompt", () => {
-  expect(() => buildCliCreateArgs({ prompt: "x" } as any)).toThrow("jobSetType");
-  expect(() => buildCliCreateArgs({ jobSetType: "flux_2" } as any)).toThrow("prompt");
+  expect(() => buildCliCreateArgs({ prompt: "x" } as any)).toThrow(
+    "jobSetType",
+  );
+  expect(() => buildCliCreateArgs({ jobSetType: "flux_2" } as any)).toThrow(
+    "prompt",
+  );
 });
 
 test("parseCliCreateJson reads result_url + seed from the job array", () => {
   const json = JSON.stringify([
-    { id: "abc", status: "completed", job_set_type: "text2image_soul_v2", result_url: "https://cdn/x.png", params: { seed: 919383 } },
+    {
+      id: "abc",
+      status: "completed",
+      job_set_type: "text2image_soul_v2",
+      result_url: "https://cdn/x.png",
+      params: { seed: 919383 },
+    },
   ]);
   const out = parseCliCreateJson(json);
   expect(out.url).toBe("https://cdn/x.png");
@@ -93,12 +113,23 @@ test("parseCliCreateJson reads result_url + seed from the job array", () => {
 });
 
 test("parseCliCreateJson tolerates a single object and alternate url fields", () => {
-  expect(parseCliCreateJson(JSON.stringify({ status: "completed", image: { url: "https://cdn/y.png" } })).url).toBe("https://cdn/y.png");
+  expect(
+    parseCliCreateJson(
+      JSON.stringify({
+        status: "completed",
+        image: { url: "https://cdn/y.png" },
+      }),
+    ).url,
+  ).toBe("https://cdn/y.png");
 });
 
 test("parseCliCreateJson throws on a non-completed job and on missing url", () => {
-  expect(() => parseCliCreateJson(JSON.stringify([{ status: "failed" }]))).toThrow("job failed");
-  expect(() => parseCliCreateJson(JSON.stringify([{ status: "completed" }]))).toThrow("no result_url");
+  expect(() =>
+    parseCliCreateJson(JSON.stringify([{ status: "failed" }])),
+  ).toThrow("job failed");
+  expect(() =>
+    parseCliCreateJson(JSON.stringify([{ status: "completed" }])),
+  ).toThrow("no result_url");
   expect(() => parseCliCreateJson("not json")).toThrow("did not return JSON");
 });
 

@@ -1,5 +1,5 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { put } from "@vercel/blob";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 // ---------------------------------------------------------------------------
 // POST /api/publish-temp
@@ -42,7 +42,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return;
   }
 
-  const filename = typeof req.query.filename === "string" ? req.query.filename : "reel.mp4";
+  const filename =
+    typeof req.query.filename === "string" ? req.query.filename : "reel.mp4";
 
   try {
     const bytes = await readBody(req);
@@ -59,6 +60,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     res.status(200).json({ url: blob.url, pathname: blob.pathname });
   } catch (err) {
-    res.status(500).json({ error: err instanceof Error ? err.message : String(err) });
+    res
+      .status(500)
+      .json({ error: err instanceof Error ? err.message : String(err) });
   }
 }

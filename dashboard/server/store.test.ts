@@ -1,7 +1,7 @@
-import { describe, expect, test, beforeEach } from "bun:test";
-import path from "node:path";
+import { beforeEach, describe, expect, test } from "bun:test";
 import fs from "node:fs";
-import { readState, writeState, ALLOWED_STATE_FILES } from "./store";
+import path from "node:path";
+import { ALLOWED_STATE_FILES, readState, writeState } from "./store";
 
 const tmp = path.join(import.meta.dir, "fixtures", "tmp-data");
 
@@ -12,8 +12,11 @@ beforeEach(() => {
 
 describe("store", () => {
   test("allowlist is exactly the three state files", () => {
-    expect([...ALLOWED_STATE_FILES].sort()).toEqual(
-      ["hooks-meta.json", "schedule.json", "sources.json"]);
+    expect([...ALLOWED_STATE_FILES].sort()).toEqual([
+      "hooks-meta.json",
+      "schedule.json",
+      "sources.json",
+    ]);
   });
 
   test("rejects non-allowlisted names including traversal", () => {

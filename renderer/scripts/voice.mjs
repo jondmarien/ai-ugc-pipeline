@@ -7,14 +7,17 @@
 // VoxCPM clone: auto --custom-voice from lib/voice-ref.mjs unless --no-clone.
 import { spawnSync } from "node:child_process";
 import path from "node:path";
+import { flagSet, postKeyFromArgv, showHelpAndExit } from "./lib/cli.mjs";
 import { RENDERER_ROOT } from "./lib/paths.mjs";
 import { loadPostByKey } from "./lib/post-resolve.mjs";
-import { flagSet, postKeyFromArgv, showHelpAndExit } from "./lib/cli.mjs";
-import { voiceRefCliArgs } from "./lib/voice-ref.mjs";
 import { runPythonScript } from "./lib/python-runner.mjs";
+import { voiceRefCliArgs } from "./lib/voice-ref.mjs";
 
 const VOICE_MODES = ["none", "voxcpm2", "voxcpm2-0.5b", "bark", "http", "file"];
-const VOX_MODEL = { voxcpm2: "openbmb/VoxCPM2", "voxcpm2-0.5b": "openbmb/VoxCPM-0.5B" };
+const VOX_MODEL = {
+  voxcpm2: "openbmb/VoxCPM2",
+  "voxcpm2-0.5b": "openbmb/VoxCPM-0.5B",
+};
 
 /** Flags consumed by this dispatcher — do not forward to Python (see voice-voxcpm --voice-ref). */
 function isDispatchOnlyFlag(a) {
@@ -32,8 +35,11 @@ function resolveVoiceMode(key, flags) {
   const loaded = loadPostByKey(key);
   if (loaded) mode = loaded.post.video?.audio?.voice_mode ?? "voxcpm2";
 
-  const voiceOverride = [...flags].find((f) => f.startsWith("--voice="))?.split("=")[1];
-  if (voiceOverride && VOICE_MODES.includes(voiceOverride)) mode = voiceOverride;
+  const voiceOverride = [...flags]
+    .find((f) => f.startsWith("--voice="))
+    ?.split("=")[1];
+  if (voiceOverride && VOICE_MODES.includes(voiceOverride))
+    mode = voiceOverride;
   if (flags.has("--http")) mode = "http";
   if (flags.has("--voxcpm2")) mode = "voxcpm2";
   if (flags.has("--voxcpm2-0.5b")) mode = "voxcpm2-0.5b";
@@ -78,7 +84,8 @@ EXAMPLES
 const args = process.argv.slice(2);
 const flags = flagSet(args);
 
-if (flags.has("--help") || flags.has("-h") || args.includes("-h")) showHelpAndExit(HELP);
+if (flags.has("--help") || flags.has("-h") || args.includes("-h"))
+  showHelpAndExit(HELP);
 
 const key = postKeyFromArgv(args);
 if (!key) {
@@ -107,7 +114,11 @@ if (mode === "http") {
   const res = spawnSync(
     runner,
     [path.join(RENDERER_ROOT, "scripts", "voice-http.mjs"), ...passArgs],
-    { cwd: RENDERER_ROOT, stdio: "inherit", shell: process.platform === "win32" },
+    {
+      cwd: RENDERER_ROOT,
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
   );
   process.exit(res.status ?? 1);
 }
@@ -116,7 +127,11 @@ const isVox = mode === "voxcpm2" || mode === "voxcpm2-0.5b";
 const cvIdx = passArgs.indexOf("--custom-voice");
 const voiceRefIdx = passArgs.indexOf("--voice-ref");
 const explicitRef =
-  cvIdx >= 0 ? passArgs[cvIdx + 1] : voiceRefIdx >= 0 ? passArgs[voiceRefIdx + 1] : null;
+  cvIdx >= 0
+    ? passArgs[cvIdx + 1]
+    : voiceRefIdx >= 0
+      ? passArgs[voiceRefIdx + 1]
+      : null;
 const hasRefFlag = cvIdx >= 0 || voiceRefIdx >= 0;
 
 if (isVox && !flags.has("--no-clone") && !hasRefFlag) {
@@ -127,7 +142,8 @@ if (isVox && !flags.has("--no-clone") && !hasRefFlag) {
 }
 
 const pyEnv = { PYTHONIOENCODING: "utf-8" };
-if (VOX_MODEL[mode] && !process.env.VOXCPM_MODEL) pyEnv.VOXCPM_MODEL = VOX_MODEL[mode];
+if (VOX_MODEL[mode] && !process.env.VOXCPM_MODEL)
+  pyEnv.VOXCPM_MODEL = VOX_MODEL[mode];
 
 const scriptBasename = mode === "bark" ? "voice-bark.py" : "voice-voxcpm.py";
 const hint =

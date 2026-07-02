@@ -5,21 +5,31 @@
 // Prompt assembly: lib/art-slide-prompt.mjs (same visual contract as Comfy art).
 //
 // Requires HIGGSFIELD_API_URL + credentials in env. Next: export, optional reel:higgsfield, reel.
-import { buildPromptSpec, composePromptForFamily, postThemeContext, postSeedOffset } from "./lib/art-slide-prompt.mjs";
-import { parseOnlySlides, selectArtSlides } from "./lib/art-targeting.mjs";
-import { writePostJson } from "./lib/post-io.mjs";
-import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
-import { slideBackgroundExists } from "./lib/public-asset.mjs";
-import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
+
 import {
   DEFAULT_IMAGE_MODEL,
+  healthCheck,
   imageModelCost,
   imageModelFamily,
-  healthCheck,
   renderSlide,
   resolveMode,
 } from "./higgsfield-client.mjs";
-import { buildArtPlan, writeArtPlan, ingestArtPlan } from "./higgsfield-mcp.mjs";
+import {
+  buildArtPlan,
+  ingestArtPlan,
+  writeArtPlan,
+} from "./higgsfield-mcp.mjs";
+import {
+  buildPromptSpec,
+  composePromptForFamily,
+  postSeedOffset,
+  postThemeContext,
+} from "./lib/art-slide-prompt.mjs";
+import { parseOnlySlides, selectArtSlides } from "./lib/art-targeting.mjs";
+import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
+import { writePostJson } from "./lib/post-io.mjs";
+import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
+import { slideBackgroundExists } from "./lib/public-asset.mjs";
 
 const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith("--")));
@@ -76,7 +86,10 @@ if (!key) {
 
 const DRY = flags.has("--dry-run");
 const MODE = resolveMode(opt("mode", ""));
-const MODEL = opt("model", process.env.HIGGSFIELD_IMAGE_MODEL || DEFAULT_IMAGE_MODEL);
+const MODEL = opt(
+  "model",
+  process.env.HIGGSFIELD_IMAGE_MODEL || DEFAULT_IMAGE_MODEL,
+);
 const SEED_BASE = Number(opt("seed", process.env.ART_SEED || "42")) || 42;
 const COOLDOWN_MS = Number(process.env.ART_COOLDOWN_MS || "3000") || 0;
 // Credit budget gate: estimated cost (slides × model rate) must stay ≤ BUDGET unless --yes. Default
@@ -108,27 +121,46 @@ if (MODE === "mcp") {
     const { ingested, missing } = ingestArtPlan(post, postPath);
     console.log(`✓ MCP ingest: patched ${ingested} slide(s) into ${prefix}.`);
     if (missing.length) {
-      console.warn(`⚠ ${missing.length} still missing:\n  - ${missing.join("\n  - ")}`);
-      console.warn(`  Generate the missing PNGs (MCP generate_image → out_path), then re-run --ingest.`);
+      console.warn(
+        `⚠ ${missing.length} still missing:\n  - ${missing.join("\n  - ")}`,
+      );
+      console.warn(
+        `  Generate the missing PNGs (MCP generate_image → out_path), then re-run --ingest.`,
+      );
     } else {
       console.log(`  Next: bun run export -- ${key}`);
     }
     process.exit(missing.length ? 2 : 0);
   }
   // default / --plan: write the manifest the agent will execute.
-  const plan = buildArtPlan(post, { model: MODEL, artExists: artExistsFn, onlySet: onlySetEarly, force: FORCE_EARLY });
+  const plan = buildArtPlan(post, {
+    model: MODEL,
+    artExists: artExistsFn,
+    onlySet: onlySetEarly,
+    force: FORCE_EARLY,
+  });
   if (!plan.slides.length) {
-    console.log("No slides need Higgsfield art for this post (all have backgrounds).");
+    console.log(
+      "No slides need Higgsfield art for this post (all have backgrounds).",
+    );
     process.exit(0);
   }
   const file = writeArtPlan(prefix, plan);
   console.log(`✓ MCP art plan written → ${file}`);
-  console.log(`  ${plan.slides.length} slide(s) · model=${MODEL} · aspect=${plan.canvas.aspect_ratio}\n`);
+  console.log(
+    `  ${plan.slides.length} slide(s) · model=${MODEL} · aspect=${plan.canvas.aspect_ratio}\n`,
+  );
   console.log(`AGENT STEPS (Claude / Hermes):`);
   console.log(`  For each slide in the plan, call the Higgsfield MCP tool:`);
-  console.log(`    generate_image({ prompt: <slide.prompt>, aspect_ratio: "${plan.canvas.aspect_ratio}" })`);
-  console.log(`  Download the resulting image to <slide.out_path> (and optionally write the`);
-  console.log(`  source URL to <slide.url_sidecar> for the reel image-to-video step). Then run:`);
+  console.log(
+    `    generate_image({ prompt: <slide.prompt>, aspect_ratio: "${plan.canvas.aspect_ratio}" })`,
+  );
+  console.log(
+    `  Download the resulting image to <slide.out_path> (and optionally write the`,
+  );
+  console.log(
+    `  source URL to <slide.url_sidecar> for the reel image-to-video step). Then run:`,
+  );
   console.log(`    bun run art:higgsfield -- ${key} --mode=mcp --ingest`);
   process.exit(0);
 }
@@ -141,7 +173,11 @@ if (!DRY) {
 const onlySet = parseOnlySlides(opt("only", ""));
 const FORCE = flags.has("--all") || flags.has("--force");
 const artExists = (s) => slideBackgroundExists(RENDERER, s);
-const targets = selectArtSlides(post.slides ?? [], { onlySet, force: FORCE, artExists });
+const targets = selectArtSlides(post.slides ?? [], {
+  onlySet,
+  force: FORCE,
+  artExists,
+});
 
 if (!targets.length) {
   console.log("No slides need Higgsfield art for this post.");
@@ -152,7 +188,9 @@ if (!targets.length) {
 const family = imageModelFamily(MODEL);
 const unitCost = imageModelCost(MODEL);
 const estTotal = Number((unitCost * targets.length).toFixed(2));
-console.log(`Estimated cost: ${targets.length} slide(s) × ${unitCost} cr (${MODEL}, family=${family}) ≈ ${estTotal} credits.`);
+console.log(
+  `Estimated cost: ${targets.length} slide(s) × ${unitCost} cr (${MODEL}, family=${family}) ≈ ${estTotal} credits.`,
+);
 if (BUDGET > 0 && estTotal > BUDGET && !YES && !DRY) {
   console.error(
     `\n✋ Estimated ${estTotal} credits exceeds the budget cap of ${BUDGET}.\n` +
@@ -162,13 +200,18 @@ if (BUDGET > 0 && estTotal > BUDGET && !YES && !DRY) {
   process.exit(1);
 }
 
-let totalCost = typeof post.renderMetadata?.costEstimate === "number" ? post.renderMetadata.costEstimate : 0;
+let totalCost =
+  typeof post.renderMetadata?.costEstimate === "number"
+    ? post.renderMetadata.costEstimate
+    : 0;
 
 let n = 0;
 for (let ti = 0; ti < targets.length; ti++) {
   const slide = targets[ti];
   const slideIndex = post.slides.indexOf(slide);
-  const styleFusion = String(slide.style_fusion || themeCtx.postStyleFusion || "").trim();
+  const styleFusion = String(
+    slide.style_fusion || themeCtx.postStyleFusion || "",
+  ).trim();
   const spec = buildPromptSpec(slide, { ...themeCtx, styleFusion });
   // Model-aware prompt: no Higgsfield image model takes a negative param, so exclusions (incl. "no
   // text") are baked into the positive prompt; flux gets the rich house prose, others natural language.
@@ -176,11 +219,14 @@ for (let ti = 0; ti < targets.length; ti++) {
   const seed = postBaseSeed + slide.slide;
 
   if (DRY) {
-    console.log(`\n[slide ${slide.slide} ${slide.role}] seed=${seed} family=${family}\n  ${promptText}${negative ? `\n  (negative: ${negative.slice(0, 80)}…)` : ""}`);
+    console.log(
+      `\n[slide ${slide.slide} ${slide.role}] seed=${seed} family=${family}\n  ${promptText}${negative ? `\n  (negative: ${negative.slice(0, 80)}…)` : ""}`,
+    );
     continue;
   }
 
-  if (COOLDOWN_MS && ti > 0) await new Promise((r) => setTimeout(r, COOLDOWN_MS));
+  if (COOLDOWN_MS && ti > 0)
+    await new Promise((r) => setTimeout(r, COOLDOWN_MS));
 
   process.stdout.write(`  slide ${slide.slide} (${slide.role})… `);
   const t0 = Date.now();
@@ -203,15 +249,21 @@ for (let ti = 0; ti < targets.length; ti++) {
       model: MODEL,
       costEstimate: Number(totalCost.toFixed(4)),
     };
-    process.stdout.write(`\r  slide ${slide.slide} (${slide.role})… ✓ (${((Date.now() - t0) / 1000).toFixed(0)}s)\n`);
+    process.stdout.write(
+      `\r  slide ${slide.slide} (${slide.role})… ✓ (${((Date.now() - t0) / 1000).toFixed(0)}s)\n`,
+    );
     n++;
   } catch (e) {
-    process.stdout.write(`\r  slide ${slide.slide} (${slide.role})… ✗ ${e.message}\n`);
+    process.stdout.write(
+      `\r  slide ${slide.slide} (${slide.role})… ✗ ${e.message}\n`,
+    );
   }
 }
 
 if (!DRY && n > 0) {
   writePostJson(postPath, post);
-  console.log(`\n✓ Higgsfield generated ${n}/${targets.length} background(s) → public/backgrounds/${prefix}/`);
+  console.log(
+    `\n✓ Higgsfield generated ${n}/${targets.length} background(s) → public/backgrounds/${prefix}/`,
+  );
   console.log(`  Next: bun run export -- ${key}`);
 }

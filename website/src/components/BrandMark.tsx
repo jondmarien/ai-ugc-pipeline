@@ -9,7 +9,13 @@ export function BrandMark({ compact = false }: { compact?: boolean }) {
       aria-label="Chrono's Cyber World of AI — home"
     >
       <span className="relative inline-grid place-items-center">
-        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden>
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 32 32"
+          fill="none"
+          aria-hidden="true"
+        >
           <circle cx="16" cy="16" r="13" stroke="#2a3548" strokeWidth="1.5" />
           <circle
             cx="16"
@@ -21,8 +27,24 @@ export function BrandMark({ compact = false }: { compact?: boolean }) {
             strokeLinecap="round"
             className="origin-center transition-transform duration-700 group-hover:rotate-[80deg]"
           />
-          <line x1="16" y1="16" x2="16" y2="8" stroke="#f8fafc" strokeWidth="1.5" strokeLinecap="round" />
-          <line x1="16" y1="16" x2="21" y2="18" stroke="#a855f7" strokeWidth="1.5" strokeLinecap="round" />
+          <line
+            x1="16"
+            y1="16"
+            x2="16"
+            y2="8"
+            stroke="#f8fafc"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+          <line
+            x1="16"
+            y1="16"
+            x2="21"
+            y2="18"
+            stroke="#a855f7"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
           <circle cx="16" cy="16" r="1.6" fill="#f8fafc" />
           <defs>
             <linearGradient id="bm" x1="3" y1="3" x2="29" y2="29">
