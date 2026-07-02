@@ -11,6 +11,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHmac } from "node:crypto";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 // renderer/.secrets/ — three levels up from renderer/scripts/publish/auth/
@@ -33,6 +34,17 @@ export const scopes = [
 // A Page token derived from a long-lived user token is re-verified at most once
 // per this window to avoid burning an API call on every publish run.
 const VERIFY_INTERVAL_SEC = 24 * 60 * 60;
+
+/**
+ * HMAC-SHA256(access_token, app_secret) — required as `appsecret_proof` on every
+ * Graph API call authenticated with a User or Page access token once the app's
+ * "Require app secret" setting is enabled (App Dashboard > Settings > Advanced).
+ * Not needed for calls using an app access token (e.g. `appId|appSecret` as the
+ * `access_token` value, as debugToken does) since that already proves app identity.
+ */
+export function appSecretProof(accessToken: string, appSecret: string): string {
+  return createHmac("sha256", appSecret).update(accessToken).digest("hex");
+}
 
 // ---------------------------------------------------------------------------
 // Types
@@ -99,6 +111,26 @@ export function pickPageWithInstagram(accounts: PageAccount[]): PageAccount | un
   return accounts.find((a) => a.instagram_business_account?.id);
 }
 
+/**
+ * Extract the Page id + Instagram user id from a token's granular_scopes.
+ *
+ * Meta's newer asset-scoped consent flow (triggered by the IG_API_ONBOARDING extras
+ * param) grants access to specific Page/IG asset ids without necessarily making that
+ * Page enumerable via the legacy GET /me/accounts endpoint — that endpoint only lists
+ * Pages the user broadly manages, not ones granted via narrow asset-scoped consent.
+ * When /me/accounts comes back empty, the granted ids are still right here on the
+ * token and can be used directly instead.
+ */
+export function extractGrantedIds(
+  granularScopes: DebugTokenData["granular_scopes"],
+): { pageId: string | null; igUserId: string | null } {
+  const targetFor = (scope: string): string | null =>
+    granularScopes?.find((g) => g.scope === scope)?.target_ids?.[0] ?? null;
+  const pageId = targetFor("pages_manage_posts") ?? targetFor("pages_show_list") ?? targetFor("pages_read_engagement");
+  const igUserId = targetFor("instagram_content_publish") ?? targetFor("instagram_basic");
+  return { pageId, igUserId };
+}
+
 // ---------------------------------------------------------------------------
 // Network steps
 // ---------------------------------------------------------------------------
@@ -127,11 +159,16 @@ export async function exchangeLongLivedToken(
 /** GET /me/accounts — Pages the user manages, each with a Page token + linked IG account. */
 export async function fetchPageAccounts(
   userAccessToken: string,
+  appSecret: string,
   fetchImpl: typeof fetch = fetch,
 ): Promise<PageAccount[]> {
   const params = new URLSearchParams({
-    fields: "id,name,access_token,instagram_business_account",
+    // Expanding instagram_business_account{id,username} (rather than the bare field)
+    // is the pattern Meta's own current examples use; some accounts don't populate the
+    // bare field but do populate the expanded one.
+    fields: "id,name,access_token,instagram_business_account{id,username}",
     access_token: userAccessToken,
+    appsecret_proof: appSecretProof(userAccessToken, appSecret),
   });
   const resp = await fetchImpl(`${GRAPH_BASE}/me/accounts?${params.toString()}`);
   if (!resp.ok) {
@@ -142,13 +179,73 @@ export async function fetchPageAccounts(
   return json.data ?? [];
 }
 
-/** GET /debug_token — liveness check for a Page access token. */
+/**
+ * Fallback per-Page lookup: some accounts don't populate instagram_business_account on
+ * the aggregate /me/accounts call but do return it when queried directly on the Page,
+ * using the PAGE's own access token rather than the user token.
+ */
+export async function fetchInstagramAccountForPage(
+  pageId: string,
+  pageAccessToken: string,
+  appSecret: string,
+  fetchImpl: typeof fetch = fetch,
+): Promise<{ id: string; username?: string } | null> {
+  const params = new URLSearchParams({
+    fields: "instagram_business_account{id,username}",
+    access_token: pageAccessToken,
+    appsecret_proof: appSecretProof(pageAccessToken, appSecret),
+  });
+  const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}?${params.toString()}`);
+  if (!resp.ok) {
+    const text = await resp.text();
+    console.error(`[publish:auth] Per-Page IG lookup for ${pageId} failed: ${resp.status} — ${text}`);
+    return null;
+  }
+  const json = (await resp.json()) as { instagram_business_account?: { id: string; username?: string } };
+  return json.instagram_business_account ?? null;
+}
+
+/**
+ * Direct by-id Page lookup — the counterpart to extractGrantedIds(). Fetches the Page's
+ * name + access token using the USER access token, bypassing /me/accounts entirely.
+ * Used when the token was granted via the narrow asset-scoped consent flow, where the
+ * granted Page id is already known (from granular_scopes) but isn't enumerable via
+ * /me/accounts.
+ */
+export async function fetchPageDetails(
+  pageId: string,
+  userAccessToken: string,
+  appSecret: string,
+  fetchImpl: typeof fetch = fetch,
+): Promise<{ id: string; name: string; access_token: string } | null> {
+  const params = new URLSearchParams({
+    fields: "id,name,access_token",
+    access_token: userAccessToken,
+    appsecret_proof: appSecretProof(userAccessToken, appSecret),
+  });
+  const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}?${params.toString()}`);
+  if (!resp.ok) {
+    const text = await resp.text();
+    console.error(`[publish:auth] Direct Page lookup for ${pageId} failed: ${resp.status} — ${text}`);
+    return null;
+  }
+  return (await resp.json()) as { id: string; name: string; access_token: string };
+}
+
+export type DebugTokenData = {
+  is_valid: boolean;
+  expires_at?: number;
+  scopes?: string[];
+  granular_scopes?: Array<{ scope: string; target_ids?: string[] }>;
+};
+
+/** GET /debug_token — liveness check for a Page access token, and (used at auth time) a way to see the actual granted scopes/assets on a token, ground-truth vs. what the consent dialog displayed. */
 export async function debugToken(
   inputToken: string,
   appId: string,
   appSecret: string,
   fetchImpl: typeof fetch = fetch,
-): Promise<{ is_valid: boolean; expires_at?: number }> {
+): Promise<DebugTokenData> {
   const params = new URLSearchParams({
     input_token: inputToken,
     access_token: `${appId}|${appSecret}`,
@@ -158,7 +255,7 @@ export async function debugToken(
     const text = await resp.text();
     throw new Error(`Meta /debug_token failed: ${resp.status} — ${text}`);
   }
-  const json = (await resp.json()) as { data?: { is_valid: boolean; expires_at?: number } };
+  const json = (await resp.json()) as { data?: DebugTokenData };
   return json.data ?? { is_valid: false };
 }
 

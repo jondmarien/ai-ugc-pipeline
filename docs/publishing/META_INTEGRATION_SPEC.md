@@ -50,6 +50,58 @@ Meta's app creation flow is now **use-case-driven** (the old "add products indiv
 3. Request only: `pages_show_list`, `pages_read_engagement`, `pages_manage_posts`, `instagram_basic`, `instagram_content_publish` (+ `business_management` only if needed). Standard Access with Jon's own account as admin/tester is enough — no public App Review needed.
 4. Credentials go in `renderer/.env`: `META_APP_ID`, `META_APP_SECRET`. Page ID + IG Business Account ID are resolved at auth time via `/me/accounts`, not hand-entered.
 
+## OAuth flow — issues hit during real setup, and the fixes (in the order encountered)
+
+Getting `bun run publish:auth meta` to actually complete, against a real Meta app, surfaced five distinct problems beyond what any single doc page covers. Recorded here in full so nobody has to rediscover this.
+
+### 1. "Can't load URL" / App Domains rejects `localhost`
+
+**Symptom:** Meta's App Dashboard → Settings → Basic → App Domains field refuses to accept `localhost` as a domain.
+
+**Cause/fix:** App Domains is for JS-SDK/website domain verification, not for the server-side `/dialog/oauth` redirect-code flow this tool uses. It should be left **empty**. The actual place the redirect URI needs to be registered is **Facebook Login for Business → Settings → Valid OAuth Redirect URIs** — add `http://localhost:8788/callback` there and Save. The "Check URI" tool on the App Domains page was failing because that Valid OAuth Redirect URIs field was still empty, not because localhost is disallowed. The app must also stay in **Development** mode — Live apps require HTTPS redirect URIs.
+
+### 2. "Invalid Scopes: pages_read_engagement, pages_manage_posts, instagram_basic, instagram_content_publish"
+
+**Symptom:** Only `pages_show_list` was accepted; the rest of the requested scopes were rejected outright by the OAuth dialog.
+
+**Cause/fix:** The use-case wizard doesn't always fully attach every permission it implies. Go to **App Dashboard → App Review → Permissions and Features**, find each permission, and confirm it's actually added to the app (Standard Access is enough for testing — no App Review submission needed for a single-owner app). If a permission never shows there, go back into the **Use cases** customization screens ("Manage everything on your Page" / "Manage messaging & content on Instagram") and make sure each is checked and saved. Also confirm the authorizing account has an Admin/Developer role on the app, and that the Page + IG account live in the same Business Portfolio the app is connected to.
+
+(Note: do **not** switch to the `instagram_business_basic`/`instagram_business_content_publish` permission names — those belong to the separate "Instagram API with Instagram Login" product. `instagram_basic`/`instagram_content_publish` are correct for the **Facebook Login** path this tool uses.)
+
+### 3. "API calls from the server require an appsecret_proof argument"
+
+**Symptom:** After scopes were fixed, the OAuth code exchange succeeded but `GET /me/accounts` failed with a 400 and this message.
+
+**Cause:** The app has **"Require app secret"** enabled (Settings → Advanced) — a real security setting, not a misconfiguration to undo. Once enabled, every Graph API call authenticated with a **User or Page** access token must include `appsecret_proof` (`HMAC-SHA256(access_token, app_secret)` as a hex digest). Calls authenticated with an **app** access token (`appId|appSecret`, e.g. `debugToken`) don't need it.
+
+**Fix:** `renderer/scripts/publish/auth/meta.ts` exports `appSecretProof(accessToken, appSecret)`. It's applied to `fetchPageAccounts`, `fetchInstagramAccountForPage`, `fetchPageDetails`, and every Page-token Graph call in `adapters/facebook.ts`/`adapters/instagram.ts` (via each file's local `withProof()` helper).
+
+### 4. "No Facebook Page with a linked Instagram Business account was found" (attempt 1 — asset picker never shown)
+
+**Symptom:** `/me/accounts` succeeded and returned the Page, but `instagram_business_account` was absent even though the Page genuinely has a linked Instagram account.
+
+**Cause/fix:** The authorization URL was missing two parameters Meta's own docs specify for triggering the Instagram asset-picker during consent: `display=page` and `extras={"setup":{"channel":"IG_API_ONBOARDING"}}`. Without them, standard Facebook Login only asks the user to approve Page access — it never surfaces the "select which Instagram account to grant" step, so the field comes back empty regardless of how the Page and IG account are actually connected on Meta's side. Both params were added to the authorization URL built in `cli.mjs`'s `runMeta()`.
+
+### 5. "No Facebook Page with a linked Instagram Business account was found" (attempt 2 — the real root cause)
+
+**Symptom:** After fix #4, the asset-picker *did* show up and the user granted access to both the Page and the Instagram account — but `/me/accounts` still returned **zero Pages** (not "a Page with no IG link" — no Pages at all).
+
+**Diagnosis:** Added instrumentation to `runMeta()` to call `GET /debug_token` on the freshly-minted user token and print its `scopes` and `granular_scopes`. This showed the token legitimately had `pages_show_list`/`pages_manage_posts`/`pages_read_engagement` granted for one specific Page id, and `instagram_basic`/`instagram_content_publish` granted for one specific Instagram user id — the assets **were** granted. The problem was `/me/accounts` itself: that endpoint only enumerates Pages the user **broadly** manages. It does not enumerate Pages/assets granted through the newer **asset-scoped** consent flow that the `IG_API_ONBOARDING` extras param (fix #4) triggers. Asking `/me/accounts` "what do you manage" and asking the token "what were you granted" are different questions, and only the second one has the answer when consent was asset-scoped.
+
+**Fix:** `extractGrantedIds(granularScopes)` (pure, unit-tested in `meta.test.ts`) pulls the granted Page id and Instagram user id straight off `granular_scopes`. `fetchPageDetails(pageId, userAccessToken, appSecret)` fetches that Page's name + access token directly by id — bypassing `/me/accounts` entirely. `runMeta()` tries, in order: (1) `/me/accounts` + `pickPageWithInstagram`, (2) a per-Page direct `instagram_business_account` lookup as a fallback, (3) if both come back empty, extract the granted ids from `granular_scopes` and fetch the Page directly by id. Accounts that enumerate normally via `/me/accounts` are unaffected — this only kicks in when that path comes up empty.
+
+**End state confirmed working:**
+```
+[publish:auth] Pages returned by /me/accounts: 0
+[publish:auth] /me/accounts had no match — using granted asset ids directly: page=<PAGE_ID> ig=<IG_USER_ID>
+
+[publish:auth] Meta authorization complete.
+[publish:auth] Page: <name> (<PAGE_ID>)
+[publish:auth] Instagram Business Account: <IG_USER_ID>
+[publish:auth] Granted scopes: pages_show_list, pages_read_engagement, pages_manage_posts, instagram_basic, instagram_content_publish
+[publish:auth] Token written to renderer/.secrets/meta.json
+```
+
 ## `.secrets/meta.json` shape
 
 ```json

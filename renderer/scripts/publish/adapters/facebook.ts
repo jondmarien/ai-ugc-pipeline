@@ -1,7 +1,14 @@
 import { readFileSync, statSync } from "node:fs";
 import type { PlatformAdapter, RenderPackage, AdapterResult, PublishOpts } from "../types";
 import { loadPublishConfig } from "../config";
-import { getMetaCredentials, GRAPH_BASE } from "../auth/meta";
+import { getMetaCredentials, GRAPH_BASE, appSecretProof } from "../auth/meta";
+
+// Every call below is authenticated with a Page access token (user-derived), so it needs
+// appsecret_proof once the app's "Require app secret" setting is enabled.
+function withProof(pageAccessToken: string, params: Record<string, string>): Record<string, string> {
+  const appSecret = process.env.META_APP_SECRET ?? "";
+  return { ...params, appsecret_proof: appSecretProof(pageAccessToken, appSecret) };
+}
 
 // ---------------------------------------------------------------------------
 // Facebook Page video publish — resumable upload API (POST /<PAGE_ID>/videos).
@@ -74,11 +81,13 @@ async function startUpload(
   pageAccessToken: string,
   fileSizeBytes: number,
 ): Promise<StartResponse> {
-  const params = new URLSearchParams({
-    upload_phase: "start",
-    file_size: String(fileSizeBytes),
-    access_token: pageAccessToken,
-  });
+  const params = new URLSearchParams(
+    withProof(pageAccessToken, {
+      upload_phase: "start",
+      file_size: String(fileSizeBytes),
+      access_token: pageAccessToken,
+    }),
+  );
   const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}/videos?${params.toString()}`, { method: "POST" });
   if (!resp.ok) {
     const text = await resp.text();
@@ -100,6 +109,7 @@ async function transferChunk(
   form.set("start_offset", startOffset);
   form.set("upload_session_id", uploadSessionId);
   form.set("access_token", pageAccessToken);
+  form.set("appsecret_proof", appSecretProof(pageAccessToken, process.env.META_APP_SECRET ?? ""));
   form.set("video_file_chunk", new Blob([new Uint8Array(bytes)]));
 
   const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}/videos`, { method: "POST", body: form });
@@ -119,14 +129,16 @@ async function finishUpload(
   description: string,
   published: boolean,
 ): Promise<FinishResponse> {
-  const params = new URLSearchParams({
-    upload_phase: "finish",
-    upload_session_id: uploadSessionId,
-    access_token: pageAccessToken,
-    title,
-    description,
-    published: String(published),
-  });
+  const params = new URLSearchParams(
+    withProof(pageAccessToken, {
+      upload_phase: "finish",
+      upload_session_id: uploadSessionId,
+      access_token: pageAccessToken,
+      title,
+      description,
+      published: String(published),
+    }),
+  );
   const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}/videos?${params.toString()}`, { method: "POST" });
   if (!resp.ok) {
     const text = await resp.text();
