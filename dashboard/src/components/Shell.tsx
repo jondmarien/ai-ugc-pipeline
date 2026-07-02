@@ -12,6 +12,7 @@ export const MODULES: { key: ModuleKey; label: string; theme: string }[] = [
   { key: "calendar", label: "Calendar", theme: "theme-purple-team" },
   { key: "trending", label: "What's Trending", theme: "theme-ai" },
   { key: "meta", label: "Meta", theme: "theme-offensive" },
+  { key: "comments", label: "Comments", theme: "theme-offensive" },
 ];
 
 export function Shell({

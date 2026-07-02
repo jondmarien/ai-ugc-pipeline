@@ -13,7 +13,18 @@ export type ModuleKey =
   | "scheduler"
   | "calendar"
   | "trending"
-  | "meta";
+  | "meta"
+  | "comments";
+
+export type IgComment = {
+  id: string;
+  text: string;
+  username?: string;
+  timestamp: string;
+  like_count?: number;
+  hidden?: boolean;
+  replies?: IgComment[];
+};
 
 /** Mirrors renderer/scripts/publish/state.ts's PublishResult shape — not imported,
  * since dashboard has no dependency on the renderer project. */
