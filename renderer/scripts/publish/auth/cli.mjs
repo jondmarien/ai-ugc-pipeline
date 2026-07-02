@@ -394,7 +394,7 @@ async function runMeta() {
           const nowSec = Math.floor(Date.now() / 1000);
 
           // Resolve the Page (+ linked IG Business Account) the user manages.
-          const accounts = await fetchPageAccounts(longLived.access_token);
+          const accounts = await fetchPageAccounts(longLived.access_token, appSecret);
           const page = pickPageWithInstagram(accounts);
           if (!page) {
             throw new Error(

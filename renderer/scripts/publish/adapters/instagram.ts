@@ -1,7 +1,14 @@
 import type { PlatformAdapter, RenderPackage, AdapterResult, PublishOpts } from "../types";
 import { loadPublishConfig } from "../config";
-import { getMetaCredentials, GRAPH_BASE } from "../auth/meta";
+import { getMetaCredentials, GRAPH_BASE, appSecretProof } from "../auth/meta";
 import { uploadTemp, type TempUpload } from "./lib/temp-hosting";
+
+// Every call below is authenticated with a Page access token (user-derived), so it needs
+// appsecret_proof once the app's "Require app secret" setting is enabled.
+function withProof(pageAccessToken: string, params: Record<string, string>): Record<string, string> {
+  const appSecret = process.env.META_APP_SECRET ?? "";
+  return { ...params, appsecret_proof: appSecretProof(pageAccessToken, appSecret) };
+}
 
 // ---------------------------------------------------------------------------
 // Instagram Graph API — Reels and Carousel publish.
@@ -110,14 +117,16 @@ async function createReelsContainer(
   caption: string,
   trialReels: boolean,
 ): Promise<ContainerCreateResponse> {
-  const params = new URLSearchParams({
-    media_type: "REELS",
-    video_url: videoUrl,
-    caption,
-    share_to_feed: "true",
-    is_ai_generated: "true",
-    access_token: pageAccessToken,
-  });
+  const params = new URLSearchParams(
+    withProof(pageAccessToken, {
+      media_type: "REELS",
+      video_url: videoUrl,
+      caption,
+      share_to_feed: "true",
+      is_ai_generated: "true",
+      access_token: pageAccessToken,
+    }),
+  );
   if (trialReels) {
     params.set("trial_params", JSON.stringify({ graduation_strategy: "MANUAL" }));
   }
@@ -136,11 +145,13 @@ async function createCarouselChildContainer(
   imageUrl: string,
   altText: string,
 ): Promise<ContainerCreateResponse> {
-  const params = new URLSearchParams({
-    image_url: imageUrl,
-    is_carousel_item: "true",
-    access_token: pageAccessToken,
-  });
+  const params = new URLSearchParams(
+    withProof(pageAccessToken, {
+      image_url: imageUrl,
+      is_carousel_item: "true",
+      access_token: pageAccessToken,
+    }),
+  );
   if (altText) params.set("alt_text", altText);
   const resp = await fetchImpl(`${GRAPH_BASE}/${igUserId}/media?${params.toString()}`, { method: "POST" });
   if (!resp.ok) {
@@ -157,13 +168,15 @@ async function createCarouselParentContainer(
   childrenIds: string[],
   caption: string,
 ): Promise<ContainerCreateResponse> {
-  const params = new URLSearchParams({
-    media_type: "CAROUSEL",
-    children: childrenIds.join(","),
-    caption,
-    is_ai_generated: "true", // only the parent carousel container may set this — children error if set
-    access_token: pageAccessToken,
-  });
+  const params = new URLSearchParams(
+    withProof(pageAccessToken, {
+      media_type: "CAROUSEL",
+      children: childrenIds.join(","),
+      caption,
+      is_ai_generated: "true", // only the parent carousel container may set this — children error if set
+      access_token: pageAccessToken,
+    }),
+  );
   const resp = await fetchImpl(`${GRAPH_BASE}/${igUserId}/media?${params.toString()}`, { method: "POST" });
   if (!resp.ok) {
     const text = await resp.text();
@@ -177,7 +190,9 @@ async function checkContainerStatus(
   containerId: string,
   pageAccessToken: string,
 ): Promise<ContainerStatusResponse> {
-  const params = new URLSearchParams({ fields: "status_code,status", access_token: pageAccessToken });
+  const params = new URLSearchParams(
+    withProof(pageAccessToken, { fields: "status_code,status", access_token: pageAccessToken }),
+  );
   const resp = await fetchImpl(`${GRAPH_BASE}/${containerId}?${params.toString()}`);
   if (!resp.ok) {
     const text = await resp.text();
@@ -192,7 +207,9 @@ async function publishContainer(
   containerId: string,
   pageAccessToken: string,
 ): Promise<PublishResponse> {
-  const params = new URLSearchParams({ creation_id: containerId, access_token: pageAccessToken });
+  const params = new URLSearchParams(
+    withProof(pageAccessToken, { creation_id: containerId, access_token: pageAccessToken }),
+  );
   const resp = await fetchImpl(`${GRAPH_BASE}/${igUserId}/media_publish?${params.toString()}`, { method: "POST" });
   if (!resp.ok) {
     const text = await resp.text();

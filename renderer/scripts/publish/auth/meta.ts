@@ -11,6 +11,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHmac } from "node:crypto";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 // renderer/.secrets/ — three levels up from renderer/scripts/publish/auth/
@@ -33,6 +34,17 @@ export const scopes = [
 // A Page token derived from a long-lived user token is re-verified at most once
 // per this window to avoid burning an API call on every publish run.
 const VERIFY_INTERVAL_SEC = 24 * 60 * 60;
+
+/**
+ * HMAC-SHA256(access_token, app_secret) — required as `appsecret_proof` on every
+ * Graph API call authenticated with a User or Page access token once the app's
+ * "Require app secret" setting is enabled (App Dashboard > Settings > Advanced).
+ * Not needed for calls using an app access token (e.g. `appId|appSecret` as the
+ * `access_token` value, as debugToken does) since that already proves app identity.
+ */
+export function appSecretProof(accessToken: string, appSecret: string): string {
+  return createHmac("sha256", appSecret).update(accessToken).digest("hex");
+}
 
 // ---------------------------------------------------------------------------
 // Types
@@ -127,11 +139,13 @@ export async function exchangeLongLivedToken(
 /** GET /me/accounts — Pages the user manages, each with a Page token + linked IG account. */
 export async function fetchPageAccounts(
   userAccessToken: string,
+  appSecret: string,
   fetchImpl: typeof fetch = fetch,
 ): Promise<PageAccount[]> {
   const params = new URLSearchParams({
     fields: "id,name,access_token,instagram_business_account",
     access_token: userAccessToken,
+    appsecret_proof: appSecretProof(userAccessToken, appSecret),
   });
   const resp = await fetchImpl(`${GRAPH_BASE}/me/accounts?${params.toString()}`);
   if (!resp.ok) {
