@@ -342,6 +342,11 @@ async function runMeta() {
     redirect_uri: REDIRECT_URI,
     response_type: "code",
     scope: scopes.join(","),
+    // Required to trigger the Instagram asset-picker during consent — without these,
+    // Facebook Login only grants Page access and /me/accounts never returns
+    // instagram_business_account, even for a Page that IS linked to an IG account.
+    display: "page",
+    extras: JSON.stringify({ setup: { channel: "IG_API_ONBOARDING" } }),
   });
   const authUrl = `https://www.facebook.com/${GRAPH_API_VERSION}/dialog/oauth?${params.toString()}`;
 
