@@ -23,7 +23,8 @@
       "!renderer/remotion",
       "!dashboard/src/design",
       "!**/*.d.mts",
-      "!**/bun.lock"
+      "!**/bun.lock",
+      "!**/*.css"
     ]
   },
   "formatter": {
