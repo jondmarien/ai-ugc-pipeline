@@ -5,6 +5,7 @@ import { Analytics } from "./modules/analytics/Analytics";
 import { CalendarView } from "./modules/calendar/Calendar";
 import { Competitors } from "./modules/competitors/Competitors";
 import { HookVault } from "./modules/hooks/HookVault";
+import { Meta } from "./modules/meta/Meta";
 import { Overview } from "./modules/overview/Overview";
 import { Scheduler } from "./modules/scheduler/Scheduler";
 import { Trending } from "./modules/trending/Trending";
@@ -17,6 +18,7 @@ const VIEWS: Record<ModuleKey, React.ComponentType> = {
   scheduler: Scheduler,
   calendar: CalendarView,
   trending: Trending,
+  meta: Meta,
 };
 
 export default function App() {

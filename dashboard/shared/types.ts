@@ -12,9 +12,8 @@ export type ModuleKey =
   | "competitors"
   | "scheduler"
   | "calendar"
-  | "trending";
-// "meta" is added to this union in Phase 3, once the frontend module + Shell tab exist —
-// adding it earlier breaks App.tsx's Record<ModuleKey, ComponentType> compile-time check.
+  | "trending"
+  | "meta";
 
 /** Mirrors renderer/scripts/publish/state.ts's PublishResult shape — not imported,
  * since dashboard has no dependency on the renderer project. */

@@ -8,6 +8,7 @@ const MODULES = [
   "Scheduler",
   "Calendar",
   "What's Trending",
+  "Meta",
 ];
 
 test("every module renders and screenshots", async ({ page }) => {

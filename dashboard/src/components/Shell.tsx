@@ -11,6 +11,7 @@ export const MODULES: { key: ModuleKey; label: string; theme: string }[] = [
   { key: "scheduler", label: "Scheduler", theme: "theme-purple-team" },
   { key: "calendar", label: "Calendar", theme: "theme-purple-team" },
   { key: "trending", label: "What's Trending", theme: "theme-ai" },
+  { key: "meta", label: "Meta", theme: "theme-offensive" },
 ];
 
 export function Shell({
@@ -35,6 +36,7 @@ export function Shell({
         {MODULES.map((m) => (
           <button
             key={m.key}
+            type="button"
             className={`nav-item ${m.theme} ${m.key === active ? "active" : ""}`}
             onClick={() => onNav(m.key)}
           >
@@ -42,7 +44,7 @@ export function Shell({
           </button>
         ))}
         <div className="sidebar-footer">
-          <button className="chip" onClick={() => refreshAll(qc)}>
+          <button type="button" className="chip" onClick={() => refreshAll(qc)}>
             Refresh
           </button>
           <span className="meta-caps">IG {ageLabel(account.fetchedAt)}</span>
