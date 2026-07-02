@@ -14,9 +14,9 @@
 // or:
 //   cd renderer && bun scripts/fit-smoke.mjs
 
-import { build, preview } from "vite";
-import { fileURLToPath } from "url";
 import path from "path";
+import { fileURLToPath } from "url";
+import { build, preview } from "vite";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -51,7 +51,9 @@ async function spawnAsync(cmd, args, timeoutMs) {
     new Promise((_, reject) =>
       setTimeout(() => {
         // Kill the child so a hung Chromium isn't orphaned.
-        try { proc.kill(); } catch (_) {}
+        try {
+          proc.kill();
+        } catch (_) {}
         reject(new Error(`subprocess timeout after ${timeoutMs}ms`));
       }, timeoutMs),
     ),
@@ -68,11 +70,18 @@ async function spawnAsync(cmd, args, timeoutMs) {
   try {
     // Build once (deterministic — no dev server HMR noise).
     console.log("  [fit-smoke] vite build…");
-    await build({ root: ROOT, logLevel: "warn", build: { outDir: "dist", emptyOutDir: true } });
+    await build({
+      root: ROOT,
+      logLevel: "warn",
+      build: { outDir: "dist", emptyOutDir: true },
+    });
 
     // Serve the static build on port 4317.
     console.log("  [fit-smoke] vite preview…");
-    server = await preview({ root: ROOT, preview: { port: PORT, strictPort: true } });
+    server = await preview({
+      root: ROOT,
+      preview: { port: PORT, strictPort: true },
+    });
     console.log("  [fit-smoke] server ready on :" + PORT);
 
     const url = `http://localhost:${PORT}/?post=${encodeURIComponent(POST_KEY)}&slide=${SLIDE}`;
@@ -80,7 +89,11 @@ async function spawnAsync(cmd, args, timeoutMs) {
 
     // Spawn Playwright under Node/tsx — avoids the Bun↔Chromium hang.
     // Async spawn keeps the Bun event loop alive so the vite preview can serve the page.
-    const { stdout, stderr, exitCode } = await spawnAsync(TSX_BIN, [helperScript, url], 60_000);
+    const { stdout, stderr, exitCode } = await spawnAsync(
+      TSX_BIN,
+      [helperScript, url],
+      60_000,
+    );
 
     if (exitCode !== 0) {
       throw new Error(
@@ -106,8 +119,10 @@ async function spawnAsync(cmd, args, timeoutMs) {
     if (!dbg) throw new Error("FAIL: dbg is not defined");
 
     // Scale must be positive and at most 1.
-    if (!(dbg.scale > 0)) throw new Error(`FAIL: scale must be > 0, got ${dbg.scale}`);
-    if (!(dbg.scale <= 1)) throw new Error(`FAIL: scale must be <= 1, got ${dbg.scale}`);
+    if (!(dbg.scale > 0))
+      throw new Error(`FAIL: scale must be > 0, got ${dbg.scale}`);
+    if (!(dbg.scale <= 1))
+      throw new Error(`FAIL: scale must be <= 1, got ${dbg.scale}`);
 
     // Contract: copy never silently clips — it fits at the chosen scale, or it hit the
     // legibility floor (in which case the copy-budget validator flags it for shortening).

@@ -33,13 +33,13 @@
 //   width, height). A credential change does NOT invalidate the cache; bump cacheBreaker when
 //   switching accounts or models.
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { createHash } from "node:crypto";
-import { backgroundFileName } from "./lib/slide-filename.mjs";
 import { buildNegativePrompt as buildNegativePromptFromLib } from "./lib/flux-negative-prompt.mjs";
+import { backgroundFileName } from "./lib/slide-filename.mjs";
 
 const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
 const CACHE_DIR = path.join(RENDERER, ".cache", "higgsfield");
@@ -60,19 +60,120 @@ export const MODEL_CATALOG = Object.freeze({
   // `higgsfield generate cost`); null = unknown / not a plain text→image (e.g. cinematic_studio_image
   // requires camera params we don't supply — kept for compatibility but not recommended).
   image: [
-    { id: "soul-2.0", name: "Soul 2.0", type: "image", apiModelId: "higgsfield-ai/soul/standard", cliJobSetType: "text2image_soul_v2", cliExtraArgs: ["--quality", "2k"], mcpModel: "soul", promptFamily: "soul", creditCost: 0.12, defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
-    { id: "cinema-studio-3.0", name: "Cinema Studio 3.0", type: "image", apiModelId: "higgsfield-ai/soul/standard", cliJobSetType: "cinematic_studio_image", cliExtraArgs: [], mcpModel: "soul", promptFamily: "soul", creditCost: null, defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
-    { id: "flux", name: "Flux", type: "image", apiModelId: "reve/text-to-image", cliJobSetType: "flux_2", cliExtraArgs: ["--resolution", "2k"], mcpModel: "flux", promptFamily: "flux", creditCost: 1, defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
-    { id: "gpt-image-2", name: "GPT Image 2", type: "image", apiModelId: "reve/text-to-image", cliJobSetType: "gpt_image_2", cliExtraArgs: [], mcpModel: "gpt-image", promptFamily: "gpt", creditCost: 7, defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
-    { id: "seedream-4.5", name: "Seedream 4.5", type: "image", apiModelId: "reve/text-to-image", cliJobSetType: "seedream_v4_5", cliExtraArgs: [], mcpModel: "seedream", promptFamily: "seedream", creditCost: 1, defaultSize: [1024, 1280], aspectRatio: "4:5", resolution: "720p" },
+    {
+      id: "soul-2.0",
+      name: "Soul 2.0",
+      type: "image",
+      apiModelId: "higgsfield-ai/soul/standard",
+      cliJobSetType: "text2image_soul_v2",
+      cliExtraArgs: ["--quality", "2k"],
+      mcpModel: "soul",
+      promptFamily: "soul",
+      creditCost: 0.12,
+      defaultSize: [1024, 1280],
+      aspectRatio: "4:5",
+      resolution: "720p",
+    },
+    {
+      id: "cinema-studio-3.0",
+      name: "Cinema Studio 3.0",
+      type: "image",
+      apiModelId: "higgsfield-ai/soul/standard",
+      cliJobSetType: "cinematic_studio_image",
+      cliExtraArgs: [],
+      mcpModel: "soul",
+      promptFamily: "soul",
+      creditCost: null,
+      defaultSize: [1024, 1280],
+      aspectRatio: "4:5",
+      resolution: "720p",
+    },
+    {
+      id: "flux",
+      name: "Flux",
+      type: "image",
+      apiModelId: "reve/text-to-image",
+      cliJobSetType: "flux_2",
+      cliExtraArgs: ["--resolution", "2k"],
+      mcpModel: "flux",
+      promptFamily: "flux",
+      creditCost: 1,
+      defaultSize: [1024, 1280],
+      aspectRatio: "4:5",
+      resolution: "720p",
+    },
+    {
+      id: "gpt-image-2",
+      name: "GPT Image 2",
+      type: "image",
+      apiModelId: "reve/text-to-image",
+      cliJobSetType: "gpt_image_2",
+      cliExtraArgs: [],
+      mcpModel: "gpt-image",
+      promptFamily: "gpt",
+      creditCost: 7,
+      defaultSize: [1024, 1280],
+      aspectRatio: "4:5",
+      resolution: "720p",
+    },
+    {
+      id: "seedream-4.5",
+      name: "Seedream 4.5",
+      type: "image",
+      apiModelId: "reve/text-to-image",
+      cliJobSetType: "seedream_v4_5",
+      cliExtraArgs: [],
+      mcpModel: "seedream",
+      promptFamily: "seedream",
+      creditCost: 1,
+      defaultSize: [1024, 1280],
+      aspectRatio: "4:5",
+      resolution: "720p",
+    },
   ],
   // creditCost = credits per CLIP (verified via `higgsfield generate cost`). i2v is far pricier than
   // images, so a reel of N beats × this is what the motion budget gate checks.
   video: [
-    { id: "dop", name: "DoP Standard", type: "video", apiModelId: "higgsfield-ai/dop/standard", cliJobSetType: "cinematic_studio_video_v2", creditCost: 7.5, defaultDuration: 5, aspectRatio: "9:16" },
-    { id: "kling-3.0", name: "Kling 3.0", type: "video", apiModelId: "kling-video/v2.1/pro/image-to-video", cliJobSetType: "cinematic_studio_video_v2", creditCost: 7.5, defaultDuration: 5, aspectRatio: "9:16" },
-    { id: "seedance-2.0", name: "Seedance 2.0", type: "video", apiModelId: "bytedance/seedance/v1/pro/image-to-video", cliJobSetType: "cinematic_studio_video_v2", creditCost: 7.5, defaultDuration: 5, aspectRatio: "9:16" },
-    { id: "veo-3.1", name: "Veo 3.1", type: "video", apiModelId: "bytedance/seedance/v1/pro/image-to-video", cliJobSetType: "veo3_1", creditCost: 22, defaultDuration: 5, aspectRatio: "9:16" },
+    {
+      id: "dop",
+      name: "DoP Standard",
+      type: "video",
+      apiModelId: "higgsfield-ai/dop/standard",
+      cliJobSetType: "cinematic_studio_video_v2",
+      creditCost: 7.5,
+      defaultDuration: 5,
+      aspectRatio: "9:16",
+    },
+    {
+      id: "kling-3.0",
+      name: "Kling 3.0",
+      type: "video",
+      apiModelId: "kling-video/v2.1/pro/image-to-video",
+      cliJobSetType: "cinematic_studio_video_v2",
+      creditCost: 7.5,
+      defaultDuration: 5,
+      aspectRatio: "9:16",
+    },
+    {
+      id: "seedance-2.0",
+      name: "Seedance 2.0",
+      type: "video",
+      apiModelId: "bytedance/seedance/v1/pro/image-to-video",
+      cliJobSetType: "cinematic_studio_video_v2",
+      creditCost: 7.5,
+      defaultDuration: 5,
+      aspectRatio: "9:16",
+    },
+    {
+      id: "veo-3.1",
+      name: "Veo 3.1",
+      type: "video",
+      apiModelId: "bytedance/seedance/v1/pro/image-to-video",
+      cliJobSetType: "veo3_1",
+      creditCost: 22,
+      defaultDuration: 5,
+      aspectRatio: "9:16",
+    },
   ],
 });
 
@@ -83,12 +184,20 @@ export function hasRestCreds() {
   const key = resolveEnv("HIGGSFIELD_API_KEY", "").trim();
   const secret = resolveEnv("HIGGSFIELD_API_SECRET", "").trim();
   if (key && secret) return true;
-  return !!(resolveEnv("HF_CREDENTIALS", "").trim() || resolveEnv("HIGGSFIELD_API_TOKEN", "").trim());
+  return !!(
+    resolveEnv("HF_CREDENTIALS", "").trim() ||
+    resolveEnv("HIGGSFIELD_API_TOKEN", "").trim()
+  );
 }
 export function resolveMode(explicit) {
-  const m = String(explicit || process.env.HIGGSFIELD_MODE || "").trim().toLowerCase();
+  const m = String(explicit || process.env.HIGGSFIELD_MODE || "")
+    .trim()
+    .toLowerCase();
   if (m) {
-    if (!VALID_MODES.includes(m)) throw new Error(`UnknownHiggsfieldMode: ${m} (use ${VALID_MODES.join("|")})`);
+    if (!VALID_MODES.includes(m))
+      throw new Error(
+        `UnknownHiggsfieldMode: ${m} (use ${VALID_MODES.join("|")})`,
+      );
     return m;
   }
   return hasRestCreds() ? "rest" : "cli";
@@ -97,12 +206,16 @@ export function resolveMode(explicit) {
 // Default to FLUX.2 (flux_2): our prompts are FLUX-tuned so it follows them faithfully (no text
 // "posters"), it's higher quality than Soul, and it costs ~1 cr/img (8–15 cr/carousel). Soul stays
 // the cheap (0.12 cr) opt-in via --higgsfield-model=soul-2.0. Override with HIGGSFIELD_IMAGE_MODEL.
-export const DEFAULT_IMAGE_MODEL = process.env.HIGGSFIELD_IMAGE_MODEL?.trim() || "flux";
-export const DEFAULT_VIDEO_MODEL = process.env.HIGGSFIELD_VIDEO_MODEL?.trim() || "dop";
+export const DEFAULT_IMAGE_MODEL =
+  process.env.HIGGSFIELD_IMAGE_MODEL?.trim() || "flux";
+export const DEFAULT_VIDEO_MODEL =
+  process.env.HIGGSFIELD_VIDEO_MODEL?.trim() || "dop";
 
 function resolveEnv(name, fallback) {
   const v = process.env[name];
-  return v !== undefined && v !== null && String(v).length ? String(v) : fallback;
+  return v !== undefined && v !== null && String(v).length
+    ? String(v)
+    : fallback;
 }
 
 export function buildNegativePrompt() {
@@ -143,7 +256,11 @@ function readCache(key) {
 function writeCache(key, value, ttlMs) {
   try {
     mkdirSync(CACHE_DIR, { recursive: true });
-    const payload = { ...value, cachedAt: Date.now(), expiresAt: Date.now() + ttlMs };
+    const payload = {
+      ...value,
+      cachedAt: Date.now(),
+      expiresAt: Date.now() + ttlMs,
+    };
     writeFileSync(cachePathForKey(key), JSON.stringify(payload), "utf8");
   } catch {
     // cache writes must never break generation
@@ -178,8 +295,7 @@ function isAuthStatus(status) {
 function parseRetryAfterSeconds(headers) {
   try {
     const val =
-      (headers && (headers["retry-after"] ?? headers["Retry-After"])) ??
-      null;
+      (headers && (headers["retry-after"] ?? headers["Retry-After"])) ?? null;
     if (!val) return null;
     const n = Number(val);
     if (Number.isFinite(n) && n > 0) return Math.min(n, 120);
@@ -200,7 +316,9 @@ function resolveAuthHeader() {
   const key = resolveEnv("HIGGSFIELD_API_KEY", "").trim();
   const secret = resolveEnv("HIGGSFIELD_API_SECRET", "").trim();
   if (key && secret) return `Key ${key}:${secret}`;
-  const combo = resolveEnv("HF_CREDENTIALS", "").trim() || resolveEnv("HIGGSFIELD_API_TOKEN", "").trim();
+  const combo =
+    resolveEnv("HF_CREDENTIALS", "").trim() ||
+    resolveEnv("HIGGSFIELD_API_TOKEN", "").trim();
   if (!combo) return "";
   if (combo.includes(":")) return `Key ${combo}`;
   throw new Error(
@@ -209,17 +327,24 @@ function resolveAuthHeader() {
 }
 
 async function request(pathname, opts = {}) {
-  const baseUrl = resolveEnv("HIGGSFIELD_API_URL", DEFAULT_PLATFORM_URL).replace(/\/$/, "");
+  const baseUrl = resolveEnv(
+    "HIGGSFIELD_API_URL",
+    DEFAULT_PLATFORM_URL,
+  ).replace(/\/$/, "");
   if (!baseUrl) {
     throw new Error(
       "higgsfield client misconfigured: set HIGGSFIELD_API_URL (default https://platform.higgsfield.ai) and API credentials",
     );
   }
 
-  const url = pathname.startsWith("http") ? pathname : `${baseUrl}${pathname.startsWith("/") ? "" : "/"}${pathname}`;
+  const url = pathname.startsWith("http")
+    ? pathname
+    : `${baseUrl}${pathname.startsWith("/") ? "" : "/"}${pathname}`;
   const auth = resolveAuthHeader();
   if (!auth) {
-    throw new Error("higgsfield auth missing: HIGGSFIELD_API_KEY/SECRET or HF_CREDENTIALS (key:secret) is empty");
+    throw new Error(
+      "higgsfield auth missing: HIGGSFIELD_API_KEY/SECRET or HF_CREDENTIALS (key:secret) is empty",
+    );
   }
 
   const method = (opts.method ?? "GET").toUpperCase();
@@ -234,7 +359,10 @@ async function request(pathname, opts = {}) {
     method,
     headers,
     signal: opts.signal,
-    body: method !== "GET" && method !== "HEAD" ? JSON.stringify(opts.body ?? {}) : undefined,
+    body:
+      method !== "GET" && method !== "HEAD"
+        ? JSON.stringify(opts.body ?? {})
+        : undefined,
   });
 
   const text = await res.text();
@@ -246,7 +374,9 @@ async function request(pathname, opts = {}) {
   }
 
   if (!res.ok) {
-    const err = new Error(`higgsfield ${method} ${pathname} failed: ${res.status}`);
+    const err = new Error(
+      `higgsfield ${method} ${pathname} failed: ${res.status}`,
+    );
     err.status = res.status;
     err.body = parsed;
     err.headers = headersToObject(res.headers);
@@ -259,14 +389,25 @@ async function request(pathname, opts = {}) {
 export async function healthCheck(mode) {
   const m = resolveMode(mode);
   if (m === "cli") return { ...cliHealthCheck(), mode: m };
-  if (m === "mcp") return { ok: true, baseUrl: "mcp:agent-driven", mode: m, message: "mcp mode is agent-driven (see higgsfield-mcp.mjs)" };
-  const baseUrl = resolveEnv("HIGGSFIELD_API_URL", DEFAULT_PLATFORM_URL).replace(/\/$/, "");
+  if (m === "mcp")
+    return {
+      ok: true,
+      baseUrl: "mcp:agent-driven",
+      mode: m,
+      message: "mcp mode is agent-driven (see higgsfield-mcp.mjs)",
+    };
+  const baseUrl = resolveEnv(
+    "HIGGSFIELD_API_URL",
+    DEFAULT_PLATFORM_URL,
+  ).replace(/\/$/, "");
   resolveAuthHeader();
   return { ok: true, baseUrl, mode: m, message: "credentials present" };
 }
 
 function catalogEntry(model) {
-  return [MODEL_CATALOG.image, MODEL_CATALOG.video].flat().find((m) => m.id === model);
+  return [MODEL_CATALOG.image, MODEL_CATALOG.video]
+    .flat()
+    .find((m) => m.id === model);
 }
 
 function aspectRatioForSize(width, height) {
@@ -307,7 +448,14 @@ function vendoredBinNextTo(shimPath) {
   // npm global layout: <root>/higgsfield(.cmd) alongside <root>/node_modules/@higgsfield/cli/vendor/hf[.exe]
   const root = path.dirname(shimPath);
   for (const name of ["hf.exe", "hf"]) {
-    const candidate = path.join(root, "node_modules", "@higgsfield", "cli", "vendor", name);
+    const candidate = path.join(
+      root,
+      "node_modules",
+      "@higgsfield",
+      "cli",
+      "vendor",
+      name,
+    );
     if (existsSync(candidate)) return candidate;
   }
   return null;
@@ -324,7 +472,9 @@ export function resolveCliBin() {
     return _cliBinCache;
   }
   const names = override ? [override] : ["higgsfield", "higgs"]; // never bare `hf` (HuggingFace collision)
-  const pathDirs = String(process.env.PATH || "").split(path.delimiter).filter(Boolean);
+  const pathDirs = String(process.env.PATH || "")
+    .split(path.delimiter)
+    .filter(Boolean);
   const exeExts = isWin ? [".exe", "", ".cmd", ".bat"] : [""];
   for (const name of names) {
     for (const dir of pathDirs) {
@@ -337,7 +487,10 @@ export function resolveCliBin() {
           _cliBinCache = { bin: vendored, shell: false };
           return _cliBinCache;
         }
-        const shell = isWin && /\.(cmd|bat|ps1)$/i.test(candidate) ? true : isWin && ext === "";
+        const shell =
+          isWin && /\.(cmd|bat|ps1)$/i.test(candidate)
+            ? true
+            : isWin && ext === "";
         _cliBinCache = { bin: candidate, shell };
         return _cliBinCache;
       }
@@ -358,16 +511,29 @@ function runCli(args, { timeoutMs, input } = {}) {
     maxBuffer: 64 * 1024 * 1024,
   });
   if (res.error) {
-    const e = new Error(`higgsfield CLI spawn failed (${bin}): ${res.error.message}`);
+    const e = new Error(
+      `higgsfield CLI spawn failed (${bin}): ${res.error.message}`,
+    );
     e.cause = res.error;
     throw e;
   }
-  return { status: res.status ?? 1, stdout: res.stdout ?? "", stderr: res.stderr ?? "" };
+  return {
+    status: res.status ?? 1,
+    stdout: res.stdout ?? "",
+    stderr: res.stderr ?? "",
+  };
 }
 
 // Build the argv for `higgsfield generate create`. Pure + exported for unit tests.
-export function buildCliCreateArgs({ jobSetType, prompt, aspectRatio, extraArgs = [], waitTimeout = "10m" }) {
-  if (!jobSetType) throw new Error("buildCliCreateArgs: jobSetType is required");
+export function buildCliCreateArgs({
+  jobSetType,
+  prompt,
+  aspectRatio,
+  extraArgs = [],
+  waitTimeout = "10m",
+}) {
+  if (!jobSetType)
+    throw new Error("buildCliCreateArgs: jobSetType is required");
   if (!prompt) throw new Error("buildCliCreateArgs: prompt is required");
   const args = ["generate", "create", jobSetType, "--prompt", prompt];
   if (aspectRatio) args.push("--aspect_ratio", aspectRatio);
@@ -383,7 +549,9 @@ export function parseCliCreateJson(text) {
   try {
     data = JSON.parse(String(text));
   } catch {
-    throw new Error("higgsfield CLI did not return JSON (is --json supported on this version?)");
+    throw new Error(
+      "higgsfield CLI did not return JSON (is --json supported on this version?)",
+    );
   }
   const jobs = Array.isArray(data) ? data : [data];
   const job = jobs[0];
@@ -400,8 +568,16 @@ export function parseCliCreateJson(text) {
     job.video?.url ??
     job.videos?.[0]?.url ??
     job.url;
-  if (!url) throw new Error("higgsfield CLI job completed but no result_url in response");
-  return { url, id: job.id ?? null, seed: job.params?.seed ?? null, jobSetType: job.job_set_type ?? null };
+  if (!url)
+    throw new Error(
+      "higgsfield CLI job completed but no result_url in response",
+    );
+  return {
+    url,
+    id: job.id ?? null,
+    seed: job.params?.seed ?? null,
+    jobSetType: job.job_set_type ?? null,
+  };
 }
 
 export function cliHealthCheck() {
@@ -429,20 +605,44 @@ async function generateImageViaCli({
   timeoutMs = 600_000,
 }) {
   const catalog = catalogEntry(model);
-  if (!catalog || catalog.type !== "image") throw new Error(`UnknownHiggsfieldModel: ${model}`);
+  if (!catalog || catalog.type !== "image")
+    throw new Error(`UnknownHiggsfieldModel: ${model}`);
   const jobSetType = catalog.cliJobSetType;
-  if (!jobSetType) throw new Error(`Higgsfield model "${model}" has no cliJobSetType mapping`);
+  if (!jobSetType)
+    throw new Error(`Higgsfield model "${model}" has no cliJobSetType mapping`);
 
   const resolvedSeed = Number.isFinite(seed) ? seed : 0; // CLI assigns its own seed; kept only for the cache key
-  const cacheKey = promptHash(prompt, `cli:${model}`, width, height, resolvedSeed, cacheBreaker);
+  const cacheKey = promptHash(
+    prompt,
+    `cli:${model}`,
+    width,
+    height,
+    resolvedSeed,
+    cacheBreaker,
+  );
   const cached = readCache(cacheKey);
   if (cached?.imagePath && existsSync(cached.imagePath)) {
-    return { imagePath: cached.imagePath, provider: "higgsfield-cli", model, seed: cached.seed ?? null, imageUrl: cached.imageUrl, cached: true };
+    return {
+      imagePath: cached.imagePath,
+      provider: "higgsfield-cli",
+      model,
+      seed: cached.seed ?? null,
+      imageUrl: cached.imageUrl,
+      cached: true,
+    };
   }
 
-  const fullPrompt = negativePrompt?.trim() ? `${prompt}. Avoid: ${negativePrompt}` : prompt;
+  const fullPrompt = negativePrompt?.trim()
+    ? `${prompt}. Avoid: ${negativePrompt}`
+    : prompt;
   const aspectRatio = cliAspectRatio(width, height);
-  const args = buildCliCreateArgs({ jobSetType, prompt: fullPrompt, aspectRatio, extraArgs: catalog.cliExtraArgs ?? [], waitTimeout: `${Math.ceil(timeoutMs / 60000)}m` });
+  const args = buildCliCreateArgs({
+    jobSetType,
+    prompt: fullPrompt,
+    aspectRatio,
+    extraArgs: catalog.cliExtraArgs ?? [],
+    waitTimeout: `${Math.ceil(timeoutMs / 60000)}m`,
+  });
 
   const schedule = buildRetrySchedule();
   let lastErr;
@@ -450,17 +650,33 @@ async function generateImageViaCli({
     if (attempt > 0) await jitter(schedule[attempt - 1]);
     const r = runCli(args, { timeoutMs });
     if (r.status !== 0) {
-      lastErr = new Error(`higgsfield CLI generate failed: ${(r.stderr || r.stdout || "").trim().slice(0, 300)}`);
+      lastErr = new Error(
+        `higgsfield CLI generate failed: ${(r.stderr || r.stdout || "").trim().slice(0, 300)}`,
+      );
       // CLI errors are usually deterministic (bad params/auth) — only retry on transient hints.
-      if (/timeout|temporarily|rate|429|503|502|504/i.test(r.stderr || "") && attempt < schedule.length) continue;
+      if (
+        /timeout|temporarily|rate|429|503|502|504/i.test(r.stderr || "") &&
+        attempt < schedule.length
+      )
+        continue;
       throw lastErr;
     }
     const { url, seed: returnedSeed } = parseCliCreateJson(r.stdout);
-    if (!outDir || !outName) throw new Error("generateImageViaCli requires outDir and outName to persist PNG");
+    if (!outDir || !outName)
+      throw new Error(
+        "generateImageViaCli requires outDir and outName to persist PNG",
+      );
     mkdirSync(outDir, { recursive: true });
     const imagePath = path.join(outDir, outName);
     await downloadImageToFile(url, imagePath);
-    const result = { imagePath, provider: "higgsfield-cli", model, seed: returnedSeed, imageUrl: url, cached: false };
+    const result = {
+      imagePath,
+      provider: "higgsfield-cli",
+      model,
+      seed: returnedSeed,
+      imageUrl: url,
+      cached: false,
+    };
     writeCache(cacheKey, result, 7 * 24 * 60 * 60 * 1000);
     return result;
   }
@@ -479,31 +695,73 @@ async function generateVideoFromImageViaCli({
   timeoutMs = 900_000,
 }) {
   const catalog = catalogEntry(model);
-  if (!catalog || catalog.type !== "video") throw new Error(`UnknownHiggsfieldVideoModel: ${model}`);
+  if (!catalog || catalog.type !== "video")
+    throw new Error(`UnknownHiggsfieldVideoModel: ${model}`);
   const jobSetType = catalog.cliJobSetType;
-  if (!jobSetType) throw new Error(`Higgsfield video model "${model}" has no cliJobSetType mapping`);
+  if (!jobSetType)
+    throw new Error(
+      `Higgsfield video model "${model}" has no cliJobSetType mapping`,
+    );
   // The CLI auto-uploads a local path, so we can hand it the on-disk PNG (no public hosting).
   const imageRef = imagePath && existsSync(imagePath) ? imagePath : imageUrl;
-  if (!imageRef) throw new Error("generateVideoFromImageViaCli requires imagePath or imageUrl");
-  if (!outDir || !outName) throw new Error("generateVideoFromImageViaCli requires outDir and outName");
+  if (!imageRef)
+    throw new Error(
+      "generateVideoFromImageViaCli requires imagePath or imageUrl",
+    );
+  if (!outDir || !outName)
+    throw new Error("generateVideoFromImageViaCli requires outDir and outName");
 
-  const cacheKey = promptHash(`${imageRef}\n${prompt}`, `cli:${model}`, 1080, 1920, 0, cacheBreaker);
+  const cacheKey = promptHash(
+    `${imageRef}\n${prompt}`,
+    `cli:${model}`,
+    1080,
+    1920,
+    0,
+    cacheBreaker,
+  );
   const cached = readCache(cacheKey);
   if (cached?.videoPath && existsSync(cached.videoPath)) {
-    return { videoPath: cached.videoPath, provider: "higgsfield-cli", model, cached: true };
+    return {
+      videoPath: cached.videoPath,
+      provider: "higgsfield-cli",
+      model,
+      cached: true,
+    };
   }
 
   // Reels are 9:16 — pass it explicitly (the video models default to 16:9, which would letterbox).
   const aspect = catalog.aspectRatio || "9:16";
-  const args = ["generate", "create", jobSetType, "--prompt", prompt, "--image", imageRef, "--aspect_ratio", aspect, "--wait", "--wait-timeout", `${Math.ceil(timeoutMs / 60000)}m`, "--json"];
+  const args = [
+    "generate",
+    "create",
+    jobSetType,
+    "--prompt",
+    prompt,
+    "--image",
+    imageRef,
+    "--aspect_ratio",
+    aspect,
+    "--wait",
+    "--wait-timeout",
+    `${Math.ceil(timeoutMs / 60000)}m`,
+    "--json",
+  ];
   const r = runCli(args, { timeoutMs });
   if (r.status !== 0) {
-    throw new Error(`higgsfield CLI video generate failed: ${(r.stderr || r.stdout || "").trim().slice(0, 300)}`);
+    throw new Error(
+      `higgsfield CLI video generate failed: ${(r.stderr || r.stdout || "").trim().slice(0, 300)}`,
+    );
   }
   const { url } = parseCliCreateJson(r.stdout);
   const videoPath = path.join(outDir, outName);
   await downloadVideoToFile(url, videoPath);
-  const result = { videoPath, provider: "higgsfield-cli", model, videoUrl: url, cached: false };
+  const result = {
+    videoPath,
+    provider: "higgsfield-cli",
+    model,
+    videoUrl: url,
+    cached: false,
+  };
   writeCache(cacheKey, result, 7 * 24 * 60 * 60 * 1000);
   return result;
 }
@@ -524,14 +782,17 @@ async function pollRequestStatus(statusUrl, { timeoutMs, signal }) {
     }
     await sleep(pollMs);
   }
-  const timeoutErr = new Error(`higgsfield generation timed out after ${timeoutMs}ms`);
+  const timeoutErr = new Error(
+    `higgsfield generation timed out after ${timeoutMs}ms`,
+  );
   timeoutErr.status = 504;
   throw timeoutErr;
 }
 
 async function downloadImageToFile(imageUrl, destPath, signal) {
   const res = await fetch(imageUrl, { signal });
-  if (!res.ok) throw new Error(`higgsfield image download failed: ${res.status}`);
+  if (!res.ok)
+    throw new Error(`higgsfield image download failed: ${res.status}`);
   const buf = Buffer.from(await res.arrayBuffer());
   mkdirSync(path.dirname(destPath), { recursive: true });
   writeFileSync(destPath, buf);
@@ -540,7 +801,8 @@ async function downloadImageToFile(imageUrl, destPath, signal) {
 
 async function downloadVideoToFile(videoUrl, destPath, signal) {
   const res = await fetch(videoUrl, { signal });
-  if (!res.ok) throw new Error(`higgsfield video download failed: ${res.status}`);
+  if (!res.ok)
+    throw new Error(`higgsfield video download failed: ${res.status}`);
   const buf = Buffer.from(await res.arrayBuffer());
   mkdirSync(path.dirname(destPath), { recursive: true });
   writeFileSync(destPath, buf);
@@ -551,7 +813,9 @@ async function downloadVideoToFile(videoUrl, destPath, signal) {
 export function resolveSegmentImageUrl(slide, { publicBaseUrl } = {}) {
   const fromSlide = String(slide?.higgsfield_image_url || "").trim();
   if (fromSlide.startsWith("http")) return fromSlide;
-  const base = (publicBaseUrl ?? resolveEnv("HIGGSFIELD_PUBLIC_BASE_URL", "")).replace(/\/$/, "");
+  const base = (
+    publicBaseUrl ?? resolveEnv("HIGGSFIELD_PUBLIC_BASE_URL", "")
+  ).replace(/\/$/, "");
   const asset = String(slide?.background_asset || "").trim();
   if (base && asset.startsWith("/")) return `${base}${asset}`;
   throw new Error(
@@ -561,9 +825,14 @@ export function resolveSegmentImageUrl(slide, { publicBaseUrl } = {}) {
 
 export function motionPromptForBeat(beat, slide) {
   const motion = String(beat?.motion || "slow cinematic push-in").trim();
-  const dir = String(slide?.visual_direction || slide?.visual_prompt || "").trim();
-  const cinematic = motion.toLowerCase().includes("end card") ? "subtle ambient drift, minimal motion" : motion;
-  if (!dir) return `Smooth cinematic camera motion: ${cinematic}. Dark cybersecurity aesthetic, no text, no logos.`;
+  const dir = String(
+    slide?.visual_direction || slide?.visual_prompt || "",
+  ).trim();
+  const cinematic = motion.toLowerCase().includes("end card")
+    ? "subtle ambient drift, minimal motion"
+    : motion;
+  if (!dir)
+    return `Smooth cinematic camera motion: ${cinematic}. Dark cybersecurity aesthetic, no text, no logos.`;
   return `Smooth cinematic motion (${cinematic}). Visual context: ${dir}. Dark moody lighting, no text, no logos.`;
 }
 
@@ -580,19 +849,43 @@ export async function generateVideoFromImage({
   mode,
 }) {
   if (resolveMode(mode) === "cli") {
-    return generateVideoFromImageViaCli({ imageUrl, imagePath, prompt, model, durationSeconds, cacheBreaker, outDir, outName, timeoutMs });
+    return generateVideoFromImageViaCli({
+      imageUrl,
+      imagePath,
+      prompt,
+      model,
+      durationSeconds,
+      cacheBreaker,
+      outDir,
+      outName,
+      timeoutMs,
+    });
   }
   const catalog = catalogEntry(model);
-  if (!catalog || catalog.type !== "video") throw new Error(`UnknownHiggsfieldVideoModel: ${model}`);
+  if (!catalog || catalog.type !== "video")
+    throw new Error(`UnknownHiggsfieldVideoModel: ${model}`);
   const apiModelId = catalog.apiModelId ?? catalog.id;
   const duration = Number.isFinite(durationSeconds)
     ? Math.min(10, Math.max(3, Math.round(durationSeconds)))
-    : catalog.defaultDuration ?? 5;
+    : (catalog.defaultDuration ?? 5);
 
-  const cacheKey = promptHash(`${imageUrl}\n${prompt}`, model, 1080, 1920, duration, cacheBreaker);
+  const cacheKey = promptHash(
+    `${imageUrl}\n${prompt}`,
+    model,
+    1080,
+    1920,
+    duration,
+    cacheBreaker,
+  );
   const cached = readCache(cacheKey);
   if (cached?.videoPath && existsSync(cached.videoPath)) {
-    return { videoPath: cached.videoPath, provider: "higgsfield", model, duration, cached: true };
+    return {
+      videoPath: cached.videoPath,
+      provider: "higgsfield",
+      model,
+      duration,
+      cached: true,
+    };
   }
 
   const body = { image_url: imageUrl, prompt, duration };
@@ -605,21 +898,44 @@ export async function generateVideoFromImage({
     }
     const started = Date.now();
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), Math.max(1_000, timeoutMs));
+    const timer = setTimeout(
+      () => controller.abort(),
+      Math.max(1_000, timeoutMs),
+    );
     try {
-      const queued = await request(`/${apiModelId}`, { method: "POST", body, signal: controller.signal });
-      const statusUrl = queued?.status_url ?? (queued?.request_id ? `/requests/${queued.request_id}/status` : null);
-      if (!statusUrl) throw new Error("higgsfield video response missing status_url / request_id");
+      const queued = await request(`/${apiModelId}`, {
+        method: "POST",
+        body,
+        signal: controller.signal,
+      });
+      const statusUrl =
+        queued?.status_url ??
+        (queued?.request_id ? `/requests/${queued.request_id}/status` : null);
+      if (!statusUrl)
+        throw new Error(
+          "higgsfield video response missing status_url / request_id",
+        );
       const completed = await pollRequestStatus(statusUrl, {
         timeoutMs: timeoutMs - (Date.now() - started),
         signal: controller.signal,
       });
       const videoUrl = completed?.video?.url ?? completed?.videos?.[0]?.url;
-      if (!videoUrl) throw new Error("higgsfield video job completed but no video.url in response");
-      if (!outDir || !outName) throw new Error("generateVideoFromImage requires outDir and outName");
+      if (!videoUrl)
+        throw new Error(
+          "higgsfield video job completed but no video.url in response",
+        );
+      if (!outDir || !outName)
+        throw new Error("generateVideoFromImage requires outDir and outName");
       const videoPath = path.join(outDir, outName);
       await downloadVideoToFile(videoUrl, videoPath, controller.signal);
-      const result = { videoPath, provider: "higgsfield", model, duration, videoUrl, cached: false };
+      const result = {
+        videoPath,
+        provider: "higgsfield",
+        model,
+        duration,
+        videoUrl,
+        cached: false,
+      };
       writeCache(cacheKey, { ...result, videoPath }, 7 * 24 * 60 * 60 * 1000);
       return result;
     } catch (e) {
@@ -641,7 +957,9 @@ const DEFAULT_CREDIT_COST = 1; // conservative fallback when a model has no veri
 export function imageModelCost(model) {
   const catalog = catalogEntry(model);
   if (!catalog) throw new Error(`UnknownHiggsfieldModel: ${model}`);
-  return typeof catalog.creditCost === "number" ? catalog.creditCost : DEFAULT_CREDIT_COST;
+  return typeof catalog.creditCost === "number"
+    ? catalog.creditCost
+    : DEFAULT_CREDIT_COST;
 }
 
 /** Prompt family for a catalog model id (drives which composer shapes the prompt). */
@@ -654,8 +972,11 @@ export function imageModelFamily(model) {
 /** Credits per CLIP for a video (i2v) model id (verified via `higgsfield generate cost`). */
 export function videoModelCost(model) {
   const catalog = catalogEntry(model);
-  if (!catalog || catalog.type !== "video") throw new Error(`UnknownHiggsfieldVideoModel: ${model}`);
-  return typeof catalog.creditCost === "number" ? catalog.creditCost : DEFAULT_CREDIT_COST;
+  if (!catalog || catalog.type !== "video")
+    throw new Error(`UnknownHiggsfieldVideoModel: ${model}`);
+  return typeof catalog.creditCost === "number"
+    ? catalog.creditCost
+    : DEFAULT_CREDIT_COST;
 }
 
 export async function estimateCost(model, _width, _height) {
@@ -678,8 +999,17 @@ export async function generateImage({
   outName,
   timeoutMs = 600_000,
 }) {
-  const resolvedSeed = Number.isFinite(seed) ? seed : Math.floor(Math.random() * 2 ** 31);
-  const cacheKey = promptHash(prompt, model, width, height, resolvedSeed, cacheBreaker);
+  const resolvedSeed = Number.isFinite(seed)
+    ? seed
+    : Math.floor(Math.random() * 2 ** 31);
+  const cacheKey = promptHash(
+    prompt,
+    model,
+    width,
+    height,
+    resolvedSeed,
+    cacheBreaker,
+  );
   const cached = readCache(cacheKey);
   if (cached?.imagePath && existsSync(cached.imagePath)) {
     return {
@@ -717,28 +1047,42 @@ export async function generateImage({
 
     const started = Date.now();
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), Math.max(1_000, timeoutMs));
+    const timer = setTimeout(
+      () => controller.abort(),
+      Math.max(1_000, timeoutMs),
+    );
     try {
       const queued = await request(`/${apiModelId}`, {
         method: "POST",
         body,
         signal: controller.signal,
       });
-      const statusUrl = queued?.status_url ?? (queued?.request_id ? `/requests/${queued.request_id}/status` : null);
+      const statusUrl =
+        queued?.status_url ??
+        (queued?.request_id ? `/requests/${queued.request_id}/status` : null);
       if (!statusUrl) {
-        throw new Error("higgsfield provider response missing status_url / request_id");
+        throw new Error(
+          "higgsfield provider response missing status_url / request_id",
+        );
       }
       const completed = await pollRequestStatus(statusUrl, {
         timeoutMs: timeoutMs - (Date.now() - started),
         signal: controller.signal,
       });
-      const imageUrl = completed?.images?.[0]?.url ?? completed?.image?.url ?? completed?.imageUrl;
+      const imageUrl =
+        completed?.images?.[0]?.url ??
+        completed?.image?.url ??
+        completed?.imageUrl;
       if (!imageUrl) {
-        throw new Error("higgsfield completed job but no image URL in response");
+        throw new Error(
+          "higgsfield completed job but no image URL in response",
+        );
       }
 
       if (!outDir || !outName) {
-        throw new Error("higgsfield generateImage requires outDir and outName to persist PNG");
+        throw new Error(
+          "higgsfield generateImage requires outDir and outName to persist PNG",
+        );
       }
       mkdirSync(outDir, { recursive: true });
       const imagePath = path.join(outDir, outName);
@@ -770,7 +1114,9 @@ export async function generateImage({
       }
 
       if (Date.now() - started >= timeoutMs || e?.message === "aborted") {
-        const timeoutErr = new Error(`higgsfield generation timed out after ${timeoutMs}ms`);
+        const timeoutErr = new Error(
+          `higgsfield generation timed out after ${timeoutMs}ms`,
+        );
         timeoutErr.status = 504;
         throw timeoutErr;
       }
@@ -787,10 +1133,23 @@ export async function generateImage({
 // Mutates the passed-in `post` object (the caller's single source of truth) and persists it.
 // Reading a fresh copy from disk here would be clobbered by the caller's own final write, so we
 // patch the shared object instead — incremental per-slide writes still persist correctly.
-function updatePostJson(post, postPath, prefix, destName, slideIndex, model, providerLabel, licenseTermsOverride, higgsfieldImageUrl) {
+function updatePostJson(
+  post,
+  postPath,
+  prefix,
+  destName,
+  slideIndex,
+  model,
+  providerLabel,
+  licenseTermsOverride,
+  higgsfieldImageUrl,
+) {
   const assetPath = `/backgrounds/${prefix}/${destName}`;
   const slide = post.slides?.[slideIndex];
-  if (!slide) throw new Error(`Higgsfield write failed: slide index ${slideIndex} missing from ${postPath}`);
+  if (!slide)
+    throw new Error(
+      `Higgsfield write failed: slide index ${slideIndex} missing from ${postPath}`,
+    );
 
   slide.background_asset = assetPath;
   slide.asset_status = "generated";
@@ -798,22 +1157,30 @@ function updatePostJson(post, postPath, prefix, destName, slideIndex, model, pro
     slide.higgsfield_image_url = higgsfieldImageUrl;
   }
 
-  post.asset_licenses = Array.isArray(post.asset_licenses) ? post.asset_licenses : [];
+  post.asset_licenses = Array.isArray(post.asset_licenses)
+    ? post.asset_licenses
+    : [];
   if (!post.asset_licenses.some((l) => l?.asset === assetPath)) {
     post.asset_licenses.push({
       asset: assetPath,
       source: `${providerLabel ?? "Higgsfield"} / ${model}`,
-      license_or_terms: licenseTermsOverride ?? "Pending confirmation from Higgsfield provider terms.",
+      license_or_terms:
+        licenseTermsOverride ??
+        "Pending confirmation from Higgsfield provider terms.",
       commercial_use_allowed: false,
       disclosure_required: true,
-      notes: "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish.",
+      notes:
+        "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish.",
     });
   }
 
   post.renderMetadata = {
     provider: providerLabel ?? "higgsfield",
     model,
-    costEstimate: typeof post.renderMetadata?.costEstimate === "number" ? post.renderMetadata.costEstimate : null,
+    costEstimate:
+      typeof post.renderMetadata?.costEstimate === "number"
+        ? post.renderMetadata.costEstimate
+        : null,
   };
 
   writeFileSync(postPath, JSON.stringify(post, null, 2) + "\n", "utf8");
@@ -837,13 +1204,19 @@ export async function renderSlide({
   licenseTermsOverride,
 }) {
   const prefix = post?.upload_package?.filename_prefix;
-  if (!prefix) throw new Error("post.upload_package.filename_prefix is required for Higgsfield output paths");
+  if (!prefix)
+    throw new Error(
+      "post.upload_package.filename_prefix is required for Higgsfield output paths",
+    );
 
   const resolvedMode = resolveMode(mode);
   if (resolvedMode === "mcp") {
-    throw new Error("renderSlide does not run in mcp mode — use higgsfield-mcp.mjs (buildArtPlan/ingestArtPlan) with the MCP generate_image tool.");
+    throw new Error(
+      "renderSlide does not run in mcp mode — use higgsfield-mcp.mjs (buildArtPlan/ingestArtPlan) with the MCP generate_image tool.",
+    );
   }
-  const effLabel = providerLabel ?? (resolvedMode === "cli" ? "Higgsfield CLI" : "Higgsfield");
+  const effLabel =
+    providerLabel ?? (resolvedMode === "cli" ? "Higgsfield CLI" : "Higgsfield");
 
   const outDir = path.join(RENDERER, "public", "backgrounds", prefix);
   mkdirSync(outDir, { recursive: true });
@@ -870,7 +1243,12 @@ export async function renderSlide({
     timeoutMs,
   });
 
-  const postPath = path.join(RENDERER, "content", "posts", `${post.post_id}.json`);
+  const postPath = path.join(
+    RENDERER,
+    "content",
+    "posts",
+    `${post.post_id}.json`,
+  );
   const assetPath = updatePostJson(
     post,
     postPath,

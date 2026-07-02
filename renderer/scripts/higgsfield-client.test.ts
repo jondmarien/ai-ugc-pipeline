@@ -1,9 +1,17 @@
-import { test, expect } from "bun:test";
+import { expect, test } from "bun:test";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { MODEL_CATALOG, DEFAULT_IMAGE_MODEL, promptHash, buildNegativePrompt, estimateCost, motionPromptForBeat, resolveSegmentImageUrl } from "./higgsfield-client.mjs";
-import { renderSlide } from "./higgsfield-client.mjs";
+import {
+  buildNegativePrompt,
+  DEFAULT_IMAGE_MODEL,
+  estimateCost,
+  MODEL_CATALOG,
+  motionPromptForBeat,
+  promptHash,
+  renderSlide,
+  resolveSegmentImageUrl,
+} from "./higgsfield-client.mjs";
 
 const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
 const POSTS = path.join(RENDERER, "content", "posts");
@@ -24,18 +32,47 @@ function makePostJson(): string {
     audience: "security teams",
     core_claim: "Smoke",
     claim_tags: ["smoke"],
-    score: { credibility: 4, relevance: 5, novelty: 5, visual_drama: 5, defender_usefulness: 4, total: 23 },
+    score: {
+      credibility: 4,
+      relevance: 5,
+      novelty: 5,
+      visual_drama: 5,
+      defender_usefulness: 4,
+      total: 23,
+    },
     canvas: { width: 1080, height: 1350, safe_margin: 72 },
     brand: { handle: "@chron0", pillar_accent: "offensive_ai" },
     upload_package: { folder: "test", filename_prefix: id },
     slides: [
-      { slide: 1, role: "cover", on_slide_copy: "Smoke test cover", background_asset: "", asset_status: "needed", visual_prompt: "abstract dark tech" },
-      { slide: 2, role: "context", on_slide_copy: "Smoke test body", background_asset: "", asset_status: "needed", visual_prompt: "abstract dark tech" },
+      {
+        slide: 1,
+        role: "cover",
+        on_slide_copy: "Smoke test cover",
+        background_asset: "",
+        asset_status: "needed",
+        visual_prompt: "abstract dark tech",
+      },
+      {
+        slide: 2,
+        role: "context",
+        on_slide_copy: "Smoke test body",
+        background_asset: "",
+        asset_status: "needed",
+        visual_prompt: "abstract dark tech",
+      },
     ],
     caption: "Higgsfield smoke test",
     hashtags: ["security"],
     alt_text: ["a", "b"],
-    sources: [{ source: "x", link: "https://example.com", supports: "y", confidence: "high", claim_tag: "z" }],
+    sources: [
+      {
+        source: "x",
+        link: "https://example.com",
+        supports: "y",
+        confidence: "high",
+        claim_tag: "z",
+      },
+    ],
     asset_licenses: [],
   };
   fs.writeFileSync(file, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
@@ -87,7 +124,9 @@ test("estimateCost returns a finite value for an approved model", async () => {
 });
 
 test("estimateCost rejects unknown models", async () => {
-  await expect(estimateCost("does-not-exist", 1024, 1280)).rejects.toThrow("UnknownHiggsfieldModel");
+  await expect(estimateCost("does-not-exist", 1024, 1280)).rejects.toThrow(
+    "UnknownHiggsfieldModel",
+  );
 });
 
 test("estimateCost tolerates non-finite dimensions by falling back to the default unit", async () => {
@@ -111,7 +150,11 @@ test("renderSlide gates on HIGGSFIELD_API_URL/auth (rest mode)", async () => {
     // Unreachable unless Higgsfield is configured; treat a successful path as a live-environment edge.
     if (err) expect(err.message).toBeTruthy();
   } catch (e: any) {
-    expect(["higgsfield client misconfigured", "higgsfield auth missing"].some((s) => (e?.message ?? "").includes(s))).toBe(true);
+    expect(
+      ["higgsfield client misconfigured", "higgsfield auth missing"].some((s) =>
+        (e?.message ?? "").includes(s),
+      ),
+    ).toBe(true);
   } finally {
     removePostJson(id);
   }

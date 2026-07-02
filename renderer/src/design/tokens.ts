@@ -22,13 +22,20 @@ export const palette = {
 } as const;
 
 // One accent glow per pillar (matches VISUAL_PROMPT_BANK.md convention).
-export const pillarAccent: Record<Pillar, { name: string; accent: string; accent2?: string }> = {
+export const pillarAccent: Record<
+  Pillar,
+  { name: string; accent: string; accent2?: string }
+> = {
   offensive_ai: { name: "cyan", accent: "#22d3ee" },
   model_security: { name: "electric blue", accent: "#3b82f6" },
   data_leakage: { name: "neon green", accent: "#39ff88" },
   defensive_ai: { name: "cool teal", accent: "#2dd4bf" },
   governance: { name: "amber", accent: "#f59e0b" },
-  myth_busting: { name: "red-to-blue split", accent: "#ef4444", accent2: "#3b82f6" },
+  myth_busting: {
+    name: "red-to-blue split",
+    accent: "#ef4444",
+    accent2: "#3b82f6",
+  },
 };
 
 export const canvas = {
@@ -60,8 +67,8 @@ export const radius = { panel: 28 } as const;
 // handle + pagination (the text column starts below it). textMaxFrac = the tallest the text
 // column may grow, as a fraction of canvas height; the rest of the top is GUARANTEED background.
 export const layout = {
-  headerBand: 64,      // px reserved under the top safe margin for handle + NN/NN
-  textMaxFrac: 0.6,    // text column caps at 60% of canvas height → top ~40% always shows art
+  headerBand: 64, // px reserved under the top safe margin for handle + NN/NN
+  textMaxFrac: 0.6, // text column caps at 60% of canvas height → top ~40% always shows art
 } as const;
 
 // Legibility floors (px) for the measured shrink-to-fit. The text block scales DOWN from its
@@ -74,7 +81,12 @@ export const layout = {
 export const fitFloors = { headline: 44, subline: 24 } as const;
 // Per-role base headline size (replaces the old char-count fitHeadline tiers). The whole text
 // block (headline + subline + plate) renders at this size, is measured, then scaled to fit.
-export const headlineBase = { cover: 104, takeaway: 92, body: 72, chain: 34 } as const;
+export const headlineBase = {
+  cover: 104,
+  takeaway: 92,
+  body: 72,
+  chain: 34,
+} as const;
 
 // Readability scrims layered between the (AI-generated) background and the text.
 // Strategy: light AMBIENT grounding in SlideBackground (edges/vignette) + a strong
@@ -85,7 +97,8 @@ export const overlays = {
   // Ambient grounding in SlideBackground (kept light — the text plate does the real work).
   topVignette: "linear-gradient(0deg, transparent 0%, rgba(2,3,10,0.62) 100%)",
   topHeight: "24%",
-  ambientBottom: "linear-gradient(180deg, transparent 28%, rgba(2,3,10,0.30) 64%, rgba(2,3,10,0.62) 100%)",
+  ambientBottom:
+    "linear-gradient(180deg, transparent 28%, rgba(2,3,10,0.30) 64%, rgba(2,3,10,0.62) 100%)",
   // Full-frame blur over the whole background — keep this 0 so the AI art stays crisp.
   // (It's a backdrop-filter on an inset:0 layer, so any value > 0 softens the ENTIRE image,
   // not just the gradient. Text legibility is handled locally by the text plate below.)
@@ -93,7 +106,8 @@ export const overlays = {
   // Content-hugging text plate (the primary legibility layer). Translucent + blurred,
   // so the background image still reads (softly) through it; densest over the text and
   // fading to transparent at the edges. The blur — not opacity — carries legibility.
-  textPlate: "radial-gradient(125% 135% at 50% 50%, rgba(2,3,10,0.66) 0%, rgba(2,3,10,0.54) 48%, rgba(2,3,10,0.24) 78%, rgba(2,3,10,0) 100%)",
+  textPlate:
+    "radial-gradient(125% 135% at 50% 50%, rgba(2,3,10,0.66) 0%, rgba(2,3,10,0.54) 48%, rgba(2,3,10,0.24) 78%, rgba(2,3,10,0) 100%)",
   textPlateBlurPx: 5,
   textPlateInset: "-40px -56px", // how far the plate extends beyond the text box (feathered)
   textPlateRadius: 44,
@@ -109,16 +123,49 @@ export function accentFor(pillar: Pillar): string {
 // `theme` explicitly on a post; otherwise it falls back to the pillar mapping.
 // Theme = the post's category. Each maps to a signature colour + mood.
 //   defensive → blue · offensive → red · hacking → green · purple-team → purple · ai → orange
-export type Theme = "offensive" | "defensive" | "hacking" | "purple-team" | "ai";
+export type Theme =
+  | "offensive"
+  | "defensive"
+  | "hacking"
+  | "purple-team"
+  | "ai";
 
-export const themes: Record<Theme, { name: string; accent: string; accent2: string; mood: string }> = {
-  defensive: { name: "electric blue", accent: "#3b82f6", accent2: "#22d3ee", mood: "calm, controlled, shielded, secure — defensive blue-team energy" },
-  offensive: { name: "alert red", accent: "#ef4444", accent2: "#f43f5e", mood: "aggressive, high-stakes, intrusion-and-exposure tension — offensive red-team / vulnerability energy" },
-  hacking: { name: "neon green", accent: "#39ff88", accent2: "#22d3ee", mood: "raw, exploratory underground hacker energy, glowing circuitry and signal traces" },
+export const themes: Record<
+  Theme,
+  { name: string; accent: string; accent2: string; mood: string }
+> = {
+  defensive: {
+    name: "electric blue",
+    accent: "#3b82f6",
+    accent2: "#22d3ee",
+    mood: "calm, controlled, shielded, secure — defensive blue-team energy",
+  },
+  offensive: {
+    name: "alert red",
+    accent: "#ef4444",
+    accent2: "#f43f5e",
+    mood: "aggressive, high-stakes, intrusion-and-exposure tension — offensive red-team / vulnerability energy",
+  },
+  hacking: {
+    name: "neon green",
+    accent: "#39ff88",
+    accent2: "#22d3ee",
+    mood: "raw, exploratory underground hacker energy, glowing circuitry and signal traces",
+  },
   // purple-team = red + blue combined (offence + defence). Purple is the canonical purple-team colour.
-  "purple-team": { name: "purple", accent: "#a855f7", accent2: "#c084fc", mood: "purple-team — offence and defence combined, adversary emulation meeting detection, red-and-blue collaboration energy" },
+  "purple-team": {
+    name: "purple",
+    accent: "#a855f7",
+    accent2: "#c084fc",
+    mood: "purple-team — offence and defence combined, adversary emulation meeting detection, red-and-blue collaboration energy",
+  },
   // generic AI / model-centric posts. Orange = warm, anti-cliché AI (purple/green/blue are taken by other themes).
-  ai: { name: "orange", accent: "#f97316", accent2: "#fb923c", mood: "generic AI / model-centric — warm, curious, forward-looking, the human side of the technology" },
+  ai: {
+    name: "orange",
+    accent: "#f97316",
+    accent2: "#fb923c",
+    mood: "generic AI / model-centric — warm, curious, forward-looking, the human side of the technology",
+  },
 };
 
 // Default theme per content pillar (used when a post has no explicit `theme`).
@@ -141,13 +188,31 @@ export function themeAccent(post: { theme?: Theme; pillar: Pillar }): string {
 // Themed "wall" backgrounds (renderer/public/walls). One per theme: a still PNG (carousel) and an
 // animated WebM loop (reel), both 1080x1920. Used when a post sets wall.enabled.
 export const themeWall: Record<Theme, { still: string; loop: string }> = {
-  defensive: { still: "/walls/01-defensive-aegis.png", loop: "/walls/01-defensive-aegis.webm" },
-  offensive: { still: "/walls/02-offensive-breach.png", loop: "/walls/02-offensive-breach.webm" },
-  hacking: { still: "/walls/03-hacking-datastream.png", loop: "/walls/03-hacking-datastream.webm" },
-  "purple-team": { still: "/walls/04-purple-team-convergence.png", loop: "/walls/04-purple-team-convergence.webm" },
-  ai: { still: "/walls/05-ai-latent-mesh.png", loop: "/walls/05-ai-latent-mesh.webm" },
+  defensive: {
+    still: "/walls/01-defensive-aegis.png",
+    loop: "/walls/01-defensive-aegis.webm",
+  },
+  offensive: {
+    still: "/walls/02-offensive-breach.png",
+    loop: "/walls/02-offensive-breach.webm",
+  },
+  hacking: {
+    still: "/walls/03-hacking-datastream.png",
+    loop: "/walls/03-hacking-datastream.webm",
+  },
+  "purple-team": {
+    still: "/walls/04-purple-team-convergence.png",
+    loop: "/walls/04-purple-team-convergence.webm",
+  },
+  ai: {
+    still: "/walls/05-ai-latent-mesh.png",
+    loop: "/walls/05-ai-latent-mesh.webm",
+  },
 };
-export function wallFor(post: { theme?: Theme; pillar: Pillar }): { still: string; loop: string } {
+export function wallFor(post: { theme?: Theme; pillar: Pillar }): {
+  still: string;
+  loop: string;
+} {
   return themeWall[themeFor(post)];
 }
 

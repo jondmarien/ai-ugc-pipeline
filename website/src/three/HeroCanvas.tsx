@@ -1,5 +1,5 @@
-import { useMemo, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 
 // Lightweight FPS guard (replaces @react-three/drei's PerformanceMonitor so we
@@ -152,7 +152,13 @@ function SignalField({ count, reduced }: { count: number; reduced: boolean }) {
   );
 }
 
-export function HeroCanvas({ reduced, visible }: { reduced: boolean; visible: boolean }) {
+export function HeroCanvas({
+  reduced,
+  visible,
+}: {
+  reduced: boolean;
+  visible: boolean;
+}) {
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
   const [dpr, setDpr] = useState<number>(isMobile ? 1 : 1.4);
   const count = isMobile ? 1200 : 2800;
@@ -163,7 +169,11 @@ export function HeroCanvas({ reduced, visible }: { reduced: boolean; visible: bo
       frameloop={visible ? "always" : "never"}
       camera={{ position: [0, 0, 6.4], fov: 45 }}
       dpr={dpr}
-      gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
+      gl={{
+        antialias: false,
+        alpha: true,
+        powerPreference: "high-performance",
+      }}
       style={{ position: "absolute", inset: 0 }}
     >
       <fog attach="fog" args={["#05070d", 6, 11]} />

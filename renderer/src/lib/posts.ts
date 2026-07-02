@@ -1,4 +1,4 @@
-import { validatePost, type TPostData } from "./schema";
+import { type TPostData, validatePost } from "./schema";
 
 // Eagerly import every post JSON under content/posts so the preview app and
 // the export script share one validated source of truth.

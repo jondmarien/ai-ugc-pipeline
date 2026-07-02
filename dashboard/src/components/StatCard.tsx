@@ -1,5 +1,13 @@
 import { Panel } from "./Panel";
-export function StatCard({ label, value, sub }: { label: string; value: string | number; sub?: string }) {
+export function StatCard({
+  label,
+  value,
+  sub,
+}: {
+  label: string;
+  value: string | number;
+  sub?: string;
+}) {
   return (
     <Panel className="stat-card">
       <div className="meta-caps">{label}</div>

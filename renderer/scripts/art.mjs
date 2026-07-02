@@ -3,8 +3,9 @@
 // LEGACY local FLUX via HuggingFace diffusers (scripts/art-flux.py).
 // Default pipeline art uses ComfyUI: package.json "art" → art-comfyui.mjs.
 // Use this only when you intentionally run diffusers on the host GPU.
-import { runPythonScript } from "./lib/python-runner.mjs";
+
 import { flagSet, postKeyFromArgv, showHelpAndExit } from "./lib/cli.mjs";
+import { runPythonScript } from "./lib/python-runner.mjs";
 
 const args = process.argv.slice(2);
 const flags = flagSet(args);
@@ -29,7 +30,8 @@ EXAMPLES
   bun run art:diffusers -- my-post
 `;
 
-if (flags.has("--help") || flags.has("-h") || args.includes("-h")) showHelpAndExit(HELP);
+if (flags.has("--help") || flags.has("-h") || args.includes("-h"))
+  showHelpAndExit(HELP);
 
 const key = postKeyFromArgv(args);
 if (!key) {

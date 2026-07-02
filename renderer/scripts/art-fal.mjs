@@ -5,19 +5,24 @@
 // Prompt assembly: lib/art-slide-prompt.mjs (same visual contract as Comfy art).
 //
 // Requires FAL_KEY in env. Next: export, optional reel:fal, reel.
-import { buildSlidePrompt, postThemeContext, postSeedOffset } from "./lib/art-slide-prompt.mjs";
-import { parseOnlySlides, selectArtSlides } from "./lib/art-targeting.mjs";
-import { writePostJson } from "./lib/post-io.mjs";
-import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
-import { slideBackgroundExists } from "./lib/public-asset.mjs";
-import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
+
 import {
-  DEFAULT_IMAGE_MODEL,
   buildNegativePrompt,
+  DEFAULT_IMAGE_MODEL,
   estimateCost,
   healthCheck,
   renderSlide,
 } from "./fal-client.mjs";
+import {
+  buildSlidePrompt,
+  postSeedOffset,
+  postThemeContext,
+} from "./lib/art-slide-prompt.mjs";
+import { parseOnlySlides, selectArtSlides } from "./lib/art-targeting.mjs";
+import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
+import { writePostJson } from "./lib/post-io.mjs";
+import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
+import { slideBackgroundExists } from "./lib/public-asset.mjs";
 
 const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith("--")));
@@ -89,14 +94,21 @@ if (!DRY) {
 const onlySet = parseOnlySlides(opt("only", ""));
 const FORCE = flags.has("--all") || flags.has("--force");
 const artExists = (s) => slideBackgroundExists(RENDERER, s);
-const targets = selectArtSlides(post.slides ?? [], { onlySet, force: FORCE, artExists });
+const targets = selectArtSlides(post.slides ?? [], {
+  onlySet,
+  force: FORCE,
+  artExists,
+});
 
 if (!targets.length) {
   console.log("No slides need FAL art for this post.");
   process.exit(0);
 }
 
-let totalCost = typeof post.renderMetadata?.costEstimate === "number" ? post.renderMetadata.costEstimate : 0;
+let totalCost =
+  typeof post.renderMetadata?.costEstimate === "number"
+    ? post.renderMetadata.costEstimate
+    : 0;
 const width = post.canvas?.width ?? 1080;
 const height = post.canvas?.height ?? 1350;
 const neg = buildNegativePrompt();
@@ -105,16 +117,21 @@ let n = 0;
 for (let ti = 0; ti < targets.length; ti++) {
   const slide = targets[ti];
   const slideIndex = post.slides.indexOf(slide);
-  const styleFusion = String(slide.style_fusion || themeCtx.postStyleFusion || "").trim();
+  const styleFusion = String(
+    slide.style_fusion || themeCtx.postStyleFusion || "",
+  ).trim();
   const promptText = buildSlidePrompt(slide, { ...themeCtx, styleFusion });
   const seed = postBaseSeed + slide.slide;
 
   if (DRY) {
-    console.log(`\n[slide ${slide.slide} ${slide.role}] seed=${seed}\n  ${promptText}`);
+    console.log(
+      `\n[slide ${slide.slide} ${slide.role}] seed=${seed}\n  ${promptText}`,
+    );
     continue;
   }
 
-  if (COOLDOWN_MS && ti > 0) await new Promise((r) => setTimeout(r, COOLDOWN_MS));
+  if (COOLDOWN_MS && ti > 0)
+    await new Promise((r) => setTimeout(r, COOLDOWN_MS));
 
   process.stdout.write(`  slide ${slide.slide} (${slide.role})… `);
   const t0 = Date.now();
@@ -137,15 +154,21 @@ for (let ti = 0; ti < targets.length; ti++) {
       model: MODEL,
       costEstimate: Number(totalCost.toFixed(4)),
     };
-    process.stdout.write(`\r  slide ${slide.slide} (${slide.role})… ✓ (${((Date.now() - t0) / 1000).toFixed(0)}s)\n`);
+    process.stdout.write(
+      `\r  slide ${slide.slide} (${slide.role})… ✓ (${((Date.now() - t0) / 1000).toFixed(0)}s)\n`,
+    );
     n++;
   } catch (e) {
-    process.stdout.write(`\r  slide ${slide.slide} (${slide.role})… ✗ ${e.message}\n`);
+    process.stdout.write(
+      `\r  slide ${slide.slide} (${slide.role})… ✗ ${e.message}\n`,
+    );
   }
 }
 
 if (!DRY && n > 0) {
   writePostJson(postPath, post);
-  console.log(`\n✓ FAL generated ${n}/${targets.length} background(s) → public/backgrounds/${prefix}/`);
+  console.log(
+    `\n✓ FAL generated ${n}/${targets.length} background(s) → public/backgrounds/${prefix}/`,
+  );
   console.log(`  Next: bun run export -- ${key}`);
 }

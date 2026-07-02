@@ -12,17 +12,28 @@ export const LEGAL: Record<"terms" | "privacy", Doc> = {
     blocks: [
       {
         h: "Acceptable use",
-        p: ["The App is used only to authenticate the operator's own TikTok, YouTube, Facebook, and Instagram accounts via each platform's official OAuth flow, and to upload and publish the operator's own original videos and images to those accounts. The operator ensures all published content complies with the terms and community guidelines of every platform it reaches, and discloses AI-generated media where each platform requires it."],
+        p: [
+          "The App is used only to authenticate the operator's own TikTok, YouTube, Facebook, and Instagram accounts via each platform's official OAuth flow, and to upload and publish the operator's own original videos and images to those accounts. The operator ensures all published content complies with the terms and community guidelines of every platform it reaches, and discloses AI-generated media where each platform requires it.",
+        ],
       },
       {
         h: "Third-party platforms",
-        p: ["The App integrates with TikTok (Login Kit and Content Posting API), YouTube (YouTube Data API), and Meta (Facebook Graph API and Instagram Graph API, via Facebook Login for Business). Use of those platforms is governed by their own terms. The App is not affiliated with, endorsed by, or sponsored by TikTok, Google, or Meta."],
+        p: [
+          "The App integrates with TikTok (Login Kit and Content Posting API), YouTube (YouTube Data API), and Meta (Facebook Graph API and Instagram Graph API, via Facebook Login for Business). Use of those platforms is governed by their own terms. The App is not affiliated with, endorsed by, or sponsored by TikTok, Google, or Meta.",
+        ],
       },
       {
         h: "No warranty",
-        p: ['The App is provided "as is", without warranty of any kind, and the operator is not liable for any loss arising from its use.'],
+        p: [
+          'The App is provided "as is", without warranty of any kind, and the operator is not liable for any loss arising from its use.',
+        ],
       },
-      { h: "Changes", p: ["These terms may be updated; the date above reflects the current version."] },
+      {
+        h: "Changes",
+        p: [
+          "These terms may be updated; the date above reflects the current version.",
+        ],
+      },
       { h: "Contact", p: [BRAND.contact] },
     ],
   },
@@ -33,7 +44,9 @@ export const LEGAL: Record<"terms" | "privacy", Doc> = {
     blocks: [
       {
         h: "What data the App handles",
-        p: ["The only data handled is the operator's own authentication data for the operator's own accounts:"],
+        p: [
+          "The only data handled is the operator's own authentication data for the operator's own accounts:",
+        ],
         ul: [
           "OAuth tokens (access and refresh) issued by TikTok and Google when the operator authorizes the App to post to the operator's own accounts.",
           "A Meta User access token and a derived Facebook Page access token, issued via Facebook Login for Business when the operator authorizes the App to post to their own Facebook Page and linked Instagram professional account.",
@@ -63,7 +76,9 @@ export const LEGAL: Record<"terms" | "privacy", Doc> = {
       },
       {
         h: "AI-generated content disclosure",
-        p: ["Every post this App publishes to Instagram is labeled with Meta's is_ai_generated self-disclosure flag at publish time, since all of the operator's content is produced with AI tools. This is a platform-required label on the published post, not personal data about any user."],
+        p: [
+          "Every post this App publishes to Instagram is labeled with Meta's is_ai_generated self-disclosure flag at publish time, since all of the operator's content is produced with AI tools. This is a platform-required label on the published post, not personal data about any user.",
+        ],
       },
       {
         h: "Retention and revocation",
@@ -72,8 +87,18 @@ export const LEGAL: Record<"terms" | "privacy", Doc> = {
           "Access can be revoked anytime in TikTok settings (Manage app permissions), Google Account settings (Third-party access), or Facebook settings (Business Integrations / Apps and Websites), which invalidates the stored tokens.",
         ],
       },
-      { h: "Children's privacy", p: ["The App is a private tool for its adult operator and is not directed to children."] },
-      { h: "Changes", p: ["This policy may be updated; the date above reflects the current version."] },
+      {
+        h: "Children's privacy",
+        p: [
+          "The App is a private tool for its adult operator and is not directed to children.",
+        ],
+      },
+      {
+        h: "Changes",
+        p: [
+          "This policy may be updated; the date above reflects the current version.",
+        ],
+      },
       { h: "Contact", p: [BRAND.contact] },
     ],
   },

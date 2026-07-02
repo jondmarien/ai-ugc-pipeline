@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { BrandMark } from "./BrandMark";
 import { BRAND, SOCIALS } from "../lib/content";
+import { BrandMark } from "./BrandMark";
 
 export function Footer() {
   return (
@@ -11,7 +11,9 @@ export function Footer() {
           <p className="mt-5 max-w-xs font-display text-2xl leading-tight text-fg">
             Stay curious, and&nbsp;maybe a&nbsp;little&nbsp;paranoid.
           </p>
-          <p className="mt-4 max-w-sm text-sm text-muted">{BRAND.positioning}</p>
+          <p className="mt-4 max-w-sm text-sm text-muted">
+            {BRAND.positioning}
+          </p>
         </div>
 
         <div>
@@ -25,7 +27,9 @@ export function Footer() {
                   rel="noreferrer"
                   className="group inline-flex items-center gap-2 text-fg no-underline transition-colors hover:text-hacking"
                 >
-                  <span className="font-mono text-xs text-faint transition-colors group-hover:text-hacking">↗</span>
+                  <span className="font-mono text-xs text-faint transition-colors group-hover:text-hacking">
+                    ↗
+                  </span>
                   {s.label}
                 </a>
               </li>
@@ -37,12 +41,18 @@ export function Footer() {
           <p className="kicker mb-4">Site</p>
           <ul className="space-y-2.5">
             <li>
-              <Link to="/terms" className="text-fg no-underline transition-colors hover:text-defensive">
+              <Link
+                to="/terms"
+                className="text-fg no-underline transition-colors hover:text-defensive"
+              >
                 Terms of Service
               </Link>
             </li>
             <li>
-              <Link to="/privacy" className="text-fg no-underline transition-colors hover:text-defensive">
+              <Link
+                to="/privacy"
+                className="text-fg no-underline transition-colors hover:text-defensive"
+              >
                 Privacy Policy
               </Link>
             </li>
@@ -59,8 +69,12 @@ export function Footer() {
       </div>
 
       <div className="mx-auto mt-14 flex max-w-[var(--max)] flex-col gap-2 border-t border-hairline pt-6 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-faint sm:flex-row sm:items-center sm:justify-between">
-        <span>© {new Date().getFullYear()} {BRAND.domain}</span>
-        <span className="text-muted/70">Built with the pipeline it documents.</span>
+        <span>
+          © {new Date().getFullYear()} {BRAND.domain}
+        </span>
+        <span className="text-muted/70">
+          Built with the pipeline it documents.
+        </span>
       </div>
     </footer>
   );

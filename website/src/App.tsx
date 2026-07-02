@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
+import { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Legal } from "./pages/Legal";
 

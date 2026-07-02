@@ -1,5 +1,5 @@
-import path from "node:path";
 import fs from "node:fs";
+import path from "node:path";
 import { DATA_DIR } from "./paths";
 
 export const ALLOWED_STATE_FILES = new Set([
@@ -27,7 +27,11 @@ export function readState(name: string, dir: string = DATA_DIR): unknown {
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
-export function writeState(name: string, value: unknown, dir: string = DATA_DIR): void {
+export function writeState(
+  name: string,
+  value: unknown,
+  dir: string = DATA_DIR,
+): void {
   const file = resolveStateFile(name, dir);
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, JSON.stringify(value, null, 2));

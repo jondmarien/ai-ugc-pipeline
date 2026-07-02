@@ -1,5 +1,5 @@
-import { test, expect } from "bun:test";
-import { youtubeMetadata, tiktokMetadata } from "./metadata";
+import { expect, test } from "bun:test";
+import { tiktokMetadata, youtubeMetadata } from "./metadata";
 
 const post = {
   post_id: "2026-06-11_bluehammer-cve-2026-33825",
@@ -16,7 +16,12 @@ test("youtube title is <=100 chars and from the first caption line", () => {
 });
 
 test("tiktok payload carries privacy + caption title", () => {
-  const m = tiktokMetadata(post, { privacy: "SELF_ONLY", disableComment: false, disableDuet: false, disableStitch: false });
+  const m = tiktokMetadata(post, {
+    privacy: "SELF_ONLY",
+    disableComment: false,
+    disableDuet: false,
+    disableStitch: false,
+  });
   expect(m.post_info.privacy_level).toBe("SELF_ONLY");
   expect(m.post_info.title.length).toBeGreaterThan(0);
 });

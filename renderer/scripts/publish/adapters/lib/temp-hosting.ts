@@ -10,7 +10,8 @@ import { basename } from "node:path";
 // for the full rationale.
 // ---------------------------------------------------------------------------
 
-const TEMP_HOST_BASE = process.env.PUBLISH_TEMP_HOST ?? "https://aiugc.chron0.tech";
+const TEMP_HOST_BASE =
+  process.env.PUBLISH_TEMP_HOST ?? "https://aiugc.chron0.tech";
 
 export type TempUpload = {
   url: string;
@@ -25,7 +26,10 @@ export type TempHostingDeps = {
 };
 
 /** Upload `filePath`'s bytes to the temp-hosting route and return a public URL + cleanup fn. */
-export async function uploadTemp(filePath: string, deps?: Partial<TempHostingDeps>): Promise<TempUpload> {
+export async function uploadTemp(
+  filePath: string,
+  deps?: Partial<TempHostingDeps>,
+): Promise<TempUpload> {
   const fetchImpl = deps?.fetchImpl ?? fetch;
   const readFile = deps?.readFile ?? ((p: string) => readFileSync(p));
   const baseUrl = deps?.baseUrl ?? TEMP_HOST_BASE;
@@ -40,21 +44,29 @@ export async function uploadTemp(filePath: string, deps?: Partial<TempHostingDep
   const bytes = readFile(filePath);
   const filename = basename(filePath);
 
-  const uploadResp = await fetchImpl(`${baseUrl}/api/publish-temp?filename=${encodeURIComponent(filename)}`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${secret}`,
-      "Content-Type": "video/mp4",
+  const uploadResp = await fetchImpl(
+    `${baseUrl}/api/publish-temp?filename=${encodeURIComponent(filename)}`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${secret}`,
+        "Content-Type": "video/mp4",
+      },
+      body: new Uint8Array(bytes),
     },
-    body: new Uint8Array(bytes),
-  });
+  );
 
   if (!uploadResp.ok) {
     const text = await uploadResp.text();
-    throw new Error(`Temp hosting upload failed: ${uploadResp.status} — ${text}`);
+    throw new Error(
+      `Temp hosting upload failed: ${uploadResp.status} — ${text}`,
+    );
   }
 
-  const { url, pathname } = (await uploadResp.json()) as { url: string; pathname: string };
+  const { url, pathname } = (await uploadResp.json()) as {
+    url: string;
+    pathname: string;
+  };
 
   const cleanup = async () => {
     try {

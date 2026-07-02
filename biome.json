@@ -1,57 +1,57 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.5.2/schema.json",
-	"vcs": {
-		"enabled": true,
-		"clientKind": "git",
-		"useIgnoreFile": true
-	},
-	"files": {
-		"ignoreUnknown": false,
-		"includes": [
-			"renderer/src/**",
-			"renderer/scripts/**",
-			"website/src/**",
-			"website/api/**",
-			"dashboard/src/**",
-			"dashboard/server/**",
-			"dashboard/shared/**",
-			"dashboard/e2e/**",
-			"dashboard/scripts/**",
-			"scripts/**",
-			"!**/node_modules/**",
-			"!**/dist/**",
-			"!renderer/remotion/**",
-			"!dashboard/src/design/**",
-			"!**/*.d.mts",
-			"!**/bun.lock"
-		]
-	},
-	"formatter": {
-		"enabled": true,
-		"indentStyle": "space",
-		"indentWidth": 2
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true,
-			"suspicious": {
-				"noExplicitAny": "off"
-			}
-		}
-	},
-	"javascript": {
-		"formatter": {
-			"quoteStyle": "double",
-			"semicolons": "always"
-		}
-	},
-	"assist": {
-		"enabled": true,
-		"actions": {
-			"source": {
-				"organizeImports": "on"
-			}
-		}
-	}
+  "$schema": "https://biomejs.dev/schemas/2.5.2/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "includes": [
+      "renderer/src/**",
+      "renderer/scripts/**",
+      "website/src/**",
+      "website/api/**",
+      "dashboard/src/**",
+      "dashboard/server/**",
+      "dashboard/shared/**",
+      "dashboard/e2e/**",
+      "dashboard/scripts/**",
+      "scripts/**",
+      "!**/node_modules",
+      "!**/dist",
+      "!renderer/remotion",
+      "!dashboard/src/design",
+      "!**/*.d.mts",
+      "!**/bun.lock"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noExplicitAny": "off"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "semicolons": "always"
+    }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  }
 }

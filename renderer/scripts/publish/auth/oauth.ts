@@ -1,5 +1,5 @@
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
-import { join, dirname } from "node:path";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -25,7 +25,10 @@ type RefreshResponse = {
 type PlatformConfig = {
   tokenEndpoint: string;
   scopes: string[];
-  buildRefreshBody(cfgEnv: Record<string, string>, refreshToken: string): Record<string, string>;
+  buildRefreshBody(
+    cfgEnv: Record<string, string>,
+    refreshToken: string,
+  ): Record<string, string>;
 };
 
 type Deps = {
@@ -43,7 +46,10 @@ type Deps = {
  * Returns true only when an access token exists AND has more than 60 s of
  * lifetime remaining relative to nowSec.
  */
-export function accessTokenIsFresh(token: StoredToken, nowSec: number): boolean {
+export function accessTokenIsFresh(
+  token: StoredToken,
+  nowSec: number,
+): boolean {
   if (!token.access_token) return false;
   if (!token.expires_at) return false;
   return token.expires_at - nowSec > 60;

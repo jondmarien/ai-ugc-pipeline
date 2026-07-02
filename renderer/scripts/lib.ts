@@ -1,8 +1,8 @@
 // Shared post loading for TS entry scripts (validate, export, reel, package).
 // MJS scripts use ./lib/post-resolve.mjs (same substring match; adds post_id default without Zod).
-import { readFileSync, readdirSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { PostData, ROLE_FILENAME, type TPostData } from "../src/lib/schema.ts";
 
 export const ROOT = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
@@ -13,19 +13,28 @@ export function loadPost(key: string): TPostData {
   // Accept a slug, post_id, filename_prefix, or a path to a JSON file.
   let file = key;
   if (!key.endsWith(".json")) {
-    const candidates = readdirSync(POSTS_DIR).filter((f) => f.endsWith(".json"));
+    const candidates = readdirSync(POSTS_DIR).filter((f) =>
+      f.endsWith(".json"),
+    );
     const match = candidates.find((f) => f.includes(key));
-    if (!match) throw new Error(`No post JSON in ${POSTS_DIR} matching "${key}". Available: ${candidates.join(", ")}`);
+    if (!match)
+      throw new Error(
+        `No post JSON in ${POSTS_DIR} matching "${key}". Available: ${candidates.join(", ")}`,
+      );
     file = path.join(POSTS_DIR, match);
   }
   const raw = JSON.parse(readFileSync(file, "utf8"));
   const parsed = PostData.safeParse(raw);
   if (!parsed.success) {
-    console.error(`\n[validate] ${path.basename(file)} failed schema validation:`);
+    console.error(
+      `\n[validate] ${path.basename(file)} failed schema validation:`,
+    );
     for (const issue of parsed.error.issues) {
       console.error(`  - ${issue.path.join(".")}: ${issue.message}`);
     }
-    throw new Error("Post JSON validation failed. Fix the source data; the renderer does not guess missing fields.");
+    throw new Error(
+      "Post JSON validation failed. Fix the source data; the renderer does not guess missing fields.",
+    );
   }
   return parsed.data;
 }

@@ -2,16 +2,22 @@
 //
 // Env: COMFYUI_URL, COMFYUI_UPSCALE_DIR, COMFYUI_UNET_DIR, KLEIN_GGUF_REPO.
 // Windows defaults point at E:\ComfyUI\...; override on Linux/macOS hosts.
+
+import { spawnSync } from "node:child_process";
 import { existsSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { spawnSync } from "node:child_process";
 
 export function comfyBaseUrl() {
-  return (process.env.COMFYUI_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
+  return (process.env.COMFYUI_URL || "http://127.0.0.1:8000").replace(
+    /\/$/,
+    "",
+  );
 }
 
 export function defaultUpscaleDir() {
-  return process.env.COMFYUI_UPSCALE_DIR || "E:\\ComfyUI\\models\\upscale_models";
+  return (
+    process.env.COMFYUI_UPSCALE_DIR || "E:\\ComfyUI\\models\\upscale_models"
+  );
 }
 
 export function defaultUnetDir() {
@@ -28,7 +34,10 @@ export const UPSCALE_MODEL_URLS = {
 /**
  * Download known upscale .pth if missing. Returns true if file exists or was downloaded.
  */
-export async function ensureUpscaleModelOnDisk(modelFile, upscaleDir = defaultUpscaleDir()) {
+export async function ensureUpscaleModelOnDisk(
+  modelFile,
+  upscaleDir = defaultUpscaleDir(),
+) {
   const url = UPSCALE_MODEL_URLS[modelFile];
   if (!url) return false;
   let dirExists = false;
@@ -45,7 +54,9 @@ export async function ensureUpscaleModelOnDisk(modelFile, upscaleDir = defaultUp
   }
   const dest = path.join(upscaleDir, modelFile);
   if (existsSync(dest)) return true;
-  console.log(`  ↓ ${modelFile} not found — downloading (~65 MB) from ${url.split("?")[0]} …`);
+  console.log(
+    `  ↓ ${modelFile} not found — downloading (~65 MB) from ${url.split("?")[0]} …`,
+  );
   try {
     const r = await fetch(url, { redirect: "follow" });
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -60,7 +71,8 @@ export async function ensureUpscaleModelOnDisk(modelFile, upscaleDir = defaultUp
   }
 }
 
-const KLEIN_GGUF_REPO = process.env.KLEIN_GGUF_REPO || "unsloth/FLUX.2-klein-4B-GGUF";
+const KLEIN_GGUF_REPO =
+  process.env.KLEIN_GGUF_REPO || "unsloth/FLUX.2-klein-4B-GGUF";
 
 export function ensureFlux2Model(modelFile, unetDir = defaultUnetDir()) {
   if (!/^flux-2-klein-4b-.*\.gguf$/i.test(modelFile)) return;
@@ -77,11 +89,17 @@ export function ensureFlux2Model(modelFile, unetDir = defaultUnetDir()) {
     return;
   }
   if (existsSync(path.join(unetDir, modelFile))) return;
-  console.log(`  ↓ ${modelFile} not in ${unetDir} — downloading from ${KLEIN_GGUF_REPO} via hf…`);
-  const r = spawnSync("hf", ["download", KLEIN_GGUF_REPO, modelFile, "--local-dir", unetDir], {
-    stdio: "inherit",
-    shell: process.platform === "win32",
-  });
+  console.log(
+    `  ↓ ${modelFile} not in ${unetDir} — downloading from ${KLEIN_GGUF_REPO} via hf…`,
+  );
+  const r = spawnSync(
+    "hf",
+    ["download", KLEIN_GGUF_REPO, modelFile, "--local-dir", unetDir],
+    {
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
   if (r.status !== 0) {
     console.warn(
       `  ⚠ auto-download failed (hf exit ${r.status ?? "?"}). Run manually:  hf download ${KLEIN_GGUF_REPO} ${modelFile} --local-dir ${unetDir}`,
