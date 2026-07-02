@@ -176,18 +176,29 @@ export async function fetchInstagramAccountForPage(
     appsecret_proof: appSecretProof(pageAccessToken, appSecret),
   });
   const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}?${params.toString()}`);
-  if (!resp.ok) return null;
+  if (!resp.ok) {
+    const text = await resp.text();
+    console.error(`[publish:auth] Per-Page IG lookup for ${pageId} failed: ${resp.status} — ${text}`);
+    return null;
+  }
   const json = (await resp.json()) as { instagram_business_account?: { id: string; username?: string } };
   return json.instagram_business_account ?? null;
 }
 
-/** GET /debug_token — liveness check for a Page access token. */
+export type DebugTokenData = {
+  is_valid: boolean;
+  expires_at?: number;
+  scopes?: string[];
+  granular_scopes?: Array<{ scope: string; target_ids?: string[] }>;
+};
+
+/** GET /debug_token — liveness check for a Page access token, and (used at auth time) a way to see the actual granted scopes/assets on a token, ground-truth vs. what the consent dialog displayed. */
 export async function debugToken(
   inputToken: string,
   appId: string,
   appSecret: string,
   fetchImpl: typeof fetch = fetch,
-): Promise<{ is_valid: boolean; expires_at?: number }> {
+): Promise<DebugTokenData> {
   const params = new URLSearchParams({
     input_token: inputToken,
     access_token: `${appId}|${appSecret}`,
@@ -197,7 +208,7 @@ export async function debugToken(
     const text = await resp.text();
     throw new Error(`Meta /debug_token failed: ${resp.status} — ${text}`);
   }
-  const json = (await resp.json()) as { data?: { is_valid: boolean; expires_at?: number } };
+  const json = (await resp.json()) as { data?: DebugTokenData };
   return json.data ?? { is_valid: false };
 }
 

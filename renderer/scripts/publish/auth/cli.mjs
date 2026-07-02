@@ -340,6 +340,7 @@ async function runMeta() {
     fetchPageAccounts,
     fetchInstagramAccountForPage,
     pickPageWithInstagram,
+    debugToken,
     GRAPH_BASE,
     GRAPH_API_VERSION,
   } = await import("./meta.js");
@@ -404,6 +405,24 @@ async function runMeta() {
           // Exchange short-lived → long-lived (~60 days) User access token.
           const longLived = await exchangeLongLivedToken(shortLivedToken, appId, appSecret);
           const nowSec = Math.floor(Date.now() / 1000);
+
+          // Ground truth: what scopes/assets actually landed on the token, vs. what the
+          // consent dialog displayed. granular_scopes[].target_ids shows which Page/asset
+          // ids each permission was actually granted for.
+          try {
+            const debug = await debugToken(longLived.access_token, appId, appSecret);
+            console.log(`\n[publish:auth] Token scopes: ${(debug.scopes ?? []).join(", ") || "(none)"}`);
+            if (debug.granular_scopes?.length) {
+              console.log(`[publish:auth] Granular scopes:`);
+              for (const g of debug.granular_scopes) {
+                console.log(`  - ${g.scope}: ${g.target_ids?.length ? g.target_ids.join(", ") : "(all)"}`);
+              }
+            } else {
+              console.log(`[publish:auth] No granular_scopes on this token (permissions apply broadly, not asset-scoped).`);
+            }
+          } catch (e) {
+            console.error(`[publish:auth] (debug_token check failed, continuing anyway: ${e.message})`);
+          }
 
           // Resolve the Page (+ linked IG Business Account) the user manages.
           const accounts = await fetchPageAccounts(longLived.access_token, appSecret);
