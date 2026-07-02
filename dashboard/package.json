@@ -3,6 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "lint": "bunx --bun biome check .",
+    "lint:fix": "bunx --bun biome check --write .",
     "dev": "vite",
     "server": "bun server/index.ts",
     "test": "bun test server src",
