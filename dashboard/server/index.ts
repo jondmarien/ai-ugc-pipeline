@@ -4,6 +4,7 @@ import { serve } from "bun";
 import { aggregateHooks, parseCaptionBankHooks } from "./hooks";
 import { getAccount, getMedia } from "./ig";
 import { listIngested } from "./ingested";
+import { listPublishedMeta, readCurrentInstagramPostType } from "./meta";
 import { DASH_ROOT, RENDERS_DIR } from "./paths";
 import { listPosts, listRenders, readRenderFile } from "./repo";
 import { ALLOWED_STATE_FILES, readState, writeState } from "./store";
@@ -97,6 +98,14 @@ const server = serve({
         const full = path.join(RENDERS_DIR, dir, file);
         if (!fs.existsSync(full)) return env(null, "not found");
         return new Response(Bun.file(full));
+      }
+
+      if (p === "/api/meta/published") {
+        return env(
+          listPublishedMeta({
+            instagramPostType: readCurrentInstagramPostType(),
+          }),
+        );
       }
 
       if (p === "/api/trends") {
