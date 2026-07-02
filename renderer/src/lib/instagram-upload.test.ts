@@ -1,10 +1,16 @@
-import { test, expect } from "bun:test";
+import { expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
-import { validatePost } from "./schema";
 import { instagramUploadChecklist } from "../../scripts/lib/instagram-upload";
+import { validatePost } from "./schema";
 
-const fixturePath = new URL("../../content/posts/2026-06-05_hexstrike-ai-redteam.json", import.meta.url);
-const basePost = JSON.parse(readFileSync(fixturePath, "utf8")) as Record<string, unknown>;
+const fixturePath = new URL(
+  "../../content/posts/2026-06-05_hexstrike-ai-redteam.json",
+  import.meta.url,
+);
+const basePost = JSON.parse(readFileSync(fixturePath, "utf8")) as Record<
+  string,
+  unknown
+>;
 
 test("upload checklist: default single-caption path", () => {
   const post = validatePost(basePost);

@@ -1,8 +1,8 @@
-import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Scramble } from "../components/Scramble";
-import { prefersReducedMotion } from "../lib/motion";
 import { BRAND, SOCIALS } from "../lib/content";
+import { prefersReducedMotion } from "../lib/motion";
 
 // Code-split the three.js bundle so the page paints before it loads.
 const HeroCanvas = lazy(() =>
@@ -33,16 +33,32 @@ export function Hero() {
       gsap.set("[data-h]", { opacity: 0, y: 26 });
       gsap
         .timeline({ delay: 0.15 })
-        .to("[data-h='kick']", { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" })
-        .to("[data-h='sub']", { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.9)
-        .to("[data-h='cta']", { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 1.1)
+        .to("[data-h='kick']", {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+        })
+        .to(
+          "[data-h='sub']",
+          { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+          0.9,
+        )
+        .to(
+          "[data-h='cta']",
+          { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+          1.1,
+        )
         .to("[data-h='cue']", { opacity: 1, y: 0, duration: 0.8 }, 1.4);
     }, root);
     return () => ctx.revert();
   }, [reduced]);
 
   return (
-    <section ref={root} className="relative min-h-[100svh] w-full overflow-hidden">
+    <section
+      ref={root}
+      className="relative min-h-[100svh] w-full overflow-hidden"
+    >
       {/* three.js signal field */}
       <div className="absolute inset-0">
         <Suspense fallback={null}>
@@ -71,7 +87,10 @@ export function Hero() {
           </span>
         </h1>
 
-        <p data-h="sub" className="mt-8 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
+        <p
+          data-h="sub"
+          className="mt-8 max-w-xl text-lg leading-relaxed text-muted sm:text-xl"
+        >
           {BRAND.positioning}
         </p>
 
@@ -83,7 +102,9 @@ export function Hero() {
             className="group relative inline-flex items-center gap-2.5 rounded-full bg-fg px-7 py-3.5 font-mono text-[0.8rem] font-medium uppercase tracking-[0.14em] text-void-deep no-underline transition-transform duration-300 hover:-translate-y-0.5"
           >
             Follow the work
-            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            <span className="transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
           </a>
           <a
             href="#pipeline"

@@ -1,4 +1,4 @@
-import { test, expect, mock, afterAll } from "bun:test";
+import { afterAll, expect, mock, test } from "bun:test";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -14,7 +14,10 @@ mock.module("@fal-ai/client", () => ({
   fal: {
     config() {},
     async subscribe() {
-      return { data: { images: [{ url: "https://example.test/fake.png" }] }, requestId: "req-test" };
+      return {
+        data: { images: [{ url: "https://example.test/fake.png" }] },
+        requestId: "req-test",
+      };
     },
   },
 }));
@@ -40,26 +43,58 @@ test("renderSlide mutates + persists the post (no clobber)", async () => {
     post_id: id,
     upload_package: { filename_prefix: id },
     canvas: { width: 1080, height: 1350 },
-    slides: [{ slide: 1, role: "cover", background_asset: "", asset_status: "needed", visual_prompt: "x" }],
+    slides: [
+      {
+        slide: 1,
+        role: "cover",
+        background_asset: "",
+        asset_status: "needed",
+        visual_prompt: "x",
+      },
+    ],
     asset_licenses: [],
   };
-  const outPng = path.join(RENDERER, "public", "backgrounds", id, "01_cover.png");
+  const outPng = path.join(
+    RENDERER,
+    "public",
+    "backgrounds",
+    id,
+    "01_cover.png",
+  );
   const postFile = path.join(POSTS, `${id}.json`);
   try {
-    await renderSlide({ post, slideIndex: 0, prompt: "dark bg", model: "flux-dev", width: 1024, height: 1280, seed: 1 });
+    await renderSlide({
+      post,
+      slideIndex: 0,
+      prompt: "dark bg",
+      model: "flux-dev",
+      width: 1024,
+      height: 1280,
+      seed: 1,
+    });
 
     // (1) the passed-in object is mutated — so a caller's final write stays consistent
-    expect(post.slides[0].background_asset).toBe(`/backgrounds/${id}/01_cover.png`);
+    expect(post.slides[0].background_asset).toBe(
+      `/backgrounds/${id}/01_cover.png`,
+    );
     expect(post.slides[0].asset_status).toBe("generated");
     expect(post.asset_licenses.length).toBe(1);
 
     // (2) the same patch is on disk
     const onDisk = JSON.parse(fs.readFileSync(postFile, "utf8"));
-    expect(onDisk.slides[0].background_asset).toBe(`/backgrounds/${id}/01_cover.png`);
+    expect(onDisk.slides[0].background_asset).toBe(
+      `/backgrounds/${id}/01_cover.png`,
+    );
     expect(onDisk.slides[0].asset_status).toBe("generated");
   } finally {
-    try { fs.unlinkSync(outPng); } catch {}
-    try { fs.rmdirSync(path.dirname(outPng)); } catch {}
-    try { fs.unlinkSync(postFile); } catch {}
+    try {
+      fs.unlinkSync(outPng);
+    } catch {}
+    try {
+      fs.rmdirSync(path.dirname(outPng));
+    } catch {}
+    try {
+      fs.unlinkSync(postFile);
+    } catch {}
   }
 });

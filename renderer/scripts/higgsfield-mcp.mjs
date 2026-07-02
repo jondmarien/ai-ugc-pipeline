@@ -26,13 +26,17 @@
 // buildArtPlan() and ingestArtPlan() are pure-ish (filesystem only, no network) so they unit-test
 // without an account.
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
-import { backgroundFileName } from "./lib/slide-filename.mjs";
+import {
+  cliAspectRatio,
+  DEFAULT_IMAGE_MODEL,
+  MODEL_CATALOG,
+} from "./higgsfield-client.mjs";
 import { buildSlidePrompt, postThemeContext } from "./lib/art-slide-prompt.mjs";
 import { buildNegativePrompt } from "./lib/flux-negative-prompt.mjs";
-import { MODEL_CATALOG, DEFAULT_IMAGE_MODEL, cliAspectRatio } from "./higgsfield-client.mjs";
+import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
+import { backgroundFileName } from "./lib/slide-filename.mjs";
 
 const CACHE_DIR = path.join(RENDERER, ".cache", "higgsfield");
 
@@ -54,9 +58,17 @@ function catalogImage(model) {
  * @param {boolean} [opts.force]  include slides that already have art
  */
 export function buildArtPlan(post, opts = {}) {
-  const { model = DEFAULT_IMAGE_MODEL, artExists = () => false, onlySet = null, force = false } = opts;
+  const {
+    model = DEFAULT_IMAGE_MODEL,
+    artExists = () => false,
+    onlySet = null,
+    force = false,
+  } = opts;
   const prefix = post?.upload_package?.filename_prefix;
-  if (!prefix) throw new Error("post.upload_package.filename_prefix is required for the MCP art plan");
+  if (!prefix)
+    throw new Error(
+      "post.upload_package.filename_prefix is required for the MCP art plan",
+    );
   const catalog = catalogImage(model);
   if (!catalog) throw new Error(`UnknownHiggsfieldModel: ${model}`);
 
@@ -74,9 +86,14 @@ export function buildArtPlan(post, opts = {}) {
       return !artExists(s);
     })
     .map((slide) => {
-      const styleFusion = String(slide.style_fusion || themeCtx.postStyleFusion || "").trim();
+      const styleFusion = String(
+        slide.style_fusion || themeCtx.postStyleFusion || "",
+      ).trim();
       const prompt = buildSlidePrompt(slide, { ...themeCtx, styleFusion });
-      const outName = backgroundFileName({ slide: slide.slide, role: slide.role });
+      const outName = backgroundFileName({
+        slide: slide.slide,
+        role: slide.role,
+      });
       return {
         slide: slide.slide,
         role: slide.role,
@@ -89,7 +106,13 @@ export function buildArtPlan(post, opts = {}) {
         model_hint: catalog.mcpModel ?? model,
         out_path: path.join(RENDERER, "public", "backgrounds", prefix, outName),
         asset_path: `/backgrounds/${prefix}/${outName}`,
-        url_sidecar: path.join(RENDERER, "public", "backgrounds", prefix, `${outName}.url.txt`),
+        url_sidecar: path.join(
+          RENDERER,
+          "public",
+          "backgrounds",
+          prefix,
+          `${outName}.url.txt`,
+        ),
       };
     });
 
@@ -124,10 +147,15 @@ export function readArtPlan(prefix) {
 export function ingestArtPlan(post, postPath, opts = {}) {
   const prefix = post?.upload_package?.filename_prefix;
   const plan = opts.plan ?? readArtPlan(prefix);
-  if (!plan) throw new Error(`No MCP art plan found for "${prefix}". Run --mode=mcp --plan first.`);
+  if (!plan)
+    throw new Error(
+      `No MCP art plan found for "${prefix}". Run --mode=mcp --plan first.`,
+    );
   const slideByNum = new Map((post.slides ?? []).map((s) => [s.slide, s]));
 
-  post.asset_licenses = Array.isArray(post.asset_licenses) ? post.asset_licenses : [];
+  post.asset_licenses = Array.isArray(post.asset_licenses)
+    ? post.asset_licenses
+    : [];
   let ingested = 0;
   const missing = [];
 
@@ -138,7 +166,9 @@ export function ingestArtPlan(post, postPath, opts = {}) {
       continue;
     }
     if (!existsSync(entry.out_path)) {
-      missing.push(`slide ${entry.slide} → ${entry.asset_path} (file not generated)`);
+      missing.push(
+        `slide ${entry.slide} → ${entry.asset_path} (file not generated)`,
+      );
       continue;
     }
     slide.background_asset = entry.asset_path;
@@ -152,10 +182,12 @@ export function ingestArtPlan(post, postPath, opts = {}) {
       post.asset_licenses.push({
         asset: entry.asset_path,
         source: `Higgsfield MCP / ${entry.model}`,
-        license_or_terms: "Pending confirmation from Higgsfield provider terms.",
+        license_or_terms:
+          "Pending confirmation from Higgsfield provider terms.",
         commercial_use_allowed: false,
         disclosure_required: true,
-        notes: "Generated via the Higgsfield MCP generate_image tool (agent-driven); confirm terms before publish.",
+        notes:
+          "Generated via the Higgsfield MCP generate_image tool (agent-driven); confirm terms before publish.",
       });
     }
     ingested++;
@@ -164,11 +196,21 @@ export function ingestArtPlan(post, postPath, opts = {}) {
   post.renderMetadata = {
     provider: "higgsfield-mcp",
     model: plan.model,
-    costEstimate: typeof post.renderMetadata?.costEstimate === "number" ? post.renderMetadata.costEstimate : null,
+    costEstimate:
+      typeof post.renderMetadata?.costEstimate === "number"
+        ? post.renderMetadata.costEstimate
+        : null,
   };
 
-  if (ingested > 0) writeFileSync(postPath, `${JSON.stringify(post, null, 2)}\n`, "utf8");
+  if (ingested > 0)
+    writeFileSync(postPath, `${JSON.stringify(post, null, 2)}\n`, "utf8");
   return { ingested, missing };
 }
 
-export default { planPath, buildArtPlan, writeArtPlan, readArtPlan, ingestArtPlan };
+export default {
+  planPath,
+  buildArtPlan,
+  writeArtPlan,
+  readArtPlan,
+  ingestArtPlan,
+};

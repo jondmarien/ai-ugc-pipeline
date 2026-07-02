@@ -3,12 +3,16 @@ import { multipleCaptionsEnabled } from "./schema.ts";
 
 /** Bracketed topic line from post.hashtags (not #hashtags). Empty when no topics. */
 export function topicLine(post: Pick<TPostData, "hashtags">): string {
-  const topics = post.hashtags.map((t) => t.replace(/^#/, "").trim()).filter(Boolean);
+  const topics = post.hashtags
+    .map((t) => t.replace(/^#/, "").trim())
+    .filter(Boolean);
   return topics.length ? `[${topics.join(", ")}]` : "";
 }
 
 /** Single post-level caption export (legacy default). */
-export function captionTxt(post: Pick<TPostData, "caption" | "hashtags">): string {
+export function captionTxt(
+  post: Pick<TPostData, "caption" | "hashtags">,
+): string {
   const topics = topicLine(post);
   const topicSuffix = topics ? `\n\n${topics}\n` : "\n";
   return `${post.caption}${topicSuffix}`;
@@ -30,7 +34,8 @@ export function captionTxt(post: Pick<TPostData, "caption" | "hashtags">): strin
 export function slideCaptionsTxt(
   post: Pick<TPostData, "features" | "slide_captions" | "slides" | "hashtags">,
 ): string | null {
-  if (!multipleCaptionsEnabled(post as Pick<TPostData, "features">)) return null;
+  if (!multipleCaptionsEnabled(post as Pick<TPostData, "features">))
+    return null;
   const captions = post.slide_captions;
   if (!captions?.length) return null;
   const topics = topicLine(post);
@@ -43,6 +48,8 @@ export function slideCaptionsTxt(
   return blocks.join("\n\n") + "\n";
 }
 
-export function slideCaptionsOutputName(post: Pick<TPostData, "upload_package">): string {
+export function slideCaptionsOutputName(
+  post: Pick<TPostData, "upload_package">,
+): string {
   return post.upload_package.slide_captions_file ?? "slide_captions.txt";
 }

@@ -86,7 +86,9 @@ export const SlideData = z.object({
   visual_prompt: z.string().optional().default(""),
   background_asset: z.string().optional().default(""),
   // existing = reuse pipeline asset; needed = generate later; procedural = CSS-only.
-  asset_status: z.enum(["existing", "needed", "generated", "stock", "procedural"]).default("procedural"),
+  asset_status: z
+    .enum(["existing", "needed", "generated", "stock", "procedural"])
+    .default("procedural"),
   cta: z.string().optional().default(""),
   notes: z.string().optional().default(""),
   // Per-slide style-fusion override (FLUX.2): a second aesthetic blended with the house style for
@@ -99,11 +101,15 @@ export const SlideData = z.object({
   fal_image_url: z.string().url().optional(),
   // For role "chain": the ordered steps of the diagram. The last step is rendered as the
   // emphasized outcome. stage = short label (e.g. "STAGE 1"), title = the action, detail = a line.
-  chain: z.array(z.object({
-    stage: z.string().optional().default(""),
-    title: z.string().min(1),
-    detail: z.string().optional().default(""),
-  })).optional(),
+  chain: z
+    .array(
+      z.object({
+        stage: z.string().optional().default(""),
+        title: z.string().min(1),
+        detail: z.string().optional().default(""),
+      }),
+    )
+    .optional(),
 });
 
 export const SourceNote = z.object({
@@ -153,8 +159,21 @@ export const CaptionMode = z.enum(["block", "word", "highlight"]);
 //   http     — OpenAI-compatible /v1/audio/speech server (e.g. Kokoro-FastAPI, Apache-2.0)
 //   file     — you supply the WAV (use ANY tool: WhisperSpeech/Piper/etc.)
 // NOTE: Coqui XTTS and F5-TTS base weights are NON-commercial — not offered as modes.
-export const VoiceMode = z.enum(["none", "voxcpm2", "voxcpm2-0.5b", "bark", "http", "file"]);
-export const MusicMode = z.enum(["none", "free", "licensed", "generated", "file"]);
+export const VoiceMode = z.enum([
+  "none",
+  "voxcpm2",
+  "voxcpm2-0.5b",
+  "bark",
+  "http",
+  "file",
+]);
+export const MusicMode = z.enum([
+  "none",
+  "free",
+  "licensed",
+  "generated",
+  "file",
+]);
 
 export const AudioSpec = z.object({
   voice_mode: VoiceMode.default("none"),
@@ -187,7 +206,12 @@ export const VideoSpec = z.object({
   fps: z.number().positive(),
   export_name: z.string().min(1),
   caption_mode: CaptionMode.default("block"),
-  audio: AudioSpec.default({ voice_mode: "none", music_mode: "none", voice_gain_db: 0, music_gain_db: -18 }),
+  audio: AudioSpec.default({
+    voice_mode: "none",
+    music_mode: "none",
+    voice_gain_db: 0,
+    music_gain_db: -18,
+  }),
   captions: z.array(CaptionLine).optional(), // written by `bun run align`; voice-synced
   // Optional per-post fixups applied by `bun run align` AFTER Whisper, e.g. {"new":"Nous"} when
   // narration spells a name phonetically. Scoped to THIS post, so it can safely remap a common
@@ -242,7 +266,9 @@ export const PostData = z
     pillar: Pillar,
     // Brand colour theme (drives carousel accent + AI-image colour/mood). Optional —
     // falls back to the pillar→theme map in tokens.ts when omitted.
-    theme: z.enum(["offensive", "defensive", "hacking", "purple-team", "ai"]).optional(),
+    theme: z
+      .enum(["offensive", "defensive", "hacking", "purple-team", "ai"])
+      .optional(),
     // Optional FLUX.2 style fusion applied to ALL backgrounds of this post: a second named
     // aesthetic blended with the house style under the theme's unifying palette, e.g.
     // "ancient Greek marble statuary rendered in cyberpunk neon" or "blueprint schematic etching".
@@ -263,7 +289,9 @@ export const PostData = z
     hashtags: z.array(z.string()).min(1),
     comment_prompt: z.string().optional().default(""),
     alt_text: z.array(z.string()).min(1),
-    sources: z.array(SourceNote).min(1, "at least one source is required for factual posts"),
+    sources: z
+      .array(SourceNote)
+      .min(1, "at least one source is required for factual posts"),
     asset_licenses: z.array(z.unknown()).default([]),
     video: VideoSpec.optional(),
     // Optional themed "wall" background (renderer/public/walls). When enabled, the carousel and
@@ -375,7 +403,9 @@ export type TCaptionMode = z.infer<typeof CaptionMode>;
 export type TPostFeatures = z.infer<typeof PostFeatures>;
 
 /** True when the post opts into native per-slide Instagram captions. */
-export function multipleCaptionsEnabled(post: Pick<TPostData, "features">): boolean {
+export function multipleCaptionsEnabled(
+  post: Pick<TPostData, "features">,
+): boolean {
   return post.features?.multiple_captions === true;
 }
 

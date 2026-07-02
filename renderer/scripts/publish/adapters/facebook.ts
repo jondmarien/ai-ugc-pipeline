@@ -1,13 +1,24 @@
 import { readFileSync, statSync } from "node:fs";
-import type { PlatformAdapter, RenderPackage, AdapterResult, PublishOpts } from "../types";
+import { appSecretProof, GRAPH_BASE, getMetaCredentials } from "../auth/meta";
 import { loadPublishConfig } from "../config";
-import { getMetaCredentials, GRAPH_BASE, appSecretProof } from "../auth/meta";
+import type {
+  AdapterResult,
+  PlatformAdapter,
+  PublishOpts,
+  RenderPackage,
+} from "../types";
 
 // Every call below is authenticated with a Page access token (user-derived), so it needs
 // appsecret_proof once the app's "Require app secret" setting is enabled.
-function withProof(pageAccessToken: string, params: Record<string, string>): Record<string, string> {
+function withProof(
+  pageAccessToken: string,
+  params: Record<string, string>,
+): Record<string, string> {
   const appSecret = process.env.META_APP_SECRET ?? "";
-  return { ...params, appsecret_proof: appSecretProof(pageAccessToken, appSecret) };
+  return {
+    ...params,
+    appsecret_proof: appSecretProof(pageAccessToken, appSecret),
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -42,7 +53,10 @@ export type FacebookDeps = {
 // Pure result shaper
 // ---------------------------------------------------------------------------
 
-export function shapeFacebookResult(videoId: string, privacy: string): AdapterResult {
+export function shapeFacebookResult(
+  videoId: string,
+  privacy: string,
+): AdapterResult {
   return {
     platform: "facebook",
     kind: "api",
@@ -59,7 +73,10 @@ export function shapeFacebookResult(videoId: string, privacy: string): AdapterRe
 
 function friendlyError(err: unknown): string {
   const msg = err instanceof Error ? err.message : String(err);
-  if (msg.includes('"code":190') || msg.includes("Error validating access token")) {
+  if (
+    msg.includes('"code":190') ||
+    msg.includes("Error validating access token")
+  ) {
     return `${msg} — Meta token invalid or expired — run bun run publish:auth meta`;
   }
   if (msg.includes('"code":100')) {
@@ -88,7 +105,10 @@ async function startUpload(
       access_token: pageAccessToken,
     }),
   );
-  const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}/videos?${params.toString()}`, { method: "POST" });
+  const resp = await fetchImpl(
+    `${GRAPH_BASE}/${pageId}/videos?${params.toString()}`,
+    { method: "POST" },
+  );
   if (!resp.ok) {
     const text = await resp.text();
     throw new Error(`Facebook upload start failed: ${resp.status} — ${text}`);
@@ -109,13 +129,21 @@ async function transferChunk(
   form.set("start_offset", startOffset);
   form.set("upload_session_id", uploadSessionId);
   form.set("access_token", pageAccessToken);
-  form.set("appsecret_proof", appSecretProof(pageAccessToken, process.env.META_APP_SECRET ?? ""));
+  form.set(
+    "appsecret_proof",
+    appSecretProof(pageAccessToken, process.env.META_APP_SECRET ?? ""),
+  );
   form.set("video_file_chunk", new Blob([new Uint8Array(bytes)]));
 
-  const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}/videos`, { method: "POST", body: form });
+  const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}/videos`, {
+    method: "POST",
+    body: form,
+  });
   if (!resp.ok) {
     const text = await resp.text();
-    throw new Error(`Facebook upload transfer failed: ${resp.status} — ${text}`);
+    throw new Error(
+      `Facebook upload transfer failed: ${resp.status} — ${text}`,
+    );
   }
   return (await resp.json()) as TransferResponse;
 }
@@ -139,7 +167,10 @@ async function finishUpload(
       published: String(published),
     }),
   );
-  const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}/videos?${params.toString()}`, { method: "POST" });
+  const resp = await fetchImpl(
+    `${GRAPH_BASE}/${pageId}/videos?${params.toString()}`,
+    { method: "POST" },
+  );
   if (!resp.ok) {
     const text = await resp.text();
     throw new Error(`Facebook upload finish failed: ${resp.status} — ${text}`);
@@ -156,11 +187,19 @@ export function makeFacebookAdapter(deps: FacebookDeps): PlatformAdapter {
     name: "facebook",
     kind: "api",
 
-    async publish(pkg: RenderPackage, opts: PublishOpts): Promise<AdapterResult> {
+    async publish(
+      pkg: RenderPackage,
+      opts: PublishOpts,
+    ): Promise<AdapterResult> {
       const cfg = deps.loadConfig();
 
       if (opts.dryRun) {
-        return { platform: "facebook", kind: "api", status: "manual", message: "(dry-run)" };
+        return {
+          platform: "facebook",
+          kind: "api",
+          status: "manual",
+          message: "(dry-run)",
+        };
       }
 
       try {
@@ -168,8 +207,20 @@ export function makeFacebookAdapter(deps: FacebookDeps): PlatformAdapter {
         const fileSizeBytes = deps.fileSize(pkg.reelPath);
         const bytes = deps.readFile(pkg.reelPath);
 
-        const start = await startUpload(deps.fetchImpl, pageId, pageAccessToken, fileSizeBytes);
-        await transferChunk(deps.fetchImpl, pageId, pageAccessToken, start.upload_session_id, "0", bytes);
+        const start = await startUpload(
+          deps.fetchImpl,
+          pageId,
+          pageAccessToken,
+          fileSizeBytes,
+        );
+        await transferChunk(
+          deps.fetchImpl,
+          pageId,
+          pageAccessToken,
+          start.upload_session_id,
+          "0",
+          bytes,
+        );
 
         const hashtagStr = pkg.post.hashtags.map((t) => `#${t}`).join(" ");
         const description = `${pkg.post.caption}\n\n${hashtagStr}`;
@@ -187,7 +238,12 @@ export function makeFacebookAdapter(deps: FacebookDeps): PlatformAdapter {
 
         return shapeFacebookResult(start.video_id, cfg.privacy);
       } catch (err) {
-        return { platform: "facebook", kind: "api", status: "failed", error: friendlyError(err) };
+        return {
+          platform: "facebook",
+          kind: "api",
+          status: "failed",
+          error: friendlyError(err),
+        };
       }
     },
   };

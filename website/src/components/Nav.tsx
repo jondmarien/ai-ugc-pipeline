@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { BrandMark } from "./BrandMark";
 import { SOCIALS } from "../lib/content";
+import { BrandMark } from "./BrandMark";
 
 const LINKS = [
   { href: "#thesis", label: "Thesis" },

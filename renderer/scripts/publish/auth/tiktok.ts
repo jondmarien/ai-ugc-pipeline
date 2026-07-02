@@ -9,10 +9,7 @@
  */
 export const tokenEndpoint = "https://open.tiktokapis.com/v2/oauth/token/";
 
-export const scopes = [
-  "video.publish",
-  "user.info.basic",
-];
+export const scopes = ["video.publish", "user.info.basic"];
 
 export function buildRefreshBody(
   cfgEnv: Record<string, string>,

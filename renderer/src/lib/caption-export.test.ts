@@ -1,4 +1,4 @@
-import { test, expect } from "bun:test";
+import { expect, test } from "bun:test";
 import { captionTxt, slideCaptionsTxt } from "./caption-export";
 import type { TPostData } from "./schema.ts";
 

@@ -6,5 +6,10 @@ export type ApiEnvelope<T> = {
 };
 
 export type ModuleKey =
-  | "overview" | "hooks" | "analytics" | "competitors"
-  | "scheduler" | "calendar" | "trending";
+  | "overview"
+  | "hooks"
+  | "analytics"
+  | "competitors"
+  | "scheduler"
+  | "calendar"
+  | "trending";

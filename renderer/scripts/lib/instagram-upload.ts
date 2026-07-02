@@ -1,13 +1,16 @@
+import { slideCaptionsOutputName } from "../../src/lib/caption-export.ts";
 import type { TPostData } from "../../src/lib/schema.ts";
 import { multipleCaptionsEnabled } from "../../src/lib/schema.ts";
-import { slideCaptionsOutputName } from "../../src/lib/caption-export.ts";
 import { slideFilename } from "../lib.ts";
 
 /**
  * Manual Instagram carousel upload steps (no Graph API in this repo).
  * When multiple_captions is enabled, lists slide_captions_file + per-slide paste order.
  */
-export function instagramUploadChecklist(post: TPostData, renderDir: string): string {
+export function instagramUploadChecklist(
+  post: TPostData,
+  renderDir: string,
+): string {
   const pngs = post.slides.map((_, i) => slideFilename(post, i));
   const multi = multipleCaptionsEnabled(post);
   const captionFile = post.upload_package.caption_file;

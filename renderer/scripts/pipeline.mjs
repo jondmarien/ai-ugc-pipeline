@@ -24,11 +24,16 @@
 // Shared logic: ./lib/post-selection.mjs, post-resolve.mjs, post-status.mjs, public-asset.mjs.
 // Run `bun run pipeline -- --help` for full flag list.
 import { spawnSync } from "node:child_process";
-import { setStatus, readStatus } from "./lib/post-status.mjs";
 import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
 import { allPostKeys, loadPostByKey } from "./lib/post-resolve.mjs";
-import { expandKeysBySubstring, filterByStatus, applySkipTerms } from "./lib/post-selection.mjs";
+import {
+  applySkipTerms,
+  expandKeysBySubstring,
+  filterByStatus,
+} from "./lib/post-selection.mjs";
+import { readStatus, setStatus } from "./lib/post-status.mjs";
 import { slideBackgroundExists } from "./lib/public-asset.mjs";
+
 const argv = process.argv.slice(2);
 // --custom-voice <path>: capture its value (an authorized reference WAV to clone) and keep
 // that path out of the positional post-keys list so it isn't treated as another post.
@@ -38,7 +43,9 @@ const cvtIdx = argv.indexOf("--custom-voice-text");
 const customVoiceText = cvtIdx >= 0 ? argv[cvtIdx + 1] : null;
 // indices whose value is consumed by a flag (so they're NOT positional post-keys).
 // Guard with >=0 — otherwise an absent flag (indexOf -1) would exclude argv[0] (the key).
-const consumed = new Set([cvIdx, cvtIdx].filter((i) => i >= 0).map((i) => i + 1));
+const consumed = new Set(
+  [cvIdx, cvtIdx].filter((i) => i >= 0).map((i) => i + 1),
+);
 const flags = new Set(argv.filter((a) => a.startsWith("--")));
 let keys = argv.filter((a, i) => !a.startsWith("--") && !consumed.has(i));
 // --force bypasses the approval gate (render non-approved posts anyway). It does NOT demote a
@@ -174,7 +181,9 @@ if (flags.has("--help") || flags.has("-h") || argv.includes("-h")) {
 // unique slug runs one, a date prefix like 2026-06-11 runs the whole day. --status=VALUE adds
 // every post currently at that status. Explicit keys run regardless of status. Merge, de-dupe,
 // sort by filename (date order).
-const statusArg = [...flags].find((f) => f.startsWith("--status="))?.split("=")[1];
+const statusArg = [...flags]
+  .find((f) => f.startsWith("--status="))
+  ?.split("=")[1];
 const requested = keys.length > 0 || !!statusArg;
 const selected = expandKeysBySubstring(keys);
 if (statusArg) {
@@ -185,35 +194,60 @@ if (statusArg) {
 // --skip=a,b,c removes any matched post whose key contains one of the (case-insensitive,
 // substring/"fuzzy") terms — handy for "render the whole day EXCEPT the ones already done".
 // Applied AFTER selection so it can prune a date-prefix/status expansion. Warns on no-op terms.
-const skipArg = [...flags].find((f) => f.startsWith("--skip="))?.split("=").slice(1).join("=");
-const skipTerms = (skipArg ?? "").split(",").map((t) => t.trim().toLowerCase()).filter(Boolean);
+const skipArg = [...flags]
+  .find((f) => f.startsWith("--skip="))
+  ?.split("=")
+  .slice(1)
+  .join("=");
+const skipTerms = (skipArg ?? "")
+  .split(",")
+  .map((t) => t.trim().toLowerCase())
+  .filter(Boolean);
 if (skipTerms.length) applySkipTerms(selected, skipTerms);
 keys = [...selected].sort();
 if (!keys.length) {
   if (requested) {
-    console.error(`No matching posts for that selection. Check the key / date / status (lifecycle: draft → approved → generated → upload_ready), or run --help.`);
+    console.error(
+      `No matching posts for that selection. Check the key / date / status (lifecycle: draft → approved → generated → upload_ready), or run --help.`,
+    );
     process.exit(1);
   }
   console.error(HELP);
   process.exit(1);
 }
-if (keys.length > 1) console.log(`▶ ${keys.length} post(s) in date order: ${keys.join(", ")}\n`);
+if (keys.length > 1)
+  console.log(`▶ ${keys.length} post(s) in date order: ${keys.join(", ")}\n`);
 const seedArg = [...flags].find((f) => f.startsWith("--seed="));
 const tailArg = [...flags].find((f) => f.startsWith("--tail="));
 // Captions default to "highlight" for pipeline reels; override with --captions=block|word.
-const capFlag = [...flags].find((f) => f.startsWith("--captions="))?.split("=")[1];
-const captionMode = ["block", "word", "highlight"].includes(capFlag) ? capFlag : "highlight";
+const capFlag = [...flags]
+  .find((f) => f.startsWith("--captions="))
+  ?.split("=")[1];
+const captionMode = ["block", "word", "highlight"].includes(capFlag)
+  ? capFlag
+  : "highlight";
 // Opt-in final stage: after the reel, publish to YouTube/TikTok via the gated `publish` command
 // (gated on the generated status; Instagram stays manual). --publish=youtube,tiktok ; omit to skip.
-const publishArg = [...flags].find((f) => f.startsWith("--publish="))?.split("=")[1];
-const publishPlatforms = publishArg ? publishArg.split(",").map((s) => s.trim()).filter(Boolean) : null;
+const publishArg = [...flags]
+  .find((f) => f.startsWith("--publish="))
+  ?.split("=")[1];
+const publishPlatforms = publishArg
+  ? publishArg
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+  : null;
 // Opt-in quality knobs — all default OFF; only meaningful with the art step (or, for --upscale,
 // when there are background images to sharpen). They don't change a normal `bun run pipeline` run.
-const passesArg = [...flags].find((f) => f.startsWith("--passes="));   // forwarded to `bun run art`
-const wantsQ6 = flags.has("--q6");                                     // higher-quality Q6_K GGUF for this run
-const wantsUpscale = flags.has("--upscale");                           // GAN upscale (integrated into art when art runs)
-const upscaleModelArg = [...flags].find((f) => f.startsWith("--upscale-model="));
-const upscaleScaleArg = [...flags].find((f) => f.startsWith("--upscale-scale="));
+const passesArg = [...flags].find((f) => f.startsWith("--passes=")); // forwarded to `bun run art`
+const wantsQ6 = flags.has("--q6"); // higher-quality Q6_K GGUF for this run
+const wantsUpscale = flags.has("--upscale"); // GAN upscale (integrated into art when art runs)
+const upscaleModelArg = [...flags].find((f) =>
+  f.startsWith("--upscale-model="),
+);
+const upscaleScaleArg = [...flags].find((f) =>
+  f.startsWith("--upscale-scale="),
+);
 // --ui-format: art executes the version-controlled workflow FILE (renderer/comfyui-workflows/) instead
 // of the code-built graph — with --upscale it picks the _with_upscale file. The file's settings win.
 const wantsUiFormat = flags.has("--ui-format");
@@ -221,37 +255,59 @@ const wantsUiFormat = flags.has("--ui-format");
 // it is opt-in via --motion=<provider> (see below). Each also takes an image-model passthrough.
 const USE_HIGGSFIELD = flags.has("--higgsfield");
 const USE_FAL = flags.has("--fal");
-const hfImageModelArg = [...flags].find((f) => f.startsWith("--higgsfield-model="))?.split("=")[1];
-const falImageModelArg = [...flags].find((f) => f.startsWith("--fal-model="))?.split("=")[1];
+const hfImageModelArg = [...flags]
+  .find((f) => f.startsWith("--higgsfield-model="))
+  ?.split("=")[1];
+const falImageModelArg = [...flags]
+  .find((f) => f.startsWith("--fal-model="))
+  ?.split("=")[1];
 // Credit budget cap for the Higgsfield art step (forwarded). --yes overrides the cap.
 const hfBudgetArg = [...flags].find((f) => f.startsWith("--budget="));
 // --motion=<provider> opts INTO per-beat cloud image-to-video motion for the reel, animating the
 // existing backgrounds (whether generated locally or by a cloud provider). Default "none" = the
 // reel is pure local Remotion (animated stills). Independent of which provider made the art.
-const motionArgRaw = [...flags].find((f) => f.startsWith("--motion="))?.split("=")[1];
+const motionArgRaw = [...flags]
+  .find((f) => f.startsWith("--motion="))
+  ?.split("=")[1];
 const MOTION_VALID = ["higgsfield", "fal", "none", "local"];
 if (motionArgRaw && !MOTION_VALID.includes(motionArgRaw)) {
-  console.error(`✋ --motion=${motionArgRaw} is invalid (use ${MOTION_VALID.join("|")}).`);
+  console.error(
+    `✋ --motion=${motionArgRaw} is invalid (use ${MOTION_VALID.join("|")}).`,
+  );
   process.exit(1);
 }
-const MOTION = motionArgRaw && motionArgRaw !== "none" && motionArgRaw !== "local" ? motionArgRaw : null;
-const motionModelArg = [...flags].find((f) => f.startsWith("--motion-model="))?.split("=")[1];
+const MOTION =
+  motionArgRaw && motionArgRaw !== "none" && motionArgRaw !== "local"
+    ? motionArgRaw
+    : null;
+const motionModelArg = [...flags]
+  .find((f) => f.startsWith("--motion-model="))
+  ?.split("=")[1];
 // Separate credit cap for the (pricier) motion step; forwarded to reel:* as --budget. --yes overrides.
-const motionBudgetArg = [...flags].find((f) => f.startsWith("--motion-budget="))?.split("=")[1];
+const motionBudgetArg = [...flags]
+  .find((f) => f.startsWith("--motion-budget="))
+  ?.split("=")[1];
 // Higgsfield provider mode (cli default | rest | mcp) applies to whichever Higgsfield step runs
 // this turn — art (--higgsfield) and/or motion (--motion=higgsfield).
-const hfModeArg = [...flags].find((f) => f.startsWith("--higgsfield-mode="))?.split("=")[1];
+const hfModeArg = [...flags]
+  .find((f) => f.startsWith("--higgsfield-mode="))
+  ?.split("=")[1];
 const USES_HIGGSFIELD_ANY = USE_HIGGSFIELD || MOTION === "higgsfield";
 if (USES_HIGGSFIELD_ANY && hfModeArg === "mcp") {
-  console.warn(`  ⚠ --higgsfield-mode=mcp is agent-driven: the Higgsfield step only writes a generation plan.\n     Use the two-step flow instead: art:higgsfield --mode=mcp --plan → generate via MCP → --mode=mcp --ingest.`);
+  console.warn(
+    `  ⚠ --higgsfield-mode=mcp is agent-driven: the Higgsfield step only writes a generation plan.\n     Use the two-step flow instead: art:higgsfield --mode=mcp --plan → generate via MCP → --mode=mcp --ingest.`,
+  );
 }
-const hfModeArgs = USES_HIGGSFIELD_ANY && hfModeArg ? [`--mode=${hfModeArg}`] : [];
-const Q6_MODEL = "flux-2-klein-4b-Q6_K.gguf";                          // auto-downloaded by art-comfyui if missing
+const hfModeArgs =
+  USES_HIGGSFIELD_ANY && hfModeArg ? [`--mode=${hfModeArg}`] : [];
+const Q6_MODEL = "flux-2-klein-4b-Q6_K.gguf"; // auto-downloaded by art-comfyui if missing
 
 const DRY = flags.has("--dry-run");
 const bun = process.platform === "win32" ? "bun.exe" : "bun";
 function step(label, runArgs, { env, fatal = true } = {}) {
-  console.log(`${DRY ? "   • would run:" : "\n── " + label + " ──"}  bun run ${runArgs.join(" ")}`);
+  console.log(
+    `${DRY ? "   • would run:" : "\n── " + label + " ──"}  bun run ${runArgs.join(" ")}`,
+  );
   if (DRY) return;
   const r = spawnSync(bun, ["run", ...runArgs], {
     cwd: RENDERER,
@@ -261,7 +317,9 @@ function step(label, runArgs, { env, fatal = true } = {}) {
   });
   if (r.status !== 0) {
     if (!fatal) {
-      console.warn(`⚠ '${label}' failed (exit ${r.status}) — continuing (slides fall back to procedural backgrounds).`);
+      console.warn(
+        `⚠ '${label}' failed (exit ${r.status}) — continuing (slides fall back to procedural backgrounds).`,
+      );
       return;
     }
     throw new Error(`'${label}' failed (exit ${r.status})`);
@@ -276,12 +334,17 @@ function runPost(key) {
   const voiceMode = post.video?.audio?.voice_mode ?? "none";
   // Voice override for this run (else use the post's voice_mode):
   //   --voice=<mode> (voxcpm2 | voxcpm2-0.5b | bark | http | none)  ·  --vox2 / --vox0.5 are aliases.
-  const voiceFlag = [...flags].find((f) => f.startsWith("--voice="))?.split("=")[1];
+  const voiceFlag = [...flags]
+    .find((f) => f.startsWith("--voice="))
+    ?.split("=")[1];
   const voiceOverride = flags.has("--vox0.5")
     ? "voxcpm2-0.5b"
     : flags.has("--vox2")
       ? "voxcpm2"
-      : voiceFlag && ["voxcpm2", "voxcpm2-0.5b", "bark", "http", "none"].includes(voiceFlag)
+      : voiceFlag &&
+          ["voxcpm2", "voxcpm2-0.5b", "bark", "http", "none"].includes(
+            voiceFlag,
+          )
         ? voiceFlag
         : null;
   const effVoiceMode = voiceOverride || voiceMode;
@@ -289,16 +352,33 @@ function runPost(key) {
   // pipeline never generated 01_cover.png). A locked custom asset (asset_status "existing") never
   // counts; a background_asset that points at a missing file (e.g. a scaffold's cover placeholder) does.
   const artExists = (s) => slideBackgroundExists(RENDERER, s);
-  const needsArt = (post.slides ?? []).some((s) => s.asset_status !== "existing" && !artExists(s));
+  const needsArt = (post.slides ?? []).some(
+    (s) => s.asset_status !== "existing" && !artExists(s),
+  );
   const wantsArt = flags.has("--art") || (!flags.has("--no-art") && needsArt);
-  const wantsVoice = !flags.has("--no-voice") && ["voxcpm2", "voxcpm2-0.5b", "bark", "http"].includes(effVoiceMode);
+  const wantsVoice =
+    !flags.has("--no-voice") &&
+    ["voxcpm2", "voxcpm2-0.5b", "bark", "http"].includes(effVoiceMode);
   const wantsReel = !flags.has("--no-reel") && !!post.video?.enabled;
   if ((passesArg || wantsQ6 || wantsUiFormat) && !wantsArt && !USE_HIGGSFIELD)
-    console.warn(`  ⚠ ${[passesArg && "--passes", wantsQ6 && "--q6", wantsUiFormat && "--ui-format"].filter(Boolean).join("/")} ignored this run — no art step (pass --art to force background regeneration).`);
-  if ((USE_HIGGSFIELD || USE_FAL) && (flags.has("--flux1") || wantsQ6 || wantsUpscale || wantsUiFormat || passesArg))
-    console.warn(`  ⚠ ComfyUI-only flags (--flux1/--q6/--upscale/--ui-format/--passes) are ignored with --higgsfield.`);
+    console.warn(
+      `  ⚠ ${[passesArg && "--passes", wantsQ6 && "--q6", wantsUiFormat && "--ui-format"].filter(Boolean).join("/")} ignored this run — no art step (pass --art to force background regeneration).`,
+    );
+  if (
+    (USE_HIGGSFIELD || USE_FAL) &&
+    (flags.has("--flux1") ||
+      wantsQ6 ||
+      wantsUpscale ||
+      wantsUiFormat ||
+      passesArg)
+  )
+    console.warn(
+      `  ⚠ ComfyUI-only flags (--flux1/--q6/--upscale/--ui-format/--passes) are ignored with --higgsfield.`,
+    );
   if (MOTION && !wantsReel)
-    console.warn(`  ⚠ --motion=${MOTION} ignored — no reel this run (${flags.has("--no-reel") ? "--no-reel" : "post.video.enabled is false"}).`);
+    console.warn(
+      `  ⚠ --motion=${MOTION} ignored — no reel this run (${flags.has("--no-reel") ? "--no-reel" : "post.video.enabled is false"}).`,
+    );
 
   // Ordered list of the stages that will actually run for this post (after the skip logic above).
   // --upscale runs INSIDE the art graph when art runs (one generate→upscale pass per slide); the
@@ -306,14 +386,23 @@ function runPost(key) {
   const plan = [];
   if (wantsArt) {
     if (USE_HIGGSFIELD) {
-      plan.push(`art:higgsfield (cloud backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes ignored` : ""})`);
+      plan.push(
+        `art:higgsfield (cloud backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes ignored` : ""})`,
+      );
     } else if (USE_FAL) {
-      plan.push(`art:fal (cloud backgrounds via FAL.ai${passesArg ? `, ${passesArg.split("=")[1]} passes ignored` : ""})`);
+      plan.push(
+        `art:fal (cloud backgrounds via FAL.ai${passesArg ? `, ${passesArg.split("=")[1]} passes ignored` : ""})`,
+      );
     } else {
-      plan.push(`art (${wantsUiFormat ? "ui-format file" : flags.has("--flux1") ? "flux1" : "flux2"}${wantsQ6 ? " Q6" : ""} backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes` : ""}${wantsUpscale ? " + integrated upscale" : ""})`);
+      plan.push(
+        `art (${wantsUiFormat ? "ui-format file" : flags.has("--flux1") ? "flux1" : "flux2"}${wantsQ6 ? " Q6" : ""} backgrounds${passesArg ? `, ${passesArg.split("=")[1]} passes` : ""}${wantsUpscale ? " + integrated upscale" : ""})`,
+      );
     }
   }
-  if (wantsUpscale && !wantsArt) plan.push(`upscale (existing backgrounds${upscaleModelArg ? `, ${upscaleModelArg.split("=")[1]}` : ""})`);
+  if (wantsUpscale && !wantsArt)
+    plan.push(
+      `upscale (existing backgrounds${upscaleModelArg ? `, ${upscaleModelArg.split("=")[1]}` : ""})`,
+    );
   plan.push("export (carousel)");
   if (!flags.has("--no-package")) plan.push("package (upload files)");
   if (wantsVoice) {
@@ -321,14 +410,25 @@ function runPost(key) {
     plan.push(`voice (${effVoiceMode})`, "align (captions)");
   }
   if (wantsReel) {
-    if (MOTION === "higgsfield") plan.push(`reel:higgsfield (motion segments${motionModelArg ? `, ${motionModelArg}` : ""})`);
-    if (MOTION === "fal") plan.push(`reel:fal (motion segments${motionModelArg ? `, ${motionModelArg}` : ""})`);
+    if (MOTION === "higgsfield")
+      plan.push(
+        `reel:higgsfield (motion segments${motionModelArg ? `, ${motionModelArg}` : ""})`,
+      );
+    if (MOTION === "fal")
+      plan.push(
+        `reel:fal (motion segments${motionModelArg ? `, ${motionModelArg}` : ""})`,
+      );
     plan.push("reel (audio auto-embedded)");
   }
-  if (publishPlatforms) plan.push(`publish (${publishPlatforms.join(",")}${DRY ? ", dry-run" : ""})`);
+  if (publishPlatforms)
+    plan.push(
+      `publish (${publishPlatforms.join(",")}${DRY ? ", dry-run" : ""})`,
+    );
 
   console.log(`\n╭─ ${fullKey}`);
-  console.log(`│  art=${wantsArt ? (USE_HIGGSFIELD ? "higgsfield" : USE_FAL ? "fal" : flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}  ·  motion=${MOTION ?? "local"}`);
+  console.log(
+    `│  art=${wantsArt ? (USE_HIGGSFIELD ? "higgsfield" : USE_FAL ? "fal" : flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}  ·  motion=${MOTION ?? "local"}`,
+  );
   console.log(`│  steps to run:`);
   plan.forEach((s, i) => console.log(`│   ${i + 1}. ${s}`));
   console.log(`╰─`);
@@ -336,19 +436,70 @@ function runPost(key) {
   // Default art run generates every needy slide (cover included). `--art` forces a full regen (→ art --all).
   if (wantsArt) {
     if (USE_HIGGSFIELD) {
-      step("art:higgsfield (backgrounds)", ["art:higgsfield", "--", fullKey, ...hfModeArgs, ...(hfImageModelArg ? [`--model=${hfImageModelArg}`] : []), ...(hfBudgetArg ? [hfBudgetArg] : []), ...(flags.has("--yes") ? ["--yes"] : []), ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
+      step(
+        "art:higgsfield (backgrounds)",
+        [
+          "art:higgsfield",
+          "--",
+          fullKey,
+          ...hfModeArgs,
+          ...(hfImageModelArg ? [`--model=${hfImageModelArg}`] : []),
+          ...(hfBudgetArg ? [hfBudgetArg] : []),
+          ...(flags.has("--yes") ? ["--yes"] : []),
+          ...(flags.has("--art") ? ["--all"] : []),
+        ],
+        { fatal: false },
+      );
     } else if (USE_FAL) {
-      step("art:fal (backgrounds)", ["art:fal", "--", fullKey, ...(falImageModelArg ? [`--model=${falImageModelArg}`] : []), ...(flags.has("--art") ? ["--all"] : [])], { fatal: false });
+      step(
+        "art:fal (backgrounds)",
+        [
+          "art:fal",
+          "--",
+          fullKey,
+          ...(falImageModelArg ? [`--model=${falImageModelArg}`] : []),
+          ...(flags.has("--art") ? ["--all"] : []),
+        ],
+        { fatal: false },
+      );
     } else {
-      step("art (backgrounds)", ["art", "--", fullKey, ...(flags.has("--flux1") ? ["--flux1"] : []), ...(flags.has("--art") ? ["--all"] : []), ...(passesArg ? [passesArg] : []), ...(wantsUpscale ? ["--upscale"] : []), ...(upscaleModelArg ? [upscaleModelArg] : []), ...(upscaleScaleArg ? [upscaleScaleArg] : []), ...(wantsUiFormat ? ["--ui-format"] : [])], { fatal: false, env: wantsQ6 ? { ART2_MODEL: Q6_MODEL } : undefined });
+      step(
+        "art (backgrounds)",
+        [
+          "art",
+          "--",
+          fullKey,
+          ...(flags.has("--flux1") ? ["--flux1"] : []),
+          ...(flags.has("--art") ? ["--all"] : []),
+          ...(passesArg ? [passesArg] : []),
+          ...(wantsUpscale ? ["--upscale"] : []),
+          ...(upscaleModelArg ? [upscaleModelArg] : []),
+          ...(upscaleScaleArg ? [upscaleScaleArg] : []),
+          ...(wantsUiFormat ? ["--ui-format"] : []),
+        ],
+        { fatal: false, env: wantsQ6 ? { ART2_MODEL: Q6_MODEL } : undefined },
+      );
     }
   }
-  if (wantsUpscale && !wantsArt) step("upscale (existing backgrounds)", ["upscale", "--", fullKey, ...(upscaleModelArg ? [upscaleModelArg] : []), ...(upscaleScaleArg ? [upscaleScaleArg] : [])], { fatal: false });
+  if (wantsUpscale && !wantsArt)
+    step(
+      "upscale (existing backgrounds)",
+      [
+        "upscale",
+        "--",
+        fullKey,
+        ...(upscaleModelArg ? [upscaleModelArg] : []),
+        ...(upscaleScaleArg ? [upscaleScaleArg] : []),
+      ],
+      { fatal: false },
+    );
   step("export (carousel)", ["export", "--", fullKey]);
-  if (!flags.has("--no-package")) step("package (upload files)", ["package", "--", fullKey]);
+  if (!flags.has("--no-package"))
+    step("package (upload files)", ["package", "--", fullKey]);
 
   if (wantsVoice) {
-    if (!USE_HIGGSFIELD && !USE_FAL) step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
+    if (!USE_HIGGSFIELD && !USE_FAL)
+      step("free-comfyui (release GPU)", ["free-comfyui"]); // non-fatal if ComfyUI is down
     step("voice (TTS)", [
       "voice",
       "--",
@@ -367,10 +518,31 @@ function runPost(key) {
     // Reel motion is OPT-IN via --motion=<provider> and independent of the art provider; the final
     // reel is always composited locally by Remotion (these only pre-generate per-beat i2v clips).
     if (MOTION === "higgsfield") {
-      step("reel:higgsfield (motion segments)", ["reel:higgsfield", "--", fullKey, ...hfModeArgs, ...(motionModelArg ? [`--model=${motionModelArg}`] : []), ...(motionBudgetArg ? [`--budget=${motionBudgetArg}`] : []), ...(flags.has("--yes") ? ["--yes"] : [])], { fatal: false });
+      step(
+        "reel:higgsfield (motion segments)",
+        [
+          "reel:higgsfield",
+          "--",
+          fullKey,
+          ...hfModeArgs,
+          ...(motionModelArg ? [`--model=${motionModelArg}`] : []),
+          ...(motionBudgetArg ? [`--budget=${motionBudgetArg}`] : []),
+          ...(flags.has("--yes") ? ["--yes"] : []),
+        ],
+        { fatal: false },
+      );
     }
     if (MOTION === "fal") {
-      step("reel:fal (motion segments)", ["reel:fal", "--", fullKey, ...(motionModelArg ? [`--model=${motionModelArg}`] : [])], { fatal: false });
+      step(
+        "reel:fal (motion segments)",
+        [
+          "reel:fal",
+          "--",
+          fullKey,
+          ...(motionModelArg ? [`--model=${motionModelArg}`] : []),
+        ],
+        { fatal: false },
+      );
     }
     const reelArgs = ["reel", "--", fullKey, `--captions=${captionMode}`];
     if (!flags.has("--no-fit-voice")) reelArgs.push("--fit-voice");
@@ -384,9 +556,13 @@ function runPost(key) {
 // Approval gate: ONLY posts with status "approved" may render. Nothing becomes "generated" (and
 // nothing already posted gets regenerated) without an explicit human approval first. Any selected
 // post that isn't approved stops the run with an explanation. On --dry-run we warn but still preview.
-const blocked = keys.map((k) => ({ k, st: readStatus(k) })).filter((x) => x.st !== "approved");
+const blocked = keys
+  .map((k) => ({ k, st: readStatus(k) }))
+  .filter((x) => x.st !== "approved");
 if (blocked.length) {
-  const list = blocked.map((x) => `    ${x.k}  [${x.st ?? "unknown"}]`).join("\n");
+  const list = blocked
+    .map((x) => `    ${x.k}  [${x.st ?? "unknown"}]`)
+    .join("\n");
   const fix = blocked.map((x) => x.k).join(" ");
   const msg =
     `\n✋ ${blocked.length} of ${keys.length} selected post(s) are not "approved" — the pipeline only renders approved posts:\n${list}\n\n` +
@@ -395,9 +571,13 @@ if (blocked.length) {
     `FIX: approve them, then re-run —\n     cd renderer && bun run status -- approved ${fix}\n` +
     `     (or /update-status approved …). To re-render a "generated"/"upload_ready" post, set it back to "approved" first.`;
   if (FORCE) {
-    console.warn(`\n⚠ --force: bypassing the approval gate for ${blocked.length} non-approved post(s):\n${list}\n     (rendering anyway; a "generated"/"upload_ready" post keeps its status and is not demoted.)\n`);
+    console.warn(
+      `\n⚠ --force: bypassing the approval gate for ${blocked.length} non-approved post(s):\n${list}\n     (rendering anyway; a "generated"/"upload_ready" post keeps its status and is not demoted.)\n`,
+    );
   } else if (DRY) {
-    console.warn(`${msg}\n\n(dry-run: a real run would STOP here; previewing the set below anyway. Pass --force to render non-approved posts.)\n`);
+    console.warn(
+      `${msg}\n\n(dry-run: a real run would STOP here; previewing the set below anyway. Pass --force to render non-approved posts.)\n`,
+    );
   } else {
     console.error(`${msg}\n\n     Or bypass the gate entirely with --force.`);
     process.exit(1);
@@ -407,9 +587,14 @@ if (blocked.length) {
 // On a COMPLETE run, flip approved → generated (via the shared setStatus helper) so a status batch
 // never re-renders it. The onlyFrom guard leaves generated (no-op) and upload_ready (terminal —
 // regenerating a posted item must not un-post it) untouched. Skipped for dry-runs and partial renders.
-const COMPLETE_RUN = !DRY && !["--no-reel", "--no-voice", "--no-package"].some((f) => flags.has(f));
+const COMPLETE_RUN =
+  !DRY &&
+  !["--no-reel", "--no-voice", "--no-package"].some((f) => flags.has(f));
 function markGenerated(fullKey) {
-  if (setStatus(fullKey, "generated", { onlyFrom: ["draft", "approved"] }).changed) console.log(`  ↳ status → generated`);
+  if (
+    setStatus(fullKey, "generated", { onlyFrom: ["draft", "approved"] }).changed
+  )
+    console.log(`  ↳ status → generated`);
 }
 
 let ok = 0;
@@ -422,11 +607,20 @@ for (const key of keys) {
     // which is exactly the status `bun run publish` requires.
     if (publishPlatforms && fk) {
       if (flags.has("--no-reel")) {
-        console.warn(`  ⚠ --publish ignored for ${fk}: --no-reel means there is no reel to publish.`);
+        console.warn(
+          `  ⚠ --publish ignored for ${fk}: --no-reel means there is no reel to publish.`,
+        );
       } else {
         step(
           `publish (${publishPlatforms.join(",")})`,
-          ["publish", "--", fk, `--platforms=${publishPlatforms.join(",")}`, ...(DRY ? ["--dry-run"] : []), ...(flags.has("--yes") ? ["--yes"] : [])],
+          [
+            "publish",
+            "--",
+            fk,
+            `--platforms=${publishPlatforms.join(",")}`,
+            ...(DRY ? ["--dry-run"] : []),
+            ...(flags.has("--yes") ? ["--yes"] : []),
+          ],
           { fatal: false },
         );
       }
@@ -437,4 +631,6 @@ for (const key of keys) {
     console.error("  (continuing with the next post)");
   }
 }
-console.log(`\n${"=".repeat(48)}\n✓ Pipeline finished — ${ok}/${keys.length} post(s) rendered.`);
+console.log(
+  `\n${"=".repeat(48)}\n✓ Pipeline finished — ${ok}/${keys.length} post(s) rendered.`,
+);

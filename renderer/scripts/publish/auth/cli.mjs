@@ -21,7 +21,7 @@
  */
 
 import { mkdirSync, writeFileSync } from "node:fs";
-import { join, dirname } from "node:path";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -80,7 +80,10 @@ async function tryOpenBrowser(url) {
         ? ["open", [url]]
         : ["xdg-open", [url]];
   try {
-    const proc = Bun.spawn(opener[0], opener[1], { stdout: "ignore", stderr: "ignore" });
+    const proc = Bun.spawn(opener[0], opener[1], {
+      stdout: "ignore",
+      stderr: "ignore",
+    });
     await proc.exited;
   } catch {
     // Ignore — the printed URL is the reliable path.
@@ -130,7 +133,9 @@ async function runYouTube() {
   });
 
   console.log(`\n[publish:auth] YouTube`);
-  console.log(`[publish:auth] Redirect URI (register this in Google Cloud Console):`);
+  console.log(
+    `[publish:auth] Redirect URI (register this in Google Cloud Console):`,
+  );
   console.log(`  ${REDIRECT_URI}\n`);
   console.log(`[publish:auth] Opening authorization URL in browser...`);
   console.log(`[publish:auth] If it does not open, paste this URL manually:\n`);
@@ -153,10 +158,13 @@ async function runYouTube() {
           const msg = `Authorization failed: ${error ?? "no code returned"}`;
           server.stop();
           reject(new Error(msg));
-          return new Response(`<html><body><h2>Authorization failed</h2><p>${msg}</p></body></html>`, {
-            status: 400,
-            headers: { "Content-Type": "text/html" },
-          });
+          return new Response(
+            `<html><body><h2>Authorization failed</h2><p>${msg}</p></body></html>`,
+            {
+              status: 400,
+              headers: { "Content-Type": "text/html" },
+            },
+          );
         }
 
         try {
@@ -174,7 +182,9 @@ async function runYouTube() {
 
           console.log(`\n[publish:auth] YouTube authorization complete.`);
           console.log(`[publish:auth] Granted scopes: ${scopes.join(", ")}`);
-          console.log(`[publish:auth] Token written to renderer/.secrets/youtube.json`);
+          console.log(
+            `[publish:auth] Token written to renderer/.secrets/youtube.json`,
+          );
 
           server.stop();
           resolve();
@@ -223,7 +233,9 @@ async function runTikTok() {
   const authUrl = `https://www.tiktok.com/v2/auth/authorize/?${params.toString()}`;
 
   console.log(`\n[publish:auth] TikTok`);
-  console.log(`[publish:auth] Redirect URI (register this in TikTok Developer portal):`);
+  console.log(
+    `[publish:auth] Redirect URI (register this in TikTok Developer portal):`,
+  );
   console.log(`  ${REDIRECT_URI}\n`);
   console.log(`[publish:auth] Opening authorization URL in browser...`);
   console.log(`[publish:auth] If it does not open, paste this URL manually:\n`);
@@ -247,10 +259,13 @@ async function runTikTok() {
           const msg = `Authorization failed: ${error ?? "no code returned"}`;
           server.stop();
           reject(new Error(msg));
-          return new Response(`<html><body><h2>Authorization failed</h2><p>${msg}</p></body></html>`, {
-            status: 400,
-            headers: { "Content-Type": "text/html" },
-          });
+          return new Response(
+            `<html><body><h2>Authorization failed</h2><p>${msg}</p></body></html>`,
+            {
+              status: 400,
+              headers: { "Content-Type": "text/html" },
+            },
+          );
         }
 
         if (returnedState !== state) {
@@ -273,15 +288,20 @@ async function runTikTok() {
             code_verifier: codeVerifier,
           });
 
-          const resp = await fetch("https://open.tiktokapis.com/v2/oauth/token/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: body.toString(),
-          });
+          const resp = await fetch(
+            "https://open.tiktokapis.com/v2/oauth/token/",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: body.toString(),
+            },
+          );
 
           if (!resp.ok) {
             const text = await resp.text();
-            throw new Error(`TikTok token exchange failed: ${resp.status} — ${text}`);
+            throw new Error(
+              `TikTok token exchange failed: ${resp.status} — ${text}`,
+            );
           }
 
           const data = await resp.json();
@@ -297,7 +317,9 @@ async function runTikTok() {
           const grantedScopes = data.scope ?? scopes.join(",");
           console.log(`\n[publish:auth] TikTok authorization complete.`);
           console.log(`[publish:auth] Granted scopes: ${grantedScopes}`);
-          console.log(`[publish:auth] Token written to renderer/.secrets/tiktok.json`);
+          console.log(
+            `[publish:auth] Token written to renderer/.secrets/tiktok.json`,
+          );
 
           server.stop();
           resolve();
@@ -361,7 +383,9 @@ async function runMeta() {
   const authUrl = `https://www.facebook.com/${GRAPH_API_VERSION}/dialog/oauth?${params.toString()}`;
 
   console.log(`\n[publish:auth] Meta (Facebook Page + Instagram)`);
-  console.log(`[publish:auth] Redirect URI (register this under Facebook Login for Business settings):`);
+  console.log(
+    `[publish:auth] Redirect URI (register this under Facebook Login for Business settings):`,
+  );
   console.log(`  ${REDIRECT_URI}\n`);
   console.log(`[publish:auth] Opening authorization URL in browser...`);
   console.log(`[publish:auth] If it does not open, paste this URL manually:\n`);
@@ -384,10 +408,13 @@ async function runMeta() {
           const msg = `Authorization failed: ${error ?? "no code returned"}`;
           server.stop();
           reject(new Error(msg));
-          return new Response(`<html><body><h2>Authorization failed</h2><p>${msg}</p></body></html>`, {
-            status: 400,
-            headers: { "Content-Type": "text/html" },
-          });
+          return new Response(
+            `<html><body><h2>Authorization failed</h2><p>${msg}</p></body></html>`,
+            {
+              status: 400,
+              headers: { "Content-Type": "text/html" },
+            },
+          );
         }
 
         try {
@@ -398,14 +425,22 @@ async function runMeta() {
             redirect_uri: REDIRECT_URI,
             code,
           });
-          const codeResp = await fetch(`${GRAPH_BASE}/oauth/access_token?${tokenParams.toString()}`);
+          const codeResp = await fetch(
+            `${GRAPH_BASE}/oauth/access_token?${tokenParams.toString()}`,
+          );
           if (!codeResp.ok) {
-            throw new Error(`Meta code exchange failed: ${codeResp.status} — ${await codeResp.text()}`);
+            throw new Error(
+              `Meta code exchange failed: ${codeResp.status} — ${await codeResp.text()}`,
+            );
           }
           const { access_token: shortLivedToken } = await codeResp.json();
 
           // Exchange short-lived → long-lived (~60 days) User access token.
-          const longLived = await exchangeLongLivedToken(shortLivedToken, appId, appSecret);
+          const longLived = await exchangeLongLivedToken(
+            shortLivedToken,
+            appId,
+            appSecret,
+          );
           const nowSec = Math.floor(Date.now() / 1000);
 
           // Ground truth: what scopes/assets actually landed on the token, vs. what the
@@ -414,27 +449,42 @@ async function runMeta() {
           let debug = null;
           try {
             debug = await debugToken(longLived.access_token, appId, appSecret);
-            console.log(`\n[publish:auth] Token scopes: ${(debug.scopes ?? []).join(", ") || "(none)"}`);
+            console.log(
+              `\n[publish:auth] Token scopes: ${(debug.scopes ?? []).join(", ") || "(none)"}`,
+            );
             if (debug.granular_scopes?.length) {
               console.log(`[publish:auth] Granular scopes:`);
               for (const g of debug.granular_scopes) {
-                console.log(`  - ${g.scope}: ${g.target_ids?.length ? g.target_ids.join(", ") : "(all)"}`);
+                console.log(
+                  `  - ${g.scope}: ${g.target_ids?.length ? g.target_ids.join(", ") : "(all)"}`,
+                );
               }
             } else {
-              console.log(`[publish:auth] No granular_scopes on this token (permissions apply broadly, not asset-scoped).`);
+              console.log(
+                `[publish:auth] No granular_scopes on this token (permissions apply broadly, not asset-scoped).`,
+              );
             }
           } catch (e) {
-            console.error(`[publish:auth] (debug_token check failed, continuing anyway: ${e.message})`);
+            console.error(
+              `[publish:auth] (debug_token check failed, continuing anyway: ${e.message})`,
+            );
           }
 
           // Resolve the Page (+ linked IG Business Account) the user manages.
-          const accounts = await fetchPageAccounts(longLived.access_token, appSecret);
+          const accounts = await fetchPageAccounts(
+            longLived.access_token,
+            appSecret,
+          );
 
-          console.log(`\n[publish:auth] Pages returned by /me/accounts: ${accounts.length}`);
+          console.log(
+            `\n[publish:auth] Pages returned by /me/accounts: ${accounts.length}`,
+          );
           for (const a of accounts) {
             console.log(
               `  - ${a.name} (${a.id}) — instagram_business_account: ${
-                a.instagram_business_account ? `${a.instagram_business_account.id} (@${a.instagram_business_account.username ?? "?"})` : "none"
+                a.instagram_business_account
+                  ? `${a.instagram_business_account.id} (@${a.instagram_business_account.username ?? "?"})`
+                  : "none"
               }`,
             );
           }
@@ -445,9 +495,15 @@ async function runMeta() {
           // aggregate call but do when queried directly per-Page with the Page's own token.
           if (!page) {
             for (const a of accounts) {
-              const ig = await fetchInstagramAccountForPage(a.id, a.access_token, appSecret);
+              const ig = await fetchInstagramAccountForPage(
+                a.id,
+                a.access_token,
+                appSecret,
+              );
               if (ig) {
-                console.log(`[publish:auth] Found via per-Page fallback lookup: ${a.name} -> ${ig.id}`);
+                console.log(
+                  `[publish:auth] Found via per-Page fallback lookup: ${a.name} -> ${ig.id}`,
+                );
                 page = { ...a, instagram_business_account: ig };
                 break;
               }
@@ -459,12 +515,23 @@ async function runMeta() {
           // (the IG_API_ONBOARDING picker). If granular_scopes already told us exactly
           // which Page + IG user id were granted, fetch that Page directly by id instead.
           if (!page && debug?.granular_scopes) {
-            const { pageId, igUserId } = extractGrantedIds(debug.granular_scopes);
+            const { pageId, igUserId } = extractGrantedIds(
+              debug.granular_scopes,
+            );
             if (pageId && igUserId) {
-              console.log(`[publish:auth] /me/accounts had no match — using granted asset ids directly: page=${pageId} ig=${igUserId}`);
-              const details = await fetchPageDetails(pageId, longLived.access_token, appSecret);
+              console.log(
+                `[publish:auth] /me/accounts had no match — using granted asset ids directly: page=${pageId} ig=${igUserId}`,
+              );
+              const details = await fetchPageDetails(
+                pageId,
+                longLived.access_token,
+                appSecret,
+              );
               if (details) {
-                page = { ...details, instagram_business_account: { id: igUserId } };
+                page = {
+                  ...details,
+                  instagram_business_account: { id: igUserId },
+                };
               }
             }
           }
@@ -494,9 +561,13 @@ async function runMeta() {
 
           console.log(`\n[publish:auth] Meta authorization complete.`);
           console.log(`[publish:auth] Page: ${page.name} (${page.id})`);
-          console.log(`[publish:auth] Instagram Business Account: ${page.instagram_business_account.id}`);
+          console.log(
+            `[publish:auth] Instagram Business Account: ${page.instagram_business_account.id}`,
+          );
           console.log(`[publish:auth] Granted scopes: ${scopes.join(", ")}`);
-          console.log(`[publish:auth] Token written to renderer/.secrets/meta.json`);
+          console.log(
+            `[publish:auth] Token written to renderer/.secrets/meta.json`,
+          );
 
           server.stop();
           resolve();

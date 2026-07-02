@@ -2,13 +2,17 @@
 //
 // Pipeline step: write caption.txt, alt_text.txt, sources.md, LICENSES.md, QA checklist
 // into pipeline/renders/<folder>/ (alongside export PNGs). Does not render slides.
-import { mkdirSync, writeFileSync, existsSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { loadPost, outputDir, slideFilename } from "./lib.ts";
+import {
+  captionTxt,
+  slideCaptionsOutputName,
+  slideCaptionsTxt,
+} from "../src/lib/caption-export.ts";
 import type { TPostData } from "../src/lib/schema.ts";
-import { captionTxt, slideCaptionsOutputName, slideCaptionsTxt } from "../src/lib/caption-export.ts";
 import { multipleCaptionsEnabled } from "../src/lib/schema.ts";
 import { instagramUploadChecklist } from "./lib/instagram-upload.ts";
+import { loadPost, outputDir, slideFilename } from "./lib.ts";
 
 function altTextTxt(post: TPostData): string {
   // One paste-ready alt-text block per slide, in slide order, separated by a blank line — no
@@ -26,7 +30,10 @@ function sourcesMd(post: TPostData): string {
     "",
     "| Source | Link | Supports | Confidence | Claim tag |",
     "| --- | --- | --- | --- | --- |",
-    ...post.sources.map((s) => `| ${s.source} | ${s.link} | ${s.supports} | ${s.confidence} | ${s.claim_tag} |`),
+    ...post.sources.map(
+      (s) =>
+        `| ${s.source} | ${s.link} | ${s.supports} | ${s.confidence} | ${s.claim_tag} |`,
+    ),
     "",
     "> Re-open every link before posting and confirm the claim still matches the source wording.",
     "",
@@ -36,23 +43,39 @@ function sourcesMd(post: TPostData): string {
 
 function audioLines(post: TPostData): string[] {
   if (!post.video?.enabled) return ["No Reel in this package."];
-  const a = (post.video as { audio?: { voice_mode?: string; music_mode?: string } }).audio;
+  const a = (
+    post.video as { audio?: { voice_mode?: string; music_mode?: string } }
+  ).audio;
   const voice = a?.voice_mode ?? "none";
   const music = a?.music_mode ?? "none";
   if (voice === "none" && music === "none") {
-    return ["This Reel renders **without audio** (voice_mode/music_mode = none). To narrate it, set the modes and add the files — see REMOTION_REEL_WORKFLOW.md → Audio."];
+    return [
+      "This Reel renders **without audio** (voice_mode/music_mode = none). To narrate it, set the modes and add the files — see REMOTION_REEL_WORKFLOW.md → Audio.",
+    ];
   }
-  const out = ["| Asset | Mode | Source / license | Commercial use | Disclosure |", "| --- | --- | --- | --- | --- |"];
+  const out = [
+    "| Asset | Mode | Source / license | Commercial use | Disclosure |",
+    "| --- | --- | --- | --- | --- |",
+  ];
   if (voice !== "none")
-    out.push(`| voice.wav | ${voice} | ${voice === "voxcpm2" ? "VoxCPM2 (Apache-2.0)" : "TODO — fill in"} | ${voice === "voxcpm2" ? "yes" : "TODO"} | ${voice === "voxcpm2" ? "AI-audio label required" : "TODO"} |`);
+    out.push(
+      `| voice.wav | ${voice} | ${voice === "voxcpm2" ? "VoxCPM2 (Apache-2.0)" : "TODO — fill in"} | ${voice === "voxcpm2" ? "yes" : "TODO"} | ${voice === "voxcpm2" ? "AI-audio label required" : "TODO"} |`,
+    );
   if (music !== "none")
-    out.push(`| music.mp3 | ${music} | TODO — name the track + license URL | TODO | TODO |`);
-  out.push("", "> Fill every TODO before publishing (QA Gate 7). Do NOT use F5-TTS base weights (CC-BY-NC).");
+    out.push(
+      `| music.mp3 | ${music} | TODO — name the track + license URL | TODO | TODO |`,
+    );
+  out.push(
+    "",
+    "> Fill every TODO before publishing (QA Gate 7). Do NOT use F5-TTS base weights (CC-BY-NC).",
+  );
   return out;
 }
 
 function licensesMd(post: TPostData): string {
-  const assetLines = (post.asset_licenses as Array<Record<string, unknown>>).map(
+  const assetLines = (
+    post.asset_licenses as Array<Record<string, unknown>>
+  ).map(
     (a) =>
       `| ${a.asset ?? ""} | ${a.source ?? ""} | ${a.license_or_terms ?? ""} | ${a.commercial_use_allowed ? "yes" : "no"} | ${a.disclosure_required ? "yes" : "no"} |`,
   );
@@ -100,7 +123,9 @@ function qaChecklistMd(post: TPostData): string {
     ...files.map((f) => `- ${f}`),
     post.video?.enabled ? `- ${post.video.export_name} (Reel)` : "",
     "- caption.txt",
-    ...(multipleCaptionsEnabled(post) ? [`- ${slideCaptionsOutputName(post)}`] : []),
+    ...(multipleCaptionsEnabled(post)
+      ? [`- ${slideCaptionsOutputName(post)}`]
+      : []),
     "- instagram_upload_checklist.md",
     "- alt_text.txt",
     "- sources.md",
@@ -109,7 +134,9 @@ function qaChecklistMd(post: TPostData): string {
     "",
     "> Manual-review rows must be eyeballed before posting. The renderer enforces the mechanical gates; a human still owns the credibility + safety call.",
     "",
-  ].filter(Boolean).join("\n");
+  ]
+    .filter(Boolean)
+    .join("\n");
 }
 
 function main() {
@@ -130,7 +157,8 @@ EXAMPLES
 `);
     process.exit(0);
   }
-  const key = args.find((a) => !a.startsWith("--")) ?? "2026-06-02_ai-phishing-training";
+  const key =
+    args.find((a) => !a.startsWith("--")) ?? "2026-06-02_ai-phishing-training";
   const post = loadPost(key);
   const outDir = outputDir(post);
   mkdirSync(outDir, { recursive: true });
@@ -155,7 +183,9 @@ EXAMPLES
   // Warn if slide PNGs are not present yet (run `bun run export` first).
   const firstPng = slideFilename(post, 0);
   if (!existsSync(path.join(outDir, firstPng))) {
-    console.warn(`\n⚠ Slide PNGs not found in ${outDir}. Run: bun run export -- ${key}`);
+    console.warn(
+      `\n⚠ Slide PNGs not found in ${outDir}. Run: bun run export -- ${key}`,
+    );
   }
   console.log(`\n✓ Package metadata written to ${outDir}`);
 }

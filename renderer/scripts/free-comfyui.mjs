@@ -4,8 +4,9 @@
 // before voice/TTS so the GPU is available. Non-fatal if ComfyUI is down — pipeline continues.
 //
 // Env: COMFYUI_URL (default http://127.0.0.1:8000). Skipped when using --higgsfield art.
-import { comfyBaseUrl } from "./lib/comfyui-env.mjs";
+
 import { flagSet, showHelpAndExit } from "./lib/cli.mjs";
+import { comfyBaseUrl } from "./lib/comfyui-env.mjs";
 
 const args = process.argv.slice(2);
 const flags = flagSet(args);
@@ -29,7 +30,8 @@ EXAMPLES
   bun run free-comfyui
 `;
 
-if (flags.has("--help") || flags.has("-h") || args.includes("-h")) showHelpAndExit(HELP);
+if (flags.has("--help") || flags.has("-h") || args.includes("-h"))
+  showHelpAndExit(HELP);
 
 const URL_BASE = comfyBaseUrl();
 
@@ -42,8 +44,12 @@ try {
   if (res.ok) {
     console.log(`✓ ComfyUI unloaded models + freed VRAM (${URL_BASE}).`);
   } else {
-    console.warn(`⚠ ComfyUI /free returned ${res.status} (is it running?). Continuing.`);
+    console.warn(
+      `⚠ ComfyUI /free returned ${res.status} (is it running?). Continuing.`,
+    );
   }
 } catch {
-  console.warn(`⚠ ComfyUI not reachable at ${URL_BASE} — nothing to free. Continuing.`);
+  console.warn(
+    `⚠ ComfyUI not reachable at ${URL_BASE} — nothing to free. Continuing.`,
+  );
 }

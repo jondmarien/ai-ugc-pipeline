@@ -1,6 +1,14 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
-const MODULES = ["Overview", "Hook Vault", "Analytics", "Competitors", "Scheduler", "Calendar", "What's Trending"];
+const MODULES = [
+  "Overview",
+  "Hook Vault",
+  "Analytics",
+  "Competitors",
+  "Scheduler",
+  "Calendar",
+  "What's Trending",
+];
 
 test("every module renders and screenshots", async ({ page }) => {
   await page.goto("/");
@@ -8,7 +16,10 @@ test("every module renders and screenshots", async ({ page }) => {
     await page.getByRole("button", { name: label, exact: true }).click();
     await page.waitForTimeout(600); // let useApi settle; cached data renders instantly
     await expect(page.locator(".main")).toBeVisible();
-    await page.screenshot({ path: `e2e/shots/${label.toLowerCase().replace(/[^a-z]+/g, "-")}.png`, fullPage: true });
+    await page.screenshot({
+      path: `e2e/shots/${label.toLowerCase().replace(/[^a-z]+/g, "-")}.png`,
+      fullPage: true,
+    });
   }
 });
 

@@ -11,11 +11,11 @@
 // The dev server cold-bundles deps on first request and runs an HMR socket, which
 // made Playwright navigation time out unpredictably. A static build is deterministic:
 // build once, then 8 fast screenshots.
-import { mkdirSync, writeFileSync, existsSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { build, preview, type PreviewServer } from "vite";
 import { chromium } from "playwright";
-import { loadPost, slideFilename, outputDir, ROOT } from "./lib.ts";
+import { build, type PreviewServer, preview } from "vite";
+import { loadPost, outputDir, ROOT, slideFilename } from "./lib.ts";
 
 const PORT = 4317;
 
@@ -47,10 +47,16 @@ EXAMPLES
   }
   // First non-flag arg is the post key; `--only=N[,N]` restricts to those 1-based
   // slide numbers (e.g. `--only=1` re-exports just the cover).
-  const key = args.find((a) => !a.startsWith("--")) ?? "2026-06-02_ai-phishing-training";
+  const key =
+    args.find((a) => !a.startsWith("--")) ?? "2026-06-02_ai-phishing-training";
   const onlyArg = args.find((a) => a.startsWith("--only="))?.split("=")[1];
   const onlySet = onlyArg
-    ? new Set(onlyArg.split(",").map((n) => parseInt(n, 10)).filter((n) => n > 0))
+    ? new Set(
+        onlyArg
+          .split(",")
+          .map((n) => parseInt(n, 10))
+          .filter((n) => n > 0),
+      )
     : null;
   const post = loadPost(key);
   const { width, height } = post.canvas;
@@ -62,24 +68,36 @@ EXAMPLES
 
   // 1) Build the preview app to static assets (deterministic; no dev server).
   console.log("Building preview app (vite build)…");
-  await build({ root: ROOT, logLevel: "warn", build: { outDir: "dist", emptyOutDir: true } });
+  await build({
+    root: ROOT,
+    logLevel: "warn",
+    build: { outDir: "dist", emptyOutDir: true },
+  });
 
   let server: PreviewServer | undefined;
   let browser;
   const problems: string[] = [];
   try {
     // 2) Serve the static build (sirv under the hood — no transforms, no HMR).
-    server = await preview({ root: ROOT, preview: { port: PORT, strictPort: true } });
+    server = await preview({
+      root: ROOT,
+      preview: { port: PORT, strictPort: true },
+    });
 
     browser = await chromium.launch();
-    const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: 1 });
+    const page = await browser.newPage({
+      viewport: { width, height },
+      deviceScaleFactor: 1,
+    });
 
     for (let i = 0; i < post.slides.length; i++) {
       if (onlySet && !onlySet.has(i + 1)) continue;
       const url = `http://localhost:${PORT}/?post=${encodeURIComponent(post.upload_package.filename_prefix)}&slide=${i + 1}`;
       await page.goto(url, { waitUntil: "load", timeout: 30000 });
       // The real readiness signal: set after document.fonts.ready + all images loaded.
-      await page.waitForSelector('html[data-render-ready="1"]', { timeout: 30000 });
+      await page.waitForSelector('html[data-render-ready="1"]', {
+        timeout: 30000,
+      });
       const el = page.locator("#slide-root");
       await el.waitFor({ state: "visible" });
 
@@ -87,9 +105,16 @@ EXAMPLES
       // If the scaled text block still exceeds the frame, the copy is clipping — fail QA.
       const dbg = await page.evaluate(
         () =>
-          (window as unknown as {
-            __fitDebug?: { natural: number; avail: number; scale: number; floored: boolean };
-          }).__fitDebug,
+          (
+            window as unknown as {
+              __fitDebug?: {
+                natural: number;
+                avail: number;
+                scale: number;
+                floored: boolean;
+              };
+            }
+          ).__fitDebug,
       );
 
       const fname = slideFilename(post, i);
@@ -97,7 +122,8 @@ EXAMPLES
       writeFileSync(path.join(outDir, fname), buf);
 
       const size = pngSize(buf);
-      const ok = size.width === width && size.height === height && buf.length > 1000;
+      const ok =
+        size.width === width && size.height === height && buf.length > 1000;
       let fit = "";
       if (dbg) {
         const clips = dbg.natural * dbg.scale > dbg.avail + 1;
@@ -107,15 +133,21 @@ EXAMPLES
             `${fname}: text overflows the frame (scale ${dbg.scale.toFixed(2)}, ${Math.round(dbg.natural)}>${dbg.avail}px) — shorten the copy or lower the fit floor`,
           );
       }
-      console.log(`  ${ok ? "✓" : "✗"} ${fname}  (${size.width}×${size.height}, ${(buf.length / 1024).toFixed(0)} KB)${fit}`);
-      if (!ok) problems.push(`${fname}: got ${size.width}×${size.height}, expected ${width}×${height}`);
+      console.log(
+        `  ${ok ? "✓" : "✗"} ${fname}  (${size.width}×${size.height}, ${(buf.length / 1024).toFixed(0)} KB)${fit}`,
+      );
+      if (!ok)
+        problems.push(
+          `${fname}: got ${size.width}×${size.height}, expected ${width}×${height}`,
+        );
     }
 
     await browser.close();
     browser = undefined;
   } finally {
     if (browser) await browser.close();
-    if (server) await new Promise<void>((res) => server!.httpServer.close(() => res()));
+    if (server)
+      await new Promise<void>((res) => server!.httpServer.close(() => res()));
   }
 
   if (problems.length) {
@@ -127,7 +159,10 @@ EXAMPLES
   const coverBg = post.slides[0].background_asset;
   if (coverBg && post.slides[0].asset_status === "existing") {
     const pub = path.join(ROOT, "public", coverBg.replace(/^\//, ""));
-    if (!existsSync(pub)) console.warn(`\n⚠ cover background not found at ${pub} — cover may be procedural-only.`);
+    if (!existsSync(pub))
+      console.warn(
+        `\n⚠ cover background not found at ${pub} — cover may be procedural-only.`,
+      );
   }
 
   console.log(

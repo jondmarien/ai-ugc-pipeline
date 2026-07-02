@@ -3,8 +3,9 @@
 // Pipeline step: Whisper alignment → word/beat timings in post JSON for Remotion captions.
 // Requires voice.wav from `bun run voice -- <key>` (or pipeline voice step).
 // Wrapper around scripts/align-whisper.py.
-import { runPythonScript } from "./lib/python-runner.mjs";
+
 import { flagSet, postKeyFromArgv, showHelpAndExit } from "./lib/cli.mjs";
+import { runPythonScript } from "./lib/python-runner.mjs";
 
 const args = process.argv.slice(2);
 const flags = flagSet(args);
@@ -27,7 +28,8 @@ EXAMPLES
   bun run align -- my-post
 `;
 
-if (flags.has("--help") || flags.has("-h") || args.includes("-h")) showHelpAndExit(HELP);
+if (flags.has("--help") || flags.has("-h") || args.includes("-h"))
+  showHelpAndExit(HELP);
 
 const key = postKeyFromArgv(args);
 if (!key) {

@@ -52,7 +52,10 @@ function firstLine(caption: string): string {
   return caption.trim();
 }
 
-export function youtubeMetadata(post: PostData, cfg: YouTubeConfig): YouTubePayload {
+export function youtubeMetadata(
+  post: PostData,
+  cfg: YouTubeConfig,
+): YouTubePayload {
   const rawTitle = firstLine(post.caption);
   const title = truncateWords(rawTitle, 100);
 
@@ -97,12 +100,16 @@ export interface TikTokPayload {
 
 const TIKTOK_TITLE_MAX = 2200;
 
-export function tiktokMetadata(post: PostData, cfg: TikTokConfig): TikTokPayload {
+export function tiktokMetadata(
+  post: PostData,
+  cfg: TikTokConfig,
+): TikTokPayload {
   const hashtagStr = post.hashtags.map((t) => `#${t}`).join(" ");
   const fullTitle = `${post.caption}\n\n${hashtagStr}`;
-  const title = fullTitle.length <= TIKTOK_TITLE_MAX
-    ? fullTitle
-    : fullTitle.slice(0, TIKTOK_TITLE_MAX);
+  const title =
+    fullTitle.length <= TIKTOK_TITLE_MAX
+      ? fullTitle
+      : fullTitle.slice(0, TIKTOK_TITLE_MAX);
 
   return {
     post_info: {

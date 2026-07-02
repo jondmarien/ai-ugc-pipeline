@@ -1,4 +1,4 @@
-import { test, expect } from "bun:test";
+import { expect, test } from "bun:test";
 import { MODEL_CATALOG } from "./higgsfield-client.mjs";
 
 test("video catalog is present but secondary", () => {

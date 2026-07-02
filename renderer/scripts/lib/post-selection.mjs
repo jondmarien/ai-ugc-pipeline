@@ -21,7 +21,9 @@ export function filterByStatus(keys, status) {
   if (!status) return keys;
   const matched = keys.filter((fk) => {
     try {
-      const post = JSON.parse(readFileSync(path.join(POSTS_DIR, `${fk}.json`), "utf8"));
+      const post = JSON.parse(
+        readFileSync(path.join(POSTS_DIR, `${fk}.json`), "utf8"),
+      );
       return post.status === status;
     } catch {
       return false;

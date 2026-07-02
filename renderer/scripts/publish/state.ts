@@ -35,7 +35,7 @@ export function recordResult(dir: string, result: PublishResult): void {
 export function shouldSkip(
   state: Record<string, PublishResult>,
   platform: string,
-  force: boolean
+  force: boolean,
 ): boolean {
   return state[platform]?.status === "published" && !force;
 }

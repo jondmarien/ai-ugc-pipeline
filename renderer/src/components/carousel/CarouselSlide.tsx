@@ -1,6 +1,15 @@
 import type { ReactNode } from "react";
+import {
+  fitFloors,
+  fonts,
+  headlineBase,
+  layout,
+  overlays,
+  palette,
+  themeAccent,
+  type as typeScale,
+} from "@/design/tokens";
 import type { TPostData, TSlideData } from "@/lib/schema";
-import { fitFloors, fonts, headlineBase, layout, overlays, palette, themeAccent, type as typeScale } from "@/design/tokens";
 import { SlideBackground } from "./SlideBackground";
 import { useFitToFrame } from "./useFitToFrame";
 
@@ -19,31 +28,43 @@ export function CarouselSlide({
 }) {
   const accent = themeAccent(post);
   const { width, height, safe_margin } = post.canvas;
-  const justify = align === "center" ? "center" : align === "end" ? "flex-end" : "flex-start";
+  const justify =
+    align === "center" ? "center" : align === "end" ? "flex-end" : "flex-start";
   // The text column may never enter the top header band, and never grow above textMaxFrac of the
   // canvas — so the header row stays clear and the top of the background is always visible.
   // Centered (takeaway) and fill (chain diagram) slides get the FULL region below the header:
   // centered lands on the optical eye-line, fill uses the whole height top-down for a diagram.
-  const frameTop = align === "center" || align === "fill"
-    ? safe_margin + layout.headerBand
-    : Math.max(safe_margin + layout.headerBand, Math.round(height * (1 - layout.textMaxFrac)));
+  const frameTop =
+    align === "center" || align === "fill"
+      ? safe_margin + layout.headerBand
+      : Math.max(
+          safe_margin + layout.headerBand,
+          Math.round(height * (1 - layout.textMaxFrac)),
+        );
 
   // Measured shrink-to-fit: the text block renders at its per-role base size, gets measured
   // against the bounded frame, then scales DOWN (never below the legibility floor) so copy
   // never clips. The floor is the larger of the headline and subline floor ratios.
   const headlineBaseForRole =
-    slide.role === "cover" ? headlineBase.cover
-    : slide.role === "takeaway" ? headlineBase.takeaway
-    : align === "fill" ? headlineBase.chain
-    : headlineBase.body;
+    slide.role === "cover"
+      ? headlineBase.cover
+      : slide.role === "takeaway"
+        ? headlineBase.takeaway
+        : align === "fill"
+          ? headlineBase.chain
+          : headlineBase.body;
   const minScale = Math.max(
     fitFloors.headline / headlineBaseForRole,
     fitFloors.subline / typeScale.subline,
   );
-  const { frameRef, blockRef, scale } = useFitToFrame(minScale, [slide.on_slide_copy, slide.subline]);
+  const { frameRef, blockRef, scale } = useFitToFrame(minScale, [
+    slide.on_slide_copy,
+    slide.subline,
+  ]);
   // The block scales toward its anchored edge so it stays pinned: bottom for `end`, centre for
   // `center`, top for `fill`/`start`.
-  const transformOrigin = align === "end" ? "50% 100%" : align === "center" ? "50% 50%" : "50% 0%";
+  const transformOrigin =
+    align === "end" ? "50% 100%" : align === "center" ? "50% 50%" : "50% 0%";
 
   return (
     <div
@@ -62,7 +83,17 @@ export function CarouselSlide({
       <SlideBackground post={post} slide={slide} accent={accent} />
 
       {/* Top accent hairline */}
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 6, background: accent, opacity: 0.9 }} />
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 6,
+          background: accent,
+          opacity: 0.9,
+        }}
+      />
 
       {/* Content frame inside the safe margin. The text block is wrapped with a
           content-hugging soft scrim (feathered dark plate + backdrop-blur) that moves
@@ -103,7 +134,14 @@ export function CarouselSlide({
               pointerEvents: "none",
             }}
           />
-          <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 24 }}>
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              gap: 24,
+            }}
+          >
             {children}
           </div>
         </div>
@@ -137,7 +175,8 @@ export function CarouselSlide({
           color: accent,
         }}
       >
-        {String(slide.slide).padStart(2, "0")}/{String(post.slides.length).padStart(2, "0")}
+        {String(slide.slide).padStart(2, "0")}/
+        {String(post.slides.length).padStart(2, "0")}
       </div>
     </div>
   );
@@ -159,7 +198,14 @@ export function Kicker({ text, accent }: { text: string; accent: string }) {
         gap: 16,
       }}
     >
-      <span style={{ width: 48, height: 3, background: accent, display: "inline-block" }} />
+      <span
+        style={{
+          width: 48,
+          height: 3,
+          background: accent,
+          display: "inline-block",
+        }}
+      />
       {text}
     </div>
   );
