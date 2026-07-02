@@ -1,8 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
+import { appSecretProof, readMetaStore } from "./meta_auth";
 import { IG_CACHE_DIR } from "./paths";
 
-const GRAPH = "https://graph.facebook.com/v23.0";
+const GRAPH = "https://graph.facebook.com/v25.0";
 
 export type MediaType = "VIDEO" | "IMAGE" | "CAROUSEL_ALBUM";
 
@@ -78,26 +79,44 @@ export async function fetchWithCache<T>(
   }
 }
 
-function token(): string {
-  const t = process.env.IG_ACCESS_TOKEN;
-  if (!t)
-    throw new Error(
-      "IG_ACCESS_TOKEN missing. Copy .env.example to dashboard/.env and fill it in.",
-    );
-  return t;
+/**
+ * Prefer the dashboard's own long-lived-token env vars (IG_ACCESS_TOKEN/IG_USER_ID)
+ * if set, otherwise fall back to the OAuth credentials the renderer's
+ * `bun run publish:auth meta` flow already resolved (renderer/.secrets/meta.json),
+ * so Overview's IG cards work off the same login as the Meta tab.
+ */
+function credentials(): { token: string; userId: string; appSecret?: string } {
+  const envToken = process.env.IG_ACCESS_TOKEN;
+  const envUserId = process.env.IG_USER_ID;
+  if (envToken && envUserId) return { token: envToken, userId: envUserId };
+
+  const store = readMetaStore();
+  if (store?.page_access_token && store.ig_user_id) {
+    return {
+      token: store.page_access_token,
+      userId: store.ig_user_id,
+      appSecret: process.env.META_APP_SECRET,
+    };
+  }
+
+  throw new Error(
+    "No IG credentials found. Either set IG_ACCESS_TOKEN/IG_USER_ID in dashboard/.env, or run `bun run publish:auth meta` in renderer/.",
+  );
 }
 
 async function graphGet(pathAndQuery: string): Promise<any> {
+  const { token, appSecret } = credentials();
   const sep = pathAndQuery.includes("?") ? "&" : "?";
+  const proof = appSecret ? `&appsecret_proof=${appSecretProof(token, appSecret)}` : "";
   const res = await fetch(
-    `${GRAPH}${pathAndQuery}${sep}access_token=${token()}`,
+    `${GRAPH}${pathAndQuery}${sep}access_token=${token}${proof}`,
   );
   const body = await res.json();
   if (!res.ok || body.error) {
     const msg = body?.error?.message ?? `HTTP ${res.status}`;
     if (/expired|invalid/i.test(msg) || body?.error?.code === 190) {
       throw new Error(
-        `IG token expired or invalid. Fix: bun scripts/refresh_token.ts (repo root). [${msg}]`,
+        `IG token expired or invalid. Fix: bun scripts/refresh_token.ts (repo root) or re-run \`bun run publish:auth meta\`. [${msg}]`,
       );
     }
     throw new Error(`IG API: ${msg}`);
@@ -106,7 +125,7 @@ async function graphGet(pathAndQuery: string): Promise<any> {
 }
 
 export async function getAccount(force = false) {
-  const id = process.env.IG_USER_ID;
+  const { userId: id } = credentials();
   return fetchWithCache(
     "account",
     () =>
@@ -119,7 +138,7 @@ export async function getAccount(force = false) {
 }
 
 export async function getMedia(force = false) {
-  const id = process.env.IG_USER_ID;
+  const { userId: id } = credentials();
   return fetchWithCache(
     "media",
     async () => {
