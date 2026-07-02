@@ -1,0 +1,13 @@
+Anthropic posted on X that the U.S. Department of Commerce lifted export controls on Claude Fable 5 and Mythos 5, and that it will begin restoring access on July 1, 2026. Reuters and CNBC reported the same lift on June 30, citing Commerce Secretary Howard Lutnick's letter that a license is no longer required for those models after safeguards were deemed sufficient.
+
+Rewind to June 12: Anthropic's own statement said Commerce ordered suspension of access by any foreign national, including employees, and the company disabled Fable 5 and Mythos 5 globally because it could not enforce citizenship on a mass-market API. That is not a routine maintenance window. It is export administration hitting a live product tier.
+
+If you wired security workflows to Mythos-class capability, you felt this as an integration outage with no CVE and no patch Tuesday. Partial relief arrived earlier for Mythos 5 to vetted U.S. organizations, but the consumer-facing models stayed offline until this week's reversal.
+
+So inventory which jobs truly need which tier, write down an approved fallback model, and rehearse the switch before policy moves again. Model access is not guaranteed by a subscription line item.
+
+Did your team have a fallback ready when Fable and Mythos went dark?
+
+Follow for AI security breakdowns without the fake panic.
+
+[AI governance, export controls, Claude, supply chain risk, security operations]
