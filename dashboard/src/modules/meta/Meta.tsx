@@ -1,10 +1,18 @@
 import type { PublishedMetaPost } from "@shared/types";
 import { useMemo, useState } from "react";
+import { Bars } from "../../components/Bars";
 import { EmptyState } from "../../components/EmptyState";
 import { Panel } from "../../components/Panel";
 import { StalenessBanner } from "../../components/StalenessBanner";
 import { StatCard } from "../../components/StatCard";
 import { useApi } from "../../lib/api";
+
+type RenderPkg = {
+  dirName: string;
+  date: string | null;
+  slug: string;
+  slides: string[];
+};
 
 const PLATFORM_FILTERS = ["all", "facebook", "instagram"] as const;
 type PlatformFilter = (typeof PLATFORM_FILTERS)[number];
@@ -71,9 +79,28 @@ function MetricRow({ post }: { post: PublishedMetaPost }) {
   );
 }
 
-function MetaPostCard({ post }: { post: PublishedMetaPost }) {
+function MetaPostCard({
+  post,
+  cover,
+}: {
+  post: PublishedMetaPost;
+  cover: string | null;
+}) {
   return (
     <Panel className="stat-card">
+      {cover && (
+        <img
+          src={`/api/repo/renders/${encodeURIComponent(post.renderDir)}/slide/${encodeURIComponent(cover)}`}
+          alt=""
+          style={{
+            width: "100%",
+            borderRadius: 6,
+            marginBottom: 8,
+            aspectRatio: "4 / 5",
+            objectFit: "cover",
+          }}
+        />
+      )}
       <div
         className="meta-caps"
         style={{ display: "flex", justifyContent: "space-between" }}
@@ -99,8 +126,8 @@ function MetaPostCard({ post }: { post: PublishedMetaPost }) {
         {post.hashtags.length > 0 && <span>{post.hashtags.length} TAGS</span>}
       </div>
       <MetricRow post={post} />
-      {post.url && (
-        <p style={{ marginTop: 8 }}>
+      <p style={{ marginTop: 8, display: "flex", gap: 12 }}>
+        {post.url && (
           <a
             href={post.url}
             target="_blank"
@@ -109,14 +136,23 @@ function MetaPostCard({ post }: { post: PublishedMetaPost }) {
           >
             VIEW ON {PLATFORM_LABEL[post.platform].toUpperCase()} →
           </a>
-        </p>
-      )}
+        )}
+        <a
+          href={`/api/repo/renders/${encodeURIComponent(post.renderDir)}/caption.txt`}
+          target="_blank"
+          rel="noreferrer"
+          className="meta-caps"
+        >
+          RENDER FOLDER →
+        </a>
+      </p>
     </Panel>
   );
 }
 
 export function Meta() {
   const posts = useApi<PublishedMetaPost[]>("/api/meta/insights");
+  const renders = useApi<RenderPkg[]>("/api/repo/renders");
   const [platformFilter, setPlatformFilter] = useState<PlatformFilter>("all");
 
   const items = posts.data ?? [];
@@ -126,6 +162,24 @@ export function Meta() {
         (p) => platformFilter === "all" || p.platform === platformFilter,
       ),
     [items, platformFilter],
+  );
+
+  const coverByDir = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const r of renders.data ?? []) {
+      const cover = r.slides.find((f) => /cover/i.test(f)) ?? r.slides[0];
+      if (cover) map.set(r.dirName, cover);
+    }
+    return map;
+  }, [renders.data]);
+
+  const reachSeries = useMemo(
+    () =>
+      [...items]
+        .sort((a, b) => a.publishedAt - b.publishedAt)
+        .filter((p) => p.insights)
+        .slice(-20),
+    [items],
   );
 
   const noCredentials = !!posts.error && /publish:auth meta/i.test(posts.error);
@@ -175,6 +229,23 @@ export function Meta() {
         />
       </div>
 
+      {reachSeries.length > 1 && (
+        <div style={{ marginBottom: 16 }}>
+          <Panel>
+            <div className="meta-caps">
+              REACH · LAST {reachSeries.length} POSTS
+            </div>
+            <Bars
+              values={reachSeries.map((p) => p.insights?.reach ?? 0)}
+              labels={reachSeries.map(
+                (p) =>
+                  `${formatDate(p.publishedAt)} · ${p.insights?.reach ?? 0}`,
+              )}
+            />
+          </Panel>
+        </div>
+      )}
+
       <div
         className="meta-caps"
         style={{ display: "flex", gap: 8, marginBottom: 16 }}
@@ -196,6 +267,7 @@ export function Meta() {
           <MetaPostCard
             key={`${post.platform}-${post.mediaId ?? post.renderDir}`}
             post={post}
+            cover={coverByDir.get(post.renderDir) ?? null}
           />
         ))}
       </div>
