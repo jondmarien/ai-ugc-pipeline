@@ -339,7 +339,9 @@ async function runMeta() {
     exchangeLongLivedToken,
     fetchPageAccounts,
     fetchInstagramAccountForPage,
+    fetchPageDetails,
     pickPageWithInstagram,
+    extractGrantedIds,
     debugToken,
     GRAPH_BASE,
     GRAPH_API_VERSION,
@@ -409,8 +411,9 @@ async function runMeta() {
           // Ground truth: what scopes/assets actually landed on the token, vs. what the
           // consent dialog displayed. granular_scopes[].target_ids shows which Page/asset
           // ids each permission was actually granted for.
+          let debug = null;
           try {
-            const debug = await debugToken(longLived.access_token, appId, appSecret);
+            debug = await debugToken(longLived.access_token, appId, appSecret);
             console.log(`\n[publish:auth] Token scopes: ${(debug.scopes ?? []).join(", ") || "(none)"}`);
             if (debug.granular_scopes?.length) {
               console.log(`[publish:auth] Granular scopes:`);
@@ -427,7 +430,7 @@ async function runMeta() {
           // Resolve the Page (+ linked IG Business Account) the user manages.
           const accounts = await fetchPageAccounts(longLived.access_token, appSecret);
 
-          console.log(`\n[publish:auth] Pages returned by /me/accounts:`);
+          console.log(`\n[publish:auth] Pages returned by /me/accounts: ${accounts.length}`);
           for (const a of accounts) {
             console.log(
               `  - ${a.name} (${a.id}) — instagram_business_account: ${
@@ -438,7 +441,7 @@ async function runMeta() {
 
           let page = pickPageWithInstagram(accounts);
 
-          // Fallback: some accounts don't populate instagram_business_account on the
+          // Fallback 1: some accounts don't populate instagram_business_account on the
           // aggregate call but do when queried directly per-Page with the Page's own token.
           if (!page) {
             for (const a of accounts) {
@@ -451,16 +454,30 @@ async function runMeta() {
             }
           }
 
+          // Fallback 2: /me/accounts only lists Pages the user broadly manages — it does
+          // NOT enumerate Pages/assets granted via the newer asset-scoped consent flow
+          // (the IG_API_ONBOARDING picker). If granular_scopes already told us exactly
+          // which Page + IG user id were granted, fetch that Page directly by id instead.
+          if (!page && debug?.granular_scopes) {
+            const { pageId, igUserId } = extractGrantedIds(debug.granular_scopes);
+            if (pageId && igUserId) {
+              console.log(`[publish:auth] /me/accounts had no match — using granted asset ids directly: page=${pageId} ig=${igUserId}`);
+              const details = await fetchPageDetails(pageId, longLived.access_token, appSecret);
+              if (details) {
+                page = { ...details, instagram_business_account: { id: igUserId } };
+              }
+            }
+          }
+
           if (!page) {
             throw new Error(
               `No Facebook Page with a linked Instagram Business account was found across ${accounts.length} ` +
-                `Page(s) (see the list printed above). Checklist: (1) the Instagram account must be a ` +
-                `Professional (Business or Creator) account, not Personal — check in the Instagram app under ` +
-                `Settings > Account type and tools; (2) re-link it fresh via the Facebook Page's own Settings > ` +
-                `Linked Accounts > Instagram (not just a cross-posting toggle); (3) confirm the Page and IG ` +
-                `account both appear together under the same asset in Meta Business Suite > Business assets; ` +
-                `(4) confirm you're logging in as an admin of that specific Page. Then re-run ` +
-                `\`bun run publish:auth meta\`.`,
+                `Page(s) (see the list printed above), and no usable Page+Instagram asset ids were found on the ` +
+                `token's granular_scopes either. Checklist: (1) the Instagram account must be a Professional ` +
+                `(Business or Creator) account, not Personal; (2) re-link it fresh via the Facebook Page's own ` +
+                `Settings > Linked Accounts > Instagram; (3) confirm the Page and IG account both appear together ` +
+                `under the same asset in Meta Business Suite > Business assets; (4) confirm you're logging in as ` +
+                `an admin of that specific Page. Then re-run \`bun run publish:auth meta\`.`,
             );
           }
 

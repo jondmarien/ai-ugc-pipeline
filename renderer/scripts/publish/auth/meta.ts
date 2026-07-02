@@ -111,6 +111,26 @@ export function pickPageWithInstagram(accounts: PageAccount[]): PageAccount | un
   return accounts.find((a) => a.instagram_business_account?.id);
 }
 
+/**
+ * Extract the Page id + Instagram user id from a token's granular_scopes.
+ *
+ * Meta's newer asset-scoped consent flow (triggered by the IG_API_ONBOARDING extras
+ * param) grants access to specific Page/IG asset ids without necessarily making that
+ * Page enumerable via the legacy GET /me/accounts endpoint — that endpoint only lists
+ * Pages the user broadly manages, not ones granted via narrow asset-scoped consent.
+ * When /me/accounts comes back empty, the granted ids are still right here on the
+ * token and can be used directly instead.
+ */
+export function extractGrantedIds(
+  granularScopes: DebugTokenData["granular_scopes"],
+): { pageId: string | null; igUserId: string | null } {
+  const targetFor = (scope: string): string | null =>
+    granularScopes?.find((g) => g.scope === scope)?.target_ids?.[0] ?? null;
+  const pageId = targetFor("pages_manage_posts") ?? targetFor("pages_show_list") ?? targetFor("pages_read_engagement");
+  const igUserId = targetFor("instagram_content_publish") ?? targetFor("instagram_basic");
+  return { pageId, igUserId };
+}
+
 // ---------------------------------------------------------------------------
 // Network steps
 // ---------------------------------------------------------------------------
@@ -183,6 +203,33 @@ export async function fetchInstagramAccountForPage(
   }
   const json = (await resp.json()) as { instagram_business_account?: { id: string; username?: string } };
   return json.instagram_business_account ?? null;
+}
+
+/**
+ * Direct by-id Page lookup — the counterpart to extractGrantedIds(). Fetches the Page's
+ * name + access token using the USER access token, bypassing /me/accounts entirely.
+ * Used when the token was granted via the narrow asset-scoped consent flow, where the
+ * granted Page id is already known (from granular_scopes) but isn't enumerable via
+ * /me/accounts.
+ */
+export async function fetchPageDetails(
+  pageId: string,
+  userAccessToken: string,
+  appSecret: string,
+  fetchImpl: typeof fetch = fetch,
+): Promise<{ id: string; name: string; access_token: string } | null> {
+  const params = new URLSearchParams({
+    fields: "id,name,access_token",
+    access_token: userAccessToken,
+    appsecret_proof: appSecretProof(userAccessToken, appSecret),
+  });
+  const resp = await fetchImpl(`${GRAPH_BASE}/${pageId}?${params.toString()}`);
+  if (!resp.ok) {
+    const text = await resp.text();
+    console.error(`[publish:auth] Direct Page lookup for ${pageId} failed: ${resp.status} — ${text}`);
+    return null;
+  }
+  return (await resp.json()) as { id: string; name: string; access_token: string };
 }
 
 export type DebugTokenData = {
