@@ -35,8 +35,12 @@ Meta's app creation flow is now **use-case-driven** (the old "add products indiv
    - **"Manage messaging & content on Instagram"** → grants `instagram_basic`, `instagram_content_publish`.
    - Do **not** pick "Authenticate and request data from users with Facebook Login" — that's the consumer sign-in use case; it's incompatible with the two above and is what blocks everything else if picked first.
    - **Facebook Login for Business** and **Webhooks** are added automatically once the two use cases above are selected — you don't add them separately.
-3. Request only the five scopes named above. Standard Access with yourself as an app admin/tester is enough — no public App Review needed since this only ever publishes to accounts you own (see `META_AUDIT_SUBMISSION.md` if a review is ever requested).
-4. One-time: link a **Vercel Blob** store to the `aiugc.chron0.tech` Vercel project (Instagram's `video_url` must be publicly fetchable; see §0 architecture in `renderer/docs/PUBLISHING_ARCHITECTURE.md`) and set a `PUBLISH_TEMP_SECRET` value as a Vercel env var on that project.
+3. Request only the five scopes named above. Standard Access with yourself as an app admin/tester is enough — no public App Review needed since this only ever publishes to accounts you own (see `META_AUDIT_SUBMISSION.md` if a review is ever requested). If any scope shows as "Invalid Scopes" during auth, see **Troubleshooting** below — the use-case wizard doesn't always fully attach every permission it implies.
+4. Under **Facebook Login for Business → Settings**, add `http://localhost:8788/callback` to **Valid OAuth Redirect URIs** and Save. Leave **App Domains** (Settings → Basic) empty — it doesn't apply to this server-side flow and rejects `localhost` anyway.
+5. If your app has **"Require app secret"** enabled (Settings → Advanced) — leave it on, it's good practice — no action needed; the adapters already send the required `appsecret_proof` on every Page/IG Graph call.
+6. One-time: link a **Vercel Blob** store to the `aiugc.chron0.tech` Vercel project (Instagram's `video_url` must be publicly fetchable; see §0 architecture in `renderer/docs/PUBLISHING_ARCHITECTURE.md`) and set a `PUBLISH_TEMP_SECRET` value as a Vercel env var on that project.
+
+> Setting this up for real surfaced five distinct, non-obvious issues (App Domains vs. redirect URIs, invalid scopes, `appsecret_proof`, the Instagram asset-picker never appearing, and `/me/accounts` not enumerating assets granted via the newer picker flow). Full root-cause writeup with the exact fix for each: see **"OAuth flow — issues hit during real setup"** in `META_INTEGRATION_SPEC.md`.
 
 ---
 
@@ -142,3 +146,7 @@ No code change is needed to go public — only the `publish.config.json` privacy
 | Instagram container stuck at `IN_PROGRESS` past ~5 min | The adapter times out and reports failed; check the video meets Reels specs (duration/aspect ratio) and re-run. |
 | `No slides found for carousel publish` | The post has no carousel PNGs rendered; render it first, or set `instagram.postType` back to `"reels"`. |
 | Instagram error mentioning `trial_params` / `TRIAL` | Trial Reels requires Meta's approval for the feature; set `instagram.trialReels` to `false` until then. |
+| Meta: "Can't load URL" / App Domains rejects `localhost` | Leave App Domains empty; add the redirect URI to **Valid OAuth Redirect URIs** instead (see step 4 above). |
+| Meta: `Invalid Scopes: ...` during auth | The permission isn't actually attached to the app yet — check **App Review → Permissions and Features**, or re-save the Use Case customization screens. |
+| Meta: `API calls from the server require an appsecret_proof argument` | Already handled by the adapters/auth module — if you see this, you're likely running against stale code; pull latest. |
+| Meta: `No Facebook Page with a linked Instagram Business account was found` | `publish:auth meta` now prints the Pages `/me/accounts` returned plus the token's granted scopes/asset ids, and falls back to resolving the Page directly by id when `/me/accounts` comes back empty (a known gap for accounts granted via the newer asset-scoped consent flow). If it still fails, the printed output will show exactly which of Meta's asset states is missing — see the full troubleshooting log in `META_INTEGRATION_SPEC.md`. |
