@@ -76,7 +76,7 @@ ai-ugc-pipeline/
 ├── publish.config.json            per-platform publish settings (privacy/interaction)
 ├── .claude/
 │   ├── commands/                  /draft-post, /draft-week, /ingest-post, … (slash commands)
-│   └── skills/                    (mirrored to assets/skills/ for non-.claude agents)
+│   └── skills/                    (mirrored to skills/ for non-.claude agents)
 │       ├── ai-cybersecurity-ugc-carousel/   writes the content
 │       ├── react-remotion-instagram-renderer/  maps content → JSON
 │       ├── humanizer/             de-AI + voice calibration

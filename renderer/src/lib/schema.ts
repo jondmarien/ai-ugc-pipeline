@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-// Mirrors assets/skills/react-remotion-instagram-renderer/templates/post.render-data.template.json
+// Mirrors skills/react-remotion-instagram-renderer/templates/post.render-data.template.json
 // and maps from pipeline/content/POST_TEMPLATE.md. Validation fails loud on missing
 // required fields — the renderer never invents claims, sources, or copy.
 
