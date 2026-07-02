@@ -1,11 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import type {
+  MetaInsights,
   MetaPostType,
   PublishedMetaPost,
   PublishResult,
 } from "../shared/types";
-import { POSTS_DIR, RENDERS_DIR, REPO_ROOT } from "./paths";
+import { fetchWithCache } from "./ig";
+import { appSecretProof, requireMetaStore } from "./meta_auth";
+import { META_CACHE_DIR, POSTS_DIR, RENDERS_DIR, REPO_ROOT } from "./paths";
 import { parseRenderDirName } from "./repo";
 
 const STATE_FILE = "publish.state.json";
@@ -120,4 +123,146 @@ export function listPublishedMeta(
   }
 
   return out.sort((a, b) => b.publishedAt - a.publishedAt);
+}
+
+// ---------------------------------------------------------------------------
+// Graph API insights (Phase 2)
+// ---------------------------------------------------------------------------
+
+const GRAPH = "https://graph.facebook.com/v25.0";
+const INSTAGRAM_REEL_METRICS = ["views", "reach", "saved", "shares"];
+const INSTAGRAM_CAROUSEL_METRICS = ["reach", "saved", "shares"];
+
+async function graphGet(
+  pathAndQuery: string,
+  pageAccessToken: string,
+  appSecret: string,
+  fetchImpl: typeof fetch,
+): Promise<any> {
+  const sep = pathAndQuery.includes("?") ? "&" : "?";
+  const proof = appSecretProof(pageAccessToken, appSecret);
+  const resp = await fetchImpl(
+    `${GRAPH}${pathAndQuery}${sep}access_token=${pageAccessToken}&appsecret_proof=${proof}`,
+  );
+  const body = await resp.json();
+  if (!resp.ok || body.error) {
+    const msg = body?.error?.message ?? `HTTP ${resp.status}`;
+    throw new Error(msg);
+  }
+  return body;
+}
+
+async function fetchInstagramInsights(
+  mediaId: string,
+  postType: MetaPostType,
+  pageAccessToken: string,
+  appSecret: string,
+  fetchImpl: typeof fetch,
+): Promise<MetaInsights> {
+  const metrics =
+    postType === "carousel"
+      ? INSTAGRAM_CAROUSEL_METRICS
+      : INSTAGRAM_REEL_METRICS;
+  const raw = await graphGet(
+    `/${mediaId}/insights?metric=${metrics.join(",")}`,
+    pageAccessToken,
+    appSecret,
+    fetchImpl,
+  );
+  const values: Record<string, number> = {};
+  for (const m of raw.data ?? []) values[m.name] = m.values?.[0]?.value ?? 0;
+  return {
+    views: values.views,
+    reach: values.reach,
+    saves: values.saved,
+    shares: values.shares,
+  };
+}
+
+async function fetchFacebookVideoInsights(
+  videoId: string,
+  pageAccessToken: string,
+  appSecret: string,
+  fetchImpl: typeof fetch,
+): Promise<MetaInsights> {
+  const raw = await graphGet(
+    `/${videoId}?fields=likes.summary(true),comments.summary(true)`,
+    pageAccessToken,
+    appSecret,
+    fetchImpl,
+  );
+  return {
+    likes: raw?.likes?.summary?.total_count,
+    comments: raw?.comments?.summary?.total_count,
+  };
+}
+
+export type FetchMetaInsightsDeps = {
+  fetchImpl?: typeof fetch;
+  cacheDir?: string;
+  secretsPath?: string;
+};
+
+/**
+ * Attaches Graph API insights to every post that has a mediaId, using a per-post
+ * cache entry (fetchWithCache, same cache-first/force pattern as ig.ts). A missing
+ * Meta credentials file fails ALL posts with the same actionable message the CLI
+ * gives; a per-post Graph failure (deleted post, stale token) only fails that post
+ * so the rest of the list still renders.
+ */
+export async function attachMetaInsights(
+  posts: PublishedMetaPost[],
+  force: boolean,
+  deps: FetchMetaInsightsDeps = {},
+): Promise<PublishedMetaPost[]> {
+  const fetchImpl = deps.fetchImpl ?? fetch;
+  const cacheDir = deps.cacheDir ?? META_CACHE_DIR;
+
+  let store: ReturnType<typeof requireMetaStore>;
+  let appSecret: string;
+  try {
+    store = requireMetaStore(deps.secretsPath);
+    appSecret = process.env.META_APP_SECRET ?? "";
+  } catch (e) {
+    const message = e instanceof Error ? e.message : String(e);
+    return posts.map((p) => ({ ...p, insightsError: message }));
+  }
+
+  return Promise.all(
+    posts.map(async (p) => {
+      if (!p.mediaId) return { ...p, insightsError: "no media id recorded" };
+      try {
+        const cached = await fetchWithCache<MetaInsights>(
+          `${p.platform}-${p.mediaId}`,
+          () =>
+            p.platform === "instagram"
+              ? fetchInstagramInsights(
+                  p.mediaId as string,
+                  p.postType,
+                  store.page_access_token,
+                  appSecret,
+                  fetchImpl,
+                )
+              : fetchFacebookVideoInsights(
+                  p.mediaId as string,
+                  store.page_access_token,
+                  appSecret,
+                  fetchImpl,
+                ),
+          cacheDir,
+          { force },
+        );
+        if (cached.error && !cached.data) {
+          return { ...p, insights: null, insightsError: cached.error };
+        }
+        return { ...p, insights: cached.data, insightsError: cached.error };
+      } catch (e) {
+        return {
+          ...p,
+          insights: null,
+          insightsError: e instanceof Error ? e.message : String(e),
+        };
+      }
+    }),
+  );
 }

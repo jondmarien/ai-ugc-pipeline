@@ -4,7 +4,11 @@ import { serve } from "bun";
 import { aggregateHooks, parseCaptionBankHooks } from "./hooks";
 import { getAccount, getMedia } from "./ig";
 import { listIngested } from "./ingested";
-import { listPublishedMeta, readCurrentInstagramPostType } from "./meta";
+import {
+  attachMetaInsights,
+  listPublishedMeta,
+  readCurrentInstagramPostType,
+} from "./meta";
 import { DASH_ROOT, RENDERS_DIR } from "./paths";
 import { listPosts, listRenders, readRenderFile } from "./repo";
 import { ALLOWED_STATE_FILES, readState, writeState } from "./store";
@@ -106,6 +110,14 @@ const server = serve({
             instagramPostType: readCurrentInstagramPostType(),
           }),
         );
+      }
+
+      if (p === "/api/meta/insights") {
+        const posts = listPublishedMeta({
+          instagramPostType: readCurrentInstagramPostType(),
+        });
+        const withInsights = await attachMetaInsights(posts, force);
+        return env(withInsights);
       }
 
       if (p === "/api/trends") {

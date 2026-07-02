@@ -1,7 +1,8 @@
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import fs from "node:fs";
 import path from "node:path";
-import { listPublishedMeta } from "./meta";
+import type { PublishedMetaPost } from "../shared/types";
+import { attachMetaInsights, listPublishedMeta } from "./meta";
 
 const tmpRoot = path.join(import.meta.dir, "fixtures", "tmp-meta");
 const rendersDir = path.join(tmpRoot, "renders");
@@ -149,5 +150,155 @@ describe("listPublishedMeta", () => {
     const result = listPublishedMeta({ rendersDir, postsDir });
     expect(result[0].caption).toBe("");
     expect(result[0].hashtags).toEqual([]);
+  });
+});
+
+describe("attachMetaInsights", () => {
+  const cacheDir = path.join(tmpRoot, "meta-cache");
+  const secretsPath = path.join(tmpRoot, "meta-secrets.json");
+  const noCredsPath = path.join(tmpRoot, "no-such-secrets.json");
+
+  beforeEach(() => {
+    fs.rmSync(tmpRoot, { recursive: true, force: true });
+    fs.mkdirSync(tmpRoot, { recursive: true });
+    fs.writeFileSync(
+      secretsPath,
+      JSON.stringify({
+        page_id: "p1",
+        page_access_token: "tok",
+        ig_user_id: "ig1",
+      }),
+    );
+  });
+  afterEach(() => fs.rmSync(tmpRoot, { recursive: true, force: true }));
+
+  const igPost: PublishedMetaPost = {
+    renderDir: "d",
+    slug: "s",
+    date: null,
+    platform: "instagram",
+    postType: "reel",
+    mediaId: "media1",
+    url: null,
+    privacy: null,
+    isAiGenerated: true,
+    caption: "",
+    hashtags: [],
+    publishedAt: 1,
+    insights: null,
+    insightsError: null,
+  };
+
+  test("returns the same actionable message on every post when Meta credentials are missing", async () => {
+    const result = await attachMetaInsights([igPost], false, {
+      secretsPath: noCredsPath,
+    });
+    expect(result[0].insightsError).toMatch(/publish:auth meta/);
+  });
+
+  test("marks a post with no mediaId instead of calling the network", async () => {
+    let called = false;
+    const result = await attachMetaInsights(
+      [{ ...igPost, mediaId: null }],
+      false,
+      {
+        secretsPath,
+        cacheDir,
+        fetchImpl: (async () => {
+          called = true;
+          return new Response("{}");
+        }) as unknown as typeof fetch,
+      },
+    );
+    expect(called).toBe(false);
+    expect(result[0].insightsError).toMatch(/no media id/);
+  });
+
+  test("fetches instagram insights and caches them", async () => {
+    let calls = 0;
+    const fetchImpl = (async (url: any) => {
+      calls++;
+      expect(String(url)).toContain("/media1/insights");
+      expect(String(url)).toContain("appsecret_proof=");
+      return new Response(
+        JSON.stringify({
+          data: [
+            { name: "views", values: [{ value: 42 }] },
+            { name: "reach", values: [{ value: 10 }] },
+          ],
+        }),
+        { status: 200 },
+      );
+    }) as unknown as typeof fetch;
+
+    const first = await attachMetaInsights([igPost], false, {
+      secretsPath,
+      cacheDir,
+      fetchImpl,
+    });
+    expect(first[0].insights).toEqual({
+      views: 42,
+      reach: 10,
+      saves: undefined,
+      shares: undefined,
+    });
+    expect(calls).toBe(1);
+
+    const second = await attachMetaInsights([igPost], false, {
+      secretsPath,
+      cacheDir,
+      fetchImpl,
+    });
+    expect(calls).toBe(1); // cache-first: second call doesn't hit the network again
+    expect(second[0].insights?.views).toBe(42);
+  });
+
+  test("fetches facebook video insights via a different field set", async () => {
+    const fbPost: PublishedMetaPost = {
+      ...igPost,
+      platform: "facebook",
+      postType: "fb_video",
+      mediaId: "vid1",
+    };
+    const fetchImpl = (async (url: any) => {
+      expect(String(url)).toContain("/vid1?");
+      expect(String(url)).toContain("likes.summary");
+      return new Response(
+        JSON.stringify({
+          likes: { summary: { total_count: 5 } },
+          comments: { summary: { total_count: 2 } },
+        }),
+        { status: 200 },
+      );
+    }) as unknown as typeof fetch;
+
+    const result = await attachMetaInsights([fbPost], false, {
+      secretsPath,
+      cacheDir,
+      fetchImpl,
+    });
+    expect(result[0].insights).toEqual({ likes: 5, comments: 2 });
+  });
+
+  test("a per-post Graph failure doesn't fail the rest of the batch", async () => {
+    const goodPost: PublishedMetaPost = { ...igPost, mediaId: "good" };
+    const badPost: PublishedMetaPost = { ...igPost, mediaId: "bad" };
+    const fetchImpl = (async (url: any) => {
+      if (String(url).includes("/bad/"))
+        return new Response(JSON.stringify({ error: { message: "deleted" } }), {
+          status: 400,
+        });
+      return new Response(JSON.stringify({ data: [] }), { status: 200 });
+    }) as unknown as typeof fetch;
+
+    const result = await attachMetaInsights([goodPost, badPost], false, {
+      secretsPath,
+      cacheDir,
+      fetchImpl,
+    });
+    const good = result.find((r) => r.mediaId === "good");
+    const bad = result.find((r) => r.mediaId === "bad");
+    expect(good?.insightsError).toBeNull();
+    expect(bad?.insightsError).toMatch(/deleted/);
   });
 });
