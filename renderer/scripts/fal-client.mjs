@@ -108,7 +108,7 @@ function readCache(key) {
   try {
     const raw = readFileSync(cachePathForKey(key), "utf8");
     const entry = JSON.parse(raw);
-    if (entry && entry.expiresAt && Date.now() < entry.expiresAt) return entry;
+    if (entry?.expiresAt && Date.now() < entry.expiresAt) return entry;
   } catch {}
   return null;
 }
@@ -149,7 +149,7 @@ export async function healthCheck() {
   };
 }
 
-export function estimateCost(modelId, width, height) {
+export function estimateCost(modelId, _width, _height) {
   const catalog = catalogEntry(modelId);
   if (!catalog) return 0.01;
   if (catalog.type === "video") return 0.08;
@@ -212,7 +212,9 @@ export async function generateImage({
       if (update.status === "IN_PROGRESS") {
         update.logs
           ?.map((log) => log.message)
-          .forEach((m) => console.log(`  FAL: ${m}`));
+          .forEach((m) => {
+            console.log(`  FAL: ${m}`);
+          });
       }
     },
   });
@@ -280,7 +282,7 @@ export async function generateVideoFromImage({
   timeoutMs = 900_000,
 }) {
   const catalog = catalogEntry(model);
-  if (!catalog || catalog.type !== "video")
+  if (catalog?.type !== "video")
     throw new Error(`UnknownFalVideoModel: ${model}`);
   const apiModelId = catalog.apiModelId;
   const duration = Number.isFinite(durationSeconds)
@@ -327,7 +329,9 @@ export async function generateVideoFromImage({
         if (update.status === "IN_PROGRESS") {
           update.logs
             ?.map((log) => log.message)
-            .forEach((m) => console.log(`  FAL i2v: ${m}`));
+            .forEach((m) => {
+              console.log(`  FAL i2v: ${m}`);
+            });
         }
       },
     });
@@ -400,7 +404,7 @@ function updatePostJson(
         : null,
   };
 
-  writeFileSync(postPath, JSON.stringify(post, null, 2) + "\n", "utf8");
+  writeFileSync(postPath, `${JSON.stringify(post, null, 2)}\n`, "utf8");
   return assetPath;
 }
 

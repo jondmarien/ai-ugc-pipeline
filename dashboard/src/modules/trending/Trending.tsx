@@ -45,7 +45,7 @@ export function Trending() {
       />
       {(trends.data?.deadSources?.length ?? 0) > 0 && (
         <p className="meta-caps" style={{ color: "var(--danger)" }}>
-          DEAD SOURCES: {trends.data!.deadSources.join(", ")}. EDIT
+          DEAD SOURCES: {trends.data?.deadSources.join(", ")}. EDIT
           data/sources.json TO FIX OR DISABLE.
         </p>
       )}
@@ -77,6 +77,7 @@ export function Trending() {
             <div style={{ display: "flex", gap: 6 }}>
               {(["hook", "explainer", "skip"] as Tag[]).map((t) => (
                 <button
+                  type="button"
                   key={t}
                   className={`chip ${tags[i.url] === t ? "active" : ""}`}
                   onClick={() => setTag(i.url, t)}
@@ -84,7 +85,11 @@ export function Trending() {
                   {t}
                 </button>
               ))}
-              <button className="chip" onClick={() => hookThis(i.title)}>
+              <button
+                type="button"
+                className="chip"
+                onClick={() => hookThis(i.title)}
+              >
                 Hook this
               </button>
             </div>

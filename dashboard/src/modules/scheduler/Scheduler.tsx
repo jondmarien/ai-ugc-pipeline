@@ -84,7 +84,7 @@ export function Scheduler() {
               {r.dirName} {r.hasReel ? "· reel" : ""}{" "}
               {r.hasCaption ? "· caption" : ""}
             </span>
-            <button className="chip" onClick={() => queue(r)}>
+            <button type="button" className="chip" onClick={() => queue(r)}>
               Queue
             </button>
           </div>
@@ -117,6 +117,7 @@ export function Scheduler() {
               <div style={{ display: "flex", gap: 6 }}>
                 {PLATFORMS.map((p) => (
                   <button
+                    type="button"
                     key={p}
                     className={`chip ${i.platforms.includes(p) ? "active" : ""}`}
                     onClick={() => togglePlatform(i.id, p)}
@@ -128,12 +129,14 @@ export function Scheduler() {
                 {i.status === "queued" && (
                   <>
                     <button
+                      type="button"
                       className="chip"
                       onClick={() => move(i.id, "posted")}
                     >
                       Mark posted
                     </button>
                     <button
+                      type="button"
                       className="chip"
                       onClick={() => move(i.id, "skipped")}
                     >

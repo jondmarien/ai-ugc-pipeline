@@ -6,6 +6,7 @@ import { Legal } from "./pages/Legal";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
+  // biome-ignore lint/correctness/useExhaustiveDependencies: pathname is a re-run trigger only, not read in the effect body
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);

@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Scramble } from "../components/Scramble";
-import { BRAND, SOCIALS } from "../lib/content";
+import { BRAND, getSocial } from "../lib/content";
 import { prefersReducedMotion } from "../lib/motion";
 
 // Code-split the three.js bundle so the page paints before it loads.
@@ -12,7 +12,7 @@ const HeroCanvas = lazy(() =>
 export function Hero() {
   const root = useRef<HTMLElement>(null);
   const reduced = prefersReducedMotion();
-  const tiktok = SOCIALS.find((s) => s.key === "tiktok")!;
+  const tiktok = getSocial("tiktok");
   const [visible, setVisible] = useState(true);
 
   // Pause the WebGL render loop once the hero scrolls out of view.

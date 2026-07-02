@@ -188,7 +188,9 @@ const requested = keys.length > 0 || !!statusArg;
 const selected = expandKeysBySubstring(keys);
 if (statusArg) {
   const matched = filterByStatus(allPostKeys(), statusArg);
-  matched.forEach((fk) => selected.add(fk));
+  matched.forEach((fk) => {
+    selected.add(fk);
+  });
   console.log(`▶ status="${statusArg}" → ${matched.length} post(s).`);
 }
 // --skip=a,b,c removes any matched post whose key contains one of the (case-insensitive,
@@ -306,7 +308,7 @@ const DRY = flags.has("--dry-run");
 const bun = process.platform === "win32" ? "bun.exe" : "bun";
 function step(label, runArgs, { env, fatal = true } = {}) {
   console.log(
-    `${DRY ? "   • would run:" : "\n── " + label + " ──"}  bun run ${runArgs.join(" ")}`,
+    `${DRY ? "   • would run:" : `\n── ${label} ──`}  bun run ${runArgs.join(" ")}`,
   );
   if (DRY) return;
   const r = spawnSync(bun, ["run", ...runArgs], {
@@ -430,7 +432,9 @@ function runPost(key) {
     `│  art=${wantsArt ? (USE_HIGGSFIELD ? "higgsfield" : USE_FAL ? "fal" : flags.has("--flux1") ? "flux1" : "flux2") : "skip"}  ·  voice=${wantsVoice ? effVoiceMode : "skip"}  ·  reel=${wantsReel ? "yes" : "skip"}  ·  motion=${MOTION ?? "local"}`,
   );
   console.log(`│  steps to run:`);
-  plan.forEach((s, i) => console.log(`│   ${i + 1}. ${s}`));
+  plan.forEach((s, i) => {
+    console.log(`│   ${i + 1}. ${s}`);
+  });
   console.log(`╰─`);
 
   // Default art run generates every needy slide (cover included). `--art` forces a full regen (→ art --all).

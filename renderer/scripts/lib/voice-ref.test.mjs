@@ -6,7 +6,7 @@ import { resolveVoiceRef } from "./voice-ref.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const RENDERER = path.resolve(HERE, "..", "..");
-const VOICEREF = path.join(RENDERER, "public", "audio", "_voiceref");
+const _VOICEREF = path.join(RENDERER, "public", "audio", "_voiceref");
 
 describe("resolveVoiceRef", () => {
   test("returns null when noClone", () => {

@@ -61,7 +61,7 @@ try {
   );
   // ONLY stdout write: sentinel-prefixed JSON so the parent can extract it
   // even if tsx/Node emits warnings or version banners on stdout.
-  process.stdout.write(SENTINEL + JSON.stringify(dbg) + "\n");
+  process.stdout.write(`${SENTINEL + JSON.stringify(dbg)}\n`);
 } finally {
   await browser.close();
   console.error("[fit-smoke-playwright] browser closed");

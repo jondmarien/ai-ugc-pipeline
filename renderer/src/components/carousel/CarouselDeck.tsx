@@ -28,7 +28,7 @@ export function CarouselDeck({ post }: { post: TPostData }) {
         padding: 48,
       }}
     >
-      {post.slides.map((slide, i) => {
+      {post.slides.map((slide, _i) => {
         const Comp = SLIDE_COMPONENTS[slide.role];
         return (
           <div

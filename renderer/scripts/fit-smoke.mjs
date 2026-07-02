@@ -14,8 +14,8 @@
 // or:
 //   cd renderer && bun scripts/fit-smoke.mjs
 
-import path from "path";
-import { fileURLToPath } from "url";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { build, preview } from "vite";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -82,7 +82,7 @@ async function spawnAsync(cmd, args, timeoutMs) {
       root: ROOT,
       preview: { port: PORT, strictPort: true },
     });
-    console.log("  [fit-smoke] server ready on :" + PORT);
+    console.log(`  [fit-smoke] server ready on :${PORT}`);
 
     const url = `http://localhost:${PORT}/?post=${encodeURIComponent(POST_KEY)}&slide=${SLIDE}`;
     const helperScript = path.join(__dirname, "fit-smoke-playwright.ts");

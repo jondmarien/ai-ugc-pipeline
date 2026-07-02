@@ -53,8 +53,8 @@ describe("aggregateHooks", () => {
     expect(stop.timesUsed).toBe(2);
     expect(stop.sources.sort()).toEqual(["caption-bank", "post"]);
     expect(
-      rows.find((r) => r.text === "Steal my fixture system")!.sources,
+      rows.find((r) => r.text === "Steal my fixture system")?.sources,
     ).toEqual(["ingested"]);
-    expect(rows.find((r) => r.text === "Unique post hook")!.timesUsed).toBe(1);
+    expect(rows.find((r) => r.text === "Unique post hook")?.timesUsed).toBe(1);
   });
 });

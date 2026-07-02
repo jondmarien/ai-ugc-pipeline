@@ -6,7 +6,7 @@ import App from "./App";
 import { queryClient } from "./lib/api";
 import "./app.css";
 
-createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />

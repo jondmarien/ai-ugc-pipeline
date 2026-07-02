@@ -485,7 +485,7 @@ if (existsSync(outFile))
     `${outFile} already exists — pick a different date/slug or delete it first.`,
   );
 
-writeFileSync(outFile, JSON.stringify(post, null, 2) + "\n", "utf8");
+writeFileSync(outFile, `${JSON.stringify(post, null, 2)}\n`, "utf8");
 
 console.log(
   `✓ Created ${path.relative(path.join(POSTS_DIR, "..", ".."), outFile)}`,

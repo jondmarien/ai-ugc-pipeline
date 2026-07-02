@@ -168,7 +168,7 @@ for (let i = 0; i < beats.length; i++) {
   const purpose = String(beat.purpose || "beat").replace(/[^a-z0-9_-]+/gi, "-");
   const outName = `beat_${String(i + 1).padStart(2, "0")}_${purpose}.mp4`;
   const videoAsset = `/video/${prefix}/${outName}`;
-  const localPath = path.join(outDir, outName);
+  const _localPath = path.join(outDir, outName);
 
   if (
     !flags.has("--force") &&
@@ -206,7 +206,7 @@ for (let i = 0; i < beats.length; i++) {
       `  [dry-run] beat ${i} slide_ref=${beat.slide_ref} ~${durationSeconds.toFixed(1)}s`,
     );
     console.log(
-      `    image: ${imageUrl ? imageUrl.slice(0, 80) + "…" : localImagePath}`,
+      `    image: ${imageUrl ? `${imageUrl.slice(0, 80)}…` : localImagePath}`,
     );
     console.log(`    prompt: ${prompt.slice(0, 120)}…`);
     console.log(`    → ${videoAsset}`);

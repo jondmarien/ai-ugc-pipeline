@@ -45,7 +45,7 @@ export function slideCaptionsTxt(
     if (isLast && topics) return `${body}\n${topics}`;
     return body;
   });
-  return blocks.join("\n\n") + "\n";
+  return `${blocks.join("\n\n")}\n`;
 }
 
 export function slideCaptionsOutputName(

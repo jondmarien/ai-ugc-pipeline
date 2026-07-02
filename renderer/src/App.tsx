@@ -49,7 +49,7 @@ export function App() {
       // the export harness captures: two RAFs guarantee a committed paint past the layout pass.
       .then(() => requestAnimationFrame(() => requestAnimationFrame(markReady)))
       .catch(markReady);
-  }, [postKey, slideParam, mode]);
+  }, []);
 
   if (!postKey) {
     const posts = allPosts();

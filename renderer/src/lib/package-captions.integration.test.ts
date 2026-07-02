@@ -1,6 +1,5 @@
 import { expect, test } from "bun:test";
-import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import path from "node:path";
+import { readFileSync } from "node:fs";
 import { instagramUploadChecklist } from "../../scripts/lib/instagram-upload";
 import { captionTxt, slideCaptionsTxt } from "./caption-export";
 import { validatePost } from "./schema";
@@ -41,7 +40,7 @@ test("package path: multi-caption export produces N distinct blocks", () => {
   });
   const exported = slideCaptionsTxt(post);
   expect(exported).not.toBeNull();
-  const blocks = exported!.trim().split(/\n\n+/);
+  const blocks = exported ? exported.trim().split(/\n\n+/) : [];
   expect(blocks.length).toBe(n);
   expect(blocks[0]).toBe("Slide 1 IG caption.");
   expect(blocks[n - 1]).toContain("[");

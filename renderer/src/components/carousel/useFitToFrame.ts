@@ -26,7 +26,7 @@ export function useFitToFrame(minScale: number, deps: unknown[]) {
       scale: s,
       floored: s === minScale && natural > avail,
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // biome-ignore lint/correctness/useExhaustiveDependencies: deps is caller-supplied by design — this hook re-runs the fit measurement whenever the caller's own deps change
   }, deps);
   return { frameRef, blockRef, scale };
 }

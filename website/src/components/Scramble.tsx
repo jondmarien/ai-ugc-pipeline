@@ -60,8 +60,9 @@ export function Scramble({
   }, [text, delay]);
 
   return (
-    <span className={className} aria-label={text}>
-      <span aria-hidden ref={ref}>
+    <span className={className}>
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true" ref={ref}>
         {prefersReducedMotion() ? text : ""}
       </span>
     </span>

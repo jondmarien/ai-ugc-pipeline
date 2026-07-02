@@ -1,5 +1,5 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -49,7 +49,7 @@ type Deps = {
 export function accessTokenIsFresh(
   token: StoredToken,
   nowSec: number,
-): boolean {
+): token is StoredToken & { access_token: string } {
   if (!token.access_token) return false;
   if (!token.expires_at) return false;
   return token.expires_at - nowSec > 60;
@@ -64,7 +64,7 @@ export function mergeToken(
   stored: StoredToken,
   refreshed: RefreshResponse,
   nowSec: number,
-): StoredToken {
+): StoredToken & { access_token: string } {
   return {
     access_token: refreshed.access_token,
     refresh_token: refreshed.refresh_token ?? stored.refresh_token,
@@ -132,7 +132,7 @@ export async function getAccessToken(
   const stored = readStore(platform);
 
   if (accessTokenIsFresh(stored, nowSec)) {
-    return stored.access_token!;
+    return stored.access_token;
   }
 
   if (!stored.refresh_token) {
@@ -170,5 +170,5 @@ export async function getAccessToken(
   const updated = mergeToken(stored, refreshed, nowSec);
   writeStore(platform, updated);
 
-  return updated.access_token!;
+  return updated.access_token;
 }

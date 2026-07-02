@@ -59,7 +59,7 @@ const targets = collectStatusTargets({
 });
 if (!targets.length) {
   console.error(
-    "✗ no posts selected. Pass post key(s) and/or --from=<status>.\n" + HELP,
+    `✗ no posts selected. Pass post key(s) and/or --from=<status>.\n${HELP}`,
   );
   process.exit(1);
 }

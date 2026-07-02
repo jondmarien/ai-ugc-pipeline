@@ -18,7 +18,7 @@ function altTextTxt(post: TPostData): string {
   // One paste-ready alt-text block per slide, in slide order, separated by a blank line — no
   // "NN."/"Slide N" label prefixes (those would be read aloud by a screen reader). The uploader
   // copies each block into that slide's Instagram alt-text field.
-  return post.alt_text.map((a) => a.trim()).join("\n\n") + "\n";
+  return `${post.alt_text.map((a) => a.trim()).join("\n\n")}\n`;
 }
 
 function sourcesMd(post: TPostData): string {

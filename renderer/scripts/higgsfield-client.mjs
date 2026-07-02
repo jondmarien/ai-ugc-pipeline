@@ -246,7 +246,7 @@ function readCache(key) {
   try {
     const raw = readFileSync(cachePathForKey(key), "utf8");
     const entry = JSON.parse(raw);
-    if (entry && entry.expiresAt && Date.now() < entry.expiresAt) return entry;
+    if (entry?.expiresAt && Date.now() < entry.expiresAt) return entry;
   } catch {
     // missing or corrupt => miss
   }
@@ -292,7 +292,7 @@ function isAuthStatus(status) {
   return code === 401 || code === 403;
 }
 
-function parseRetryAfterSeconds(headers) {
+function _parseRetryAfterSeconds(headers) {
   try {
     const val =
       (headers && (headers["retry-after"] ?? headers["Retry-After"])) ?? null;
@@ -605,7 +605,7 @@ async function generateImageViaCli({
   timeoutMs = 600_000,
 }) {
   const catalog = catalogEntry(model);
-  if (!catalog || catalog.type !== "image")
+  if (catalog?.type !== "image")
     throw new Error(`UnknownHiggsfieldModel: ${model}`);
   const jobSetType = catalog.cliJobSetType;
   if (!jobSetType)
@@ -688,14 +688,14 @@ async function generateVideoFromImageViaCli({
   imagePath,
   prompt,
   model = DEFAULT_VIDEO_MODEL,
-  durationSeconds,
+  durationSeconds: _durationSeconds,
   cacheBreaker = "",
   outDir,
   outName,
   timeoutMs = 900_000,
 }) {
   const catalog = catalogEntry(model);
-  if (!catalog || catalog.type !== "video")
+  if (catalog?.type !== "video")
     throw new Error(`UnknownHiggsfieldVideoModel: ${model}`);
   const jobSetType = catalog.cliJobSetType;
   if (!jobSetType)
@@ -862,7 +862,7 @@ export async function generateVideoFromImage({
     });
   }
   const catalog = catalogEntry(model);
-  if (!catalog || catalog.type !== "video")
+  if (catalog?.type !== "video")
     throw new Error(`UnknownHiggsfieldVideoModel: ${model}`);
   const apiModelId = catalog.apiModelId ?? catalog.id;
   const duration = Number.isFinite(durationSeconds)
@@ -972,7 +972,7 @@ export function imageModelFamily(model) {
 /** Credits per CLIP for a video (i2v) model id (verified via `higgsfield generate cost`). */
 export function videoModelCost(model) {
   const catalog = catalogEntry(model);
-  if (!catalog || catalog.type !== "video")
+  if (catalog?.type !== "video")
     throw new Error(`UnknownHiggsfieldVideoModel: ${model}`);
   return typeof catalog.creditCost === "number"
     ? catalog.creditCost
@@ -991,10 +991,10 @@ export async function generateImage({
   width = 1024,
   height = 1280,
   seed,
-  refs = [],
+  refs: _refs = [],
   cacheBreaker = "",
-  post,
-  slide,
+  post: _post,
+  slide: _slide,
   outDir,
   outName,
   timeoutMs = 600_000,
@@ -1183,7 +1183,7 @@ function updatePostJson(
         : null,
   };
 
-  writeFileSync(postPath, JSON.stringify(post, null, 2) + "\n", "utf8");
+  writeFileSync(postPath, `${JSON.stringify(post, null, 2)}\n`, "utf8");
   return assetPath;
 }
 
