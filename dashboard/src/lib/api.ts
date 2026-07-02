@@ -107,9 +107,12 @@ export function useStateFile<T>(name: string) {
 /** Sidebar Refresh: bypass the server disk caches for upstream data, then refetch everything. */
 export async function refreshAll(qc: QueryClient) {
   await Promise.allSettled(
-    ["/api/ig/account", "/api/ig/media", "/api/trends"].map((p) =>
-      getEnvelope(p, true),
-    ),
+    [
+      "/api/ig/account",
+      "/api/ig/media",
+      "/api/trends",
+      "/api/meta/insights",
+    ].map((p) => getEnvelope(p, true)),
   );
   await qc.invalidateQueries({ queryKey: ["api"] });
 }
