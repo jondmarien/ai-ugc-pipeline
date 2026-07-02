@@ -16,26 +16,93 @@ export const BRAND = {
 
 // Fill TikTok + YouTube URLs once the handles are confirmed.
 export const SOCIALS = [
-  { key: "tiktok", label: "TikTok", handle: "@chron0s_cyb3r_w0rld.ai", url: "https://www.tiktok.com/@chron0s_cyb3r_w0rld.ai" },
-  { key: "youtube", label: "YouTube", handle: "Chrono's Cyber World of AI", url: "https://www.youtube.com/@chron0s_cyb3r_w0rld" },
-  { key: "instagram", label: "Instagram", handle: "@chron0s_cyb3r_w0rld.ai", url: "https://www.instagram.com/chron0s_cyb3r_w0rld.ai" },
+  {
+    key: "tiktok",
+    label: "TikTok",
+    handle: "@chron0s_cyb3r_w0rld.ai",
+    url: "https://www.tiktok.com/@chron0s_cyb3r_w0rld.ai",
+  },
+  {
+    key: "youtube",
+    label: "YouTube",
+    handle: "Chrono's Cyber World of AI",
+    url: "https://www.youtube.com/@chron0s_cyb3r_w0rld",
+  },
+  {
+    key: "instagram",
+    label: "Instagram",
+    handle: "@chron0s_cyb3r_w0rld.ai",
+    url: "https://www.instagram.com/chron0s_cyb3r_w0rld.ai",
+  },
 ] as const;
+
+export function getSocial(key: (typeof SOCIALS)[number]["key"]) {
+  const social = SOCIALS.find((s) => s.key === key);
+  if (!social) throw new Error(`Unknown social key: ${key}`);
+  return social;
+}
 
 // The 5-theme content system = the brand's visual identity rule.
 export const PILLARS = [
-  { key: "offensive", label: "Offensive", color: "var(--color-offensive)", hex: "#ef4444", when: "Attack tradecraft, threat-actor behavior, offensive AI." },
-  { key: "defensive", label: "Defensive", color: "var(--color-defensive)", hex: "#3b82f6", when: "Detection, response, controls, blue-team workflows." },
-  { key: "hacking", label: "Hacking", color: "var(--color-hacking)", hex: "#39ff88", when: "Hands-on technique, tooling, CTF-adjacent work." },
-  { key: "team", label: "Purple-team", color: "var(--color-team)", hex: "#a855f7", when: "Offense and defense combined in one breakdown." },
-  { key: "ai", label: "AI", color: "var(--color-ai)", hex: "#f97316", when: "Model-centric topics without a clear side." },
+  {
+    key: "offensive",
+    label: "Offensive",
+    color: "var(--color-offensive)",
+    hex: "#ef4444",
+    when: "Attack tradecraft, threat-actor behavior, offensive AI.",
+  },
+  {
+    key: "defensive",
+    label: "Defensive",
+    color: "var(--color-defensive)",
+    hex: "#3b82f6",
+    when: "Detection, response, controls, blue-team workflows.",
+  },
+  {
+    key: "hacking",
+    label: "Hacking",
+    color: "var(--color-hacking)",
+    hex: "#39ff88",
+    when: "Hands-on technique, tooling, CTF-adjacent work.",
+  },
+  {
+    key: "team",
+    label: "Purple-team",
+    color: "var(--color-team)",
+    hex: "#a855f7",
+    when: "Offense and defense combined in one breakdown.",
+  },
+  {
+    key: "ai",
+    label: "AI",
+    color: "var(--color-ai)",
+    hex: "#f97316",
+    when: "Model-centric topics without a clear side.",
+  },
 ] as const;
 
 // How a post is actually made — "I build the tools I post about."
 export const PIPELINE = [
-  { n: "01", title: "Research", body: "Landscape scan, then triangulate at least two independent sources. Every claim tiered Verified, Emerging, or Scenario. No fabricated CVEs, no uncited victims." },
-  { n: "02", title: "Write", body: "Draft the carousel and an independent reel script, then run the copy chain: humanize, strip AI slop, proofread. Voice over hype, always." },
-  { n: "03", title: "Render", body: "Map to a schema, generate cinematic key art locally with FLUX.2, narrate with a cloned voice, and cut a synced vertical reel." },
-  { n: "04", title: "Publish", body: "Human-approved, then posted. Sourced, defensible, and ending on a concrete defender takeaway every time." },
+  {
+    n: "01",
+    title: "Research",
+    body: "Landscape scan, then triangulate at least two independent sources. Every claim tiered Verified, Emerging, or Scenario. No fabricated CVEs, no uncited victims.",
+  },
+  {
+    n: "02",
+    title: "Write",
+    body: "Draft the carousel and an independent reel script, then run the copy chain: humanize, strip AI slop, proofread. Voice over hype, always.",
+  },
+  {
+    n: "03",
+    title: "Render",
+    body: "Map to a schema, generate cinematic key art locally with FLUX.2, narrate with a cloned voice, and cut a synced vertical reel.",
+  },
+  {
+    n: "04",
+    title: "Publish",
+    body: "Human-approved, then posted. Sourced, defensible, and ending on a concrete defender takeaway every time.",
+  },
 ] as const;
 
 export const STORY = [

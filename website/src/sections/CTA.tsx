@@ -6,8 +6,13 @@ export function CTA() {
       {/* faint spectrum wash echoing the hero field */}
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.5] [background:radial-gradient(60%_50%_at_50%_120%,#a855f733,transparent_70%)]" />
       <div className="mx-auto max-w-[var(--max)] text-center" data-reveal-group>
-        <p data-reveal className="kicker mb-8">// The standing offer</p>
-        <h2 data-reveal className="mx-auto max-w-4xl font-display text-[clamp(2.2rem,7vw,5rem)] font-bold leading-[0.98] text-fg">
+        <p data-reveal className="kicker mb-8">
+          {"// The standing offer"}
+        </p>
+        <h2
+          data-reveal
+          className="mx-auto max-w-4xl font-display text-[clamp(2.2rem,7vw,5rem)] font-bold leading-[0.98] text-fg"
+        >
           Threats move fast.
           <br />
           <span className="text-faint">Move with evidence.</span>
@@ -16,7 +21,10 @@ export function CTA() {
           {BRAND.promise.join(" ")}
         </p>
 
-        <div data-reveal className="mt-12 flex flex-wrap items-center justify-center gap-4">
+        <div
+          data-reveal
+          className="mt-12 flex flex-wrap items-center justify-center gap-4"
+        >
           {SOCIALS.map((s, i) => (
             <a
               key={s.key}
@@ -30,11 +38,16 @@ export function CTA() {
               }`}
             >
               {s.label}
-              <span className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                ↗
+              </span>
             </a>
           ))}
         </div>
-        <p data-reveal className="mt-10 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-faint">
+        <p
+          data-reveal
+          className="mt-10 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-faint"
+        >
           {BRAND.handle}
         </p>
       </div>

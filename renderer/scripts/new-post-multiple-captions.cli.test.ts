@@ -1,11 +1,14 @@
-import { test, expect, afterAll } from "bun:test";
+import { afterAll, expect, test } from "bun:test";
 import { spawnSync } from "node:child_process";
-import { readFileSync, unlinkSync, existsSync } from "node:fs";
+import { existsSync, readFileSync, unlinkSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { POSTS_DIR } from "./lib.ts";
 
-const rendererRoot = path.resolve(fileURLToPath(new URL(".", import.meta.url)), "..");
+const rendererRoot = path.resolve(
+  fileURLToPath(new URL(".", import.meta.url)),
+  "..",
+);
 // Use the bun binary running this test (cross-platform; the old $BUN_INSTALL/bin/bun guess
 // missed the .exe on Windows and broke the spawn).
 const bun = process.execPath;
@@ -21,7 +24,14 @@ afterAll(() => {
 test("new-post --multiple-captions scaffolds one slide_captions entry per slide", () => {
   const result = spawnSync(
     bun,
-    ["scripts/new-post.ts", "2099-01-01", slug, "model_security", "--slides=5", "--multiple-captions"],
+    [
+      "scripts/new-post.ts",
+      "2099-01-01",
+      slug,
+      "model_security",
+      "--slides=5",
+      "--multiple-captions",
+    ],
     { cwd: rendererRoot, encoding: "utf8" },
   );
   expect(result.status).toBe(0);
@@ -44,7 +54,13 @@ test("new-post without flag omits slide_captions", () => {
   try {
     const result = spawnSync(
       bun,
-      ["scripts/new-post.ts", "2099-01-02", slug2, "model_security", "--slides=4"],
+      [
+        "scripts/new-post.ts",
+        "2099-01-02",
+        slug2,
+        "model_security",
+        "--slides=4",
+      ],
       { cwd: rendererRoot, encoding: "utf8" },
     );
     expect(result.status).toBe(0);

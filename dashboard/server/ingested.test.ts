@@ -1,23 +1,30 @@
 import { describe, expect, test } from "bun:test";
 import path from "node:path";
-import { listIngested, parseHandle, parseCoverHook } from "./ingested";
+import { listIngested, parseCoverHook, parseHandle } from "./ingested";
 
 const fx = path.join(import.meta.dir, "fixtures", "ingested");
 
 describe("parseHandle", () => {
   test("extracts bare handle from the metadata line", () => {
-    expect(parseHandle("**Source:** x · **Handle:** @growithalex (strategist) · **Captured:** y"))
-      .toBe("@growithalex");
+    expect(
+      parseHandle(
+        "**Source:** x · **Handle:** @growithalex (strategist) · **Captured:** y",
+      ),
+    ).toBe("@growithalex");
   });
   test("returns null when absent", () => {
-    expect(parseHandle("**Source:** various · **Captured:** 2026-06-07")).toBeNull();
+    expect(
+      parseHandle("**Source:** various · **Captured:** 2026-06-07"),
+    ).toBeNull();
   });
 });
 
 describe("parseCoverHook", () => {
   test("pulls quoted cover text from the slide-map table", () => {
     const md = `## Slide map\n\n| # | Role | Idea |\n|---|---|---|\n| 1 | Cover | "Steal my fixture system. 3 rules. No exceptions." |\n| 2 | Rule 1 | x |`;
-    expect(parseCoverHook(md)).toBe("Steal my fixture system. 3 rules. No exceptions.");
+    expect(parseCoverHook(md)).toBe(
+      "Steal my fixture system. 3 rules. No exceptions.",
+    );
   });
   test("null when no cover row", () => {
     expect(parseCoverHook("## Notes\nnothing")).toBeNull();

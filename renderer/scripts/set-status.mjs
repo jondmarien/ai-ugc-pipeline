@@ -11,7 +11,10 @@ import { collectStatusTargets } from "./lib/status-targets.mjs";
 
 const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith("--")));
-const opt = (n, d) => { const h = args.find((a) => a.startsWith(`--${n}=`)); return h ? h.split("=")[1] : d; };
+const opt = (n, d) => {
+  const h = args.find((a) => a.startsWith(`--${n}=`));
+  return h ? h.split("=")[1] : d;
+};
 const positional = args.filter((a) => !a.startsWith("--"));
 const DRY = flags.has("--dry-run");
 
@@ -31,26 +34,50 @@ EXAMPLES
   bun run status -- upload_ready --from=generated
   bun run status -- approved redsun-windows-lpe --dry-run
 `;
-if (flags.has("--help") || flags.has("-h") || args.includes("-h")) { console.log(HELP); process.exit(0); }
+if (flags.has("--help") || flags.has("-h") || args.includes("-h")) {
+  console.log(HELP);
+  process.exit(0);
+}
 
 const newStatus = positional[0];
 if (!STATUSES.includes(newStatus)) {
-  console.error(`✗ new-status must be one of: ${STATUSES.join(", ")} (got "${newStatus ?? ""}")\n${HELP}`);
+  console.error(
+    `✗ new-status must be one of: ${STATUSES.join(", ")} (got "${newStatus ?? ""}")\n${HELP}`,
+  );
   process.exit(1);
 }
 const fromStatus = opt("from", "");
-if (fromStatus && !STATUSES.includes(fromStatus)) { console.error(`✗ --from must be one of: ${STATUSES.join(", ")}`); process.exit(1); }
+if (fromStatus && !STATUSES.includes(fromStatus)) {
+  console.error(`✗ --from must be one of: ${STATUSES.join(", ")}`);
+  process.exit(1);
+}
 const keyArgs = positional.slice(1);
 
-const targets = collectStatusTargets({ keyArgs, fromStatus: fromStatus || null });
-if (!targets.length) { console.error("✗ no posts selected. Pass post key(s) and/or --from=<status>.\n" + HELP); process.exit(1); }
+const targets = collectStatusTargets({
+  keyArgs,
+  fromStatus: fromStatus || null,
+});
+if (!targets.length) {
+  console.error(
+    `✗ no posts selected. Pass post key(s) and/or --from=<status>.\n${HELP}`,
+  );
+  process.exit(1);
+}
 
 let n = 0;
 for (const key of targets) {
   const r = setStatus(key, newStatus, { dryRun: DRY });
-  if (r.reason === "same") { console.log(`  = ${key} already ${newStatus}`); continue; }
-  if (r.reason === "no-status-line") { console.warn(`  ⚠ ${key}: no status line, skipped`); continue; }
+  if (r.reason === "same") {
+    console.log(`  = ${key} already ${newStatus}`);
+    continue;
+  }
+  if (r.reason === "no-status-line") {
+    console.warn(`  ⚠ ${key}: no status line, skipped`);
+    continue;
+  }
   console.log(`  ${DRY ? "would set" : "✓"} ${key}: ${r.old} → ${newStatus}`);
   n++;
 }
-console.log(`\n${DRY ? "(dry-run) " : ""}${n} post(s) ${DRY ? "would change" : "set"} to "${newStatus}".`);
+console.log(
+  `\n${DRY ? "(dry-run) " : ""}${n} post(s) ${DRY ? "would change" : "set"} to "${newStatus}".`,
+);

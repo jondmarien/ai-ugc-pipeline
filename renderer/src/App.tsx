@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import {
+  CarouselDeck,
+  CarouselSlideByIndex,
+} from "./components/carousel/CarouselDeck";
 import { allPosts, getPost } from "./lib/posts";
-import { CarouselSlideByIndex, CarouselDeck } from "./components/carousel/CarouselDeck";
 
 // Preview/export router via query params (no react-router needed):
 //   ?post=<id|slug|prefix>&slide=<1-based>   → single exact-size slide (export target)
@@ -25,13 +28,20 @@ export function App() {
       done = true;
       document.documentElement.setAttribute("data-render-ready", "1");
     };
-    const fontsReady = (document as unknown as { fonts?: { ready?: Promise<unknown> } }).fonts?.ready ?? Promise.resolve();
+    const fontsReady =
+      (document as unknown as { fonts?: { ready?: Promise<unknown> } }).fonts
+        ?.ready ?? Promise.resolve();
     Promise.resolve(fontsReady)
       .then(() => {
         const imgs = Array.from(document.images);
         return Promise.all(
           imgs.map((img) =>
-            img.complete ? Promise.resolve() : new Promise<void>((res) => { img.onload = () => res(); img.onerror = () => res(); }),
+            img.complete
+              ? Promise.resolve()
+              : new Promise<void>((res) => {
+                  img.onload = () => res();
+                  img.onerror = () => res();
+                }),
           ),
         );
       })
@@ -39,14 +49,24 @@ export function App() {
       // the export harness captures: two RAFs guarantee a committed paint past the layout pass.
       .then(() => requestAnimationFrame(() => requestAnimationFrame(markReady)))
       .catch(markReady);
-  }, [postKey, slideParam, mode]);
+  }, []);
 
   if (!postKey) {
     const posts = allPosts();
     return (
-      <div style={{ color: "#f8fafc", fontFamily: "Inter, sans-serif", padding: 40 }}>
+      <div
+        style={{
+          color: "#f8fafc",
+          fontFamily: "Inter, sans-serif",
+          padding: 40,
+        }}
+      >
         <h1>AI-UGC Renderer — preview</h1>
-        <p style={{ color: "#94a3b8" }}>Append <code>?post=&lt;slug&gt;&amp;slide=1</code> for a single exact-size slide, or <code>?post=&lt;slug&gt;&amp;mode=deck</code> for the full deck.</p>
+        <p style={{ color: "#94a3b8" }}>
+          Append <code>?post=&lt;slug&gt;&amp;slide=1</code> for a single
+          exact-size slide, or <code>?post=&lt;slug&gt;&amp;mode=deck</code> for
+          the full deck.
+        </p>
         <ul>
           {posts.map((p) => (
             <li key={p.post_id}>
@@ -59,7 +79,12 @@ export function App() {
   }
 
   const post = getPost(postKey);
-  if (!post) return <div style={{ color: "#fff", padding: 40 }}>Post not found: {postKey}</div>;
+  if (!post)
+    return (
+      <div style={{ color: "#fff", padding: 40 }}>
+        Post not found: {postKey}
+      </div>
+    );
 
   if (mode === "deck") return <CarouselDeck post={post} />;
 

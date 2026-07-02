@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
-import { LEGAL } from "../lib/legal";
+import { Nav } from "../components/Nav";
 import { BRAND } from "../lib/content";
+import { LEGAL } from "../lib/legal";
 
 export function Legal({ doc }: { doc: "terms" | "privacy" }) {
   const d = LEGAL[doc];
@@ -32,7 +32,9 @@ export function Legal({ doc }: { doc: "terms" | "privacy" }) {
         <div className="mt-12 space-y-11">
           {d.blocks.map((b) => (
             <section key={b.h}>
-              <h2 className="mb-4 font-mono text-[0.78rem] uppercase tracking-[0.18em] text-fg">{b.h}</h2>
+              <h2 className="mb-4 font-mono text-[0.78rem] uppercase tracking-[0.18em] text-fg">
+                {b.h}
+              </h2>
               {b.p?.map((para) => (
                 <p key={para} className="mb-3 leading-relaxed text-muted">
                   {para}
@@ -41,7 +43,10 @@ export function Legal({ doc }: { doc: "terms" | "privacy" }) {
               {b.ul && (
                 <ul className="mt-2 space-y-2.5">
                   {b.ul.map((li) => (
-                    <li key={li} className="flex gap-3 leading-relaxed text-muted">
+                    <li
+                      key={li}
+                      className="flex gap-3 leading-relaxed text-muted"
+                    >
                       <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-team" />
                       <span>{li}</span>
                     </li>

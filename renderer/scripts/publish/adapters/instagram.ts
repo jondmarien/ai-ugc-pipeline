@@ -1,13 +1,24 @@
-import type { PlatformAdapter, RenderPackage, AdapterResult, PublishOpts } from "../types";
+import { appSecretProof, GRAPH_BASE, getMetaCredentials } from "../auth/meta";
 import { loadPublishConfig } from "../config";
-import { getMetaCredentials, GRAPH_BASE, appSecretProof } from "../auth/meta";
-import { uploadTemp, type TempUpload } from "./lib/temp-hosting";
+import type {
+  AdapterResult,
+  PlatformAdapter,
+  PublishOpts,
+  RenderPackage,
+} from "../types";
+import { type TempUpload, uploadTemp } from "./lib/temp-hosting";
 
 // Every call below is authenticated with a Page access token (user-derived), so it needs
 // appsecret_proof once the app's "Require app secret" setting is enabled.
-function withProof(pageAccessToken: string, params: Record<string, string>): Record<string, string> {
+function withProof(
+  pageAccessToken: string,
+  params: Record<string, string>,
+): Record<string, string> {
   const appSecret = process.env.META_APP_SECRET ?? "";
-  return { ...params, appsecret_proof: appSecretProof(pageAccessToken, appSecret) };
+  return {
+    ...params,
+    appsecret_proof: appSecretProof(pageAccessToken, appSecret),
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -43,7 +54,10 @@ const CAPTION_MAX = 2200;
 const HASHTAG_MAX = 30;
 
 type ContainerCreateResponse = { id: string };
-type ContainerStatusResponse = { status_code?: "IN_PROGRESS" | "FINISHED" | "ERROR" | "EXPIRED"; status?: string };
+type ContainerStatusResponse = {
+  status_code?: "IN_PROGRESS" | "FINISHED" | "ERROR" | "EXPIRED";
+  status?: string;
+};
 type PublishResponse = { id: string };
 
 export type InstagramConfig = {
@@ -67,7 +81,10 @@ export type InstagramDeps = {
 // ---------------------------------------------------------------------------
 
 /** Build an IG caption: caption + up to HASHTAG_MAX hashtags, truncated to CAPTION_MAX chars. */
-export function buildInstagramCaption(post: { caption: string; hashtags: string[] }): {
+export function buildInstagramCaption(post: {
+  caption: string;
+  hashtags: string[];
+}): {
   caption: string;
   truncated: boolean;
 } {
@@ -90,7 +107,10 @@ export function shapeInstagramResult(mediaId: string): AdapterResult {
 
 function friendlyError(err: unknown): string {
   const msg = err instanceof Error ? err.message : String(err);
-  if (msg.includes('"code":190') || msg.includes("Error validating access token")) {
+  if (
+    msg.includes('"code":190') ||
+    msg.includes("Error validating access token")
+  ) {
     return `${msg} — Meta token invalid or expired — run bun run publish:auth meta`;
   }
   if (msg.includes("No Meta credentials found")) {
@@ -128,12 +148,20 @@ async function createReelsContainer(
     }),
   );
   if (trialReels) {
-    params.set("trial_params", JSON.stringify({ graduation_strategy: "MANUAL" }));
+    params.set(
+      "trial_params",
+      JSON.stringify({ graduation_strategy: "MANUAL" }),
+    );
   }
-  const resp = await fetchImpl(`${GRAPH_BASE}/${igUserId}/media?${params.toString()}`, { method: "POST" });
+  const resp = await fetchImpl(
+    `${GRAPH_BASE}/${igUserId}/media?${params.toString()}`,
+    { method: "POST" },
+  );
   if (!resp.ok) {
     const text = await resp.text();
-    throw new Error(`Instagram Reels container create failed: ${resp.status} — ${text}`);
+    throw new Error(
+      `Instagram Reels container create failed: ${resp.status} — ${text}`,
+    );
   }
   return (await resp.json()) as ContainerCreateResponse;
 }
@@ -153,10 +181,15 @@ async function createCarouselChildContainer(
     }),
   );
   if (altText) params.set("alt_text", altText);
-  const resp = await fetchImpl(`${GRAPH_BASE}/${igUserId}/media?${params.toString()}`, { method: "POST" });
+  const resp = await fetchImpl(
+    `${GRAPH_BASE}/${igUserId}/media?${params.toString()}`,
+    { method: "POST" },
+  );
   if (!resp.ok) {
     const text = await resp.text();
-    throw new Error(`Instagram carousel child container create failed: ${resp.status} — ${text}`);
+    throw new Error(
+      `Instagram carousel child container create failed: ${resp.status} — ${text}`,
+    );
   }
   return (await resp.json()) as ContainerCreateResponse;
 }
@@ -177,10 +210,15 @@ async function createCarouselParentContainer(
       access_token: pageAccessToken,
     }),
   );
-  const resp = await fetchImpl(`${GRAPH_BASE}/${igUserId}/media?${params.toString()}`, { method: "POST" });
+  const resp = await fetchImpl(
+    `${GRAPH_BASE}/${igUserId}/media?${params.toString()}`,
+    { method: "POST" },
+  );
   if (!resp.ok) {
     const text = await resp.text();
-    throw new Error(`Instagram carousel parent container create failed: ${resp.status} — ${text}`);
+    throw new Error(
+      `Instagram carousel parent container create failed: ${resp.status} — ${text}`,
+    );
   }
   return (await resp.json()) as ContainerCreateResponse;
 }
@@ -191,12 +229,19 @@ async function checkContainerStatus(
   pageAccessToken: string,
 ): Promise<ContainerStatusResponse> {
   const params = new URLSearchParams(
-    withProof(pageAccessToken, { fields: "status_code,status", access_token: pageAccessToken }),
+    withProof(pageAccessToken, {
+      fields: "status_code,status",
+      access_token: pageAccessToken,
+    }),
   );
-  const resp = await fetchImpl(`${GRAPH_BASE}/${containerId}?${params.toString()}`);
+  const resp = await fetchImpl(
+    `${GRAPH_BASE}/${containerId}?${params.toString()}`,
+  );
   if (!resp.ok) {
     const text = await resp.text();
-    throw new Error(`Instagram container status check failed: ${resp.status} — ${text}`);
+    throw new Error(
+      `Instagram container status check failed: ${resp.status} — ${text}`,
+    );
   }
   return (await resp.json()) as ContainerStatusResponse;
 }
@@ -208,9 +253,15 @@ async function publishContainer(
   pageAccessToken: string,
 ): Promise<PublishResponse> {
   const params = new URLSearchParams(
-    withProof(pageAccessToken, { creation_id: containerId, access_token: pageAccessToken }),
+    withProof(pageAccessToken, {
+      creation_id: containerId,
+      access_token: pageAccessToken,
+    }),
   );
-  const resp = await fetchImpl(`${GRAPH_BASE}/${igUserId}/media_publish?${params.toString()}`, { method: "POST" });
+  const resp = await fetchImpl(
+    `${GRAPH_BASE}/${igUserId}/media_publish?${params.toString()}`,
+    { method: "POST" },
+  );
   if (!resp.ok) {
     const text = await resp.text();
     throw new Error(`Instagram media_publish failed: ${resp.status} — ${text}`);
@@ -230,7 +281,12 @@ async function pollUntilFinished(
   let last: ContainerStatusResponse = {};
   for (let i = 0; i < maxPolls; i++) {
     last = await checkContainerStatus(fetchImpl, containerId, pageAccessToken);
-    if (last.status_code === "FINISHED" || last.status_code === "ERROR" || last.status_code === "EXPIRED") break;
+    if (
+      last.status_code === "FINISHED" ||
+      last.status_code === "ERROR" ||
+      last.status_code === "EXPIRED"
+    )
+      break;
     if (i < maxPolls - 1) await sleep(pollIntervalMs);
   }
   if (last.status_code !== "FINISHED") {
@@ -254,7 +310,14 @@ function manualChecklist(pkg: RenderPackage): AdapterResult {
     `  5) Tag location / collaborators if needed, then publish`,
   ].join("\n");
 
-  return { platform: "instagram", kind: "manual", status: "manual", id: null, url: null, message };
+  return {
+    platform: "instagram",
+    kind: "manual",
+    status: "manual",
+    id: null,
+    url: null,
+    message,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -269,7 +332,10 @@ export function makeInstagramAdapter(deps: InstagramDeps): PlatformAdapter {
     name: "instagram",
     kind: "api",
 
-    async publish(pkg: RenderPackage, opts: PublishOpts): Promise<AdapterResult> {
+    async publish(
+      pkg: RenderPackage,
+      opts: PublishOpts,
+    ): Promise<AdapterResult> {
       const cfg = deps.loadConfig();
 
       if (cfg.mode === "manual") {
@@ -277,7 +343,12 @@ export function makeInstagramAdapter(deps: InstagramDeps): PlatformAdapter {
       }
 
       if (opts.dryRun) {
-        return { platform: "instagram", kind: "api", status: "manual", message: "(dry-run)" };
+        return {
+          platform: "instagram",
+          kind: "api",
+          status: "manual",
+          message: "(dry-run)",
+        };
       }
 
       const temps: TempUpload[] = [];
@@ -291,7 +362,9 @@ export function makeInstagramAdapter(deps: InstagramDeps): PlatformAdapter {
 
         if (cfg.postType === "carousel") {
           if (pkg.slides.length === 0) {
-            throw new Error("No slides found for carousel publish — this post has no carousel images.");
+            throw new Error(
+              "No slides found for carousel publish — this post has no carousel images.",
+            );
           }
 
           const childrenIds: string[] = [];
@@ -315,8 +388,19 @@ export function makeInstagramAdapter(deps: InstagramDeps): PlatformAdapter {
             childrenIds,
             caption,
           );
-          await pollUntilFinished(deps.fetchImpl, parent.id, pageAccessToken, pollIntervalMs, maxPolls);
-          const published = await publishContainer(deps.fetchImpl, igUserId, parent.id, pageAccessToken);
+          await pollUntilFinished(
+            deps.fetchImpl,
+            parent.id,
+            pageAccessToken,
+            pollIntervalMs,
+            maxPolls,
+          );
+          const published = await publishContainer(
+            deps.fetchImpl,
+            igUserId,
+            parent.id,
+            pageAccessToken,
+          );
           return shapeInstagramResult(published.id);
         }
 
@@ -331,11 +415,27 @@ export function makeInstagramAdapter(deps: InstagramDeps): PlatformAdapter {
           caption,
           cfg.trialReels,
         );
-        await pollUntilFinished(deps.fetchImpl, container.id, pageAccessToken, pollIntervalMs, maxPolls);
-        const published = await publishContainer(deps.fetchImpl, igUserId, container.id, pageAccessToken);
+        await pollUntilFinished(
+          deps.fetchImpl,
+          container.id,
+          pageAccessToken,
+          pollIntervalMs,
+          maxPolls,
+        );
+        const published = await publishContainer(
+          deps.fetchImpl,
+          igUserId,
+          container.id,
+          pageAccessToken,
+        );
         return shapeInstagramResult(published.id);
       } catch (err) {
-        return { platform: "instagram", kind: "api", status: "failed", error: friendlyError(err) };
+        return {
+          platform: "instagram",
+          kind: "api",
+          status: "failed",
+          error: friendlyError(err),
+        };
       } finally {
         await cleanupAll();
       }

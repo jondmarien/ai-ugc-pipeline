@@ -7,9 +7,9 @@
 
 import { spawnSync } from "node:child_process";
 import {
-  MODEL_CATALOG,
   DEFAULT_IMAGE_MODEL,
   DEFAULT_VIDEO_MODEL,
+  MODEL_CATALOG,
   resolveCliBin,
 } from "./higgsfield-client.mjs";
 
@@ -31,8 +31,18 @@ if (HELP) {
 function table(rows) {
   const cols = Math.max(...rows.map((r) => r.length));
   const widths = Array(cols).fill(0);
-  for (const r of rows) r.forEach((c, i) => (widths[i] = Math.max(widths[i], String(c).length)));
-  for (const r of rows) console.log("  " + r.map((c, i) => String(c).padEnd(widths[i])).join("   ").trimEnd());
+  for (const r of rows)
+    r.forEach((c, i) => {
+      widths[i] = Math.max(widths[i], String(c).length);
+    });
+  for (const r of rows)
+    console.log(
+      "  " +
+        r
+          .map((c, i) => String(c).padEnd(widths[i]))
+          .join("   ")
+          .trimEnd(),
+    );
 }
 
 function imageSection() {
@@ -48,11 +58,15 @@ function imageSection() {
       m.cliJobSetType ?? "—",
     ]),
   ]);
-  console.log(`  (cr/img = credits per image; an 8-slide post ≈ 8× that. "?" = needs extra params / unverified.)`);
+  console.log(
+    `  (cr/img = credits per image; an 8-slide post ≈ 8× that. "?" = needs extra params / unverified.)`,
+  );
 }
 
 function videoSection() {
-  console.log(`\nVIDEO / motion  (pipeline flag: --motion-model=<id>, with --motion=higgsfield)`);
+  console.log(
+    `\nVIDEO / motion  (pipeline flag: --motion-model=<id>, with --motion=higgsfield)`,
+  );
   table([
     ["ID", "NAME", "CR/CLIP", "CLI JOB TYPE"],
     ["--", "----", "-------", "------------"],
@@ -63,7 +77,9 @@ function videoSection() {
       m.cliJobSetType ?? "—",
     ]),
   ]);
-  console.log(`  (cr/clip = credits per beat; a reel has several beats. Motion gate default = 60 credits.)`);
+  console.log(
+    `  (cr/clip = credits per beat; a reel has several beats. Motion gate default = 60 credits.)`,
+  );
 }
 
 console.log("Higgsfield models the pipeline accepts:");
@@ -72,17 +88,27 @@ videoSection();
 
 console.log(`\nExamples:`);
 console.log(`  bun run pipeline -- <key> --higgsfield --higgsfield-model=flux`);
-console.log(`  bun run pipeline -- <key> --higgsfield --motion=higgsfield --motion-model=dop`);
+console.log(
+  `  bun run pipeline -- <key> --higgsfield --motion=higgsfield --motion-model=dop`,
+);
 console.log(`  bun run art:higgsfield -- <key> --model=seedream-4.5`);
 
 if (LIVE) {
   const { bin, shell } = resolveCliBin();
   console.log(`\n── full provider catalog (live: ${bin} model list) ──`);
-  const r = spawnSync(bin, ["model", "list"], { stdio: "inherit", shell, timeout: 60_000 });
+  const r = spawnSync(bin, ["model", "list"], {
+    stdio: "inherit",
+    shell,
+    timeout: 60_000,
+  });
   if (r.status !== 0) {
-    console.error(`\n⚠ Could not query the live catalog (is the higgsfield CLI installed + authed?).`);
+    console.error(
+      `\n⚠ Could not query the live catalog (is the higgsfield CLI installed + authed?).`,
+    );
     process.exit(r.status ?? 1);
   }
 } else {
-  console.log(`\n(Run with --live to also list the full Higgsfield provider catalog via the CLI.)`);
+  console.log(
+    `\n(Run with --live to also list the full Higgsfield provider catalog via the CLI.)`,
+  );
 }

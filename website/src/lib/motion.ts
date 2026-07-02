@@ -1,6 +1,6 @@
-import { useEffect, type RefObject } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { type RefObject, useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,17 +21,19 @@ export function useReveal(root: RefObject<HTMLElement | null>) {
     if (prefersReducedMotion() || !root.current) return;
     const ctx = gsap.context(() => {
       // grouped staggers
-      gsap.utils.toArray<HTMLElement>("[data-reveal-group]").forEach((group) => {
-        const items = group.querySelectorAll("[data-reveal]");
-        gsap.to(items, {
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-          ease: "power3.out",
-          stagger: 0.08,
-          scrollTrigger: { trigger: group, start: "top 82%", once: true },
+      gsap.utils
+        .toArray<HTMLElement>("[data-reveal-group]")
+        .forEach((group) => {
+          const items = group.querySelectorAll("[data-reveal]");
+          gsap.to(items, {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "power3.out",
+            stagger: 0.08,
+            scrollTrigger: { trigger: group, start: "top 82%", once: true },
+          });
         });
-      });
       // standalone reveals (not inside a group)
       gsap.utils
         .toArray<HTMLElement>("[data-reveal]")

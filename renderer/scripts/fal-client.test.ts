@@ -1,12 +1,12 @@
-import { test, expect } from "bun:test";
+import { expect, test } from "bun:test";
 import {
-  MODEL_CATALOG,
+  buildNegativePrompt,
   DEFAULT_IMAGE_MODEL,
   DEFAULT_VIDEO_MODEL,
-  promptHash,
-  buildNegativePrompt,
   estimateCost,
+  MODEL_CATALOG,
   motionPromptForBeat,
+  promptHash,
   resolveSegmentImageUrl,
 } from "./fal-client.mjs";
 
@@ -30,20 +30,25 @@ test("promptHash is deterministic", () => {
 });
 
 test("motionPromptForBeat includes motion", () => {
-  const p = motionPromptForBeat({ motion: "dolly in" }, { visual_prompt: "server room" });
+  const p = motionPromptForBeat(
+    { motion: "dolly in" },
+    { visual_prompt: "server room" },
+  );
   expect(p).toContain("dolly in");
   expect(p).toContain("server room");
 });
 
 test("resolveSegmentImageUrl prefers fal_image_url", () => {
-  const url = resolveSegmentImageUrl({ fal_image_url: "https://cdn.example.com/a.png" });
+  const url = resolveSegmentImageUrl({
+    fal_image_url: "https://cdn.example.com/a.png",
+  });
   expect(url).toBe("https://cdn.example.com/a.png");
 });
 
 test("resolveSegmentImageUrl throws without public URL", () => {
-  expect(() => resolveSegmentImageUrl({ background_asset: "/backgrounds/x/01_cover.png" })).toThrow(
-    /public image URL/,
-  );
+  expect(() =>
+    resolveSegmentImageUrl({ background_asset: "/backgrounds/x/01_cover.png" }),
+  ).toThrow(/public image URL/);
 });
 
 test("estimateCost returns numbers", async () => {

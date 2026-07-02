@@ -1,8 +1,13 @@
 import { readFileSync } from "node:fs";
-import type { PlatformAdapter, RenderPackage, AdapterResult, PublishOpts } from "../types";
-import { youtubeMetadata } from "../metadata";
-import { loadPublishConfig } from "../config";
 import { getAccessToken } from "../auth/oauth";
+import { loadPublishConfig } from "../config";
+import { youtubeMetadata } from "../metadata";
+import type {
+  AdapterResult,
+  PlatformAdapter,
+  PublishOpts,
+  RenderPackage,
+} from "../types";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -123,7 +128,10 @@ export function makeYoutubeAdapter(deps: YoutubeDeps): PlatformAdapter {
     name: "youtube",
     kind: "api",
 
-    async publish(pkg: RenderPackage, opts: PublishOpts): Promise<AdapterResult> {
+    async publish(
+      pkg: RenderPackage,
+      opts: PublishOpts,
+    ): Promise<AdapterResult> {
       const cfg = deps.loadConfig();
 
       // Dry-run: no upload

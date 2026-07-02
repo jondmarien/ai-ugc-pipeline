@@ -1,15 +1,24 @@
-import { serve } from "bun";
-import { getAccount, getMedia } from "./ig";
-import { listPosts, listRenders, readRenderFile } from "./repo";
-import { listIngested } from "./ingested";
-import { aggregateHooks, parseCaptionBankHooks } from "./hooks";
-import { getTrends } from "./trends";
-import { readState, writeState, ALLOWED_STATE_FILES } from "./store";
-import { RENDERS_DIR, DASH_ROOT } from "./paths";
-import path from "node:path";
 import fs from "node:fs";
+import path from "node:path";
+import { serve } from "bun";
+import { aggregateHooks, parseCaptionBankHooks } from "./hooks";
+import { getAccount, getMedia } from "./ig";
+import { listIngested } from "./ingested";
+import {
+  attachMetaInsights,
+  listPublishedMeta,
+  readCurrentInstagramPostType,
+} from "./meta";
+import { DASH_ROOT, RENDERS_DIR } from "./paths";
+import { listPosts, listRenders, readRenderFile } from "./repo";
+import { ALLOWED_STATE_FILES, readState, writeState } from "./store";
+import { getTrends } from "./trends";
 
-function env<T>(data: T | null, error: string | null = null, fetchedAt: number | null = null) {
+function env<T>(
+  data: T | null,
+  error: string | null = null,
+  fetchedAt: number | null = null,
+) {
   return Response.json({ data, error, fetchedAt });
 }
 
@@ -22,8 +31,14 @@ const server = serve({
     try {
       if (p === "/api/health") return env({ ok: true });
 
-      if (p === "/api/ig/account") { const r = await getAccount(force); return env(r.data, r.error, r.fetchedAt); }
-      if (p === "/api/ig/media")   { const r = await getMedia(force);   return env(r.data, r.error, r.fetchedAt); }
+      if (p === "/api/ig/account") {
+        const r = await getAccount(force);
+        return env(r.data, r.error, r.fetchedAt);
+      }
+      if (p === "/api/ig/media") {
+        const r = await getMedia(force);
+        return env(r.data, r.error, r.fetchedAt);
+      }
       if (p === "/api/ig/token-age") {
         // Token age = time since the last successful refresh (token_refresh.log OK line),
         // falling back to .env mtime when the log does not exist yet.
@@ -31,44 +46,95 @@ const server = serve({
         const envFile = path.join(DASH_ROOT, ".env");
         let since: number | null = null;
         if (fs.existsSync(log)) {
-          const ok = fs.readFileSync(log, "utf8").split("\n").filter((l) => l.includes(" OK ")).at(-1);
+          const ok = fs
+            .readFileSync(log, "utf8")
+            .split("\n")
+            .filter((l) => l.includes(" OK "))
+            .at(-1);
           if (ok) since = Date.parse(ok.slice(0, 24)) || null;
         }
-        if (!since && fs.existsSync(envFile)) since = fs.statSync(envFile).mtimeMs;
-        return env(since ? { ageDays: Math.floor((Date.now() - since) / 86_400_000) } : null,
-          since ? null : "no token yet");
+        if (!since && fs.existsSync(envFile))
+          since = fs.statSync(envFile).mtimeMs;
+        return env(
+          since
+            ? { ageDays: Math.floor((Date.now() - since) / 86_400_000) }
+            : null,
+          since ? null : "no token yet",
+        );
       }
 
-      if (p === "/api/repo/posts")    return env(listPosts());
-      if (p === "/api/repo/renders")  return env(listRenders());
+      if (p === "/api/repo/posts") return env(listPosts());
+      if (p === "/api/repo/renders") return env(listRenders());
       if (p === "/api/repo/ingested") return env(listIngested());
       if (p === "/api/repo/hooks") {
-        return env(aggregateHooks({
-          posts: listPosts(), ingested: listIngested(), captionBank: parseCaptionBankHooks(),
-        }));
+        return env(
+          aggregateHooks({
+            posts: listPosts(),
+            ingested: listIngested(),
+            captionBank: parseCaptionBankHooks(),
+          }),
+        );
       }
 
       // render package text files + slide thumbnails
-      const renderFile = p.match(/^\/api\/repo\/renders\/([^/]+)\/(caption\.txt|sources\.md)$/);
-      if (renderFile) return env(readRenderFile(decodeURIComponent(renderFile[1]), renderFile[2] as any));
-      const thumb = p.match(/^\/api\/repo\/renders\/([^/]+)\/slide\/([^/]+\.png)$/i);
+      const renderFile = p.match(
+        /^\/api\/repo\/renders\/([^/]+)\/(caption\.txt|sources\.md)$/,
+      );
+      if (renderFile)
+        return env(
+          readRenderFile(
+            decodeURIComponent(renderFile[1]),
+            renderFile[2] as any,
+          ),
+        );
+      const thumb = p.match(
+        /^\/api\/repo\/renders\/([^/]+)\/slide\/([^/]+\.png)$/i,
+      );
       if (thumb) {
-        const dir = decodeURIComponent(thumb[1]); const file = decodeURIComponent(thumb[2]);
-        if ([dir, file].some((s) => s.includes("..") || s.includes("/") || s.includes("\\")))
+        const dir = decodeURIComponent(thumb[1]);
+        const file = decodeURIComponent(thumb[2]);
+        if (
+          [dir, file].some(
+            (s) => s.includes("..") || s.includes("/") || s.includes("\\"),
+          )
+        )
           return env(null, "bad path");
         const full = path.join(RENDERS_DIR, dir, file);
         if (!fs.existsSync(full)) return env(null, "not found");
         return new Response(Bun.file(full));
       }
 
-      if (p === "/api/trends") { const r = await getTrends(force); return env(r.data, r.error, r.fetchedAt); }
+      if (p === "/api/meta/published") {
+        return env(
+          listPublishedMeta({
+            instagramPostType: readCurrentInstagramPostType(),
+          }),
+        );
+      }
 
-      const state = p.match(/^\/api\/state\/([\w.\-]+)$/);
+      if (p === "/api/meta/insights") {
+        const posts = listPublishedMeta({
+          instagramPostType: readCurrentInstagramPostType(),
+        });
+        const withInsights = await attachMetaInsights(posts, force);
+        return env(withInsights);
+      }
+
+      if (p === "/api/trends") {
+        const r = await getTrends(force);
+        return env(r.data, r.error, r.fetchedAt);
+      }
+
+      const state = p.match(/^\/api\/state\/([\w.-]+)$/);
       if (state) {
         const name = state[1];
-        if (!ALLOWED_STATE_FILES.has(name)) return env(null, `state file not allowed: ${name}`);
+        if (!ALLOWED_STATE_FILES.has(name))
+          return env(null, `state file not allowed: ${name}`);
         if (req.method === "GET") return env(readState(name));
-        if (req.method === "PUT") { writeState(name, await req.json()); return env({ ok: true }); }
+        if (req.method === "PUT") {
+          writeState(name, await req.json());
+          return env({ ok: true });
+        }
       }
 
       return env(null, `unknown route: ${p}`);

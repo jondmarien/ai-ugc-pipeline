@@ -13,9 +13,13 @@
 //   ART_T5 (t5xxl_fp8_e4m3fn.safetensors), ART_CLIP (clip_l.safetensors),
 //   ART_VAE (split_files\vae\ae.safetensors), ART_CLIP_DEVICE (cpu).
 // Legacy local-diffusers path is still available via:  bun run art:diffusers -- <key>
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { buildSlidePrompt, postThemeContext, postSeedOffset } from "./lib/art-slide-prompt.mjs";
+import {
+  buildSlidePrompt,
+  postSeedOffset,
+  postThemeContext,
+} from "./lib/art-slide-prompt.mjs";
 import { parseOnlySlides, selectArtSlides } from "./lib/art-targeting.mjs";
 import {
   comfyBaseUrl,
@@ -24,10 +28,10 @@ import {
   ensureUpscaleModelOnDisk,
 } from "./lib/comfyui-env.mjs";
 import { FLUX_NEGATIVE_PROMPT } from "./lib/flux-negative-prompt.mjs";
+import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
 import { writePostJson } from "./lib/post-io.mjs";
 import { loadPostByKey, POSTS_DIR } from "./lib/post-resolve.mjs";
 import { slideBackgroundExists } from "./lib/public-asset.mjs";
-import { RENDERER_ROOT as RENDERER } from "./lib/paths.mjs";
 import { backgroundFileName } from "./lib/slide-filename.mjs";
 
 const args = process.argv.slice(2);
@@ -114,7 +118,10 @@ const FLUX2 = !flags.has("--flux1");
 // instead do a non-destructive A/B into <prefix>_flux2/ without touching the JSON.
 const COMPARE = flags.has("--compare");
 
-const MODEL = opt("model", process.env.ART_MODEL || "flux1-schnell-Q4_K_S.gguf");
+const MODEL = opt(
+  "model",
+  process.env.ART_MODEL || "flux1-schnell-Q4_K_S.gguf",
+);
 // FLUX.2 klein (distilled) coherence: 4 steps suffices for trivial prompts, but 6-8 steps
 // markedly improve structure on complex scenes (community + BFL guidance). FLUX.1-schnell
 // keeps its 4-step distillation. Dimensions MUST be multiples of 16 for FLUX.2 → snapped
@@ -127,14 +134,30 @@ const snap16 = (n) => Math.max(16, Math.round(n / 16) * 16);
 const PASSES_HARD_MAX = 12;
 const PASSES_REC = [4, 8];
 const PASSES_DEFAULT = FLUX2 ? 8 : 4;
-const rawPasses = Number(opt("passes", opt("steps", process.env.ART_STEPS || PASSES_DEFAULT)));
-const STEPS = Math.max(1, Math.min(PASSES_HARD_MAX, Number.isFinite(rawPasses) ? Math.round(rawPasses) : PASSES_DEFAULT));
+const rawPasses = Number(
+  opt("passes", opt("steps", process.env.ART_STEPS || PASSES_DEFAULT)),
+);
+const STEPS = Math.max(
+  1,
+  Math.min(
+    PASSES_HARD_MAX,
+    Number.isFinite(rawPasses) ? Math.round(rawPasses) : PASSES_DEFAULT,
+  ),
+);
 if (Number.isFinite(rawPasses) && STEPS !== rawPasses)
-  console.warn(`  ⚠ passes clamped ${rawPasses} → ${STEPS} (hard max ${PASSES_HARD_MAX}; ${FLUX2 ? "FLUX.2 klein" : "FLUX.1-schnell"} is step-distilled, gains nothing past ~8).`);
+  console.warn(
+    `  ⚠ passes clamped ${rawPasses} → ${STEPS} (hard max ${PASSES_HARD_MAX}; ${FLUX2 ? "FLUX.2 klein" : "FLUX.1-schnell"} is step-distilled, gains nothing past ~8).`,
+  );
 else if (STEPS < PASSES_REC[0] || STEPS > PASSES_REC[1])
-  console.warn(`  ⚠ ${STEPS} passes is outside the recommended ${PASSES_REC[0]}-${PASSES_REC[1]} for a distilled model (4 = native; >8 rarely helps).`);
-const WIDTH = snap16(Number(opt("width", process.env.ART_WIDTH || (FLUX2 ? 1024 : 768))));
-const HEIGHT = snap16(Number(opt("height", process.env.ART_HEIGHT || (FLUX2 ? 1280 : 1024))));
+  console.warn(
+    `  ⚠ ${STEPS} passes is outside the recommended ${PASSES_REC[0]}-${PASSES_REC[1]} for a distilled model (4 = native; >8 rarely helps).`,
+  );
+const WIDTH = snap16(
+  Number(opt("width", process.env.ART_WIDTH || (FLUX2 ? 1024 : 768))),
+);
+const HEIGHT = snap16(
+  Number(opt("height", process.env.ART_HEIGHT || (FLUX2 ? 1280 : 1024))),
+);
 const SEED_BASE = Number(opt("seed", process.env.ART_SEED || 42));
 // Breather BETWEEN slide generations. Back-to-back FLUX on a low-VRAM card keeps CPU+GPU pinned
 // with heavy offload; on a thermally/power-marginal rig that sustained load can trip an OS CPU
@@ -158,9 +181,13 @@ const DRY = flags.has("--dry-run");
 // `--upscale` the base graph runs unchanged. (Upscaling EXISTING backgrounds without regen still uses
 // the standalone `bun run upscale`.)
 const UPSCALE = flags.has("--upscale");
-const UPSCALE_MODEL = opt("upscale-model", process.env.UPSCALE_MODEL || "RealESRGAN_x4plus.pth");
+const UPSCALE_MODEL = opt(
+  "upscale-model",
+  process.env.UPSCALE_MODEL || "RealESRGAN_x4plus.pth",
+);
 const UPSCALE_SCALE = Math.max(0.25, Number(opt("upscale-scale", "1")) || 1);
-let UP_W = 1080, UP_H = 1350; // downscale target = post canvas × scale; set in main from the post JSON
+let UP_W = 1080,
+  UP_H = 1350; // downscale target = post canvas × scale; set in main from the post JSON
 
 // `--ui-format`: instead of building the graph in code, LOAD the version-controlled ComfyUI workflow
 // file from renderer/comfyui-workflows/ (UI format, same files you open in the ComfyUI web UI),
@@ -169,13 +196,18 @@ let UP_W = 1080, UP_H = 1350; // downscale target = post canvas × scale; set in
 // (steps/CFG/resolution/sampler) win — WYSIWYG. Default (no flag) keeps the code-built graph.
 const UI_FORMAT = flags.has("--ui-format");
 const WF_DIR = path.join(RENDERER, "comfyui-workflows");
-const WF_FILE = () => (UPSCALE ? "flux2_klein_4b_8gb_with_upscale.json" : "flux2_klein_4b_8gb.json");
+const WF_FILE = () =>
+  UPSCALE ? "flux2_klein_4b_8gb_with_upscale.json" : "flux2_klein_4b_8gb.json";
 if (UI_FORMAT && flags.has("--flux1"))
-  console.warn("  ⚠ --ui-format only mirrors the FLUX.2 graphs; --flux1 keeps the code-built graph.");
+  console.warn(
+    "  ⚠ --ui-format only mirrors the FLUX.2 graphs; --flux1 keeps the code-built graph.",
+  );
 
 const F2_MODEL = process.env.ART2_MODEL || "flux-2-klein-4b-Q5_K_S.gguf";
-const F2_CLIP = process.env.ART2_CLIP || "split_files\\text_encoders\\qwen_3_4b.safetensors";
-const F2_VAE = process.env.ART2_VAE || "split_files\\vae\\flux2-vae.safetensors";
+const F2_CLIP =
+  process.env.ART2_CLIP || "split_files\\text_encoders\\qwen_3_4b.safetensors";
+const F2_VAE =
+  process.env.ART2_VAE || "split_files\\vae\\flux2-vae.safetensors";
 // A gentle true-CFG (>1) so the NEGATIVE prompt actually suppresses fake text/UI — at CFG 1
 // FLUX ignores the negative entirely. 1.2 nudges without the 1.5 over-cook / artifact return.
 const F2_CFG = Number(process.env.ART2_CFG || 1.2);
@@ -193,9 +225,24 @@ async function ensureUpscaleModel(modelFile) {
 // → ImageScale (down to UP_W×UP_H) → and repoint the existing SaveImage to the upscaled image. Uses high
 // node IDs (97/98/99) to avoid colliding with the base graph's IDs. Mirrors `<workflow>_with_upscale`.
 function appendUpscale(graph, decodeId, saveId) {
-  graph["97"] = { class_type: "UpscaleModelLoader", inputs: { model_name: UPSCALE_MODEL } };
-  graph["98"] = { class_type: "ImageUpscaleWithModel", inputs: { upscale_model: ["97", 0], image: [decodeId, 0] } };
-  graph["99"] = { class_type: "ImageScale", inputs: { image: ["98", 0], upscale_method: "lanczos", width: UP_W, height: UP_H, crop: "disabled" } };
+  graph["97"] = {
+    class_type: "UpscaleModelLoader",
+    inputs: { model_name: UPSCALE_MODEL },
+  };
+  graph["98"] = {
+    class_type: "ImageUpscaleWithModel",
+    inputs: { upscale_model: ["97", 0], image: [decodeId, 0] },
+  };
+  graph["99"] = {
+    class_type: "ImageScale",
+    inputs: {
+      image: ["98", 0],
+      upscale_method: "lanczos",
+      width: UP_W,
+      height: UP_H,
+      crop: "disabled",
+    },
+  };
   graph[saveId].inputs.images = ["99", 0];
   return graph;
 }
@@ -219,8 +266,12 @@ function uiToApi(ui) {
         inputs[inp.name] = linkMap.get(inp.link);
       } else if (inp.widget) {
         inputs[inp.name] = wv[wi++];
-        if (/seed/i.test(inp.name) && typeof wv[wi] === "string" &&
-            ["fixed", "randomize", "increment", "decrement"].includes(wv[wi])) wi++;
+        if (
+          /seed/i.test(inp.name) &&
+          typeof wv[wi] === "string" &&
+          ["fixed", "randomize", "increment", "decrement"].includes(wv[wi])
+        )
+          wi++;
       }
     }
     api[String(n.id)] = { class_type: n.type, inputs };
@@ -232,22 +283,34 @@ let uiGraphCache = null; // parse + convert once per run; deep-copied and patche
 function loadUiGraph(promptText, seed) {
   if (!uiGraphCache) {
     const file = path.join(WF_DIR, WF_FILE());
-    if (!existsSync(file)) throw new Error(`--ui-format: workflow file not found: ${file}`);
+    if (!existsSync(file))
+      throw new Error(`--ui-format: workflow file not found: ${file}`);
     uiGraphCache = uiToApi(JSON.parse(readFileSync(file, "utf8")));
-    console.log(`  (ui-format: executing ${WF_FILE()} — the file's steps/CFG/resolution win)`);
+    console.log(
+      `  (ui-format: executing ${WF_FILE()} — the file's steps/CFG/resolution win)`,
+    );
   }
   const g = structuredClone(uiGraphCache);
   // Patch per-slide essentials. Positive prompt = the CLIPTextEncode feeding CFGGuider.positive.
   const guider = Object.values(g).find((n) => n.class_type === "CFGGuider");
   const posId = guider?.inputs?.positive?.[0];
-  if (posId && g[posId]?.class_type === "CLIPTextEncode") g[posId].inputs.text = promptText;
-  else throw new Error("--ui-format: couldn't locate the positive CLIPTextEncode via CFGGuider.positive");
+  if (posId && g[posId]?.class_type === "CLIPTextEncode")
+    g[posId].inputs.text = promptText;
+  else
+    throw new Error(
+      "--ui-format: couldn't locate the positive CLIPTextEncode via CFGGuider.positive",
+    );
   const noise = Object.values(g).find((n) => n.class_type === "RandomNoise");
   if (noise) noise.inputs.noise_seed = seed;
   if (UPSCALE) {
-    const up = Object.values(g).find((n) => n.class_type === "UpscaleModelLoader");
+    const up = Object.values(g).find(
+      (n) => n.class_type === "UpscaleModelLoader",
+    );
     const scale = Object.values(g).find((n) => n.class_type === "ImageScale");
-    if (!up || !scale) throw new Error(`--ui-format --upscale: ${WF_FILE()} has no upscale chain`);
+    if (!up || !scale)
+      throw new Error(
+        `--ui-format --upscale: ${WF_FILE()} has no upscale chain`,
+      );
     up.inputs.model_name = UPSCALE_MODEL;
     scale.inputs.width = UP_W;
     scale.inputs.height = UP_H;
@@ -259,34 +322,109 @@ function loadUiGraph(promptText, seed) {
 
 function buildGraph(promptText, seed) {
   return {
-    "4": { class_type: "UnetLoaderGGUF", inputs: { unet_name: MODEL } },
-    "5": { class_type: "DualCLIPLoader", inputs: { clip_name1: T5, clip_name2: CLIP_L, type: "flux", device: CLIP_DEVICE } },
-    "6": { class_type: "VAELoader", inputs: { vae_name: VAE } },
-    "7": { class_type: "CLIPTextEncode", inputs: { text: promptText, clip: ["5", 0] } },
-    "8": { class_type: "CLIPTextEncode", inputs: { text: FLUX_NEGATIVE_PROMPT, clip: ["5", 0] } },
-    "9": { class_type: "EmptySD3LatentImage", inputs: { width: WIDTH, height: HEIGHT, batch_size: 1 } },
-    "10": { class_type: "KSampler", inputs: { seed, steps: STEPS, cfg: 1, sampler_name: "euler", scheduler: "simple", denoise: 1, model: ["4", 0], positive: ["7", 0], negative: ["8", 0], latent_image: ["9", 0] } },
-    "11": { class_type: "VAEDecode", inputs: { samples: ["10", 0], vae: ["6", 0] } },
-    "12": { class_type: "SaveImage", inputs: { filename_prefix: "art_pipeline/bg", images: ["11", 0] } },
+    4: { class_type: "UnetLoaderGGUF", inputs: { unet_name: MODEL } },
+    5: {
+      class_type: "DualCLIPLoader",
+      inputs: {
+        clip_name1: T5,
+        clip_name2: CLIP_L,
+        type: "flux",
+        device: CLIP_DEVICE,
+      },
+    },
+    6: { class_type: "VAELoader", inputs: { vae_name: VAE } },
+    7: {
+      class_type: "CLIPTextEncode",
+      inputs: { text: promptText, clip: ["5", 0] },
+    },
+    8: {
+      class_type: "CLIPTextEncode",
+      inputs: { text: FLUX_NEGATIVE_PROMPT, clip: ["5", 0] },
+    },
+    9: {
+      class_type: "EmptySD3LatentImage",
+      inputs: { width: WIDTH, height: HEIGHT, batch_size: 1 },
+    },
+    10: {
+      class_type: "KSampler",
+      inputs: {
+        seed,
+        steps: STEPS,
+        cfg: 1,
+        sampler_name: "euler",
+        scheduler: "simple",
+        denoise: 1,
+        model: ["4", 0],
+        positive: ["7", 0],
+        negative: ["8", 0],
+        latent_image: ["9", 0],
+      },
+    },
+    11: {
+      class_type: "VAEDecode",
+      inputs: { samples: ["10", 0], vae: ["6", 0] },
+    },
+    12: {
+      class_type: "SaveImage",
+      inputs: { filename_prefix: "art_pipeline/bg", images: ["11", 0] },
+    },
   };
 }
 
 // FLUX.2 [klein] distilled GGUF graph (mirrors the image_flux2_klein_text_to_image template).
 function buildGraphFlux2(promptText, seed) {
   return {
-    "4": { class_type: "UnetLoaderGGUF", inputs: { unet_name: F2_MODEL } },
-    "5": { class_type: "CLIPLoader", inputs: { clip_name: F2_CLIP, type: "flux2", device: CLIP_DEVICE } },
-    "6": { class_type: "VAELoader", inputs: { vae_name: F2_VAE } },
-    "7": { class_type: "CLIPTextEncode", inputs: { text: promptText, clip: ["5", 0] } },
-    "8": { class_type: "CLIPTextEncode", inputs: { text: FLUX_NEGATIVE_PROMPT, clip: ["5", 0] } },
-    "9": { class_type: "Flux2Scheduler", inputs: { steps: STEPS, width: WIDTH, height: HEIGHT } },
-    "10": { class_type: "RandomNoise", inputs: { noise_seed: seed } },
-    "11": { class_type: "KSamplerSelect", inputs: { sampler_name: "euler" } },
-    "12": { class_type: "CFGGuider", inputs: { model: ["4", 0], positive: ["7", 0], negative: ["8", 0], cfg: F2_CFG } },
-    "13": { class_type: "EmptySD3LatentImage", inputs: { width: WIDTH, height: HEIGHT, batch_size: 1 } },
-    "14": { class_type: "SamplerCustomAdvanced", inputs: { noise: ["10", 0], guider: ["12", 0], sampler: ["11", 0], sigmas: ["9", 0], latent_image: ["13", 0] } },
-    "15": { class_type: "VAEDecode", inputs: { samples: ["14", 0], vae: ["6", 0] } },
-    "16": { class_type: "SaveImage", inputs: { filename_prefix: "art_pipeline/flux2", images: ["15", 0] } },
+    4: { class_type: "UnetLoaderGGUF", inputs: { unet_name: F2_MODEL } },
+    5: {
+      class_type: "CLIPLoader",
+      inputs: { clip_name: F2_CLIP, type: "flux2", device: CLIP_DEVICE },
+    },
+    6: { class_type: "VAELoader", inputs: { vae_name: F2_VAE } },
+    7: {
+      class_type: "CLIPTextEncode",
+      inputs: { text: promptText, clip: ["5", 0] },
+    },
+    8: {
+      class_type: "CLIPTextEncode",
+      inputs: { text: FLUX_NEGATIVE_PROMPT, clip: ["5", 0] },
+    },
+    9: {
+      class_type: "Flux2Scheduler",
+      inputs: { steps: STEPS, width: WIDTH, height: HEIGHT },
+    },
+    10: { class_type: "RandomNoise", inputs: { noise_seed: seed } },
+    11: { class_type: "KSamplerSelect", inputs: { sampler_name: "euler" } },
+    12: {
+      class_type: "CFGGuider",
+      inputs: {
+        model: ["4", 0],
+        positive: ["7", 0],
+        negative: ["8", 0],
+        cfg: F2_CFG,
+      },
+    },
+    13: {
+      class_type: "EmptySD3LatentImage",
+      inputs: { width: WIDTH, height: HEIGHT, batch_size: 1 },
+    },
+    14: {
+      class_type: "SamplerCustomAdvanced",
+      inputs: {
+        noise: ["10", 0],
+        guider: ["12", 0],
+        sampler: ["11", 0],
+        sigmas: ["9", 0],
+        latent_image: ["13", 0],
+      },
+    },
+    15: {
+      class_type: "VAEDecode",
+      inputs: { samples: ["14", 0], vae: ["6", 0] },
+    },
+    16: {
+      class_type: "SaveImage",
+      inputs: { filename_prefix: "art_pipeline/flux2", images: ["15", 0] },
+    },
   };
 }
 
@@ -301,7 +439,9 @@ async function cooldownPause(ms) {
     return;
   }
   while (remain > 0) {
-    process.stdout.write(`\r  cooldown ${String(remain).padStart(2, " ")}s … (let CPU/GPU settle) `);
+    process.stdout.write(
+      `\r  cooldown ${String(remain).padStart(2, " ")}s … (let CPU/GPU settle) `,
+    );
     await sleep(1000);
     remain -= 1;
   }
@@ -314,7 +454,9 @@ async function generate(promptText, seed) {
   if (UI_FORMAT && FLUX2) {
     graph = loadUiGraph(promptText, seed); // execute the version-controlled workflow FILE
   } else {
-    graph = FLUX2 ? buildGraphFlux2(promptText, seed) : buildGraph(promptText, seed);
+    graph = FLUX2
+      ? buildGraphFlux2(promptText, seed)
+      : buildGraph(promptText, seed);
     if (UPSCALE) appendUpscale(graph, FLUX2 ? "15" : "11", FLUX2 ? "16" : "12"); // gen→upscale in one graph
   }
   const res = await fetch(`${URL_BASE}/prompt`, {
@@ -324,27 +466,41 @@ async function generate(promptText, seed) {
   });
   if (!res.ok) throw new Error(`/prompt ${res.status}: ${await res.text()}`);
   const { prompt_id, node_errors } = await res.json();
-  if (node_errors && Object.keys(node_errors).length) throw new Error(`node_errors: ${JSON.stringify(node_errors)}`);
+  if (node_errors && Object.keys(node_errors).length)
+    throw new Error(`node_errors: ${JSON.stringify(node_errors)}`);
 
   // poll /history until this prompt has outputs (or errors out)
   const deadline = Date.now() + 8 * 60 * 1000;
   const t0 = Date.now();
   while (Date.now() < deadline) {
     await sleep(2000);
-    process.stdout.write(`\r    …rendering ${((Date.now() - t0) / 1000).toFixed(0)}s   `);
-    const h = await fetch(`${URL_BASE}/history/${prompt_id}`).then((r) => r.json());
+    process.stdout.write(
+      `\r    …rendering ${((Date.now() - t0) / 1000).toFixed(0)}s   `,
+    );
+    const h = await fetch(`${URL_BASE}/history/${prompt_id}`).then((r) =>
+      r.json(),
+    );
     const entry = h[prompt_id];
     if (!entry) continue;
     const status = entry.status?.status_str;
-    if (status === "error") throw new Error(`ComfyUI execution error (see ComfyUI logs). messages: ${JSON.stringify(entry.status?.messages)}`);
-    const out = entry.outputs && Object.values(entry.outputs).find((o) => o.images?.length);
+    if (status === "error")
+      throw new Error(
+        `ComfyUI execution error (see ComfyUI logs). messages: ${JSON.stringify(entry.status?.messages)}`,
+      );
+    const out =
+      entry.outputs &&
+      Object.values(entry.outputs).find((o) => o.images?.length);
     if (out) return out.images[0]; // { filename, subfolder, type }
   }
   throw new Error(`timed out waiting for ${prompt_id}`);
 }
 
 async function fetchImage(img) {
-  const q = new URLSearchParams({ filename: img.filename, subfolder: img.subfolder || "", type: img.type || "output" });
+  const q = new URLSearchParams({
+    filename: img.filename,
+    subfolder: img.subfolder || "",
+    type: img.type || "output",
+  });
   const r = await fetch(`${URL_BASE}/view?${q}`);
   if (!r.ok) throw new Error(`/view ${r.status}`);
   return Buffer.from(await r.arrayBuffer());
@@ -380,16 +536,32 @@ const cfgParts = [
   `${WIDTH}x${HEIGHT}`,
   `${STEPS} steps`,
   ...(FLUX2 ? [`cfg=${F2_CFG}`] : []),
-  ...(UPSCALE ? [`upscale=${UPSCALE_MODEL} → ${UP_W}x${UP_H}${UPSCALE_SCALE !== 1 ? ` (canvas ×${UPSCALE_SCALE})` : ""}`] : []),
-  ...(UI_FORMAT && FLUX2 ? [`ui-format=${WF_FILE()} (file's steps/cfg/size win)`] : []),
-  ...(COOLDOWN_MS ? [`cooldown=${Math.round(COOLDOWN_MS / 1000)}s`] : ["cooldown=off"]),
+  ...(UPSCALE
+    ? [
+        `upscale=${UPSCALE_MODEL} → ${UP_W}x${UP_H}${UPSCALE_SCALE !== 1 ? ` (canvas ×${UPSCALE_SCALE})` : ""}`,
+      ]
+    : []),
+  ...(UI_FORMAT && FLUX2
+    ? [`ui-format=${WF_FILE()} (file's steps/cfg/size win)`]
+    : []),
+  ...(COOLDOWN_MS
+    ? [`cooldown=${Math.round(COOLDOWN_MS / 1000)}s`]
+    : ["cooldown=off"]),
 ];
 // confirm ComfyUI is reachable + the model exists
 if (!DRY) {
   let stats;
-  try { stats = await fetch(`${URL_BASE}/system_stats`).then((r) => r.json()); }
-  catch { console.error(`✗ Can't reach ComfyUI at ${URL_BASE}. Start ComfyUI, then retry. (override with COMFYUI_URL)`); process.exit(1); }
-  console.log(`ComfyUI ${stats?.system?.comfyui_version ?? "?"} @ ${URL_BASE} · ${cfgParts.join(" · ")}`);
+  try {
+    stats = await fetch(`${URL_BASE}/system_stats`).then((r) => r.json());
+  } catch {
+    console.error(
+      `✗ Can't reach ComfyUI at ${URL_BASE}. Start ComfyUI, then retry. (override with COMFYUI_URL)`,
+    );
+    process.exit(1);
+  }
+  console.log(
+    `ComfyUI ${stats?.system?.comfyui_version ?? "?"} @ ${URL_BASE} · ${cfgParts.join(" · ")}`,
+  );
 } else {
   console.log(`DRY RUN @ ${URL_BASE} · ${cfgParts.join(" · ")}`);
 }
@@ -398,8 +570,13 @@ const onlySet = parseOnlySlides(opt("only", ""));
 // Targeting (cover is NOT special-cased — it generates by need, like any slide):
 const FORCE = flags.has("--all") || flags.has("--force") || COMPARE;
 const artExists = (s) => slideBackgroundExists(RENDERER, s);
-const targets = selectArtSlides(post.slides, { onlySet, force: FORCE, artExists });
-if (onlySet) console.log(`(regenerating only slide(s): ${[...onlySet].join(", ")})`);
+const targets = selectArtSlides(post.slides, {
+  onlySet,
+  force: FORCE,
+  artExists,
+});
+if (onlySet)
+  console.log(`(regenerating only slide(s): ${[...onlySet].join(", ")})`);
 const compareMode = FLUX2 && COMPARE;
 const outPrefix = compareMode ? `${prefix}_flux2` : prefix;
 const destDir = path.join(RENDERER, "public", "backgrounds", outPrefix);
@@ -418,11 +595,16 @@ for (let ti = 0; ti < targets.length; ti++) {
   });
   const seed = postBaseSeed + slide.slide;
   if (DRY) {
-    console.log(`\n[slide ${slide.slide} ${slide.role}] seed=${seed}\n  ${promptText}`);
-    if (UI_FORMAT && FLUX2) { // validate the file→API conversion + patching without submitting
+    console.log(
+      `\n[slide ${slide.slide} ${slide.role}] seed=${seed}\n  ${promptText}`,
+    );
+    if (UI_FORMAT && FLUX2) {
+      // validate the file→API conversion + patching without submitting
       const g = loadUiGraph(promptText, seed);
       const kinds = Object.values(g).map((n) => n.class_type);
-      console.log(`  (ui-format dry-check: ${kinds.length} nodes — ${kinds.join(", ")})`);
+      console.log(
+        `  (ui-format dry-check: ${kinds.length} nodes — ${kinds.join(", ")})`,
+      );
     }
     continue;
   }
@@ -431,14 +613,22 @@ for (let ti = 0; ti < targets.length; ti++) {
   const t0 = Date.now();
   // In-place elapsed-seconds counter while ComfyUI renders (each FLUX gen is slow on 8GB).
   const tick = process.stdout.isTTY
-    ? setInterval(() => process.stdout.write(`\r  slide ${slide.slide} (${slide.role})… ${Math.round((Date.now() - t0) / 1000)}s  `), 1000)
+    ? setInterval(
+        () =>
+          process.stdout.write(
+            `\r  slide ${slide.slide} (${slide.role})… ${Math.round((Date.now() - t0) / 1000)}s  `,
+          ),
+        1000,
+      )
     : null;
   try {
     const img = await generate(promptText, seed);
     writeFileSync(path.join(destDir, destName), await fetchImage(img));
   } catch (e) {
     if (tick) clearInterval(tick);
-    process.stdout.write(`\r  slide ${slide.slide} (${slide.role})… ✗ ${e.message}        \n`);
+    process.stdout.write(
+      `\r  slide ${slide.slide} (${slide.role})… ✗ ${e.message}        \n`,
+    );
     continue;
   }
   if (tick) clearInterval(tick);
@@ -448,30 +638,41 @@ for (let ti = 0; ti < targets.length; ti++) {
     slide.background_asset = assetPath;
     slide.asset_status = "generated";
     const modelName = FLUX2 ? F2_MODEL : MODEL;
-    const source = FLUX2 ? "FLUX.2 [klein] 4B (GGUF) via local ComfyUI" : "FLUX.1-schnell (GGUF) via local ComfyUI";
+    const source = FLUX2
+      ? "FLUX.2 [klein] 4B (GGUF) via local ComfyUI"
+      : "FLUX.1-schnell (GGUF) via local ComfyUI";
     if (!post.asset_licenses.some((l) => l.asset === assetPath)) {
       post.asset_licenses.push({
         asset: assetPath,
         source,
-        license_or_terms: "Apache-2.0 — commercial use allowed; text-free generated background.",
+        license_or_terms:
+          "Apache-2.0 — commercial use allowed; text-free generated background.",
         commercial_use_allowed: true,
         disclosure_required: false,
         notes: `Generated locally with ${modelName}; no rendered text, no logos.`,
       });
     }
   }
-  process.stdout.write(`\r  slide ${slide.slide} (${slide.role})… ✓ ${destName} (${((Date.now() - t0) / 1000).toFixed(0)}s)        \n`);
+  process.stdout.write(
+    `\r  slide ${slide.slide} (${slide.role})… ✓ ${destName} (${((Date.now() - t0) / 1000).toFixed(0)}s)        \n`,
+  );
   n++;
 }
 
 if (!DRY) {
   if (compareMode) {
-    console.log(`\n✓ Generated ${n}/${targets.length} FLUX.2 background(s) → public/backgrounds/${outPrefix}/ (comparison set; post JSON untouched).`);
-    console.log(`  Compare against the live set in public/backgrounds/${prefix}/.`);
+    console.log(
+      `\n✓ Generated ${n}/${targets.length} FLUX.2 background(s) → public/backgrounds/${outPrefix}/ (comparison set; post JSON untouched).`,
+    );
+    console.log(
+      `  Compare against the live set in public/backgrounds/${prefix}/.`,
+    );
   } else {
     writePostJson(postPath, post);
     const which = FLUX2 ? "FLUX.2 klein" : "FLUX.1-schnell";
-    console.log(`\n✓ Generated ${n}/${targets.length} ${which} background(s) → public/backgrounds/${prefix}/ (asset_status=generated, licenses logged).`);
+    console.log(
+      `\n✓ Generated ${n}/${targets.length} ${which} background(s) → public/backgrounds/${prefix}/ (asset_status=generated, licenses logged).`,
+    );
     console.log(`  Next: bun run export -- ${key}`);
   }
 }

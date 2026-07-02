@@ -1,13 +1,13 @@
 import { useRef } from "react";
-import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
+import { Nav } from "../components/Nav";
+import { useReveal } from "../lib/motion";
+import { CTA } from "../sections/CTA";
 import { Hero } from "../sections/Hero";
-import { Thesis } from "../sections/Thesis";
 import { Pillars } from "../sections/Pillars";
 import { Pipeline } from "../sections/Pipeline";
 import { Story } from "../sections/Story";
-import { CTA } from "../sections/CTA";
-import { useReveal } from "../lib/motion";
+import { Thesis } from "../sections/Thesis";
 
 export function Home() {
   const root = useRef<HTMLDivElement>(null);

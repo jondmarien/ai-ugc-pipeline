@@ -12,7 +12,12 @@ import { RENDERER_ROOT } from "./paths.mjs";
  * @param {{ scriptBasename: string, args?: string[], env?: Record<string,string>, packagesHint?: string }} opts
  * @returns {number} exit code
  */
-export function runPythonScript({ scriptBasename, args = [], env, packagesHint }) {
+export function runPythonScript({
+  scriptBasename,
+  args = [],
+  env,
+  packagesHint,
+}) {
   const script = path.join(RENDERER_ROOT, "scripts", scriptBasename);
   const venvPy =
     process.platform === "win32"
@@ -24,14 +29,19 @@ export function runPythonScript({ scriptBasename, args = [], env, packagesHint }
   if (existsSync(venvPy)) {
     cmd = venvPy;
     cmdArgs = [script, ...args];
-  } else if (spawnSync(process.platform === "win32" ? "where" : "which", ["uv"]).status === 0) {
+  } else if (
+    spawnSync(process.platform === "win32" ? "where" : "which", ["uv"])
+      .status === 0
+  ) {
     cmd = "uv";
     cmdArgs = ["run", "python", script, ...args];
   } else {
     cmd = process.platform === "win32" ? "python" : "python3";
     cmdArgs = [script, ...args];
     if (packagesHint) {
-      console.warn(`⚠ No .venv or uv — using system python. Recommended: ${packagesHint}`);
+      console.warn(
+        `⚠ No .venv or uv — using system python. Recommended: ${packagesHint}`,
+      );
     }
   }
 

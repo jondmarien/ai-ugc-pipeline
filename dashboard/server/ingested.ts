@@ -3,15 +3,19 @@ import path from "node:path";
 import { INGESTED_DIR } from "./paths";
 
 export type IngestedDoc = {
-  fileName: string; date: string | null; title: string;
-  handle: string | null; sourceUrl: string | null; coverHook: string | null;
+  fileName: string;
+  date: string | null;
+  title: string;
+  handle: string | null;
+  sourceUrl: string | null;
+  coverHook: string | null;
   mtimeMs: number;
 };
 
 const FILE_RE = /^(\d{4}-\d{2}-\d{2})_.+\.md$/;
 
 export function parseHandle(line: string): string | null {
-  const m = line.match(/\*\*Handle:\*\*\s*(@[\w.\-]+)/);
+  const m = line.match(/\*\*Handle:\*\*\s*(@[\w.-]+)/);
   return m ? m[1] : null;
 }
 
@@ -32,7 +36,8 @@ export function parseCoverHook(md: string): string | null {
 
 export function listIngested(dir: string = INGESTED_DIR): IngestedDoc[] {
   if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir)
+  return fs
+    .readdirSync(dir)
     .filter((f) => FILE_RE.test(f)) // excludes INDEX.md and any non-dated file
     .map((fileName) => {
       const full = path.join(dir, fileName);
@@ -46,7 +51,7 @@ export function listIngested(dir: string = INGESTED_DIR): IngestedDoc[] {
         date: fileName.match(FILE_RE)?.[1] ?? null,
         title,
         handle: parseHandle(metaLine),
-        sourceUrl: url && url.startsWith("http") ? url : null,
+        sourceUrl: url?.startsWith("http") ? url : null,
         coverHook: parseCoverHook(md),
         mtimeMs: fs.statSync(full).mtimeMs,
       };

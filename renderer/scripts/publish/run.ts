@@ -1,13 +1,13 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
-import { loadPost, outputDir, slideFilename } from "../lib.ts";
 import { readStatus, setStatus } from "../lib/post-status.mjs";
-import { readState, recordResult, type PublishResult } from "./state";
-import type { PlatformAdapter, RenderPackage, AdapterResult } from "./types";
-import { youtubeAdapter } from "./adapters/youtube";
-import { tiktokAdapter } from "./adapters/tiktok";
+import { loadPost, outputDir, slideFilename } from "../lib.ts";
 import { facebookAdapter } from "./adapters/facebook";
 import { instagramAdapter } from "./adapters/instagram";
+import { tiktokAdapter } from "./adapters/tiktok";
+import { youtubeAdapter } from "./adapters/youtube";
+import { type PublishResult, readState, recordResult } from "./state";
+import type { AdapterResult, PlatformAdapter, RenderPackage } from "./types";
 
 // The publish gate: ONLY `generated` posts may publish. A post reaches `generated` by being
 // human-approved AND rendered (`bun run pipeline` flips approved → generated after a successful
@@ -62,10 +62,14 @@ export function planPublish(
     const alreadyPublished = state[platform]?.status === "published";
     if (alreadyPublished && !force) {
       skipped.push(platform);
-      summary.push(`  • ${platform}: SKIP (already published; use --force to re-publish)`);
+      summary.push(
+        `  • ${platform}: SKIP (already published; use --force to re-publish)`,
+      );
     } else {
       toRun.push(platform);
-      summary.push(`  • ${platform}: publish${alreadyPublished ? " (FORCE re-publish)" : ""}`);
+      summary.push(
+        `  • ${platform}: publish${alreadyPublished ? " (FORCE re-publish)" : ""}`,
+      );
     }
   }
 
@@ -76,10 +80,16 @@ export function planPublish(
 // IO helpers
 // ---------------------------------------------------------------------------
 
-function resolvePackage(key: string): { canonicalKey: string; dir: string; pkg: RenderPackage } {
+function resolvePackage(key: string): {
+  canonicalKey: string;
+  dir: string;
+  pkg: RenderPackage;
+} {
   const post = loadPost(key);
   const dir = outputDir(post);
-  const reelName = post.video?.export_name ?? `${post.upload_package.filename_prefix}_reel.mp4`;
+  const reelName =
+    post.video?.export_name ??
+    `${post.upload_package.filename_prefix}_reel.mp4`;
   const slides = post.slides.map((_, i) => ({
     path: path.join(dir, slideFilename(post, i)),
     altText: post.alt_text[i] ?? "",
@@ -89,7 +99,11 @@ function resolvePackage(key: string): { canonicalKey: string; dir: string; pkg: 
     dir,
     reelPath: path.join(dir, reelName),
     slides,
-    post: { post_id: post.post_id, caption: post.caption, hashtags: post.hashtags },
+    post: {
+      post_id: post.post_id,
+      caption: post.caption,
+      hashtags: post.hashtags,
+    },
   };
   return { canonicalKey: post.post_id, dir, pkg };
 }
@@ -108,9 +122,16 @@ function toStateResult(r: AdapterResult): PublishResult {
 
 function logResult(r: AdapterResult): void {
   if (r.status === "published") {
-    console.log(`  ✓ ${r.platform}: published${r.url ? ` → ${r.url}` : ""}${r.privacy ? ` (${r.privacy})` : ""}`);
+    console.log(
+      `  ✓ ${r.platform}: published${r.url ? ` → ${r.url}` : ""}${r.privacy ? ` (${r.privacy})` : ""}`,
+    );
   } else if (r.status === "manual") {
-    console.log(`  • ${r.platform}: manual\n${(r.message ?? "").split("\n").map((l) => `      ${l}`).join("\n")}`);
+    console.log(
+      `  • ${r.platform}: manual\n${(r.message ?? "")
+        .split("\n")
+        .map((l) => `      ${l}`)
+        .join("\n")}`,
+    );
   } else {
     console.log(`  ✗ ${r.platform}: FAILED — ${r.error ?? "unknown error"}`);
   }
@@ -134,19 +155,29 @@ export type RunOpts = { dryRun?: boolean; force?: boolean; yes?: boolean };
  * adapter independently, records publish.state.json, and flips the post to `upload_ready`
  * only when every requested platform succeeded.
  */
-export async function runPublish(key: string, platforms: string[], opts: RunOpts = {}): Promise<void> {
+export async function runPublish(
+  key: string,
+  platforms: string[],
+  opts: RunOpts = {},
+): Promise<void> {
   const { canonicalKey, dir, pkg } = resolvePackage(key);
   const status = readStatus(canonicalKey);
   const state = readState(dir);
 
   // planPublish throws on the approval gate — let it propagate to a clear CLI error.
-  const plan = planPublish(canonicalKey, platforms, { status, state, force: opts.force ?? false });
+  const plan = planPublish(canonicalKey, platforms, {
+    status,
+    state,
+    force: opts.force ?? false,
+  });
 
   console.log(`\nPublish plan for ${canonicalKey} (status: ${status}):`);
   for (const line of plan.summary) console.log(line);
 
   if (plan.toRun.length === 0) {
-    console.log("\nNothing to publish — all requested platforms are already published (use --force to re-publish).");
+    console.log(
+      "\nNothing to publish — all requested platforms are already published (use --force to re-publish).",
+    );
     return;
   }
 
@@ -156,7 +187,9 @@ export async function runPublish(key: string, platforms: string[], opts: RunOpts
   }
 
   if (!opts.yes) {
-    const ok = await confirmPrompt(`\nPublish to ${plan.toRun.join(", ")}? [y/N] `);
+    const ok = await confirmPrompt(
+      `\nPublish to ${plan.toRun.join(", ")}? [y/N] `,
+    );
     if (!ok) {
       console.log("Aborted. Nothing was posted.");
       return;
@@ -166,14 +199,18 @@ export async function runPublish(key: string, platforms: string[], opts: RunOpts
   // API adapters need the reel file; the manual (instagram) adapter just points at it.
   const needsReel = plan.toRun.some((p) => ADAPTERS[p]?.kind === "api");
   if (needsReel && !existsSync(pkg.reelPath)) {
-    throw new Error(`Reel not found: ${pkg.reelPath} — render it first (bun run pipeline -- ${canonicalKey}).`);
+    throw new Error(
+      `Reel not found: ${pkg.reelPath} — render it first (bun run pipeline -- ${canonicalKey}).`,
+    );
   }
 
   const results: AdapterResult[] = [];
   for (const platform of plan.toRun) {
     const adapter = ADAPTERS[platform];
     if (!adapter) {
-      console.warn(`  ⚠ unknown platform "${platform}" — skipping (known: ${Object.keys(ADAPTERS).join(", ")})`);
+      console.warn(
+        `  ⚠ unknown platform "${platform}" — skipping (known: ${Object.keys(ADAPTERS).join(", ")})`,
+      );
       continue;
     }
     const r = await adapter.publish(pkg, { dryRun: false }); // independent; adapters catch their own errors
@@ -183,11 +220,16 @@ export async function runPublish(key: string, platforms: string[], opts: RunOpts
   }
 
   // Flip to upload_ready only when every adapter we ran did not fail.
-  const allOk = results.length > 0 && results.every((r) => r.status !== "failed");
+  const allOk =
+    results.length > 0 && results.every((r) => r.status !== "failed");
   if (allOk) {
-    const t = setStatus(canonicalKey, "upload_ready", { onlyFrom: PUBLISHABLE_STATUSES });
+    const t = setStatus(canonicalKey, "upload_ready", {
+      onlyFrom: PUBLISHABLE_STATUSES,
+    });
     if (t.changed) console.log(`\n✓ status: ${t.old} → upload_ready`);
   } else {
-    console.log(`\n⚠ Some platforms failed; status left at "${status}". Fix and re-run (published platforms are skipped).`);
+    console.log(
+      `\n⚠ Some platforms failed; status left at "${status}". Fix and re-run (published platforms are skipped).`,
+    );
   }
 }

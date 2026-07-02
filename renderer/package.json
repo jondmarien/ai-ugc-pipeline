@@ -5,6 +5,8 @@
   "type": "module",
   "description": "Optional React/Playwright + Remotion rendering layer for the ai-ugc-pipeline. Turns approved post JSON into deterministic 1080x1350 carousel PNGs and 1080x1920 Reel MP4s. Runs on Bun.",
   "scripts": {
+    "lint": "bunx --bun biome check .",
+    "lint:fix": "bunx --bun biome check --write .",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --port 4317 --strictPort",

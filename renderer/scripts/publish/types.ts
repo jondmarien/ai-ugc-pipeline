@@ -1,8 +1,8 @@
 // A resolved render package + the post data adapters need.
 export type RenderPackage = {
-  key: string;            // e.g. "2026-06-11_bluehammer-cve-2026-33825"
-  dir: string;            // absolute path to pipeline/renders/<key>/
-  reelPath: string;       // absolute path to <key>_reel.mp4
+  key: string; // e.g. "2026-06-11_bluehammer-cve-2026-33825"
+  dir: string; // absolute path to pipeline/renders/<key>/
+  reelPath: string; // absolute path to <key>_reel.mp4
   slides: Array<{ path: string; altText: string }>; // carousel PNGs in order, each with its alt text
   post: {
     post_id: string;
@@ -19,14 +19,14 @@ export type AdapterResult = {
   id?: string | null;
   url?: string | null;
   privacy?: string;
-  message?: string;       // human-facing note (e.g. the manual checklist)
+  message?: string; // human-facing note (e.g. the manual checklist)
   error?: string;
 };
 
 export type PublishOpts = { dryRun?: boolean };
 
 export interface PlatformAdapter {
-  name: string;                 // "instagram" | "youtube" | "tiktok"
+  name: string; // "instagram" | "youtube" | "tiktok"
   kind: "api" | "manual";
   publish(pkg: RenderPackage, opts: PublishOpts): Promise<AdapterResult>;
 }

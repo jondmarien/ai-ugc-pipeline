@@ -17,70 +17,130 @@ import { fileURLToPath } from "node:url";
 const RENDERER = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
 const REPO = path.resolve(RENDERER, "..");
 
-const PILLARS = ["offensive_ai", "model_security", "data_leakage", "defensive_ai", "governance", "myth_busting"];
+const PILLARS = [
+  "offensive_ai",
+  "model_security",
+  "data_leakage",
+  "defensive_ai",
+  "governance",
+  "myth_busting",
+];
 
 const argv = process.argv.slice(2);
 const flags = new Set(argv.filter((a) => a.startsWith("--")));
 const pos = argv.filter((a) => !a.startsWith("--"));
 const idea = pos[0];
 const pillar = pos[1];
-const date = pos[2] && /^\d{4}-\d{2}-\d{2}$/.test(pos[2]) ? pos[2] : new Date().toISOString().slice(0, 10);
+const date =
+  pos[2] && /^\d{4}-\d{2}-\d{2}$/.test(pos[2])
+    ? pos[2]
+    : new Date().toISOString().slice(0, 10);
 const MODES = ["block", "word", "highlight"];
-const captionsFlag = [...flags].find((f) => f.startsWith("--captions="))?.split("=")[1] ?? "highlight";
+const captionsFlag =
+  [...flags].find((f) => f.startsWith("--captions="))?.split("=")[1] ??
+  "highlight";
 const captions = MODES.includes(captionsFlag) ? captionsFlag : "highlight";
 const VOICE = ["none", "voxcpm2", "voxcpm2-0.5b", "bark", "http", "file"];
 const MUSIC = ["none", "free", "licensed", "generated", "file"];
-const voiceFlag = [...flags].find((f) => f.startsWith("--voice="))?.split("=")[1] ?? "voxcpm2";
-const musicFlag = [...flags].find((f) => f.startsWith("--music="))?.split("=")[1] ?? "none";
+const voiceFlag =
+  [...flags].find((f) => f.startsWith("--voice="))?.split("=")[1] ?? "voxcpm2";
+const musicFlag =
+  [...flags].find((f) => f.startsWith("--music="))?.split("=")[1] ?? "none";
 const voice = VOICE.includes(voiceFlag) ? voiceFlag : "voxcpm2";
 const music = MUSIC.includes(musicFlag) ? musicFlag : "none";
 const THEMES = ["offensive", "defensive", "hacking", "purple-team", "ai"];
-const themeFlag = [...flags].find((f) => f.startsWith("--theme="))?.split("=")[1] ?? "";
+const themeFlag =
+  [...flags].find((f) => f.startsWith("--theme="))?.split("=")[1] ?? "";
 const theme = THEMES.includes(themeFlag) ? themeFlag : ""; // "" = let the agent pick from the topic
 // Optional FLUX.2 style fusion (a second aesthetic blended with the house style on every
 // background). Decided at creation like theme; forwarded to `bun run new --style-fusion=`. "" = none.
-const styleFusion = [...flags].find((f) => f.startsWith("--style-fusion="))?.split("=").slice(1).join("=").trim() ?? "";
+const styleFusion =
+  [...flags]
+    .find((f) => f.startsWith("--style-fusion="))
+    ?.split("=")
+    .slice(1)
+    .join("=")
+    .trim() ?? "";
 const multipleCaptions = flags.has("--multiple-captions");
 // Dynamic slide count: --slides=N (default 8, range 3–20). Forwarded to `bun run new`.
-const SLIDES_DEFAULT = 8, SLIDES_MIN = 3, SLIDES_MAX = 20;
-const slidesFlag = [...flags].find((f) => f.startsWith("--slides="))?.split("=")[1];
-const slideCount = slidesFlag === undefined ? SLIDES_DEFAULT : Number(slidesFlag);
+const SLIDES_DEFAULT = 8,
+  SLIDES_MIN = 3,
+  SLIDES_MAX = 20;
+const slidesFlag = [...flags]
+  .find((f) => f.startsWith("--slides="))
+  ?.split("=")[1];
+const slideCount =
+  slidesFlag === undefined ? SLIDES_DEFAULT : Number(slidesFlag);
 
 function die(msg) {
   if (msg) console.error(`\n✗ ${msg}`);
-  console.error(`\nUsage:\n  bun run draft -- "<idea>" <pillar> [YYYY-MM-DD] [flags]\n`);
+  console.error(
+    `\nUsage:\n  bun run draft -- "<idea>" <pillar> [YYYY-MM-DD] [flags]\n`,
+  );
   console.error(`Pillars (pick one for <pillar>):`);
   for (const p of PILLARS) console.error(`  • ${p}`);
   console.error(`\nFlags:`);
-  console.error(`  --slides=N                              slide count, ${SLIDES_MIN}–${SLIDES_MAX} (default ${SLIDES_DEFAULT})`);
-  console.error(`  --theme=offensive|defensive|hacking|purple-team|ai   brand theme (red / blue / green / purple-team-purple / AI-orange; default from pillar)`);
-  console.error(`  --style-fusion="X meets Y"             optional FLUX.2 style fusion on every background (e.g. "ancient marble meets cyberpunk neon"); omit for the plain house style`);
-  console.error(`  --captions=block|word|highlight        reel subtitle animation (default highlight)`);
-  console.error(`  --voice=none|voxcpm2|voxcpm2-0.5b|bark|http|file   narration (default voxcpm2 = 2B; use none for a silent reel)`);
-  console.error(`  --music=none|free|licensed|generated|file          music bed (default none)`);
-  console.error(`  --multiple-captions                      scaffold per-slide Instagram captions (opt-in; default off)`);
+  console.error(
+    `  --slides=N                              slide count, ${SLIDES_MIN}–${SLIDES_MAX} (default ${SLIDES_DEFAULT})`,
+  );
+  console.error(
+    `  --theme=offensive|defensive|hacking|purple-team|ai   brand theme (red / blue / green / purple-team-purple / AI-orange; default from pillar)`,
+  );
+  console.error(
+    `  --style-fusion="X meets Y"             optional FLUX.2 style fusion on every background (e.g. "ancient marble meets cyberpunk neon"); omit for the plain house style`,
+  );
+  console.error(
+    `  --captions=block|word|highlight        reel subtitle animation (default highlight)`,
+  );
+  console.error(
+    `  --voice=none|voxcpm2|voxcpm2-0.5b|bark|http|file   narration (default voxcpm2 = 2B; use none for a silent reel)`,
+  );
+  console.error(
+    `  --music=none|free|licensed|generated|file          music bed (default none)`,
+  );
+  console.error(
+    `  --multiple-captions                      scaffold per-slide Instagram captions (opt-in; default off)`,
+  );
   console.error(`  --carousel-only | --no-render | --yolo | --dry-run`);
   console.error(`\nExample:`);
-  console.error(`  bun run draft -- "AI agents leaking RAG data through tool calls" model_security --voice=voxcpm2 --captions=highlight\n`);
+  console.error(
+    `  bun run draft -- "AI agents leaking RAG data through tool calls" model_security --voice=voxcpm2 --captions=highlight\n`,
+  );
   process.exit(1);
 }
 
 if (!idea) die("Missing <idea>.");
-if (!pillar || !PILLARS.includes(pillar)) die(`Missing/invalid <pillar>: "${pillar ?? ""}".`);
-if (slidesFlag !== undefined && (!Number.isInteger(slideCount) || slideCount < SLIDES_MIN || slideCount > SLIDES_MAX)) {
-  die(`--slides "${slidesFlag}" must be an integer in [${SLIDES_MIN}, ${SLIDES_MAX}] (default ${SLIDES_DEFAULT}).`);
+if (!pillar || !PILLARS.includes(pillar))
+  die(`Missing/invalid <pillar>: "${pillar ?? ""}".`);
+if (
+  slidesFlag !== undefined &&
+  (!Number.isInteger(slideCount) ||
+    slideCount < SLIDES_MIN ||
+    slideCount > SLIDES_MAX)
+) {
+  die(
+    `--slides "${slidesFlag}" must be an integer in [${SLIDES_MIN}, ${SLIDES_MAX}] (default ${SLIDES_DEFAULT}).`,
+  );
 }
 
 // Describe the slide arc for the content prompt. n=8 is the canonical named arc;
 // other counts keep cover/takeaway/cta as bookends and fill the middle (generic body
 // "point" slides past the 5 named middle roles).
-const slideArc = slideCount === 8
-  ? "the 8-slide arc (cover, context, risk, mechanism, failure_point, defense, takeaway, cta)"
-  : `a ${slideCount}-slide arc: slide 1 = cover, the last slide = cta, slide ${slideCount - 1} = takeaway, and the ${slideCount - 2} middle slides drawn from [context, risk, mechanism, failure_point, defense] then generic "point" body slides if more are needed`;
+const slideArc =
+  slideCount === 8
+    ? "the 8-slide arc (cover, context, risk, mechanism, failure_point, defense, takeaway, cta)"
+    : `a ${slideCount}-slide arc: slide 1 = cover, the last slide = cta, slide ${slideCount - 1} = takeaway, and the ${slideCount - 2} middle slides drawn from [context, risk, mechanism, failure_point, defense] then generic "point" body slides if more are needed`;
 
 // Resolve `claude` on PATH up front for a clear error.
-const claudeCheck = spawnSync(process.platform === "win32" ? "where" : "which", ["claude"], { encoding: "utf8" });
-if (claudeCheck.status !== 0) die("`claude` CLI not found on PATH. Install Claude Code, or use the interactive /draft-post command.");
+const claudeCheck = spawnSync(
+  process.platform === "win32" ? "where" : "which",
+  ["claude"],
+  { encoding: "utf8" },
+);
+if (claudeCheck.status !== 0)
+  die(
+    "`claude` CLI not found on PATH. Install Claude Code, or use the interactive /draft-post command.",
+  );
 
 const renderStep = flags.has("--no-render")
   ? "Do NOT render — stop after validate."
@@ -127,7 +187,16 @@ const prompt = [
 
 const allowed = "Skill WebSearch WebFetch Read Write Edit Glob Grep Bash";
 const permMode = flags.has("--yolo") ? "bypassPermissions" : "acceptEdits";
-const claudeArgs = ["-p", prompt, "--permission-mode", permMode, "--allowedTools", allowed, "--add-dir", REPO];
+const claudeArgs = [
+  "-p",
+  prompt,
+  "--permission-mode",
+  permMode,
+  "--allowedTools",
+  allowed,
+  "--add-dir",
+  REPO,
+];
 
 if (flags.has("--dry-run")) {
   console.log("DRY RUN — would execute from", REPO, ":\n");
@@ -136,12 +205,17 @@ if (flags.has("--dry-run")) {
   console.log(`  --permission-mode ${permMode} \\`);
   console.log(`  --allowedTools "${allowed}" \\`);
   console.log(`  --add-dir "${REPO}"`);
-  console.log("\n--- prompt preview ---\n" + prompt + "\n--- end ---");
+  console.log(`\n--- prompt preview ---\n${prompt}\n--- end ---`);
   process.exit(0);
 }
 
 console.log(`Drafting "${idea}" (${pillar}, ${date}) via claude + skills…\n`);
-const run = spawnSync("claude", claudeArgs, { cwd: REPO, stdio: ["inherit", "pipe", "inherit"], encoding: "utf8", shell: process.platform === "win32" });
+const run = spawnSync("claude", claudeArgs, {
+  cwd: REPO,
+  stdio: ["inherit", "pipe", "inherit"],
+  encoding: "utf8",
+  shell: process.platform === "win32",
+});
 
 const out = run.stdout ?? "";
 process.stdout.write(out);
@@ -153,16 +227,22 @@ if (run.status !== 0) {
 // Parse the POST_KEY the agent printed, and confirm the file exists.
 const m = out.match(/POST_KEY=([0-9]{4}-[0-9]{2}-[0-9]{2}_[a-z0-9-]+)/);
 if (!m) {
-  console.error("\n⚠ Could not find POST_KEY in output. Check renderer/content/posts/ and render manually with bun run export/package/reel.");
+  console.error(
+    "\n⚠ Could not find POST_KEY in output. Check renderer/content/posts/ and render manually with bun run export/package/reel.",
+  );
   process.exit(2);
 }
 const key = m[1];
 const jsonPath = path.join(RENDERER, "content", "posts", `${key}.json`);
 if (!existsSync(jsonPath)) {
-  console.error(`\n⚠ ${jsonPath} not found despite POST_KEY=${key}. Aborting render.`);
+  console.error(
+    `\n⚠ ${jsonPath} not found despite POST_KEY=${key}. Aborting render.`,
+  );
   process.exit(2);
 }
 
 console.log(`\n✓ Draft written + validated: ${key}`);
-console.log(`  Review renderer/content/posts/${key}.json — confirm sources are real and claims are tagged before posting.`);
+console.log(
+  `  Review renderer/content/posts/${key}.json — confirm sources are real and claims are tagged before posting.`,
+);
 console.log(`  Rendered output (if not --no-render): pipeline/renders/${key}/`);

@@ -1,4 +1,4 @@
-import { test, expect } from "bun:test";
+import { expect, test } from "bun:test";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -16,9 +16,24 @@ function makePost(prefix: string) {
     canvas: { width: 1080, height: 1350 },
     upload_package: { filename_prefix: prefix },
     slides: [
-      { slide: 1, role: "cover", asset_status: "needed", visual_prompt: "abstract dark tech cover" },
-      { slide: 2, role: "context", asset_status: "needed", visual_prompt: "abstract dark tech body" },
-      { slide: 3, role: "takeaway", asset_status: "existing", background_asset: "/backgrounds/x/03_takeaway.png" },
+      {
+        slide: 1,
+        role: "cover",
+        asset_status: "needed",
+        visual_prompt: "abstract dark tech cover",
+      },
+      {
+        slide: 2,
+        role: "context",
+        asset_status: "needed",
+        visual_prompt: "abstract dark tech body",
+      },
+      {
+        slide: 3,
+        role: "takeaway",
+        asset_status: "existing",
+        background_asset: "/backgrounds/x/03_takeaway.png",
+      },
     ],
     asset_licenses: [],
   };
@@ -33,7 +48,9 @@ test("buildArtPlan emits one entry per needy slide with prompt + paths", () => {
   for (const s of plan.slides) {
     expect(typeof s.prompt).toBe("string");
     expect(s.prompt.length).toBeGreaterThan(10);
-    expect(s.asset_path).toBe(`/backgrounds/${post.upload_package.filename_prefix}/${String(s.slide).padStart(2, "0")}_${s.role}.png`);
+    expect(s.asset_path).toBe(
+      `/backgrounds/${post.upload_package.filename_prefix}/${String(s.slide).padStart(2, "0")}_${s.role}.png`,
+    );
     expect(s.out_path).toContain(path.join("public", "backgrounds"));
     expect(s.aspect_ratio).toBe("3:4");
   }
@@ -41,14 +58,28 @@ test("buildArtPlan emits one entry per needy slide with prompt + paths", () => {
 
 test("buildArtPlan --only filters and --force includes existing", () => {
   const post = makePost(`mcp-test-${Date.now()}`);
-  expect(buildArtPlan(post, { onlySet: new Set([2]), artExists: () => false }).slides.map((s: any) => s.slide)).toEqual([2]);
-  expect(buildArtPlan(post, { force: true, artExists: () => true }).slides.map((s: any) => s.slide)).toEqual([1, 2, 3]);
+  expect(
+    buildArtPlan(post, {
+      onlySet: new Set([2]),
+      artExists: () => false,
+    }).slides.map((s: any) => s.slide),
+  ).toEqual([2]);
+  expect(
+    buildArtPlan(post, { force: true, artExists: () => true }).slides.map(
+      (s: any) => s.slide,
+    ),
+  ).toEqual([1, 2, 3]);
 });
 
 test("ingestArtPlan patches the post from generated PNGs and reports missing", () => {
   const prefix = `mcp-ingest-${Date.now()}`;
   const post = makePost(prefix);
-  const postPath = path.join(RENDERER, ".cache", "higgsfield", `${prefix}.post.json`);
+  const postPath = path.join(
+    RENDERER,
+    ".cache",
+    "higgsfield",
+    `${prefix}.post.json`,
+  );
   fs.mkdirSync(path.dirname(postPath), { recursive: true });
 
   const plan = buildArtPlan(post, { artExists: () => false });
@@ -64,11 +95,17 @@ test("ingestArtPlan patches the post from generated PNGs and reports missing", (
     const slide1 = post.slides.find((s: any) => s.slide === 1)!;
     expect(slide1.asset_status).toBe("generated");
     expect(slide1.background_asset).toBe(s1.asset_path);
-    expect(post.asset_licenses.some((l: any) => l.asset === s1.asset_path)).toBe(true);
+    expect(
+      post.asset_licenses.some((l: any) => l.asset === s1.asset_path),
+    ).toBe(true);
     expect((post as any).renderMetadata.provider).toBe("higgsfield-mcp");
     expect(fs.existsSync(postPath)).toBe(true);
   } finally {
-    try { fs.unlinkSync(s1.out_path); } catch {}
-    try { fs.unlinkSync(postPath); } catch {}
+    try {
+      fs.unlinkSync(s1.out_path);
+    } catch {}
+    try {
+      fs.unlinkSync(postPath);
+    } catch {}
   }
 });

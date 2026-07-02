@@ -1,16 +1,18 @@
 import { describe, expect, test } from "bun:test";
-import { mkdirSync, writeFileSync, rmSync, existsSync } from "node:fs";
+import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { resolveVoiceRef } from "./voice-ref.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const RENDERER = path.resolve(HERE, "..", "..");
-const VOICEREF = path.join(RENDERER, "public", "audio", "_voiceref");
+const _VOICEREF = path.join(RENDERER, "public", "audio", "_voiceref");
 
 describe("resolveVoiceRef", () => {
   test("returns null when noClone", () => {
-    expect(resolveVoiceRef({ noClone: true, explicitPath: "/nope.wav" })).toBeNull();
+    expect(
+      resolveVoiceRef({ noClone: true, explicitPath: "/nope.wav" }),
+    ).toBeNull();
   });
 
   test("prefers explicit path when it exists", () => {

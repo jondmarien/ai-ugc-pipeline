@@ -1,5 +1,5 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { del } from "@vercel/blob";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 // ---------------------------------------------------------------------------
 // POST /api/publish-temp-delete
@@ -32,6 +32,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     await del(pathname);
     res.status(200).json({ deleted: true });
   } catch (err) {
-    res.status(500).json({ error: err instanceof Error ? err.message : String(err) });
+    res
+      .status(500)
+      .json({ error: err instanceof Error ? err.message : String(err) });
   }
 }

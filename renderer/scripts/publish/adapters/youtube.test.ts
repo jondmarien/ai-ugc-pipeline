@@ -1,11 +1,18 @@
-import { test, expect } from "bun:test";
-import { shapeYoutubeResult, makeYoutubeAdapter } from "./youtube";
+import { expect, test } from "bun:test";
 import fixture from "../fixtures/youtube-insert-200.json";
 import type { RenderPackage } from "../types";
+import { makeYoutubeAdapter, shapeYoutubeResult } from "./youtube";
 
 const pkg: RenderPackage = {
-  key: "k", dir: "/d", reelPath: "/d/k_reel.mp4", slides: [],
-  post: { post_id: "k", caption: "BlueHammer abused Defender's update flow.\n\nFollow.", hashtags: ["BlueHammer"] },
+  key: "k",
+  dir: "/d",
+  reelPath: "/d/k_reel.mp4",
+  slides: [],
+  post: {
+    post_id: "k",
+    caption: "BlueHammer abused Defender's update flow.\n\nFollow.",
+    hashtags: ["BlueHammer"],
+  },
 };
 
 test("shapeYoutubeResult maps an insert response to a published AdapterResult", () => {
@@ -22,7 +29,10 @@ test("adapter uploads via the injected uploader and returns published", async ()
   const adapter = makeYoutubeAdapter({
     loadConfig: () => ({ enabled: true, privacy: "private", categoryId: "28" }),
     getToken: async () => "fake-token",
-    upload: async (_token, meta, _file) => { receivedMeta = meta; return fixture as any; },
+    upload: async (_token, meta, _file) => {
+      receivedMeta = meta;
+      return fixture as any;
+    },
   });
   const r = await adapter.publish(pkg, {});
   expect(r.status).toBe("published");
@@ -35,7 +45,9 @@ test("adapter reports a failed AdapterResult when the upload throws", async () =
   const adapter = makeYoutubeAdapter({
     loadConfig: () => ({ enabled: true, privacy: "private", categoryId: "28" }),
     getToken: async () => "fake-token",
-    upload: async () => { throw new Error("quotaExceeded"); },
+    upload: async () => {
+      throw new Error("quotaExceeded");
+    },
   });
   const r = await adapter.publish(pkg, {});
   expect(r.status).toBe("failed");

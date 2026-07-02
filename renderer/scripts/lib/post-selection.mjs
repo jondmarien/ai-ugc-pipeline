@@ -12,7 +12,9 @@ export function expandKeysBySubstring(keys) {
   for (const k of keys) {
     const m = all.filter((fk) => fk.includes(k));
     if (!m.length) console.warn(`⚠ no post matches "${k}"`);
-    m.forEach((fk) => selected.add(fk));
+    m.forEach((fk) => {
+      selected.add(fk);
+    });
   }
   return selected;
 }
@@ -21,7 +23,9 @@ export function filterByStatus(keys, status) {
   if (!status) return keys;
   const matched = keys.filter((fk) => {
     try {
-      const post = JSON.parse(readFileSync(path.join(POSTS_DIR, `${fk}.json`), "utf8"));
+      const post = JSON.parse(
+        readFileSync(path.join(POSTS_DIR, `${fk}.json`), "utf8"),
+      );
       return post.status === status;
     } catch {
       return false;
@@ -38,7 +42,9 @@ export function applySkipTerms(selectedSet, skipTerms) {
       console.warn(`⚠ --skip "${term}" matched no selected post`);
       continue;
     }
-    hit.forEach((fk) => selectedSet.delete(fk));
+    hit.forEach((fk) => {
+      selectedSet.delete(fk);
+    });
     console.log(`⤬ skip "${term}" → ${hit.length} post(s): ${hit.join(", ")}`);
   }
 }
