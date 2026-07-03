@@ -27,6 +27,8 @@ Bun/Node scripts invoked via `renderer/package.json` (`bun run <script> -- …`)
 | `reel:higgsfield` | reel-segments-higgsfield.mjs | Beat motion clips |
 | `validate` | validate.ts | Schema + content lint |
 | `status` | set-status.mjs | Lifecycle status field |
+| `relay` | relay.mjs | Poll IG for new posts → JSON events (`bun run relay --`) |
+| `relay:discord` | relay-instagram-discord.mjs | Post IG update payload to Discord (`--dry-run`) |
 
 Shared MJS modules: `scripts/lib/` (see `lib/README.md`). TS tools use `scripts/lib.ts`.
 

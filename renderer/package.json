@@ -35,7 +35,9 @@
     "typecheck": "tsc --noEmit && tsc --noEmit -p remotion/tsconfig.json",
     "remotion:studio": "bunx remotion studio remotion/index.ts",
     "publish": "bun scripts/publish.mjs",
+    "relay": "bun scripts/relay.mjs",
     "publish:auth": "bun scripts/publish/auth/cli.mjs",
+    "relay:discord": "bun scripts/relay-instagram-discord.mjs",
     "art:fal": "bun scripts/art-fal.mjs",
     "reel:fal": "bun scripts/reel-fal.mjs"
   },
