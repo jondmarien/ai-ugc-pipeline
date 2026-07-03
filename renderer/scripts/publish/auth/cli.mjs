@@ -9,7 +9,11 @@
  *
  * `meta` is different: Facebook/Instagram Page tokens don't rotate via refresh_token.
  * It writes renderer/.secrets/meta.json → { user_access_token, page_id, page_access_token,
- * ig_user_id, ... } — see auth/meta.ts for the token lifecycle this feeds.
+ * ig_user_id, ... } — see auth/meta.ts for the token lifecycle this feeds. This single
+ * flow also covers comment like/unlike (instagram_manage_engagement scope) — that
+ * endpoint is documented at graph.facebook.com under Meta's classic Instagram Graph
+ * API, not a separate Instagram Login product, despite an earlier (wrong, since
+ * reverted) assumption in this repo's history that it needed one.
  *
  * IMPORTANT: Register exactly this redirect URI in each platform's developer console:
  *   http://localhost:8788/callback

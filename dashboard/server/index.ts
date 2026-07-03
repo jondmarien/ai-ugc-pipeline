@@ -3,9 +3,11 @@ import path from "node:path";
 import { serve } from "bun";
 import {
   deleteComment,
+  likeComment,
   listComments,
   replyToComment,
   setCommentHidden,
+  unlikeComment,
 } from "./comments";
 import { aggregateHooks, parseCaptionBankHooks } from "./hooks";
 import { getAccount, getMedia } from "./ig";
@@ -161,6 +163,13 @@ const server = serve({
         return env(
           await replyToComment(decodeURIComponent(commentReply[1]), message),
         );
+      }
+
+      const commentLike = p.match(/^\/api\/comments\/([^/]+)\/like$/);
+      if (commentLike) {
+        const id = decodeURIComponent(commentLike[1]);
+        if (req.method === "POST") return env(await likeComment(id));
+        if (req.method === "DELETE") return env(await unlikeComment(id));
       }
 
       const state = p.match(/^\/api\/state\/([\w.-]+)$/);

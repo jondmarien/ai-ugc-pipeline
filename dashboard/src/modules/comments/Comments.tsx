@@ -116,6 +116,14 @@ export function Comments() {
                 onDelete={() =>
                   run(c.id, () => action(`/api/comments/${c.id}`, "DELETE"))
                 }
+                onLike={() =>
+                  run(c.id, () => action(`/api/comments/${c.id}/like`, "POST"))
+                }
+                onUnlike={() =>
+                  run(c.id, () =>
+                    action(`/api/comments/${c.id}/like`, "DELETE"),
+                  )
+                }
                 reply={replyDraft[c.id] ?? ""}
                 onReplyChange={(v) =>
                   setReplyDraft((d) => ({ ...d, [c.id]: v }))
@@ -141,6 +149,8 @@ function CommentRow({
   busy,
   onHide,
   onDelete,
+  onLike,
+  onUnlike,
   reply,
   onReplyChange,
   onReplySend,
@@ -149,6 +159,8 @@ function CommentRow({
   busy: boolean;
   onHide: (hidden: boolean) => void;
   onDelete: () => void;
+  onLike: () => void;
+  onUnlike: () => void;
   reply: string;
   onReplyChange: (v: string) => void;
   onReplySend: () => void;
@@ -177,6 +189,17 @@ function CommentRow({
           onClick={onDelete}
         >
           Delete
+        </button>
+        <button type="button" className="chip" disabled={busy} onClick={onLike}>
+          Like
+        </button>
+        <button
+          type="button"
+          className="chip"
+          disabled={busy}
+          onClick={onUnlike}
+        >
+          Unlike
         </button>
       </div>
       <div style={{ display: "flex", gap: 6, marginTop: 6 }}>

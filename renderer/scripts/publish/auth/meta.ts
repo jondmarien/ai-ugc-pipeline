@@ -29,12 +29,14 @@ export const GRAPH_BASE = `https://graph.facebook.com/${GRAPH_API_VERSION}`;
 // don't cover it) — without it every insights call 403s with (#10)
 // "Application does not have permission for this action", which the
 // dashboard was silently swallowing into zeroed-out stats.
-// instagram_manage_comments (hide/delete/reply) powers the dashboard's
-// Comments moderation panel (dashboard/server/comments.ts) — same Page-token
-// flow as publishing/insights. Deliberately NOT requesting
-// instagram_manage_engagement: liking a comment/media requires an Instagram
-// Login User access token, a different OAuth flow than the Facebook Login
-// Page-token model this app uses, so the scope alone wouldn't be usable here.
+// instagram_manage_comments (hide/delete/reply) and instagram_manage_engagement
+// (like/unlike) power the dashboard's Comments moderation panel
+// (dashboard/server/comments.ts) — same Page-token flow as publishing/insights.
+// POST/DELETE /{ig-user-id}/likes is documented at graph.facebook.com under
+// Meta's classic Instagram Graph API reference (not the separate Instagram
+// Login product), requiring exactly instagram_basic + instagram_manage_engagement
+// — no second app or OAuth flow needed, unlike an earlier (wrong) assumption
+// that it required Instagram Login's instagram_business_* scopes.
 export const scopes = [
   "pages_show_list",
   "pages_read_engagement",
@@ -43,6 +45,7 @@ export const scopes = [
   "instagram_content_publish",
   "instagram_manage_insights",
   "instagram_manage_comments",
+  "instagram_manage_engagement",
 ];
 
 // A Page token derived from a long-lived user token is re-verified at most once

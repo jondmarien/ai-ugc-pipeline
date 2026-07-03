@@ -2,17 +2,17 @@ import type { IgComment } from "../shared/types";
 import { appSecretProof, requireMetaStore } from "./meta_auth";
 
 /**
- * Comment moderation (list/hide/delete/reply) for the dashboard's Comments panel
- * — same Page-token flow as meta.ts/ig.ts, requires instagram_manage_comments on
- * top of the publishing scopes. See renderer/scripts/publish/auth/meta.ts's
- * `scopes` array.
+ * Comment moderation (list/hide/delete/reply/like) for the dashboard's Comments
+ * panel — all on the same Page-token flow as meta.ts/ig.ts. Requires
+ * instagram_manage_comments (hide/delete/reply) and instagram_manage_engagement
+ * (like/unlike) on top of the publishing scopes. See
+ * renderer/scripts/publish/auth/meta.ts's `scopes` array.
  *
- * Deliberately NOT implemented: like/unlike a comment. Meta's /{ig-user-id}/likes
- * endpoint requires an Instagram Login User access token (graph.instagram.com,
- * Instagram Business Login) — a different OAuth flow than the Facebook Login
- * Page-token model this entire app is built on. Wiring it up would mean running
- * a second, parallel auth system for one button; not worth it for a
- * single-owner tool.
+ * Like/unlike (POST/DELETE /{ig-user-id}/likes) is documented at
+ * graph.facebook.com under Meta's classic Instagram Graph API reference, not a
+ * separate Instagram Login product — an earlier version of this file assumed
+ * otherwise and built a whole second OAuth flow for it, which was wrong and
+ * has been removed. This is the same Page token as everything else here.
  */
 
 const GRAPH = "https://graph.facebook.com/v25.0";
@@ -87,6 +87,30 @@ export async function replyToComment(
   return graphCall(
     "POST",
     `/${commentId}/replies?message=${encodeURIComponent(message)}`,
+    fetchImpl,
+  );
+}
+
+export async function likeComment(
+  commentId: string,
+  fetchImpl: typeof fetch = fetch,
+): Promise<{ success: boolean }> {
+  const { ig_user_id } = requireMetaStore();
+  return graphCall(
+    "POST",
+    `/${ig_user_id}/likes?comment_id=${commentId}`,
+    fetchImpl,
+  );
+}
+
+export async function unlikeComment(
+  commentId: string,
+  fetchImpl: typeof fetch = fetch,
+): Promise<{ success: boolean }> {
+  const { ig_user_id } = requireMetaStore();
+  return graphCall(
+    "DELETE",
+    `/${ig_user_id}/likes?comment_id=${commentId}`,
     fetchImpl,
   );
 }
