@@ -25,7 +25,7 @@ export type InstagramWatchOpts = {
   dryRun?: boolean;
   bootstrapOnly?: boolean;
   statePath?: string;
-  onNewPost?: (n: NewPostNotification) => void;
+  onNewPost?: (n: NewPostNotification) => void | Promise<void>;
   fetchImpl?: typeof fetch;
 };
 
@@ -54,7 +54,9 @@ export async function runInstagramWatch(
   }
 
   const emit = opts.onNewPost ?? emitNewPostEvent;
-  for (const n of notifications) emit(n);
+  for (const n of notifications) {
+    await Promise.resolve(emit(n));
+  }
 
   if (!opts.dryRun) writeWatchState(statePath, nextState);
 

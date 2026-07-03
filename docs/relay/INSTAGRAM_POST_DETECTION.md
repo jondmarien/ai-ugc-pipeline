@@ -13,7 +13,7 @@ bun run relay -- --bootstrap  # set cursor to newest post without emitting
 bun run relay -- --dry-run    # no state write; stderr shows what would emit
 ```
 
-Schedule via Hermes cron, systemd timer, or manual runs (see `docs/relay/INSTAGRAM_TO_DISCORD_SURVEY.md`).
+Schedule via Hermes cron, systemd timer, or manual runs. For Discord delivery use `bun run relay -- --discord` (see `docs/relay/INSTAGRAM_TO_DISCORD.md`).
 
 ## Meta app permissions
 
