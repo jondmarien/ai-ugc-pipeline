@@ -189,8 +189,8 @@ Six skills, each with a distinct job and a fixed place in the workflow:
 ### `scripts/` — standalone maintenance
 
 Scripts that run outside any render, on their own schedule:
-- **`refresh_token.ts`** — reads `dashboard/.env`, calls the Meta Graph API's long-lived-token exchange endpoint, and rewrites *only* the `IG_ACCESS_TOKEN=` line (via an exported `rewriteEnv` helper that preserves every other line) — success is logged to `dashboard/token_refresh.log`, failure exits 1 without touching the env file.
-- **`refresh_token.test.ts`** — unit tests for `rewriteEnv` (line replacement + append-if-missing); doesn't test the live network call.
+- **`refresh_token.ts`** — reads `META_APP_ID`/`META_APP_SECRET` from `renderer/.env` and the current Page token from `renderer/.secrets/meta.json` (the same files `renderer/scripts/publish/auth/meta.ts` uses), calls the Meta Graph API's long-lived-token exchange endpoint, and rewrites *only* `page_access_token` in `meta.json` (via an exported `mergeToken` helper that preserves every other field) — success is logged to `dashboard/token_refresh.log`, failure exits 1 without touching the secrets file.
+- **`refresh_token.test.ts`** — unit tests for `mergeToken` (preserves all fields but the token); doesn't test the live network call.
 - **`register_token_task.ps1`** — registers a Windows Task Scheduler job that runs `bun scripts/refresh_token.ts` every 58 days (just under Meta's 60-day long-lived-token expiry), so the IG token refreshes indefinitely without manual intervention.
 
 ### `docs/` — cross-cutting docs
