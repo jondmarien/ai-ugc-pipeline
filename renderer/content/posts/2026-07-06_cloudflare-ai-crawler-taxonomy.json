@@ -1,0 +1,339 @@
+{
+  "post_id": "2026-07-06_cloudflare-ai-crawler-taxonomy",
+  "date": "2026-07-06",
+  "slug": "cloudflare-ai-crawler-taxonomy",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "approved",
+  "pillar": "governance",
+  "theme": "defensive",
+  "style_fusion": "",
+  "audience": "security_practitioners",
+  "core_claim": "Cloudflare now classifies AI crawlers by Search, Agent, and Training instead of a single AI label, and defenders must map those functions to enforceable edge rules because robots.txt only states preference.",
+  "claim_tags": [
+    "reported_fact",
+    "emerging",
+    "practitioner_takeaway"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 4,
+    "defender_usefulness": 5,
+    "total": 23
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "electric blue",
+    "pillar_accent": "governance",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#3b82f6",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-07-06_cloudflare-ai-crawler-taxonomy",
+    "filename_prefix": "2026-07-06_cloudflare-ai-crawler-taxonomy",
+    "expected_files": [
+      "2026-07-06_cloudflare-ai-crawler-taxonomy_01_cover.png",
+      "2026-07-06_cloudflare-ai-crawler-taxonomy_02_context.png",
+      "2026-07-06_cloudflare-ai-crawler-taxonomy_03_risk.png",
+      "2026-07-06_cloudflare-ai-crawler-taxonomy_04_mechanism.png",
+      "2026-07-06_cloudflare-ai-crawler-taxonomy_05_failure-point.png",
+      "2026-07-06_cloudflare-ai-crawler-taxonomy_06_defense.png",
+      "2026-07-06_cloudflare-ai-crawler-taxonomy_07_takeaway.png",
+      "2026-07-06_cloudflare-ai-crawler-taxonomy_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md",
+      "instagram_upload_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "slide_captions_file": "slide_captions.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "features": {
+    "multiple_captions": false
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "SEARCH BOTS ARE NOT TRAINING BOTS",
+      "subline": "Cloudflare split AI traffic into three jobs every site owner can tune.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "three mooring ropes diverging from one pier cleat toward separate buoys in foggy harbor water, night rim light, editorial tension, vast empty lower third, no readable markings",
+      "background_asset": "/backgrounds/2026-07-06_cloudflare-ai-crawler-taxonomy_cover.png",
+      "asset_status": "procedural",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "Cloudflare splits AI crawlers into Search, Agent, and Training.",
+      "subline": "Help Net Security and Cloudflare say the controls are live for every plan, including Free.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a sorting table with three woven baskets under a single overhead lamp, each basket a different depth, dark warehouse mood, lower third clear, no text or signage",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "Blocking training can block search when one bot does both jobs.",
+      "subline": "Googlebot, Applebot, and BingBot sit in that multipurpose bucket on policy.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "two overlapping freight nets catching the same crate mid-air above a dock, strained fibers glowing, high contrast, uneasy stillness, open lower third",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "Sept 15 defaults block Training and Agent on ad pages for new domains.",
+      "subline": "Search stays allowed by default; owners can opt out in Security settings before the date.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a calendar page pinned under a brass paperweight beside a small ad placard turned face down, cool side light, minimal props, generous negative space below",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "robots.txt is preference only, not a firewall rule crawlers must obey.",
+      "subline": "Cloudflare reports compliance in AI Crawl Control, but voluntary honor is not enforcement.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a handwritten note pinned to a cork board while rain streaks an unseen window, the note out of focus, lonely office still life, lower third empty",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Label each bot by function, then match WAF rules before September defaults.",
+      "subline": "Use managed robots.txt plus crawler actions, not a single block-all AI toggle.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a row of brass stencils laid on a workbench beside a coiled ethernet cable, orderly prep scene, soft rim light, no screens or readable glyphs",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "robots.txt {{states preference only}}. [[Classify bots by function and enforce at the edge.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single mesh gate standing open on a gravel path, beyond it only darkness, strong negative space center, one accent edge light, no symbols on the gate",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Will you review Cloudflare defaults before September 15 crawler changes?",
+      "subline": "Save this before multipurpose bots inherit your strictest policy.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card with a lone harbor lantern switched off on a post, premium editorial look, wide empty space for type",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "Cloudflare stopped treating every AI crawler like one problem. On July 1, 2026, Jin-Hee Lee and Bryan Becker said all customers, including Free, can manage AI traffic in three buckets: Search (index for later answers), Agent (real-time fetch for a human), and Training (content absorbed into models). Help Net Security summarized the same shift on July 2.\n\nThat matters because multipurpose crawlers inherit every policy you set. If you block Training, Cloudflare says bots that combine Search and Training, including Googlebot, Applebot, and BingBot, follow the strictest rule. Starting September 15, 2026, new domains will block Training and Agent on pages that show ads while keeping Search allowed. You can opt out in Security settings before that date.\n\nrobots.txt still signals preference, not a guarantee. Cloudflare's own AI Crawl Control docs track violations, and the December 2024 AI Audit update can translate robots.txt AI rules into WAF enforcement. Preference without edge enforcement is visibility, not control.\n\nInventory which crawlers you allow for search referrals, which agents may fetch on behalf of users, and which training crawlers you want gone. Then align managed robots.txt, crawler actions, and WAF rules before the September defaults reshape traffic you already monetize.\n\nWill you opt out or tune those defaults before September 15?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "bot management",
+    "AI crawlers",
+    "robots.txt",
+    "Cloudflare",
+    "web security"
+  ],
+  "comment_prompt": "Do you separate Search, Agent, and Training crawlers today, or do you still use one block-AI-bots switch?",
+  "alt_text": [
+    "Cover: Search bots are not training bots; Cloudflare split AI traffic into three tunable jobs. Three ropes diverge to separate harbor buoys.",
+    "Cloudflare classifies crawlers as Search, Agent, or Training for all customers including Free. Three baskets under one lamp on a sorting table.",
+    "Blocking training can also block search when one bot serves both roles, including major search crawlers. Two nets catch the same crate above a dock.",
+    "September 15, 2026 defaults block Training and Agent on ad pages for new domains while Search stays allowed. A calendar pinned beside a face-down placard.",
+    "robots.txt expresses preference; crawlers comply voluntarily and that is not the same as firewall enforcement. A blurred note on a cork board in rain.",
+    "Label bots by function and align WAF rules before September defaults; use managed robots.txt plus per-crawler actions. Brass stencils on a workbench.",
+    "robots.txt states preference only; classify bots by function and enforce at the edge. An open mesh gate on a dark path with negative space.",
+    "Closing question about reviewing Cloudflare defaults before September 15, with save prompt. A harbor lantern switched off on a dark end card."
+  ],
+  "sources": [
+    {
+      "source": "Cloudflare Blog: Your site, your rules (Jul 1, 2026)",
+      "link": "https://blog.cloudflare.com/content-independence-day-ai-options/",
+      "supports": "Search, Agent, and Training taxonomy; Sept 15, 2026 defaults on ad pages; multipurpose crawler policy; Verified bot definition change; use=reference in managed robots.txt.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Help Net Security (Jul 2, 2026)",
+      "link": "https://www.helpnetsecurity.com/2026/07/02/cloudflare-ai-crawler-controls/",
+      "supports": "Independent summary of three-category controls, BotBase for Enterprise, content use levels immediate/reference/full, transitive trust via Forwarded header.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Cloudflare Blog: Enforcing robots.txt policies (Dec 10, 2024)",
+      "link": "https://blog.cloudflare.com/ai-audit-enforcing-robots-txt/",
+      "supports": "AI Crawl Control can translate robots.txt AI bot rules into WAF enforcement; compliance tracking vs network-level block.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Cloudflare Docs: Managed robots.txt",
+      "link": "https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/",
+      "supports": "Managed robots.txt prepends Content Signals (search=yes, ai-train=no) and blocks training crawlers via directives.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Cloudflare Docs: AI Crawl Control glossary",
+      "link": "https://developers.cloudflare.com/ai-crawl-control/reference/glossary/",
+      "supports": "robots.txt compliance is voluntary; AI Crawl Control monitors violators.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 26,
+    "fps": 30,
+    "export_name": "2026-07-06_cloudflare-ai-crawler-taxonomy_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-07-06_cloudflare-ai-crawler-taxonomy/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "Cloudflare just split AI crawlers into Search, Agent, and Training so you are not stuck with one block-everything switch."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "text": "That sounds granular until you realize multipurpose bots inherit every policy, so blocking training can block search crawlers you still want."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "text": "On September fifteenth, new domains will block Training and Agent on ad pages by default, and you can opt out in Security settings before then."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "text": "robots.txt only states preference. Pair managed directives with WAF enforcement once you know which function each bot performs."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "text": "Will you review those defaults before September fifteenth? Save this for your bot policy review."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Search is not training."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "Three crawler buckets now."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "slide_ref": 5,
+        "purpose": "failure_point",
+        "motion": "slow push-in",
+        "caption": "robots.txt is not enforcement."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "Classify and enforce at edge."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "Review before Sept 15?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  }
+}
