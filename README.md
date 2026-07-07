@@ -142,9 +142,9 @@ See each project's README for the full setup: **[renderer](renderer/README.md)**
 ```
 ai-ugc-pipeline/
 ├── pipeline/            🧠 Content source of truth (docs + output, not code)
-│   ├── content/         📑 editorial kit: workflow, idea backlog, caption bank, QA gates
-│   ├── media/           ⚒️ tool stack, voiceover bake-off, music rules, license matrix
-│   └── renders/         📦 finished upload packages (PNGs, reel.mp4, captions, sources)
+│   ├── content/         📑 Editorial kit: workflow, idea backlog, caption bank, QA gates
+│   ├── media/           ⚒️ Tool stack, voiceover bake-off, music rules, license matrix
+│   └── renders/         📦 Finished upload packages (PNGs, reel.mp4, captions, sources)
 ├── renderer/            🎬 The asset factory (Bun + React + Playwright + Remotion)
 │   ├── content/posts/      The post JSON files — one per post
 │   ├── src/                Carousel components, design tokens, Zod schema
