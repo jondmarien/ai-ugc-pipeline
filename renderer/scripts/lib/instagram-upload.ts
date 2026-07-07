@@ -1,7 +1,7 @@
 import { slideCaptionsOutputName } from "../../src/lib/caption-export.ts";
 import type { TPostData } from "../../src/lib/schema.ts";
 import { multipleCaptionsEnabled } from "../../src/lib/schema.ts";
-import { slideFilename } from "../lib.ts";
+import { slideFilename, slideVideoFilename } from "../lib.ts";
 
 /**
  * Manual Instagram carousel upload steps (no Graph API in this repo).
@@ -12,6 +12,9 @@ export function instagramUploadChecklist(
   renderDir: string,
 ): string {
   const pngs = post.slides.map((_, i) => slideFilename(post, i));
+  const videoSlides = post.slides
+    .map((s, i) => ({ i, s }))
+    .filter(({ s }) => s.media_type === "video");
   const multi = multipleCaptionsEnabled(post);
   const captionFile = post.upload_package.caption_file;
   const slideCaptionsFile = slideCaptionsOutputName(post);
@@ -25,6 +28,17 @@ export function instagramUploadChecklist(
     ...pngs.map((f, i) => `${i + 1}. ${f}`),
     "",
   ];
+
+  if (videoSlides.length) {
+    lines.push(
+      "## ⚠ Video slide(s) — use the clip, not the PNG",
+      ...videoSlides.map(
+        ({ i, s }) =>
+          `${i + 1}. Slide ${i + 1} ("${s.role}") is a real video: upload \`${slideVideoFilename(post, i)}\` at that position in the carousel picker, not ${slideFilename(post, i)} (the PNG is a poster/preview only).`,
+      ),
+      "",
+    );
+  }
 
   if (multi) {
     lines.push(

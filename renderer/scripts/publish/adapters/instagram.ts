@@ -34,10 +34,14 @@ function withProof(
 // Carousel (children built first, then a parent container):
 //   1. Temp-host every slide PNG, then POST /<IG_USER_ID>/media per image
 //        (image_url, is_carousel_item=true, alt_text) to get child container ids.
+//      A slide with a real video clip (media_type: "video", RenderPackage.slides[i].videoPath)
+//      is temp-hosted and created with video_url instead, and — unlike image children — a video
+//      child must itself reach FINISHED before it can be referenced in the parent's `children`
+//      list, so it's polled right after creation (same poll used for Reels).
 //   2. POST /<IG_USER_ID>/media (media_type=CAROUSEL, children=<ids>, caption,
 //        is_ai_generated=true — only the PARENT container may set this; Meta errors
 //        if a child container also sets it).
-//   3. Poll + publish exactly like Reels. All temp-hosted images are cleaned up
+//   3. Poll + publish exactly like Reels. All temp-hosted images/videos are cleaned up
 //      in a `finally`, regardless of outcome.
 //
 // publish.config.json's instagram.mode gates all of this: "manual" keeps the
@@ -189,6 +193,34 @@ async function createCarouselChildContainer(
     const text = await resp.text();
     throw new Error(
       `Instagram carousel child container create failed: ${resp.status} — ${text}`,
+    );
+  }
+  return (await resp.json()) as ContainerCreateResponse;
+}
+
+async function createCarouselVideoChildContainer(
+  fetchImpl: typeof fetch,
+  igUserId: string,
+  pageAccessToken: string,
+  videoUrl: string,
+  altText: string,
+): Promise<ContainerCreateResponse> {
+  const params = new URLSearchParams(
+    withProof(pageAccessToken, {
+      video_url: videoUrl,
+      is_carousel_item: "true",
+      access_token: pageAccessToken,
+    }),
+  );
+  if (altText) params.set("alt_text", altText);
+  const resp = await fetchImpl(
+    `${GRAPH_BASE}/${igUserId}/media?${params.toString()}`,
+    { method: "POST" },
+  );
+  if (!resp.ok) {
+    const text = await resp.text();
+    throw new Error(
+      `Instagram carousel video child container create failed: ${resp.status} — ${text}`,
     );
   }
   return (await resp.json()) as ContainerCreateResponse;
@@ -369,6 +401,28 @@ export function makeInstagramAdapter(deps: InstagramDeps): PlatformAdapter {
 
           const childrenIds: string[] = [];
           for (const slide of pkg.slides) {
+            if (slide.videoPath) {
+              const temp = await deps.uploadTemp(slide.videoPath);
+              temps.push(temp);
+              const child = await createCarouselVideoChildContainer(
+                deps.fetchImpl,
+                igUserId,
+                pageAccessToken,
+                temp.url,
+                slide.altText,
+              );
+              // Unlike image children, a video child must finish processing before the parent
+              // container can reference it — poll it here, same as a Reels container.
+              await pollUntilFinished(
+                deps.fetchImpl,
+                child.id,
+                pageAccessToken,
+                pollIntervalMs,
+                maxPolls,
+              );
+              childrenIds.push(child.id);
+              continue;
+            }
             const temp = await deps.uploadTemp(slide.path);
             temps.push(temp);
             const child = await createCarouselChildContainer(

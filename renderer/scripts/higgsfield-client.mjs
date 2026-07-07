@@ -130,6 +130,68 @@ export const MODEL_CATALOG = Object.freeze({
       aspectRatio: "4:5",
       resolution: "720p",
     },
+    // The four below were added after comparing Higgsfield's full live catalog
+    // (`higgsfield model list`) against outside reviews for dark/cinematic photorealism —
+    // gpt-image-2/soul-2.0/flux/seedream-4.5 aren't the only image jobs Higgsfield exposes.
+    // creditCost verified via `higgsfield generate cost <job_set_type> --prompt "..." --aspect_ratio 3:4`
+    // (a cost estimate call spends no credits). promptFamily "natural" = same positive-only,
+    // no-hex composer as soul/seedream/gpt (see art-slide-prompt.mjs).
+    {
+      id: "nano-banana-2",
+      name: "Nano Banana Pro",
+      type: "image",
+      apiModelId: "reve/text-to-image",
+      cliJobSetType: "nano_banana_2",
+      cliExtraArgs: [],
+      mcpModel: "nano-banana-2",
+      promptFamily: "natural",
+      creditCost: 2,
+      defaultSize: [1024, 1280],
+      aspectRatio: "4:5",
+      resolution: "720p",
+    },
+    {
+      id: "nano-banana-2-lite",
+      name: "Nano Banana 2 Lite",
+      type: "image",
+      apiModelId: "reve/text-to-image",
+      cliJobSetType: "nano_banana_2_lite",
+      cliExtraArgs: [],
+      mcpModel: "nano-banana-2-lite",
+      promptFamily: "natural",
+      creditCost: 1,
+      defaultSize: [1024, 1280],
+      aspectRatio: "4:5",
+      resolution: "720p",
+    },
+    {
+      id: "recraft-4.1",
+      name: "Recraft V4.1",
+      type: "image",
+      apiModelId: "reve/text-to-image",
+      cliJobSetType: "recraft_v4_1",
+      cliExtraArgs: [],
+      mcpModel: "recraft-4.1",
+      promptFamily: "natural",
+      creditCost: 1.25,
+      defaultSize: [1024, 1280],
+      aspectRatio: "4:5",
+      resolution: "720p",
+    },
+    {
+      id: "grok-image",
+      name: "Grok Image",
+      type: "image",
+      apiModelId: "reve/text-to-image",
+      cliJobSetType: "grok_image",
+      cliExtraArgs: [],
+      mcpModel: "grok-image",
+      promptFamily: "natural",
+      creditCost: 1,
+      defaultSize: [1024, 1280],
+      aspectRatio: "4:5",
+      resolution: "720p",
+    },
   ],
   // creditCost = credits per CLIP (verified via `higgsfield generate cost`). i2v is far pricier than
   // images, so a reel of N beats × this is what the motion budget gate checks.
@@ -605,11 +667,13 @@ async function generateImageViaCli({
   timeoutMs = 600_000,
 }) {
   const catalog = catalogEntry(model);
-  if (catalog?.type !== "image")
-    throw new Error(`UnknownHiggsfieldModel: ${model}`);
-  const jobSetType = catalog.cliJobSetType;
-  if (!jobSetType)
-    throw new Error(`Higgsfield model "${model}" has no cliJobSetType mapping`);
+  if (catalog && catalog.type !== "image")
+    throw new Error(`UnknownHiggsfieldModel: ${model} (it's a video model)`);
+  // No catalog entry: treat `model` as a raw job_set_type straight from `higgsfield model list`
+  // (e.g. --higgsfield-model=z_image). Cost is priced live in imageModelCost(); prompt family
+  // defaults to "natural" in imageModelFamily(). Curate it into MODEL_CATALOG once it's a keeper.
+  const jobSetType = catalog?.cliJobSetType ?? model;
+  const cliExtraArgs = catalog?.cliExtraArgs ?? [];
 
   const resolvedSeed = Number.isFinite(seed) ? seed : 0; // CLI assigns its own seed; kept only for the cache key
   const cacheKey = promptHash(
@@ -640,7 +704,7 @@ async function generateImageViaCli({
     jobSetType,
     prompt: fullPrompt,
     aspectRatio,
-    extraArgs: catalog.cliExtraArgs ?? [],
+    extraArgs: cliExtraArgs,
     waitTimeout: `${Math.ceil(timeoutMs / 60000)}m`,
   });
 
@@ -953,20 +1017,63 @@ export async function generateVideoFromImage({
 
 const DEFAULT_CREDIT_COST = 1; // conservative fallback when a model has no verified rate
 
-/** Credits per image for a catalog model id (verified via `higgsfield generate cost`). */
-export function imageModelCost(model) {
-  const catalog = catalogEntry(model);
-  if (!catalog) throw new Error(`UnknownHiggsfieldModel: ${model}`);
-  return typeof catalog.creditCost === "number"
-    ? catalog.creditCost
-    : DEFAULT_CREDIT_COST;
+// Cache of live `higgsfield generate cost` lookups for models that aren't in MODEL_CATALOG, keyed
+// by raw job_set_type. Lets an uncurated model (any id from `higgsfield model list`) be used
+// straight away without a code change; a curated catalog entry is still the right move once a
+// model earns real use (locks in a verified cost + a house display name).
+const _uncatalogedCostCache = new Map();
+
+function queryLiveImageCost(jobSetType) {
+  if (_uncatalogedCostCache.has(jobSetType))
+    return _uncatalogedCostCache.get(jobSetType);
+  let cost = DEFAULT_CREDIT_COST;
+  try {
+    const r = runCli(
+      [
+        "generate",
+        "cost",
+        jobSetType,
+        "--prompt",
+        "cinematic background",
+        "--aspect_ratio",
+        "3:4",
+        "--json",
+      ],
+      { timeoutMs: 20_000 },
+    );
+    if (r.status === 0) {
+      const parsed = JSON.parse(r.stdout);
+      const exact = parsed?.credits_exact ?? parsed?.credits;
+      if (typeof exact === "number" && exact > 0) cost = exact;
+    }
+  } catch {
+    // network/CLI hiccup: fall through to the conservative default rather than blocking generation
+  }
+  _uncatalogedCostCache.set(jobSetType, cost);
+  return cost;
 }
 
-/** Prompt family for a catalog model id (drives which composer shapes the prompt). */
+/**
+ * Credits per image for a model id. Curated MODEL_CATALOG entries return their verified rate.
+ * Anything else is treated as a raw Higgsfield job_set_type (per `higgsfield model list`) and
+ * priced with a live, credit-free `generate cost` lookup, falling back to a conservative default
+ * if that call fails (e.g. rest mode, offline, or an id the API doesn't recognize either).
+ */
+export function imageModelCost(model) {
+  const catalog = catalogEntry(model);
+  if (catalog)
+    return typeof catalog.creditCost === "number"
+      ? catalog.creditCost
+      : DEFAULT_CREDIT_COST;
+  return queryLiveImageCost(model);
+}
+
+/** Prompt family for a model id (drives which composer shapes the prompt). Uncataloged models
+ * default to "natural" (positive-only, no literal hex): every non-flux family already composes
+ * identically, so a new model needs a catalog entry for cost/display-name polish, not to render. */
 export function imageModelFamily(model) {
   const catalog = catalogEntry(model);
-  if (!catalog) throw new Error(`UnknownHiggsfieldModel: ${model}`);
-  return catalog.promptFamily ?? "flux";
+  return catalog?.promptFamily ?? "natural";
 }
 
 /** Credits per CLIP for a video (i2v) model id (verified via `higgsfield generate cost`). */

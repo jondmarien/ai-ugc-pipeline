@@ -1,0 +1,439 @@
+{
+  "post_id": "2026-07-06_januscape-kvm-guest-escape",
+  "date": "2026-07-06",
+  "slug": "januscape-kvm-guest-escape",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "approved",
+  "pillar": "offensive_ai",
+  "theme": "offensive",
+  "style_fusion": "",
+  "audience": "security_practitioners",
+  "core_claim": "CVE-2026-53359 (Januscape) is a 16-year-old use-after-free in Linux KVM's shadow paging code that lets a root user inside a guest VM corrupt host kernel memory, and it is patched but not CVSS-scored yet.",
+  "claim_tags": [
+    "reported_fact"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 4,
+    "visual_drama": 4,
+    "defender_usefulness": 5,
+    "total": 23
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "alert red",
+    "pillar_accent": "offensive_ai",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#ef4444",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-07-06_januscape-kvm-guest-escape",
+    "filename_prefix": "2026-07-06_januscape-kvm-guest-escape",
+    "expected_files": [
+      "2026-07-06_januscape-kvm-guest-escape_01_cover.png",
+      "2026-07-06_januscape-kvm-guest-escape_02_context.png",
+      "2026-07-06_januscape-kvm-guest-escape_03_risk.png",
+      "2026-07-06_januscape-kvm-guest-escape_04_mechanism.png",
+      "2026-07-06_januscape-kvm-guest-escape_05_failure-point.png",
+      "2026-07-06_januscape-kvm-guest-escape_06_defense.png",
+      "2026-07-06_januscape-kvm-guest-escape_07_point.png",
+      "2026-07-06_januscape-kvm-guest-escape_08_takeaway.png",
+      "2026-07-06_januscape-kvm-guest-escape_09_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md",
+      "instagram_upload_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "slide_captions_file": "slide_captions.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "features": {
+    "multiple_captions": false
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "CVE-2026-53359",
+      "on_slide_copy": "This KVM bug has hidden since 2010.",
+      "subline": "Kim named it Januscape: a guest VM escape sixteen years in the making.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "an interior apartment wall violently exploding open mid-air under a spotlight, wood studs and drywall fragments bursting outward in a chaotic shockwave revealing the neighboring unit through the hole, extreme dynamic low angle, intense rim light, dark high-contrast cinematic scene, strong empty lower-third",
+      "background_asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/01_cover.png",
+      "asset_status": "generated",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'.",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_032330_b56d5cce-c10c-4754-b20a-572f8bf99d6c.png"
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "Hyunwoo Kim found a use-after-free that survived 16 years of kernel releases.",
+      "subline": "It's tracked as CVE-2026-53359.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a hairline crack running through a modern apartment building's shared foundation wall in a dim basement, illuminated by a single flashlight beam, dust particles drifting in the light, dark and quiet",
+      "background_asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/02_context.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_032111_bacbd575-9ea3-4973-b7a5-e6c8d78c61f1.png"
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "A guest VM with root can corrupt host memory and crash every co-tenant.",
+      "subline": "It needs no cooperation from QEMU or the host's own userspace.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single overloaded circuit breaker sparking inside an apartment building's shared fuse cabinet, every unit's lights behind it flickering out at once down a dark hallway, tense atmosphere",
+      "background_asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/03_risk.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_032130_55ba6915-619b-4451-b879-27db024f58a8.png"
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "KVM reused a memory page without checking its type, read it after freeing it.",
+      "subline": "The role check that should have caught it never ran. That's the whole bug.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single mismatched puzzle piece being forced into a slot that already held a different, discarded piece crumbling to dust beside it, dark high-contrast cinematic, lower third kept clear, no readable text",
+      "background_asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/04_mechanism.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_032148_332619fb-5158-4a96-abf7-3e44356f2e02.png"
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Teams running unpatched kernels or exposed nested virtualization are still vulnerable.",
+      "subline": "On distros where /dev/kvm is world-writable, this doubles as a local root exploit.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single unlocked utility access hatch left hanging open on an otherwise secured building exterior at night, exposed wiring visible inside, security floodlight nearby not pointed at it",
+      "background_asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/05_failure-point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_032206_cc499b77-fe0e-45f4-8697-de32f63c2636.png"
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Patch to the fixed kernel version for your branch today.",
+      "subline": "The fixed versions are 7.1.3, 6.18.38, 6.12.95, 6.6.144, 6.1.177, 5.15.211, and 5.10.260. If you can't patch yet, disable nested virtualization instead.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single valve being manually shut on a large industrial pipe junction, steam venting stopping as the wheel turns, orderly and deliberate, calm dark atmosphere",
+      "background_asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/06_defense.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_032225_ecd71df7-263d-46a0-824a-4e80e757fd5f.png"
+    },
+    {
+      "slide": 7,
+      "role": "point",
+      "kicker": "THE PROOF OF CONCEPT",
+      "on_slide_copy": "This is Kim's public PoC panicking a host from inside an unprivileged guest.",
+      "subline": "The full host-takeover exploit exists. It hasn't been released.",
+      "visual_direction": "real video clip, letterboxed on the house dark void, no procedural motif.",
+      "visual_prompt": "N/A: asset_status existing, media_type video. Real screen-recording of the Januscape PoC (github.com/V4bel/Januscape) triggering a host kernel panic from a guest VM, supplied by Jon as demo.gif, converted to mp4 and letterboxed onto the 1080x1350 canvas via scripts/slide-video.mjs. Not AI-generated.",
+      "background_asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/07_point.png",
+      "asset_status": "existing",
+      "cta": "",
+      "notes": "Run: bun run slide-video -- 2026-07-06_januscape-kvm-guest-escape --slide=7 --source=<path to demo.gif>. Real screen recording, not Higgsfield-generated, see asset_licenses for rights status before publish.",
+      "media_type": "video",
+      "video_asset": "/video/2026-07-06_januscape-kvm-guest-escape/07_point.mp4"
+    },
+    {
+      "slide": 8,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "A shared host {{isn't a security boundary you can trust by default.}} [[It's a wall as thick as the kernel patching it.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single reinforced load-bearing wall standing alone in deep negative space with a long shadow stretching toward the edge of frame, minimal high-contrast scene",
+      "background_asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/08_takeaway.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_032243_38bf6ef8-f7bb-4862-a1a5-a3d9b09a241d.png"
+    },
+    {
+      "slide": 9,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Would you know if your cloud provider had actually patched this yet?",
+      "subline": "Save this before your next 'which kernel are we on' conversation.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene with strong empty negative space for a question and handle, premium editorial cybersecurity look",
+      "background_asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/09_cta.png",
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_032302_ee19190b-be75-49a3-b58e-96b31d5700c8.png"
+    }
+  ],
+  "caption": "CVE-2026-53359 sat in Linux KVM's shadow paging code for sixteen years before anyone found it. It has since been dubbed Januscape.\n\nSecurity researcher Hyunwoo Kim (@v4bel) traced it to a use-after-free: KVM reused an old shadow page without checking what type of page it actually was, then read from that page after it had already been freed. The bug has been there since commit 2032a93d66fa in August 2010 (kernel 2.6.36). It was fixed by commit 81ccda30b4e8, merged June 19, 2026.\n\nHere is why it matters. A guest VM with root can corrupt host kernel memory. On a shared physical machine, that means one rented VM can potentially take down or compromise every other tenant on the same box, with no cooperation from QEMU or the hypervisor's userspace needed. Kim reported it to Google's kvmCTF as a zero-day (the program pays up to $250,000 for a full guest-to-host escape). His public proof-of-concept panics the host. He says a full host-code-execution exploit exists too. He has not released it.\n\nIt hits both Intel and AMD x86, and Kim says it is the first guest-to-host PoC that works on both. ARM64 is unaffected (that is a separate bug, ITScape). The catch: it needs nested virtualization exposed to the guest. On distros where /dev/kvm is world-writable by default, like RHEL, this also works as a plain local privilege escalation with no VM required.\n\nFixed stable versions shipped July 4, 2026: 7.1.3, 6.18.38, 6.12.95, 6.6.144, 6.1.177, 5.15.211, and 5.10.260. NVD has not assigned a CVSS score yet. Do not wait for one to patch. If you cannot patch today, disable nested virtualization for untrusted guests: kvm_intel.nested=0 or kvm_amd.nested=0.\n\nThe thesis is direct: a shared host is not a security boundary you can trust by default. It is exactly as strong as the kernel patching it, and that kernel just went 16 years with this hole open.\n\nWould you know if your cloud provider had actually patched this yet? Tell me below.\n\nFollow for real threats and real tools, no fake panic.",
+  "hashtags": [
+    "Linux kernel",
+    "KVM",
+    "CVE-2026-53359",
+    "cloud security",
+    "virtualization"
+  ],
+  "comment_prompt": "Would you know if your cloud provider had actually patched Januscape yet? What would you check first?",
+  "alt_text": [
+    "A KVM bug from 2010 was just found and patched in 2026. An apartment wall explodes open under a spotlight, revealing the unit next door through the hole.",
+    "Researcher Hyunwoo Kim found the use-after-free in KVM's shadow paging code. A hairline crack runs through an apartment building's shared foundation wall, lit by a flashlight.",
+    "A guest VM with root can corrupt host memory and take down every tenant on that machine. A circuit breaker sparks in a shared electrical panel as every unit's lights flicker out.",
+    "KVM reused an old memory page without checking its type, then read it after it was freed. A mismatched puzzle piece is forced into a slot that already held a different, crumbling piece.",
+    "Teams that skip patching or leave nested virtualization on for untrusted guests stay exposed. An unlocked utility access panel hangs open on a building exterior at night.",
+    "Patch to one of the fixed kernel versions, or disable nested virtualization if you cannot patch yet. A hand shuts a valve on an industrial pipe junction as steam stops venting.",
+    "The researcher's real proof-of-concept panics a host from inside an unprivileged guest VM. A screen recording plays showing the exploit triggering a kernel panic.",
+    "A shared host is not a security boundary you can trust by default, only as strong as the kernel patching it. A single reinforced wall stands alone in deep shadow.",
+    "Closing question: would you know if your cloud provider had patched this yet? A clean dark end card holds empty space for the question and handle."
+  ],
+  "sources": [
+    {
+      "source": "The Hacker News, \"16-Year-Old Linux KVM Flaw Lets Guest VMs Escape to Host on Intel and AMD x86 Systems\"",
+      "link": "https://thehackernews.com/2026/07/16-year-old-linux-kvm-flaw-lets-guest.html",
+      "supports": "Core claim: the use-after-free in KVM's shadow MMU, CVE-2026-53359, 16-year lifespan, discoverer Hyunwoo Kim, kvmCTF zero-day submission, fixed versions, Intel/AMD scope.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "NIST National Vulnerability Database, CVE-2026-53359",
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-53359",
+      "supports": "Official CVE record: publish date, description of the use-after-free in arch/x86/kvm/mmu/mmu.c, affected version range, no CVSS score assigned at time of writing.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Hyunwoo Kim (V4bel), Januscape proof-of-concept repository",
+      "link": "https://github.com/V4bel/Januscape",
+      "supports": "PoC scope and limitations: triggers a host kernel panic from a guest VM, requires root inside the guest, works on both Intel VMX and AMD SVM, a separate full host-code-execution exploit exists and is withheld, responsible disclosure via linux-distros@openwall.org.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "SecurityOnline, \"Public Exploit Disclosed for Januscape KVM Escape and LPE (CVE-2026-53359)\"",
+      "link": "https://securityonline.info/januscape-kvm-escape-cve-2026-53359-poc/",
+      "supports": "Corroborates the local-privilege-escalation angle on distributions where /dev/kvm is world-writable by default (e.g. RHEL), and the nested-virtualization mitigation.",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "DarkWebInformer, \"A Long-Lived KVM Bug Resurfaces: Shadow Paging Use-After-Free in the Linux Kernel (CVE-2026-53359)\"",
+      "link": "https://darkwebinformer.com/a-long-lived-kvm-bug-resurfaces-shadow-paging-use-after-free-in-the-linux-kernel-cve-2026-53359/",
+      "supports": "Independent corroboration of the disclosure timeline (embargo from March 10 to March 29, 2026, coordinated by Sandipan Roy) and the technical root cause (kvm_mmu_get_child_sp() not comparing page role before reuse).",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Jon's screen recording of the public Januscape PoC (demo.gif), converted for this post's video slide",
+      "link": "https://github.com/V4bel/Januscape",
+      "supports": "The video slide showing the PoC panicking a host; same repository as the primary PoC source above.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/02_context.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/03_risk.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/04_mechanism.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/05_failure-point.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/06_defense.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/08_takeaway.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/09_cta.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_januscape-kvm-guest-escape/01_cover.png",
+      "source": "Higgsfield CLI / nano-banana-2",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 29,
+    "fps": 30,
+    "export_name": "2026-07-06_januscape-kvm-guest-escape_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-07-06_januscape-kvm-guest-escape/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": "A bug that has been hiding in Linux's virtualization code since 2010 finally got a name: Januscape."
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "text": "It lets a rented virtual machine with root access corrupt the memory of the physical server underneath it."
+      },
+      {
+        "start": 12,
+        "end": 17,
+        "text": "Patches shipped July 4th for every major kernel branch, so update now instead of waiting on a CVSS score that has not landed."
+      },
+      {
+        "start": 17,
+        "end": 23,
+        "text": "A shared host is only as safe as the kernel patching it, and this one just spent sixteen years unpatched."
+      },
+      {
+        "start": 23,
+        "end": 29,
+        "text": "Check with your cloud provider before you assume they have already handled it, and follow for more of these breakdowns."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 6,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "16 YEARS IN THE KERNEL"
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "ONE VM CAN HIT THE WHOLE HOST"
+      },
+      {
+        "start": 12,
+        "end": 17,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "PATCH NOW, DON'T WAIT ON CVSS"
+      },
+      {
+        "start": 17,
+        "end": 23,
+        "slide_ref": 8,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "AS STRONG AS THE KERNEL BENEATH IT"
+      },
+      {
+        "start": 23,
+        "end": 29,
+        "slide_ref": 9,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "IS YOUR HOST PATCHED YET?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  },
+  "renderMetadata": {
+    "provider": "higgsfield-cli",
+    "model": "nano-banana-2",
+    "costEstimate": 10.75
+  }
+}

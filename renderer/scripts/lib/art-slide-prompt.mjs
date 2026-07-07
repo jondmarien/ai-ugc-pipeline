@@ -111,18 +111,20 @@ function composeNaturalPrompt(spec) {
   return `${POSITIVE_EXCLUSIONS} ${spec.subject}. Lit by a single ${spec.accent} accent glow against a deep navy void. ${spec.zone}. ${styleTag}`;
 }
 
-// Prompt family per model. "flux" gets the rich house prose (our prompts are tuned for it); all
-// families get the positive exclusions and an empty negative (no Higgsfield model supports one).
+// Prompt family per model. "flux" gets the rich house prose (our prompts are tuned for it and it's
+// the only family that reads the literal #hex accent). Every other family name (soul, seedream,
+// gpt, natural, or anything a new catalog entry invents) gets the same natural-language composer:
+// this list is documentation, not a gate, so adding a model never requires touching this file.
 export const PROMPT_FAMILIES = Object.freeze([
   "flux",
   "soul",
   "seedream",
   "gpt",
+  "natural",
 ]);
 
 export function composePromptForFamily(spec, family) {
-  const isNatural =
-    family === "soul" || family === "seedream" || family === "gpt";
+  const isNatural = family !== "flux";
   const prompt = isNatural
     ? composeNaturalPrompt(spec)
     : `${composeFluxPrompt(spec)} ${POSITIVE_EXCLUSIONS}`;

@@ -14,3 +14,8 @@ export function backgroundFileName(slide) {
   const role = roleFileToken(slide.role);
   return `${nn}_${role}.png`;
 }
+
+/** Video clip basename: NN_role.mp4 under public/video/<prefix>/. Mirrors backgroundFileName. */
+export function videoFileName(slide) {
+  return backgroundFileName(slide).replace(/\.png$/, ".mp4");
+}

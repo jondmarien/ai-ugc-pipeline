@@ -144,7 +144,9 @@ test("every image catalog entry has a cliJobSetType + promptFamily", () => {
   for (const m of MODEL_CATALOG.image) {
     expect(typeof m.cliJobSetType).toBe("string");
     expect((m.cliJobSetType as string).length).toBeGreaterThan(0);
-    expect(["flux", "soul", "seedream", "gpt"]).toContain(m.promptFamily);
+    expect(["flux", "soul", "seedream", "gpt", "natural"]).toContain(
+      m.promptFamily,
+    );
   }
 });
 
@@ -154,6 +156,11 @@ test("credit cost table reflects the verified Higgsfield rates", () => {
   expect(imageModelCost("seedream-4.5")).toBe(1);
   expect(imageModelCost("gpt-image-2")).toBe(7); // the one that must be gated by --budget
   expect(imageModelCost("cinema-studio-3.0")).toBe(1); // null → conservative fallback
+  // added after comparing the full live catalog against outside reviews for dark/cinematic work
+  expect(imageModelCost("nano-banana-2")).toBe(2);
+  expect(imageModelCost("nano-banana-2-lite")).toBe(1);
+  expect(imageModelCost("recraft-4.1")).toBe(1.25);
+  expect(imageModelCost("grok-image")).toBe(1);
 });
 
 test("imageModelFamily maps models to composers", () => {
@@ -161,6 +168,16 @@ test("imageModelFamily maps models to composers", () => {
   expect(imageModelFamily("soul-2.0")).toBe("soul");
   expect(imageModelFamily("seedream-4.5")).toBe("seedream");
   expect(imageModelFamily("gpt-image-2")).toBe("gpt");
+  expect(imageModelFamily("nano-banana-2")).toBe("natural");
+  expect(imageModelFamily("recraft-4.1")).toBe("natural");
+});
+
+test("uncataloged model ids fall back to 'natural' instead of throwing", () => {
+  // Modularity: any raw job_set_type from `higgsfield model list` (e.g. z_image, ms_image) should
+  // work without a MODEL_CATALOG entry — a curated entry is for a verified display name + cost,
+  // not a requirement to render.
+  expect(imageModelFamily("z_image")).toBe("natural");
+  expect(imageModelFamily("some_future_model_id")).toBe("natural");
 });
 
 test("videoModelCost reflects verified i2v clip rates (and rejects image ids)", () => {

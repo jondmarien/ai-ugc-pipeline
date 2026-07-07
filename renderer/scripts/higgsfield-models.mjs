@@ -61,6 +61,10 @@ function imageSection() {
   console.log(
     `  (cr/img = credits per image; an 8-slide post ≈ 8× that. "?" = needs extra params / unverified.)`,
   );
+  console.log(
+    `  Any other image job_set_type from --live also works: --higgsfield-model=<raw_id> (e.g. z_image, ms_image),\n` +
+      `  priced with a live, credit-free \`generate cost\` lookup. Curate it above once it's a keeper.`,
+  );
 }
 
 function videoSection() {

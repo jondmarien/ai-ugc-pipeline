@@ -1,0 +1,1274 @@
+{
+  "post_id": "2026-07-06_sakana-fugu-orchestrator-vendor-risk",
+  "date": "2026-07-06",
+  "slug": "sakana-fugu-orchestrator-vendor-risk",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "generated",
+  "pillar": "governance",
+  "theme": "ai",
+  "style_fusion": "",
+  "audience": "security_practitioners",
+  "core_claim": "Sakana AI's Fugu Ultra claims frontier-model performance by routing every prompt through a hidden pool of other vendors' models, so the benchmark parity is vendor-reported and the routing itself is not something you can audit.",
+  "claim_tags": [
+    "reported_fact",
+    "scenario"
+  ],
+  "score": {
+    "credibility": 4,
+    "relevance": 4,
+    "novelty": 4,
+    "visual_drama": 4,
+    "defender_usefulness": 4,
+    "total": 20
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "orange",
+    "pillar_accent": "governance",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#f97316",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-07-06_sakana-fugu-orchestrator-vendor-risk",
+    "filename_prefix": "2026-07-06_sakana-fugu-orchestrator-vendor-risk",
+    "expected_files": [
+      "2026-07-06_sakana-fugu-orchestrator-vendor-risk_01_cover.png",
+      "2026-07-06_sakana-fugu-orchestrator-vendor-risk_02_context.png",
+      "2026-07-06_sakana-fugu-orchestrator-vendor-risk_03_risk.png",
+      "2026-07-06_sakana-fugu-orchestrator-vendor-risk_04_point.png",
+      "2026-07-06_sakana-fugu-orchestrator-vendor-risk_05_mechanism.png",
+      "2026-07-06_sakana-fugu-orchestrator-vendor-risk_06_failure-point.png",
+      "2026-07-06_sakana-fugu-orchestrator-vendor-risk_07_defense.png",
+      "2026-07-06_sakana-fugu-orchestrator-vendor-risk_08_takeaway.png",
+      "2026-07-06_sakana-fugu-orchestrator-vendor-risk_09_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md",
+      "instagram_upload_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "slide_captions_file": "slide_captions.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "features": {
+    "multiple_captions": false
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI × CYBERSECURITY",
+      "on_slide_copy": "Sakana says its AI matches Anthropic's best.",
+      "subline": "Inside the Fugu Ultra benchmark chart and what it actually measures.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single large Russian nesting doll violently cracking open mid-air under a blinding spotlight, dozens of identical smaller nesting dolls bursting outward in a chaotic shockwave of motion and splintered wood fragments, extreme dynamic low angle, intense rim light, dark high-contrast cinematic scene, strong empty lower-third",
+      "background_asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/01_cover.png",
+      "asset_status": "generated",
+      "cta": "SWIPE →",
+      "notes": "Add a 1080×1350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'.",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_021550_71873566-f7ff-4cc6-a081-fb474f4ff91a.png"
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "Fugu routes your prompt through other companies' models, then answers as one.",
+      "subline": "It isn't a new frontier model. It's a dispatcher wearing one.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a large metal funnel with many different mismatched objects of varying shapes and materials pouring into it from above, one single uniform stream of light pouring out of the spout below, dramatic single light source, dark high-contrast scene, lower third kept clear",
+      "background_asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/02_context.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_021815_76627e49-48d0-4d9f-943a-8e54ab70355b.png"
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "Its benchmark chart includes two models it never actually tested against.",
+      "subline": "Parity by chart, not parity by a head-to-head run.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "an empty first-place podium block under a spotlight on an otherwise empty dark stage, a torn printed scoreboard page lying discarded on the ground beside it, dark editorial tension, lower third clear",
+      "background_asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/03_risk.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_021833_88772406-4478-4da5-b900-b2df30297b0c.png"
+    },
+    {
+      "slide": 4,
+      "role": "point",
+      "kicker": "THE RECEIPTS",
+      "on_slide_copy": "The chart itself, straight from Sakana's own page.",
+      "subline": "Sakana's own numbers. No independent lab has reproduced them yet.",
+      "visual_direction": "real screenshot, letterboxed on the house dark void, no procedural motif.",
+      "visual_prompt": "N/A: asset_status existing. Real screenshot of Sakana's published benchmark chart (sakana.ai/fugu-release/), supplied by Jon, letterboxed onto the 1080x1350 canvas via ffmpeg scale+pad against the house void color. Not AI-generated.",
+      "background_asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/04_point.png",
+      "asset_status": "existing",
+      "cta": "",
+      "notes": "Real screenshot, not Higgsfield-generated. See asset_licenses for rights status before publish."
+    },
+    {
+      "slide": 5,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "It swaps in other vendors' models per task, then merges their answers.",
+      "subline": "You see one model. A rotating cast actually answers.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a relay baton passed hand to hand through a chain of blurred running figures in the dark, motion trailing behind each handoff, abstract and physical, no readable text",
+      "background_asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/05_mechanism.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_010839_f043c53b-d323-4108-a2c2-7b3c5c95d829.png"
+    },
+    {
+      "slide": 6,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Teams trust the chart and skip asking which vendor touched their data.",
+      "subline": "The pool is swappable for Sakana. It isn't visible to you.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single unmarked shipping crate being wheeled past an unattended checkpoint gate hanging open in the dark, one figure walking past without glancing at it",
+      "background_asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/06_failure-point.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_010858_e60fa660-36eb-4e18-b428-286a98ba84cf.png"
+    },
+    {
+      "slide": 7,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Log every call and add the vendor to your risk register.",
+      "subline": "Treat the router as a fourth party, not a single vendor.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a row of wax seals being pressed one by one onto a stack of dark folders under a desk lamp, orderly and deliberate, calm dark atmosphere",
+      "background_asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/07_defense.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_010916_ad3c9ff0-28f2-4000-b0e9-6c6cca6e9851.png"
+    },
+    {
+      "slide": 8,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "That chart {{isn't proof Fugu Ultra beat the model it faced.}} [[It's proof that model was already gone.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single cracked trophy cup sitting alone in deep negative space with a long shadow stretching toward the edge of frame, minimal high-contrast scene",
+      "background_asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/08_takeaway.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_010934_e63fc185-686a-4056-992c-3f10b4040173.png"
+    },
+    {
+      "slide": 9,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Would your team sign off on an API that won't say which model just read your prompt?",
+      "subline": "Save this before the next 'frontier-matching' vendor pitch.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene with strong empty negative space for a question and handle, premium editorial cybersecurity look",
+      "background_asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/09_cta.png",
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260707_010952_7cc4945f-e1ef-420b-86d7-9d652d6ec682.png"
+    }
+  ],
+  "caption": "Sakana AI's new Fugu Ultra ships with a benchmark chart next to Anthropic's Fable 5 and Mythos Preview. Neither model was in the room for the test. Sakana says so itself: baseline scores are provider-reported, and Fable 5 and Mythos Preview never touched Fugu's pool because they weren't publicly reachable when the chart went live.\n\nHere's what Fugu actually is: not a new frontier model, but an API that reads your prompt, farms it out to a pool of other companies' models, chains a few together, and hands you back one answer like a single system did the work. Sakana built it on its own ICLR 2026 research (Trinity and Conductor), and it's already routable on OpenRouter and listed in the Nous Research portal next to every other model on the shelf.\n\nOne place Sakana does publish a direct number against Fable 5: SWE-Bench Pro. Fable 5 still wins, 80.0 to Fugu Ultra's 73.7. That's the number to sit with before anyone signs off on an orchestrator because the chart looked good. You also can't see which vendor's model handled a given prompt, or log that the way you'd log any other subprocessor.\n\nThe thesis is direct: a benchmark-topping chart is marketing, not an audit. Before an orchestrator like this touches production data, get the provider list, confirm per-call logging, and put it on the same vendor risk register as every other subprocessor you use.\n\nWould you sign off on an API that won't say which model just read your data? Tell me below.\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "AI security",
+    "vendor risk",
+    "model orchestration",
+    "shadow AI",
+    "AI governance"
+  ],
+  "comment_prompt": "Would your team route sensitive prompts through an API that won't disclose which underlying model answered each call? What would you need to see first?",
+  "alt_text": [
+    "Sakana claims its Fugu Ultra AI matches Anthropic's best model, but never tested against it directly. A sealed envelope splits open to reveal smaller identical envelopes spilling out beneath it.",
+    "Sakana AI released Fugu and Fugu Ultra as one API that routes prompts through other companies' models. A conductor's baton rests across a row of six different instrument cases in the dark.",
+    "Fugu Ultra's benchmark chart lists two models that were never actually in its testing pool. An empty velvet pedestal sits under a spotlight beside a folded printed scoreboard.",
+    "Sakana's own published benchmark chart, screenshotted directly from its release page: Fugu Ultra and Fugu compared against Fable 5, Mythos Preview, Gemini 3.1 Pro, GPT 5.5, and Opus 4.8 across eight benchmarks.",
+    "Fugu picks and chains other language models per task, then merges the results into one answer. A relay baton passes hand to hand through a chain of blurred running figures in the dark.",
+    "Teams adopt AI orchestrators on benchmark charts alone and skip asking which vendor's model actually handled their data. An unmarked shipping crate is wheeled past an open, unattended checkpoint gate.",
+    "The fix: log every orchestrator call and add it to your vendor risk register like any other subprocessor. A row of wax seals is pressed one by one onto a stack of dark folders under a desk lamp.",
+    "The chart proves the compared model was already gone, not that Fugu Ultra beat it. A single cracked trophy cup sits alone in deep negative space with a long shadow.",
+    "Closing question: would you sign off on an API that won't say which model read your data? A clean dark end card holds empty space for the question and handle."
+  ],
+  "sources": [
+    {
+      "source": "Sakana AI, \"Sakana Fugu: One Model to Command Them All\" (fugu-release)",
+      "link": "https://sakana.ai/fugu-release/",
+      "supports": "Fugu Ultra's benchmark comparison table against Fable 5, Mythos Preview, Gemini 3.1 Pro, GPT 5.5, Opus 4.8; and Sakana's own disclosure that baseline scores are provider-reported and neither Fable 5 nor Mythos Preview were in Fugu's agent pool since they weren't publicly accessible.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Sakana AI, \"Sakana Fugu: Multi-agent System as A Model\"",
+      "link": "https://sakana.ai/fugu/",
+      "supports": "Fugu/Fugu Ultra are a multi-agent orchestration system delivered as a single API, built on Sakana's Trinity and Conductor (ICLR 2026) research; release date June 22, 2026.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "OpenRouter, \"Fugu Ultra - API Pricing & Providers\"",
+      "link": "https://openrouter.ai/sakana/fugu-ultra",
+      "supports": "Fugu Ultra is listed and routable on OpenRouter as a third-party marketplace model, confirming external availability beyond Sakana's own API.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Nous Research portal, model picker (screenshot supplied by Jon, \"SET MAIN MODEL\" dialog; the portal view itself is behind auth with no public URL, linking Nous Research's public site as the closest citable reference)",
+      "link": "https://nousresearch.com/",
+      "supports": "sakana/fugu-ultra appears as a selectable model inside the Nous Research portal's provider list, confirming it is distributed on a second third-party routing marketplace beyond OpenRouter.",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "VentureBeat, \"No Claude Fable 5? No problem: Sakana achieves frontier performance with new Fugu multi-model, auto synthesis system\"",
+      "link": "https://venturebeat.com/orchestration/no-claude-fable-5-no-problem-sakana-achieves-frontier-performance-with-new-fugu-multi-model-auto-synthesis-system",
+      "supports": "Independent tech-press framing that Fugu's frontier-parity claim rests on a model (Fable 5) that was no longer publicly reachable, not a direct head-to-head test.",
+      "confidence": "medium",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "SWE-Bench Pro comparison chart provided by Jon (Sakana's own published benchmark image)",
+      "link": "https://sakana.ai/fugu-release/",
+      "supports": "Direct benchmark numbers: Fable 5 scores 80.0 on SWE-Bench Pro versus Fugu Ultra's 73.7, the one head-to-head data point where Fugu does not lead.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/01_cover.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/02_context.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/03_risk.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/04_point.png",
+      "source": "Sakana AI (sakana.ai/fugu-release/) — screenshot supplied by Jon",
+      "license_or_terms": "Not Higgsfield-generated art. A screenshot of a competitor's publicly published marketing chart, used for critical commentary on that chart's own claims (editorial/fair-use context). Needs a human legal check before publish, same as any third-party screenshot.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Letterboxed onto the 1080x1350 canvas via ffmpeg (scale+pad against the house void color), not regenerated or altered otherwise."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/05_mechanism.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/06_failure-point.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/07_defense.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/08_takeaway.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-06_sakana-fugu-orchestrator-vendor-risk/09_cta.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 26,
+    "fps": 30,
+    "export_name": "2026-07-06_sakana-fugu-orchestrator-vendor-risk_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-07-06_sakana-fugu-orchestrator-vendor-risk/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "Sakana AI just told the world its new model matches Anthropic's best system, and it never got the chance to actually test against it."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "text": "Fugu Ultra is not one trained model. It is an API that quietly routes your prompt through a pool of other companies' systems and answers as if it were one."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "text": "Before you plug something like that into production, get its provider list, confirm it logs every call, and put the whole thing on your vendor risk register."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "text": "That benchmark chart does not prove Fugu Ultra beat the model it is compared against. It proves that model was already pulled from public access."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "text": "So would you trust an API that will not say which model just read your data? Tell me in the comments, and follow for more of this."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "PARITY BY CHART, NOT BY TEST"
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "ONE API, MANY VENDORS INSIDE"
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "slide_ref": 7,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "LOG IT. AUDIT IT. REGISTER IT."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "slide_ref": 8,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "THE MODEL WAS ALREADY GONE"
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "slide_ref": 9,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "WHO ACTUALLY ANSWERED YOU?"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0,
+        "end": 2.02,
+        "text": "Sakana AI just told the world its",
+        "words": [
+          {
+            "text": "Sakana",
+            "start": 0,
+            "end": 0.62
+          },
+          {
+            "text": "AI",
+            "start": 0.62,
+            "end": 0.88
+          },
+          {
+            "text": "just",
+            "start": 0.88,
+            "end": 1.22
+          },
+          {
+            "text": "told",
+            "start": 1.22,
+            "end": 1.46
+          },
+          {
+            "text": "the",
+            "start": 1.46,
+            "end": 1.62
+          },
+          {
+            "text": "world",
+            "start": 1.62,
+            "end": 1.78
+          },
+          {
+            "text": "its",
+            "start": 1.78,
+            "end": 2.02
+          }
+        ]
+      },
+      {
+        "start": 2.02,
+        "end": 4.84,
+        "text": "new model matches Anthropic's best system, and",
+        "words": [
+          {
+            "text": "new",
+            "start": 2.02,
+            "end": 2.18
+          },
+          {
+            "text": "model",
+            "start": 2.18,
+            "end": 2.4
+          },
+          {
+            "text": "matches",
+            "start": 2.4,
+            "end": 2.84
+          },
+          {
+            "text": "Anthropic's",
+            "start": 3.3,
+            "end": 3.76
+          },
+          {
+            "text": "best",
+            "start": 3.76,
+            "end": 3.92
+          },
+          {
+            "text": "system,",
+            "start": 3.92,
+            "end": 4.2
+          },
+          {
+            "text": "and",
+            "start": 4.76,
+            "end": 4.84
+          }
+        ]
+      },
+      {
+        "start": 4.84,
+        "end": 6.18,
+        "text": "it never got the chance to actually",
+        "words": [
+          {
+            "text": "it",
+            "start": 4.84,
+            "end": 4.94
+          },
+          {
+            "text": "never",
+            "start": 4.94,
+            "end": 5.08
+          },
+          {
+            "text": "got",
+            "start": 5.08,
+            "end": 5.34
+          },
+          {
+            "text": "the",
+            "start": 5.34,
+            "end": 5.46
+          },
+          {
+            "text": "chance",
+            "start": 5.46,
+            "end": 5.66
+          },
+          {
+            "text": "to",
+            "start": 5.66,
+            "end": 5.86
+          },
+          {
+            "text": "actually",
+            "start": 5.86,
+            "end": 6.18
+          }
+        ]
+      },
+      {
+        "start": 6.18,
+        "end": 7.04,
+        "text": "test against it.",
+        "words": [
+          {
+            "text": "test",
+            "start": 6.18,
+            "end": 6.46
+          },
+          {
+            "text": "against",
+            "start": 6.46,
+            "end": 6.78
+          },
+          {
+            "text": "it.",
+            "start": 6.78,
+            "end": 7.04
+          }
+        ]
+      },
+      {
+        "start": 7.52,
+        "end": 9.54,
+        "text": "Fugu Ultra is not one trained model.",
+        "words": [
+          {
+            "text": "Fugu",
+            "start": 7.52,
+            "end": 7.86
+          },
+          {
+            "text": "Ultra",
+            "start": 7.86,
+            "end": 8.16
+          },
+          {
+            "text": "is",
+            "start": 8.16,
+            "end": 8.62
+          },
+          {
+            "text": "not",
+            "start": 8.62,
+            "end": 8.82
+          },
+          {
+            "text": "one",
+            "start": 8.82,
+            "end": 9.02
+          },
+          {
+            "text": "trained",
+            "start": 9.02,
+            "end": 9.22
+          },
+          {
+            "text": "model.",
+            "start": 9.22,
+            "end": 9.54
+          }
+        ]
+      },
+      {
+        "start": 10.1,
+        "end": 11.68,
+        "text": "It is an API that quietly routes",
+        "words": [
+          {
+            "text": "It",
+            "start": 10.1,
+            "end": 10.16
+          },
+          {
+            "text": "is",
+            "start": 10.16,
+            "end": 10.26
+          },
+          {
+            "text": "an",
+            "start": 10.26,
+            "end": 10.38
+          },
+          {
+            "text": "API",
+            "start": 10.38,
+            "end": 10.6
+          },
+          {
+            "text": "that",
+            "start": 10.6,
+            "end": 11.06
+          },
+          {
+            "text": "quietly",
+            "start": 11.06,
+            "end": 11.32
+          },
+          {
+            "text": "routes",
+            "start": 11.32,
+            "end": 11.68
+          }
+        ]
+      },
+      {
+        "start": 11.68,
+        "end": 13.12,
+        "text": "your prompt through a pool of other",
+        "words": [
+          {
+            "text": "your",
+            "start": 11.68,
+            "end": 11.92
+          },
+          {
+            "text": "prompt",
+            "start": 11.92,
+            "end": 12.16
+          },
+          {
+            "text": "through",
+            "start": 12.16,
+            "end": 12.46
+          },
+          {
+            "text": "a",
+            "start": 12.46,
+            "end": 12.56
+          },
+          {
+            "text": "pool",
+            "start": 12.56,
+            "end": 12.76
+          },
+          {
+            "text": "of",
+            "start": 12.76,
+            "end": 12.96
+          },
+          {
+            "text": "other",
+            "start": 12.96,
+            "end": 13.12
+          }
+        ]
+      },
+      {
+        "start": 13.12,
+        "end": 15.36,
+        "text": "companies' systems and answers as if it",
+        "words": [
+          {
+            "text": "companies'",
+            "start": 13.12,
+            "end": 13.4
+          },
+          {
+            "text": "systems",
+            "start": 13.68,
+            "end": 13.98
+          },
+          {
+            "text": "and",
+            "start": 13.98,
+            "end": 14.32
+          },
+          {
+            "text": "answers",
+            "start": 14.32,
+            "end": 14.66
+          },
+          {
+            "text": "as",
+            "start": 14.66,
+            "end": 15.08
+          },
+          {
+            "text": "if",
+            "start": 15.08,
+            "end": 15.28
+          },
+          {
+            "text": "it",
+            "start": 15.28,
+            "end": 15.36
+          }
+        ]
+      },
+      {
+        "start": 15.36,
+        "end": 15.76,
+        "text": "were one.",
+        "words": [
+          {
+            "text": "were",
+            "start": 15.36,
+            "end": 15.52
+          },
+          {
+            "text": "one.",
+            "start": 15.52,
+            "end": 15.76
+          }
+        ]
+      },
+      {
+        "start": 16.4,
+        "end": 17.76,
+        "text": "Before you plug something like that into",
+        "words": [
+          {
+            "text": "Before",
+            "start": 16.4,
+            "end": 16.45
+          },
+          {
+            "text": "you",
+            "start": 16.4,
+            "end": 16.62
+          },
+          {
+            "text": "plug",
+            "start": 16.62,
+            "end": 16.78
+          },
+          {
+            "text": "something",
+            "start": 16.78,
+            "end": 17.04
+          },
+          {
+            "text": "like",
+            "start": 17.04,
+            "end": 17.36
+          },
+          {
+            "text": "that",
+            "start": 17.36,
+            "end": 17.52
+          },
+          {
+            "text": "into",
+            "start": 17.52,
+            "end": 17.76
+          }
+        ]
+      },
+      {
+        "start": 17.76,
+        "end": 20.46,
+        "text": "production, get its provider list, confirm it",
+        "words": [
+          {
+            "text": "production,",
+            "start": 17.76,
+            "end": 18.08
+          },
+          {
+            "text": "get",
+            "start": 18.64,
+            "end": 18.78
+          },
+          {
+            "text": "its",
+            "start": 18.78,
+            "end": 18.9
+          },
+          {
+            "text": "provider",
+            "start": 18.9,
+            "end": 19.18
+          },
+          {
+            "text": "list,",
+            "start": 19.18,
+            "end": 19.54
+          },
+          {
+            "text": "confirm",
+            "start": 19.98,
+            "end": 20.24
+          },
+          {
+            "text": "it",
+            "start": 20.24,
+            "end": 20.46
+          }
+        ]
+      },
+      {
+        "start": 20.68,
+        "end": 22.46,
+        "text": "logs every call, and put the whole",
+        "words": [
+          {
+            "text": "logs",
+            "start": 20.68,
+            "end": 20.88
+          },
+          {
+            "text": "every",
+            "start": 20.88,
+            "end": 21.26
+          },
+          {
+            "text": "call,",
+            "start": 21.26,
+            "end": 21.52
+          },
+          {
+            "text": "and",
+            "start": 21.92,
+            "end": 21.98
+          },
+          {
+            "text": "put",
+            "start": 21.98,
+            "end": 22.14
+          },
+          {
+            "text": "the",
+            "start": 22.14,
+            "end": 22.28
+          },
+          {
+            "text": "whole",
+            "start": 22.28,
+            "end": 22.46
+          }
+        ]
+      },
+      {
+        "start": 22.46,
+        "end": 23.74,
+        "text": "thing on your vendor risk register.",
+        "words": [
+          {
+            "text": "thing",
+            "start": 22.46,
+            "end": 22.7
+          },
+          {
+            "text": "on",
+            "start": 22.7,
+            "end": 22.84
+          },
+          {
+            "text": "your",
+            "start": 22.84,
+            "end": 22.94
+          },
+          {
+            "text": "vendor",
+            "start": 22.94,
+            "end": 23.08
+          },
+          {
+            "text": "risk",
+            "start": 23.08,
+            "end": 23.4
+          },
+          {
+            "text": "register.",
+            "start": 23.4,
+            "end": 23.74
+          }
+        ]
+      },
+      {
+        "start": 24.2,
+        "end": 26.4,
+        "text": "That benchmark chart does not prove Fugu",
+        "words": [
+          {
+            "text": "That",
+            "start": 24.2,
+            "end": 24.64
+          },
+          {
+            "text": "benchmark",
+            "start": 24.64,
+            "end": 25
+          },
+          {
+            "text": "chart",
+            "start": 25,
+            "end": 25.42
+          },
+          {
+            "text": "does",
+            "start": 25.42,
+            "end": 25.68
+          },
+          {
+            "text": "not",
+            "start": 25.68,
+            "end": 25.9
+          },
+          {
+            "text": "prove",
+            "start": 25.9,
+            "end": 26.18
+          },
+          {
+            "text": "Fugu",
+            "start": 26.18,
+            "end": 26.4
+          }
+        ]
+      },
+      {
+        "start": 26.4,
+        "end": 27.88,
+        "text": "Ultra beat the model it is compared",
+        "words": [
+          {
+            "text": "Ultra",
+            "start": 26.4,
+            "end": 26.74
+          },
+          {
+            "text": "beat",
+            "start": 26.74,
+            "end": 27.02
+          },
+          {
+            "text": "the",
+            "start": 27.02,
+            "end": 27.16
+          },
+          {
+            "text": "model",
+            "start": 27.16,
+            "end": 27.32
+          },
+          {
+            "text": "it",
+            "start": 27.32,
+            "end": 27.58
+          },
+          {
+            "text": "is",
+            "start": 27.58,
+            "end": 27.68
+          },
+          {
+            "text": "compared",
+            "start": 27.68,
+            "end": 27.88
+          }
+        ]
+      },
+      {
+        "start": 27.88,
+        "end": 28.36,
+        "text": "against.",
+        "words": [
+          {
+            "text": "against.",
+            "start": 27.88,
+            "end": 28.36
+          }
+        ]
+      },
+      {
+        "start": 28.8,
+        "end": 30.46,
+        "text": "It proves that model was already pulled",
+        "words": [
+          {
+            "text": "It",
+            "start": 28.8,
+            "end": 28.96
+          },
+          {
+            "text": "proves",
+            "start": 28.96,
+            "end": 29.14
+          },
+          {
+            "text": "that",
+            "start": 29.14,
+            "end": 29.36
+          },
+          {
+            "text": "model",
+            "start": 29.36,
+            "end": 29.56
+          },
+          {
+            "text": "was",
+            "start": 29.56,
+            "end": 29.8
+          },
+          {
+            "text": "already",
+            "start": 29.8,
+            "end": 30.16
+          },
+          {
+            "text": "pulled",
+            "start": 30.16,
+            "end": 30.46
+          }
+        ]
+      },
+      {
+        "start": 30.46,
+        "end": 31.44,
+        "text": "from public access.",
+        "words": [
+          {
+            "text": "from",
+            "start": 30.46,
+            "end": 30.88
+          },
+          {
+            "text": "public",
+            "start": 30.88,
+            "end": 31.18
+          },
+          {
+            "text": "access.",
+            "start": 31.18,
+            "end": 31.44
+          }
+        ]
+      },
+      {
+        "start": 32.22,
+        "end": 33.62,
+        "text": "So would you trust an API that",
+        "words": [
+          {
+            "text": "So",
+            "start": 32.22,
+            "end": 32.36
+          },
+          {
+            "text": "would",
+            "start": 32.36,
+            "end": 32.52
+          },
+          {
+            "text": "you",
+            "start": 32.52,
+            "end": 32.62
+          },
+          {
+            "text": "trust",
+            "start": 32.62,
+            "end": 32.84
+          },
+          {
+            "text": "an",
+            "start": 32.84,
+            "end": 33.02
+          },
+          {
+            "text": "API",
+            "start": 33.02,
+            "end": 33.24
+          },
+          {
+            "text": "that",
+            "start": 33.24,
+            "end": 33.62
+          }
+        ]
+      },
+      {
+        "start": 33.62,
+        "end": 35.08,
+        "text": "will not say which model just read",
+        "words": [
+          {
+            "text": "will",
+            "start": 33.62,
+            "end": 33.74
+          },
+          {
+            "text": "not",
+            "start": 33.74,
+            "end": 33.9
+          },
+          {
+            "text": "say",
+            "start": 33.9,
+            "end": 34.12
+          },
+          {
+            "text": "which",
+            "start": 34.12,
+            "end": 34.34
+          },
+          {
+            "text": "model",
+            "start": 34.34,
+            "end": 34.6
+          },
+          {
+            "text": "just",
+            "start": 34.6,
+            "end": 34.88
+          },
+          {
+            "text": "read",
+            "start": 34.88,
+            "end": 35.08
+          }
+        ]
+      },
+      {
+        "start": 35.08,
+        "end": 35.48,
+        "text": "your data?",
+        "words": [
+          {
+            "text": "your",
+            "start": 35.08,
+            "end": 35.26
+          },
+          {
+            "text": "data?",
+            "start": 35.26,
+            "end": 35.48
+          }
+        ]
+      },
+      {
+        "start": 35.98,
+        "end": 37.56,
+        "text": "Tell me in the comments, and follow",
+        "words": [
+          {
+            "text": "Tell",
+            "start": 35.98,
+            "end": 36.16
+          },
+          {
+            "text": "me",
+            "start": 36.16,
+            "end": 36.32
+          },
+          {
+            "text": "in",
+            "start": 36.32,
+            "end": 36.4
+          },
+          {
+            "text": "the",
+            "start": 36.4,
+            "end": 36.48
+          },
+          {
+            "text": "comments,",
+            "start": 36.48,
+            "end": 36.76
+          },
+          {
+            "text": "and",
+            "start": 36.76,
+            "end": 37.32
+          },
+          {
+            "text": "follow",
+            "start": 37.32,
+            "end": 37.56
+          }
+        ]
+      },
+      {
+        "start": 37.56,
+        "end": 38.26,
+        "text": "for more of this.",
+        "words": [
+          {
+            "text": "for",
+            "start": 37.56,
+            "end": 37.8
+          },
+          {
+            "text": "more",
+            "start": 37.8,
+            "end": 37.96
+          },
+          {
+            "text": "of",
+            "start": 37.96,
+            "end": 38.12
+          },
+          {
+            "text": "this.",
+            "start": 38.12,
+            "end": 38.26
+          }
+        ]
+      }
+    ]
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  },
+  "renderMetadata": {
+    "provider": "higgsfield-cli",
+    "model": "recraft-4.1",
+    "costEstimate": 16.5
+  }
+}

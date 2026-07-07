@@ -89,6 +89,12 @@ export const SlideData = z.object({
   asset_status: z
     .enum(["existing", "needed", "generated", "stock", "procedural"])
     .default("procedural"),
+  // "video" = this carousel position publishes as a real video clip (Instagram supports mixed
+  // image/video carousel children). `background_asset` still holds a poster-frame PNG so local
+  // export/preview/QA work exactly like every other slide; `video_asset` is the real clip used
+  // instead of the PNG at publish time (both manual and API). See scripts/slide-video.ts.
+  media_type: z.enum(["image", "video"]).optional().default("image"),
+  video_asset: z.string().optional().default(""),
   cta: z.string().optional().default(""),
   notes: z.string().optional().default(""),
   // Per-slide style-fusion override (FLUX.2): a second aesthetic blended with the house style for

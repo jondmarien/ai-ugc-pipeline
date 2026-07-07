@@ -3,7 +3,10 @@ export type RenderPackage = {
   key: string; // e.g. "2026-06-11_bluehammer-cve-2026-33825"
   dir: string; // absolute path to pipeline/renders/<key>/
   reelPath: string; // absolute path to <key>_reel.mp4
-  slides: Array<{ path: string; altText: string }>; // carousel PNGs in order, each with its alt text
+  // carousel items in order, each with its alt text. `path` is always the poster/still PNG;
+  // `videoPath` is set when this position is a real video clip (media_type: "video") and, when
+  // present and the file exists, adapters should publish/upload the video instead of the PNG.
+  slides: Array<{ path: string; altText: string; videoPath?: string }>;
   post: {
     post_id: string;
     caption: string;

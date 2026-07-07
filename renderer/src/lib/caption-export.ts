@@ -9,13 +9,22 @@ export function topicLine(post: Pick<TPostData, "hashtags">): string {
   return topics.length ? `[${topics.join(", ")}]` : "";
 }
 
+/** Paste-ready numbered source list ("Sources:\n1. Name — link\n..."). Empty when no sources. */
+export function sourcesBlock(post: Pick<TPostData, "sources">): string {
+  if (!post.sources?.length) return "";
+  const lines = post.sources.map((s, i) => `${i + 1}. ${s.source} — ${s.link}`);
+  return `Sources:\n${lines.join("\n")}`;
+}
+
 /** Single post-level caption export (legacy default). */
 export function captionTxt(
-  post: Pick<TPostData, "caption" | "hashtags">,
+  post: Pick<TPostData, "caption" | "hashtags" | "sources">,
 ): string {
+  const sources = sourcesBlock(post);
+  const sourcesSuffix = sources ? `\n\n${sources}` : "";
   const topics = topicLine(post);
   const topicSuffix = topics ? `\n\n${topics}\n` : "\n";
-  return `${post.caption}${topicSuffix}`;
+  return `${post.caption}${sourcesSuffix}${topicSuffix}`;
 }
 
 /**

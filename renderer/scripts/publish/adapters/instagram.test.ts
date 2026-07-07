@@ -233,6 +233,99 @@ test("postType: carousel uploads each slide, creates children then a parent (is_
   expect(cleanedCount).toBe(pkg.slides.length); // every temp-hosted slide image is cleaned up
 });
 
+test("postType: carousel publishes a video slide as a video child, polling it FINISHED before the parent is created", async () => {
+  const videoPkg: RenderPackage = {
+    ...pkg,
+    slides: [
+      {
+        path: "/renders/x/x_04_point_poster.png",
+        altText: "Demo clip poster",
+        videoPath: "/renders/x/x_04_point.mp4",
+      },
+      {
+        path: "/renders/x/x_01_cover.png",
+        altText: "Cover slide",
+      },
+    ],
+  };
+
+  const seen: string[] = [];
+  const childIds: string[] = [];
+  const uploaded: string[] = [];
+  const fakeFetch = (async (url: any) => {
+    const u = String(url);
+    if (u.includes("/media?") && u.includes("video_url=")) {
+      seen.push("video-child-create");
+      const id = "child_video_1";
+      childIds.push(id);
+      return new Response(JSON.stringify({ id }), { status: 200 });
+    }
+    if (
+      u.includes("/media?") &&
+      u.includes("is_carousel_item=true") &&
+      u.includes("image_url=")
+    ) {
+      seen.push("image-child-create");
+      const id = "child_image_1";
+      childIds.push(id);
+      return new Response(JSON.stringify({ id }), { status: 200 });
+    }
+    if (u.includes("/child_video_1?")) {
+      seen.push("video-child-poll");
+      return new Response(JSON.stringify({ status_code: "FINISHED" }), {
+        status: 200,
+      });
+    }
+    if (u.includes("/media?") && u.includes("media_type=CAROUSEL")) {
+      seen.push("parent-create");
+      expect(u).toContain("children=child_video_1%2Cchild_image_1");
+      return new Response(JSON.stringify({ id: "parent_1" }), { status: 200 });
+    }
+    if (u.includes("/parent_1?")) {
+      seen.push("parent-poll");
+      return new Response(JSON.stringify({ status_code: "FINISHED" }), {
+        status: 200,
+      });
+    }
+    if (u.includes("/media_publish?")) {
+      seen.push("publish");
+      return new Response(JSON.stringify({ id: "media_1" }), { status: 200 });
+    }
+    return new Response("not found", { status: 404 });
+  }) as unknown as typeof fetch;
+
+  const adapter = makeInstagramAdapter({
+    loadConfig: () => carouselCfg,
+    getCredentials: async () => ({ igUserId: "ig_1", pageAccessToken: "tok" }),
+    fetchImpl: fakeFetch,
+    uploadTemp: async (p: string) => {
+      uploaded.push(p);
+      return {
+        url: p.endsWith(".mp4")
+          ? "https://aiugc.chron0.tech/blob/x.mp4"
+          : "https://aiugc.chron0.tech/blob/x.png",
+        cleanup: async () => {},
+      };
+    },
+    pollIntervalMs: 0,
+    maxPolls: 3,
+  });
+
+  const r = await adapter.publish(videoPkg, {});
+  expect(r.status).toBe("published");
+  // the video child is created AND polled to FINISHED before the parent container is created
+  expect(seen).toEqual([
+    "video-child-create",
+    "video-child-poll",
+    "image-child-create",
+    "parent-create",
+    "parent-poll",
+    "publish",
+  ]);
+  // the video slide uploads its clip, not its poster PNG
+  expect(uploaded).toEqual(["/renders/x/x_04_point.mp4", "/renders/x/x_01_cover.png"]);
+});
+
 test("postType: carousel returns a failed result and still cleans up when there are no slides", async () => {
   const noSlidePkg: RenderPackage = { ...pkg, slides: [] };
   const adapter = makeInstagramAdapter({

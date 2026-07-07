@@ -11,8 +11,11 @@ out/
 # Generated / licensed reel audio (voice.wav, music.mp3) — keep media licensing out of git
 public/audio/
 
-# Generated per-post background art (regenerable via `bun run art`; final art is baked into pipeline/renders/)
+# Generated per-post background art (regenerable via `bun run art`)
 public/backgrounds/*/
+
+# Generated per-post video slides (regenerable via `bun run slide-video` from the source clip)
+public/video/*/
 
 # local env (HF_HOME, HF_TOKEN, etc.)
 .env

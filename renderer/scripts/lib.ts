@@ -46,6 +46,14 @@ export function slideFilename(post: TPostData, slideIndex0: number): string {
   return `${post.upload_package.filename_prefix}_${n}_${role}.png`;
 }
 
+/** Render-output filename for a video-media_type slide (mirrors slideFilename, .mp4 ext). */
+export function slideVideoFilename(
+  post: TPostData,
+  slideIndex0: number,
+): string {
+  return slideFilename(post, slideIndex0).replace(/\.png$/, ".mp4");
+}
+
 export function outputDir(post: TPostData): string {
   // Output package lives under the repo's pipeline/renders/<folder-name>.
   const folderName = path.basename(post.upload_package.folder);

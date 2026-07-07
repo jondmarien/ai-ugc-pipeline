@@ -2,7 +2,7 @@
 //
 // Pipeline step: write caption.txt, alt_text.txt, sources.md, LICENSES.md, QA checklist
 // into pipeline/renders/<folder>/ (alongside export PNGs). Does not render slides.
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import {
   captionTxt,
@@ -12,7 +12,44 @@ import {
 import type { TPostData } from "../src/lib/schema.ts";
 import { multipleCaptionsEnabled } from "../src/lib/schema.ts";
 import { instagramUploadChecklist } from "./lib/instagram-upload.ts";
-import { loadPost, outputDir, slideFilename } from "./lib.ts";
+import {
+  loadPost,
+  outputDir,
+  ROOT,
+  slideFilename,
+  slideVideoFilename,
+} from "./lib.ts";
+
+/** Video-media_type slides in this post, with their render-output filename. */
+function videoSlideFiles(
+  post: TPostData,
+): Array<{ index: number; role: string; filename: string }> {
+  return post.slides
+    .map((s, i) => ({ index: i, role: s.role, slide: s }))
+    .filter(({ slide }) => slide.media_type === "video")
+    .map(({ index, role }) => ({
+      index,
+      role,
+      filename: slideVideoFilename(post, index),
+    }));
+}
+
+/** Copy each video slide's clip from public/ into the render output folder, next to the PNGs. */
+function copySlideVideos(post: TPostData, outDir: string): string[] {
+  const copied: string[] = [];
+  for (const { index, filename } of videoSlideFiles(post)) {
+    const asset = post.slides[index].video_asset;
+    if (!asset) continue;
+    const src = path.join(ROOT, "public", asset.replace(/^\//, ""));
+    if (!existsSync(src)) {
+      console.warn(`⚠ video_asset not found, skipping: ${src}`);
+      continue;
+    }
+    copyFileSync(src, path.join(outDir, filename));
+    copied.push(filename);
+  }
+  return copied;
+}
 
 function altTextTxt(post: TPostData): string {
   // One paste-ready alt-text block per slide, in slide order, separated by a blank line — no
@@ -121,6 +158,9 @@ function qaChecklistMd(post: TPostData): string {
     "",
     "## Files in this package",
     ...files.map((f) => `- ${f}`),
+    ...videoSlideFiles(post).map(
+      (v) => `- ${v.filename} (slide ${v.index + 1} "${v.role}" — real video, publishes in place of the PNG)`,
+    ),
     post.video?.enabled ? `- ${post.video.export_name} (Reel)` : "",
     "- caption.txt",
     ...(multipleCaptionsEnabled(post)
@@ -179,6 +219,9 @@ EXAMPLES
     writeFileSync(path.join(outDir, name), content, "utf8");
     console.log(`  ✓ ${name}`);
   }
+
+  const copiedVideos = copySlideVideos(post, outDir);
+  for (const name of copiedVideos) console.log(`  ✓ ${name} (video slide)`);
 
   // Warn if slide PNGs are not present yet (run `bun run export` first).
   const firstPng = slideFilename(post, 0);

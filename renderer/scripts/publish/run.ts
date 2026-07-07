@@ -1,7 +1,12 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { readStatus, setStatus } from "../lib/post-status.mjs";
-import { loadPost, outputDir, slideFilename } from "../lib.ts";
+import {
+  loadPost,
+  outputDir,
+  slideFilename,
+  slideVideoFilename,
+} from "../lib.ts";
 import { facebookAdapter } from "./adapters/facebook";
 import { instagramAdapter } from "./adapters/instagram";
 import { tiktokAdapter } from "./adapters/tiktok";
@@ -90,10 +95,18 @@ function resolvePackage(key: string): {
   const reelName =
     post.video?.export_name ??
     `${post.upload_package.filename_prefix}_reel.mp4`;
-  const slides = post.slides.map((_, i) => ({
-    path: path.join(dir, slideFilename(post, i)),
-    altText: post.alt_text[i] ?? "",
-  }));
+  const slides = post.slides.map((slide, i) => {
+    const videoAbsPath =
+      slide.media_type === "video"
+        ? path.join(dir, slideVideoFilename(post, i))
+        : null;
+    return {
+      path: path.join(dir, slideFilename(post, i)),
+      altText: post.alt_text[i] ?? "",
+      videoPath:
+        videoAbsPath && existsSync(videoAbsPath) ? videoAbsPath : undefined,
+    };
+  });
   const pkg: RenderPackage = {
     key: post.post_id,
     dir,

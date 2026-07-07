@@ -23,3 +23,7 @@ export function publicDir() {
 export function backgroundsDir(prefix) {
   return path.join(publicDir(), "backgrounds", prefix);
 }
+
+export function videosDir(prefix) {
+  return path.join(publicDir(), "video", prefix);
+}

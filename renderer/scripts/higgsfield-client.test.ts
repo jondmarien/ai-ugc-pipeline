@@ -84,13 +84,19 @@ function removePostJson(id: string) {
   if (fs.existsSync(file)) fs.unlinkSync(file);
 }
 
-test("MODEL_CATALOG exposes the approved image set", () => {
+test("MODEL_CATALOG exposes the curated image set", () => {
+  // Curated = verified display name + cost; NOT the ceiling of what's usable (see the
+  // "uncataloged model ids" test below — any Higgsfield job_set_type works via pass-through).
   expect(MODEL_CATALOG.image.map((m) => m.id)).toEqual([
     "soul-2.0",
     "cinema-studio-3.0",
     "flux",
     "gpt-image-2",
     "seedream-4.5",
+    "nano-banana-2",
+    "nano-banana-2-lite",
+    "recraft-4.1",
+    "grok-image",
   ]);
 });
 
@@ -123,11 +129,15 @@ test("estimateCost returns a finite value for an approved model", async () => {
   expect(Number.isFinite(cost)).toBe(true);
 });
 
-test("estimateCost rejects unknown models", async () => {
-  await expect(estimateCost("does-not-exist", 1024, 1280)).rejects.toThrow(
-    "UnknownHiggsfieldModel",
-  );
-});
+test("estimateCost prices an uncataloged model instead of rejecting (modularity fallback)", async () => {
+  // Any Higgsfield job_set_type should be usable without a MODEL_CATALOG entry. A nonsense id
+  // isn't a real job type, so the live `generate cost` lookup fails and this falls back to the
+  // conservative default (1) rather than throwing — the pipeline shouldn't hard-block on a typo,
+  // just price it cautiously.
+  const cost = await estimateCost("does-not-exist", 1024, 1280);
+  expect(typeof cost).toBe("number");
+  expect(Number.isFinite(cost)).toBe(true);
+}, 25_000);
 
 test("estimateCost tolerates non-finite dimensions by falling back to the default unit", async () => {
   const cost = await estimateCost("flux", Number.NaN, Number.NaN);
