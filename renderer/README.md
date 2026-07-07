@@ -202,8 +202,9 @@ content/posts/<key>.json  ──►  Zod schema (src/lib/schema.ts)
 │ scripts/publish/adapters/   │   │  Scene · CaptionLayer ·     │
 │  youtube · tiktok ·         │   │  CaptionTrack · AudioBed ·  │
 │  facebook · instagram       │   │  EndCard                    │
-│ scripts/lib/  shared helpers│   └─────────────────────────────┘
-└─────────────────────────────┘
+│ scripts/lib/  shared helpers│   │                             │
+└─────────────────────────────┘   └─────────────────────────────┘
+
 ```
 
 **Key directories:** `content/posts/` (the post JSON files — schema documented in [docs/CONTENT_SCHEMA.md](docs/CONTENT_SCHEMA.md) and the root README's ERD) · `public/` (`audio/<key>/`, `backgrounds/<key>/`, `video/<key>/`, `walls/` theme pairs) · [`comfyui-workflows/`](comfyui-workflows/README.md) (version-controlled ComfyUI graphs for `--ui-format`) · [`scripts/`](scripts/README.md) + [`scripts/lib/`](scripts/lib/README.md) (CLI layer) · `docs/` (15 architecture/how-to docs, indexed below).
