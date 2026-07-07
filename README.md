@@ -76,9 +76,9 @@ The same picture in plain ASCII:
   IDEA ──► SKILLS (research + write + humanize) ──► POST JSON ──► [HUMAN: approve]
                                                         │
                                                         ▼
-              ┌──────────────────── bun run pipeline ────────────────────┐
+              ┌──────────────────── bun run pipeline ───────────────────────────┐
               │  art ► carousel ► package ► free-GPU ► voice ► captions ► reel  │
-              └────────────────────────────┬─────────────────────────────┘
+              └────────────────────────────┬────────────────────────────────────┘
                                            ▼
                           pipeline/renders/<key>/  (upload package)
                                            │
@@ -142,15 +142,15 @@ See each project's README for the full setup: **[renderer](renderer/README.md)**
 ```
 ai-ugc-pipeline/
 ├── pipeline/            🧠 Content source of truth (docs + output, not code)
-│   ├── content/           editorial kit: workflow, idea backlog, caption bank, QA gates
-│   ├── media/             tool stack, voiceover bake-off, music rules, license matrix
-│   └── renders/           📦 finished upload packages (PNGs, reel.mp4, captions, sources)
+│   ├── content/         📑 editorial kit: workflow, idea backlog, caption bank, QA gates
+│   ├── media/           ⚒️ tool stack, voiceover bake-off, music rules, license matrix
+│   └── renders/         📦 finished upload packages (PNGs, reel.mp4, captions, sources)
 ├── renderer/            🎬 The asset factory (Bun + React + Playwright + Remotion)
-│   ├── content/posts/     the post JSON files — one per post
-│   ├── src/               carousel components, design tokens, Zod schema
-│   ├── remotion/          reel composition (scenes, captions, audio bed, end card)
-│   ├── scripts/           every CLI: pipeline, art, voice, align, reel, publish…
-│   └── comfyui-workflows/ version-controlled ComfyUI graphs (FLUX.2 klein)
+│   ├── content/posts/      The post JSON files — one per post
+│   ├── src/                Carousel components, design tokens, Zod schema
+│   ├── remotion/           Reel composition (scenes, captions, audio bed, end card)
+│   ├── scripts/            Every CLI: pipeline, art, voice, align, reel, publish…
+│   └── comfyui-workflows/  Version-controlled ComfyUI graphs (FLUX.2 klein)
 ├── dashboard/           📊 Review & ops app (React + Vite + Bun.serve, port 4400)
 ├── website/             🌐 aiugc.chron0.tech (marketing site + IG publish-temp API)
 ├── .claude/skills/      🤖 The automation: content, renderer, copy chain, ig-ingest
