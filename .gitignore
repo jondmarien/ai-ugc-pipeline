@@ -24,6 +24,9 @@ yarn-error.log*
 !.env.example
 renderer/.secrets/
 
+# ── Personal voice reference clips (used for voice cloning; local-only) ──
+_voiceref/
+
 # ── Claude Code local state ─────────────────────────────────────
 .claude/settings.local.json
 
