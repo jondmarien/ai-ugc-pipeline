@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- terminal prompt >_ : the hacker glyph, stroked in the pillar spectrum -->
   <rect width="32" height="32" rx="7" fill="#05070d" />
-  <circle cx="16" cy="16" r="10" fill="none" stroke="#1c2436" stroke-width="2.5" />
-  <circle cx="16" cy="16" r="10" fill="none" stroke="url(#g)" stroke-width="2.5"
-    stroke-linecap="round" stroke-dasharray="34 30" transform="rotate(-90 16 16)" />
-  <line x1="16" y1="16" x2="16" y2="9" stroke="#f8fafc" stroke-width="2" stroke-linecap="round" />
-  <line x1="16" y1="16" x2="20.5" y2="18" stroke="#a855f7" stroke-width="2" stroke-linecap="round" />
-  <circle cx="16" cy="16" r="1.8" fill="#f8fafc" />
+  <rect x="0.75" y="0.75" width="30.5" height="30.5" rx="6.25" fill="none" stroke="#2a3548" stroke-width="1.5" />
+  <polyline points="9,10.5 16.5,16 9,21.5" fill="none" stroke="url(#g)"
+    stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+  <line x1="19" y1="22.5" x2="25" y2="22.5" stroke="#f8fafc"
+    stroke-width="3.2" stroke-linecap="round" />
   <defs>
-    <linearGradient id="g" x1="5" y1="5" x2="27" y2="27">
+    <linearGradient id="g" x1="9" y1="10" x2="17" y2="22" gradientUnits="userSpaceOnUse">
       <stop stop-color="#ef4444" />
       <stop offset="0.5" stop-color="#39ff88" />
       <stop offset="1" stop-color="#a855f7" />

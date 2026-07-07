@@ -6,6 +6,15 @@
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-c", "cd website && bun run dev"],
       "port": 4319
+    },
+    {
+      "name": "website-win",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": [
+        "/c",
+        "cd website && J:\\packages\\npm\\global\\bun.cmd run dev"
+      ],
+      "port": 4319
     }
   ]
 }

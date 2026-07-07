@@ -3,10 +3,12 @@ import { getSocial } from "../lib/content";
 import { BrandMark } from "./BrandMark";
 
 const LINKS = [
-  { href: "#thesis", label: "Thesis" },
-  { href: "#pillars", label: "Coverage" },
-  { href: "#pipeline", label: "Pipeline" },
-  { href: "#story", label: "Who" },
+  { href: "/#thesis", label: "Thesis" },
+  { href: "/#pillars", label: "Coverage" },
+  { href: "/#pipeline", label: "Pipeline" },
+  { href: "/#story", label: "Who" },
+  { href: "/skill", label: "The Skill" },
+  { href: "/unlock", label: "Unlock" },
 ];
 
 export function Nav() {
