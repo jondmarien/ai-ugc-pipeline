@@ -2,7 +2,7 @@
 
 # 🌐 website/
 
-### [aiugc.chron0.tech](https://aiugc.chron0.tech) — the public face, and the quiet infrastructure Instagram publishing depends on
+### [aiugc.chron0.tech](https://aiugc.chron0.tech) — the landing site, plus the quiet IG-publishing infra that has to stay up
 
 Vite · React 19 · TypeScript · Tailwind v4 · three.js (react-three-fiber) · GSAP · Vercel
 
@@ -39,7 +39,7 @@ bun run preview        # serve the production build (smoother than dev)
 
 ## ✨ The three.js hero
 
-`src/three/HeroCanvas.tsx` — a custom `SignalField` of ~2,800 points (1,200 on mobile) placed on a golden-angle Fibonacci sphere, coloured through a 5-stop gradient matching the brand themes, with custom GLSL shaders for twinkle + glow (no post-processing bloom pass). Performance details worth knowing:
+`src/three/HeroCanvas.tsx` is a custom `SignalField`: ~2,800 points (1,200 on mobile) on a golden-angle Fibonacci sphere, coloured through a 5-stop gradient matching the brand themes, with custom GLSL shaders doing the twinkle and glow (no post-processing bloom pass). Performance notes:
 
 - A hand-rolled `FpsGuard` drops the pixel ratio if FPS sustains below 45 (avoids pulling in the whole `drei` barrel).
 - Pointer-reactive rotation, disabled under `prefers-reduced-motion`.

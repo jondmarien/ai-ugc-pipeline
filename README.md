@@ -4,7 +4,7 @@
 
 ### AI cybersecurity explained through viral carousels — *real threats, real tools, no fake panic.*
 
-**An end-to-end, local-first content factory:** one idea in → a researched, sourced, human-voiced Instagram carousel **and** a narrated 1080×1920 Reel out → published to YouTube Shorts, TikTok, Facebook, and Instagram through a human approval gate.
+One idea goes in. A researched, sourced, human-voiced carousel and a narrated 1080×1920 Reel come out, rendered locally on an 8 GB GPU and published to YouTube Shorts, TikTok, Facebook, and Instagram through a human approval gate.
 
 [![Runtime: Bun](https://img.shields.io/badge/runtime-Bun-f9f1e1?logo=bun&logoColor=black)](https://bun.sh)
 [![TypeScript](https://img.shields.io/badge/lang-TypeScript-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -27,9 +27,9 @@ This repo produces a specific kind of content: **AI-in-cybersecurity education**
 
 It is **not** a monorepo of unrelated packages. It's one pipeline with several independently runnable pieces that all read and write the same content:
 
-- ✍️ **Content is designed by Claude Code skills** (research loop, source triangulation, a 3-stage "make it sound human" copy chain) into one schema-validated JSON file per post.
-- 🎨 **Assets are rendered by code** — React components screenshotted by Playwright for pixel-exact 1080×1350 carousel PNGs, Remotion for the narrated 1080×1920 Reel, FLUX.2 backgrounds generated locally on an 8 GB GPU (or via cloud APIs), VoxCPM2 narration with optional zero-shot voice cloning, Whisper word-synced captions.
-- 🚦 **Distribution is gated** — nothing ever auto-posts. Only a post that is *approved and rendered* can publish, uploads stay private until each platform's API audit passes, and Instagram defaults to a manual paste-ready checklist.
+- ✍️ **Skills write the content.** A research loop triangulates every claim across at least 2 independent sources, then a 3-stage copy chain (humanizer → stop-slop → proofreader) makes it read like a person wrote it. Everything lands in one schema-validated JSON file per post.
+- 🎨 **Code renders the assets.** Playwright screenshots React components for pixel-exact 1080×1350 carousel PNGs, Remotion builds the narrated 1080×1920 Reel, FLUX.2 generates backgrounds locally on an 8 GB GPU (or via cloud APIs), VoxCPM2 narrates (with optional zero-shot voice cloning), and Whisper word-syncs the captions.
+- 🚦 **A human gates the distribution.** Nothing auto-posts. Only an approved and rendered post can publish, uploads stay private until each platform's API audit passes, and Instagram defaults to a manual paste-ready checklist.
 
 > **The renderer is an adapter, not a brain.** Delete `renderer/` and manual Canva/Figma/CapCut assembly of the same approved content still works. The JSON post file is the single source of truth; nothing downstream invents claims.
 
@@ -50,7 +50,7 @@ It is **not** a monorepo of unrelated packages. It's one pipeline with several i
 
 ## 🔭 How it works
 
-One JSON file per post is the source of truth: it's **designed** by the skills, **rendered** into upload-ready assets, then **distributed** through a human gate.
+One JSON file per post is the source of truth. The skills design it, the renderer turns it into upload-ready assets, and a human gate sits in front of distribution.
 
 ```mermaid
 flowchart TB
@@ -262,7 +262,7 @@ sequenceDiagram
 
 ## 📤 Publishing (gated, opt-in)
 
-Four platforms, one command, one hard gate. Only a **`generated`** post (approved *and* rendered) can publish; success flips it to `upload_ready`; re-runs skip platforms already posted; `--force` only re-publishes, it never bypasses the gate.
+All four platforms publish through the same command and the same hard gate. Only a **`generated`** post (approved *and* rendered) can publish; success flips it to `upload_ready`; re-runs skip platforms already posted; `--force` only re-publishes, it never bypasses the gate.
 
 ```bash
 cd renderer
@@ -332,7 +332,7 @@ Ideas are scored on an 8-axis rubric (technical credibility, audience relevance,
 
 ## 🔒 Non-negotiables (the trust standard)
 
-These are enforced by [`pipeline/content/QA_CHECKLIST.md`](pipeline/content/QA_CHECKLIST.md), not just stated:
+Every one of these is a gate in [`pipeline/content/QA_CHECKLIST.md`](pipeline/content/QA_CHECKLIST.md) that can fail a post:
 
 1. **No fabrication.** No invented CVEs, breach details, stats, quotes, or papers. Every factual claim is backed by a real source or explicitly tagged `[Scenario]`. No fabricated URLs, no uncited victims.
 2. **Offensive depth is calibrated, not banned.** Default to high-level mechanisms; offensive-theme posts may go genuinely technical (real tools, real tradecraft) when it's educational and framed for authorized work. Never turnkey harm.

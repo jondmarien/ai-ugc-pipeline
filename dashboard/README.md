@@ -2,7 +2,7 @@
 
 # 📊 dashboard/
 
-### The ops console: analytics, comment moderation, scheduling, and content intel for the pipeline
+### The ops console for the pipeline: analytics, comment moderation, scheduling, competitor and trend intel
 
 React 19 · Vite · TanStack Query · Recharts · a single **`Bun.serve()`** backend (port 4400, no framework)
 
@@ -12,7 +12,7 @@ React 19 · Vite · TanStack Query · Recharts · a single **`Bun.serve()`** bac
 
 ---
 
-A standalone app (its own `bun install`, separate from `renderer/`) for working with posts and Instagram/Meta data day to day. It reads and writes the pipeline's **output** — rendered packages, publish state, cached Graph API data — and it **never drafts, renders, or publishes content itself**. The Scheduler tab is planning-only by design.
+A standalone app (its own `bun install`, separate from `renderer/`) for working with posts and Instagram/Meta data day to day. It reads and writes the pipeline's output (rendered packages, publish state, cached Graph API data) and never drafts, renders, or publishes content itself. Even the Scheduler tab only plans; that's by design.
 
 ## ⚡ Quick start
 
