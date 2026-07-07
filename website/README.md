@@ -56,14 +56,14 @@ sequenceDiagram
     participant B as Vercel Blob
     participant M as Meta Graph API
 
-    R->>W: POST raw reel bytes — Authorization: Bearer PUBLISH_TEMP_SECRET
-    W->>B: put("publish-temp/<ts>-<name>", public, video/mp4, random suffix)
-    B-->>R: { url, pathname }
+    R->>W: POST raw reel bytes (Bearer PUBLISH_TEMP_SECRET)
+    W->>B: put(publish-temp/timestamp-filename, public, video/mp4, random suffix)
+    B-->>R: url, pathname
     R->>M: create media container (video_url = url, is_ai_generated = true)
     M->>B: fetches the video
-    M-->>R: container FINISHED → publish
-    R->>W: POST /api/publish-temp-delete { pathname }
-    W->>B: del()   — best-effort; a failed delete leaves an orphaned blob, not a broken publish
+    M-->>R: container FINISHED, publish
+    R->>W: POST /api/publish-temp-delete (pathname)
+    W->>B: del(), best effort cleanup only
 ```
 
 - **Auth** is a shared-secret handshake, not end-user auth: both functions 401 unless `Authorization: Bearer ${PUBLISH_TEMP_SECRET}` matches. **The same secret must be set in `renderer/.env` and in this Vercel project's env.**
