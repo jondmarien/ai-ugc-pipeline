@@ -14,13 +14,16 @@ export const BRAND = {
   contact: "contact@chron0.tech",
 } as const;
 
-// Fill TikTok + YouTube URLs once the handles are confirmed.
+export const REPO_URL = "https://github.com/jondmarien/ai-ugc-pipeline";
+export const REPO_ZIP_URL = `${REPO_URL}/archive/refs/heads/main.zip`;
+export const DISCORD_URL = "https://discord.gg/m9VpNzgtRj";
+
 export const SOCIALS = [
   {
-    key: "tiktok",
-    label: "TikTok",
-    handle: "@chron0s_cyb3r_w0rld.ai",
-    url: "https://www.tiktok.com/@chron0s_cyb3r_w0rld.ai",
+    key: "discord",
+    label: "Discord",
+    handle: "join the server",
+    url: DISCORD_URL,
   },
   {
     key: "youtube",
@@ -107,10 +110,6 @@ export const PIPELINE = [
 
 // ── The Skill drop ───────────────────────────────────────────────────────
 // The whole pipeline, packaged as an installable Claude skill.
-
-export const REPO_URL = "https://github.com/jondmarien/ai-ugc-pipeline";
-export const REPO_ZIP_URL = `${REPO_URL}/archive/refs/heads/main.zip`;
-export const DISCORD_URL = "https://discord.gg/m9VpNzgtRj";
 
 export const SKILL = {
   name: "ai-ugc-pipeline",

@@ -12,7 +12,7 @@ const HeroCanvas = lazy(() =>
 export function Hero() {
   const root = useRef<HTMLElement>(null);
   const reduced = prefersReducedMotion();
-  const tiktok = getSocial("tiktok");
+  const instagram = getSocial("instagram");
   const [visible, setVisible] = useState(true);
 
   // Pause the WebGL render loop once the hero scrolls out of view.
@@ -96,7 +96,7 @@ export function Hero() {
 
         <div data-h="cta" className="mt-10 flex flex-wrap items-center gap-4">
           <a
-            href={tiktok.url}
+            href={instagram.url}
             target="_blank"
             rel="noreferrer"
             className="group relative inline-flex items-center gap-2.5 rounded-full bg-fg px-7 py-3.5 font-mono text-[0.8rem] font-medium uppercase tracking-[0.14em] text-void-deep no-underline transition-transform duration-300 hover:-translate-y-0.5"
