@@ -186,18 +186,18 @@ content/posts/<key>.json  ──►  Zod schema (src/lib/schema.ts)
         │
         ▼
 ┌─ src/ ──────────────────────────────────────────────────────┐
-│ design/tokens.ts   palette, per-pillar accents, canvas       │
-│                    geometry, type scale, safe zones          │
-│ components/carousel/  one React component per slide role     │
-│ lib/               post loader, caption-export, content       │
-│                    checks (each with a paired test)          │
-│ App.tsx            query-param router (?post=&slide=), sets  │
-│                    data-render-ready=1 after fonts+images    │
-│                    +2 RAFs — Playwright polls for it         │
-└──────────────────────────────────────────────────────────────┘
+│ design/tokens.ts   palette, per-pillar accents, canvas      │
+│                    geometry, type scale, safe zones         │
+│ components/carousel/  one React component per slide role    │
+│ lib/               post loader, caption-export, content     │
+│                    checks (each with a paired test)         │
+│ App.tsx            query-param router (?post=&slide=), sets │
+│                    data-render-ready=1 after fonts+images   │
+│                    +2 RAFs — Playwright polls for it        │
+└─────────────────────────────────────────────────────────────┘
         │                                    │
         ▼                                    ▼
-┌─ scripts/ ─────────────────┐   ┌─ remotion/ ────────────────┐
+┌─ scripts/ ──────────────────┐   ┌─ remotion/ ─────────────────┐
 │ every CLI entrypoint        │   │ ReelComposition.tsx         │
 │ scripts/publish/adapters/   │   │  Scene · CaptionLayer ·     │
 │  youtube · tiktok ·         │   │  CaptionTrack · AudioBed ·  │
