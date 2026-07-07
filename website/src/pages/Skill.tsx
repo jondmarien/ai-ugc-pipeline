@@ -429,9 +429,6 @@ export function Skill() {
         <section className="relative overflow-hidden border-t border-hairline px-5 py-32 text-center sm:px-8 sm:py-44">
           <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.5] [background:radial-gradient(60%_50%_at_50%_120%,#f9731633,transparent_70%)]" />
           <div className="mx-auto max-w-[var(--max)]" data-reveal-group>
-            <p data-reveal className="kicker mb-8">
-              {"// The Mad-Prompter energy, the practitioner standard"}
-            </p>
             <h2
               data-reveal
               className="mx-auto max-w-4xl font-display text-[clamp(2.2rem,7vw,5rem)] font-bold leading-[0.98] text-fg"
