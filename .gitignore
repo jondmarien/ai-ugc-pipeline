@@ -38,9 +38,14 @@ desktop.ini
 *.tmp
 tmp/
 
-# NOTE: pipeline/renders/ (the rendered carousel PNGs + reel MP4) IS committed
-# on purpose — it's the upload-ready demo output that proves the renderer works.
-
 # ── Other ────────────────────────────────────────────────────────
 assets/Content Dashboard Plan Reference/
 .kanbots/
+
+# ── Pipeline ────────────────────────────────────────────────────────
+# Rendered post output (carousel PNGs, reel MP4, captions/sources/checklists) is
+# upload-ready media, not source, and should never land in the repo.
+pipeline/renders/
+
+# ── Tooling caches ──────────────────────────────────────────────────
+.tokensave/
