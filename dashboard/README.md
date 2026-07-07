@@ -51,7 +51,7 @@ One module per folder under `src/modules/`:
 │  src/modules/<tab>/  — one component per screen          │
 └───────────────────────────┬──────────────────────────────┘
                             │ /api/*  ({data, error, fetchedAt};  ?refresh=1 busts cache)
-┌─ server/ (Bun.serve, :4400, manual URL routing) ─────────┐
+┌─ server/ (Bun.serve, :4400, manual URL routing) ──────────┐
 │  index.ts     route table                                 │
 │  ig.ts        IG Graph API client + fetchWithCache (6 h)  │
 │  meta.ts      publish.state.json ⋈ live Graph insights    │
