@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getSocial } from "../lib/content";
+import { Link } from "react-router-dom";
 import { BrandMark } from "./BrandMark";
 
 const LINKS = [
@@ -19,8 +19,6 @@ export function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const tiktok = getSocial("tiktok");
 
   return (
     <header
@@ -43,15 +41,13 @@ export function Nav() {
             </a>
           ))}
         </div>
-        <a
-          href={tiktok.url}
-          target="_blank"
-          rel="noreferrer"
+        <Link
+          to="/unlock"
           className="group relative inline-flex items-center gap-2 rounded-full border border-hairline bg-fg/[0.03] px-4 py-2 font-mono text-[0.72rem] uppercase tracking-[0.16em] text-fg no-underline transition-all hover:border-team/60 hover:bg-team/10"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-hacking shadow-[0_0_8px_var(--color-hacking)]" />
           Follow
-        </a>
+        </Link>
       </nav>
     </header>
   );
