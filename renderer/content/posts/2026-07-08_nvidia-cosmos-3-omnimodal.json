@@ -1,0 +1,1174 @@
+{
+  "post_id": "2026-07-08_nvidia-cosmos-3-omnimodal",
+  "date": "2026-07-08",
+  "slug": "nvidia-cosmos-3-omnimodal",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "generated",
+  "pillar": "model_security",
+  "theme": "purple-team",
+  "style_fusion": "",
+  "audience": "security_practitioners",
+  "core_claim": "NVIDIA Cosmos 3 is an open omnimodal world model that unifies language, image, video, audio, and action for Physical AI, so the purple-team problem is no longer chat risk alone but blast radius when the same backbone plans and moves robots.",
+  "claim_tags": [
+    "reported_fact",
+    "scenario"
+  ],
+  "score": {
+    "credibility": 5,
+    "relevance": 5,
+    "novelty": 5,
+    "visual_drama": 4,
+    "defender_usefulness": 5,
+    "total": 24
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "purple",
+    "pillar_accent": "model_security",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#a855f7",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-07-08_nvidia-cosmos-3-omnimodal",
+    "filename_prefix": "2026-07-08_nvidia-cosmos-3-omnimodal",
+    "expected_files": [
+      "2026-07-08_nvidia-cosmos-3-omnimodal_01_cover.png",
+      "2026-07-08_nvidia-cosmos-3-omnimodal_02_context.png",
+      "2026-07-08_nvidia-cosmos-3-omnimodal_03_risk.png",
+      "2026-07-08_nvidia-cosmos-3-omnimodal_04_mechanism.png",
+      "2026-07-08_nvidia-cosmos-3-omnimodal_05_compare.png",
+      "2026-07-08_nvidia-cosmos-3-omnimodal_06_takeaway.png",
+      "2026-07-08_nvidia-cosmos-3-omnimodal_07_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md",
+      "instagram_upload_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "slide_captions_file": "slide_captions.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "features": {
+    "multiple_captions": false
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "NVIDIA COSMOS 3",
+      "on_slide_copy": "One model now plans and moves the robot.",
+      "subline": "Cosmos 3 unifies language, vision, audio, and action in one open world model.",
+      "closer": "your incident response covers chat. [[it doesn't cover a robot arm.]]",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a dual industrial robot arm gripping a heavy cast iron engine block suspended mid air above a steel workbench, cool high bay lighting, oily metal reflections, cinematic low angle, dark factory bay, strong empty lower third, no readable text or logos",
+      "background_asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/01_cover.png",
+      "asset_status": "generated",
+      "cta": "SWIPE →",
+      "notes": "Higgsfield cover model: nano-banana-2.",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260708_225137_2cfb33ea-cde7-4f7b-a0cd-7c48b4e2a726.png"
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "NVIDIA shipped Cosmos 3 as one omnimodal backbone for Physical AI.",
+      "subline": "Text, image, video, audio, and action share a Mixture of Transformers stack.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "five translucent fiber conduits of different textures converging into one glowing shared node floating above a dark assembly floor, soft volumetric light, abstract physical AI motif, empty lower third, no readable text",
+      "background_asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/02_context.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "Higgsfield body model: recraft-4.1.",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260708_225303_69e32608-6e0e-4b36-a473-7e873da17a4b.png"
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "When the same model reasons and emits actions, a bad context can reach hardware.",
+      "subline": "The attack surface is no longer just chat. It is the control loop.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a robotic gripper hovering centimeters above a stainless scalpel over a silicone phantom on blue sterile drapes, surgical lights casting hard highlights, tense stillness, dark operating bay edges, empty lower third, no text",
+      "background_asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/03_risk.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260708_225321_f15f4deb-f691-42e5-b390-3f753f8ac2cd.png"
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "One stack plans trajectories, rolls out futures, and can drive robot policy.",
+      "subline": "Official demos cover pick and place, forward dynamics, and inverse dynamics.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a compact gantry gripper lacing a leather sneaker on a blue plastic last, white lace mid pull through metal eyelets, clean workstation, soft overhead light, shallow depth of field, empty lower third, no text",
+      "background_asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/04_mechanism.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260708_225340_84e4171c-e04e-4f75-99e1-b1caab8ebd95.png"
+    },
+    {
+      "slide": 5,
+      "role": "compare",
+      "kicker": "CONTROL THE LOOP",
+      "on_slide_copy": "Treat the world model like a controller, not a toy.",
+      "subline": "The same actions a demo shows off are the actions an attacker wants to trigger.",
+      "compare": {
+        "before_label": "No gate",
+        "before_copy": "Sim-before-act and action allowlists stay optional on day one of a pilot.",
+        "after_label": "Gated",
+        "after_copy": "Closed-loop sim, an action allowlist, and human approval before any effector moves."
+      },
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a thick glass safety enclosure around a still robot arm on a padded jig, amber beacon light steady but not alarming, calm industrial inspection mood, wide shot, empty lower third, no text",
+      "background_asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/06_defense.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "Merged failure_point + defense into a compare slide (ig-ingest 2026-07-08, Delta 1); reuses the existing defense background.",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260708_225424_a1104d20-1f60-4963-b35d-108038e3a2bd.png"
+    },
+    {
+      "slide": 6,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "The win {{isn't a smarter simulator.}} [[It's a world model whose actions you can contain.]]",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a single magnetic floor guide strip running into darkness with a blue chassis cart frozen on the line, isolated spotlight, deep negative space, minimal high contrast scene, empty center lower third, no text",
+      "background_asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/07_takeaway.png",
+      "asset_status": "generated",
+      "cta": "",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260708_225441_b389090f-b9e7-4366-96fa-ace10b92bcb1.png"
+    },
+    {
+      "slide": 7,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "Would you put an open action model near real robots this year?",
+      "subline": "Save this before your next Physical AI risk review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end card scene with strong empty negative space for a question and handle, premium editorial cybersecurity look, subtle industrial haze, no objects crowding the center",
+      "background_asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/08_cta.png",
+      "asset_status": "generated",
+      "cta": "COMMENT + SAVE",
+      "notes": "",
+      "higgsfield_image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJbE7sBGL0qyJEIJrKzMRd0MU0/hf_20260708_225500_ff31913e-520f-4f93-a6c4-ce5fedd955b6.png"
+    }
+  ],
+  "caption": "NVIDIA just dropped Cosmos 3: an open omnimodal world model for Physical AI that jointly handles language, image, video, audio, and action in one Mixture of Transformers architecture.\n\nThat is the real shift. Older Cosmos stacks kept perception and generation more separate, and modalities mostly stopped at text, image, and video. Cosmos 3 is built so the same backbone can reason over a scene, generate plausible futures, recover actions from change, and post train into robot policy models. NVIDIA and the technical report put Super and Nano sizes on Hugging Face, open code under OpenMDW 1.1, and demos that go from vision language reasoning to pick and place trajectories.\n\nIf you only read the marketing, this is a robot learning unlock. If you wear a security hat, it is a blast radius change. When one model plans and can emit actions, the threat is no longer \"someone got a weird chat answer.\" It is \"someone poisoned the context, the sensor story, or the post train data, and the effector moved.\" That is purple team work: attack the closed loop, defend the closed loop.\n\nDefender move this week: treat Cosmos class systems like controllers, not content toys. Require sim before act for any physical effector. Maintain an action allowlist. Put a human approval gate on high impact motions. Log the full input stack that produced a trajectory, not just the final clip.\n\nWould you put an open action model near real robots this year? What gate would have to exist first?\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "NVIDIA Cosmos",
+    "world models",
+    "Physical AI",
+    "model security",
+    "robotics security",
+    "purple team"
+  ],
+  "comment_prompt": "Would you put an open action model near real robots this year? What gate would have to exist first?",
+  "alt_text": [
+    "One model now plans and moves the robot. Dual industrial arms lift an engine block in a dark factory bay.",
+    "NVIDIA shipped Cosmos 3 as one omnimodal backbone for Physical AI. Five fiber conduits converge into a shared glowing node.",
+    "When the same model reasons and emits actions, a bad context can reach hardware. A robot gripper holds a scalpel above a surgical phantom.",
+    "One stack plans trajectories, rolls out futures, and can drive robot policy. Compact grippers lace a sneaker on a workstation last.",
+    "Treat the world model like a controller, not a toy. A robot arm sits still inside a thick glass safety enclosure, before and after a gate.",
+    "The win is not a smarter simulator. It is a world model whose actions you can contain. A magnetic floor guide strip runs into darkness.",
+    "Closing question: would you put an open action model near real robots this year? Clean dark end card with empty space for the handle."
+  ],
+  "sources": [
+    {
+      "source": "arXiv:2606.02800, Cosmos 3: Omnimodal World Models for Physical AI (NVIDIA et al., v4 revised 23 Jun 2026)",
+      "link": "https://arxiv.org/abs/2606.02800",
+      "supports": "Primary paper: Cosmos 3 as a family of omnimodal world models jointly processing and generating language, image, video, audio, and action in a unified mixture-of-transformers architecture; unifies VLMs, video generators, world simulators, and world-action models; open code/checkpoints under OpenMDW-1.1; claims ranking as best open text-to-image and image-to-video on Artificial Analysis and best policy model on RoboArena at report time.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "NVIDIA Research Cosmos Lab project site, Cosmos 3",
+      "link": "https://research.nvidia.com/labs/cosmos-lab/cosmos3/",
+      "supports": "Official research site: omnimodal model connecting understanding, generation, simulation, and action across text/image/video/audio/actions; demos for vision-language reasoning, image generation, audio-visual generation, robot policy, forward/inverse dynamics; links to technical report, Hugging Face model cards, and GitHub.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "NVIDIA product page, NVIDIA Cosmos / Physical AI",
+      "link": "https://www.nvidia.com/en-us/ai/cosmos/",
+      "supports": "Product framing: Cosmos 3 as open Physical AI foundation model with native reasoning, world and action generation on Mixture-of-Transformers; use cases for VLMs, world action models / robot policy, physics-grounded simulation, synthetic video; FAQ states Cosmos 3 generates across text, image, video, sound, and action vs prior Cosmos 2/2.5 limits; OpenMDW1.1 licensing.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Hugging Face blog, NVIDIA Cosmos 3 for Physical AI (1 Jun 2026)",
+      "link": "https://huggingface.co/blog/nvidia/cosmos-3-for-physical-ai",
+      "supports": "Independent distribution write-up: omni-model MoT architecture; Cosmos 3 Super (64B) and Nano (16B); modalities and application table including policy and dynamics; Diffusers integration; SDG datasets; Cosmos Framework for post-training and agent skills; open weights on Hugging Face.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "GitHub, nvidia/cosmos",
+      "link": "https://github.com/nvidia/cosmos",
+      "supports": "Open code and model distribution entry point referenced by the paper and research site for Cosmos 3.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "GitHub, NVIDIA/cosmos-framework (Cosmos Framework)",
+      "link": "https://github.com/NVIDIA/cosmos-framework",
+      "supports": "End-to-end training/serving framework and post-training path for world foundation models like Cosmos 3, as described in the Hugging Face launch post.",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    },
+    {
+      "source": "Practitioner purple-team implication (blast radius when world models emit actions)",
+      "link": "https://www.nvidia.com/en-us/ai/cosmos/",
+      "supports": "Security framing in this post: treating an action-capable omnimodal WFM as a control-loop surface (sim-before-act, action allowlists, human approval, input logging). Not a vendor CVE claim. Labelled scenario / practitioner guidance.",
+      "confidence": "medium",
+      "claim_tag": "scenario"
+    }
+  ],
+  "asset_licenses": [
+    {
+      "asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/01_cover.png",
+      "source": "Higgsfield CLI / nano-banana-2",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/02_context.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/03_risk.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/04_mechanism.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/06_defense.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/07_takeaway.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    },
+    {
+      "asset": "/backgrounds/2026-07-08_nvidia-cosmos-3-omnimodal/08_cta.png",
+      "source": "Higgsfield CLI / recraft-4.1",
+      "license_or_terms": "Pending confirmation from Higgsfield provider terms.",
+      "commercial_use_allowed": false,
+      "disclosure_required": true,
+      "notes": "Generated via higgsfield-client.mjs; license terms to be confirmed with provider before publish."
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 34,
+    "fps": 30,
+    "export_name": "2026-07-08_nvidia-cosmos-3-omnimodal_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-07-08_nvidia-cosmos-3-omnimodal/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5.5,
+        "text": "NVIDIA just shipped Cosmos 3, an open world model that reasons over a scene and can drive robot actions from the same stack."
+      },
+      {
+        "start": 5.5,
+        "end": 11,
+        "text": "Language, image, video, audio, and action now share one backbone, so the real risk is not just chat anymore."
+      },
+      {
+        "start": 11,
+        "end": 17,
+        "text": "When the same model plans and acts, a poisoned prompt or a bad sensor story can end as motion on hardware."
+      },
+      {
+        "start": 17,
+        "end": 24,
+        "text": "So gate every physical effector. Sim before act, an action allowlist, and a human approval step before anything moves."
+      },
+      {
+        "start": 24,
+        "end": 29,
+        "text": "The win is not a prettier simulator. It is a world model whose actions you can still contain."
+      },
+      {
+        "start": 29,
+        "end": 34,
+        "text": "Would you put an open action model near real robots this year? Save this before your next Physical AI risk review."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5.5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "ONE MODEL PLANS AND MOVES"
+      },
+      {
+        "start": 5.5,
+        "end": 11,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "OMNIMODAL WORLD MODEL"
+      },
+      {
+        "start": 11,
+        "end": 17,
+        "slide_ref": 3,
+        "purpose": "risk",
+        "motion": "slow push-in",
+        "caption": "ACTIONS REACH HARDWARE"
+      },
+      {
+        "start": 17,
+        "end": 24,
+        "slide_ref": 5,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "SIM THEN APPROVE"
+      },
+      {
+        "start": 24,
+        "end": 29,
+        "slide_ref": 6,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "CONTAIN THE ACTIONS"
+      },
+      {
+        "start": 29,
+        "end": 34,
+        "slide_ref": 7,
+        "purpose": "cta",
+        "motion": "static high contrast",
+        "caption": "YOUR MOVE"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.44,
+        "text": "NVIDIA just shipped Cosmos 3, an open",
+        "words": [
+          {
+            "text": "NVIDIA",
+            "start": 0.0,
+            "end": 0.3
+          },
+          {
+            "text": "just",
+            "start": 0.3,
+            "end": 0.64
+          },
+          {
+            "text": "shipped",
+            "start": 0.64,
+            "end": 0.88
+          },
+          {
+            "text": "Cosmos",
+            "start": 0.88,
+            "end": 1.18
+          },
+          {
+            "text": "3,",
+            "start": 1.18,
+            "end": 1.68
+          },
+          {
+            "text": "an",
+            "start": 2.16,
+            "end": 2.24
+          },
+          {
+            "text": "open",
+            "start": 2.24,
+            "end": 2.44
+          }
+        ]
+      },
+      {
+        "start": 2.44,
+        "end": 4.2,
+        "text": "world model that reasons over a scene",
+        "words": [
+          {
+            "text": "world",
+            "start": 2.44,
+            "end": 2.72
+          },
+          {
+            "text": "model",
+            "start": 2.72,
+            "end": 3.1
+          },
+          {
+            "text": "that",
+            "start": 3.1,
+            "end": 3.28
+          },
+          {
+            "text": "reasons",
+            "start": 3.28,
+            "end": 3.46
+          },
+          {
+            "text": "over",
+            "start": 3.46,
+            "end": 3.88
+          },
+          {
+            "text": "a",
+            "start": 3.88,
+            "end": 3.96
+          },
+          {
+            "text": "scene",
+            "start": 3.96,
+            "end": 4.2
+          }
+        ]
+      },
+      {
+        "start": 4.62,
+        "end": 6.04,
+        "text": "and can drive robot actions from the",
+        "words": [
+          {
+            "text": "and",
+            "start": 4.62,
+            "end": 4.7
+          },
+          {
+            "text": "can",
+            "start": 4.7,
+            "end": 4.8
+          },
+          {
+            "text": "drive",
+            "start": 4.8,
+            "end": 5.02
+          },
+          {
+            "text": "robot",
+            "start": 5.02,
+            "end": 5.32
+          },
+          {
+            "text": "actions",
+            "start": 5.32,
+            "end": 5.66
+          },
+          {
+            "text": "from",
+            "start": 5.66,
+            "end": 5.9
+          },
+          {
+            "text": "the",
+            "start": 5.9,
+            "end": 6.04
+          }
+        ]
+      },
+      {
+        "start": 6.04,
+        "end": 6.52,
+        "text": "same stack.",
+        "words": [
+          {
+            "text": "same",
+            "start": 6.04,
+            "end": 6.22
+          },
+          {
+            "text": "stack.",
+            "start": 6.22,
+            "end": 6.52
+          }
+        ]
+      },
+      {
+        "start": 7.08,
+        "end": 10.28,
+        "text": "Language, image, video, audio, and action now",
+        "words": [
+          {
+            "text": "Language,",
+            "start": 7.08,
+            "end": 7.32
+          },
+          {
+            "text": "image,",
+            "start": 7.74,
+            "end": 7.92
+          },
+          {
+            "text": "video,",
+            "start": 8.64,
+            "end": 8.69
+          },
+          {
+            "text": "audio,",
+            "start": 8.92,
+            "end": 9.18
+          },
+          {
+            "text": "and",
+            "start": 9.18,
+            "end": 9.4
+          },
+          {
+            "text": "action",
+            "start": 9.4,
+            "end": 9.62
+          },
+          {
+            "text": "now",
+            "start": 10.1,
+            "end": 10.28
+          }
+        ]
+      },
+      {
+        "start": 10.28,
+        "end": 12.28,
+        "text": "share one backbone, so the real risk",
+        "words": [
+          {
+            "text": "share",
+            "start": 10.28,
+            "end": 10.52
+          },
+          {
+            "text": "one",
+            "start": 10.52,
+            "end": 10.76
+          },
+          {
+            "text": "backbone,",
+            "start": 10.76,
+            "end": 11.06
+          },
+          {
+            "text": "so",
+            "start": 11.5,
+            "end": 11.7
+          },
+          {
+            "text": "the",
+            "start": 11.7,
+            "end": 11.82
+          },
+          {
+            "text": "real",
+            "start": 11.82,
+            "end": 11.94
+          },
+          {
+            "text": "risk",
+            "start": 11.94,
+            "end": 12.28
+          }
+        ]
+      },
+      {
+        "start": 12.28,
+        "end": 13.3,
+        "text": "is not just chat anymore.",
+        "words": [
+          {
+            "text": "is",
+            "start": 12.28,
+            "end": 12.42
+          },
+          {
+            "text": "not",
+            "start": 12.42,
+            "end": 12.6
+          },
+          {
+            "text": "just",
+            "start": 12.6,
+            "end": 12.8
+          },
+          {
+            "text": "chat",
+            "start": 12.8,
+            "end": 13.0
+          },
+          {
+            "text": "anymore.",
+            "start": 13.0,
+            "end": 13.3
+          }
+        ]
+      },
+      {
+        "start": 14.12,
+        "end": 15.54,
+        "text": "When the same model plans and acts,",
+        "words": [
+          {
+            "text": "When",
+            "start": 14.12,
+            "end": 14.24
+          },
+          {
+            "text": "the",
+            "start": 14.24,
+            "end": 14.34
+          },
+          {
+            "text": "same",
+            "start": 14.34,
+            "end": 14.52
+          },
+          {
+            "text": "model",
+            "start": 14.52,
+            "end": 14.78
+          },
+          {
+            "text": "plans",
+            "start": 14.78,
+            "end": 15.2
+          },
+          {
+            "text": "and",
+            "start": 15.2,
+            "end": 15.32
+          },
+          {
+            "text": "acts,",
+            "start": 15.32,
+            "end": 15.54
+          }
+        ]
+      },
+      {
+        "start": 15.86,
+        "end": 17.6,
+        "text": "a poisoned prompt or a bad sensor",
+        "words": [
+          {
+            "text": "a",
+            "start": 15.86,
+            "end": 15.96
+          },
+          {
+            "text": "poisoned",
+            "start": 15.96,
+            "end": 16.1
+          },
+          {
+            "text": "prompt",
+            "start": 16.24,
+            "end": 16.54
+          },
+          {
+            "text": "or",
+            "start": 16.9,
+            "end": 17.04
+          },
+          {
+            "text": "a",
+            "start": 17.04,
+            "end": 17.16
+          },
+          {
+            "text": "bad",
+            "start": 17.16,
+            "end": 17.34
+          },
+          {
+            "text": "sensor",
+            "start": 17.34,
+            "end": 17.6
+          }
+        ]
+      },
+      {
+        "start": 17.6,
+        "end": 19.4,
+        "text": "story can end as motion on hardware.",
+        "words": [
+          {
+            "text": "story",
+            "start": 17.6,
+            "end": 17.96
+          },
+          {
+            "text": "can",
+            "start": 17.96,
+            "end": 18.28
+          },
+          {
+            "text": "end",
+            "start": 18.28,
+            "end": 18.48
+          },
+          {
+            "text": "as",
+            "start": 18.48,
+            "end": 18.68
+          },
+          {
+            "text": "motion",
+            "start": 18.68,
+            "end": 18.86
+          },
+          {
+            "text": "on",
+            "start": 18.86,
+            "end": 19.16
+          },
+          {
+            "text": "hardware.",
+            "start": 19.16,
+            "end": 19.4
+          }
+        ]
+      },
+      {
+        "start": 20.1,
+        "end": 21.54,
+        "text": "So gate every physical effector.",
+        "words": [
+          {
+            "text": "So",
+            "start": 20.1,
+            "end": 20.15
+          },
+          {
+            "text": "gate",
+            "start": 20.12,
+            "end": 20.28
+          },
+          {
+            "text": "every",
+            "start": 20.28,
+            "end": 20.58
+          },
+          {
+            "text": "physical",
+            "start": 20.58,
+            "end": 20.9
+          },
+          {
+            "text": "effector.",
+            "start": 20.9,
+            "end": 21.54
+          }
+        ]
+      },
+      {
+        "start": 22.08,
+        "end": 24.98,
+        "text": "Sim before act, an action allowlist, and",
+        "words": [
+          {
+            "text": "Sim",
+            "start": 22.08,
+            "end": 22.28
+          },
+          {
+            "text": "before",
+            "start": 22.62,
+            "end": 22.84
+          },
+          {
+            "text": "act,",
+            "start": 22.84,
+            "end": 23.16
+          },
+          {
+            "text": "an",
+            "start": 23.6,
+            "end": 23.7
+          },
+          {
+            "text": "action",
+            "start": 23.7,
+            "end": 23.96
+          },
+          {
+            "text": "allowlist,",
+            "start": 23.96,
+            "end": 24.41
+          },
+          {
+            "text": "and",
+            "start": 24.86,
+            "end": 24.98
+          }
+        ]
+      },
+      {
+        "start": 24.98,
+        "end": 26.92,
+        "text": "a human approval step before anything moves.",
+        "words": [
+          {
+            "text": "a",
+            "start": 24.98,
+            "end": 25.1
+          },
+          {
+            "text": "human",
+            "start": 25.1,
+            "end": 25.3
+          },
+          {
+            "text": "approval",
+            "start": 25.3,
+            "end": 25.56
+          },
+          {
+            "text": "step",
+            "start": 25.56,
+            "end": 25.94
+          },
+          {
+            "text": "before",
+            "start": 25.94,
+            "end": 26.26
+          },
+          {
+            "text": "anything",
+            "start": 26.26,
+            "end": 26.52
+          },
+          {
+            "text": "moves.",
+            "start": 26.52,
+            "end": 26.92
+          }
+        ]
+      },
+      {
+        "start": 27.56,
+        "end": 28.86,
+        "text": "The win is not a prettier simulator.",
+        "words": [
+          {
+            "text": "The",
+            "start": 27.56,
+            "end": 27.66
+          },
+          {
+            "text": "win",
+            "start": 27.66,
+            "end": 27.8
+          },
+          {
+            "text": "is",
+            "start": 27.8,
+            "end": 27.98
+          },
+          {
+            "text": "not",
+            "start": 27.98,
+            "end": 28.18
+          },
+          {
+            "text": "a",
+            "start": 28.18,
+            "end": 28.26
+          },
+          {
+            "text": "prettier",
+            "start": 28.26,
+            "end": 28.56
+          },
+          {
+            "text": "simulator.",
+            "start": 28.56,
+            "end": 28.86
+          }
+        ]
+      },
+      {
+        "start": 28.86,
+        "end": 30.76,
+        "text": "It is a world model whose actions",
+        "words": [
+          {
+            "text": "It",
+            "start": 28.86,
+            "end": 29.5
+          },
+          {
+            "text": "is",
+            "start": 29.5,
+            "end": 29.6
+          },
+          {
+            "text": "a",
+            "start": 29.6,
+            "end": 29.7
+          },
+          {
+            "text": "world",
+            "start": 29.7,
+            "end": 29.88
+          },
+          {
+            "text": "model",
+            "start": 29.88,
+            "end": 30.16
+          },
+          {
+            "text": "whose",
+            "start": 30.16,
+            "end": 30.48
+          },
+          {
+            "text": "actions",
+            "start": 30.48,
+            "end": 30.76
+          }
+        ]
+      },
+      {
+        "start": 30.76,
+        "end": 31.68,
+        "text": "you can still contain.",
+        "words": [
+          {
+            "text": "you",
+            "start": 30.76,
+            "end": 31.08
+          },
+          {
+            "text": "can",
+            "start": 31.08,
+            "end": 31.2
+          },
+          {
+            "text": "still",
+            "start": 31.2,
+            "end": 31.4
+          },
+          {
+            "text": "contain.",
+            "start": 31.4,
+            "end": 31.68
+          }
+        ]
+      },
+      {
+        "start": 32.42,
+        "end": 33.72,
+        "text": "Would you put an open action model",
+        "words": [
+          {
+            "text": "Would",
+            "start": 32.42,
+            "end": 32.52
+          },
+          {
+            "text": "you",
+            "start": 32.52,
+            "end": 32.64
+          },
+          {
+            "text": "put",
+            "start": 32.64,
+            "end": 32.82
+          },
+          {
+            "text": "an",
+            "start": 32.82,
+            "end": 32.92
+          },
+          {
+            "text": "open",
+            "start": 32.92,
+            "end": 33.12
+          },
+          {
+            "text": "action",
+            "start": 33.12,
+            "end": 33.42
+          },
+          {
+            "text": "model",
+            "start": 33.42,
+            "end": 33.72
+          }
+        ]
+      },
+      {
+        "start": 33.72,
+        "end": 35.06,
+        "text": "near real robots this year?",
+        "words": [
+          {
+            "text": "near",
+            "start": 33.72,
+            "end": 34.0
+          },
+          {
+            "text": "real",
+            "start": 34.0,
+            "end": 34.2
+          },
+          {
+            "text": "robots",
+            "start": 34.2,
+            "end": 34.58
+          },
+          {
+            "text": "this",
+            "start": 34.58,
+            "end": 34.84
+          },
+          {
+            "text": "year?",
+            "start": 34.84,
+            "end": 35.06
+          }
+        ]
+      },
+      {
+        "start": 35.62,
+        "end": 37.34,
+        "text": "Save this before your next Physical AI",
+        "words": [
+          {
+            "text": "Save",
+            "start": 35.62,
+            "end": 35.8
+          },
+          {
+            "text": "this",
+            "start": 35.8,
+            "end": 36.0
+          },
+          {
+            "text": "before",
+            "start": 36.0,
+            "end": 36.28
+          },
+          {
+            "text": "your",
+            "start": 36.28,
+            "end": 36.46
+          },
+          {
+            "text": "next",
+            "start": 36.46,
+            "end": 36.62
+          },
+          {
+            "text": "Physical",
+            "start": 36.62,
+            "end": 37.02
+          },
+          {
+            "text": "AI",
+            "start": 37.02,
+            "end": 37.34
+          }
+        ]
+      },
+      {
+        "start": 37.34,
+        "end": 37.98,
+        "text": "risk review.",
+        "words": [
+          {
+            "text": "risk",
+            "start": 37.34,
+            "end": 37.68
+          },
+          {
+            "text": "review.",
+            "start": 37.68,
+            "end": 37.98
+          }
+        ]
+      }
+    ]
+  },
+  "qa": {
+    "fact_checked": true,
+    "sources_present": true,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  },
+  "renderMetadata": {
+    "provider": "higgsfield-cli",
+    "model": "recraft-4.1",
+    "costEstimate": 10.75
+  }
+}
