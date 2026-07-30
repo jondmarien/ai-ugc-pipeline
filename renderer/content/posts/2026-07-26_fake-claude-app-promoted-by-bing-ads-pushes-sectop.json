@@ -1,0 +1,345 @@
+{
+  "post_id": "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop",
+  "date": "2026-07-26",
+  "slug": "fake-claude-app-promoted-by-bing-ads-pushes-sectop",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "model_security",
+  "theme": "ai",
+  "style_fusion": "",
+  "audience": "security_practitioners",
+  "core_claim": "Fake Claude app promoted by Bing ads pushes SectopRAT malware.",
+  "claim_tags": [
+    "reported_fact"
+  ],
+  "score": {
+    "credibility": 4,
+    "relevance": 5,
+    "novelty": 3,
+    "visual_drama": 3,
+    "defender_usefulness": 4,
+    "total": 19
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0.tech",
+    "accent_name": "electric blue",
+    "pillar_accent": "model_security",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#3b82f6",
+      "danger": "#ef4444"
+    },
+    "font_stack": "JetBrains Mono, Space Grotesk, system-ui, sans-serif"
+  },
+  "features": {
+    "multiple_captions": true
+  },
+  "slide_captions": [
+    "Slide 1: Fake Claude app promoted by Bing ads pushes SectopRAT malware",
+    "Slide 2: A malvertising campaign on the Bing search service is pushing a fake Claude desktop app installer hosted on a legitimate Claude.ai domain to...",
+    "Slide 3: Systems compromised with potential for data theft and lateral movement.",
+    "Slide 4: Attack chain leverages legitimate system components for code execution.",
+    "Slide 5: Missing egress controls allow outbound callback to attacker infrastructure.",
+    "Slide 6: Deploy egress filtering + behavioral analytics on process trees.",
+    "Slide 7: Egress control stops the call home. No beacon, no breach.",
+    "Slide 8: What egress rule would have caught this? Comment your config."
+  ],
+  "upload_package": {
+    "folder": "pipeline/renders/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop",
+    "filename_prefix": "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop",
+    "caption_file": "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_caption.txt",
+    "slide_captions_file": "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_slide_captions.txt",
+    "alt_text_file": "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_alt_text.txt",
+    "sources_file": "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_sources.txt",
+    "licenses_file": "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_licenses.txt",
+    "expected_files": [
+      "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_01_cover.png",
+      "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_02_context.png",
+      "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_03_risk.png",
+      "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_04_mechanism.png",
+      "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_05_failure-point.png",
+      "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_06_defense.png",
+      "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_07_takeaway.png",
+      "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_08_cta.png",
+      "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_reel.mp4"
+    ]
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "BREAKING",
+      "on_slide_copy": "Fake Claude app promoted by Bing ads pushes",
+      "subline": "Security alert \u2014 Model Security sector",
+      "visual_direction": "Terminal-style alert banner with blinking cursor, deep navy background, green accent bar pulsing",
+      "visual_prompt": "Dark terminal glyph, blinking cursor on command line, monospace glyph, deep navy background with electric green accent line, minimal UI chrome, cinematic lighting",
+      "background_asset": "/backgrounds/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/01_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE \u2192",
+      "notes": "Cover hook under 8 words"
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT HAPPENED",
+      "on_slide_copy": "A malvertising campaign on the Bing search service is pushing a fake Claude desktop app...",
+      "subline": "staller hosted on a legitimate Claude.ai domain to... Reported by Bill Toulas \u2014 2026-07-23",
+      "visual_direction": "Code scroll effect with key indicators highlighted, file paths and stack traces faintly visible",
+      "visual_prompt": "Scrolling glyph fragments in monospace, syntax highlighting in teal and amber, blurred terminal background, depth of field on focused lines",
+      "background_asset": "/backgrounds/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/02_context.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": "Body copy under 90 chars"
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "Systems compromised with potential for data theft and lateral movement.",
+      "subline": "Blast radius extends beyond initial target \u2014 supply chain and downstream dependencies at risk",
+      "visual_direction": "Expanding ripple effect from central node, red filaments spreading through network topology",
+      "visual_prompt": "Network graph with central compromise node, red filaments propagating outward, dark background, glowing particle trails showing lateral movement paths",
+      "background_asset": "/backgrounds/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/03_risk.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": "Risk statement under 90 chars"
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "Attack chain leverages legitimate system components for code execution.",
+      "subline": "Multi-stage chain leverages legitimate functionality for malicious execution",
+      "visual_direction": "Flow diagram showing attack stages, each node a physical artifact \u2014 not UI elements",
+      "visual_prompt": "Abstract flow diagram with geometric nodes connected by light filaments, each node a distinct crystalline form, dark void background, teal and gold color scheme",
+      "background_asset": "/backgrounds/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/04_mechanism.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": "Mechanism summary under 90 chars"
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "Missing egress controls allow outbound callback to attacker infrastructure.",
+      "subline": "No network segmentation, no DNS filtering, no runtime behavioral monitoring",
+      "visual_direction": "Broken chain link made of oxidized brass, single clean cut, dark forge lighting",
+      "visual_prompt": "Single brass chain link cleanly severed, oxidation patina on surfaces, dramatic side lighting casting long shadows, minimalist composition",
+      "background_asset": "/backgrounds/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/05_failure.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": "Failure point under 90 chars"
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "Deploy egress filtering + behavioral analytics on process trees.",
+      "subline": "Block unknown destinations, alert on anomalous child processes, enforce least privilege",
+      "visual_direction": "Shield formed from interlocking geometric plates, each plate a different defensive control",
+      "visual_prompt": "Modular shield assembled from hexagonal plates, each plate etched with schematic symbols, iridescent teal edges, dark carbon fiber backing",
+      "background_asset": "/backgrounds/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/06_defense.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": "Defense action under 90 chars"
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "THE SAVE",
+      "on_slide_copy": "Egress control stops the call home. No beacon, no breach.",
+      "subline": "Network segmentation is not optional \u2014 it's the difference between incident and compromise",
+      "visual_direction": "Single brass key on velvet folio, warm rim light, implies access granted to defenders",
+      "visual_prompt": "Antique brass key resting on deep blue velvet, warm golden rim light from top-left, shallow depth of field, film grain glyphure",
+      "background_asset": "/backgrounds/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/07_takeaway.png",
+      "asset_status": "needed",
+      "cta": "",
+      "notes": "Takeaway under 22 words, accent-marked"
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "What egress rule would have caught this? Comment your config.",
+      "subline": "Follow @chron0.tech for daily security intelligence",
+      "visual_direction": "Terminal prompt awaiting input, cursor blinking, command history fading upward",
+      "visual_prompt": "Clean terminal prompt with blinking underscore cursor, previous commands fading into darkness above, monospace glyph, pure minimalism",
+      "background_asset": "/backgrounds/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/08_cta.png",
+      "asset_status": "needed",
+      "cta": "COMMENT + SAVE",
+      "notes": "CTA slide with engagement prompt"
+    }
+  ],
+  "caption": "Fake Claude app promoted by Bing ads pushes SectopRAT malware\n\nSource: Bill Toulas\nLink: https://www.bleepingcomputer.com/news/security/fake-claude-app-promoted-by-bing-ads-pushes-sectoprat-malware/\n\n#modelsecurity #cybersecurity #infosec #threatintel\n\n\ud83d\udd0d Technical analysis in carousel \u2192\n\ud83d\udcac Drop your detection rules in comments\n\ud83d\udd01 Share with your blue team\n\nchron0.tech \u2014 Security intelligence for practitioners",
+  "hashtags": [
+    "cybersecurity",
+    "infosec",
+    "threatintelligence",
+    "modelsecurity"
+  ],
+  "comment_prompt": "Have you seen similar Fake Claude app promoted by Bing ads pus... activity in your environment? What detection fired?",
+  "alt_text": [
+    "Slide 1: BREAKING - Fake Claude app promoted by Bing ads pushes SectopRAT malware",
+    "Slide 2: WHAT HAPPENED - A malvertising campaign on the Bing search service is pushing a fake Claude desk",
+    "Slide 3: WHY IT MATTERS - Systems compromised with potential for data theft and lateral movement.",
+    "Slide 4: HOW IT WORKS - Attack chain leverages legitimate system components for code execution.",
+    "Slide 5: WHERE TEAMS FAIL - Missing egress controls allow outbound callback to attacker infrastructure.",
+    "Slide 6: DEFENSIVE MOVE - Deploy egress filtering + behavioral analytics on process trees.",
+    "Slide 7: THE SAVE - Egress control stops the call home. No beacon, no breach.",
+    "Slide 8: YOUR MOVE - What egress rule would have caught this? Comment your config."
+  ],
+  "sources": [
+    {
+      "source": "Bill Toulas",
+      "link": "https://www.bleepingcomputer.com/news/security/fake-claude-app-promoted-by-bing-ads-pushes-sectoprat-malware/",
+      "supports": "Primary article content",
+      "confidence": "high",
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 56,
+    "fps": 30,
+    "export_name": "2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop_reel.mp4",
+    "caption_mode": "highlight",
+    "caption_corrections": {},
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 7,
+        "text": "Breaking security alert. New attack campaign detected."
+      },
+      {
+        "start": 7,
+        "end": 14,
+        "text": "Here's what happened and why it matters for your environment."
+      },
+      {
+        "start": 14,
+        "end": 21,
+        "text": "The attack chain exploits trust boundaries in legitimate tools."
+      },
+      {
+        "start": 21,
+        "end": 28,
+        "text": "Most teams miss this because they don't monitor outbound connections."
+      },
+      {
+        "start": 28,
+        "end": 35,
+        "text": "Deploy egress filtering and behavioral analytics on process trees."
+      },
+      {
+        "start": 35,
+        "end": 42,
+        "text": "Block unknown destinations. Alert on anomalous child processes."
+      },
+      {
+        "start": 42,
+        "end": 49,
+        "text": "Egress control stops the call home. No beacon, no breach."
+      },
+      {
+        "start": 49,
+        "end": 56,
+        "text": "What egress rule would have caught this? Comment your config. Follow chron0.tech."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 7,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "Breaking security alert",
+        "video_asset": "/video/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/beat_01_hook.mp4"
+      },
+      {
+        "start": 7,
+        "end": 14,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "code scroll reveal",
+        "caption": "What happened",
+        "video_asset": "/video/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/beat_02_context.mp4"
+      },
+      {
+        "start": 14,
+        "end": 21,
+        "slide_ref": 3,
+        "purpose": "risk",
+        "motion": "ripple expansion",
+        "caption": "Why it matters",
+        "video_asset": "/video/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/beat_03_risk.mp4"
+      },
+      {
+        "start": 21,
+        "end": 28,
+        "slide_ref": 4,
+        "purpose": "mechanism",
+        "motion": "flow diagram trace",
+        "caption": "How it works",
+        "video_asset": "/video/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/beat_04_mechanism.mp4"
+      },
+      {
+        "start": 28,
+        "end": 35,
+        "slide_ref": 5,
+        "purpose": "failure_point",
+        "motion": "chain link sever",
+        "caption": "Where teams fail",
+        "video_asset": "/video/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/beat_05_failure.mp4"
+      },
+      {
+        "start": 35,
+        "end": 42,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "shield assembly",
+        "caption": "Defensive move",
+        "video_asset": "/video/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/beat_06_defense.mp4"
+      },
+      {
+        "start": 42,
+        "end": 49,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "key reveal",
+        "caption": "The save",
+        "video_asset": "/video/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/beat_07_takeaway.mp4"
+      },
+      {
+        "start": 49,
+        "end": 56,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "terminal prompt",
+        "caption": "Your move",
+        "video_asset": "/video/2026-07-26_fake-claude-app-promoted-by-bing-ads-pushes-sectop/beat_08_cta.mp4"
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": [],
+    "captions": []
+  }
+}
