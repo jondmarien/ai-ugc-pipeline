@@ -7,7 +7,11 @@ import type {
   PublishResult,
 } from "../shared/types";
 import { fetchWithCache } from "./ig";
-import { appSecretProof, requireMetaStore } from "./meta_auth";
+import {
+  appSecretProof,
+  GRAPH_BASE as GRAPH,
+  requireMetaStore,
+} from "./meta_auth";
 import { META_CACHE_DIR, POSTS_DIR, RENDERS_DIR, REPO_ROOT } from "./paths";
 import { parseRenderDirName } from "./repo";
 
@@ -129,7 +133,6 @@ export function listPublishedMeta(
 // Graph API insights (Phase 2)
 // ---------------------------------------------------------------------------
 
-const GRAPH = "https://graph.facebook.com/v25.0";
 const INSTAGRAM_REEL_METRICS = ["views", "reach", "saved", "shares"];
 const INSTAGRAM_CAROUSEL_METRICS = ["reach", "saved", "shares"];
 

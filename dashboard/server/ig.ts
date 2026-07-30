@@ -1,9 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
-import { appSecretProof, readMetaStore } from "./meta_auth";
+import {
+  appSecretProof,
+  GRAPH_BASE as GRAPH,
+  readMetaStore,
+} from "./meta_auth";
 import { IG_CACHE_DIR } from "./paths";
-
-const GRAPH = "https://graph.facebook.com/v25.0";
 
 export type MediaType = "VIDEO" | "IMAGE" | "CAROUSEL_ALBUM";
 

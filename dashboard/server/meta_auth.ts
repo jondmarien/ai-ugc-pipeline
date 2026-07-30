@@ -8,6 +8,12 @@ import { META_SECRETS_PATH } from "./paths";
 // Meta OAuth in the dashboard. Read-only: the dashboard never writes this file.
 // ---------------------------------------------------------------------------
 
+// Single source of truth for the dashboard's Graph API version — bump here
+// only. Mirrors (but isn't imported from) renderer/scripts/publish/auth/meta.ts's
+// own GRAPH_API_VERSION const, since the dashboard has no dependency on renderer.
+export const GRAPH_API_VERSION = "v26.0";
+export const GRAPH_BASE = `https://graph.facebook.com/${GRAPH_API_VERSION}`;
+
 export type MetaStore = {
   page_id?: string;
   page_access_token?: string;

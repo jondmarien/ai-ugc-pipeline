@@ -19,7 +19,7 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const SECRETS_DIR = join(__dirname, "..", "..", "..", ".secrets");
 const SECRETS_PATH = join(SECRETS_DIR, "meta.json");
 
-export const GRAPH_API_VERSION = "v25.0";
+export const GRAPH_API_VERSION = "v26.0";
 export const GRAPH_BASE = `https://graph.facebook.com/${GRAPH_API_VERSION}`;
 
 // Meta's new use-case-driven app flow: "Manage everything on your Page" +

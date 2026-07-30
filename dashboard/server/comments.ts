@@ -1,5 +1,9 @@
 import type { IgComment } from "../shared/types";
-import { appSecretProof, requireMetaStore } from "./meta_auth";
+import {
+  appSecretProof,
+  GRAPH_BASE as GRAPH,
+  requireMetaStore,
+} from "./meta_auth";
 
 /**
  * Comment moderation (list/hide/delete/reply/like) for the dashboard's Comments
@@ -15,7 +19,6 @@ import { appSecretProof, requireMetaStore } from "./meta_auth";
  * has been removed. This is the same Page token as everything else here.
  */
 
-const GRAPH = "https://graph.facebook.com/v25.0";
 const COMMENT_FIELDS =
   "id,text,from,timestamp,like_count,hidden,replies{id,text,from,timestamp,like_count,hidden}";
 
