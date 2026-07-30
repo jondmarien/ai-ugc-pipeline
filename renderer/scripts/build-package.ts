@@ -146,7 +146,7 @@ function qaChecklistMd(post: TPostData): string {
     `| Alt text | Count matches slides (${post.alt_text.length}/${post.slides.length}) | ${post.alt_text.length === post.slides.length ? "PASS" : "FAIL"} |`,
     `| Source support | ≥1 sourced/qualified claim | ${post.sources.length >= 1 ? "PASS" : "FAIL"} (${post.sources.length} sources) |`,
     `| Cyber safety | No payloads/exploit/evasion in copy | MANUAL REVIEW — confirm |`,
-    `| Defender value | Defense + takeaway slides present | ${post.slides.some((s) => s.role === "defense") ? "PASS" : "FAIL"} |`,
+    `| Defender value | Defense + takeaway slides present | ${post.slides.some((s) => s.role === "defense" || s.role === "compare") ? "PASS" : "FAIL"} |`,
     `| Text overflow | No clipped headline / hidden CTA in exported PNGs | MANUAL REVIEW — eyeball cover + slide 6 |`,
     `| Mobile readability | Cover legible as a thumbnail | MANUAL REVIEW |`,
     `| Brand consistency | Accent (${post.brand.pillar_accent}), handle, pagination consistent | PASS (shared shell) |`,

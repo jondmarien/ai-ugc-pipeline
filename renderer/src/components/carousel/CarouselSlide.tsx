@@ -210,3 +210,34 @@ export function Kicker({ text, accent }: { text: string; accent: string }) {
     </div>
   );
 }
+
+// Numbered pill badge ("Step 1", "Rule 3") for posts structured as a numbered sequence
+// (e.g. a hardening checklist). Alternative to Kicker's plain text+bar — use only when the
+// post genuinely is a numbered list; forcing it onto non-sequential posts adds noise.
+export function StepBadge({
+  label,
+  accent,
+}: {
+  label: string;
+  accent: string;
+}) {
+  if (!label) return null;
+  return (
+    <div
+      style={{
+        alignSelf: "flex-start",
+        fontFamily: fonts.mono,
+        fontSize: typeScale.kicker,
+        letterSpacing: "0.1em",
+        textTransform: "uppercase",
+        fontWeight: 700,
+        color: palette.bgDeep,
+        background: accent,
+        padding: "8px 22px",
+        borderRadius: 999,
+      }}
+    >
+      {label}
+    </div>
+  );
+}

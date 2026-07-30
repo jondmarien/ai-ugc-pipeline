@@ -17,7 +17,7 @@ import {
   listPublishedMeta,
   readCurrentInstagramPostType,
 } from "./meta";
-import { DASH_ROOT, RENDERS_DIR } from "./paths";
+import { META_SECRETS_PATH, RENDERS_DIR } from "./paths";
 import { listPosts, listRenders, readRenderFile } from "./repo";
 import { ALLOWED_STATE_FILES, readState, writeState } from "./store";
 import { getTrends } from "./trends";
@@ -48,21 +48,11 @@ const server = serve({
         return env(r.data, r.error, r.fetchedAt);
       }
       if (p === "/api/ig/token-age") {
-        // Token age = time since the last successful refresh (token_refresh.log OK line),
-        // falling back to .env mtime when the log does not exist yet.
-        const log = path.join(DASH_ROOT, "token_refresh.log");
-        const envFile = path.join(DASH_ROOT, ".env");
-        let since: number | null = null;
-        if (fs.existsSync(log)) {
-          const ok = fs
-            .readFileSync(log, "utf8")
-            .split("\n")
-            .filter((l) => l.includes(" OK "))
-            .at(-1);
-          if (ok) since = Date.parse(ok.slice(0, 24)) || null;
-        }
-        if (!since && fs.existsSync(envFile))
-          since = fs.statSync(envFile).mtimeMs;
+        // Token age = time since renderer/.secrets/meta.json was last written
+        // by `bun run publish:auth meta` (the only thing that writes it).
+        const since = fs.existsSync(META_SECRETS_PATH)
+          ? fs.statSync(META_SECRETS_PATH).mtimeMs
+          : null;
         return env(
           since
             ? { ageDays: Math.floor((Date.now() - since) / 86_400_000) }

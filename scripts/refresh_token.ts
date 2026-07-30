@@ -1,11 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
+import { debugToken } from "../renderer/scripts/publish/auth/meta";
 
-// Source of truth for Meta credentials is renderer/.env (META_APP_ID/META_APP_SECRET)
-// + renderer/.secrets/meta.json (page_access_token) — same files
-// renderer/scripts/publish/auth/meta.ts reads/writes. This script previously pointed
-// at dashboard/.env + IG_APP_ID/IG_APP_SECRET/IG_ACCESS_TOKEN, which were never
-// populated there (dead since the app converged on the meta.ts flow).
+// Meta gives no refresh_token for Page access tokens (see renderer/scripts/publish/auth/meta.ts
+// and docs/publishing/PUBLISHING.md) — the fb_exchange_token grant this script used to attempt
+// always fails ("...permission(s) must be granted before impersonating a user's page"). The only
+// thing a scheduled job can do is the same /debug_token liveness check meta.ts itself does at
+// publish time, so a dead token is caught here instead of failing a real publish run.
 const ENV_FILE = path.resolve(import.meta.dir, "..", "renderer", ".env");
 const SECRETS_FILE = path.resolve(
   import.meta.dir,
@@ -30,46 +31,42 @@ function parseEnv(content: string): Record<string, string> {
   return out;
 }
 
-export function mergeToken(
-  store: Record<string, unknown>,
-  newToken: string,
-): Record<string, unknown> {
-  return { ...store, page_access_token: newToken };
+export function logLine(
+  stamp: string,
+  check: { is_valid: boolean; expires_at?: number },
+): string {
+  return check.is_valid
+    ? `${stamp} OK expires_at=${check.expires_at ?? "n/a"}\n`
+    : `${stamp} FAIL token invalid — run \`bun run publish:auth meta\` in renderer/ to re-authenticate\n`;
 }
 
 async function main() {
   const env = parseEnv(fs.readFileSync(ENV_FILE, "utf8"));
   const store = JSON.parse(fs.readFileSync(SECRETS_FILE, "utf8"));
-  if (!store.page_access_token) {
-    console.error(
-      `No page_access_token in ${SECRETS_FILE}. Run \`bun run publish:auth meta\` in renderer/ first.`,
-    );
-    process.exit(1);
-  }
-  // Long-lived token exchange (Facebook Login flow, walkthrough Step 1):
-  const url =
-    `https://graph.facebook.com/v25.0/oauth/access_token?grant_type=fb_exchange_token` +
-    `&client_id=${env.META_APP_ID}&client_secret=${env.META_APP_SECRET}&fb_exchange_token=${store.page_access_token}`;
-  const res = await fetch(url);
-  const body = await res.json();
   const stamp = new Date().toISOString();
-  if (!res.ok || !body.access_token) {
+  if (!store.page_access_token) {
     fs.appendFileSync(
       LOG_FILE,
-      `${stamp} FAIL ${JSON.stringify(body?.error ?? body)}\n`,
+      `${stamp} FAIL no page_access_token — run \`bun run publish:auth meta\` first\n`,
     );
-    console.error("Token refresh failed. See dashboard/token_refresh.log.");
+    console.error(`No page_access_token in ${SECRETS_FILE}.`);
     process.exit(1);
   }
-  fs.writeFileSync(
-    SECRETS_FILE,
-    JSON.stringify(mergeToken(store, body.access_token), null, 2),
+  const check = await debugToken(
+    store.page_access_token,
+    env.META_APP_ID ?? "",
+    env.META_APP_SECRET ?? "",
   );
-  fs.appendFileSync(
-    LOG_FILE,
-    `${stamp} OK expires_in=${body.expires_in ?? "n/a"}\n`,
+  fs.appendFileSync(LOG_FILE, logLine(stamp, check));
+  if (!check.is_valid) {
+    console.error(
+      "Meta Page token is dead. Re-run `bun run publish:auth meta` in renderer/.",
+    );
+    process.exit(1);
+  }
+  console.log(
+    `Meta Page token still valid (expires_at=${check.expires_at ?? "n/a"}).`,
   );
-  console.log("Token refreshed.");
 }
 
 if (import.meta.main) await main();

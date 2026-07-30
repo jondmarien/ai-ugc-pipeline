@@ -5,6 +5,7 @@ One line per ingest. New ingests are written by the `ig-ingest` skill (`/ingest-
 - [Steal My Carousel System (6 rules)](2026-06-07_growithalex_carousel-system.md) — per-slide job descriptions for the swipe funnel; Deltas 1–4 **applied 2026-06-07**, Delta 5 rejected by policy.
 - [The One Page System (Master Brand Brain)](2026-06-07_growithalex_master-brand-brain.md) — four-pillar brand context + a natural experiment showing concrete covers beat abstract ones; Deltas 6–8 **applied 2026-06-07** (BRAND_BRAIN.md created).
 - [Best-practices research (validation pass)](2026-06-07_best-practices-research.md) — external sources confirming Deltas 1–4/7–8, hashtag correction (3–5 max + caption keywords), slide-count/completion guidance; mixed-media carousels logged as renderer backlog.
+- [Master Carousel Covers — 5 Rules, No Theory](2026-07-08_adarshxdesign_carousel-covers.md) — Before/After split device + cover pain-point closer; Deltas 1–3 proposed, Deltas 4–5 rejected (misfit / policy).
 
 ## Legacy (pre-skill)
 

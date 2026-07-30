@@ -36,6 +36,12 @@ Formula = **specific actor/object + unexpected AI action + clear consequence.** 
 > - **8 words max on the cover** (excluding subline). The cover's only job is stopping the scroll; qualifiers move to the subline. Industry data puts ~80% of carousel engagement on slide 1.
 > - **Concrete and countable beats abstract.** Same-account natural experiment: "steal my X system, 6 rules" pulled ~37x the likes of "the one page system" (@growithalex, May 2026; n=2, uncontrolled — treat as a heuristic, not a law). Prefer numbers, named objects, and verbs over concepts.
 
+> **Cover closer line** (optional, 2026-07-08, `pipeline/content/ingested/2026-07-08_adarshxdesign_carousel-covers.md`)
+> A two-clause pain-point line at the base of the cover, rendered via `slide.closer`: a plain setup clause, then an accent-marked (`[[…]]`) consequence clause. Reframes the topic as the reader's problem instead of a neutral headline. Must stay tied to the post's actual claim — never a growth-guru attention-grab.
+> - `[thing they trust] is fine. [[the real gap is elsewhere.]]` — "your MFA is fine. [[the recovery flow isn't.]]"
+> - `you already [did the obvious thing]. [[that's not what stopped it.]]` — "you already patched the CVE. [[that's not what stopped it.]]"
+> - `[assumption]. [[here's what actually breaks.]]` — "the model refused the request. [[the plugin didn't.]]"
+
 ---
 
 ## 2. Caption Frameworks

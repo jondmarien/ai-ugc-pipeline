@@ -28,6 +28,9 @@ export const SlideRole = z.enum([
   // Full-bleed attack-chain / step-flow diagram rendered from slide.chain[] in the design
   // system (no AI background). For technical posts (exploit chains, kill chains).
   "chain",
+  // Two-sided Before/After comparison (default vs hardened config, vulnerable vs patched code,
+  // unmonitored vs alerted). Rendered from slide.compare in the design system.
+  "compare",
 ]);
 
 // Filename role tokens follow the pipeline convention (note hyphen in failure-point).
@@ -42,6 +45,7 @@ export const ROLE_FILENAME: Record<z.infer<typeof SlideRole>, string> = {
   cta: "cta",
   point: "point",
   chain: "chain",
+  compare: "compare",
 };
 
 export const ScoreSpec = z.object({
@@ -79,8 +83,16 @@ export const SlideData = z.object({
   slide: z.number().int().positive(),
   role: SlideRole,
   kicker: z.string().optional().default(""),
+  // Numbered pill badge ("Step 1", "Rule 3") for posts structured as a numbered sequence —
+  // renders via StepBadge instead of the plain-text Kicker when set. Optional; most posts
+  // don't need it.
+  badge: z.string().optional().default(""),
   on_slide_copy: z.string().min(1, "on_slide_copy is required for every slide"),
   subline: z.string().optional().default(""),
+  // For role "cover": an optional two-clause pain-point line rendered at the base of the cover
+  // (setup clause + accent-colored consequence clause), e.g. "your prompts are fine. the
+  // injection isn't in the prompt." Ignored on non-cover roles.
+  closer: z.string().optional().default(""),
   body: z.string().optional().default(""),
   visual_direction: z.string().optional().default(""),
   visual_prompt: z.string().optional().default(""),
@@ -115,6 +127,16 @@ export const SlideData = z.object({
         detail: z.string().optional().default(""),
       }),
     )
+    .optional(),
+  // For role "compare": a two-sided Before/After panel. Needs a genuine binary state
+  // (default vs hardened config, vulnerable vs patched code) — don't force it otherwise.
+  compare: z
+    .object({
+      before_label: z.string().min(1).default("Before"),
+      before_copy: z.string().min(1),
+      after_label: z.string().min(1).default("After"),
+      after_copy: z.string().min(1),
+    })
     .optional(),
 });
 

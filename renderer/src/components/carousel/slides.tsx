@@ -7,7 +7,7 @@ import {
   themeAccent,
 } from "@/design/tokens";
 import type { TPostData, TSlideData } from "@/lib/schema";
-import { CarouselSlide, Kicker } from "./CarouselSlide";
+import { CarouselSlide, Kicker, StepBadge } from "./CarouselSlide";
 
 type SlideProps = { post: TPostData; slide: TSlideData };
 
@@ -94,6 +94,27 @@ function Subline({ text }: { text: string }) {
   );
 }
 
+// Two-clause pain-point line for the cover's base: plain setup clause, then an
+// accent-colored consequence clause marked with [[...]] (reuses the colorize convention).
+function Closer({ text, accent }: { text: string; accent: string }) {
+  if (!text) return null;
+  return (
+    <p
+      style={{
+        fontFamily: fonts.body,
+        fontWeight: 600,
+        fontSize: t.body,
+        lineHeight: 1.2,
+        color: palette.fg,
+        margin: 0,
+        maxWidth: "92%",
+      }}
+    >
+      {colorize(text, accent, palette.danger)}
+    </p>
+  );
+}
+
 function SwipeCue({ label, accent }: { label: string; accent: string }) {
   if (!label) return null;
   return (
@@ -129,6 +150,7 @@ export function CoverSlide({ post, slide }: SlideProps) {
       />
       <Subline text={slide.subline} />
       <SwipeCue label={slide.cta} accent={accent} />
+      <Closer text={slide.closer} accent={accent} />
     </CarouselSlide>
   );
 }
@@ -137,7 +159,11 @@ function StandardSlide({ post, slide }: SlideProps) {
   const accent = themeAccent(post);
   return (
     <CarouselSlide post={post} slide={slide} align="end">
-      <Kicker text={slide.kicker} accent={accent} />
+      {slide.badge ? (
+        <StepBadge label={slide.badge} accent={accent} />
+      ) : (
+        <Kicker text={slide.kicker} accent={accent} />
+      )}
       <Headline text={slide.on_slide_copy} size={headlineBase.body} />
       <Subline text={slide.subline} />
     </CarouselSlide>
@@ -302,9 +328,93 @@ export function ChainSlide({ post, slide }: SlideProps) {
   );
 }
 
+// One side of a Before/After comparison: a pill label (muted "Before" / accent-filled "After")
+// over a copy panel. `after` fills with the accent so the two sides read as clearly distinct.
+function ComparePanel({
+  label,
+  copy,
+  accent,
+  after,
+}: {
+  label: string;
+  copy: string;
+  accent: string;
+  after?: boolean;
+}) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+      <div
+        style={{
+          alignSelf: "flex-start",
+          fontFamily: fonts.mono,
+          fontSize: 15,
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          fontWeight: 700,
+          color: after ? palette.bgDeep : palette.fg,
+          background: after ? accent : "rgba(148,163,184,0.16)",
+          padding: "6px 16px",
+          borderRadius: 999,
+        }}
+      >
+        {label}
+      </div>
+      <div
+        style={{
+          border: `1px solid ${after ? accent : "rgba(148,163,184,0.26)"}`,
+          borderRadius: 16,
+          padding: "16px 18px",
+          background: "rgba(11,15,26,0.6)",
+          fontFamily: fonts.body,
+          fontSize: 22,
+          lineHeight: 1.22,
+          color: palette.fg,
+          flex: 1,
+        }}
+      >
+        {copy}
+      </div>
+    </div>
+  );
+}
+
+// Two-sided Before/After slide (role "compare"). Needs a genuine binary state — default vs
+// hardened config, vulnerable vs patched code — not every topic has one.
+export function CompareSlide({ post, slide }: SlideProps) {
+  const accent = themeAccent(post);
+  const cmp = slide.compare;
+  return (
+    <CarouselSlide post={post} slide={slide} align="end">
+      {slide.badge ? (
+        <StepBadge label={slide.badge} accent={accent} />
+      ) : (
+        <Kicker text={slide.kicker} accent={accent} />
+      )}
+      <Headline text={slide.on_slide_copy} size={headlineBase.body} />
+      <Subline text={slide.subline} />
+      {cmp ? (
+        <div style={{ display: "flex", gap: 16, marginTop: 8 }}>
+          <ComparePanel
+            label={cmp.before_label}
+            copy={cmp.before_copy}
+            accent={accent}
+          />
+          <ComparePanel
+            label={cmp.after_label}
+            copy={cmp.after_copy}
+            accent={accent}
+            after
+          />
+        </div>
+      ) : null}
+    </CarouselSlide>
+  );
+}
+
 // Role → component registry. context/risk/mechanism/failure_point/defense/point share
-// the standard body layout; cover/takeaway/cta/chain are specialized. `point` is the generic
-// body slide; `chain` is a full-bleed step-flow diagram from slide.chain[].
+// the standard body layout; cover/takeaway/cta/chain/compare are specialized. `point` is the
+// generic body slide; `chain` is a full-bleed step-flow diagram from slide.chain[]; `compare`
+// is a two-sided Before/After panel from slide.compare.
 export const SLIDE_COMPONENTS: Record<
   TSlideData["role"],
   (p: SlideProps) => ReactElement
@@ -319,4 +429,5 @@ export const SLIDE_COMPONENTS: Record<
   cta: CtaSlide,
   point: StandardSlide,
   chain: ChainSlide,
+  compare: CompareSlide,
 };

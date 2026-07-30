@@ -56,14 +56,18 @@ The JSON contract the renderer consumes, mapped from `../../pipeline/content/POS
 | Field | Type | Req | Notes |
 | --- | --- | --- | --- |
 | `slide` | int | ✓ | 1-based, contiguous. |
-| `role` | enum | ✓ | `cover\|context\|risk\|mechanism\|failure_point\|defense\|takeaway\|cta\|point`. (`point` = generic repeatable body slide for dynamic slide counts > 8.) |
+| `role` | enum | ✓ | `cover\|context\|risk\|mechanism\|failure_point\|defense\|takeaway\|cta\|point\|chain\|compare`. (`point` = generic repeatable body slide for dynamic slide counts > 8; `chain` = full-bleed step-flow diagram from `chain[]`; `compare` = two-sided Before/After panel from `compare`.) |
 | `on_slide_copy` | string | ✓ | the headline; keep ≤ ~12 words. |
 | `kicker` | string | | small role label (design element, not a claim). |
+| `badge` | string | | numbered pill ("Step 1", "Rule 3") rendered instead of `kicker` when set — only for posts that are genuinely a numbered sequence. |
 | `subline` | string | | |
+| `closer` | string | | cover-only: a two-clause pain-point line at the base of the cover. Mark the accent-colored consequence clause with `[[...]]` (same convention as takeaway headlines). |
 | `visual_direction`, `visual_prompt` | string | | guidance for backgrounds; **never rendered as text**. |
 | `background_asset` | string | | `/backgrounds/...` served from `public/`. |
 | `asset_status` | enum | | `existing\|needed\|generated\|stock\|procedural`. |
 | `cta` | string | | cover swipe cue / CTA chip. |
+| `chain` | `{stage?, title, detail?}[]` | | role `chain` only. |
+| `compare` | `{before_label?, before_copy, after_label?, after_copy}` | | role `compare` only. Labels default to "Before"/"After"; override for domain-specific pairs ("Default"/"Hardened", "Vulnerable"/"Patched"). |
 
 ### `SourceNote`
 `{ source, link, supports, confidence: high|medium|low, claim_tag }` — all required.
