@@ -1,0 +1,308 @@
+{
+  "post_id": "2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c",
+  "date": "2026-08-25",
+  "slug": "24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c",
+  "platform": "instagram",
+  "format": "carousel",
+  "status": "draft",
+  "pillar": "myth_busting",
+  "theme": "hacking",
+  "style_fusion": "",
+  "audience": "security_practitioners",
+  "core_claim": "24 npm Packages Abuse unpkg Mirrors to Host Fake Cloudflare CAPTCHA Pages \u2014 info@thehackernews.com (The Hacker News)",
+  "claim_tags": [
+    "scenario"
+  ],
+  "score": {
+    "credibility": 3,
+    "relevance": 3,
+    "novelty": 3,
+    "visual_drama": 3,
+    "defender_usefulness": 3,
+    "total": 15
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin": 96
+  },
+  "brand": {
+    "handle": "@chron0s_cyb3r_w0rld.ai",
+    "accent_name": "neon green",
+    "pillar_accent": "myth_busting",
+    "palette": {
+      "bg": "#05070d",
+      "fg": "#f8fafc",
+      "muted": "#94a3b8",
+      "accent": "#39ff88",
+      "danger": "#ef4444"
+    },
+    "font_stack": "Archivo, Inter, system-ui, sans-serif"
+  },
+  "upload_package": {
+    "folder": "pipeline/renders/2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c",
+    "filename_prefix": "2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c",
+    "expected_files": [
+      "2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c_01_cover.png",
+      "2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c_02_context.png",
+      "2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c_03_risk.png",
+      "2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c_04_mechanism.png",
+      "2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c_05_failure-point.png",
+      "2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c_06_defense.png",
+      "2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c_07_takeaway.png",
+      "2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c_08_cta.png",
+      "caption.txt",
+      "alt_text.txt",
+      "sources.md",
+      "render_qa_checklist.md",
+      "instagram_upload_checklist.md"
+    ],
+    "caption_file": "caption.txt",
+    "slide_captions_file": "slide_captions.txt",
+    "alt_text_file": "alt_text.txt",
+    "sources_file": "sources.md",
+    "licenses_file": "LICENSES.md"
+  },
+  "features": {
+    "multiple_captions": false
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "kicker": "AI \u00d7 CYBERSECURITY",
+      "on_slide_copy": "YOUR COVER HOOK GOES HERE",
+      "subline": "One-line promise of what they'll learn.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "cinematic establishing shot for an AI-cybersecurity story about [the topic]: a dramatic central subject (analyst, SOC, AI agent, or device) in a dark high-contrast scene, dramatic rim light, strong empty lower-third for the headline",
+      "background_asset": "/backgrounds/2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c_cover.png",
+      "asset_status": "needed",
+      "cta": "SWIPE \u2192",
+      "notes": "Add a 1080\u00d71350 text-free PNG to renderer/public/backgrounds/ then set asset_status to 'existing'."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "kicker": "WHAT CHANGED",
+      "on_slide_copy": "What happened, or the pattern to notice.",
+      "subline": "Keep it plain-language.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "an abstract \"what changed\" scene for [the topic]: a shifting before/after pattern or emerging-signal motif, dark editorial, lower third kept clear, no readable text",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "role": "risk",
+      "kicker": "WHY IT MATTERS",
+      "on_slide_copy": "Why this matters to defenders.",
+      "subline": "Security impact, not hype.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a tension-building impact scene for [the topic]: a single focal hazard/stakes motif (a target, a breach path, a fragile control), dark and high-contrast, tense atmosphere",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "kicker": "HOW IT WORKS",
+      "on_slide_copy": "Safe, high-level mechanism.",
+      "subline": "No payloads or exploit steps.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean abstract diagrammatic scene showing the HIGH-LEVEL mechanism of [the topic] \u2014 glowing nodes and connections, a flow between abstract components; absolutely no exploit detail, payloads, or readable code; dark, upper-area focus",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "role": "failure_point",
+      "kicker": "WHERE TEAMS FAIL",
+      "on_slide_copy": "The people / process / tooling gap.",
+      "subline": "Where this slips through today.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a scene depicting a process/control gap for [the topic]: an overlooked checkpoint or skipped verification step, a figure near an approve button with an ignored checklist, dark, lower third clear",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "role": "defense",
+      "kicker": "DEFENSIVE MOVE",
+      "on_slide_copy": "One concrete control or review step.",
+      "subline": "Something they can do this week.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a defensive workflow scene for [the topic]: verification, permission gates, an audit trail, approval chain and identity-check motifs, calm and orderly, dark",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "role": "takeaway",
+      "kicker": "TAKEAWAY",
+      "on_slide_copy": "One memorable, save-worthy line.",
+      "subline": "",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a minimal iconic high-contrast scene for [the topic]: a single strong symbol (lock, shield, or verified checkmark) toward the edges in deep negative space, center open and dark",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "",
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "role": "cta",
+      "kicker": "YOUR MOVE",
+      "on_slide_copy": "A specific question for the comments?",
+      "subline": "Save this for your next review.",
+      "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
+      "visual_prompt": "a clean dark end-card scene with strong empty negative space for a question and handle, premium editorial cybersecurity look",
+      "background_asset": "",
+      "asset_status": "procedural",
+      "cta": "COMMENT + SAVE",
+      "notes": ""
+    }
+  ],
+  "caption": "TODO: hook restated \u00b7 what happened \u00b7 why it matters \u00b7 defender takeaway \u00b7 question.\n\nFollow for AI security breakdowns without the fake panic.",
+  "hashtags": [
+    "myth busting",
+    "security",
+    "research"
+  ],
+  "comment_prompt": "TODO: a specific, easy-to-answer question.",
+  "alt_text": [
+    "TODO cover alt text: restate this slide's message, then one brief clause of visual scene.",
+    "TODO context alt text: restate this slide's message, then one brief clause of visual scene.",
+    "TODO risk alt text: restate this slide's message, then one brief clause of visual scene.",
+    "TODO mechanism alt text: restate this slide's message, then one brief clause of visual scene.",
+    "TODO failure_point alt text: restate this slide's message, then one brief clause of visual scene.",
+    "TODO defense alt text: restate this slide's message, then one brief clause of visual scene.",
+    "TODO takeaway alt text: restate this slide's message, then one brief clause of visual scene.",
+    "TODO cta alt text: restate this slide's message, then one brief clause of visual scene."
+  ],
+  "sources": [
+    {
+      "source": "info@thehackernews.com (The Hacker News)",
+      "link": "https://thehackernews.com/2026/08/24-npm-packages-abuse-unpkg-mirrors-to.html",
+      "supports": "Primary report",
+      "confidence": 0.9,
+      "claim_tag": "reported_fact"
+    }
+  ],
+  "asset_licenses": [],
+  "video": {
+    "enabled": true,
+    "duration_seconds": 26,
+    "fps": 30,
+    "export_name": "2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c_reel.mp4",
+    "caption_mode": "highlight",
+    "audio": {
+      "voice_mode": "voxcpm2",
+      "voice_file": "/audio/2026-08-25_24-npm-packages-abuse-unpkg-mirrors-to-host-fake-c/voice.wav",
+      "voice_gain_db": 0,
+      "music_mode": "none",
+      "music_gain_db": -18
+    },
+    "narration": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "TODO hook line."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "text": "TODO context line."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "text": "TODO defense line."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "text": "TODO takeaway line."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "text": "TODO cta line."
+      }
+    ],
+    "beats": [
+      {
+        "start": 0,
+        "end": 5,
+        "slide_ref": 1,
+        "purpose": "hook",
+        "motion": "slow push-in over cover",
+        "caption": "TODO hook caption."
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "slide_ref": 2,
+        "purpose": "context",
+        "motion": "parallax",
+        "caption": "TODO context caption."
+      },
+      {
+        "start": 10,
+        "end": 16,
+        "slide_ref": 6,
+        "purpose": "defense",
+        "motion": "slow push-in",
+        "caption": "TODO defense caption."
+      },
+      {
+        "start": 16,
+        "end": 21,
+        "slide_ref": 7,
+        "purpose": "takeaway",
+        "motion": "static high contrast",
+        "caption": "TODO takeaway caption."
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "slide_ref": 8,
+        "purpose": "cta",
+        "motion": "end card",
+        "caption": "TODO cta caption."
+      }
+    ],
+    "subtitle_style": "large centered lower-third, high contrast, two lines max",
+    "music": null,
+    "sfx": [],
+    "licenses": []
+  },
+  "qa": {
+    "fact_checked": false,
+    "sources_present": false,
+    "alt_text_count_matches_slides": true,
+    "no_exploit_steps": true,
+    "no_fake_cves_or_stats": true,
+    "defender_value_present": true,
+    "media_rights_logged": false,
+    "manual_review_required": true,
+    "render_checks_required": [
+      "exact_resolution",
+      "no_text_overflow",
+      "safe_margins",
+      "mobile_readability",
+      "filename_order",
+      "license_metadata"
+    ]
+  },
+  "comment_question": "What's your take on this finding?"
+}
