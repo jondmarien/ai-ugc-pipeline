@@ -9,9 +9,9 @@
   "theme": "hacking",
   "style_fusion": "",
   "audience": "security_practitioners",
-  "core_claim": "U.S. Soldier Gets 70 Months in Prison for AT&T, Verizon Extortions \u2014 BrianKrebs",
+  "core_claim": "U.S. Soldier Gets 70 Months in Prison for AT&T, Verizon Extortions.",
   "claim_tags": [
-    "scenario"
+    "reported_fact"
   ],
   "score": {
     "credibility": 3,
@@ -113,7 +113,7 @@
       "on_slide_copy": "Safe, high-level mechanism.",
       "subline": "No payloads or exploit steps.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a clean abstract diagrammatic scene showing the HIGH-LEVEL mechanism of [the topic] \u2014 glowing nodes and connections, a flow between abstract components; absolutely no exploit detail, payloads, or readable code; dark, upper-area focus",
+      "visual_prompt": "a clean abstract diagrammatic scene showing the HIGH-LEVEL mechanism of [the topic], glowing nodes and connections, a flow between abstract components; absolutely no exploit detail, payloads, or readable code; dark, upper-area focus",
       "background_asset": "",
       "asset_status": "procedural",
       "cta": "",
@@ -191,10 +191,10 @@
   ],
   "sources": [
     {
-      "source": "BrianKrebs",
+      "source": "Krebs on Security, U.S. Soldier Gets 70 Months in Prison for AT&T, Verizon Extortions",
       "link": "https://krebsonsecurity.com/2026/09/u-s-soldier-gets-70-months-in-prison-for-att-verizon-extortions/",
       "supports": "Primary report",
-      "confidence": 0.9,
+      "confidence": "high",
       "claim_tag": "reported_fact"
     }
   ],

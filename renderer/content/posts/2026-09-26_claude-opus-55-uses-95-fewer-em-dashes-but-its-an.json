@@ -9,9 +9,9 @@
   "theme": "defensive",
   "style_fusion": "",
   "audience": "security_practitioners",
-  "core_claim": "Claude Opus 5.5 uses 95% fewer em dashes, but its answers are getting longer \u2014 Mayank Parmar",
+  "core_claim": "Claude Opus 5.5 uses 95% fewer em dashes, but its answers are getting longer.",
   "claim_tags": [
-    "scenario"
+    "reported_fact"
   ],
   "score": {
     "credibility": 3,
@@ -113,7 +113,7 @@
       "on_slide_copy": "Safe, high-level mechanism.",
       "subline": "No payloads or exploit steps.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a clean abstract diagrammatic scene showing the HIGH-LEVEL mechanism of [the topic] \u2014 glowing nodes and connections, a flow between abstract components; absolutely no exploit detail, payloads, or readable code; dark, upper-area focus",
+      "visual_prompt": "a clean abstract diagrammatic scene showing the HIGH-LEVEL mechanism of [the topic], glowing nodes and connections, a flow between abstract components; absolutely no exploit detail, payloads, or readable code; dark, upper-area focus",
       "background_asset": "",
       "asset_status": "procedural",
       "cta": "",
@@ -191,10 +191,10 @@
   ],
   "sources": [
     {
-      "source": "Mayank Parmar",
+      "source": "BleepingComputer, Claude Opus 5.5 uses 95% fewer em dashes, but its answers are getting longer",
       "link": "https://www.bleepingcomputer.com/news/artificial-intelligence/claude-opus-55-uses-95-percent-fewer-em-dashes-but-its-answers-are-getting-longer/",
       "supports": "Primary report",
-      "confidence": 0.9,
+      "confidence": "high",
       "claim_tag": "reported_fact"
     }
   ],
