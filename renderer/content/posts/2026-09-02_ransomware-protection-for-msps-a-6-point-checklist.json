@@ -9,9 +9,9 @@
   "theme": "hacking",
   "style_fusion": "",
   "audience": "security_practitioners",
-  "core_claim": "Ransomware protection for MSPs: A 6-point checklist for faster recovery \u2014 Sponsored by Acronis",
+  "core_claim": "Ransomware protection for MSPs: A 6-point checklist for faster recovery.",
   "claim_tags": [
-    "scenario"
+    "reported_fact"
   ],
   "score": {
     "credibility": 3,
@@ -113,7 +113,7 @@
       "on_slide_copy": "Safe, high-level mechanism.",
       "subline": "No payloads or exploit steps.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a clean abstract diagrammatic scene showing the HIGH-LEVEL mechanism of [the topic] \u2014 glowing nodes and connections, a flow between abstract components; absolutely no exploit detail, payloads, or readable code; dark, upper-area focus",
+      "visual_prompt": "a clean abstract diagrammatic scene showing the HIGH-LEVEL mechanism of [the topic], glowing nodes and connections, a flow between abstract components; absolutely no exploit detail, payloads, or readable code; dark, upper-area focus",
       "background_asset": "",
       "asset_status": "procedural",
       "cta": "",
@@ -191,10 +191,10 @@
   ],
   "sources": [
     {
-      "source": "Sponsored by Acronis",
+      "source": "BleepingComputer, Ransomware protection for MSPs: A 6-point checklist for faster recovery",
       "link": "https://www.bleepingcomputer.com/news/security/ransomware-protection-for-msps-a-6-point-checklist-for-faster-recovery/",
       "supports": "Primary report",
-      "confidence": 0.9,
+      "confidence": "high",
       "claim_tag": "reported_fact"
     }
   ],
