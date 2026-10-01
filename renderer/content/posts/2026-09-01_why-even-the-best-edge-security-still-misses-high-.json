@@ -9,9 +9,9 @@
   "theme": "hacking",
   "style_fusion": "",
   "audience": "security_practitioners",
-  "core_claim": "Why Even the Best Edge Security Still Misses High-Risk Sessions \u2014 Sponsored by Spur Intelligence",
+  "core_claim": "Why Even the Best Edge Security Still Misses High-Risk Sessions.",
   "claim_tags": [
-    "scenario"
+    "reported_fact"
   ],
   "score": {
     "credibility": 3,
@@ -113,7 +113,7 @@
       "on_slide_copy": "Safe, high-level mechanism.",
       "subline": "No payloads or exploit steps.",
       "visual_direction": "cinematic, dark, single accent glow; text-free background; protected lower-third.",
-      "visual_prompt": "a clean abstract diagrammatic scene showing the HIGH-LEVEL mechanism of [the topic] \u2014 glowing nodes and connections, a flow between abstract components; absolutely no exploit detail, payloads, or readable code; dark, upper-area focus",
+      "visual_prompt": "a clean abstract diagrammatic scene showing the HIGH-LEVEL mechanism of [the topic], glowing nodes and connections, a flow between abstract components; absolutely no exploit detail, payloads, or readable code; dark, upper-area focus",
       "background_asset": "",
       "asset_status": "procedural",
       "cta": "",
@@ -191,10 +191,10 @@
   ],
   "sources": [
     {
-      "source": "Sponsored by Spur Intelligence",
+      "source": "BleepingComputer, Why Even the Best Edge Security Still Misses High-Risk Sessions",
       "link": "https://www.bleepingcomputer.com/news/security/why-even-the-best-edge-security-still-misses-high-risk-sessions/",
       "supports": "Primary report",
-      "confidence": 0.9,
+      "confidence": "high",
       "claim_tag": "reported_fact"
     }
   ],
